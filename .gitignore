@@ -1,0 +1,25 @@
+# Nunca versionar
+*.env
+.env*
+credenciales*
+*credentials*
+secrets*
+*.key
+*.pem
+
+# PDFs pesados de bases (se citan por numeral)
+bases/*.pdf
+*.pdf
+
+# Trabajo local
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+*.tmp
+.scratch/
+
+# Salidas generadas (se regeneran con scripts)
+propuestas/**/build/

@@ -1,0 +1,14 @@
+id,item,item_peso,subcriterio,peso_interno,peso_en_tecnica,peso_nota_final,tipo,umbral_7,umbral_5,umbral_3,anexo7_num,seccion_anexo2
+A1,A - Equipamiento e infraestructura,0.10,Equipamiento e infraestructura,1.00,0.100,0.040,escalonado,Infraestructura con equipos computacionales,Solo equipos computacionales,,-,X
+B1,B - Estrategia evaluativa,0.20,Criterios de evaluación,0.10,0.020,0.008,conteo,3 indicadores por aprendizaje esperado,2 indicadores,1 indicador,2,V
+B2,B - Estrategia evaluativa,0.20,Instrumentos de evaluación,0.35,0.070,0.028,conteo,3 instrumentos distintos con todos los AE,2 instrumentos,1 instrumento,"3, 3.1, 3.2, 3.3",V
+B3,B - Estrategia evaluativa,0.20,Portafolio de proyectos,0.35,0.070,0.028,porcentaje,100% de los 6 elementos del num 4.3,70% (4 de 6),50% (3 de 6),"4, 4.1, 4.2, 4.3",V
+B4,B - Estrategia evaluativa,0.20,Retroalimentación y aprendizaje colaborativo,0.20,0.040,0.016,combinado,Feedback + autoevaluación + coevaluación,Feedback + solo una pauta,Solo pautas o solo feedback,"5, 5.1, 5.2, 5.3, 5.4",V
+C1,C - Metodología,0.35,Relación metodología-competencia,0.30,0.105,0.042,binario,Enfocada a la competencia del módulo,,,7,VI
+C2,C - Metodología,0.35,Proceso de aprendizaje,0.30,0.105,0.042,conteo,2 actividades prácticas distintas y efectivas,,1 actividad práctica efectiva,7,VI
+C3,C - Metodología,0.35,Aspectos motivacionales,0.10,0.035,0.014,binario,Contribuye vía interacción con la plataforma,,,7,VI
+C4,C - Metodología,0.35,Uso de los medios,0.20,0.070,0.028,conteo_calidad,2 herramientas didácticas y AMBAS efectivas,2 herramientas y solo una efectiva,1 herramienta efectiva,7,VI
+C5,C - Metodología,0.35,Habilidades del siglo XXI,0.10,0.035,0.014,conteo,3 estrategias para 3 habilidades transversales,2 estrategias para 2 habilidades,1 estrategia para 1 habilidad,7,VI
+D1,D - Herramientas y valor agregado,0.35,Herramientas educativas de la industria,0.40,0.140,0.056,conteo,5 o más herramientas adicionales al plan,3 o 4 herramientas,2 herramientas,"8, 8.1",VII
+D2,D - Herramientas y valor agregado,0.35,Vinculación temprana,0.30,0.105,0.042,conteo,4 estrategias con las 4 explicaciones,3 estrategias,2 estrategias,"9, 9.1",VII
+D3,D - Herramientas y valor agregado,0.35,Actividades de extensión,0.30,0.105,0.042,ratio_horas,1 actividad cada 50 horas del plan,1 cada 80 horas,1 cada 100 horas,10,VII

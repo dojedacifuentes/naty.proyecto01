@@ -1,0 +1,21 @@
+# Normalización de fin de línea.
+# El repo se trabaja desde Windows (Claude Code), Linux y macOS (Codex, Cursor).
+# Todo se guarda y se revisa en LF para que `git diff` muestre cambios reales
+# y no saltos de línea. Ver AGENTS.md §8 (interoperabilidad entre herramientas).
+
+* text=auto eol=lf
+
+*.md   text eol=lf
+*.csv  text eol=lf
+*.mjs  text eol=lf
+*.js   text eol=lf
+*.json text eol=lf
+*.yml  text eol=lf
+*.sh   text eol=lf
+
+# Los hooks de git deben ser LF sí o sí: con CRLF, bash no los ejecuta.
+.githooks/* text eol=lf
+
+*.pdf  binary
+*.png  binary
+*.jpg  binary
