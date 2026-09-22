@@ -73,7 +73,9 @@ export default {
     }
     if (existe('state/OPEN-QUESTIONS.md')) {
       const t = leer('state/OPEN-QUESTIONS.md');
-      const entradas = [...t.matchAll(/^\*\*(\d+)\.\s*([^*]+)\*\*\s*—\s*(.*)$/gm)];
+      // El estado va después del título, pero la entrada se reconoce por la numeración:
+      // así una pregunta que olvidó declarar si está abierta también se detecta.
+      const entradas = [...t.matchAll(/^\*\*(\d+)\.\s*([\s\S]+?)\*\*\s*(.*)$/gm)];
       let abiertasQ = 0;
       for (const e of entradas) {
         const estado = e[3].toUpperCase();

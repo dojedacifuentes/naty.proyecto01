@@ -33,7 +33,7 @@ verificadores.
 El 35% de la propuesta técnica se evalúa navegando el LMS, no leyendo el documento.
 Puede ser el cuello de botella real del proyecto, por encima de la redacción.
 
-**6. ¿Se usa LMS propio de cada cliente o la plataforma LMS de SENCE?**
+**6. ¿Se usa LMS propio de cada cliente o la plataforma LMS de SENCE?** — ABIERTA
 Si es la de SENCE, hay que escribir a `adminelearning@sence.cl` apenas se publique el
 llamado, con nombre del concurso, nombre y RUT del OTEC y RUT del usuario de prueba.
 
@@ -59,3 +59,19 @@ Mejor saberlo hoy que en una impugnación.
 
 **13. ¿Cuáles son las fechas formales de inicio y cierre de la licitación?** — ABIERTA
 Todo el plan cuelga de esas dos fechas.
+
+## Para Diego
+
+**14. ¿Dónde vive el repositorio y quién tiene acceso de escritura?** — ABIERTA
+El repo va a contener información de seis instituciones que compiten entre sí en la misma
+mesa de evaluación. Hay que decidir cuenta de GitHub, si es privado (sí), y quién entra.
+Se cruza con la pregunta 11 (confidencialidad entre clientes) y con la 10 (de quién es el
+sistema). Mientras no se decida, el repositorio vive solo en local: el prompt A de
+`PROMPT-CLAUDE-CODE.md` deja listos los pasos para publicarlo.
+
+**15. ¿Los umbrales de conteo y el 0,75 de similitud aguantan un lote real?** — ABIERTA
+Los controles automáticos se probaron con propuestas de prueba, no con propuestas de
+verdad. El umbral de diferenciación en particular es un número elegido para que el control
+fuera ejecutable, no medido. Al cerrar el primer lote real hay que mirar la distribución
+de similitudes y recalibrar, dejando el cambio en `DECISIONS.md`.
+Responsable: quien produzca el primer lote.

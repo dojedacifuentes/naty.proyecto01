@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-22
-**Por:** sesión inicial (Claude / Cowork)
+**Por:** 2026-09-22-claude-code-01 (Claude Code · opus-5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -12,12 +12,14 @@
 
 | Fase | Estado | Nota |
 | --- | --- | --- |
-| 0. Reconocimiento | **en curso** | Bases leídas y sintetizadas. Faltan accesos. |
+| 0. Reconocimiento | **en curso** | Bases leídas y sintetizadas. El repo ya se verifica solo. Faltan accesos. |
 | 1. Motor | no iniciada | Bloqueada por extracción SIPFOR |
 | 2. Producción | no iniciada | Bloqueada por fase 1 y por fechas de licitación |
 | 3. Sistematización | no iniciada | — |
 
 ## Hecho
+
+Sesión inicial (cowork, 2026-09-22):
 
 - [x] Lectura completa del punto 7.4 (pág. 26-34) de las bases 2026 → `docs/01-guia-propuesta-tecnica.md`
 - [x] Lectura del Anexo N°7 (pág. 96-115) → mismo documento, secciones 5 a 7
@@ -28,9 +30,23 @@
 - [x] Umbrales por plan calculados → `data/umbrales-por-plan.csv`
 - [x] Catálogo de 15 planes formativos y 6 clientes → `data/`
 
+Esta sesión (claude-code, 2026-09-22):
+
+- [x] Repositorio git creado, con el trabajo anterior intacto en el commit `init`
+- [x] Verificación automatizada: 8 controles en `scripts/checks/`, `npm run verificar`
+- [x] Marcadores `<!-- verificable: -->` en la plantilla del Anexo 2: la cobertura se cuenta, no se supone
+- [x] Sistema de handoff con registro y huella de estado → `state/LEDGER.csv`, `npm run sesion`
+- [x] Protocolo de auditoría cruzada entre herramientas → `AUDITORIA.md`
+- [x] Hook de pre-commit y workflow de GitHub Actions
+- [x] Scripts de Python portados a Node y verificados contra su salida original
+
 ## A medias
 
-Nada en curso. La sesión inicial cerró limpia.
+Nada a medias. La sesión cerró limpia.
+
+Lo que existe pero **nunca se ha ejercido de verdad**: el sistema de verificación no ha
+visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de conteo y el
+0,75 de similitud son razonables sobre el papel y están sujetos a calibración.
 
 ## Bloqueado
 
@@ -41,14 +57,25 @@ Nada en curso. La sesión inicial cerró limpia.
 | Matriz real cliente × plan | No definida | Natalia |
 | Fechas formales de la licitación | Llamado aún no publicado | SENCE / Natalia |
 | Fichas de cliente (LMS, infraestructura, docentes) | No levantadas | Natalia + cada cliente |
+| Publicación del repo en GitHub | `gh` no está instalado y falta decidir cuenta y accesos | Diego |
 
 ## Números que ordenan el trabajo
 
 - 15 planes formativos, 2.670 cupos
 - 45 Anexos 2 con 3 clientes confirmados; 90 con los 6
 - 89 actividades de extensión distintas por cliente para sacar 7.0 en D3
+- El plan más exigente es PF1477 (483 h): 10 actividades de extensión solo para él
 - Cierre de ofertas: 18:00 del décimo día hábil tras la publicación del llamado
 - Periodo de consultas: 5 días hábiles tras la publicación
+
+## Estado de la verificación
+
+`npm run verificar` → 8 controles, 0 errores, 4 avisos:
+
+- 3 avisos del control 06: afirmaciones sobre las bases sin numeral ni página en
+  `docs/03-anexo2-estructura.md:41`, `:43` y `docs/04-verificadores-protocolo.md:17`.
+  Son citas reales de las bases a las que les falta la referencia exacta.
+- 1 aviso del control 07: la sesión `2026-09-22-cowork-01` sigue sin auditar.
 
 ## Siguiente paso concreto
 
