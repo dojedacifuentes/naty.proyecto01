@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-22
-**Por:** 2026-09-22-claude-code-01 (Claude Code · opus-5)
+**Por:** 2026-09-22-claude-code-02 (Claude Code · opus-5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -39,6 +39,8 @@ Esta sesión (claude-code, 2026-09-22):
 - [x] Protocolo de auditoría cruzada entre herramientas → `AUDITORIA.md`
 - [x] Hook de pre-commit y workflow de GitHub Actions
 - [x] Scripts de Python portados a Node y verificados contra su salida original
+- [x] Primera auditoría cruzada ejecutada: la sesión inicial revisada desde `claude-code`,
+      veredicto **observaciones**, cinco hallazgos en `state/auditorias/`
 
 ## A medias
 
@@ -75,7 +77,12 @@ visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de co
 - 3 avisos del control 06: afirmaciones sobre las bases sin numeral ni página en
   `docs/03-anexo2-estructura.md:41`, `:43` y `docs/04-verificadores-protocolo.md:17`.
   Son citas reales de las bases a las que les falta la referencia exacta.
-- 1 aviso del control 07: la sesión `2026-09-22-cowork-01` sigue sin auditar.
+- 1 aviso del control 07: las dos sesiones de `claude-code` siguen sin auditar. No pueden
+  auditarse solas: le tocan a Codex, a Cursor o a una persona.
+
+La sesión inicial ya está auditada (veredicto **observaciones**). Sus tres hallazgos
+accionables están en el handoff como trabajo corto: la columna `fuente` en
+`data/clientes.csv` y las tres citas de las bases sin numeral.
 
 ## Siguiente paso concreto
 

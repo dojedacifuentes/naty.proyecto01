@@ -57,12 +57,30 @@ function exigirHerramienta(v, quien = '--herramienta') {
   return v;
 }
 
-/** Rango de commits atribuible a una sesión: desde que abrió hasta que abrió la siguiente. */
+/**
+ * Rango de commits atribuible a una sesión.
+ *
+ * Termina donde arrancó la sesión siguiente. Si esa sesión arrancó en el mismo commit
+ * (pasa cuando se abre con --desde, o cuando dos trabajaron en paralelo), el corte es el
+ * commit de cierre de la sesión auditada: de lo contrario el informe le atribuiría
+ * trabajo ajeno, que es exactamente el error que esto existe para detectar.
+ *
+ * Si el rango queda vacío, la sesión cabe en un solo commit y se revisa ese.
+ */
 function rango(sesion, ledger) {
   const i = ledger.findIndex((s) => s.sesion_id === sesion.sesion_id);
-  const siguiente = ledger.slice(i + 1).find((s) => s.commit_inicio && s.commit_inicio !== sesion.commit_inicio);
-  const hasta = siguiente ? siguiente.commit_inicio : 'HEAD';
-  return { desde: sesion.commit_inicio, hasta, texto: `${(sesion.commit_inicio || '').slice(0, 7)}..${hasta.slice(0, 7)}` };
+  const siguiente = ledger.slice(i + 1).find((s) => s.commit_inicio);
+  const distinta = siguiente && siguiente.commit_inicio !== sesion.commit_inicio;
+
+  const hasta = distinta ? siguiente.commit_inicio : (sesion.commit_cierre || 'HEAD');
+  const desde = sesion.commit_inicio;
+
+  const vacio = !desde || desde === hasta;
+  return {
+    desde, hasta, vacio,
+    rev: vacio ? hasta : `${desde}..${hasta}`,
+    texto: vacio ? `solo ${String(hasta).slice(0, 7)}` : `${String(desde).slice(0, 7)}..${String(hasta).slice(0, 7)}`,
+  };
 }
 
 /** "Tu primera tarea" del HANDOFF, que es lo único que una sesión nueva necesita para arrancar. */
@@ -325,9 +343,15 @@ async function auditar(o) {
   }
 
   const rg = rango(s, ledger);
-  const log = git(['log', '--oneline', '--no-decorate', `${rg.desde}..${rg.hasta}`], { opcional: true }) || '(sin commits en el rango)';
-  const stat = git(['diff', '--stat', `${rg.desde}..${rg.hasta}`], { opcional: true }) || '(sin diff)';
-  const archivos = (git(['diff', '--name-only', `${rg.desde}..${rg.hasta}`], { opcional: true }) || '').split('\n').filter(Boolean);
+  const log = (rg.vacio
+    ? git(['log', '--oneline', '--no-decorate', '-1', rg.rev], { opcional: true })
+    : git(['log', '--oneline', '--no-decorate', rg.rev], { opcional: true })) || '(sin commits en el rango)';
+  const stat = (rg.vacio
+    ? git(['show', '--stat', '--oneline', rg.rev], { opcional: true })
+    : git(['diff', '--stat', rg.rev], { opcional: true })) || '(sin diff)';
+  const archivos = ((rg.vacio
+    ? git(['show', '--name-only', '--format=', rg.rev], { opcional: true })
+    : git(['diff', '--name-only', rg.rev], { opcional: true })) || '').split('\n').filter(Boolean);
 
   console.log('Corriendo la verificación sobre el estado actual...');
   const v = await correrVerificacion();

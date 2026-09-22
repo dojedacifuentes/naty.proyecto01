@@ -1,17 +1,21 @@
 # HANDOFF
 
-**De:** claude-code (opus-5) · sesión `2026-09-22-claude-code-01` — 2026-09-22
+**De:** claude-code (opus-5) · sesiones `2026-09-22-claude-code-01` y `-02` — 2026-09-22
 **Para:** la siguiente sesión, sea cual sea
 
 ## Contexto mínimo
 
-El repositorio ya existe como repo git y el trabajo de la sesión anterior está intacto en
+El repositorio ya existe como repo git y el trabajo de la sesión inicial está intacto en
 el commit `init`. Lo que agregué es la maquinaria: ocho controles automáticos
 (`npm run verificar`), un sistema de handoff que registra y verifica cada sesión
 (`npm run sesion`), y el protocolo para que una herramienta audite a otra (`AUDITORIA.md`).
 
-No escribí ninguna propuesta ni toqué SIPFOR. La tarea que me dejó la sesión anterior
-sigue pendiente y es la que más mueve el proyecto.
+Auditar la sesión inicial fue el estreno del sistema: veredicto **observaciones**, con
+cinco hallazgos en `state/auditorias/2026-09-22-cowork-01--por-claude-code.md`. Tres de
+ellos son trabajo concreto y corto que conviene hacer antes de escribir propuestas.
+
+No escribí ninguna propuesta ni toqué SIPFOR. La tarea que dejó la sesión inicial sigue
+pendiente y es la que más mueve el proyecto.
 
 ## Lo que dejé listo
 
@@ -33,12 +37,18 @@ sigue pendiente y es la que más mueve el proyecto.
 
 - **Extracción de SIPFOR**: nadie ha bajado los 15 planes formativos. Es el insumo
   principal del motor y no depende de nadie externo. Sigue siendo la tarea más productiva.
-- **Esta sesión no está auditada.** Escribí el sistema de verificación y lo probé yo mismo,
-  que es exactamente lo que `AUDITORIA.md` §1 advierte que no sirve.
-- **Tres avisos de citas sin resolver**: `docs/03-anexo2-estructura.md:41` y `:43`, y
-  `docs/04-verificadores-protocolo.md:17` afirman cosas de las bases sin numeral ni página.
-  El texto citado es real; falta abrir el PDF y poner la referencia. Son 10 minutos y
-  dejan el repositorio en verde del todo.
+- **Mis dos sesiones no están auditadas.** Escribí el sistema de verificación y lo probé
+  yo mismo, que es exactamente lo que `AUDITORIA.md` §1 advierte que no sirve. Falta que
+  lo revise Codex, Cursor o una persona.
+- **Los tres hallazgos de la auditoría que son trabajo corto** (informe completo en
+  `state/auditorias/`):
+  1. `data/clientes.csv` afirma un `eje_diferenciador` para los seis clientes sin declarar
+     fuente, teniendo `ficha_completa=no`. Falta una columna `fuente`, o marcarlo
+     `PENDIENTE:`. Importa porque de ahí sale la narrativa del ítem D, que pesa 35%.
+  2. y 3. Citas sin numeral ni página en `docs/03-anexo2-estructura.md:41` y `:43`, y en
+     `docs/04-verificadores-protocolo.md:17` — las tres afirman una causal de rechazo.
+     El texto citado es real; falta abrir el PDF de las bases y poner la referencia.
+     Son diez minutos y dejan el repositorio en verde del todo.
 - **El repo no está en GitHub**: `gh` no está instalado en esta máquina y, además, hay que
   decidir en qué cuenta vive y quién tiene acceso (`OPEN-QUESTIONS.md` #14). El prompt A de
   `PROMPT-CLAUDE-CODE.md` deja los pasos listos.
@@ -47,18 +57,21 @@ sigue pendiente y es la que más mueve el proyecto.
 
 Depende de qué herramienta seas. Una sola, no elijas ambas:
 
-**Si eres Codex, Cursor o una persona** → audita primero esta sesión:
+**Si eres Codex, Cursor o una persona** → audita las dos sesiones de Claude Code:
 
 ```bash
 npm run sesion -- auditar 2026-09-22-claude-code-01 --herramienta codex
+npm run sesion -- auditar 2026-09-22-claude-code-02 --herramienta codex
 ```
 
 El informe sale con la evidencia ya recopilada; tú respondes las cinco preguntas con
 archivo y línea. Mira con especial desconfianza `scripts/checks/03-rubrica.mjs` (¿cuenta
 bien lo que dice contar?) y `scripts/lib/texto.mjs` (¿el umbral de similitud discrimina
-de verdad, o pasa cualquier cosa?). Después registra el veredicto.
+de verdad, o pasa cualquier cosa?). Un buen ataque: escribe dos propuestas parecidas a
+propósito y mira si el control las caza. Después registra el veredicto.
 
-**Si eres Claude Code otra vez** → no puedes auditarte; sigue con SIPFOR:
+**Si eres Claude Code otra vez** → no puedes auditarte. Haz los tres hallazgos cortos de
+la auditoría (columna `fuente` en `clientes.csv` y las tres citas) y sigue con SIPFOR:
 
 Extraer el **segundo módulo** de los 15 planes formativos desde
 https://sipfor.sence.cl/Planes/Catalogo.aspx y dejarlos en `data/planes/<codigo>.json`
