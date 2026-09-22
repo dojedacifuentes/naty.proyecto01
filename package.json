@@ -1,0 +1,21 @@
+{
+  "name": "licitacion-td-2026",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Motor de producción y control de calidad de propuestas técnicas (Anexo N°2) — SENCE Becas Laborales Talento Digital 2026",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "verificar": "node scripts/verificar.mjs",
+    "verificar:red": "node scripts/verificar.mjs --red",
+    "verificar:estricto": "node scripts/verificar.mjs --estricto",
+    "sesion": "node scripts/sesion.mjs",
+    "umbrales": "node scripts/calcular-umbrales.mjs",
+    "verificadores": "node scripts/auditar-verificadores.mjs",
+    "hooks": "node scripts/instalar-hooks.mjs",
+    "test": "node scripts/verificar.mjs --estricto"
+  },
+  "comentario": "Sin dependencias a propósito: el repo se abre desde Claude Code, Codex, Cursor o a mano, y ninguna herramienta debería tener que instalar nada para verificar (AGENTS.md §8)."
+}

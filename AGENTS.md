@@ -160,7 +160,8 @@ la que más propuestas salva.
 ## 8. Interoperabilidad entre herramientas
 
 - **Todo en Markdown y CSV plano.** Nada de formatos que solo abra una herramienta.
-- **Rutas relativas siempre.** Nunca `/Users/...` ni `C:\...`.
+- **Rutas relativas siempre.** Nunca la ruta del disco de quien trabaja: el mismo archivo
+  se abre desde Windows, desde Linux y desde un contenedor. El control 01 lo verifica.
 - **Los scripts son Python 3 sin dependencias exóticas**; si necesitas una, decláralo
   en `scripts/requirements.txt` y anótalo en `DECISIONS.md`.
 - **Identifícate en el log de sesión**: `claude-code`, `codex`, `cursor`, `chat`, `humano`.

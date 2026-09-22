@@ -23,3 +23,7 @@ node_modules/
 
 # Salidas generadas (se regeneran con scripts)
 propuestas/**/build/
+
+# Informes generados por las herramientas (se regeneran con `npm run verificar`)
+state/verificacion.json
+state/diferenciacion.csv
