@@ -1,0 +1,24 @@
+#!/bin/sh
+# Hook de pre-commit del repositorio. Se activa con: npm run hooks
+#
+# Corre la verificación sin red antes de cada commit. Tarda menos de un segundo y
+# evita el caso que más duele: una credencial o una ruta absoluta que entra al
+# historial y ya no sale con un simple "git rm".
+#
+# Para saltarlo en un caso puntual: git commit --no-verify
+# Si lo estás saltando seguido, el problema es el control, no el hook: arréglalo
+# en scripts/checks/ y déjalo anotado en state/DECISIONS.md.
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "pre-commit: no encuentro node en el PATH, me salto la verificación."
+  echo "            instala Node >= 18 o corre 'git commit --no-verify' a sabiendas."
+  exit 0
+fi
+
+node scripts/verificar.mjs --breve --sin-informe || {
+  echo ""
+  echo "El commit se detuvo: hay errores de verificación."
+  echo "  Detalle completo:  npm run verificar"
+  echo "  Saltarlo a sabiendas:  git commit --no-verify"
+  exit 1
+}

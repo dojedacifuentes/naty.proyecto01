@@ -50,8 +50,15 @@ export default {
     }
 
     const versionados = (git(['ls-files'], { opcional: true }) || '').split('\n').filter(Boolean);
+    const EXTENSION_SENSIBLE = /\.(pdf|env|key|pem|pfx|p12)$/i;
+    // El nombre se juzga por el principio del archivo, no por cualquier coincidencia:
+    // "credenciales-lms.csv" es sospechoso, "05-secretos.mjs" es este mismo control.
+    const NOMBRE_SENSIBLE = /^(credencial|contrase|password|secreto|secrets?|token)/i;
+    const ES_CODIGO = /\.(mjs|js|yml|yaml)$/i;
+
     for (const f of versionados) {
-      if (/\.(pdf|env|key|pem|pfx|p12)$/i.test(f) || /credencial|password|secreto/i.test(f)) {
+      const base = f.split('/').pop();
+      if (EXTENSION_SENSIBLE.test(f) || (NOMBRE_SENSIBLE.test(base) && !ES_CODIGO.test(base))) {
         r.error('archivo sensible versionado: sácalo con "git rm --cached" y revisa .gitignore', f);
       }
     }

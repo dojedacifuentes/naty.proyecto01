@@ -1,0 +1,51 @@
+name: verificar
+
+# La verificación corre igual en la máquina de quien trabaja y acá. La diferencia es que
+# acá corre siempre, también cuando alguien se saltó el hook con --no-verify.
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * 1'   # lunes 12:00 UTC: revisión semanal de enlaces
+
+jobs:
+  repositorio:
+    name: Controles del repositorio
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # el control 07 y las auditorías necesitan historial
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verificación completa (sin red)
+        run: node scripts/verificar.mjs
+      - name: Umbrales regenerables sin cambios
+        run: |
+          node scripts/calcular-umbrales.mjs --csv
+          git diff --exit-code data/umbrales-por-plan.csv \
+            || (echo "data/umbrales-por-plan.csv no coincide con lo que genera el script"; exit 1)
+      - name: Guardar el informe para auditoría
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verificacion
+          path: state/verificacion.json
+          if-no-files-found: ignore
+
+  enlaces:
+    name: Verificadores vivos (con red)
+    # Los enlaces a LMS y portafolios se caen solos con el tiempo. Revisarlos a diario
+    # avisa antes de que lo descubra un evaluador de SENCE.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node scripts/verificar.mjs --solo 08 --red
