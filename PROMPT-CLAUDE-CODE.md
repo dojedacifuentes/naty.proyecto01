@@ -1,58 +1,55 @@
-# Prompt de arranque
+# Prompts de arranque
 
-Dos prompts. El **A** crea el repositorio en GitHub una sola vez. El **B** es el que se
-pega al empezar **cada** sesión nueva, en la herramienta que sea.
+Tres prompts. El **A** publica el repositorio en GitHub, una sola vez. El **B** se pega al
+empezar **cada** sesión, en la herramienta que sea. El **C** sirve para auditar, desde una
+herramienta, lo que produjo otra.
+
+El repositorio local ya existe y ya tiene su historia de commits: estos prompts asumen que
+estás dentro de él.
 
 ---
 
-## PROMPT A — crear el repositorio (una sola vez)
+## PROMPT A — publicar en GitHub (una sola vez)
 
-> Pégalo en Claude Code o Codex, en el directorio donde descomprimiste el ZIP.
+> Requiere `gh` (GitHub CLI) instalado y autenticado.
 
 ```
-Este directorio contiene el esqueleto de un repositorio de trabajo para una licitación
-pública chilena (SENCE Becas Laborales Talento Digital 2026). Necesito subirlo a GitHub
-como repositorio PRIVADO y dejarlo listo para que varias sesiones y herramientas
-distintas (tú, Codex, Cursor, o yo a mano) puedan trabajar sobre él sin pisarse.
+Este repositorio ya está inicializado localmente y tiene commits. Necesito publicarlo en
+GitHub como repositorio PRIVADO y dejarlo listo para que varias sesiones y herramientas
+distintas trabajen sobre él sin pisarse.
 
-Haz esto, en orden, y no avances a un paso si el anterior falló:
+Haz esto en orden, y no avances a un paso si el anterior falló:
 
 1. Lee AGENTS.md completo. Es el contrato operativo del repo y también te aplica a ti.
 
 2. Verifica el entorno:
-   - `git --version` y `gh --version`
+   - `git --version`, `node --version` (>= 18) y `gh --version`
    - `gh auth status`. Si no estoy autenticado, dímelo y detente: no intentes
-     autenticarme tú ni pidas un token por chat.
+     autenticarme tú ni me pidas un token por chat.
 
-3. Inicializa el repositorio:
-   - `git init -b main`
-   - Verifica que .gitignore existe y que `git status` NO lista ningún PDF, .env ni
-     archivo con credenciales. Si lista alguno, detente y avísame.
-   - `git add -A` y un primer commit: "init: esqueleto de trabajo licitación TD 2026"
+3. Comprueba que no haya nada sensible versionado:
+   - `npm run verificar` debe terminar sin errores (el control 05 revisa esto).
+   - `git ls-files` no debe listar ningún PDF ni archivo de credenciales.
+   Si algo falla, detente y avísame.
 
-4. Créalo en GitHub con `gh repo create licitacion-td-2026 --private --source=. --push`.
+4. Publícalo: `gh repo create licitacion-td-2026 --private --source=. --push`
    Si el nombre ya existe, avísame en vez de inventar otro.
 
 5. Protege el trabajo colaborativo:
-   - Crea las etiquetas: `fase-0`, `fase-1-motor`, `fase-2-produccion`,
-     `bloqueado`, `pregunta-abierta`, `verificadores`.
-   - Abre un issue por cada entrada ABIERTA de state/OPEN-QUESTIONS.md, con el mismo
-     título y el mismo texto, etiquetado `pregunta-abierta`. Las marcadas CRÍTICA
-     además llevan `bloqueado`.
-   - Crea el hito "Fase 0 — Reconocimiento" y asígnalo a los issues que correspondan.
+   - Etiquetas: `fase-0`, `fase-1-motor`, `fase-2-produccion`, `bloqueado`,
+     `pregunta-abierta`, `verificadores`.
+   - Un issue por cada entrada ABIERTA de state/OPEN-QUESTIONS.md, con el mismo título y
+     el mismo texto, etiquetado `pregunta-abierta`. Las CRÍTICA además con `bloqueado`.
+   - Hito "Fase 0 — Reconocimiento", asignado a los issues que correspondan.
+   - Verifica que el workflow .github/workflows/verificar.yml aparezca en Actions.
 
-6. Verifica y reporta:
-   - `python3 scripts/calcular_umbrales.py` debe imprimir 15 planes.
-   - `python3 scripts/auditar_verificadores.py` debe salir limpio diciendo que todavía
-     no hay propuestas.
-   - Dame la URL del repo, la lista de issues creados, y confirma que ningún archivo
-     sensible quedó versionado.
+6. Repórtame: URL del repo, issues creados, estado del primer run de Actions, y
+   confirmación de que ningún archivo sensible quedó versionado.
 
-7. Cierra según AGENTS.md §5: actualiza state/CHECKPOINT.md, reescribe
-   state/HANDOFF.md, y deja tu log en state/sessions/.
+7. Cierra la sesión según AGENTS.md §5 (`npm run sesion -- cerrar`).
 
-Reglas: no inventes datos sobre las bases ni sobre los clientes. Si algo no está en el
-repo, va a state/OPEN-QUESTIONS.md, no a una suposición. No resuelvas por tu cuenta
+Reglas: no inventes datos sobre las bases ni sobre los clientes. Lo que no esté en el
+repo va a state/OPEN-QUESTIONS.md, no a una suposición. No resuelvas por tu cuenta
 ninguna pregunta que ya esté ahí abierta.
 ```
 
@@ -67,14 +64,19 @@ Trabajo en el repositorio licitacion-td-2026 (licitación SENCE Talento Digital 
 Varias sesiones y herramientas distintas trabajan sobre él, así que el estado vive en
 archivos, no en tu memoria ni en este chat.
 
-Antes de hacer nada, lee en este orden y dime en 5 líneas qué entendiste:
-  1. AGENTS.md            — el contrato operativo, te aplica entero
-  2. state/CHECKPOINT.md  — dónde quedó todo
-  3. state/HANDOFF.md     — qué tengo que hacer yo
-  4. state/OPEN-QUESTIONS.md — sobre qué NO puedo decidir
+Empieza así:
 
-Después ejecuta la "primera tarea" que indique el HANDOFF. Si el HANDOFF está vacío o
-desactualizado, dímelo en vez de improvisar una tarea.
+  npm run hooks        (si es la primera vez en esta copia)
+  npm run sesion -- abrir --herramienta <claude-code|codex|cursor|chat> --tema "<tema>"
+
+Ese comando te dirá cuál es tu primera tarea. Antes de ejecutarla, lee en este orden y
+dime en 5 líneas qué entendiste:
+  1. AGENTS.md                — el contrato operativo, te aplica entero
+  2. state/CHECKPOINT.md      — dónde quedó todo
+  3. state/HANDOFF.md         — qué tengo que hacer yo
+  4. state/OPEN-QUESTIONS.md  — sobre qué NO puedo decidir
+
+Si el HANDOFF está vacío o desactualizado, dímelo en vez de improvisar una tarea.
 
 Mientras trabajas:
   - Toda afirmación sobre las bases se cita con numeral y página.
@@ -82,42 +84,53 @@ Mientras trabajas:
   - Ninguna credencial entra al repo.
   - Si descubres que un umbral de data/rubrica-subcriterios.csv está mal, corrígelo ahí
     y deja la cita en state/DECISIONS.md.
+  - `npm run verificar` cuando quieras saber si rompiste algo. Es rápido.
 
-Al terminar, cierra según AGENTS.md §5 en un commit `checkpoint: <fecha> <tema>`:
-CHECKPOINT, HANDOFF, DECISIONS, OPEN-QUESTIONS y un log en state/sessions/ identificando
-la herramienta que usaste.
+Al terminar:
+  npm run verificar
+  npm run sesion -- cerrar --tema "<tema>"
+  git add -A && git commit -m "checkpoint: <fecha> <tema>"
 
-Mi herramienta en esta sesión: <claude-code | codex | cursor | chat>
+El cierre se niega si no actualizaste CHECKPOINT, HANDOFF y tu log, o si quedan errores.
+No lo saltes con --forzar salvo que tengas una razón que puedas defender por escrito.
 ```
 
 ---
 
 ## PROMPT C — auditar desde otra herramienta
 
-> Para revisar con ojos frescos lo que produjo otra sesión. Funciona bien alternando:
-> si produjo Claude Code, audita Codex, y al revés.
+> Alterna: si produjo Claude Code, audita Codex, y al revés. El sistema rechaza que una
+> herramienta se audite a sí misma.
 
 ```
 Vas a auditar trabajo hecho por otra sesión en el repositorio licitacion-td-2026.
 No lo continúes: audítalo.
 
-Lee AGENTS.md, state/CHECKPOINT.md, state/DECISIONS.md y el último log de
-state/sessions/. Luego revisa los últimos commits con `git log --oneline -20` y
-`git diff`.
+  npm run sesion -- estado                                  (qué hay sin auditar)
+  npm run sesion -- auditar <sesion-id> --herramienta <la tuya>
 
-Responde estas cinco preguntas, cada una con evidencia concreta (archivo y línea):
+Eso te deja en state/auditorias/ un informe con la evidencia ya recopilada: el registro
+de la sesión, el git log y el diff del rango, los archivos del diff que el log NO
+menciona, el resultado de correr la verificación ahora, y si la huella de state/ cambió.
+
+Lee AGENTS.md, AUDITORIA.md, state/DECISIONS.md y el log de la sesión auditada. Después
+responde en el informe las cinco preguntas, cada una con evidencia concreta (archivo y
+línea):
 
 1. ¿Hay alguna afirmación sobre las bases que NO esté citada con numeral y página?
-2. ¿Hay algún dato de cliente que parezca inventado, es decir, que no salga de
-   ficha.md ni de data/clientes.csv?
+2. ¿Hay algún dato de cliente que parezca inventado, es decir, que no salga de ficha.md
+   ni de data/clientes.csv?
 3. ¿Alguna propuesta incumple un umbral de data/rubrica-subcriterios.csv?
 4. ¿Alguna sesión decidió por su cuenta algo que está abierto en
    state/OPEN-QUESTIONS.md?
-5. ¿El cierre de la última sesión cumple AGENTS.md §5? ¿Podrías retomar el trabajo
-   leyendo solo state/, sin ver el chat anterior?
+5. ¿El cierre cumple AGENTS.md §5? ¿Podrías retomar el trabajo leyendo solo state/, sin
+   ver el chat anterior?
 
-No corrijas nada todavía. Entrega el informe y espera instrucciones. Si encuentras algo
-grave, dímelo primero y en una línea.
+No corrijas nada. Entrega el informe, registra el veredicto:
+
+  npm run sesion -- veredicto <sesion-id> --veredicto <aprobada|observaciones|rechazada> --herramienta <la tuya>
+
+y espera instrucciones. Si encuentras algo grave, dímelo primero y en una línea.
 ```
 
 ---
@@ -129,6 +142,10 @@ obliga a cada sesión a leer el estado antes de tocar nada y a dejarlo escrito a
 El C existe porque **quien escribió algo es mal auditor de lo que escribió**: alternar
 herramientas para auditar detecta errores que una sola herramienta repite
 sistemáticamente.
+
+La diferencia con la primera versión de este archivo es que ahora los tres apoyan en
+comandos que verifican, en vez de confiar en que el agente se acuerde. Un prompt se puede
+ignorar; `npm run sesion -- cerrar` no cierra si falta el handoff.
 
 ## Si prefieres no usar `gh`
 

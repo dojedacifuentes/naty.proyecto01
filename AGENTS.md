@@ -94,7 +94,17 @@ con la cita. No cambies solo la prosa de `docs/`.
 Este es el mecanismo que permite que varias sesiones, chats y herramientas distintas
 trabajen sobre lo mismo sin pisarse. **No lo omitas aunque la sesión haya sido corta.**
 
-Al terminar, en un solo commit llamado `checkpoint: <fecha> <tema>`:
+### Al empezar
+
+```bash
+npm run sesion -- abrir --herramienta claude-code --tema "qué vas a hacer"
+```
+
+Registra tu sesión en `state/LEDGER.csv`, crea tu log en `state/sessions/` y te imprime
+la primera tarea que te dejó el handoff anterior. Si ya empezaste a trabajar sin abrirla,
+ábrela igual con `--desde <commit>` apuntando a donde empezaste de verdad.
+
+### Al terminar, en un solo commit `checkpoint: <fecha> <tema>`
 
 1. **Actualiza `state/CHECKPOINT.md`**: fase actual, qué está hecho, qué está a medias
    y dónde exactamente quedó (archivo y línea si aplica), qué está bloqueado y por quién.
@@ -107,6 +117,21 @@ Al terminar, en un solo commit llamado `checkpoint: <fecha> <tema>`:
 5. **Deja un log en `state/sessions/AAAA-MM-DD-<herramienta>-NN.md`**: qué hiciste,
    qué archivos tocaste, qué probaste, qué falló.
 
+Después:
+
+```bash
+npm run sesion -- cerrar --tema "<el tema del commit>"
+```
+
+El cierre **verifica** los cinco puntos anteriores y se niega a cerrar si falta alguno o
+si la verificación deja errores. Añade al log la evidencia (archivos tocados, diff,
+resultado de los controles) y guarda en el registro la huella `sha256` de `state/`, que es
+lo que después permite saber si alguien tocó el estado por fuera del protocolo.
+
+Si de verdad tienes que cerrar con algo incompleto, `--forzar` lo permite y lo deja
+escrito como cierre forzado para quien audite. No es una salida gratis: es una confesión
+firmada.
+
 ### Regla de auditoría
 
 Cualquier sesión posterior debe poder responder, leyendo solo `state/`, estas preguntas:
@@ -115,7 +140,8 @@ Cualquier sesión posterior debe poder responder, leyendo solo `state/`, estas p
 - ¿Quién decidió esto y cuándo?
 - ¿Qué se probó y qué no?
 
-Si no puede, el cierre estuvo mal hecho.
+Si no puede, el cierre estuvo mal hecho. El protocolo para revisarlo desde otra
+herramienta está en `AUDITORIA.md`.
 
 ---
 
@@ -147,13 +173,19 @@ Ninguna propuesta se marca lista sin pasar los tres. Se registran en `qa.md`.
 
 | Control | Qué verifica | Cómo |
 | --- | --- | --- |
-| **Cobertura de rúbrica** | Los 13 subcriterios tienen contenido que alcanza el umbral del 7.0 | `data/rubrica-subcriterios.csv` como checklist |
-| **Diferenciación** | No se parece a otra propuesta del lote | Similitud textual, §6 |
-| **Verificadores vivos** | Enlaces abren, credenciales sirven, el contenido corresponde | `scripts/auditar_verificadores.py` + revisión manual del contenido |
+| **Cobertura de rúbrica** | Los 13 subcriterios tienen contenido que alcanza el umbral del 7.0 | `npm run verificar` control 03, contra `data/rubrica-subcriterios.csv` |
+| **Diferenciación** | No se parece a otra propuesta del lote | `npm run verificar` control 04, similitud TF-IDF, §6 |
+| **Verificadores vivos** | Enlaces abren, credenciales sirven, el contenido corresponde | `npm run verificar:red` control 08 **+ revisión humana del contenido** |
 
-El tercero **no se puede automatizar del todo**: un script detecta un 404, pero no
-detecta que el LMS muestra el plan formativo equivocado. Esa revisión es humana y es
-la que más propuestas salva.
+Los dos primeros los hace la máquina. El tercero **no se puede automatizar del todo**: un
+script detecta un 404, pero no detecta que el LMS muestra el plan formativo equivocado.
+Esa revisión es humana, se firma en la columna `muestra_lo_que_dice` de
+`state/auditoria-verificadores.csv`, y es la que más propuestas salva.
+
+Mientras una propuesta esté en `borrador`, los incumplimientos salen como avisos. En
+cuanto su `anexo2.md` dice `**Estado:** listo`, los mismos incumplimientos son errores y
+el repositorio deja de pasar la verificación. Marcar "listo" es una afirmación, no una
+etiqueta.
 
 ---
 
@@ -162,17 +194,46 @@ la que más propuestas salva.
 - **Todo en Markdown y CSV plano.** Nada de formatos que solo abra una herramienta.
 - **Rutas relativas siempre.** Nunca la ruta del disco de quien trabaja: el mismo archivo
   se abre desde Windows, desde Linux y desde un contenedor. El control 01 lo verifica.
-- **Los scripts son Python 3 sin dependencias exóticas**; si necesitas una, decláralo
-  en `scripts/requirements.txt` y anótalo en `DECISIONS.md`.
-- **Identifícate en el log de sesión**: `claude-code`, `codex`, `cursor`, `chat`, `humano`.
-  Sirve para auditar de dónde salió cada cosa.
+- **Los scripts son Node ≥ 18 sin dependencias.** No hay `node_modules`, no hay que
+  instalar nada: `npm run verificar` funciona en un clon recién hecho. Si alguna vez hace
+  falta una dependencia, se declara en `package.json` y se justifica en `DECISIONS.md`.
+- **Identifícate en el log de sesión**: `claude-code`, `codex`, `cursor`, `cowork`,
+  `chat`, `humano`. Sirve para auditar de dónde salió cada cosa, y para que la auditoría
+  cruzada sepa quién no puede auditar qué (`AUDITORIA.md` §1).
 - **Si dos sesiones trabajaron en paralelo**, la que llega segunda al merge lee el
   `CHECKPOINT.md` del otro antes de resolver conflictos. No se resuelve un conflicto
   en `state/` con "acepto lo mío": se fusionan ambos relatos.
 
 ---
 
-## 9. Vocabulario
+## 9. Las herramientas del repo
+
+Todo corre con Node, sin instalar nada. Si algo de esto falla en tu máquina, arréglalo
+antes de seguir: es la red de seguridad de un trabajo que se entrega a un organismo
+público y se evalúa con rúbrica.
+
+| Orden | Qué hace |
+| --- | --- |
+| `npm run verificar` | los ocho controles, sin red. Es lo que corre el hook y el CI |
+| `npm run verificar:red` | además golpea los enlaces verificadores de las propuestas |
+| `npm run verificar -- --solo 03,04` | solo esos controles, cuando iteras |
+| `npm run sesion -- estado` | qué sesiones hubo, qué falta auditar, si `state/` cambió fuera de sesión |
+| `npm run sesion -- abrir\|cerrar` | protocolo de §5 |
+| `npm run sesion -- auditar\|veredicto` | auditoría cruzada, ver `AUDITORIA.md` |
+| `npm run umbrales` | recalcula los umbrales por plan desde las horas |
+| `npm run hooks` | activa el hook de pre-commit (una vez por clon) |
+
+Los ocho controles: **01** estructura · **02** integridad de `data/` · **03** cobertura de
+rúbrica · **04** diferenciación · **05** secretos · **06** citas de las bases · **07**
+estado y handoff · **08** verificadores.
+
+Ninguno reemplaza el criterio. El control 06, por ejemplo, avisa sobre afirmaciones sin
+cita, pero no sabe si la cita es correcta; eso lo comprueba quien abre las bases en la
+página indicada.
+
+---
+
+## 10. Vocabulario
 
 | Término | Significa |
 | --- | --- |

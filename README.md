@@ -14,24 +14,72 @@ Repositorio de trabajo para la producción sistematizada de propuestas técnicas
 
 Si eres un agente (Claude Code, Codex, otro) o una persona retomando el trabajo:
 
+```bash
+npm run hooks                      # una sola vez por clon
+npm run sesion -- estado           # dónde está todo y qué falta auditar
+npm run sesion -- abrir --herramienta claude-code --tema "qué vas a hacer"
+```
+
+Ese último comando te imprime la tarea que te dejó la sesión anterior. Antes de tocar nada:
+
 1. Lee **`AGENTS.md`** — es el contrato operativo. No lo saltes.
 2. Lee **`state/CHECKPOINT.md`** — dónde quedó todo.
 3. Lee **`state/HANDOFF.md`** — qué dejó pendiente la última sesión, específicamente para ti.
 4. Revisa **`state/OPEN-QUESTIONS.md`** — no tomes decisiones sobre cosas que ahí están abiertas.
-5. Trabaja. Al terminar, cierra según el protocolo de `AGENTS.md` §5.
+
+Trabaja. Al terminar:
+
+```bash
+npm run verificar                  # ocho controles automáticos
+npm run sesion -- cerrar --tema "<tema>"
+git add -A && git commit -m "checkpoint: <fecha> <tema>"
+```
+
+El cierre se niega a cerrar si no actualizaste el estado o si quedan errores. Eso es
+deliberado: una sesión sin cierre es trabajo perdido para la siguiente.
+
+## Cómo se verifica que esto no esté mal
+
+Requisito: **Node ≥ 18**. No hay dependencias que instalar.
+
+| Comando | Para qué |
+| --- | --- |
+| `npm run verificar` | los ocho controles: estructura, datos, cobertura de rúbrica, diferenciación, secretos, citas, estado y verificadores |
+| `npm run verificar:red` | además comprueba que los enlaces a LMS y portafolios sigan abriendo |
+| `npm run umbrales` | recalcula cuántas actividades de extensión exige cada plan |
+
+Corre solo, además, en cada commit (hook) y en cada push (GitHub Actions).
+
+## Cómo una sesión audita a otra
+
+El trabajo lo hacen sesiones que no comparten memoria. Para que eso no signifique confiar
+a ciegas, cada sesión queda registrada en `state/LEDGER.csv` con el commit desde el que
+partió, los archivos que dice haber tocado y una huella `sha256` del estado. Otra sesión,
+**con otra herramienta**, contrasta ese relato con lo que dice git:
+
+```bash
+npm run sesion -- auditar 2026-09-22-cowork-01 --herramienta codex
+```
+
+Eso genera un informe con la evidencia ya recopilada y cinco preguntas que el auditor
+responde con archivo y línea. Protocolo completo: **`AUDITORIA.md`**.
 
 ## Mapa del repositorio
 
 | Ruta | Qué contiene |
 | --- | --- |
 | `AGENTS.md` | Contrato operativo para cualquier agente o persona. Fuente única. |
+| `AUDITORIA.md` | Cómo una sesión verifica el trabajo de otra, y con qué evidencia. |
 | `CLAUDE.md` | Puntero a `AGENTS.md` (para Claude Code). |
 | `docs/` | Conocimiento estable: bases, rúbrica, estructura del Anexo 2, protocolos. |
 | `data/` | Datos estructurados: planes formativos, clientes, rúbrica, umbrales. |
-| `state/` | Estado vivo: checkpoint, handoff, decisiones, preguntas abiertas, log de sesiones. |
-| `templates/` | Plantillas de trabajo: Anexo 2, ficha de cliente, handoff. |
-| `scripts/` | Utilidades: cálculo de umbrales, auditoría de verificadores. |
-| `PROMPT-CLAUDE-CODE.md` | Prompts para crear el repo, abrir una sesión y auditar desde otra herramienta. |
+| `state/` | Estado vivo: checkpoint, handoff, decisiones, preguntas abiertas, registro y logs de sesiones, auditorías. |
+| `state/LEDGER.csv` | Quién trabajó, desde qué commit, con qué resultado y quién lo auditó. |
+| `templates/` | Plantillas: Anexo 2, ficha de cliente, handoff, QA, sesión, auditoría. |
+| `scripts/` | Herramientas: `verificar.mjs`, `sesion.mjs`, umbrales, auditoría de enlaces. |
+| `scripts/checks/` | Un archivo por control. Agregar uno nuevo es agregar un archivo. |
+| `.githooks/` | Hook de pre-commit versionado (se activa con `npm run hooks`). |
+| `PROMPT-CLAUDE-CODE.md` | Prompts para abrir una sesión y para auditar desde otra herramienta. |
 | `propuestas/` | (se crea al empezar producción) Un directorio por cliente × plan. |
 
 ## Estado actual

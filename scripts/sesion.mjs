@@ -99,12 +99,22 @@ function abrir(o) {
   }
 
   const id = siguienteId(hoy(), herramienta, ledger);
+
+  // --desde: para abrir una sesión que ya empezó. Es mejor registrar el commit real de
+  // partida que fingir que el trabajo arranca cuando uno se acordó de abrirla.
+  let inicio = commitActual();
+  if (o.desde && o.desde !== true) {
+    const resuelto = git(['rev-parse', '--verify', `${o.desde}^{commit}`], { opcional: true });
+    if (!resuelto) { console.error(rojo(`No existe el commit "${o.desde}"`)); process.exit(1); }
+    inicio = resuelto;
+  }
+
   const datos = {
     sesion_id: id,
     herramienta,
     modelo: o.modelo && o.modelo !== true ? o.modelo : '(no declarado)',
     rama: ramaActual(),
-    commit_inicio: commitActual().slice(0, 12),
+    commit_inicio: inicio.slice(0, 12),
     abierta_utc: ahora(),
     tema: o.tema && o.tema !== true ? o.tema : '(sin declarar)',
   };

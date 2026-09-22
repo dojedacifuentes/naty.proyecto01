@@ -43,7 +43,7 @@ Esa revisión es humana y es la que más propuestas salva.
 
 ## Planilla de auditoría
 
-`scripts/auditar_verificadores.py` genera el esqueleto. Columnas:
+`npm run verificadores` genera el esqueleto. Columnas:
 
 | Columna | Contenido |
 | --- | --- |

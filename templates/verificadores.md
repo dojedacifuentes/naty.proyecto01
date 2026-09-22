@@ -1,7 +1,7 @@
 # Verificadores — <CLIENTE> · <CÓDIGO PLAN>
 
 > Protocolo completo: `docs/04-verificadores-protocolo.md`
-> `scripts/auditar_verificadores.py` lee las URLs de este archivo.
+> `npm run verificadores` (y el control 08) leen las URLs de este archivo.
 
 | Sección Anexo 2 | Afirmación respaldada | URL | Estado HTTP | ¿Muestra lo que dice? | Riesgo | Acción | Responsable |
 | --- | --- | --- | --- | --- | --- | --- | --- |
