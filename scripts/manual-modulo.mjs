@@ -10,13 +10,11 @@
  * contenidos del plan: se marcan como tales y se validan en la etapa 3 del flujo
  * (docs/05-flujo-contenidos-modulo.md).
  *
- * --pdf imprime el HTML con Edge o Chrome en modo headless (sin dependencias de Node).
+ * --pdf imprime el HTML con Edge o Chrome en modo headless (scripts/lib/pdf.mjs).
  */
-import { leer, escribir, existe, ruta } from './lib/repo.mjs';
+import { leer, escribir, existe } from './lib/repo.mjs';
 import { parseCSV } from './lib/csv.mjs';
-import { execFileSync } from 'node:child_process';
-import fs from 'node:fs';
-import { pathToFileURL } from 'node:url';
+import { imprimirPdf } from './lib/pdf.mjs';
 
 const args = process.argv.slice(2);
 const codigos = args.filter((a) => /^PF\d{4}$/i.test(a)).map((a) => a.toUpperCase());
@@ -449,17 +447,8 @@ const htmlRel = escribir(`${dir}/${base}.html`, html());
 console.log(`HTML → ${htmlRel}`);
 
 if (conPdf) {
-  const candidatos = [
-    process.env.NAVEGADOR_PDF,
-    'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe', // verificacion:ignorar-rutas-absolutas
-    'C:/Program Files/Microsoft/Edge/Application/msedge.exe', // verificacion:ignorar-rutas-absolutas
-    'C:/Program Files/Google/Chrome/Application/chrome.exe', // verificacion:ignorar-rutas-absolutas
-    '/usr/bin/google-chrome', '/usr/bin/chromium', '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-  ].filter(Boolean);
-  const nav = candidatos.find((c) => fs.existsSync(c));
-  if (!nav) { console.error('No encontré Edge ni Chrome. Define NAVEGADOR_PDF con la ruta al ejecutable.'); process.exit(1); }
-  const pdfAbs = ruta(`${dir}/${base}.pdf`);
-  execFileSync(nav, ['--headless=new', '--disable-gpu', '--no-pdf-header-footer', '--run-all-compositor-stages-before-draw',
-    `--print-to-pdf=${pdfAbs}`, pathToFileURL(ruta(htmlRel)).href], { stdio: 'ignore', timeout: 120000 });
-  console.log(`PDF  → ${dir}/${base}.pdf (${(fs.statSync(pdfAbs).size / 1024).toFixed(0)} KB)`);
+  try {
+    const kb = imprimirPdf(htmlRel, `${dir}/${base}.pdf`);
+    console.log(`PDF  → ${dir}/${base}.pdf (${kb} KB)`);
+  } catch (e) { console.error(e.message); process.exit(1); }
 }

@@ -1,6 +1,6 @@
 # HANDOFF
 
-**De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-04` — 2026-09-24
+**De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-05` — 2026-09-24
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea
 
@@ -11,6 +11,11 @@
   `contenidos/<PF>/modulo-2/`. Módulo 2 = `MA04560` (18 h) y `MA04576` (21 h), con 4
   aprendizajes esperados cada uno. Ojo con `OPEN-QUESTIONS.md` #16: así se cuenta si el
   módulo transversal de orientación es el primero.
+- **Kit de recursos educativos en borrador para PF1821 y PF1822** (`contenidos/<PF>/modulo-2/`,
+  PDF en `entregables/2026-09-24-modulo2/kit-recursos-modulo2-PF18xx.pdf`). Casos ficticios:
+  *Mercado Austral* (PF1821, n8n) y *Nube Sur* (PF1822, Python). Siguiente paso: revisión de
+  Natalia (etapa 3 de `docs/05`); después `IV-actividades.md` y ejecutar el código de PF1822
+  con `pytest` en una máquina con Python.
 - **Manual PDF para Natalia** con todo lo que hay que entregar en el módulo 2 de los dos cursos:
   `entregables/2026-09-24-modulo2/manual-entregables-modulo2-PF1821-PF1822.pdf`. Sus
   "sugerencias para este módulo" son propuestas a validar, no contenido aprobado.
@@ -110,6 +115,12 @@ Los tres hallazgos cortos de la auditoría (columna `fuente` en `clientes.csv` y
 citas) siguen pendientes y siguen siendo diez minutos.
 
 ## Trampas que me encontré
+
+- **El Bash de esta máquina interpreta las barras invertidas de los comandos.** Un `"\|"` o
+  `'\u0001'` dentro de `node -e` o de un heredoc puede llegar al archivo ya convertido (o no
+  llegar). Para texto con barras invertidas usa la herramienta de edición, no `sed` ni `node -e`.
+- **El control 05 lee "Clave:" y `api_key =` como credenciales.** En pautas de respuesta usa <!-- verificacion:ignorar-secretos -->
+  "Respuesta:"; en código de ejemplo, nombres como `clave_api` y lecturas desde `os.environ`.
 
 - **SIPFOR repite a veces el aprendizaje como criterio.** En PF1821, el criterio 3.1 es
   idéntico al AE3. Es así en la fuente: no lo "corrijas", pero no lo uses como indicador.

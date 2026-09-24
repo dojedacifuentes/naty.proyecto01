@@ -65,6 +65,18 @@ se apoya en el anterior:
 | 7 | `C-metodologia.md` | C1, C3 y C5: la narrativa que amarra todo a la competencia del módulo |
 | 8 | `IV-actividades.md` | Horas y modalidad de todos los módulos del plan |
 
+Además de los entregables evaluados, el módulo necesita sus **recursos educativos**, que
+exige el Anexo N°7, num. 7 (págs. 109–111): video de bienvenida e infografía (C3),
+cápsulas y cuadro comparativo (C4 d), con índice en `02-recursos.md`:
+
+| Archivo | Recursos |
+| --- | --- |
+| `02-recursos.md` | Índice del kit: hilo conductor, ruta de horas, qué recurso cubre qué AE |
+| `R-bienvenida-e-infografia.md` | Guion del video de bienvenida y contenido de la infografía |
+| `R-capsulas.md` | Cuatro cápsulas (una por AE) y el cuadro comparativo |
+
+El kit completo de un curso, en un PDF: `npm run kit -- <PF> --salida <dir> --pdf`.
+
 Cada archivo se encarga con `templates/encargo-entregable.md`, que fija las reglas que
 más puntaje cuestan si se olvidan:
 

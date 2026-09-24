@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-24
-**Por:** 2026-09-24-claude-code-04 (Claude Code · opus-5.5)
+**Por:** 2026-09-24-claude-code-05 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -63,10 +63,16 @@ Sesión claude-code-03, 2026-09-24 (hito del día: módulo 2 de PF1821 y PF1822)
 
 - [x] Manual PDF de entregables del módulo 2 de PF1821 y PF1822 → `entregables/2026-09-24-modulo2/manual-entregables-modulo2-PF1821-PF1822.pdf` (`npm run manual`)
 
+Sesión claude-code-05, 2026-09-24 (recursos educativos del módulo 2):
+
+- [x] Kit completo en borrador para PF1821 y PF1822: 10 archivos por curso en `contenidos/<PF>/modulo-2/` (índice, bienvenida e infografía, cápsulas y cuadro comparativo, 2 herramientas didácticas, 2 actividades con respuesta modelada, indicadores, 3 instrumentos, portafolio, retroalimentación, metodología)
+- [x] Kits en PDF → `entregables/2026-09-24-modulo2/kit-recursos-modulo2-PF18xx.pdf` (`npm run kit`)
+
 ## A medias
 
-- **Los entregables del módulo 2 (B1…C5) de PF1821 y PF1822 no están escritos.** Hay ficha y
-  lista de entregables; falta la etapa 2 del flujo (`docs/05`).
+- **Los entregables del módulo 2 de PF1821 y PF1822 están en borrador, sin revisión humana.**
+  Falta la etapa 3 del flujo (revisión de Natalia) y `IV-actividades.md` (todos los módulos).
+  El código Python de PF1822 no se ejecutó: en esta máquina no hay Python.
 - **Nada empujado a GitHub.** El usuario pidió dejar todo en local por ahora; el remoto
   `origin` está configurado y es público.
 
