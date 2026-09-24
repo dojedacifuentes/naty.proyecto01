@@ -119,3 +119,29 @@ Consecuencia práctica: todo lo que entre al repo es público desde el push. Las
 la información comercial de cada cliente conviene pensarla dos veces antes de versionarla.
 Alternativa descartada: pasarlo a privado antes del primer push (era la recomendada).
 Quién: usuario, sesión `2026-09-24-claude-code-02`.
+
+**2026-09-24 · La extracción de SIPFOR usa la API pública del catálogo, no scraping de HTML.**
+Por qué: el catálogo (`Planes/Catalogo.aspx`) se alimenta de `ProxySS.asmx` con JSON:
+`PlanSearch` resuelve el código al id interno, `PlanGetById` trae los módulos y
+`ModuloGetById` trae competencia, aprendizajes, criterios, contenidos y recursos. Evita el
+ViewState que el handoff anterior temía. Solo lectura, con pausa entre llamadas.
+Se guarda la respuesta tal cual en `data/sipfor/` (fuente) y la forma normalizada en
+`data/planes/`. Los textos quedan textuales: solo se quitan etiquetas HTML.
+Alternativa descartada: descargar y parsear el PDF de cada plan (queda como verificación).
+Quién: claude-code, sesión `2026-09-24-claude-code-03`.
+
+**2026-09-24 · PF1821 y PF1822 van antes que el piloto PF1481.**
+Por qué: pedido explícito del usuario como hito del día. El handoff pedía empezar por
+PF1481 y validar la forma con Diego antes de automatizar; la forma de `data/planes/` es la
+que el handoff proponía, más campos de fuente y recursos, y el extractor sirve igual para
+los 15 (`npm run sipfor -- --todos`).
+Quién: usuario.
+
+**2026-09-24 · El contenido canónico de cada curso vive en `contenidos/<PF>/modulo-<n>/`.**
+Por qué: los entregables B y C del módulo los fija el plan formativo y son iguales para
+todas las instituciones; `propuestas/<cliente>/<PF>/` queda para lo que cambia por cliente.
+Separarlos evita producir 3 o 6 veces lo mismo y evita que narrativa de un cliente se
+filtre al texto común. Flujo completo en `docs/05-flujo-contenidos-modulo.md`.
+Alternativa descartada: un directorio `propuestas/_canon/`, que el control 01 leería como
+un cliente inexistente.
+Quién: claude-code, sesión `2026-09-24-claude-code-03`.

@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-24
-**Por:** 2026-09-24-claude-code-02 (Claude Code · opus-5.5)
+**Por:** 2026-09-24-claude-code-03 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -53,10 +53,20 @@ Sesión claude-code, 2026-09-24:
 - [x] Panel publicado como artifact con estado compartido:
       https://claude.ai/artifact/BpgYipB5aa4YY8c4LGiDuP (48 de 80 entregables marcados bloqueados)
 
+Sesión claude-code-03, 2026-09-24 (hito del día: módulo 2 de PF1821 y PF1822):
+
+- [x] Extractor de SIPFOR por la API pública del catálogo → `npm run sipfor`, `data/sipfor/`, `data/planes/`
+- [x] PF1821 y PF1822 extraídos: 11 y 9 módulos, horas cuadradas con el total del plan
+- [x] Ficha textual y lista de entregables del módulo 2 → `npm run ficha`, `contenidos/<PF>/modulo-2/`
+- [x] Flujo documentado → `docs/05-flujo-contenidos-modulo.md` + `templates/encargo-entregable.md`
+- [x] Pregunta abierta #16: cómo se cuenta el "segundo módulo" con un transversal al inicio
+
 ## A medias
 
-Nada a medias. El repo se publica en GitHub con el commit de cierre de
-`2026-09-24-claude-code-02`; queda **público** por decisión del usuario (`DECISIONS.md`).
+- **Los entregables del módulo 2 (B1…C5) de PF1821 y PF1822 no están escritos.** Hay ficha y
+  lista de entregables; falta la etapa 2 del flujo (`docs/05`).
+- **Nada empujado a GitHub.** El usuario pidió dejar todo en local por ahora; el remoto
+  `origin` está configurado y es público.
 
 Lo que existe pero **nunca se ha ejercido de verdad**: el sistema de verificación no ha
 visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de conteo y el

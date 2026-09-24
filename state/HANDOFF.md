@@ -1,10 +1,18 @@
 # HANDOFF
 
-**De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` y `-02` — 2026-09-24
+**De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-03` — 2026-09-24
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea
 
-## Lo nuevo del 24-sep, en tres líneas
+## Lo nuevo del 24-sep
+
+- **Hito del día: contenido del módulo 2 de PF1821 (Agentes low code) y PF1822 (Desarrollo
+  con IA).** Extraídos de SIPFOR con `npm run sipfor`; ficha y entregables en
+  `contenidos/<PF>/modulo-2/`. Módulo 2 = `MA04560` (18 h) y `MA04576` (21 h), con 4
+  aprendizajes esperados cada uno. Ojo con `OPEN-QUESTIONS.md` #16: así se cuenta si el
+  módulo transversal de orientación es el primero.
+- **Todo queda en local por ahora.** El usuario pidió no empujar todavía, aunque el remoto
+  ya está decidido y es público.
 
 - **Todo el proyecto vive ahora en el repo.** Los entregables del 24-sep están en
   `entregables/2026-09-24-modulo2/` y los PDF de las bases en `bases/`. La carpeta de
@@ -85,41 +93,25 @@ bien lo que dice contar?) y `scripts/lib/texto.mjs` (¿el umbral de similitud di
 de verdad, o pasa cualquier cosa?). Un buen ataque: escribe dos propuestas parecidas a
 propósito y mira si el control las caza. Después registra el veredicto.
 
-**Si eres Claude Code otra vez** → no puedes auditarte. Haz los tres hallazgos cortos de
-la auditoría (columna `fuente` en `clientes.csv` y las tres citas) y sigue con SIPFOR:
+**Si eres Claude Code otra vez** → no puedes auditarte. El hito del 24-sep es el
+contenido del módulo 2 de **PF1821** y **PF1822**. La extracción ya está hecha
+(`data/planes/`) y cada curso tiene su ficha y su lista de entregables en
+`contenidos/<PF>/modulo-2/`. Sigue el flujo de `docs/05-flujo-contenidos-modulo.md`,
+etapa 2, un archivo por entregable y en el orden de esa tabla, empezando por
+`B1-indicadores.md`. Encarga cada archivo con `templates/encargo-entregable.md`.
 
-Extraer el **segundo módulo** de los 15 planes formativos desde
-https://sipfor.sence.cl/Planes/Catalogo.aspx y dejarlos en `data/planes/<codigo>.json`
-con esta forma:
+Para los otros 13 planes basta `npm run sipfor -- --todos` y `npm run ficha -- <PF>`:
+el extractor ya no necesita scraping (ver `DECISIONS.md`, 2026-09-24).
 
-```json
-{
-  "codigo_plan": "PF1481",
-  "nombre": "Fundamentos de Análisis de Datos",
-  "horas_totales": 198,
-  "modulos": [
-    {
-      "n": 2,
-      "nombre": "...",
-      "competencia": "...",
-      "horas": 0,
-      "aprendizajes_esperados": [
-        {"n": 1, "texto": "... (TEXTUAL del plan, sin reformular)",
-         "criterios_evaluacion": ["..."]}
-      ],
-      "recursos_materiales": ["..."]
-    }
-  ]
-}
-```
-
-Los aprendizajes esperados van **textuales**: la rúbrica exige que sean los del plan
-formativo SENCE (ver `docs/01-guia-propuesta-tecnica.md` §5, bases 2026 punto 7.4).
-
-Empieza por **PF1481** solo, valida la forma con Diego, y recién después automatiza los
-otros 14. No bajes los 15 a ciegas.
+Los tres hallazgos cortos de la auditoría (columna `fuente` en `clientes.csv` y las tres
+citas) siguen pendientes y siguen siendo diez minutos.
 
 ## Trampas que me encontré
+
+- **SIPFOR repite a veces el aprendizaje como criterio.** En PF1821, el criterio 3.1 es
+  idéntico al AE3. Es así en la fuente: no lo "corrijas", pero no lo uses como indicador.
+- **Los contenidos de PF1822 traen asteriscos a mitad de línea** ("… SIRVE. *DIFERENCIAS").
+  El extractor solo separa ítems al inicio de línea; el texto queda completo y textual.
 
 - **`gh` no está en el PATH.** Se instaló como release oficial en la carpeta de programas
   del usuario (`%LOCALAPPDATA%/Programs/gh/bin/gh.exe`) sin tocar variables de entorno.

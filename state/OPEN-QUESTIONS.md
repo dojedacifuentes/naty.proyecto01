@@ -19,6 +19,14 @@ herramientas y extensión al plan completo?** — ABIERTA
 Las bases dicen que el ítem D se desarrolla *"a lo largo de todo el plan formativo"*,
 pero B y C hablan del módulo. Conviene confirmarlo junto con la pregunta 1.
 
+**16. ¿Cómo se cuenta el "segundo módulo" cuando el plan empieza con un módulo transversal?** — ABIERTA
+En SIPFOR, PF1821 y PF1822 (y probablemente los 15) empiezan con `MB00171` "Orientación al
+perfil de especialidades y metodología del curso" (12 h, transversal). Contado sobre todos
+los módulos, el segundo es el primer técnico: `MA04560` en PF1821 y `MA04576` en PF1822.
+Contado solo sobre los técnicos, sería `MA04561` y `MA04577`.
+Supuesto de trabajo (2026-09-24): se cuenta sobre todos, en el orden en que SIPFOR lista el
+plan. Conviene confirmarlo contra el PDF oficial de cada plan y sumarlo a la consulta #1.
+
 ## Para Natalia
 
 **3. ¿Cuál es la matriz real cliente × plan?** — ABIERTA · CRÍTICA

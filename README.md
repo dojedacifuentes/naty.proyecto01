@@ -47,6 +47,8 @@ Requisito: **Node ≥ 18**. No hay dependencias que instalar.
 | `npm run verificar` | los ocho controles: estructura, datos, cobertura de rúbrica, diferenciación, secretos, citas, estado y verificadores |
 | `npm run verificar:red` | además comprueba que los enlaces a LMS y portafolios sigan abriendo |
 | `npm run umbrales` | recalcula cuántas actividades de extensión exige cada plan |
+| `npm run sipfor -- PF1821` | extrae uno o más planes desde SIPFOR (`--todos` para los 15) |
+| `npm run ficha -- PF1821` | genera la ficha y la lista de entregables del módulo 2 del plan |
 
 Corre solo, además, en cada commit (hook) y en cada push (GitHub Actions).
 
@@ -81,6 +83,9 @@ responde con archivo y línea. Protocolo completo: **`AUDITORIA.md`**.
 | `.githooks/` | Hook de pre-commit versionado (se activa con `npm run hooks`). |
 | `PROMPT-CLAUDE-CODE.md` | Prompts para abrir una sesión y para auditar desde otra herramienta. |
 | `propuestas/` | (se crea al empezar producción) Un directorio por cliente × plan. |
+| `data/sipfor/` | Respuestas de SIPFOR tal cual, por plan (`npm run sipfor`). Fuente citable. |
+| `data/planes/` | Planes formativos normalizados: módulos, aprendizajes, criterios, contenidos, recursos. |
+| `contenidos/` | Contenido canónico del módulo evaluado de cada curso, común a todas las instituciones (`docs/05`). |
 | `bases/` | PDF de las bases 2026 (SENCE, Res. Ex. N°2320) y 2024 (OTIC SOFOFA). Fuente citable por numeral y página. |
 | `entregables/` | Lo entregado a Natalia, un directorio por hito con fecha y su `README.md`. |
 
