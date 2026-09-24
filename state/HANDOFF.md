@@ -1,6 +1,6 @@
 # HANDOFF
 
-**De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-05` — 2026-09-24
+**De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` — 2026-09-24
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea
 
@@ -11,6 +11,8 @@
   `contenidos/<PF>/modulo-2/`. Módulo 2 = `MA04560` (18 h) y `MA04576` (21 h), con 4
   aprendizajes esperados cada uno. Ojo con `OPEN-QUESTIONS.md` #16: así se cuenta si el
   módulo transversal de orientación es el primero.
+- **PDF único para Natalia:** `entregables/2026-09-24-modulo2/modulo2-PF1821-PF1822-completo.pdf`
+  (ficha SIPFOR + entregables + kit, por curso). Se regenera con `npm run kit ... --unico`.
 - **Kit de recursos educativos en borrador para PF1821 y PF1822** (`contenidos/<PF>/modulo-2/`,
   PDF en `entregables/2026-09-24-modulo2/kit-recursos-modulo2-PF18xx.pdf`). Casos ficticios:
   *Mercado Austral* (PF1821, n8n) y *Nube Sur* (PF1822, Python). Siguiente paso: revisión de

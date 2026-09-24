@@ -1,8 +1,7 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><title>Kit de recursos del módulo 2 · PF1822</title>
-<style>
+<html lang="es"><head><meta charset="utf-8"><title>Kit de recursos del módulo 2 · PF1822</title><style>
   @page { size: A4; margin: 17mm 16mm 19mm; @bottom-left { content: "Kit de recursos del módulo 2 · PF1822"; font: 8pt 'Segoe UI', Arial, sans-serif; color: #6b7a8c; } @bottom-right { content: counter(page) " / " counter(pages); font: 8pt 'Segoe UI', Arial, sans-serif; color: #6b7a8c; } }
-  @page :first { margin: 0; @bottom-left { content: none } @bottom-right { content: none } }
+  @page portada { margin: 0; @bottom-left { content: none } @bottom-right { content: none } }
   :root { --navy:#13233a; --blue:#1f4e79; --ink:#1b2430; --ink2:#4a5868; --line:#d4dbe3; --zebra:#f4f6f9; --hl:#e8f0f8; }
   * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body { margin: 0; color: var(--ink); font: 9.4pt/1.48 Georgia, 'Times New Roman', serif; }
@@ -28,7 +27,8 @@
   .box { display: inline-block; width: 8pt; height: 8pt; border: 1pt solid var(--navy); margin-right: 5pt; vertical-align: -1pt; }
   .box.on { background: var(--navy); }
   .lbl { font-size: 7.6pt; text-transform: uppercase; letter-spacing: .08em; color: var(--blue); font-weight: 700; margin: 6pt 0 2pt; }
-  .cover { height: 296mm; overflow: hidden; padding: 30mm 24mm 22mm; background: linear-gradient(160deg, #13233a 0%, #1c3d63 70%, #1f4e79 100%); color: #fff; display: flex; flex-direction: column; }
+  .cover { page: portada; height: 296mm; overflow: hidden; padding: 30mm 24mm 22mm; background: linear-gradient(160deg, #13233a 0%, #1c3d63 70%, #1f4e79 100%); color: #fff; display: flex; flex-direction: column; }
+  .cover.divisor { break-before: page; background: linear-gradient(160deg, #1f4e79 0%, #1c3d63 55%, #13233a 100%); }
   .cover .eb { text-transform: uppercase; letter-spacing: .14em; font-size: 8.5pt; color: #9fc3e6; font-weight: 600; }
   .cover h1 { font-size: 31pt; line-height: 1.08; margin: 16mm 0 5mm; font-weight: 600; }
   .cover .rule { width: 34mm; height: 2pt; background: #6fa8dc; margin-bottom: 7mm; }
@@ -36,6 +36,9 @@
   .cover .toc { margin-top: 12mm; columns: 2; column-gap: 10mm; font-size: 9.5pt; color: #dce8f4; }
   .cover .toc div { break-inside: avoid; padding: 2pt 0; border-bottom: .5pt solid #3d5f86; }
   .cover .toc b { color: #fff; font-weight: 600; margin-right: 4pt; }
+  .cover .cursos { margin-top: 12mm; display: grid; gap: 5mm; }
+  .cover .cursos div { border-left: 2pt solid #6fa8dc; padding: 1mm 0 1mm 5mm; font-size: 9.5pt; color: #cfe0f1; }
+  .cover .cursos b { display: block; font-size: 12pt; color: #fff; }
   .cover .meta { margin-top: auto; font-size: 9.5pt; line-height: 1.8; color: #dce8f4; } .cover .meta b { color: #fff; }
   .cover .foot { border-top: .6pt solid #5d7fa3; margin-top: 7mm; padding-top: 4mm; font-size: 8.4pt; color: #b9cde2; }
 </style></head><body>
@@ -45,12 +48,8 @@
   <div class="rule"></div>
   <p class="sub">PF1822 · ESPECIALIZACIÓN EN DESARROLLO CON IA<br>Módulo 2: MA04576 INTRODUCCIÓN A MODELOS GENERATIVOS Y CONSUMO POR API · 21 h</p>
   <div class="toc"><div><b>1</b>Índice del kit</div><div><b>2</b>Bienvenida e infografía</div><div><b>3</b>Cápsulas y cuadro comparativo</div><div><b>4</b>Herramientas didácticas</div><div><b>5</b>Actividades prácticas</div><div><b>6</b>Indicadores de logro</div><div><b>7</b>Instrumentos de evaluación</div><div><b>8</b>Portafolio</div><div><b>9</b>Retroalimentación</div><div><b>10</b>Metodología, motivación y siglo XXI</div></div>
-  <div class="meta">
-    <b>Para:</b> Natalia — hackea.pro<br>
-    <b>Fecha:</b> 24 de septiembre de 2026<br>
-    <b>Estado:</b> borrador para revisión
-  </div>
-  <p class="foot">Generado desde el repositorio del proyecto (npm run kit) a partir de contenidos/PF1822/modulo-2/. Aprendizajes y competencia textuales de SIPFOR (Res. 1868, 2026-08-05). Lo marcado PENDIENTE lo decide cada institución.</p>
+  <div class="meta"><b>Para:</b> Natalia — hackea.pro<br><b>Fecha:</b> 24 de septiembre de 2026<br><b>Estado:</b> borrador para revisión</div>
+  <p class="foot">Generado desde el repositorio del proyecto (npm run kit) a partir de contenidos/PF1822/modulo-2/. Aprendizajes y competencias textuales de SIPFOR (Res. 1868, 2026-08-05). Lo marcado PENDIENTE lo decide cada institución.</p>
 </section>
 <section class="parte"><p class="kicker">1 · Índice del kit</p><h2>PF1822 · Módulo 2: kit de recursos educativos</h2>
 <p><strong>Módulo:</strong> <code>MA04576</code> INTRODUCCIÓN A MODELOS GENERATIVOS Y CONSUMO POR API · 21 h · e-learning<br><strong>Estado:</strong> borrador · <strong>Producido:</strong> 2026-09-24 (sesión <code>2026-09-24-claude-code-05</code>)</p>

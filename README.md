@@ -50,7 +50,7 @@ Requisito: **Node ≥ 18**. No hay dependencias que instalar.
 | `npm run sipfor -- PF1821` | extrae uno o más planes desde SIPFOR (`--todos` para los 15) |
 | `npm run ficha -- PF1821` | genera la ficha y la lista de entregables del módulo 2 del plan |
 | `npm run manual -- PF1821 PF1822 --pdf` | manual de entregables del módulo 2 en HTML y PDF (usa Edge o Chrome) |
-| `npm run kit -- PF1821 --pdf` | kit de recursos educativos del módulo 2 de un curso, en HTML y PDF |
+| `npm run kit -- PF1821 --pdf` | kit de recursos educativos del módulo 2 de un curso, en HTML y PDF (`--unico` junta todos los cursos, con ficha y entregables) |
 
 Corre solo, además, en cada commit (hook) y en cada push (GitHub Actions).
 
