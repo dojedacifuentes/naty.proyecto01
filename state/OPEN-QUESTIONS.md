@@ -72,6 +72,9 @@ sistema). Mientras no se decida, el repositorio vive solo en local: el prompt A 
 vive en https://github.com/dojedacifuentes/naty.proyecto01. **Sigue abierto:** ese repo
 se creó **público**, y esta pregunta dice que debe ser privado. Falta decidir si se
 cambia a privado antes del primer push, y quién tiene acceso de escritura.
+**Visibilidad, respondida por el usuario el 2026-09-24** (sesión `2026-09-24-claude-code-02`),
+con la advertencia a la vista: **queda público** y se empuja así. Sigue abierto: quién
+tiene acceso de escritura además del dueño de la cuenta, y cómo se cruza esto con #11.
 
 **15. ¿Los umbrales de conteo y el 0,75 de similitud aguantan un lote real?** — ABIERTA
 Los controles automáticos se probaron con propuestas de prueba, no con propuestas de

@@ -1,6 +1,6 @@
 # HANDOFF
 
-**De:** claude-code (opus-5.5) · sesión `2026-09-24-claude-code-01` — 2026-09-24
+**De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` y `-02` — 2026-09-24
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea
 
@@ -10,9 +10,10 @@
   `entregables/2026-09-24-modulo2/` y los PDF de las bases en `bases/`. La carpeta de
   arriba del repo ya no tiene nada del proyecto, salvo `licitacion-td-2026.zip`, que es
   idéntico al commit `init` (se comprobó con diff) y por eso no se versionó.
-- **El remoto es https://github.com/dojedacifuentes/naty.proyecto01**, pero **todavía no
-  tiene ningún push**: se creó público y `OPEN-QUESTIONS.md` #14 pide privado. No empujes
-  sin que el usuario lo decida. Primero `gh repo view dojedacifuentes/naty.proyecto01 --json visibility`.
+- **El remoto es https://github.com/dojedacifuentes/naty.proyecto01 y es público** por
+  decisión del usuario (`DECISIONS.md`, 2026-09-24). Todo lo que empujes lo ve cualquiera:
+  antes de versionar algo de un cliente, pregúntate si aguanta ser público. Trabaja con
+  `git pull` antes de abrir sesión y `git push` después de cerrarla.
 - **El panel del módulo 2 de ML y Agentes** es un artifact con estado compartido
   (https://claude.ai/artifact/BpgYipB5aa4YY8c4LGiDuP). Su código está en el repo; su
   estado no, vive en la base del artifact.
@@ -63,9 +64,9 @@ pendiente y es la que más mueve el proyecto.
      `docs/04-verificadores-protocolo.md:17` — las tres afirman una causal de rechazo.
      El texto citado es real; falta abrir el PDF de las bases y poner la referencia.
      Son diez minutos y dejan el repositorio en verde del todo.
-- **El repo no está en GitHub todavía** (ver arriba). `gh` ya está instalado; falta el
-  login del usuario y la decisión de visibilidad. El prompt A de `PROMPT-CLAUDE-CODE.md`
-  quedó actualizado al remoto real y se detiene si el repo es público.
+- **Pasos 5 y 6 del prompt A sin hacer:** etiquetas, un issue por pregunta abierta e hito
+  "Fase 0" en GitHub. Con el repo público, los issues también lo son: confírmalo con el
+  usuario antes de crearlos.
 
 ## Tu primera tarea
 

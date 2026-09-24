@@ -35,8 +35,8 @@ Haz esto en orden, y no avances a un paso si el anterior falló:
 
 4. Publícalo en el remoto ya definido (DECISIONS.md, 2026-09-24):
    `git remote add origin https://github.com/dojedacifuentes/naty.proyecto01.git`
-   Antes del push, `gh repo view dojedacifuentes/naty.proyecto01 --json visibility`: si
-   dice PUBLIC, detente y pregunta (OPEN-QUESTIONS.md #14). Si es privado, `git push -u origin main`.
+   El repo es público por decisión del usuario (DECISIONS.md, 2026-09-24): antes de
+   empujar, confirma que nada de lo versionado deba quedar privado. Luego `git push -u origin main`.
 
 5. Protege el trabajo colaborativo:
    - Etiquetas: `fase-0`, `fase-1-motor`, `fase-2-produccion`, `bloqueado`,

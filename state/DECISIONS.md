@@ -109,3 +109,13 @@ Por qué: lo definió el usuario en la sesión `2026-09-24-claude-code-01`. Resu
 Detalle: `gh` (GitHub CLI 2.101.0, release oficial con checksum verificado) quedó instalado
 en la carpeta de programas del usuario, fuera del PATH; se llama por su ruta completa.
 Quién: usuario (remoto) · claude-code (instalación).
+
+**2026-09-24 · El repo remoto queda público.**
+Por qué: decisión del usuario, tomada después de que se le advirtiera que `OPEN-QUESTIONS.md`
+#14 pedía privado y que desde hoy el repo incluye el brainstorm, el análisis del módulo 2
+y las preguntas abiertas sobre clientes que compiten entre sí.
+Consecuencia práctica: todo lo que entre al repo es público desde el push. Las reglas de
+`AGENTS.md` §2 (nada de credenciales, nada de datos personales) pesan más que antes, y
+la información comercial de cada cliente conviene pensarla dos veces antes de versionarla.
+Alternativa descartada: pasarlo a privado antes del primer push (era la recomendada).
+Quién: usuario, sesión `2026-09-24-claude-code-02`.

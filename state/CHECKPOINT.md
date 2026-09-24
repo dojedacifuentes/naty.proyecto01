@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-24
-**Por:** 2026-09-24-claude-code-01 (Claude Code · opus-5.5)
+**Por:** 2026-09-24-claude-code-02 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -55,9 +55,8 @@ Sesión claude-code, 2026-09-24:
 
 ## A medias
 
-- **Primer push a GitHub.** El remoto existe y está vacío, pero se creó **público** y
-  `OPEN-QUESTIONS.md` #14 pide privado. No se empuja nada hasta que el usuario decida.
-  Además `gh` necesita que el usuario complete el login en el navegador.
+Nada a medias. El repo se publica en GitHub con el commit de cierre de
+`2026-09-24-claude-code-02`; queda **público** por decisión del usuario (`DECISIONS.md`).
 
 Lo que existe pero **nunca se ha ejercido de verdad**: el sistema de verificación no ha
 visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de conteo y el
@@ -72,7 +71,7 @@ visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de co
 | Matriz real cliente × plan | No definida | Natalia |
 | Fechas formales de la licitación | Llamado aún no publicado | SENCE / Natalia |
 | Fichas de cliente (LMS, infraestructura, docentes) | No levantadas | Natalia + cada cliente |
-| Primer push a GitHub | El repo remoto es público; #14 pide privado. Falta login de `gh` | Usuario / Diego |
+| Acceso de escritura al repo | Solo el dueño de la cuenta; falta decidir quién más (#14) | Usuario / Diego |
 
 ## Números que ordenan el trabajo
 
