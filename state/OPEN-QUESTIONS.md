@@ -62,12 +62,16 @@ Todo el plan cuelga de esas dos fechas.
 
 ## Para Diego
 
-**14. ¿Dónde vive el repositorio y quién tiene acceso de escritura?** — ABIERTA
+**14. ¿Dónde vive el repositorio y quién tiene acceso de escritura?** — ABIERTA · respuesta parcial
 El repo va a contener información de seis instituciones que compiten entre sí en la misma
 mesa de evaluación. Hay que decidir cuenta de GitHub, si es privado (sí), y quién entra.
 Se cruza con la pregunta 11 (confidencialidad entre clientes) y con la 10 (de quién es el
 sistema). Mientras no se decida, el repositorio vive solo en local: el prompt A de
 `PROMPT-CLAUDE-CODE.md` deja listos los pasos para publicarlo.
+**Respuesta parcial (2026-09-24, el usuario en la sesión `2026-09-24-claude-code-01`):**
+vive en https://github.com/dojedacifuentes/naty.proyecto01. **Sigue abierto:** ese repo
+se creó **público**, y esta pregunta dice que debe ser privado. Falta decidir si se
+cambia a privado antes del primer push, y quién tiene acceso de escritura.
 
 **15. ¿Los umbrales de conteo y el 0,75 de similitud aguantan un lote real?** — ABIERTA
 Los controles automáticos se probaron con propuestas de prueba, no con propuestas de

@@ -7,9 +7,11 @@ secrets*
 *.key
 *.pem
 
-# PDFs pesados de bases (se citan por numeral)
-bases/*.pdf
+# PDFs: solo se versionan las bases y los entregables (DECISIONS.md, 2026-09-24).
+# Cualquier otro PDF suelto sigue fuera, para que no entre algo por accidente.
 *.pdf
+!bases/*.pdf
+!entregables/**/*.pdf
 
 # Trabajo local
 .DS_Store

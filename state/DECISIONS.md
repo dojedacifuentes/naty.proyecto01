@@ -88,3 +88,24 @@ gemelos dan similitud cercana a 0, que es justo lo contrario de lo que el contro
 Se detectó probando el control con dos propuestas de prueba deliberadamente parecidas.
 Alternativa descartada: usar el mismo umbral para todos los pares.
 Quién: Diego. **Sujeto a calibración** cuando exista el primer lote real.
+
+**2026-09-24 · Todo lo del proyecto vive en el repo, incluidos los PDF de las bases y los entregables.**
+Por qué: trazabilidad hito por hito en un solo lugar. Hasta hoy los entregables del
+24-sep (análisis del módulo 2, brainstorm, panel) y los PDF de las bases estaban sueltos
+en la carpeta de arriba del repo, sin historia y sin forma de saber qué se entregó cuándo.
+Qué cambia: `bases/` guarda los dos PDF de las bases; `entregables/<fecha>-<tema>/`
+guarda cada entrega con su `README.md`. El `.gitignore` sigue ignorando cualquier otro
+PDF y el control 05 sigue tratando como error un PDF fuera de esas dos rutas.
+Reemplaza a: "Los PDF de las bases no se versionan" y, para esas dos rutas, a "Todo el
+conocimiento va en Markdown y CSV plano, sin binarios" (2026-09-22). El conocimiento que
+se edita sigue en Markdown y CSV; los binarios entran solo como fuente o como entrega.
+Alternativa descartada: dejar los binarios fuera y enlazarlos, que es justo la dispersión
+que se quiere evitar.
+Quién: pedido explícito del usuario en la sesión `2026-09-24-claude-code-01`.
+
+**2026-09-24 · El repo remoto es github.com/dojedacifuentes/naty.proyecto01.**
+Por qué: lo definió el usuario en la sesión `2026-09-24-claude-code-01`. Resuelve la parte
+"dónde vive" de `OPEN-QUESTIONS.md` #14; la parte "privado y quién entra" sigue abierta.
+Detalle: `gh` (GitHub CLI 2.101.0, release oficial con checksum verificado) quedó instalado
+en la carpeta de programas del usuario, fuera del PATH; se llama por su ruta completa.
+Quién: usuario (remoto) · claude-code (instalación).

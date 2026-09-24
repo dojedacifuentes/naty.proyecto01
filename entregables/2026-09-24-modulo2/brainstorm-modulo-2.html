@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brainstorm ejecutivo — Fábrica de planes formativos Módulo 2</title>
+  <style>
+    :root {
+      --navy: #102a43;
+      --navy-2: #183b56;
+      --teal: #0f8b8d;
+      --teal-light: #dff4f2;
+      --orange: #f28c28;
+      --orange-light: #fff0dd;
+      --blue: #3b82f6;
+      --blue-light: #eaf2ff;
+      --green: #2f9e44;
+      --green-light: #e9f7ed;
+      --red: #d64545;
+      --red-light: #fdeaea;
+      --ink: #243b53;
+      --muted: #627d98;
+      --line: #d9e2ec;
+      --paper: #ffffff;
+      --soft: #f5f8fb;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #dfe7ee; color: var(--ink); font-family: "Aptos", "Segoe UI", Arial, sans-serif; }
+    @page { size: A4 landscape; margin: 0; }
+
+    .page {
+      width: 297mm;
+      height: 210mm;
+      padding: 14mm 16mm 12mm;
+      background: var(--paper);
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: 31pt; line-height: 1.08; letter-spacing: -0.7px; color: white; margin-bottom: 6mm; }
+    h2 { font-size: 22pt; line-height: 1.1; letter-spacing: -0.3px; color: var(--navy); margin-bottom: 5mm; }
+    h3 { font-size: 13.5pt; line-height: 1.2; color: var(--navy); margin-bottom: 2mm; }
+    p, li { font-size: 10.7pt; line-height: 1.36; }
+    strong { color: var(--navy); }
+    a { color: var(--teal); text-decoration: none; }
+
+    .eyebrow {
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      font-weight: 800;
+      color: var(--teal);
+      margin-bottom: 2mm;
+    }
+    .subtitle { font-size: 14pt; line-height: 1.35; color: #d7e9f4; max-width: 178mm; }
+    .lead { font-size: 13pt; line-height: 1.42; color: var(--ink); }
+    .small { font-size: 8.7pt; line-height: 1.32; color: var(--muted); }
+    .muted { color: var(--muted); }
+    .white { color: white; }
+
+    .page-no {
+      position: absolute;
+      right: 16mm;
+      bottom: 7mm;
+      font-size: 8.5pt;
+      color: #829ab1;
+    }
+    .footer-note {
+      position: absolute;
+      left: 16mm;
+      bottom: 7mm;
+      font-size: 8pt;
+      color: #829ab1;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; }
+    .stack { display: flex; flex-direction: column; gap: 4mm; }
+    .row { display: flex; align-items: center; gap: 4mm; }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 4mm;
+      padding: 5mm;
+      background: white;
+      box-shadow: 0 1.5mm 4mm rgba(16,42,67,.06);
+    }
+    .card.soft { background: var(--soft); box-shadow: none; }
+    .card.teal { background: var(--teal-light); border-color: #abdeda; }
+    .card.orange { background: var(--orange-light); border-color: #ffd19b; }
+    .card.blue { background: var(--blue-light); border-color: #bdd5ff; }
+    .card.red { background: var(--red-light); border-color: #f5baba; }
+    .card.green { background: var(--green-light); border-color: #bfe3c8; }
+
+    .pill {
+      display: inline-block;
+      border-radius: 99px;
+      padding: 1.5mm 3.2mm;
+      font-size: 8.3pt;
+      line-height: 1;
+      font-weight: 800;
+      color: var(--navy);
+      background: #e8eef4;
+      margin-right: 1.5mm;
+    }
+    .pill.p0 { background: var(--red-light); color: #a62828; }
+    .pill.p1 { background: var(--orange-light); color: #9a4e00; }
+    .pill.p2 { background: var(--teal-light); color: #066568; }
+
+    .big-number { font-size: 28pt; line-height: 1; font-weight: 900; color: var(--navy); }
+    .metric-label { font-size: 9pt; color: var(--muted); margin-top: 2mm; }
+
+    .cover {
+      padding: 0;
+      background:
+        radial-gradient(circle at 83% 18%, rgba(242,140,40,.95) 0 10mm, transparent 10.5mm),
+        radial-gradient(circle at 89% 26%, rgba(255,255,255,.13) 0 32mm, transparent 32.5mm),
+        linear-gradient(130deg, #0b2438 0%, #123b52 58%, #0f8b8d 100%);
+    }
+    .cover-inner { padding: 24mm 22mm; width: 218mm; }
+    .cover .eyebrow { color: #ffbd73; }
+    .cover-tag {
+      margin-top: 14mm;
+      display: inline-flex;
+      gap: 3mm;
+      align-items: center;
+      padding: 3mm 4mm;
+      border: 1px solid rgba(255,255,255,.26);
+      border-radius: 3mm;
+      color: #eaf8f7;
+      font-size: 10pt;
+      background: rgba(255,255,255,.08);
+    }
+    .cover-date { position: absolute; left: 22mm; bottom: 17mm; color: #c9dde9; font-size: 10pt; }
+    .cover-art { position: absolute; right: 17mm; top: 46mm; width: 66mm; height: 101mm; }
+    .node { position: absolute; width: 23mm; height: 23mm; border-radius: 5mm; background: rgba(255,255,255,.95); display:flex; align-items:center; justify-content:center; color:var(--navy); font-weight:900; font-size:15pt; box-shadow: 0 3mm 8mm rgba(0,0,0,.16); }
+    .node.n1 { left: 0; top: 0; }
+    .node.n2 { right: 0; top: 18mm; }
+    .node.n3 { left: 9mm; top: 47mm; background: #ffbd73; }
+    .node.n4 { right: 4mm; bottom: 0; background: #dff4f2; }
+    .cover-line { position:absolute; height:1.2mm; background:rgba(255,255,255,.55); transform-origin:left center; border-radius:99px; }
+    .l1 { left:20mm; top:20mm; width:37mm; transform:rotate(17deg); }
+    .l2 { left:19mm; top:22mm; width:31mm; transform:rotate(69deg); }
+    .l3 { left:30mm; top:60mm; width:32mm; transform:rotate(44deg); }
+
+    .alert-band {
+      display: grid;
+      grid-template-columns: 47mm 1fr;
+      gap: 5mm;
+      align-items: center;
+      background: var(--navy);
+      border-radius: 4mm;
+      padding: 4mm 6mm;
+      color: white;
+      margin-bottom: 6mm;
+    }
+    .alert-date { color: #ffbd73; font-weight: 900; font-size: 18pt; line-height:1; }
+    .alert-text { color: #e7f1f7; font-size: 11pt; margin:0; }
+
+    .bar-row { display:grid; grid-template-columns: 62mm 1fr 14mm; gap:3mm; align-items:center; margin: 3mm 0; }
+    .bar-label { font-size: 10pt; font-weight: 700; color: var(--navy); }
+    .bar-track { height: 7mm; background: #e8eef4; border-radius: 99px; overflow:hidden; }
+    .bar-fill { height:100%; border-radius:99px; }
+    .bar-fill.teal { background: var(--teal); }
+    .bar-fill.orange { background: var(--orange); }
+    .bar-fill.blue { background: var(--blue); }
+    .bar-value { font-size: 10pt; font-weight:900; color:var(--navy); text-align:right; }
+
+    .checklist { list-style:none; padding:0; margin:0; }
+    .checklist li { position:relative; padding-left:8mm; margin:2.2mm 0; }
+    .checklist li::before { content:"✓"; position:absolute; left:0; top:-.2mm; width:5mm; height:5mm; border-radius:50%; background:var(--teal-light); color:var(--teal); font-weight:900; display:flex; align-items:center; justify-content:center; }
+
+    .flow { display:flex; align-items:stretch; justify-content:space-between; gap:2.5mm; margin-top:4mm; }
+    .flow-step { flex:1; position:relative; border-radius:4mm; border:1px solid var(--line); padding:5mm 4mm; background:white; min-height:84mm; }
+    .flow-step:not(:last-child)::after { content:"→"; position:absolute; right:-5mm; top:38mm; z-index:5; width:7mm; height:7mm; border-radius:50%; background:var(--orange); color:white; display:flex; align-items:center; justify-content:center; font-weight:900; }
+    .flow-icon { width:13mm; height:13mm; border-radius:3.5mm; display:flex; align-items:center; justify-content:center; background:var(--teal-light); color:var(--teal); font-size:17pt; font-weight:900; margin-bottom:4mm; }
+    .flow-step:nth-child(2) .flow-icon { background:var(--blue-light); color:var(--blue); }
+    .flow-step:nth-child(3) .flow-icon { background:var(--orange-light); color:var(--orange); }
+    .flow-step:nth-child(4) .flow-icon { background:var(--green-light); color:var(--green); }
+    .flow-step:nth-child(5) .flow-icon { background:#f0eafa; color:#7950b8; }
+    .flow-step ul { margin:2mm 0 0; padding-left:5mm; }
+    .flow-step li { font-size:9pt; margin:1.5mm 0; }
+
+    .idea-card { min-height:45mm; position:relative; padding-left:18mm; }
+    .idea-num { position:absolute; left:4.5mm; top:5mm; width:9mm; height:9mm; border-radius:3mm; background:var(--navy); color:white; display:flex; align-items:center; justify-content:center; font-weight:900; }
+    .idea-card p { font-size:9.4pt; margin-bottom:2mm; }
+    .effort { font-size:8.5pt; color:var(--muted); font-weight:700; }
+
+    .lab-card { min-height:58mm; }
+    .lab-icon { font-size:21pt; margin-bottom:2mm; }
+    .lab-card p { font-size:9pt; }
+
+    .role { min-height:91mm; }
+    .role-head { height:18mm; border-radius:3mm; display:flex; align-items:center; padding:0 5mm; color:white; font-size:14pt; font-weight:900; margin-bottom:4mm; }
+    .role-head.claude { background:#c96f3b; }
+    .role-head.codex { background:#2474c6; }
+    .role-head.media { background:#7d57c2; }
+    .role-head.lms { background:var(--teal); }
+    .role ul { padding-left:5mm; margin:0; }
+    .role li { font-size:9.1pt; margin:2mm 0; }
+    .dual-control { margin-top:5mm; border-radius:4mm; padding:4mm 6mm; background:var(--navy); color:white; display:grid; grid-template-columns:1fr 18mm 1fr; align-items:center; gap:4mm; text-align:center; }
+    .dual-control .arrow { font-size:23pt; color:#ffbd73; }
+
+    .timeline { display:grid; grid-template-columns:repeat(6,1fr); gap:2mm; margin:4mm 0 7mm; }
+    .day { border-top:3mm solid var(--teal); padding:3mm 3mm 2mm; background:var(--soft); min-height:36mm; border-radius:0 0 3mm 3mm; }
+    .day.orange-top { border-top-color:var(--orange); }
+    .day.red-top { border-top-color:var(--red); }
+    .day .date { font-size:9pt; font-weight:900; color:var(--navy); margin-bottom:2mm; }
+    .day p { font-size:8.5pt; margin:0; }
+
+    table { width:100%; border-collapse:collapse; }
+    th { background:var(--navy); color:white; font-size:9pt; text-align:left; padding:2.7mm; }
+    td { border-bottom:1px solid var(--line); padding:2.6mm; font-size:9pt; vertical-align:top; }
+    tbody tr:nth-child(even) td { background:#f7fafc; }
+
+    .decision { display:grid; grid-template-columns:12mm 1fr 40mm; gap:4mm; align-items:center; padding:4mm; border-bottom:1px solid var(--line); }
+    .decision:last-child { border-bottom:none; }
+    .decision-num { width:10mm; height:10mm; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--red-light); color:var(--red); font-weight:900; }
+    .decision-owner { font-size:8.8pt; font-weight:800; color:var(--muted); text-align:right; }
+
+    .recommendation {
+      margin-top:5mm;
+      padding:5mm 7mm;
+      border-left:4mm solid var(--orange);
+      background:var(--orange-light);
+      border-radius:0 4mm 4mm 0;
+    }
+    .recommendation p { margin-bottom:0; font-size:12pt; }
+
+    .final-page h2 { margin-bottom: 3mm; }
+    .final-page .timeline { margin-top: 2mm; margin-bottom: 4mm; }
+    .final-page .day { min-height: 31mm; padding-top: 2mm; }
+    .final-page .decision { padding: 2.2mm 3mm; gap: 2.5mm; }
+    .final-page .decision-num { width: 8mm; height: 8mm; }
+    .final-page .recommendation { margin-top: 3mm; padding: 3.5mm 6mm; }
+    .final-page .recommendation p { font-size: 10.7pt; }
+
+    .source-list { columns:2; column-gap:12mm; margin-top:4mm; }
+    .source { break-inside:avoid; margin-bottom:4mm; padding-bottom:3mm; border-bottom:1px solid var(--line); }
+    .source b { display:block; font-size:9.3pt; color:var(--navy); }
+    .source span, .source a { font-size:8.4pt; line-height:1.3; }
+
+    @media print {
+      html, body { background:white; }
+      .page { box-shadow:none; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="page cover">
+    <div class="cover-inner">
+      <div class="eyebrow">Brainstorm ejecutivo para Natalia</div>
+      <h1>Fábrica de planes formativos<br>Módulo 2</h1>
+      <p class="subtitle">Enfoque, prototipos funcionales, herramientas y estimación de esfuerzo para convertir los anexos de Talento Digital 2026 en una producción escalable y verificable.</p>
+      <div class="cover-tag"><strong class="white">Idea central</strong> Construir una vez · parametrizar · verificar · escalar</div>
+    </div>
+    <div class="cover-art" aria-hidden="true">
+      <div class="cover-line l1"></div><div class="cover-line l2"></div><div class="cover-line l3"></div>
+      <div class="node n1">PDF</div><div class="node n2">M2</div><div class="node n3">AI</div><div class="node n4">✓</div>
+    </div>
+    <div class="cover-date">24 de septiembre de 2026 · Documento de trabajo</div>
+  </section>
+
+  <section class="page">
+    <div class="eyebrow">01 · Diagnóstico ejecutivo</div>
+    <h2>No es un problema de redacción: es un problema de producción</h2>
+    <div class="alert-band">
+      <div><div class="small white">Cierre oficial</div><div class="alert-date">6 OCT 2026</div></div>
+      <p class="alert-text"><strong class="white">Quedan 9 días hábiles contando hoy.</strong> La estrategia viable es aprobar un módulo completo en 72–96 horas y después escalarlo con automatización y control humano.</p>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="grid-3">
+          <div class="card teal"><div class="big-number">15</div><div class="metric-label">planes formativos</div></div>
+          <div class="card blue"><div class="big-number">45</div><div class="metric-label">Anexos con 3 clientes</div></div>
+          <div class="card orange"><div class="big-number">90</div><div class="metric-label">Anexos con 6 clientes</div></div>
+        </div>
+        <div class="card soft" style="margin-top:5mm">
+          <h3>Volumen escondido</h3>
+          <p class="lead" style="margin-bottom:2mm"><strong>89 actividades de extensión por cliente</strong> para aspirar a nota 7,0.</p>
+          <p class="small">Esto equivale a 267 actividades para tres clientes o 534 para seis. El plan PF1477 exige 10 actividades por sí solo.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>¿Dónde se juega la propuesta técnica?</h3>
+        <div class="bar-row"><div class="bar-label">Metodología</div><div class="bar-track"><div class="bar-fill teal" style="width:35%"></div></div><div class="bar-value">35%</div></div>
+        <div class="bar-row"><div class="bar-label">Herramientas y valor</div><div class="bar-track"><div class="bar-fill orange" style="width:35%"></div></div><div class="bar-value">35%</div></div>
+        <div class="bar-row"><div class="bar-label">Estrategia evaluativa</div><div class="bar-track"><div class="bar-fill blue" style="width:20%"></div></div><div class="bar-value">20%</div></div>
+        <div class="bar-row"><div class="bar-label">Infraestructura</div><div class="bar-track"><div class="bar-fill teal" style="width:10%"></div></div><div class="bar-value">10%</div></div>
+        <p class="small" style="margin-top:4mm"><strong>70% depende de metodología y herramientas.</strong> Parte importante se comprueba navegando el LMS, no leyendo una promesa.</p>
+      </div>
+    </div>
+    <div class="footer-note">Fuente: Bases SENCE 2026, guía de propuesta técnica y repositorio de trabajo.</div><div class="page-no">2 / 8</div>
+  </section>
+
+  <section class="page">
+    <div class="eyebrow">02 · Producto mínimo exigible</div>
+    <h2>Qué debe existir —no solo estar escrito— para cada propuesta</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Estrategia evaluativa</h3>
+        <ul class="checklist">
+          <li><strong>3 indicadores</strong> por aprendizaje esperado.</li>
+          <li><strong>3 instrumentos distintos</strong> que cubran todos los aprendizajes.</li>
+          <li>Portafolio con sus <strong>6 componentes desarrollados</strong>.</li>
+          <li>Feedback + pauta de autoevaluación + pauta de coevaluación.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Metodología navegable</h3>
+        <ul class="checklist">
+          <li><strong>2 actividades prácticas</strong> distintas y efectivas.</li>
+          <li><strong>2 herramientas didácticas</strong> visibles y pertinentes.</li>
+          <li><strong>3 estrategias</strong> para habilidades del siglo XXI.</li>
+          <li>Acceso real al LMS desde el perfil del participante.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Herramientas y valor agregado</h3>
+        <ul class="checklist">
+          <li><strong>5 herramientas de industria</strong>, adicionales al plan.</li>
+          <li><strong>4 estrategias</strong> de vinculación temprana.</li>
+          <li><strong>1 actividad de extensión cada 50 horas</strong>.</li>
+          <li>Narrativa diferenciada con activos reales de cada cliente.</li>
+        </ul>
+      </div>
+      <div class="card red">
+        <h3>Verificadores críticos</h3>
+        <ul class="checklist">
+          <li>Enlace al LMS y credenciales funcionales.</li>
+          <li>Enlace a un portafolio real, no una carpeta vacía.</li>
+          <li>Evidencia visual que coincida exactamente con el LMS.</li>
+          <li>Correo y almacenamiento en nube de al menos 12 GB.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="recommendation"><p><strong>Implicación:</strong> un buen texto sin LMS, portafolio y evidencias funcionales sigue siendo una propuesta incompleta.</p></div>
+    <div class="page-no">3 / 8</div>
+  </section>
+
+  <section class="page">
+    <div class="eyebrow">03 · Arquitectura propuesta</div>
+    <h2>Una fábrica: 15 módulos canónicos → 45 o 90 variantes controladas</h2>
+    <p class="lead">La unidad de trabajo no debe ser “un Word nuevo”. Debe ser un conjunto de datos estructurados que produce documentos, LMS, portafolios y evidencia.</p>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-icon">1</div><h3>Extraer</h3>
+        <ul><li>Bases y anexos</li><li>Segundo módulo SIPFOR</li><li>Aprendizajes textuales</li><li>Horas y recursos</li></ul>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">2</div><h3>Estructurar</h3>
+        <ul><li>JSON por plan</li><li>Ficha real por cliente</li><li>Rúbrica ejecutable</li><li>Banco de activos</li></ul>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">3</div><h3>Generar</h3>
+        <ul><li>Anexo 2</li><li>Instrumentos</li><li>Rúbricas</li><li>Actividades y guiones</li></ul>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">4</div><h3>Publicar</h3>
+        <ul><li>LMS navegable</li><li>Portafolio</li><li>Laboratorios</li><li>Evidencia visual</li></ul>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">5</div><h3>Verificar</h3>
+        <ul><li>Cobertura 7,0</li><li>Similitud</li><li>Enlaces vivos</li><li>Revisión humana</li></ul>
+      </div>
+    </div>
+    <div class="grid-3" style="margin-top:7mm">
+      <div class="card teal"><h3>Se comparte</h3><p class="small">Estructura, criterios de evaluación, instrumentos y lógica del portafolio.</p></div>
+      <div class="card orange"><h3>Se parametriza</h3><p class="small">Plan, módulo, aprendizajes, horas, herramientas y actividades.</p></div>
+      <div class="card blue"><h3>Se diferencia</h3><p class="small">Metodología, alianzas, infraestructura, tono y propuesta de valor del cliente.</p></div>
+    </div>
+    <div class="page-no">4 / 8</div>
+  </section>
+
+  <section class="page">
+    <div class="eyebrow">04 · Brainstorm de prototipos funcionales</div>
+    <h2>Ocho ideas realizables, ordenadas por impacto</h2>
+    <div class="grid-4">
+      <div class="card idea-card"><div class="idea-num">1</div><span class="pill p0">P0</span><h3>Fábrica M2</h3><p>Extrae SIPFOR, genera Anexo 2, instrumentos y checklists desde una fuente estructurada.</p><div class="effort">3–5 días</div></div>
+      <div class="card idea-card"><div class="idea-num">2</div><span class="pill p0">P0</span><h3>Piloto PF1481</h3><p>Un caso completo: documento, LMS, portafolio, evidencia y auditoría.</p><div class="effort">2,5–4 días</div></div>
+      <div class="card idea-card"><div class="idea-num">3</div><span class="pill p0">P0</span><h3>Radar 7.0</h3><p>Dashboard que muestra qué subcriterios cumplen, faltan o están en riesgo.</p><div class="effort">1–2 días</div></div>
+      <div class="card idea-card"><div class="idea-num">4</div><span class="pill p0">P0</span><h3>Inspector de enlaces</h3><p>Abre LMS y portafolios, captura evidencia y detecta inconsistencias básicas.</p><div class="effort">1–2 días</div></div>
+      <div class="card idea-card"><div class="idea-num">5</div><span class="pill p1">P1</span><h3>Pasaporte de evidencia</h3><p>Portafolio navegable con los seis componentes y trazabilidad por aprendizaje.</p><div class="effort">1–2 días</div></div>
+      <div class="card idea-card"><div class="idea-num">6</div><span class="pill p1">P1</span><h3>Laboratorios de industria</h3><p>Seis arquetipos interactivos reutilizables para las familias de cursos.</p><div class="effort">1–2 días por arquetipo</div></div>
+      <div class="card idea-card"><div class="idea-num">7</div><span class="pill p1">P1</span><h3>Banco de extensión</h3><p>Gestiona las 89 actividades por cliente y evita repeticiones incoherentes.</p><div class="effort">2–3 días</div></div>
+      <div class="card idea-card"><div class="idea-num">8</div><span class="pill p2">P2</span><h3>Avatar empleador</h3><p>Un stakeholder virtual plantea un desafío y entrega feedback breve.</p><div class="effort">½–1 día plantilla</div></div>
+    </div>
+    <div class="recommendation"><p><strong>Orden recomendado:</strong> primero aquello que evita rechazo y permite escalar; después la capa “wow”.</p></div>
+    <div class="page-no">5 / 8</div>
+  </section>
+
+  <section class="page">
+    <div class="eyebrow">05 · Experiencias reutilizables</div>
+    <h2>Seis laboratorios para cubrir las 15 especialidades</h2>
+    <div class="grid-3">
+      <div class="card lab-card blue"><div class="lab-icon">▦</div><h3>Datos · Ciencia de Datos · ML</h3><p>Notebook JupyterLite con dataset, autocomprobación, interpretación y reflexión final.</p><span class="pill">Producto: notebook + informe</span></div>
+      <div class="card lab-card teal"><div class="lab-icon">☁</div><h3>Cloud · Ingeniería de Datos</h3><p>Constructor visual de arquitectura: costos, seguridad, escalabilidad y decisiones justificadas.</p><span class="pill">Producto: diagrama + defensa</span></div>
+      <div class="card lab-card orange"><div class="lab-icon">⇄</div><h3>DevOps</h3><p>Pipeline CI/CD simulado con errores deliberados y bitácora de diagnóstico.</p><span class="pill">Producto: pipeline reparado</span></div>
+      <div class="card lab-card red"><div class="lab-icon">⌾</div><h3>Ciberseguridad</h3><p>Laboratorio aislado con OWASP Juice Shop, misiones guiadas y reporte responsable.</p><span class="pill">Producto: reporte técnico</span></div>
+      <div class="card lab-card green"><div class="lab-icon">◆</div><h3>Product Owner</h3><p>Juego de priorización de backlog y conversación ramificada con stakeholders.</p><span class="pill">Producto: backlog argumentado</span></div>
+      <div class="card lab-card"><div class="lab-icon">{ }</div><h3>Full-stack · Front-end · IA</h3><p>Aplicación defectuosa en StackBlitz o flujo n8n que el estudiante debe diagnosticar y mejorar.</p><span class="pill">Producto: prototipo funcional</span></div>
+    </div>
+    <p class="small" style="margin-top:5mm"><strong>Ventaja:</strong> cada laboratorio puede alimentar simultáneamente actividades prácticas, herramientas didácticas, instrumentos y evidencias del portafolio.</p>
+    <div class="page-no">6 / 8</div>
+  </section>
+
+  <section class="page">
+    <div class="eyebrow">06 · Herramientas y roles</div>
+    <h2>La mejor combinación es producción + auditoría independiente</h2>
+    <div class="grid-4">
+      <div class="card role"><div class="role-head claude">Claude Code</div><ul><li>Extracción SIPFOR → JSON.</li><li>Borradores estructurados.</li><li>Tablas e instrumentos repetitivos.</li><li>Producción por plan y rama.</li></ul></div>
+      <div class="card role"><div class="role-head codex">Codex</div><ul><li>Prototipos web y dashboard.</li><li>Pruebas automáticas.</li><li>Playwright y captura de evidencia.</li><li>Auditoría contra rúbrica y fuentes.</li></ul></div>
+      <div class="card role"><div class="role-head lms">Moodle + H5P</div><ul><li>LMS oficial navegable.</li><li>Quizzes y escenarios.</li><li>Portafolio y seguimiento.</li><li>Clonación de módulos canónicos.</li></ul></div>
+      <div class="card role"><div class="role-head media">HeyGen</div><ul><li>Bienvenida y briefing.</li><li>Stakeholder virtual.</li><li>Feedback breve.</li><li>Evidencia motivacional; no curso completo.</li></ul></div>
+    </div>
+    <div class="dual-control">
+      <div><strong class="white">Claude produce</strong><br><span class="small white">fuentes, estructura y borradores</span></div>
+      <div class="arrow">⇄</div>
+      <div><strong class="white">Codex audita</strong><br><span class="small white">pruebas, enlaces y consistencia</span></div>
+    </div>
+    <div class="grid-2" style="margin-top:5mm">
+      <div class="card orange"><h3>Uso sensato de HeyGen</h3><p class="small">Piezas de 60–120 segundos vinculadas a actividades de aprendizaje. No conviene producir decenas de horas de avatar: consume tiempo y presupuesto sin subir proporcionalmente el puntaje.</p></div>
+      <div class="card soft"><h3>Costos de referencia</h3><p class="small">Creator: USD 29/mes. Business: USD 149/mes e incluye funciones interactivas, SCORM e integración LMS. API: aproximadamente USD 1/min con Avatar III y USD 4/min con Avatar IV 1080p.</p></div>
+    </div>
+    <div class="page-no">7 / 8</div>
+  </section>
+
+  <section class="page final-page">
+    <div class="eyebrow">07 · Tiempo, equipo y decisiones</div>
+    <h2>Ruta crítica hasta el cierre</h2>
+    <div class="timeline">
+      <div class="day red-top"><div class="date">24 SEP</div><p>Definir alcance, matriz cliente × plan, LMS y responsables.</p></div>
+      <div class="day"><div class="date">25–29 SEP</div><p>Construir PF1481 completo y obtener aprobación.</p></div>
+      <div class="day orange-top"><div class="date">30 SEP</div><p>Congelar esquema, plantilla y definición de “listo”.</p></div>
+      <div class="day"><div class="date">1–2 OCT</div><p>Producir los otros 14 planes y variantes.</p></div>
+      <div class="day orange-top"><div class="date">5 OCT</div><p>Auditar LMS, enlaces, evidencias y similitud.</p></div>
+      <div class="day red-top"><div class="date">6 OCT</div><p>Revisión humana final. No generar contenido nuevo.</p></div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <table>
+          <thead><tr><th>Alcance</th><th>Esfuerzo</th><th>Equipo</th></tr></thead>
+          <tbody>
+            <tr><td>Piloto 1 plan × 1 cliente</td><td>24–36 h</td><td>2 personas</td></tr>
+            <tr><td>15 módulos canónicos</td><td>80–120 h</td><td>3 productores + revisor</td></tr>
+            <tr><td>45 variantes + QA</td><td>+100–160 h</td><td>5–7 personas</td></tr>
+            <tr><td>90 variantes + QA</td><td>+200–320 h</td><td>8–10 personas</td></tr>
+          </tbody>
+        </table>
+        <p class="small" style="margin-top:3mm">Estimación condicionada a recibir accesos, datos y decisiones el día 0.</p>
+      </div>
+      <div class="card red" style="padding:3mm 5mm">
+        <div class="decision"><div class="decision-num">1</div><div><strong>¿Segundo módulo o todos?</strong><br><span class="small">Si son todos, cambia completamente la viabilidad.</span></div><div class="decision-owner">SENCE / Natalia</div></div>
+        <div class="decision"><div class="decision-num">2</div><div><strong>¿45 o 90 propuestas?</strong><br><span class="small">Cerrar la matriz cliente × plan.</span></div><div class="decision-owner">Natalia</div></div>
+        <div class="decision"><div class="decision-num">3</div><div><strong>¿Quién arma los LMS?</strong><br><span class="small">Nombrar responsables y entregar accesos.</span></div><div class="decision-owner">Clientes</div></div>
+        <div class="decision"><div class="decision-num">4</div><div><strong>¿Qué diferencia a cada cliente?</strong><br><span class="small">Recibir infraestructura, alianzas, docentes y activos verificables.</span></div><div class="decision-owner">Natalia + OTEC</div></div>
+      </div>
+    </div>
+    <div class="recommendation"><p><strong>Decisión recomendada:</strong> aprobar primero un “vertical slice” de PF1481 —Anexo 2, LMS, portafolio, dos actividades, instrumentos y evidencia— y escalar solo después de esa validación.</p></div>
+    <div class="footer-note">Fuentes principales: Resolución Exenta N°2320; guía de propuesta técnica; Anexo 2; documentación oficial de OpenAI, Anthropic y HeyGen.</div><div class="page-no">8 / 8</div>
+  </section>
+
+</body>
+<script>
+  const previewPage = new URLSearchParams(location.search).get('page');
+  if (previewPage) {
+    document.querySelectorAll('.page').forEach((el, index) => {
+      el.style.display = index + 1 === Number(previewPage) ? 'block' : 'none';
+    });
+    requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, 0)));
+  }
+</script>
+</html>

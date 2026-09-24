@@ -1,0 +1,797 @@
+<title>Módulo 2 ML y Agentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F2F5F7;
+  --surface:#FFFFFF;
+  --surface-2:#E9EEF2;
+  --ink:#13212E;
+  --ink-2:#465665;
+  --ink-3:#6F7D8A;
+  --line:#D3DBE2;
+  --line-strong:#AEBAC5;
+  --accent:#0B6B6B;
+  --accent-soft:#DDEFEE;
+  --crit-bg:#FAECE8;
+  --crit-line:#E7B9AE;
+  --st-pendiente:#8C98A4;
+  --st-curso:#2463C9;
+  --st-revision:#B7791F;
+  --st-listo:#1C8A55;
+  --st-bloqueado:#C2412D;
+  --shadow:0 1px 2px rgba(19,33,46,.06),0 6px 20px rgba(19,33,46,.06);
+  --f-display:"Barlow Condensed","Roboto Condensed","Arial Narrow",sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0E161E;
+    --surface:#15202A;
+    --surface-2:#1C2934;
+    --ink:#E4EAF0;
+    --ink-2:#A8B5C1;
+    --ink-3:#7F8D9A;
+    --line:#293845;
+    --line-strong:#3D4F5E;
+    --accent:#45B5B1;
+    --accent-soft:#16332F;
+    --crit-bg:#2B1A17;
+    --crit-line:#5C2C23;
+    --st-pendiente:#7C8996;
+    --st-curso:#5B93F0;
+    --st-revision:#E0A23A;
+    --st-listo:#3FBF80;
+    --st-bloqueado:#F0735E;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0E161E;
+  --surface:#15202A;
+  --surface-2:#1C2934;
+  --ink:#E4EAF0;
+  --ink-2:#A8B5C1;
+  --ink-3:#7F8D9A;
+  --line:#293845;
+  --line-strong:#3D4F5E;
+  --accent:#45B5B1;
+  --accent-soft:#16332F;
+  --crit-bg:#2B1A17;
+  --crit-line:#5C2C23;
+  --st-pendiente:#7C8996;
+  --st-curso:#5B93F0;
+  --st-revision:#E0A23A;
+  --st-listo:#3FBF80;
+  --st-bloqueado:#F0735E;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;letter-spacing:.005em;text-wrap:balance;margin:0;line-height:1.08}
+p{margin:0}
+.mono{font-family:var(--f-mono)}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+button{font:inherit;color:inherit}
+
+/* Header */
+.top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end}
+.top h1{font-size:clamp(34px,5vw,52px);margin-top:10px}
+.top h1 .amp{color:var(--ink-3);font-weight:500}
+.lede{max-width:64ch;color:var(--ink-2);margin-top:14px;font-size:16px}
+.situacion{max-width:64ch;margin-top:10px;font-size:14px;color:var(--ink-2)}
+.situacion b{color:var(--ink);font-weight:600}
+.cuenta{border-left:1px solid var(--line-strong);padding-left:24px;min-width:180px}
+.cuenta .n{font-family:var(--f-display);font-size:76px;font-weight:700;line-height:.9;font-variant-numeric:tabular-nums}
+.cuenta .l{font-weight:600;margin-top:6px}
+.cuenta .s{font-size:13px;color:var(--ink-3)}
+.sync{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);margin-top:18px}
+.sync i{width:8px;height:8px;border-radius:50%;background:var(--st-pendiente);flex:none}
+.sync[data-s="ok"] i{background:var(--st-listo)}
+.sync[data-s="off"] i{background:var(--st-bloqueado)}
+
+/* Ruta crítica */
+.ruta{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px;margin-top:26px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.ruta li{list-style:none;background:var(--surface);padding:10px 12px 12px;display:flex;flex-direction:column;gap:3px;position:relative}
+.ruta ol{display:contents}
+.ruta .d{font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--ink-2)}
+.ruta .t{font-size:13px;line-height:1.35;color:var(--ink-2)}
+.ruta li.hl{background:var(--accent-soft)}
+.ruta li.hl .t{color:var(--ink)}
+.ruta li.hl .t b{font-weight:600}
+.ruta li.hoy::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--accent)}
+.ruta .hoy-tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.ruta-cap{font-size:12.5px;color:var(--ink-3);margin-top:8px}
+
+/* Toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between;padding-block:12px;border-block:1px solid var(--line)}
+.seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:7px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:transparent;padding:7px 14px;font-size:13.5px;cursor:pointer;color:var(--ink-2)}
+.seg button+button{border-left:1px solid var(--line-strong)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface);font-weight:500}
+.seg-l{font-size:13px;color:var(--ink-3);margin-right:10px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink-2);margin:0;padding:0}
+.legend li{list-style:none;display:flex;align-items:center;gap:6px}
+
+/* Glyphs */
+.gl{width:15px;height:15px;flex:none;display:block}
+.c-pendiente{color:var(--st-pendiente)}
+.c-curso{color:var(--st-curso)}
+.c-revision{color:var(--st-revision)}
+.c-listo{color:var(--st-listo)}
+.c-bloqueado{color:var(--st-bloqueado)}
+
+/* Section headers */
+.sec-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:16px}
+.sec-h h2{font-size:30px}
+.sec-h p{color:var(--ink-2);font-size:14px;max-width:62ch}
+
+/* Course cards */
+.cursos{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:20px}
+.curso{background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:22px 22px 20px;display:flex;flex-direction:column;gap:16px}
+.curso .code{display:flex;justify-content:space-between;gap:12px;font-family:var(--f-mono);font-size:12.5px;color:var(--ink-3)}
+.curso .code b{color:var(--ink);font-weight:500}
+.curso h3{font-size:27px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-block:1px solid var(--line)}
+.facts div{background:var(--surface);padding:10px 0 10px 12px}
+.facts div:first-child{padding-left:0}
+.facts dt{font-size:12px;color:var(--ink-3)}
+.facts dd{margin:0;font-family:var(--f-display);font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1}
+.facts dd small{font-family:var(--f-body);font-size:12px;font-weight:400;color:var(--ink-3)}
+.m2{font-size:14px;color:var(--ink-2);display:flex;gap:8px;align-items:flex-start}
+.m2 .gl{margin-top:3px}
+.prog-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.prog-h b{font-family:var(--f-display);font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.prog-h span{font-size:13px;color:var(--ink-3)}
+.bar{display:flex;gap:2px;height:14px;border-radius:4px;overflow:hidden;margin-top:8px;background:var(--surface)}
+.bar i{display:block;min-width:4px}
+.bar .s-pendiente{background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line-strong)}
+.bar .s-curso{background:var(--st-curso)}
+.bar .s-revision{background:var(--st-revision)}
+.bar .s-listo{background:var(--st-listo)}
+.bar .s-bloqueado{background:repeating-linear-gradient(135deg,var(--st-bloqueado) 0 4px,color-mix(in srgb,var(--st-bloqueado) 62%,var(--surface)) 4px 7px)}
+.counts{display:flex;flex-wrap:wrap;gap:4px 14px;margin:8px 0 0;padding:0;font-size:12.5px;color:var(--ink-2)}
+.counts li{list-style:none;display:flex;align-items:center;gap:5px;font-variant-numeric:tabular-nums}
+.horas{font-size:13.5px;color:var(--ink-2)}
+.horas b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.lab{border-top:1px dashed var(--line-strong);padding-top:14px;font-size:13.5px;color:var(--ink-2)}
+.lab .eyebrow{display:block;margin-bottom:4px}
+.lab b{color:var(--ink);font-weight:600}
+
+/* Frenos */
+.frenos{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px}
+.frenos h3{font-size:20px;margin-bottom:10px}
+.bloq{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+.bloq > div{padding:12px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.bloq .why{display:flex;gap:8px;align-items:flex-start;font-weight:500}
+.bloq .why .gl{margin-top:3px}
+.bloq .why span.k{margin-left:auto;font-family:var(--f-mono);font-size:12px;color:var(--ink-3);white-space:nowrap;padding-left:8px}
+.chips{display:flex;flex-wrap:wrap;gap:4px;padding-left:23px}
+.chips span{font-size:12px;background:var(--surface-2);color:var(--ink-2);border-radius:4px;padding:1px 7px}
+.vacio{color:var(--ink-3);font-size:14px;padding:12px 0}
+.riesgos{display:flex;flex-direction:column;gap:10px;margin:0;padding:0}
+.riesgos li{list-style:none;border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--surface)}
+.riesgos li.crit{background:var(--crit-bg);border-color:var(--crit-line)}
+.riesgos .tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+.riesgos li.crit .tag{color:var(--st-bloqueado)}
+.riesgos b{display:block;font-weight:600;margin:2px 0 3px}
+.riesgos p{font-size:13.5px;color:var(--ink-2)}
+.riesgos .src{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3);margin-top:4px}
+
+/* Tables */
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+thead th{font-size:12.5px;font-weight:500;color:var(--ink-3);background:var(--surface);position:sticky;top:0;border-bottom:1px solid var(--line-strong);white-space:nowrap;vertical-align:bottom}
+thead th .pc{display:block;font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3)}
+thead th .pn{display:block;color:var(--ink);font-weight:600;font-size:13.5px}
+tbody tr:last-child > *{border-bottom:0}
+tr.g th{background:var(--surface-2);font-family:var(--f-display);font-size:17px;font-weight:600;color:var(--ink);padding:8px 12px;position:sticky;left:0}
+tr.g th span{font-family:var(--f-body);font-size:12.5px;font-weight:400;color:var(--ink-2);margin-left:10px}
+.c-name{min-width:260px;max-width:420px;position:sticky;left:0;background:var(--surface);z-index:1}
+thead .c-name{z-index:2}
+th.c-name{font-weight:400}
+.c-name .n{display:block;font-weight:600;color:var(--ink)}
+.c-name .d{display:block;font-size:13px;color:var(--ink-2);margin-top:2px;max-width:52ch}
+.c-name .ref{display:inline-block;font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3);margin-top:4px}
+.tag-b{display:inline-block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line-strong);color:var(--ink-2);border-radius:4px;padding:0 5px;margin-left:6px;vertical-align:2px;font-weight:500}
+.tag-b.crit{border-color:var(--st-bloqueado);color:var(--st-bloqueado)}
+.num{text-align:right;font-family:var(--f-mono);font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+thead th.num{text-align:right}
+.c-st{width:1%;white-space:nowrap}
+.t-canon .c-st{min-width:190px;white-space:normal}
+.cg{border-left:1px solid var(--line-strong)}
+thead th.c-cli{text-align:left;color:var(--ink);font-weight:600;font-size:13.5px;border-bottom:1px solid var(--line)}
+thead th.sub{font-size:12px}
+.st{display:inline-flex;align-items:center;gap:7px;border:1px solid transparent;background:transparent;border-radius:6px;padding:4px 8px 4px 6px;cursor:pointer;font-size:13.5px;color:var(--ink);position:relative;white-space:nowrap}
+.st:hover:not(:disabled){border-color:var(--line-strong);background:var(--surface-2)}
+.st:disabled{cursor:default}
+.st .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);margin-left:1px}
+.t-inst .st{font-size:13px}
+.cell-note{font-size:12.5px;color:var(--ink-2);margin:4px 0 0 6px;max-width:34ch}
+.cell-note time{color:var(--ink-3);font-family:var(--f-mono);font-size:11px;display:block}
+
+/* Esfuerzo */
+.esf{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:start}
+.esf table{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.esf tfoot td,.esf tfoot th{font-weight:600;color:var(--ink);border-top:1px solid var(--line-strong);border-bottom:0}
+.esf tr.live td,.esf tr.live th{background:var(--accent-soft);color:var(--ink)}
+.esf .nota{font-size:13.5px;color:var(--ink-2);display:flex;flex-direction:column;gap:10px}
+.esf .nota b{color:var(--ink)}
+
+footer{border-top:1px solid var(--line);padding-top:16px;font-size:12.5px;color:var(--ink-3);display:flex;flex-direction:column;gap:6px}
+footer p{max-width:100ch}
+
+/* Dialog */
+dialog{border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--ink);padding:0;width:min(460px,calc(100% - 32px));box-shadow:0 20px 60px rgba(0,0,0,.25)}
+dialog::backdrop{background:rgba(10,20,30,.45)}
+.dlg{padding:20px 20px 18px;display:flex;flex-direction:column;gap:12px}
+.dlg-ctx{font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+.dlg h3{font-size:24px}
+.dlg-det{font-size:13.5px;color:var(--ink-2)}
+.opts{border:0;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px}
+.opts legend{font-size:12.5px;color:var(--ink-3);margin-bottom:6px;padding:0}
+.opt{position:relative;display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:7px;padding:8px 10px;cursor:pointer;font-size:14px}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.opt:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.dlg label.lb{font-size:12.5px;color:var(--ink-3)}
+.dlg textarea{width:100%;min-height:74px;resize:vertical;border:1px solid var(--line-strong);border-radius:7px;background:var(--bg);color:var(--ink);font:14px/1.45 var(--f-body);padding:8px 10px;margin-top:4px}
+.dlg-meta{font-size:12px;color:var(--ink-3);font-family:var(--f-mono)}
+.dlg-act{display:flex;justify-content:flex-end;gap:8px}
+.btn{border:1px solid var(--line-strong);background:var(--surface);border-radius:7px;padding:8px 16px;cursor:pointer;font-size:14px}
+.btn.pri{background:var(--ink);border-color:var(--ink);color:var(--surface);font-weight:500}
+.btn:disabled{opacity:.6;cursor:progress}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:9px 16px;border-radius:8px;font-size:14px;box-shadow:var(--shadow);z-index:10;max-width:calc(100% - 32px)}
+
+@media (max-width:860px){
+  .top{grid-template-columns:1fr}
+  .cuenta{border-left:0;border-top:1px solid var(--line-strong);padding:16px 0 0;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .cuenta .n{font-size:56px}
+  .ruta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .frenos,.esf{grid-template-columns:1fr}
+  .c-name{min-width:210px}
+}
+@media (max-width:480px){
+  .wrap{padding-inline:16px}
+  .ruta{grid-template-columns:1fr}
+  .facts dd{font-size:22px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .st,.seg button{transition:background-color .12s,border-color .12s}
+}
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="top">
+      <div>
+        <p class="eyebrow">Becas Laborales · Talento Digital 2026 · Res. Ex. N°2320 · Anexo N°2</p>
+        <h1>Módulo 2: Machine Learning <span class="amp">y</span> Agentes</h1>
+        <p class="lede">Qué tiene que existir —no solo estar escrito— para el segundo módulo de PF1462 y PF1821, en qué estado está cada pieza y qué la frena. El estado es compartido: lo que se marque aquí lo ve quien abra el panel.</p>
+        <p class="situacion"><b>Al 24 de septiembre:</b> fase 0, reconocimiento. Todavía no hay propuestas en el repositorio y el contenido del módulo 2 de ninguno de los dos cursos se ha extraído de SIPFOR.</p>
+      </div>
+      <div class="cuenta" aria-live="polite">
+        <div class="n" id="dias">9</div>
+        <div>
+          <p class="l" id="dias-l">días hábiles al cierre</p>
+          <p class="s" id="dias-s">6 oct 2026, contando hoy</p>
+        </div>
+      </div>
+    </div>
+    <p class="sync" id="sync" data-s="wait"><i></i><span id="sync-t">Conectando con el estado compartido…</span></p>
+
+    <div class="ruta" aria-label="Ruta crítica hasta el cierre">
+      <ol id="ruta"></ol>
+    </div>
+    <p class="ruta-cap">Ruta crítica del brainstorm del 24 sep. ML y Agentes no son el piloto: se producen el 1 y 2 de octubre sobre la plantilla ya aprobada con PF1481.</p>
+  </header>
+
+  <div class="toolbar">
+    <div>
+      <span class="seg-l">Curso</span>
+      <div class="seg" role="group" aria-label="Filtrar por curso">
+        <button type="button" id="f-ambos" data-f="ambos" aria-pressed="true">Ambos</button>
+        <button type="button" id="f-PF1462" data-f="PF1462" aria-pressed="false">PF1462 · ML</button>
+        <button type="button" id="f-PF1821" data-f="PF1821" aria-pressed="false">PF1821 · Agentes</button>
+      </div>
+    </div>
+    <ul class="legend" id="legend" aria-label="Estados"></ul>
+  </div>
+
+  <section aria-labelledby="h-cursos">
+    <div class="sec-h">
+      <h2 id="h-cursos">Los dos cursos</h2>
+      <p>Cada curso suma sus entregables propios y los de cada institución que lo presente. Se asumen los 3 clientes confirmados.</p>
+    </div>
+    <div class="cursos" id="cursos"></div>
+  </section>
+
+  <section aria-labelledby="h-frenos">
+    <div class="sec-h">
+      <h2 id="h-frenos">Qué lo frena</h2>
+    </div>
+    <div class="frenos">
+      <div>
+        <h3>Bloqueos marcados en el panel</h3>
+        <div class="bloq" id="bloqueos"></div>
+      </div>
+      <div>
+        <h3>Riesgos que no son trabajo técnico</h3>
+        <ul class="riesgos">
+          <li class="crit">
+            <span class="tag">Rechazo automático</span>
+            <b>La evidencia tiene que ser idéntica al LMS</b>
+            <p>Si la revisión del LMS difiere de las imágenes o el video adjuntos, el curso se rechaza por requisitos de curso. No hay rectificación.</p>
+            <p class="src">Anexo N°2, sección VIII, pág. 91</p>
+          </li>
+          <li>
+            <span class="tag">Consulta a SENCE</span>
+            <b>¿Solo el segundo módulo o todos?</b>
+            <p>El punto 7.4 pide el segundo; el numeral 4.3.1.1 dice que se evalúan todos. Si son todos, el trabajo se multiplica por el número de módulos de cada curso.</p>
+            <p class="src">OPEN-QUESTIONS #1 · 5 días hábiles de consultas</p>
+          </li>
+          <li>
+            <span class="tag">Decisión de Natalia</span>
+            <b>¿Qué instituciones presentan ML y Agentes?</b>
+            <p>La matriz cliente × plan no está definida. Este panel asume Skillnest, U. Autónoma y UNAB en ambos cursos.</p>
+            <p class="src">OPEN-QUESTIONS #3</p>
+          </li>
+          <li>
+            <span class="tag">Cada cliente</span>
+            <b>¿Qué LMS usa cada uno y acepta importación?</b>
+            <p>Montar los 6 módulos (3 instituciones × 2 cursos) toma minutos con importación masiva o unas 48 h a mano.</p>
+            <p class="src">OPEN-QUESTIONS #5 y #6</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-canon">
+    <div class="sec-h">
+      <h2 id="h-canon">Contenido del módulo 2</h2>
+      <p>Se produce <b>una vez por curso</b> y sirve para todas las instituciones: lo fija el plan formativo SENCE, no el oferente.</p>
+    </div>
+    <div class="tbl" id="tbl-canon"></div>
+  </section>
+
+  <section aria-labelledby="h-inst">
+    <div class="sec-h">
+      <h2 id="h-inst">Montaje y propuesta por institución</h2>
+      <p>Se produce <b>una vez por institución y curso</b>: cambia la plataforma, los activos reales y la narrativa.</p>
+    </div>
+    <div class="tbl" id="tbl-inst"></div>
+  </section>
+
+  <section aria-labelledby="h-esf">
+    <div class="sec-h">
+      <h2 id="h-esf">Esfuerzo estimado</h2>
+      <p>Para estos dos cursos y tres instituciones, con los supuestos del documento de Diego.</p>
+    </div>
+    <div class="esf">
+      <div class="tbl" style="box-shadow:none">
+        <table>
+          <thead><tr><th>Bloque</th><th>Unidades</th><th class="num">A mano</th><th class="num">Con motor</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" style="font-weight:400">Contenido del módulo 2</th><td>2 cursos × 22 h</td><td class="num">44 h</td><td class="num">10,8 h</td></tr>
+            <tr><th scope="row" style="font-weight:400">LMS, evidencia, narrativa y Anexo 2</th><td>6 × 17,5 h</td><td class="num">105 h</td><td class="num">15,6 h</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><th scope="row">Total</th><td></td><td class="num">149 h</td><td class="num">26,4 h</td></tr>
+            <tr class="live"><th scope="row">Lo que falta según este panel</th><td id="esf-u"></td><td class="num" id="esf-mano"></td><td class="num" id="esf-motor"></td></tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="nota">
+        <p><b>El costo está en montar, no en redactar.</b> De las 149 h a mano, 48 son montar el módulo en el LMS de cada institución: la línea más grande y la que más depende de una sola respuesta externa.</p>
+        <p>No incluye construir el motor (60–80 h), levantar las fichas de cliente (4 h por institución) ni las actividades de extensión de los otros 13 planes.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Fuentes: Res. Ex. N°2320, punto 7.4, Anexo N°2 (págs. 89–91) y Anexo N°7 (págs. 96–115); «Construir el módulo 2» (Diego, 24 sep 2026); «Brainstorm ejecutivo Módulo 2» (24 sep 2026); repositorio licitacion-td-2026: data/planes-formativos.csv, data/umbrales-por-plan.csv, data/rubrica-subcriterios.csv, state/OPEN-QUESTIONS.md.</p>
+    <p>Los porcentajes son peso dentro de la nota técnica. «A7» = Anexo N°7 · «A2» = Anexo N°2.</p>
+  </footer>
+</div>
+
+<dialog id="dlg" aria-labelledby="dlg-t">
+  <form class="dlg" id="dlg-form">
+    <p class="dlg-ctx" id="dlg-ctx"></p>
+    <h3 id="dlg-t"></h3>
+    <p class="dlg-det" id="dlg-det"></p>
+    <fieldset class="opts" id="dlg-opts">
+      <legend>Estado</legend>
+    </fieldset>
+    <div>
+      <label class="lb" for="dlg-nota">Nota (qué falta, quién, enlace)</label>
+      <textarea id="dlg-nota" maxlength="280"></textarea>
+    </div>
+    <p class="dlg-meta" id="dlg-meta"></p>
+    <div class="dlg-act">
+      <button type="button" class="btn" id="dlg-cancel">Cancelar</button>
+      <button type="submit" class="btn pri" id="dlg-save">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------- Datos estructurales (del repositorio y de las bases) ----------
+  const PLANES = [
+    { code:"PF1462", short:"Machine Learning", name:"Especialización en Machine Learning",
+      horas:201, cupos:90, ext:5,
+      lab:{ t:"Notebook JupyterLite", d:"con dataset, autocomprobación, interpretación y reflexión final. Producto: notebook + informe." } },
+    { code:"PF1821", short:"Agentes", name:"Construcción de Agentes y Automatización con Herramientas Low Code",
+      horas:220, cupos:120, ext:5,
+      lab:{ t:"Flujo n8n con fallas", d:"que el participante diagnostica y mejora. Producto: prototipo funcional." } }
+  ];
+  const CLIENTES = [
+    { slug:"skillnest", nombre:"Skillnest" },
+    { slug:"u-autonoma", nombre:"U. Autónoma" },
+    { slug:"unab", nombre:"UNAB" }
+  ];
+
+  const CANON = [
+    { t:"Insumo", s:"No pondera, pero todo lo demás depende de esto", rows:[
+      { id:"ae", corto:"Aprendizajes esperados", nombre:"Aprendizajes esperados del módulo 2", det:"Textuales desde SIPFOR, sin reformular, con horas y recursos del módulo.", ref:"SIPFOR", peso:null, h:[1,0.2] }
+    ]},
+    { t:"V · Estrategia evaluativa", s:"Ítem B · 20 % de la técnica", rows:[
+      { id:"B1", corto:"B1 Indicadores", nombre:"3 indicadores por aprendizaje esperado", det:"Verbo en presente + contenido + condición.", ref:"A7 · num. 2", peso:2.0, h:[2,0.5] },
+      { id:"B2", corto:"B2 Instrumentos", nombre:"3 instrumentos de familias distintas", det:"Observación, desempeño y objetiva; cada uno cubre todos los aprendizajes.", ref:"A7 · num. 3", peso:7.0, h:[6,1.5] },
+      { id:"B3", corto:"B3 Portafolio", nombre:"Portafolio con sus 6 elementos desarrollados", det:"Índice, introducción, temas con evidencias por aprendizaje, cierre, plataforma e instrumento. Con rúbrica adjunta.", ref:"A7 · num. 4.3", peso:7.0, h:[4,0.7] },
+      { id:"B4", corto:"B4 Retroalimentación", nombre:"Feedback, autoevaluación, coevaluación y bitácora", det:"La bitácora de registro de resultados y plan de trabajo es la pieza que más se omite.", ref:"A7 · num. 5.4", peso:4.0, h:[2,0.5] }
+    ]},
+    { t:"VI · Metodología", s:"Ítem C · 35 % · se evalúa navegando el LMS", rows:[
+      { id:"C1", corto:"C1 Competencia", nombre:"Metodología anclada a la competencia del módulo", det:"Si sirve para cualquier plan formativo, la nota es 1,0.", ref:"A7 · num. 7", peso:10.5, tag:"binario", h:null },
+      { id:"C2", corto:"C2 Actividades", nombre:"2 actividades prácticas con respuesta modelada", det:"Distintas entre sí, no variantes; las dos deben dar la habilidad.", ref:"A7 · num. 7", peso:10.5, h:[3,1] },
+      { id:"C3", corto:"C3 Motivación", nombre:"Aspectos motivacionales vía la plataforma", det:"La interacción con el LMS es la que tiene que motivar.", ref:"A7 · num. 7", peso:3.5, tag:"binario", h:null },
+      { id:"C4", corto:"C4 Herramientas didácticas", nombre:"2 herramientas didácticas, ambas efectivas", det:"Tutorial y video interactivo. Si solo una sirve, baja a 5,0.", ref:"A7 · num. 7", peso:7.0, h:[4,1] },
+      { id:"C5", corto:"C5 Siglo XXI", nombre:"3 estrategias para 3 habilidades del siglo XXI", det:"Una estrategia por habilidad transversal y cómo se evidencia.", ref:"A7 · num. 7", peso:3.5, h:null }
+    ]}
+  ];
+
+  const INST = [
+    { t:"VIII · LMS y evidencia", s:"Sin esto el ítem C no se puede evaluar", rows:[
+      { id:"lms", corto:"LMS", nombre:"Módulo 2 montado y navegable en el LMS", det:"Acceso con perfil de participante; el enlace va dentro de la respuesta VI c).", ref:"A2 · VI c) y VIII a–c", peso:null, h:[8,0.5] },
+      { id:"evid", corto:"Evidencia", nombre:"Video o imágenes idénticos al LMS", det:"Se graba navegando el LMS real para que no pueda diferir.", ref:"A2 · VIII d)", peso:null, tag:"rechazo", h:[1,0.1] },
+      { id:"correo", corto:"Correo y nube", nombre:"Correo y nube de al menos 12 GB por participante", det:"Mínimo de materiales virtuales.", ref:"A2 · VIII f)", peso:null, h:null }
+    ]},
+    { t:"V · Portafolio publicado", s:"La sección V pide el enlace, no el texto", rows:[
+      { id:"portf", corto:"Portafolio URL", nombre:"Portafolio en URL visitable", det:"Instancia del portafolio base (B3) con la identidad de la institución.", ref:"A2 · V", peso:"ver B3", h:null }
+    ]},
+    { t:"VII · Herramientas y valor agregado", s:"Ítem D · 35 % · alcance: todo el plan formativo", rows:[
+      { id:"D1", corto:"D1 Herramientas", nombre:"5 herramientas de industria adicionales al plan", det:"Cada una con 3 explicaciones: por qué, cómo se usa en la industria, cómo se usará en clases.", ref:"A7 · num. 8", peso:14.0, h:null },
+      { id:"D2", corto:"D2 Vinculación", nombre:"4 estrategias de vinculación temprana", det:"Cada una con 4 explicaciones y mediada por la institución.", ref:"A7 · num. 9", peso:10.5, h:null },
+      { id:"D3", corto:"D3 Extensión", nombre:"5 actividades de extensión", det:"1 cada 50 h (201 h y 220 h dan 5 en ambos cursos). Tema, tipo, objetivo, cantidad y momento; distintas entre instituciones.", ref:"A7 · num. 10", peso:10.5, h:null }
+    ]},
+    { t:"X y cierre", s:"Infraestructura, narrativa propia y ensamblado", rows:[
+      { id:"infra", corto:"Infraestructura", nombre:"Infraestructura con equipos computacionales", det:"Solo equipos baja a 5,0; en comodato con carta de devolución.", ref:"A2 · X", peso:10.0, h:null },
+      { id:"narr", corto:"Narrativa", nombre:"Narrativa diferenciada de los ítems C y D", det:"Con activos reales de la institución, desde su ficha de cliente.", ref:"A2 · VI y VII", peso:null, h:[3,1] },
+      { id:"anexo", corto:"Anexo 2", nombre:"Anexo 2 ensamblado y con los tres controles", det:"Cobertura de rúbrica, diferenciación y verificadores vivos.", ref:"AGENTS.md §7", peso:null, h:[5.5,1.0] }
+    ]}
+  ];
+
+  const ESTADOS = {
+    pendiente:{ label:"Pendiente" },
+    curso:{ label:"En curso" },
+    revision:{ label:"En revisión" },
+    listo:{ label:"Listo" },
+    bloqueado:{ label:"Bloqueado" }
+  };
+  const ORDEN_BAR = ["listo","revision","curso","bloqueado","pendiente"];
+  const ORDEN_OPC = ["pendiente","curso","revision","listo","bloqueado"];
+
+  const RUTA = [
+    { d:"24 sep", a:"2026-09-24", b:"2026-09-24", t:"Definir alcance, matriz cliente × plan, LMS y responsables" },
+    { d:"25–29 sep", a:"2026-09-25", b:"2026-09-29", t:"Piloto PF1481 completo y aprobado" },
+    { d:"30 sep", a:"2026-09-30", b:"2026-09-30", t:"Congelar esquema, plantilla y definición de «listo»" },
+    { d:"1–2 oct", a:"2026-10-01", b:"2026-10-02", t:"<b>ML y Agentes</b> entran con los otros planes y sus variantes", hl:true },
+    { d:"5 oct", a:"2026-10-03", b:"2026-10-05", t:"Auditar LMS, enlaces, evidencias y similitud" },
+    { d:"6 oct", a:"2026-10-06", b:"2026-10-06", t:"Revisión humana final. Cierre" }
+  ];
+
+  // ---------- Estado ----------
+  let estados = new Map();
+  let db = null;
+  let sync = "wait";
+  let soloLectura = false;
+  let filtro = "ambos";
+  try { const f = localStorage.getItem("m2-filtro"); if (f && (f === "ambos" || PLANES.some(p => p.code === f))) filtro = f; } catch (e) {}
+
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+  const nf = (n, d) => n.toLocaleString("es-CL", { minimumFractionDigits:d ?? 0, maximumFractionDigits:d ?? 1 });
+  const get = (id) => estados.get(id) || { estado:"pendiente", nota:"", actualizado:null };
+  const planesVis = () => filtro === "ambos" ? PLANES : PLANES.filter(p => p.code === filtro);
+  const editable = () => db && sync === "ok" && !soloLectura;
+
+  function itemsDe(plan){
+    const out = [];
+    CANON.forEach(g => g.rows.forEach(r => out.push({ id:`${plan.code}__${r.id}`, r, plan, cli:null })));
+    INST.forEach(g => g.rows.forEach(r => CLIENTES.forEach(c => out.push({ id:`${plan.code}__${c.slug}__${r.id}`, r, plan, cli:c }))));
+    return out;
+  }
+  const TODOS = PLANES.flatMap(itemsDe);
+  const POR_ID = new Map(TODOS.map(it => [it.id, it]));
+
+  function glyph(e){
+    const cls = `gl c-${e}`;
+    if (e === "curso") return `<svg class="${cls}" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 1.8A6.2 6.2 0 0 1 8 14.2Z" fill="currentColor"/></svg>`;
+    if (e === "revision") return `<svg class="${cls}" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 8V1.8A6.2 6.2 0 1 1 1.8 8Z" fill="currentColor"/></svg>`;
+    if (e === "listo") return `<svg class="${cls}" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.7 8.3 7 10.5l4.3-4.6" fill="none" style="stroke:var(--surface)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    if (e === "bloqueado") return `<svg class="${cls}" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="currentColor"/><rect x="4" y="7" width="8" height="2" rx="1" style="fill:var(--surface)"/></svg>`;
+    return `<svg class="${cls}" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="2.4 2.1"/></svg>`;
+  }
+  function fmtPeso(p){
+    if (p === null || p === undefined) return "—";
+    if (typeof p === "string") return esc(p);
+    return nf(p, 1) + " %";
+  }
+  function fmtFecha(iso){
+    try {
+      const d = new Date(iso);
+      if (isNaN(d)) return "";
+      return d.toLocaleDateString("es-CL", { day:"numeric", month:"short" }) + " " + d.toLocaleTimeString("es-CL", { hour:"2-digit", minute:"2-digit" });
+    } catch (e) { return ""; }
+  }
+  const hoyISO = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
+
+  // ---------- Cabecera ----------
+  function renderCuenta(){
+    const hoy = new Date(); hoy.setHours(0,0,0,0);
+    const cierre = new Date(2026, 9, 6);
+    let n = 0;
+    for (const d = new Date(hoy); d <= cierre; d.setDate(d.getDate() + 1)) { const w = d.getDay(); if (w !== 0 && w !== 6) n++; }
+    if (n <= 0) { $("dias").textContent = "0"; $("dias-l").textContent = "el plazo cerró"; $("dias-s").textContent = "cierre: 6 oct 2026"; return; }
+    $("dias").textContent = n;
+    $("dias-l").textContent = n === 1 ? "día hábil al cierre" : "días hábiles al cierre";
+  }
+  function renderRuta(){
+    const h = hoyISO();
+    let cur = RUTA.findIndex(s => h >= s.a && h <= s.b);
+    if (cur < 0) cur = RUTA.findIndex(s => h < s.a);
+    $("ruta").innerHTML = RUTA.map((s, i) => `<li class="${s.hl ? "hl" : ""}${i === cur ? " hoy" : ""}">
+      <span class="d">${s.d}</span>${i === cur ? `<span class="hoy-tag">${h >= s.a ? "hoy" : "lo que viene"}</span>` : ""}
+      <span class="t">${s.t}</span></li>`).join("");
+  }
+  function renderLegend(){
+    $("legend").innerHTML = ORDEN_OPC.map(e => `<li>${glyph(e)}${ESTADOS[e].label}</li>`).join("");
+  }
+  function renderSync(){
+    const el = $("sync"); el.dataset.s = sync;
+    let t = "Conectando con el estado compartido…";
+    if (sync === "ok") t = soloLectura ? "Estado compartido · solo lectura para tu cuenta" : "Estado compartido · toca cualquier estado para cambiarlo";
+    if (sync === "off") t = "El estado compartido no está disponible en esta vista: todo se muestra como pendiente.";
+    $("sync-t").textContent = t;
+  }
+  function renderFiltro(){
+    document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === filtro)));
+  }
+
+  // ---------- Tarjetas de curso ----------
+  function conteo(items){
+    const c = { pendiente:0, curso:0, revision:0, listo:0, bloqueado:0 };
+    items.forEach(it => { c[get(it.id).estado]++; });
+    return c;
+  }
+  function horasPend(items){
+    let m = 0, x = 0;
+    items.forEach(it => { if (it.r.h && get(it.id).estado !== "listo") { m += it.r.h[0]; x += it.r.h[1]; } });
+    return [m, x];
+  }
+  function renderCursos(){
+    $("cursos").innerHTML = planesVis().map(p => {
+      const items = itemsDe(p);
+      const c = conteo(items);
+      const total = items.length;
+      const [hm, hx] = horasPend(items);
+      const ae = get(`${p.code}__ae`).estado;
+      const aeTxt = ae === "listo" ? "Aprendizajes esperados del módulo 2 extraídos de SIPFOR." : "Nombre y aprendizajes esperados del módulo 2 aún sin extraer de SIPFOR.";
+      const segs = ORDEN_BAR.filter(e => c[e] > 0).map(e => `<i class="s-${e}" style="flex-grow:${c[e]}" title="${ESTADOS[e].label}: ${c[e]} de ${total}"></i>`).join("");
+      return `<article class="curso">
+        <div class="code"><b>${p.code}</b><span>Perfiles de Especialidad</span></div>
+        <h3>${esc(p.name)}</h3>
+        <dl class="facts">
+          <div><dt>Duración</dt><dd>${p.horas} <small>h</small></dd></div>
+          <div><dt>Cupos</dt><dd>${p.cupos}</dd></div>
+          <div><dt>Extensión para 7,0</dt><dd>${p.ext} <small>activ.</small></dd></div>
+        </dl>
+        <p class="m2">${glyph(ae)}<span>${aeTxt}</span></p>
+        <div>
+          <div class="prog-h"><b>${c.listo} de ${total} listos</b><span>10 del módulo + 30 de las 3 instituciones</span></div>
+          <div class="bar" role="img" aria-label="${ORDEN_BAR.map(e => `${ESTADOS[e].label}: ${c[e]}`).join(", ")}">${segs}</div>
+          <ul class="counts">${ORDEN_BAR.map(e => `<li>${glyph(e)}${ESTADOS[e].label} ${c[e]}</li>`).join("")}</ul>
+        </div>
+        <p class="horas">Falta según el panel: <b>${nf(hm)} h</b> a mano · <b>${nf(hx)} h</b> con motor</p>
+        <p class="lab"><span class="eyebrow">Laboratorio sugerido para C2 y C4</span><b>${esc(p.lab.t)}</b> ${esc(p.lab.d)}</p>
+      </article>`;
+    }).join("");
+  }
+
+  // ---------- Bloqueos ----------
+  function etiqueta(it){
+    return `${it.plan.short}${it.cli ? " · " + it.cli.nombre : ""} · ${it.r.corto}`;
+  }
+  function renderBloqueos(){
+    const vis = new Set(planesVis().map(p => p.code));
+    const grupos = new Map();
+    TODOS.forEach(it => {
+      if (!vis.has(it.plan.code)) return;
+      const s = get(it.id);
+      if (s.estado !== "bloqueado") return;
+      const k = (s.nota || "").trim() || "Sin motivo anotado";
+      if (!grupos.has(k)) grupos.set(k, []);
+      grupos.get(k).push(it);
+    });
+    if (!grupos.size) { $("bloqueos").innerHTML = `<p class="vacio">Nada marcado como bloqueado${sync === "off" ? " (sin estado compartido en esta vista)" : ""}.</p>`; return; }
+    const arr = [...grupos.entries()].sort((a, b) => b[1].length - a[1].length);
+    $("bloqueos").innerHTML = arr.map(([k, its]) => {
+      const max = 12;
+      const chips = its.slice(0, max).map(it => `<span>${esc(etiqueta(it))}</span>`).join("") + (its.length > max ? `<span>+${its.length - max} más</span>` : "");
+      return `<div><p class="why">${glyph("bloqueado")}<span>${esc(k)}</span><span class="k">${its.length} ${its.length === 1 ? "entregable" : "entregables"}</span></p><div class="chips">${chips}</div></div>`;
+    }).join("");
+  }
+
+  // ---------- Tablas ----------
+  function celda(id, conNota){
+    const s = get(id);
+    const dis = editable() ? "" : " disabled";
+    const lab = ESTADOS[s.estado].label;
+    const it = POR_ID.get(id);
+    const aria = `${it.r.nombre}, ${it.plan.short}${it.cli ? ", " + it.cli.nombre : ""}: ${lab}${s.nota ? ". Nota: " + s.nota : ""}`;
+    let html = `<button type="button" class="st" data-id="${id}"${dis} aria-label="${esc(aria)}"${s.nota && !conNota ? ` title="${esc(s.nota)}"` : ""}>${glyph(s.estado)}<span>${lab}</span>${s.nota && !conNota ? `<span class="dot" aria-hidden="true"></span>` : ""}</button>`;
+    if (conNota && s.nota) html += `<p class="cell-note">${esc(s.nota)}${s.actualizado ? `<time>${esc(fmtFecha(s.actualizado))}</time>` : ""}</p>`;
+    return html;
+  }
+  function nombreFila(r){
+    const tag = r.tag ? `<span class="tag-b${r.tag === "rechazo" ? " crit" : ""}">${r.tag === "rechazo" ? "causal de rechazo" : r.tag}</span>` : "";
+    return `<th scope="row" class="c-name"><span class="n">${esc(r.nombre)}${tag}</span><span class="d">${esc(r.det)}</span><span class="ref">${esc(r.ref)}</span></th>`;
+  }
+  function renderCanon(){
+    const ps = planesVis();
+    const cols = 2 + ps.length;
+    let h = `<table class="t-canon"><thead><tr><th class="c-name">Entregable</th><th class="num">% técnica</th>${ps.map(p => `<th class="c-st"><span class="pc">${p.code}</span><span class="pn">${p.short}</span></th>`).join("")}</tr></thead><tbody>`;
+    CANON.forEach(g => {
+      h += `<tr class="g"><th colspan="${cols}" scope="colgroup">${g.t}<span>${g.s}</span></th></tr>`;
+      g.rows.forEach(r => {
+        h += `<tr>${nombreFila(r)}<td class="num">${fmtPeso(r.peso)}</td>${ps.map(p => `<td class="c-st">${celda(`${p.code}__${r.id}`, true)}</td>`).join("")}</tr>`;
+      });
+    });
+    $("tbl-canon").innerHTML = h + "</tbody></table>";
+  }
+  function renderInst(){
+    const ps = planesVis();
+    const cols = 2 + ps.length * CLIENTES.length;
+    let h = `<table class="t-inst"><thead><tr><th class="c-name" rowspan="2">Entregable</th><th class="num" rowspan="2">% técnica</th>${CLIENTES.map(c => `<th class="c-cli cg" colspan="${ps.length}" scope="colgroup">${c.nombre}</th>`).join("")}</tr><tr>${CLIENTES.map(() => ps.map((p, i) => `<th class="c-st sub${i === 0 ? " cg" : ""}" scope="col">${p.short}</th>`).join("")).join("")}</tr></thead><tbody>`;
+    INST.forEach(g => {
+      h += `<tr class="g"><th colspan="${cols}" scope="colgroup">${g.t}<span>${g.s}</span></th></tr>`;
+      g.rows.forEach(r => {
+        h += `<tr>${nombreFila(r)}<td class="num">${fmtPeso(r.peso)}</td>${CLIENTES.map(c => ps.map((p, i) => `<td class="c-st${i === 0 ? " cg" : ""}">${celda(`${p.code}__${c.slug}__${r.id}`, false)}</td>`).join("")).join("")}</tr>`;
+      });
+    });
+    $("tbl-inst").innerHTML = h + "</tbody></table>";
+  }
+  function renderEsfuerzo(){
+    const [hm, hx] = horasPend(TODOS);
+    const n = TODOS.filter(it => it.r.h && get(it.id).estado !== "listo").length;
+    const tot = TODOS.filter(it => it.r.h).length;
+    $("esf-u").textContent = `${n} de ${tot} tareas con horas`;
+    $("esf-mano").textContent = nf(hm) + " h";
+    $("esf-motor").textContent = nf(hx) + " h";
+  }
+
+  function renderAll(){
+    renderSync(); renderFiltro(); renderCursos(); renderBloqueos(); renderCanon(); renderInst(); renderEsfuerzo();
+  }
+
+  // ---------- Diálogo ----------
+  const dlg = $("dlg");
+  $("dlg-opts").insertAdjacentHTML("beforeend", ORDEN_OPC.map(e => `<label class="opt" for="op-${e}"><input type="radio" name="estado" id="op-${e}" value="${e}">${glyph(e)}${ESTADOS[e].label}</label>`).join(""));
+
+  function abrir(id){
+    const it = POR_ID.get(id); if (!it) return;
+    const s = get(id);
+    dlg.dataset.id = id;
+    $("dlg-ctx").textContent = `${it.plan.code} · ${it.plan.short}${it.cli ? " · " + it.cli.nombre : ""} · ${it.r.ref}`;
+    $("dlg-t").textContent = it.r.nombre;
+    $("dlg-det").textContent = it.r.det;
+    const radio = $("op-" + s.estado); if (radio) radio.checked = true;
+    $("dlg-nota").value = s.nota || "";
+    $("dlg-meta").textContent = s.actualizado ? "Última actualización: " + fmtFecha(s.actualizado) : "Sin cambios registrados";
+    $("dlg-save").disabled = false;
+    if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
+    setTimeout(() => { const r = dlg.querySelector("input[name=estado]:checked"); if (r) r.focus(); }, 0);
+  }
+  function cerrar(){ if (typeof dlg.close === "function") dlg.close(); else dlg.removeAttribute("open"); }
+
+  let toastT = null;
+  function toast(msg){
+    const t = $("toast"); t.textContent = msg; t.hidden = false;
+    clearTimeout(toastT); toastT = setTimeout(() => { t.hidden = true; }, 2800);
+  }
+  const pausa = (ms) => new Promise(r => setTimeout(r, ms));
+
+  async function guardar(){
+    const id = dlg.dataset.id;
+    const sel = dlg.querySelector("input[name=estado]:checked");
+    if (!id || !sel || !editable()) { cerrar(); return; }
+    const estado = sel.value;
+    const nota = $("dlg-nota").value.trim().slice(0, 280);
+    const cur = get(id);
+    if (cur.estado === estado && (cur.nota || "") === nota) { cerrar(); return; }
+    const body = { estado, nota, actualizado:new Date().toISOString() };
+    $("dlg-save").disabled = true;
+    try {
+      try { await db.doc("estado/" + id).set(body); }
+      catch (e) {
+        if (e && e.code === "unavailable") { await pausa(400 + Math.random() * 700); await db.doc("estado/" + id).set(body); }
+        else throw e;
+      }
+      cerrar(); toast("Guardado");
+    } catch (e) {
+      const code = e && e.code;
+      if (code === "invalid_argument") { soloLectura = true; cerrar(); renderAll(); toast("Tu cuenta no puede editar este panel: queda en solo lectura."); }
+      else if (code === "revoked" || code === "not_granted" || code === "capability_disabled" || code === "capability_removed") { sync = "off"; cerrar(); renderAll(); toast("El estado compartido dejó de estar disponible en esta vista."); }
+      else if (code === "resource_exhausted") { toast("Demasiados cambios seguidos. Espera unos segundos y vuelve a guardar."); }
+      else { toast("No se pudo guardar. Vuelve a intentarlo en unos segundos."); }
+    } finally { $("dlg-save").disabled = false; }
+  }
+
+  document.addEventListener("click", (ev) => {
+    const b = ev.target.closest && ev.target.closest("button.st[data-id]");
+    if (b && !b.disabled) { abrir(b.dataset.id); return; }
+    const f = ev.target.closest && ev.target.closest(".seg button[data-f]");
+    if (f) {
+      filtro = f.dataset.f;
+      try { localStorage.setItem("m2-filtro", filtro); } catch (e) {}
+      renderAll();
+    }
+  });
+  $("dlg-form").addEventListener("submit", (ev) => { ev.preventDefault(); guardar(); });
+  $("dlg-cancel").addEventListener("click", cerrar);
+
+  // ---------- Arranque ----------
+  renderCuenta(); renderRuta(); renderLegend(); renderAll();
+
+  (async () => {
+    let d = null;
+    try { d = (window.claude && typeof window.claude.use === "function") ? await window.claude.use("db") : null; } catch (e) { d = null; }
+    if (!d) { sync = "off"; renderAll(); return; }
+    db = d; sync = "ok";
+    try {
+      const u = await window.claude.use("user");
+      if (u && typeof u.can === "function") { const w = await u.can("data.write"); if (w === false) soloLectura = true; }
+    } catch (e) {}
+    renderAll();
+    db.collection("estado").onSnapshot((snap) => {
+      const m = new Map();
+      snap.docs.forEach(doc => {
+        if (!doc.exists || !POR_ID.has(doc.id)) return;
+        const v = doc.data() || {};
+        m.set(doc.id, {
+          estado: ESTADOS[v.estado] ? v.estado : "pendiente",
+          nota: typeof v.nota === "string" ? v.nota.slice(0, 280) : "",
+          actualizado: typeof v.actualizado === "string" ? v.actualizado : null
+        });
+      });
+      estados = m;
+      renderAll();
+    }, () => { sync = "off"; renderAll(); });
+  })();
+})();
+</script>

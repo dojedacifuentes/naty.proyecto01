@@ -2,8 +2,8 @@
 
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
-**Última actualización:** 2026-09-22
-**Por:** 2026-09-22-claude-code-02 (Claude Code · opus-5)
+**Última actualización:** 2026-09-24
+**Por:** 2026-09-24-claude-code-01 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -42,9 +42,22 @@ Esta sesión (claude-code, 2026-09-22):
 - [x] Primera auditoría cruzada ejecutada: la sesión inicial revisada desde `claude-code`,
       veredicto **observaciones**, cinco hallazgos en `state/auditorias/`
 
+Sesión claude-code, 2026-09-24:
+
+- [x] Entregables del 24-sep traídos al repo → `entregables/2026-09-24-modulo2/`: análisis
+      "Construir el módulo 2" (Diego), brainstorm ejecutivo (PDF, HTML y vista previa) y el
+      panel de entregables del módulo 2 de PF1462 (ML) y PF1821 (Agentes)
+- [x] PDF de las bases 2026 y 2024 versionados en `bases/` (cambio de política, `DECISIONS.md`)
+- [x] `.gitignore` y control 05 ajustados: PDF solo en `bases/` y `entregables/`
+- [x] Remoto definido: https://github.com/dojedacifuentes/naty.proyecto01 · `gh` 2.101.0 instalado
+- [x] Panel publicado como artifact con estado compartido:
+      https://claude.ai/artifact/BpgYipB5aa4YY8c4LGiDuP (48 de 80 entregables marcados bloqueados)
+
 ## A medias
 
-Nada a medias. La sesión cerró limpia.
+- **Primer push a GitHub.** El remoto existe y está vacío, pero se creó **público** y
+  `OPEN-QUESTIONS.md` #14 pide privado. No se empuja nada hasta que el usuario decida.
+  Además `gh` necesita que el usuario complete el login en el navegador.
 
 Lo que existe pero **nunca se ha ejercido de verdad**: el sistema de verificación no ha
 visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de conteo y el
@@ -59,7 +72,7 @@ visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de co
 | Matriz real cliente × plan | No definida | Natalia |
 | Fechas formales de la licitación | Llamado aún no publicado | SENCE / Natalia |
 | Fichas de cliente (LMS, infraestructura, docentes) | No levantadas | Natalia + cada cliente |
-| Publicación del repo en GitHub | `gh` no está instalado y falta decidir cuenta y accesos | Diego |
+| Primer push a GitHub | El repo remoto es público; #14 pide privado. Falta login de `gh` | Usuario / Diego |
 
 ## Números que ordenan el trabajo
 
@@ -72,7 +85,7 @@ visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de co
 
 ## Estado de la verificación
 
-`npm run verificar` → 8 controles, 0 errores, 4 avisos:
+`npm run verificar` → 8 controles, 0 errores, 4 avisos (los mismos del 22-sep):
 
 - 3 avisos del control 06: afirmaciones sobre las bases sin numeral ni página en
   `docs/03-anexo2-estructura.md:41`, `:43` y `docs/04-verificadores-protocolo.md:17`.

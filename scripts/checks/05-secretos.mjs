@@ -51,6 +51,9 @@ export default {
 
     const versionados = (git(['ls-files'], { opcional: true }) || '').split('\n').filter(Boolean);
     const EXTENSION_SENSIBLE = /\.(pdf|env|key|pem|pfx|p12)$/i;
+    // Los PDF de las bases (públicos) y los entregables del proyecto se versionan a
+    // propósito (DECISIONS.md, 2026-09-24). Un PDF en cualquier otra ruta sigue siendo error.
+    const PDF_PERMITIDO = /^(bases\/[^/]+|entregables\/.+)\.pdf$/i;
     // El nombre se juzga por el principio del archivo, no por cualquier coincidencia:
     // "credenciales-lms.csv" es sospechoso, "05-secretos.mjs" es este mismo control.
     const NOMBRE_SENSIBLE = /^(credencial|contrase|password|secreto|secrets?|token)/i;
@@ -58,7 +61,8 @@ export default {
 
     for (const f of versionados) {
       const base = f.split('/').pop();
-      if (EXTENSION_SENSIBLE.test(f) || (NOMBRE_SENSIBLE.test(base) && !ES_CODIGO.test(base))) {
+      if (PDF_PERMITIDO.test(f)) continue;
+      if (EXTENSION_SENSIBLE.test(f) ||(NOMBRE_SENSIBLE.test(base) && !ES_CODIGO.test(base))) {
         r.error('archivo sensible versionado: sácalo con "git rm --cached" y revisa .gitignore', f);
       }
     }

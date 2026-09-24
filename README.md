@@ -81,6 +81,14 @@ responde con archivo y línea. Protocolo completo: **`AUDITORIA.md`**.
 | `.githooks/` | Hook de pre-commit versionado (se activa con `npm run hooks`). |
 | `PROMPT-CLAUDE-CODE.md` | Prompts para abrir una sesión y para auditar desde otra herramienta. |
 | `propuestas/` | (se crea al empezar producción) Un directorio por cliente × plan. |
+| `bases/` | PDF de las bases 2026 (SENCE, Res. Ex. N°2320) y 2024 (OTIC SOFOFA). Fuente citable por numeral y página. |
+| `entregables/` | Lo entregado a Natalia, un directorio por hito con fecha y su `README.md`. |
+
+## Dónde vive
+
+Repositorio remoto: https://github.com/dojedacifuentes/naty.proyecto01. Todo lo del
+proyecto va acá —código, estado, bases y entregables— para que cada hito quede trazable
+en un solo lugar (`state/DECISIONS.md`, 2026-09-24).
 
 ## Estado actual
 
@@ -92,5 +100,4 @@ de referencia, matriz cliente × plan, y fechas formales de la licitación.
 
 - Credenciales de LMS, contraseñas, tokens de acceso de evaluadores.
 - Datos personales de tutores, participantes o postulantes.
-- PDF de las bases (pesan y son públicos): se citan por numeral y página.
 - Información comercial cruzada entre clientes que compiten entre sí.

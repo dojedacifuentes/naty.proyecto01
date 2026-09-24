@@ -29,11 +29,14 @@ Haz esto en orden, y no avances a un paso si el anterior falló:
 
 3. Comprueba que no haya nada sensible versionado:
    - `npm run verificar` debe terminar sin errores (el control 05 revisa esto).
-   - `git ls-files` no debe listar ningún PDF ni archivo de credenciales.
+   - `git ls-files` no debe listar ningún PDF fuera de `bases/` y `entregables/`, ni
+     archivos de credenciales.
    Si algo falla, detente y avísame.
 
-4. Publícalo: `gh repo create licitacion-td-2026 --private --source=. --push`
-   Si el nombre ya existe, avísame en vez de inventar otro.
+4. Publícalo en el remoto ya definido (DECISIONS.md, 2026-09-24):
+   `git remote add origin https://github.com/dojedacifuentes/naty.proyecto01.git`
+   Antes del push, `gh repo view dojedacifuentes/naty.proyecto01 --json visibility`: si
+   dice PUBLIC, detente y pregunta (OPEN-QUESTIONS.md #14). Si es privado, `git push -u origin main`.
 
 5. Protege el trabajo colaborativo:
    - Etiquetas: `fase-0`, `fase-1-motor`, `fase-2-produccion`, `bloqueado`,
