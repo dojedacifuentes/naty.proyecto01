@@ -46,6 +46,9 @@ npm run ficha -- PF1821 PF1822
 - `01-entregables.md`: qué producir, con las cantidades del 7,0 ya calculadas para ese
   plan (por ejemplo, 4 aprendizajes esperados → 12 indicadores). Aquí se marca el avance.
 
+Para ver todo esto de una vez, en papel: `npm run manual -- PF1821 PF1822 --salida <dir> --pdf`
+arma un manual con los entregables, las cantidades y la checklist de cada curso.
+
 ## Etapa 2 — Producir el contenido canónico (una sesión por curso)
 
 Un archivo por entregable en `contenidos/<PF>/modulo-2/`, en este orden, porque cada uno

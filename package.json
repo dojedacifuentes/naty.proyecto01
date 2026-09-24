@@ -15,6 +15,7 @@
     "umbrales": "node scripts/calcular-umbrales.mjs",
     "sipfor": "node scripts/extraer-sipfor.mjs",
     "ficha": "node scripts/ficha-modulo.mjs",
+    "manual": "node scripts/manual-modulo.mjs",
     "verificadores": "node scripts/auditar-verificadores.mjs",
     "hooks": "node scripts/instalar-hooks.mjs",
     "test": "node scripts/verificar.mjs --estricto"

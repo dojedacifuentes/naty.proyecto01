@@ -1,6 +1,6 @@
 # HANDOFF
 
-**De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-03` — 2026-09-24
+**De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-04` — 2026-09-24
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea
 
@@ -11,6 +11,9 @@
   `contenidos/<PF>/modulo-2/`. Módulo 2 = `MA04560` (18 h) y `MA04576` (21 h), con 4
   aprendizajes esperados cada uno. Ojo con `OPEN-QUESTIONS.md` #16: así se cuenta si el
   módulo transversal de orientación es el primero.
+- **Manual PDF para Natalia** con todo lo que hay que entregar en el módulo 2 de los dos cursos:
+  `entregables/2026-09-24-modulo2/manual-entregables-modulo2-PF1821-PF1822.pdf`. Sus
+  "sugerencias para este módulo" son propuestas a validar, no contenido aprobado.
 - **Todo queda en local por ahora.** El usuario pidió no empujar todavía, aunque el remoto
   ya está decidido y es público.
 

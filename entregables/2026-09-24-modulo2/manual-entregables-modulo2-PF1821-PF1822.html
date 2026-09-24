@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Manual de entregables del módulo 2 · PF1821 y PF1822</title>
+<style>
+  @page { size: A4; margin: 18mm 17mm 20mm; @bottom-left { content: "Manual de entregables del módulo 2 · PF1821 · PF1822"; font: 8pt 'Segoe UI', Arial, sans-serif; color: #6b7a8c; } @bottom-right { content: counter(page) " / " counter(pages); font: 8pt 'Segoe UI', Arial, sans-serif; color: #6b7a8c; } }
+  @page :first { margin: 0; @bottom-left { content: none } @bottom-right { content: none } }
+  :root { --navy:#13233a; --blue:#1f4e79; --ink:#1b2430; --ink2:#4a5868; --line:#d4dbe3; --zebra:#f4f6f9; --crit:#8f1d1d; --critbg:#fbefee; --hl:#e8f0f8; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; color: var(--ink); font: 10pt/1.5 Georgia, 'Times New Roman', serif; }
+  h1,h2,h3,h4,.eyebrow,.kpis,.t,.ent header,.label,.chip,.tag,.cant,dt { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+  h2 { font-size: 19pt; color: var(--navy); margin: 0 0 10pt; line-height: 1.15; border-bottom: 2pt solid var(--blue); padding-bottom: 6pt; }
+  h3 { font-size: 13pt; color: var(--navy); margin: 18pt 0 6pt; }
+  h4 { margin: 0; font-size: 11pt; color: var(--navy); }
+  p { margin: 0 0 7pt; }
+  .brk { break-before: page; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 8pt; color: var(--blue); margin: 0 0 4pt; font-weight: 600; }
+  .mono { font-family: Consolas, 'Courier New', monospace; font-size: .92em; }
+  .up { text-transform: none; }
+  .small { font-size: 8.6pt; } .muted { color: var(--ink2); }
+  .cover { height: 296mm; overflow: hidden; padding: 30mm 24mm 22mm; background: linear-gradient(160deg, #13233a 0%, #1c3d63 70%, #1f4e79 100%); color: #fff; display: flex; flex-direction: column; }
+  .cover .eyebrow { color: #9fc3e6; }
+  .cover h1 { font-size: 34pt; line-height: 1.08; margin: 18mm 0 6mm; font-weight: 600; }
+  .cover .rule { width: 34mm; height: 2pt; background: #6fa8dc; margin-bottom: 8mm; }
+  .cover .sub { font-style: italic; font-size: 13pt; color: #dce8f4; max-width: 140mm; }
+  .cover .cursos { margin-top: 14mm; display: grid; gap: 5mm; }
+  .cover .cursos div { border-left: 2pt solid #6fa8dc; padding: 1mm 0 1mm 5mm; font-family: 'Segoe UI', Arial, sans-serif; }
+  .cover .cursos b { display: block; font-size: 12pt; } .cover .cursos span { font-size: 9.5pt; color: #cfe0f1; }
+  .cover .meta { margin-top: auto; font-family: 'Segoe UI', Arial, sans-serif; font-size: 9.5pt; color: #dce8f4; line-height: 1.8; }
+  .cover .meta b { color: #fff; }
+  .cover .foot { border-top: .6pt solid #5d7fa3; margin-top: 8mm; padding-top: 4mm; font-family: 'Segoe UI', Arial, sans-serif; font-size: 8.5pt; color: #b9cde2; }
+  .callout { border-left: 3pt solid var(--blue); background: var(--zebra); padding: 6pt 10pt; margin: 7pt 0; break-inside: avoid; }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout.crit { border-color: var(--crit); background: var(--critbg); }
+  .callout .label { color: var(--blue); } .callout.crit .label { color: var(--crit); }
+  .label { text-transform: uppercase; letter-spacing: .08em; font-size: 7.8pt; font-weight: 700; color: var(--blue); margin: 0 0 3pt; }
+  .t { width: 100%; border-collapse: collapse; font-size: 8.8pt; margin: 6pt 0 10pt; line-height: 1.35; }
+  .t th { background: var(--navy); color: #fff; text-align: left; font-weight: 600; padding: 5pt 6pt; vertical-align: bottom; }
+  .t td { padding: 5pt 6pt; border-bottom: .6pt solid var(--line); vertical-align: top; }
+  .t tbody tr:nth-child(even) td { background: var(--zebra); }
+  .t .k { font-weight: 700; color: var(--navy); white-space: nowrap; }
+  .t .r { text-align: right; } .t .c { text-align: center; white-space: nowrap; }
+  .t .thin { font-weight: 400; font-size: 8pt; color: #cbd8e6; }
+  .t tr.hl td { background: var(--hl) !important; } .t tr.tot td { font-weight: 700; border-top: 1pt solid var(--navy); }
+  .t .ev { color: var(--blue); font-family: 'Segoe UI', Arial, sans-serif; font-size: 8pt; }
+  .t.res td:first-child { font-weight: 600; color: var(--navy); width: 26%; }
+  .t.ae td div { margin-bottom: 2pt; }
+  .t tr { break-inside: avoid; }
+  .kpis { display: grid; grid-template-columns: repeat(5, 1fr); border-top: .6pt solid var(--line); border-bottom: .6pt solid var(--line); margin: 4pt 0 10pt; }
+  .kpis div { padding: 7pt 8pt; border-left: .6pt solid var(--line); } .kpis div:first-child { border-left: 0; padding-left: 0; }
+  .kpis b { display: block; font-size: 15pt; color: var(--navy); } .kpis span { font-size: 8pt; color: var(--ink2); }
+  blockquote { margin: 3pt 0 8pt; padding: 6pt 10pt; border-left: 3pt solid var(--navy); background: var(--hl); font-size: 9.4pt; }
+  .fuente { font-size: 8pt; color: var(--ink2); }
+  .ent { border: .6pt solid var(--line); border-radius: 3pt; padding: 8pt 10pt 4pt; margin: 0 0 8pt; break-inside: avoid; }
+  .ent.crit { border-color: #e2b4b0; background: var(--critbg); }
+  .ent header { display: flex; align-items: baseline; gap: 8pt; margin-bottom: 4pt; }
+  .ent .id { background: var(--navy); color: #fff; font-weight: 700; font-size: 8.5pt; padding: 1pt 6pt; border-radius: 2pt; white-space: nowrap; }
+  .ent.crit .id { background: var(--crit); }
+  .ent .peso { margin-left: auto; font-size: 8pt; color: var(--ink2); white-space: nowrap; }
+  .ent .cant { font-size: 9.2pt; margin: 0 0 4pt; }
+  .ent dl { display: grid; grid-template-columns: 30mm 1fr; gap: 3pt 10pt; margin: 0 0 4pt; }
+  .ent dt { font-size: 8pt; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: .04em; padding-top: 1.5pt; }
+  .ent dd { margin: 0; font-size: 9.2pt; }
+  .tag { display: inline-block; font-size: 6.8pt; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; color: #7a5a00; background: #fff4d6; border-radius: 2pt; padding: 0 3pt; }
+  .sug { margin: 0; padding-left: 12pt; } .sug li { margin-bottom: 2pt; } .sugp { margin: 0; }
+  .chip { display: inline-block; font-size: 7.8pt; background: var(--zebra); border: .5pt solid var(--line); border-radius: 2pt; padding: 0 4pt; margin: 0 1pt 2pt 0; }
+  .nota { font-size: 9pt; background: var(--zebra); padding: 6pt 9pt; border-radius: 3pt; }
+  .t.ck td { padding: 6pt; } .t.ck tr.sep td { background: var(--hl) !important; font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; color: var(--navy); font-size: 8.4pt; text-transform: uppercase; letter-spacing: .05em; }
+  .box { display: inline-block; width: 9pt; height: 9pt; border: 1pt solid var(--navy); vertical-align: -1pt; }
+  .t.mods td { font-size: 8.4pt; }
+  ol.flujo { padding-left: 14pt; } ol.flujo li { margin-bottom: 4pt; }
+</style></head><body>
+
+<section class="cover">
+  <p class="eyebrow">Becas Laborales · Talento Digital 2026</p>
+  <h1>Manual de entregables<br>del módulo 2</h1>
+  <div class="rule"></div>
+  <p class="sub">Qué hay que producir, en qué cantidad, qué debe traer cada pieza y dónde va en el Anexo N°2, curso por curso.</p>
+  <div class="cursos"><div><b>PF1821 · CONSTRUCCIÓN DE AGENTES Y AUTOMATIZACIÓN CON HERRAMIENTAS LOW CODE</b><span>Módulo 2: MA04560 FUNDAMENTOS DE N8N Y MANIPULACIÓN DE DATOS · 18 h · 220 h el plan</span></div><div><b>PF1822 · ESPECIALIZACIÓN EN DESARROLLO CON IA</b><span>Módulo 2: MA04576 INTRODUCCIÓN A MODELOS GENERATIVOS Y CONSUMO POR API · 21 h · 190 h el plan</span></div></div>
+  <div class="meta">
+    <b>Para:</b> Natalia — hackea.pro<br>
+    <b>Fecha:</b> 24 de septiembre de 2026<br>
+    <b>Fuentes:</b> planes formativos en SIPFOR (Res. 1868, 2026-08-05) · Res. Ex. N°2320, punto 7.4 y Anexos N°2 y N°7
+  </div>
+  <p class="foot">Documento de trabajo generado desde el repositorio del proyecto (npm run manual). Los aprendizajes, criterios, competencias y recursos son textuales de SIPFOR; las sugerencias por módulo están marcadas y se validan antes de producir.</p>
+</section>
+
+<section>
+  <p class="eyebrow">Resumen</p>
+  <h2>Lo que hay que entregar, de un vistazo</h2>
+  <table class="t res"><thead><tr><th></th><th>PF1821<br><span class="thin">CONSTRUCCIÓN DE AGENTES Y AUTOMATIZACIÓN CON HERRAMIENTAS LOW CODE</span></th><th>PF1822<br><span class="thin">ESPECIALIZACIÓN EN DESARROLLO CON IA</span></th></tr></thead><tbody>
+    <tr><td>Módulo 2</td><td><span class="mono">MA04560</span> FUNDAMENTOS DE N8N Y MANIPULACIÓN DE DATOS · <b>18 h</b></td><td><span class="mono">MA04576</span> INTRODUCCIÓN A MODELOS GENERATIVOS Y CONSUMO POR API · <b>21 h</b></td></tr>
+    <tr><td>Aprendizajes esperados</td><td>4 AE · 13 criterios en el plan</td><td>4 AE · 12 criterios en el plan</td></tr>
+    <tr><td>B1 · indicadores</td><td><b>12</b></td><td><b>12</b></td></tr>
+    <tr><td>B2 · instrumentos</td><td><b>3</b> de familias distintas</td><td><b>3</b> de familias distintas</td></tr>
+    <tr><td>B3 · portafolio</td><td><b>6 de 6</b> elementos + URL + rúbrica</td><td><b>6 de 6</b> elementos + URL + rúbrica</td></tr>
+    <tr><td>B4 · retroalimentación</td><td><b>4</b> productos, bitácora incluida</td><td><b>4</b> productos, bitácora incluida</td></tr>
+    <tr><td>C2 · actividades prácticas</td><td><b>2</b> con respuesta modelada</td><td><b>2</b> con respuesta modelada</td></tr>
+    <tr><td>C4 · herramientas didácticas</td><td><b>2</b>, ambas efectivas</td><td><b>2</b>, ambas efectivas</td></tr>
+    <tr><td>C5 · siglo XXI</td><td><b>3</b> estrategias</td><td><b>3</b> estrategias</td></tr>
+    <tr><td>III · IV · módulos a listar</td><td><b>11</b> módulos · 220 h</td><td><b>9</b> módulos · 190 h</td></tr>
+    <tr><td>D1 · D2 (por institución)</td><td><b>5</b> herramientas · <b>4</b> estrategias</td><td><b>5</b> herramientas · <b>4</b> estrategias</td></tr>
+    <tr><td>D3 · extensión (por institución)</td><td><b>5</b> actividades</td><td><b>4</b> actividades</td></tr>
+  </tbody></table>
+  <div class="callout"><p class="label">Qué se evalúa</p><p>La propuesta técnica se desarrolla sobre el <b>segundo módulo</b> del plan formativo (bases 2026, punto 7.4). Pesa 10 % infraestructura, 20 % estrategia evaluativa (B), 35 % metodología (C) y 35 % herramientas y valor agregado (D). El ítem D se desarrolla a lo largo de todo el plan.</p></div>
+  <div class="callout"><p class="label">Desarrollado, no descrito · y textual</p><p>El portafolio y el instrumento evaluativo deben estar desarrollados, no solo enunciados (Anexo N°7, num. 4.3, pág. 103). La metodología se evalúa por la experiencia del usuario en el LMS (punto 7.4): se construye, no se describe. Los aprendizajes esperados van tal como están en SIPFOR, sin reformular; este manual los reproduce así.</p></div>
+  <div class="callout crit"><p class="label">El único rechazo automático</p><p>Si la revisión del LMS difiere de la evidencia adjunta, el curso se rechaza por requisitos de curso (Anexo N°2, sección VIII, pág. 91). No hay rectificación.</p></div>
+</section>
+
+<section class="brk">
+  <p class="eyebrow">Cómo se produce</p>
+  <h2>El flujo para cada curso</h2>
+  <ol class="flujo">
+    <li><b>Extraer el plan de SIPFOR.</b> <span class="mono">npm run sipfor -- PF1821 PF1822</span>. Hecho el 24-sep para estos dos cursos.</li>
+    <li><b>Generar la ficha y la lista de entregables.</b> <span class="mono">npm run ficha -- PF1821 PF1822</span> deja en <span class="mono">contenidos/&lt;PF&gt;/modulo-2/</span> la ficha textual y las cantidades del 7,0. Hecho.</li>
+    <li><b>Producir el contenido del módulo</b>, un archivo por entregable, en este orden: B1 → C2 → B2 → B3 → B4 → C4 → C1, C3 y C5 → III y IV. Cada pieza se apoya en la anterior: los indicadores miden, las actividades producen evidencia, los instrumentos la evalúan y el portafolio la recoge.</li>
+    <li><b>Revisión de Natalia</b> y marca en la checklist.</li>
+    <li><b>Instanciar por institución</b>: D1, D2, D3, infraestructura, narrativa, LMS, portafolio publicado y evidencia; luego los tres controles de calidad.</li>
+  </ol>
+  <h3>Qué es de cada nivel</h3>
+  <table class="t"><thead><tr><th>Nivel</th><th>Se produce</th><th>Entregables</th></tr></thead><tbody>
+    <tr><td class="k">Curso</td><td>Una vez por plan formativo</td><td>B1, B2, B3 (base), B4, C1–C5, III y IV</td></tr>
+    <tr><td class="k">Institución × curso</td><td>Una vez por cada institución que lo presente</td><td>D1, D2, D3, A, VIII (LMS y evidencia), V (portafolio publicado), narrativa</td></tr>
+  </tbody></table>
+  <h3>Supuestos y preguntas abiertas que afectan este manual</h3>
+  <ul>
+    <li><b>¿Solo el segundo módulo o todos?</b> El punto 7.4 pide el segundo y el numeral 4.3.1.1 dice que se evalúan todos. Se trabaja con el segundo; la consulta formal a SENCE está pendiente.</li>
+    <li><b>¿Cómo se cuenta el segundo módulo?</b> Los dos planes empiezan con un módulo transversal de orientación (MB00171, 12 h). Aquí se cuenta sobre todos los módulos, en el orden de SIPFOR: el segundo es el primer módulo técnico. Falta confirmarlo con el PDF oficial de cada plan.</li>
+    <li><b>¿Qué instituciones presentan cada curso y en qué LMS?</b> Define cuántas veces se repite la parte B.</li>
+    <li><b>Fichas de cliente sin levantar.</b> Sin activos reales, la parte B no se puede diferenciar.</li>
+  </ul>
+</section>
+
+<div class="brk"></div>
+  <section class="plan" id="PF1821">
+    <p class="eyebrow">PF1821 · Nivel 4 · SOLO E-LEARNING</p>
+    <h2>CONSTRUCCIÓN DE AGENTES Y AUTOMATIZACIÓN CON HERRAMIENTAS LOW CODE</h2>
+    <div class="kpis">
+      <div><b>220 h</b><span>plan completo</span></div>
+      <div><b>11</b><span>módulos</span></div>
+      <div><b>18 h</b><span>módulo 2</span></div>
+      <div><b>4 AE</b><span>13 criterios en el plan</span></div>
+      <div><b>5</b><span>actividades de extensión</span></div>
+    </div>
+
+    <h3>Módulo 2 · <span class="mono">MA04560</span> FUNDAMENTOS DE N8N Y MANIPULACIÓN DE DATOS</h3>
+    <p class="label">Competencia del módulo (textual; C1 se evalúa contra esto)</p>
+    <blockquote class="up">CREAR WORKFLOWS BÁSICOS DE AUTOMATIZACIÓN UTILIZANDO N8N, MANIPULANDO DATOS MEDIANTE NODOS FUNDAMENTALES E INTEGRANDO BASES DE DATOS BÁSICAS, PARA RESOLVER PROBLEMÁTICAS EMPRESARIALES DE ACUERDO CON BUENAS PRÁCTICAS DE AUTOMATIZACIÓN.</blockquote>
+    <table class="t ae"><thead><tr><th style="width:9%">AE</th><th style="width:44%">Aprendizaje esperado (textual)</th><th>Criterios de evaluación del plan</th></tr></thead><tbody><tr><td class="k">AE1</td><td class="up">DISTINGUIR LOS CONCEPTOS FUNDAMENTALES DE AUTOMATIZACIÓN DE WORKFLOWS Y LAS CARACTERÍSTICAS DE N8N, DE ACUERDO CON CASOS DE USO EMPRESARIALES REALES.</td><td class="up small"><div><b>1.1</b> IDENTIFICA APLICACIONES DONDE LA AUTOMATIZACIÓN DE WORKFLOWS APORTA VALOR EN CONTEXTOS EMPRESARIALES.</div><div><b>1.2</b> DESCRIBE LA ARQUITECTURA Y LOS COMPONENTES PRINCIPALES DE N8N CON PRECISIÓN TÉCNICA.</div><div><b>1.3</b> DISTINGUE LAS VENTAJAS DE N8N FRENTE A OTRAS HERRAMIENTAS DE AUTOMATIZACIÓN.</div></td></tr><tr><td class="k">AE2</td><td class="up">CREAR WORKFLOWS BÁSICOS UTILIZANDO LA INTERFAZ VISUAL DE N8N, PARA AUTOMATIZAR PROCESOS SIMPLES SEGÚN REQUERIMIENTOS DEFINIDOS.</td><td class="up small"><div><b>2.1</b> UTILIZA LA INTERFAZ VISUAL DE N8N PARA CREAR WORKFLOWS BÁSICOS.</div><div><b>2.2</b> CONFIGURA TRIGGERS, NODOS DE PROCESAMIENTO Y ACCIONES DE SALIDA.</div><div><b>2.3</b> IMPLEMENTA WORKFLOWS FUNCIONALES CON AL MENOS TRES NODOS CONECTADOS.</div></td></tr><tr><td class="k">AE3</td><td class="up">MANIPULAR DATOS UTILIZANDO NODOS FUNDAMENTALES DE N8N, PARA TRANSFORMAR INFORMACIÓN SEGÚN REQUERIMIENTOS ESPECÍFICOS DEL WORKFLOW.</td><td class="up small"><div><b>3.1</b> MANIPULA DATOS UTILIZANDO NODOS FUNDAMENTALES DE N8N, PARA TRANSFORMAR INFORMACIÓN SEGÚN REQUERIMIENTOS ESPECÍFICOS DEL WORKFLOW.</div><div><b>3.2</b> IMPLEMENTA TRANSFORMACIONES DE DATOS ENTRE FORMATOS JSON, CSV Y XML.</div><div><b>3.3</b> APLICA EXPRESIONES N8N PARA PROCESAR Y FILTRAR INFORMACIÓN.</div><div><b>3.4</b> CONECTA BASES DE DATOS BÁSICAS USANDO SUPABASE, DE ACUERDO CON LOS REQUERIMIENTOS DEL WORKFLOW.</div></td></tr><tr><td class="k">AE4</td><td class="up">IMPLEMENTAR LÓGICA CONDICIONAL Y ESTRUCTURAS DE CONTROL EN WORKFLOWS, APLICANDO BUENAS PRÁCTICAS DE DEBUGGING Y TRAZABILIDAD.</td><td class="up small"><div><b>4.1</b> CONFIGURA WORKFLOWS CON MÚLTIPLES RUTAS CONDICIONALES.</div><div><b>4.2</b> UTILIZA OPERADORES LÓGICOS Y COMPARACIONES EN EXPRESIONES N8N.</div><div><b>4.3</b> APLICA HERRAMIENTAS DE DEBUGGING PARA IDENTIFICAR ERRORES BÁSICOS EN WORKFLOWS.</div></td></tr></tbody></table>
+    <p class="fuente">Fuente: SIPFOR, plan id 3934, Res. 1868 del 2026-08-05, versión 1. Extraído el 2026-09-24.</p>
+
+    <h3 class="brk">A. Contenido del módulo · una vez por curso</h3>
+    <p>Lo fija el plan formativo, no el oferente: se produce una vez y sirve a todas las instituciones que presenten el curso.</p>
+    <section class="ent">
+    <header><span class="id">B1</span><h4>Indicadores de logro</h4><span class="peso">2,0 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 12 indicadores · 3 por cada uno de los 4 AE</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Tabla con cada aprendizaje esperado TEXTUAL del plan y sus 3 indicadores. Fórmula de cada indicador: verbo en presente + contenido + condición.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección V.1 · Anexo N°7, num. 2</dd>
+      <dt>Error típico</dt><dd>Reformular o resumir el aprendizaje esperado. Tiene que ir textual.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><p class="sugp">Parte de los 13 criterios del plan, pero ojo: el criterio 3.1 repite textual el AE3 y no sirve como indicador. Los indicadores deben poder observarse en un workflow que funciona.</p></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">B2</span><h4>Instrumentos de evaluación</h4><span class="peso">7,0 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 3 instrumentos de familias distintas, cada uno con todos los AE</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Cada instrumento desarrollado: ítems o tareas completas, pauta o clave de corrección, puntajes y escala. Una tabla de especificaciones AE × instrumento que muestre la cobertura.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección V.2 · Anexo N°7, num. 3, 3.1–3.3</dd>
+      <dt>Error típico</dt><dd>Tres instrumentos de la misma familia, o uno que no cubre todos los AE: baja a 5,0.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><ul class="sug"><li><b>Observación · rúbrica.</b> Revisión de un workflow: estructura trigger → proceso → salida, al menos tres nodos conectados, rutas condicionales, expresiones y trazabilidad de errores.</li><li><b>Desempeño · resolución de problemas.</b> Automatizar un caso empresarial que transforme datos entre JSON, CSV o XML y los registre en Supabase.</li><li><b>Objetiva · selección múltiple y respuesta breve.</b> Arquitectura de n8n, nodos core (Set, IF/Switch, Merge, Filter, Summarize, Split), expresiones y lectura de un workflow dado.</li></ul></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">B3</span><h4>Portafolio de proyectos</h4><span class="peso">7,0 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 6 de 6 elementos, desarrollados</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>1) Guía o índice con tipo de trabajo y estrategia didáctica · 2) Introducción: intenciones, objetivos, punto de partida · 3) Temas centrales con evidencias por AE · 4) Cierre como síntesis · 5) Plataforma de publicación definida · 6) Instrumento evaluativo asociado, desarrollado. Más la rúbrica adjunta.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección V · Anexo N°7, num. 4.3, pág. 103</dd>
+      <dt>Error típico</dt><dd>Omitir el índice o dejar el instrumento solo enunciado: cada elemento faltante baja la nota (4 de 6 = 5,0).</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><p class="sugp">Export JSON de cada workflow, capturas de ejecuciones exitosas y con error, la tabla resultante en Supabase y la bitácora de depuración.</p></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">B4</span><h4>Retroalimentación y aprendizaje colaborativo</h4><span class="peso">4,0 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 4 productos</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>a) Mecanismo de feedback: qué se devuelve, cuándo y por qué medio · b) Pauta de autoevaluación · c) Pauta de coevaluación · d) Bitácora de registro de resultados y plan de trabajo.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección V · Anexo N°7, num. 5.4</dd>
+      <dt>Error típico</dt><dd>Olvidar la bitácora. Es la pieza que más se omite.</dd>
+      
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">C1</span><h4>Relación metodología–competencia</h4><span class="peso">10,5 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 1 estrategia, anclada a la competencia del módulo · binario</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Respuesta a «¿qué hará?»: la estrategia metodológica del módulo asociada a su competencia textual, con todas sus actividades, horas y si son sincrónicas o asincrónicas.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección VI a) · Anexo N°7, num. 7</dd>
+      <dt>Error típico</dt><dd>Un texto genérico que serviría para otro plan formativo: nota 1,0.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><p class="sugp">La competencia habla de «resolver problemáticas empresariales»: la estrategia parte de un caso de negocio real (por ejemplo, solicitudes de clientes) y cada sesión agrega nodos a ese mismo workflow.</p></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">C2</span><h4>Proceso de aprendizaje: actividades prácticas</h4><span class="peso">10,5 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 2 actividades distintas que juntas cubran los 4 AE</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Por actividad: enunciado, datos o insumos de entrada, producto esperado, respuesta modelada, AE que cubre y tiempo estimado.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección VI b) · Anexo N°7, num. 7, pág. 109</dd>
+      <dt>Error típico</dt><dd>Dos variantes de la misma actividad, o actividades que no dan la habilidad.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><ul class="sug"><li><b>Actividad 1 · Automatizar un proceso simple.</b> Formulario o webhook → Set e IF → registro en Supabase, con al menos tres nodos conectados. Respuesta modelada: el workflow de referencia exportado en JSON. Cubre AE1, AE2 y AE3.</li><li><b>Actividad 2 · Diagnosticar y reparar.</b> Un workflow entregado con fallas deliberadas (rutas condicionales mal definidas, expresiones erróneas, casos borde). El participante lo depura con las herramientas de debug y logs y documenta cada corrección. Cubre AE3 y AE4.</li></ul></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">C3</span><h4>Aspectos motivacionales</h4><span class="peso">3,5 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 1 estrategia visible en el LMS · binario</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Cómo la interacción con la plataforma sostiene la motivación en un curso no presencial.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección VI d) · Anexo N°7, num. 7</dd>
+      <dt>Error típico</dt><dd>Describir la motivación sin que se vea en el LMS.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><p class="sugp">Retos encadenados con avance visible en el LMS: cada workflow que funciona desbloquea el siguiente caso del mismo negocio.</p></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">C4</span><h4>Uso de los medios: herramientas didácticas</h4><span class="peso">7,0 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 2 herramientas distintas, ambas efectivas</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Las dos herramientas montadas y visibles en el LMS, cada una con por qué permite adquirir la habilidad. El enlace al LMS va dentro de esta respuesta.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección VI c) · Anexo N°7, num. 7</dd>
+      <dt>Error típico</dt><dd>Que solo una sea efectiva: baja a 5,0 aunque haya dos.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><p class="sugp">Tutorial guiado paso a paso en el editor visual de n8n (primer workflow) y video interactivo sobre expresiones y depuración, con preguntas incrustadas.</p></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">C5</span><h4>Habilidades del siglo XXI</h4><span class="peso">3,5 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 3 estrategias para 3 habilidades</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Tabla: habilidad transversal · estrategia para desarrollarla · cómo se evidencia.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección VI e) · Anexo N°7, num. 7</dd>
+      <dt>Error típico</dt><dd>Nombrar habilidades sin estrategia ni evidencia.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><p class="sugp">Pensamiento crítico (depurar casos borde), colaboración (coevaluación cruzada de workflows) y comunicación (documentar el workflow para un usuario de negocio).</p></dd>
+    </dl>
+  </section>
+    <p class="nota"><b>Laboratorio.</b> Laboratorio sugerido en el brainstorm del 24-sep: flujo n8n con fallas que el participante diagnostica y mejora. Puede alimentar a la vez C2, C4, los instrumentos y las evidencias del portafolio.</p>
+
+    <section class="ent">
+      <header><span class="id">III · IV</span><h4>Tutores y actividades de todos los módulos</h4><span class="peso">admisibilidad · insumo de C</span></header>
+      <p class="cant"><b>Para el 7,0:</b> los 11 módulos del plan, no solo el segundo.</p>
+      <dl><dt>Qué debe traer</dt><dd>Sección III: un tutor por módulo con su opción de perfil. Sección IV: por módulo, nombre, horas, sincrónica o asincrónica y descripción.</dd></dl>
+      <table class="t mods"><thead><tr><th>N°</th><th>Código</th><th>Módulo</th><th class="r">Horas</th><th>Tipo</th></tr></thead><tbody>
+        <tr class=""><td>1</td><td class="mono">MB00171</td><td class="up">ORIENTACIÓN AL PERFIL DE ESPECIALIDADES Y METODOLOGÍA DEL CURSO</td><td class="r">12</td><td>transversal</td></tr><tr class="hl"><td>2</td><td class="mono">MA04560</td><td class="up">FUNDAMENTOS DE N8N Y MANIPULACIÓN DE DATOS <b class="ev">← evaluado</b></td><td class="r">18</td><td>técnico</td></tr><tr class=""><td>3</td><td class="mono">MA04561</td><td class="up">ANÁLISIS DE PROCESOS Y LEVANTAMIENTO DE REQUERIMIENTOS</td><td class="r">18</td><td>técnico</td></tr><tr class=""><td>4</td><td class="mono">MA04562</td><td class="up">INSTALACIÓN Y CONFIGURACIÓN DE N8N</td><td class="r">18</td><td>técnico</td></tr><tr class=""><td>5</td><td class="mono">MA04563</td><td class="up">IA GENERATIVA Y AGENTES EN N8N</td><td class="r">30</td><td>técnico</td></tr><tr class=""><td>6</td><td class="mono">MA04564</td><td class="up">CHATBOTS Y AGENTES CONVERSACIONALES CON N8N</td><td class="r">30</td><td>técnico</td></tr><tr class=""><td>7</td><td class="mono">MA04565</td><td class="up">APIS, SERVICIOS WEB E INTEGRACIONES CON IA</td><td class="r">30</td><td>técnico</td></tr><tr class=""><td>8</td><td class="mono">MA04566</td><td class="up">NODO CODE Y JAVASCRIPT EN N8N</td><td class="r">16</td><td>técnico</td></tr><tr class=""><td>9</td><td class="mono">MA04567</td><td class="up">AUTOMATIZACIÓN DE PROCESOS DE NEGOCIO CON IA</td><td class="r">27</td><td>técnico</td></tr><tr class=""><td>10</td><td class="mono">MB00197</td><td class="up">DESARROLLO DE PORTAFOLIO PARA ESPECIALIDADES</td><td class="r">12</td><td>transversal</td></tr><tr class=""><td>11</td><td class="mono">MB00173</td><td class="up">DESARROLLO DE EMPLEABILIDAD EN LA INDUSTRIA DIGITAL PARA ESPECIALIDADES</td><td class="r">9</td><td>transversal</td></tr>
+        <tr class="tot"><td></td><td></td><td>Total</td><td class="r">220</td><td></td></tr>
+      </tbody></table>
+    </section>
+
+    <h3 class="brk">B. Por institución · una vez por cada institución que presente el curso</h3>
+    <p>Cambia por institución: plataforma, activos reales y narrativa. El ítem D se desarrolla a lo largo de todo el plan formativo, no solo del módulo 2.</p>
+
+    <section class="ent">
+      <header><span class="id">D1</span><h4>Herramientas educativas de la industria</h4><span class="peso">14,0 % de la técnica</span></header>
+      <p class="cant"><b>Para el 7,0:</b> 5 o más, <b>adicionales a las que ya nombra el plan</b>, cada una con 3 explicaciones.</p>
+      <dl>
+        <dt>Qué debe traer</dt><dd>Por herramienta: por qué se seleccionó, cómo se usa en la industria y cómo se usará en clases.</dd>
+        <dt>Ya nombradas en el plan</dt><dd><span class="chip">n8n</span> <span class="chip">Make</span> <span class="chip">Supabase</span> <span class="chip">Docker</span> <span class="chip">Docker Compose</span> <span class="chip">PostgreSQL</span> <span class="chip">MySQL</span> <span class="chip">Redis</span> <span class="chip">Pinecone</span> <span class="chip">OpenAI</span> <span class="chip">Claude</span> <span class="chip">Gemini</span> <span class="chip">Python</span> <span class="chip">JavaScript</span> <span class="chip">Visual Studio Code</span> <span class="chip">JupyterLab</span> <span class="chip">Google Colab</span> <span class="chip">Git</span> <span class="chip">GitHub</span> <span class="chip">Postman</span> <span class="chip">Sublime Text</span> <span class="chip">Spring STS</span> <span class="chip">Telegram</span> <span class="chip">WhatsApp</span> <span class="chip">Slack</span> <span class="chip">Word</span> <span class="chip">Excel</span> <span class="chip">Power Point</span> <span class="chip">requests</span><br><span class="small muted">Detectadas por nombre en los 11 módulos. No cuentan para D1: revisar a mano antes de elegir.</span></dd>
+        <dt>Categorías de la guía (num. 8.1)</dt><dd><ul class="sug"><li><b>Almacenamiento y datos:</b> AWS, Google Cloud, Azure</li><li><b>Gestión de proyectos:</b> Jira, Asana, Trello, Basecamp</li><li><b>Gestión de clientes:</b> CRM</li><li><b>Comunicación:</b> Zoom, Loom</li></ul></dd>
+        <dt>Dónde va</dt><dd>Anexo N°2, sección VII a) · Anexo N°7, num. 8 y 8.1</dd>
+      </dl>
+    </section>
+
+    <section class="ent">
+      <header><span class="id">D2</span><h4>Vinculación temprana con la industria</h4><span class="peso">10,5 % de la técnica</span></header>
+      <p class="cant"><b>Para el 7,0:</b> 4 estrategias, cada una con 4 explicaciones.</p>
+      <dl>
+        <dt>Qué debe traer</dt><dd>Por estrategia: por qué, en qué consiste, cuándo se desarrolla y cómo permite el aprendizaje. Deben estar mediadas por la institución: si hay mentor, se le entrena y se le hace seguimiento.</dd>
+        <dt>Ejemplos de la guía</dt><dd>Casos reales, prototipos evaluados por gente de la industria, conversatorios con expertos, visitas guiadas, simulación de entrevistas, proyectos freelance, coach o mentor laboral.</dd>
+        <dt>Dónde va</dt><dd>Anexo N°2, sección VII a) · Anexo N°7, num. 9 y 9.1</dd>
+      </dl>
+    </section>
+
+    <section class="ent">
+      <header><span class="id">D3</span><h4>Actividades de extensión</h4><span class="peso">10,5 % de la técnica</span></header>
+      <p class="cant"><b>Para el 7,0:</b> 5 actividades (1 cada 50 h de 220 h). Con 3 se obtiene 5,0.</p>
+      <dl>
+        <dt>Qué debe traer</dt><dd>Por actividad: temática, tipo, objetivo, cantidad y momento de ejecución. Siempre opcionales. Distintas entre instituciones que compiten.</dd>
+        <dt>Tipos que da la guía</dt><dd>Charla o webinar, exposición técnica demostrativa, laboratorio, hackatón, visita guiada, taller con especialistas, muestra de proyectos.</dd>
+        <dt>Dónde va</dt><dd>Anexo N°2, sección VII b) · Anexo N°7, num. 10</dd>
+      </dl>
+    </section>
+
+    <section class="ent">
+      <header><span class="id">A</span><h4>Infraestructura y equipos</h4><span class="peso">10,0 % de la técnica</span></header>
+      <p class="cant"><b>Para el 7,0:</b> infraestructura <b>con</b> equipos computacionales. Solo equipos = 5,0.</p>
+      <dl>
+        <dt>Mínimo que fija el módulo 2</dt><dd class="up small">MODALIDAD PRESENCIAL: PROYECTOR MULTIMEDIA, TELÓN Y PIZARRA.<br>EQUIPO COMPUTACIONAL PARA EL FACILITADOR.<br>MODALIDAD PRESENCIAL Y E-LEARNING: EQUIPO COMPUTACIONAL, UNO POR PARTICIPANTE, CON AL MENOS CORE I3, 8 GB RAM Y 128 GB DE ALMACENAMIENTO.<br>NAVEGADORES WEB ACTUALIZADOS.<br>CUENTAS DE N8N CLOUD O ACCESO A INSTANCIA N8N HABILITADA PARA PRÁCTICAS.<br>ACCESO A SUPABASE O BASE DE DATOS EQUIVALENTE PARA EJERCICIOS GUIADOS.</dd>
+        <dt>Condiciones</dt><dd>Equipos en comodato gratuito durante el curso, con carta o correo de compromiso de devolución.</dd>
+        <dt>Dónde va</dt><dd>Anexo N°2, sección X</dd>
+      </dl>
+    </section>
+
+    <section class="ent crit">
+      <header><span class="id">VIII</span><h4>LMS, evidencia y materiales virtuales</h4><span class="peso">habilita el ítem C (35 %)</span></header>
+      <p class="cant"><b>Obligatorio:</b> el módulo 2 montado y navegable desde el perfil de participante.</p>
+      <dl>
+        <dt>Qué debe traer</dt><dd>a) enlace al LMS · b) datos de acceso para evaluadores (nunca en el repo) · c) paso a paso de acceso y navegación · d) imágenes o video del LMS · e) softwares entregados · f) correo y almacenamiento en nube de al menos 12 GB por participante.</dd>
+        <dt>Causal de rechazo</dt><dd>Si la revisión del LMS difiere de la evidencia adjunta, el curso se rechaza por requisitos de curso (Anexo N°2, sección VIII, pág. 91). La evidencia se graba navegando el LMS real.</dd>
+        <dt>Pendiente de decidir</dt><dd>Cuentas de n8n Cloud o instancia habilitada y acceso a Supabase para cada participante: quién las provee y con qué costo.</dd>
+      </dl>
+    </section>
+
+    <section class="ent">
+      <header><span class="id">V</span><h4>Portafolio publicado y narrativa propia</h4><span class="peso">ver B3 · C y D</span></header>
+      <dl>
+        <dt>Portafolio</dt><dd>La sección V pide el <b>enlace</b> al portafolio y la rúbrica adjunta: tiene que existir y ser visitable antes del cierre.</dd>
+        <dt>Narrativa</dt><dd>Los ítems C y D se redactan con los activos reales de la institución (su ficha de cliente). Dos propuestas gemelas perjudican a las dos.</dd>
+      </dl>
+    </section>
+  </section><div class="brk"></div>
+  <section class="plan" id="PF1822">
+    <p class="eyebrow">PF1822 · Nivel 4 · SOLO E-LEARNING</p>
+    <h2>ESPECIALIZACIÓN EN DESARROLLO CON IA</h2>
+    <div class="kpis">
+      <div><b>190 h</b><span>plan completo</span></div>
+      <div><b>9</b><span>módulos</span></div>
+      <div><b>21 h</b><span>módulo 2</span></div>
+      <div><b>4 AE</b><span>12 criterios en el plan</span></div>
+      <div><b>4</b><span>actividades de extensión</span></div>
+    </div>
+
+    <h3>Módulo 2 · <span class="mono">MA04576</span> INTRODUCCIÓN A MODELOS GENERATIVOS Y CONSUMO POR API</h3>
+    <p class="label">Competencia del módulo (textual; C1 se evalúa contra esto)</p>
+    <blockquote class="up">IMPLEMENTAR LA ARQUITECTURA BÁSICA DE UNA APLICACIÓN QUE INTEGRE MODELOS DE IA MEDIANTE APIS Y PREPROCESAMIENTO DE TEXTO PARA CONSUMO POR MODELOS DE LENGUAJE, GARANTIZANDO EL CONSUMO EFICIENTE Y LA EVALUACIÓN DE RESULTADOS EN UN ENTORNO DE DESARROLLO DE SOFTWARE</blockquote>
+    <table class="t ae"><thead><tr><th style="width:9%">AE</th><th style="width:44%">Aprendizaje esperado (textual)</th><th>Criterios de evaluación del plan</th></tr></thead><tbody><tr><td class="k">AE1</td><td class="up">ANALIZAR EL ROL DE LOS MODELOS GENERATIVOS EN EL DESARROLLO DE APLICACIONES, DESCRIBIENDO SUS TIPOS, CASOS DE USO, TECNOLOGÍAS ASOCIADAS Y REPRESENTANDO ARQUITECTURAS FUNCIONALES QUE INTEGREN ESTOS MODELOS MEDIANTE APIS.</td><td class="up small"><div><b>1.1</b> CLASIFICA LOS TIPOS DE MODELOS GENERATIVOS IDENTIFICANDO SUS CARACTERÍSTICAS Y APLICACIONES MÁS FRECUENTES EN LA ORGANIZACIÓN.</div><div><b>1.2</b> REPRESENTA UN DIAGRAMA FUNCIONAL DE UNA APLICACIÓN CON IA GENERATIVA, EXPLICANDO LA FUNCIÓN DE CADA COMPONENTE DENTRO DE LA ARQUITECTURA.</div><div><b>1.3</b> ANALIZA LA ELECCIÓN DE LA ARQUITECTURA EN FUNCIÓN DE CRITERIOS COMO ESCALABILIDAD, SEGURIDAD O MANTENIMIENTO.</div></td></tr><tr><td class="k">AE2</td><td class="up">UTILIZAR UN MODELO DE IA A TRAVÉS DE API REST UTILIZANDO SOLICITUDES HTTP Y AUTENTICACIÓN, BASÁNDOSE EN LA DOCUMENTACIÓN OFICIAL DE OPENAI Y HUGGING FACE.</td><td class="up small"><div><b>2.1</b> EXPLICA LA ESTRUCTURA Y PRINCIPALES SECCIONES DE LOS ENDPOINTS DE GENERACIÓN Y EMBEDDINGS DE ACUERDO CON LA DOCUMENTACIÓN OFICIAL DE OPENAI Y HUGGING FACE.</div><div><b>2.2</b> IMPLEMENTA LLAMADAS HTTP GET Y POST A ENDPOINTS DE COMPLETIONS Y EMBEDDINGS PARA EL CONSUMO DE SERVICIOS, DE ACUERDO CON LA DOCUMENTACIÓN OFICIAL.</div><div><b>2.3</b> IMPLEMENTA UNA FUNCIÓN O CLASE MODULAR EN PYTHON QUE ENCAPSULA LA LLAMADA AL API Y PERMITE REUTILIZARLA CON DISTINTOS PARÁMETROS, DOCUMENTADA CON DOCSTRINGS Y PRUEBAS UNITARIAS SIMPLES.</div></td></tr><tr><td class="k">AE3</td><td class="up">FORMULAR PROMPTS EFECTIVOS PARA MODELOS GENERATIVOS EN ESCENARIOS ZERO-SHOT O FEW-SHOT, CONSIDERANDO LA TAREA SOLICITADA Y LOS PARÁMETROS DE GENERACIÓN DISPONIBLES.</td><td class="up small"><div><b>3.1</b> EXPLICA LA FUNCIÓN DE UN PROMPT EN LA INTERACCIÓN CON MODELOS GENERATIVOS, DISTINGUIENDO ENTRE ESTRATEGIAS ZERO-SHOT Y FEW-SHOT, E IDENTIFICANDO SUS VENTAJAS Y LIMITACIONES BÁSICAS.</div><div><b>3.2</b> ELABORA PROMPTS ADECUADOS PARA TAREAS ESPECÍFICAS, COMO RESUMEN, GENERACIÓN DE CÓDIGO O REFORMULACIÓN DE TEXTO, SELECCIONANDO LA ESTRATEGIA DE PROMPTING MÁS APROPIADA SEGÚN EL OBJETIVO.</div><div><b>3.3</b> AJUSTA UN PROMPT DE FORMA ITERATIVA CON BASE EN LOS OUTPUTS OBTENIDOS, DESCRIBIENDO LOS CAMBIOS REALIZADOS EN TÉRMINOS DE CLARIDAD, ESTRUCTURA O CONTROL DEL COMPORTAMIENTO DEL MODELO.</div></td></tr><tr><td class="k">AE4</td><td class="up">IMPLEMENTAR UN PIPELINE DE PREPROCESAMIENTO Y EVALUACIÓN BÁSICA DE TEXTO EN PYTHON, APLICANDO TÉCNICAS DE LIMPIEZA, NORMALIZACIÓN Y MÉTRICAS INICIALES DE CALIDAD, DE ACUERDO CON LOS REQUISITOS DE ENTRADA Y SALIDA DEL MODELO.</td><td class="up small"><div><b>4.1</b> EXPLICA LOS CONCEPTOS FUNDAMENTALES DE NLP Y EVALUACIÓN BÁSICA DE RESPUESTAS, CONSIDERANDO TOKEN, LEMA, STOPWORDS, N-GRAMAS, COHERENCIA Y RELEVANCIA.</div><div><b>4.2</b> CODIFICA UNA RUTINA EN PYTHON PARA LA LIMPIEZA DE TEXTO, TOKENIZACIÓN Y NORMALIZACIÓN SOBRE UN CORPUS DE DOCUMENTOS, DE ACUERDO CON BUENAS PRÁCTICAS.</div><div><b>4.3</b> CALCULA MÉTRICAS BÁSICAS DE CALIDAD DE RESPUESTAS GENERADAS, CONSIDERANDO COHERENCIA, RELEVANCIA, BLEU Y ROUGE, REGISTRANDO LOS RESULTADOS OBTENIDOS DE ACUERDO CON UN PROTOCOLO DEFINIDO.</div></td></tr></tbody></table>
+    <p class="fuente">Fuente: SIPFOR, plan id 3935, Res. 1868 del 2026-08-05, versión 1. Extraído el 2026-09-24.</p>
+
+    <h3 class="brk">A. Contenido del módulo · una vez por curso</h3>
+    <p>Lo fija el plan formativo, no el oferente: se produce una vez y sirve a todas las instituciones que presenten el curso.</p>
+    <section class="ent">
+    <header><span class="id">B1</span><h4>Indicadores de logro</h4><span class="peso">2,0 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 12 indicadores · 3 por cada uno de los 4 AE</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Tabla con cada aprendizaje esperado TEXTUAL del plan y sus 3 indicadores. Fórmula de cada indicador: verbo en presente + contenido + condición.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección V.1 · Anexo N°7, num. 2</dd>
+      <dt>Error típico</dt><dd>Reformular o resumir el aprendizaje esperado. Tiene que ir textual.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><p class="sugp">Los 12 criterios del plan (3 por AE) sirven de base. Los indicadores deben poder observarse en un producto concreto: código, diagrama, registro de prompts o informe de métricas.</p></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">B2</span><h4>Instrumentos de evaluación</h4><span class="peso">7,0 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 3 instrumentos de familias distintas, cada uno con todos los AE</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Cada instrumento desarrollado: ítems o tareas completas, pauta o clave de corrección, puntajes y escala. Una tabla de especificaciones AE × instrumento que muestre la cobertura.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección V.2 · Anexo N°7, num. 3, 3.1–3.3</dd>
+      <dt>Error típico</dt><dd>Tres instrumentos de la misma familia, o uno que no cubre todos los AE: baja a 5,0.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><ul class="sug"><li><b>Observación · rúbrica.</b> Revisión de código: cliente de API modular, autenticación por variables de entorno, docstrings, pruebas unitarias y manejo de errores.</li><li><b>Desempeño · proyecto individual.</b> Aplicación mínima que consume un modelo por API, con su diagrama de arquitectura, prompts iterados y métricas de evaluación registradas.</li><li><b>Objetiva · selección múltiple y ejercicios interpretativos.</b> Tipos de modelos generativos, endpoints de generación y embeddings, zero-shot frente a few-shot, efecto de temperature y top_p, lectura de métricas BLEU y ROUGE.</li></ul></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">B3</span><h4>Portafolio de proyectos</h4><span class="peso">7,0 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 6 de 6 elementos, desarrollados</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>1) Guía o índice con tipo de trabajo y estrategia didáctica · 2) Introducción: intenciones, objetivos, punto de partida · 3) Temas centrales con evidencias por AE · 4) Cierre como síntesis · 5) Plataforma de publicación definida · 6) Instrumento evaluativo asociado, desarrollado. Más la rúbrica adjunta.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección V · Anexo N°7, num. 4.3, pág. 103</dd>
+      <dt>Error típico</dt><dd>Omitir el índice o dejar el instrumento solo enunciado: cada elemento faltante baja la nota (4 de 6 = 5,0).</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><p class="sugp">Diagrama de arquitectura, repositorio con el cliente de API y sus pruebas, registro de iteraciones de prompts e informe de métricas de calidad.</p></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">B4</span><h4>Retroalimentación y aprendizaje colaborativo</h4><span class="peso">4,0 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 4 productos</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>a) Mecanismo de feedback: qué se devuelve, cuándo y por qué medio · b) Pauta de autoevaluación · c) Pauta de coevaluación · d) Bitácora de registro de resultados y plan de trabajo.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección V · Anexo N°7, num. 5.4</dd>
+      <dt>Error típico</dt><dd>Olvidar la bitácora. Es la pieza que más se omite.</dd>
+      
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">C1</span><h4>Relación metodología–competencia</h4><span class="peso">10,5 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 1 estrategia, anclada a la competencia del módulo · binario</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Respuesta a «¿qué hará?»: la estrategia metodológica del módulo asociada a su competencia textual, con todas sus actividades, horas y si son sincrónicas o asincrónicas.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección VI a) · Anexo N°7, num. 7</dd>
+      <dt>Error típico</dt><dd>Un texto genérico que serviría para otro plan formativo: nota 1,0.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><p class="sugp">La competencia pide «implementar la arquitectura básica de una aplicación» y «la evaluación de resultados»: la estrategia termina en una aplicación mínima evaluada con métricas, no en ejercicios sueltos.</p></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">C2</span><h4>Proceso de aprendizaje: actividades prácticas</h4><span class="peso">10,5 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 2 actividades distintas que juntas cubran los 4 AE</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Por actividad: enunciado, datos o insumos de entrada, producto esperado, respuesta modelada, AE que cubre y tiempo estimado.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección VI b) · Anexo N°7, num. 7, pág. 109</dd>
+      <dt>Error típico</dt><dd>Dos variantes de la misma actividad, o actividades que no dan la habilidad.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><ul class="sug"><li><b>Actividad 1 · Cliente de API reutilizable.</b> Clase en Python que encapsula llamadas de generación y embeddings, con autenticación por variables de entorno, docstrings y pruebas unitarias, más el diagrama de la arquitectura donde se usa. Respuesta modelada: el módulo de referencia con sus tests. Cubre AE1 y AE2.</li><li><b>Actividad 2 · Prompting y evaluación.</b> Diseñar prompts zero-shot y few-shot para una tarea (resumen o reformulación), preprocesar un corpus y medir las salidas con BLEU y ROUGE, registrando cada ajuste. Cubre AE3 y AE4.</li></ul></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">C3</span><h4>Aspectos motivacionales</h4><span class="peso">3,5 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 1 estrategia visible en el LMS · binario</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Cómo la interacción con la plataforma sostiene la motivación en un curso no presencial.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección VI d) · Anexo N°7, num. 7</dd>
+      <dt>Error típico</dt><dd>Describir la motivación sin que se vea en el LMS.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><p class="sugp">Un tablero con las métricas del propio participante: ve cómo mejora su prompt iteración a iteración.</p></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">C4</span><h4>Uso de los medios: herramientas didácticas</h4><span class="peso">7,0 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 2 herramientas distintas, ambas efectivas</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Las dos herramientas montadas y visibles en el LMS, cada una con por qué permite adquirir la habilidad. El enlace al LMS va dentro de esta respuesta.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección VI c) · Anexo N°7, num. 7</dd>
+      <dt>Error típico</dt><dd>Que solo una sea efectiva: baja a 5,0 aunque haya dos.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><p class="sugp">Notebook guiado (Colab o JupyterLab) con celdas de autocomprobación y video interactivo que recorre la documentación oficial de OpenAI y Hugging Face.</p></dd>
+    </dl>
+  </section><section class="ent">
+    <header><span class="id">C5</span><h4>Habilidades del siglo XXI</h4><span class="peso">3,5 % de la técnica</span></header>
+    <p class="cant"><b>Para el 7,0:</b> 3 estrategias para 3 habilidades</p>
+    <dl>
+      <dt>Qué debe traer</dt><dd>Tabla: habilidad transversal · estrategia para desarrollarla · cómo se evidencia.</dd>
+      <dt>Dónde va</dt><dd>Anexo N°2, sección VI e) · Anexo N°7, num. 7</dd>
+      <dt>Error típico</dt><dd>Nombrar habilidades sin estrategia ni evidencia.</dd>
+      <dt>Para este módulo <span class="tag">sugerencia a validar</span></dt><dd><p class="sugp">Pensamiento crítico (evaluar alucinaciones con métricas), comunicación (documentar con docstrings y README) y colaboración (revisión de código entre pares).</p></dd>
+    </dl>
+  </section>
+    <p class="nota"><b>Laboratorio.</b> Laboratorio sugerido en el brainstorm del 24-sep: notebook con dataset, autocomprobación, interpretación y reflexión final. Puede alimentar a la vez C2, C4, los instrumentos y las evidencias del portafolio.</p>
+
+    <section class="ent">
+      <header><span class="id">III · IV</span><h4>Tutores y actividades de todos los módulos</h4><span class="peso">admisibilidad · insumo de C</span></header>
+      <p class="cant"><b>Para el 7,0:</b> los 9 módulos del plan, no solo el segundo.</p>
+      <dl><dt>Qué debe traer</dt><dd>Sección III: un tutor por módulo con su opción de perfil. Sección IV: por módulo, nombre, horas, sincrónica o asincrónica y descripción.</dd></dl>
+      <table class="t mods"><thead><tr><th>N°</th><th>Código</th><th>Módulo</th><th class="r">Horas</th><th>Tipo</th></tr></thead><tbody>
+        <tr class=""><td>1</td><td class="mono">MB00171</td><td class="up">ORIENTACIÓN AL PERFIL DE ESPECIALIDADES Y METODOLOGÍA DEL CURSO</td><td class="r">12</td><td>transversal</td></tr><tr class="hl"><td>2</td><td class="mono">MA04576</td><td class="up">INTRODUCCIÓN A MODELOS GENERATIVOS Y CONSUMO POR API <b class="ev">← evaluado</b></td><td class="r">21</td><td>técnico</td></tr><tr class=""><td>3</td><td class="mono">MA04577</td><td class="up">ORQUESTACIÓN DE FLUJOS Y AGENTES MEDIANTE FRAMEWORKS</td><td class="r">24</td><td>técnico</td></tr><tr class=""><td>4</td><td class="mono">MA04578</td><td class="up">RECUPERACIÓN AUMENTADA POR GENERACIÓN Y ALMACENAMIENTO VECTORIAL</td><td class="r">28</td><td>técnico</td></tr><tr class=""><td>5</td><td class="mono">MA04579</td><td class="up">FINE-TUNING Y PERSONALIZACIÓN DE MODELOS GENERATIVOS</td><td class="r">28</td><td>técnico</td></tr><tr class=""><td>6</td><td class="mono">MA04580</td><td class="up">MLOPS, MONITOREO, SEGURIDAD Y GOBERNANZA DE MODELOS DE IA</td><td class="r">28</td><td>técnico</td></tr><tr class=""><td>7</td><td class="mono">MA04581</td><td class="up">PROYECTO INTEGRADOR DE DESARROLLO DE SOLUCIONES CON IA GENERATIVA</td><td class="r">28</td><td>técnico</td></tr><tr class=""><td>8</td><td class="mono">MB00197</td><td class="up">DESARROLLO DE PORTAFOLIO PARA ESPECIALIDADES</td><td class="r">12</td><td>transversal</td></tr><tr class=""><td>9</td><td class="mono">MB00173</td><td class="up">DESARROLLO DE EMPLEABILIDAD EN LA INDUSTRIA DIGITAL PARA ESPECIALIDADES</td><td class="r">9</td><td>transversal</td></tr>
+        <tr class="tot"><td></td><td></td><td>Total</td><td class="r">190</td><td></td></tr>
+      </tbody></table>
+    </section>
+
+    <h3 class="brk">B. Por institución · una vez por cada institución que presente el curso</h3>
+    <p>Cambia por institución: plataforma, activos reales y narrativa. El ítem D se desarrolla a lo largo de todo el plan formativo, no solo del módulo 2.</p>
+
+    <section class="ent">
+      <header><span class="id">D1</span><h4>Herramientas educativas de la industria</h4><span class="peso">14,0 % de la técnica</span></header>
+      <p class="cant"><b>Para el 7,0:</b> 5 o más, <b>adicionales a las que ya nombra el plan</b>, cada una con 3 explicaciones.</p>
+      <dl>
+        <dt>Qué debe traer</dt><dd>Por herramienta: por qué se seleccionó, cómo se usa en la industria y cómo se usará en clases.</dd>
+        <dt>Ya nombradas en el plan</dt><dd><span class="chip">Docker</span> <span class="chip">Pinecone</span> <span class="chip">OpenAI</span> <span class="chip">Hugging Face</span> <span class="chip">LangChain</span> <span class="chip">TensorFlow</span> <span class="chip">PyTorch</span> <span class="chip">Diffusers</span> <span class="chip">Python</span> <span class="chip">Visual Studio Code</span> <span class="chip">JupyterLab</span> <span class="chip">Google Colab</span> <span class="chip">Git</span> <span class="chip">GitHub</span> <span class="chip">Postman</span> <span class="chip">Sublime Text</span> <span class="chip">Spring STS</span> <span class="chip">spaCy</span> <span class="chip">NLTK</span> <span class="chip">FastAPI</span> <span class="chip">Chroma</span> <span class="chip">FAISS</span> <span class="chip">Ollama</span> <span class="chip">Word</span> <span class="chip">Excel</span> <span class="chip">Power Point</span> <span class="chip">requests</span> <span class="chip">httpx</span> <span class="chip">Pandas</span><br><span class="small muted">Detectadas por nombre en los 9 módulos. No cuentan para D1: revisar a mano antes de elegir.</span></dd>
+        <dt>Categorías de la guía (num. 8.1)</dt><dd><ul class="sug"><li><b>Almacenamiento y datos:</b> AWS, Google Cloud, Azure</li><li><b>Gestión de proyectos:</b> Jira, Asana, Trello, Basecamp</li><li><b>Gestión de clientes:</b> CRM</li><li><b>Comunicación:</b> Slack, Zoom, Loom</li></ul></dd>
+        <dt>Dónde va</dt><dd>Anexo N°2, sección VII a) · Anexo N°7, num. 8 y 8.1</dd>
+      </dl>
+    </section>
+
+    <section class="ent">
+      <header><span class="id">D2</span><h4>Vinculación temprana con la industria</h4><span class="peso">10,5 % de la técnica</span></header>
+      <p class="cant"><b>Para el 7,0:</b> 4 estrategias, cada una con 4 explicaciones.</p>
+      <dl>
+        <dt>Qué debe traer</dt><dd>Por estrategia: por qué, en qué consiste, cuándo se desarrolla y cómo permite el aprendizaje. Deben estar mediadas por la institución: si hay mentor, se le entrena y se le hace seguimiento.</dd>
+        <dt>Ejemplos de la guía</dt><dd>Casos reales, prototipos evaluados por gente de la industria, conversatorios con expertos, visitas guiadas, simulación de entrevistas, proyectos freelance, coach o mentor laboral.</dd>
+        <dt>Dónde va</dt><dd>Anexo N°2, sección VII a) · Anexo N°7, num. 9 y 9.1</dd>
+      </dl>
+    </section>
+
+    <section class="ent">
+      <header><span class="id">D3</span><h4>Actividades de extensión</h4><span class="peso">10,5 % de la técnica</span></header>
+      <p class="cant"><b>Para el 7,0:</b> 4 actividades (1 cada 50 h de 190 h). Con 3 se obtiene 5,0.</p>
+      <dl>
+        <dt>Qué debe traer</dt><dd>Por actividad: temática, tipo, objetivo, cantidad y momento de ejecución. Siempre opcionales. Distintas entre instituciones que compiten.</dd>
+        <dt>Tipos que da la guía</dt><dd>Charla o webinar, exposición técnica demostrativa, laboratorio, hackatón, visita guiada, taller con especialistas, muestra de proyectos.</dd>
+        <dt>Dónde va</dt><dd>Anexo N°2, sección VII b) · Anexo N°7, num. 10</dd>
+      </dl>
+    </section>
+
+    <section class="ent">
+      <header><span class="id">A</span><h4>Infraestructura y equipos</h4><span class="peso">10,0 % de la técnica</span></header>
+      <p class="cant"><b>Para el 7,0:</b> infraestructura <b>con</b> equipos computacionales. Solo equipos = 5,0.</p>
+      <dl>
+        <dt>Mínimo que fija el módulo 2</dt><dd class="up small">MODALIDAD PRESENCIAL:<br>PROYECTOR MULTIMEDIA, TELÓN Y PIZARRA.<br>EQUIPO COMPUTACIONAL PARA EL FACILITADOR.<br>EQUIPO COMPUTACIONAL, UNO PARA CADA PARTICIPANTE, AL MENOS PENTIUM CORE 5, 8 GB RAM Y 500 GB HD.<br>CONEXIÓN A INTERNET.<br>MODALIDAD PRESENCIAL Y E-LEARNING:<br>SOFTWARE DE OFIMÁTICA (WORD, EXCEL, POWER POINT)ENTORNO DE DESARROLLO: PYTHON 3.10+. VISUAL STUDIO CODE O JUPYTERLAB ENTORNOS VIRTUALES Y BIBLIOTECAS ESPECÍFICAS. GIT Y CLIENTE GITHUB O SIMILAR. CLIENTE HTTP (POSTMAN O EQUIVALENTE).<br>ALTERNATIVAS DE ENTORNOS: ENTORNO LOCAL. ENTORNO EN LA NUBE (GOOGLE COLAB O SIMILAR). MÁQUINA VIRTUAL O CONTENEDOR (DOCKER/NUBE).</dd>
+        <dt>Condiciones</dt><dd>Equipos en comodato gratuito durante el curso, con carta o correo de compromiso de devolución.</dd>
+        <dt>Dónde va</dt><dd>Anexo N°2, sección X</dd>
+      </dl>
+    </section>
+
+    <section class="ent crit">
+      <header><span class="id">VIII</span><h4>LMS, evidencia y materiales virtuales</h4><span class="peso">habilita el ítem C (35 %)</span></header>
+      <p class="cant"><b>Obligatorio:</b> el módulo 2 montado y navegable desde el perfil de participante.</p>
+      <dl>
+        <dt>Qué debe traer</dt><dd>a) enlace al LMS · b) datos de acceso para evaluadores (nunca en el repo) · c) paso a paso de acceso y navegación · d) imágenes o video del LMS · e) softwares entregados · f) correo y almacenamiento en nube de al menos 12 GB por participante.</dd>
+        <dt>Causal de rechazo</dt><dd>Si la revisión del LMS difiere de la evidencia adjunta, el curso se rechaza por requisitos de curso (Anexo N°2, sección VIII, pág. 91). La evidencia se graba navegando el LMS real.</dd>
+        <dt>Pendiente de decidir</dt><dd>Acceso a las API de OpenAI y Hugging Face (el AE2 las nombra): quién provee las credenciales de práctica y con qué presupuesto.</dd>
+      </dl>
+    </section>
+
+    <section class="ent">
+      <header><span class="id">V</span><h4>Portafolio publicado y narrativa propia</h4><span class="peso">ver B3 · C y D</span></header>
+      <dl>
+        <dt>Portafolio</dt><dd>La sección V pide el <b>enlace</b> al portafolio y la rúbrica adjunta: tiene que existir y ser visitable antes del cierre.</dd>
+        <dt>Narrativa</dt><dd>Los ítems C y D se redactan con los activos reales de la institución (su ficha de cliente). Dos propuestas gemelas perjudican a las dos.</dd>
+      </dl>
+    </section>
+  </section>
+
+<section class="check brk">
+    <p class="eyebrow">Para imprimir y marcar</p>
+    <h2>Checklist del módulo 2</h2>
+    <p>Se marca cuando el entregable está <b>revisado</b>, no cuando existe el borrador. Las columnas por institución se repiten para cada una que presente el curso.</p>
+    <table class="t ck"><thead><tr><th>Id</th><th>Entregable</th><th class="c">PF1821</th><th class="c">PF1822</th></tr></thead><tbody>
+      <tr class="sep"><td colspan="4">Contenido del módulo · una vez por curso</td></tr><tr><td class="k">B1</td><td>Indicadores de logro, 3 por AE</td><td class="c"><span class="box"></span> <span class="small muted">12</span></td><td class="c"><span class="box"></span> <span class="small muted">12</span></td></tr><tr><td class="k">B2</td><td>3 instrumentos de familias distintas</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td class="k">B3</td><td>Portafolio, 6 de 6 elementos</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td class="k">B4</td><td>Feedback, auto, coevaluación y bitácora</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td class="k">C1</td><td>Metodología anclada a la competencia</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td class="k">C2</td><td>2 actividades con respuesta modelada</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td class="k">C3</td><td>Motivación vía plataforma</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td class="k">C4</td><td>2 herramientas didácticas efectivas</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td class="k">C5</td><td>3 estrategias siglo XXI</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td class="k">III·IV</td><td>Tutores y actividades de todos los módulos</td><td class="c"><span class="box"></span> <span class="small muted">11 mód.</span></td><td class="c"><span class="box"></span> <span class="small muted">9 mód.</span></td></tr><tr class="sep"><td colspan="4">Por institución</td></tr><tr><td class="k">D1</td><td>5 herramientas de industria adicionales</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td class="k">D2</td><td>4 estrategias de vinculación</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td class="k">D3</td><td>Actividades de extensión</td><td class="c"><span class="box"></span> <span class="small muted">5</span></td><td class="c"><span class="box"></span> <span class="small muted">4</span></td></tr><tr><td class="k">A</td><td>Infraestructura con equipos</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td class="k">VIII</td><td>LMS navegable + evidencia idéntica + correo y nube</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td class="k">V</td><td>Portafolio publicado en URL</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td class="k">QA</td><td>Tres controles: rúbrica, diferenciación, verificadores vivos</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr>
+    </tbody></table>
+  </section>
+
+</body></html>

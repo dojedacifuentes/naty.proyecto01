@@ -49,6 +49,7 @@ Requisito: **Node ≥ 18**. No hay dependencias que instalar.
 | `npm run umbrales` | recalcula cuántas actividades de extensión exige cada plan |
 | `npm run sipfor -- PF1821` | extrae uno o más planes desde SIPFOR (`--todos` para los 15) |
 | `npm run ficha -- PF1821` | genera la ficha y la lista de entregables del módulo 2 del plan |
+| `npm run manual -- PF1821 PF1822 --pdf` | manual de entregables del módulo 2 en HTML y PDF (usa Edge o Chrome) |
 
 Corre solo, además, en cada commit (hook) y en cada push (GitHub Actions).
 

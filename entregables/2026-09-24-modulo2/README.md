@@ -11,6 +11,8 @@ modificar su contenido, solo con nombres de archivo normalizados.
 | `brainstorm-modulo-2.html` | Versión HTML del brainstorm, con el mismo contenido que el PDF. | `informe-brainstorm-modulo2-natalia.html` |
 | `brainstorm-vista-previa/page-1…8.png` | Vista previa por página del brainstorm. | `pdf-preview/page-1…8.png` |
 | `panel-modulo2-ml-agentes.html` | Fuente del panel de entregables del módulo 2 de PF1462 y PF1821. | — (nuevo) |
+| `manual-entregables-modulo2-PF1821-PF1822.pdf` | **Manual de entregables del módulo 2** de PF1821 (Agentes low code) y PF1822 (Desarrollo con IA): qué producir, cantidad para el 7,0, qué debe traer, dónde va en el Anexo 2, aprendizajes textuales de SIPFOR y checklist. 18 págs. | — (nuevo) |
+| `manual-entregables-modulo2-PF1821-PF1822.html` | Fuente del manual. Se regenera con `npm run manual -- PF1821 PF1822 --salida entregables/2026-09-24-modulo2 --pdf`. | — (nuevo) |
 
 ## El panel de ML y Agentes
 

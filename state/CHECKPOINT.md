@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-24
-**Por:** 2026-09-24-claude-code-03 (Claude Code · opus-5.5)
+**Por:** 2026-09-24-claude-code-04 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -60,6 +60,8 @@ Sesión claude-code-03, 2026-09-24 (hito del día: módulo 2 de PF1821 y PF1822)
 - [x] Ficha textual y lista de entregables del módulo 2 → `npm run ficha`, `contenidos/<PF>/modulo-2/`
 - [x] Flujo documentado → `docs/05-flujo-contenidos-modulo.md` + `templates/encargo-entregable.md`
 - [x] Pregunta abierta #16: cómo se cuenta el "segundo módulo" con un transversal al inicio
+
+- [x] Manual PDF de entregables del módulo 2 de PF1821 y PF1822 → `entregables/2026-09-24-modulo2/manual-entregables-modulo2-PF1821-PF1822.pdf` (`npm run manual`)
 
 ## A medias
 
