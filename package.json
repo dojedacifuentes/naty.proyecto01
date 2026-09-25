@@ -19,6 +19,8 @@
     "kit": "node scripts/kit-recursos.mjs",
     "zip": "node scripts/zip-recursos.mjs",
     "produccion": "node scripts/produccion.mjs",
+    "sitio": "node scripts/sitio.mjs",
+    "build": "node scripts/sitio.mjs",
     "verificadores": "node scripts/auditar-verificadores.mjs",
     "hooks": "node scripts/instalar-hooks.mjs",
     "test": "node scripts/verificar.mjs --estricto"

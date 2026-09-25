@@ -248,3 +248,18 @@ está en mayúsculas.
 Alternativa descartada: resumir el plan con otras palabras, que obliga al revisor a
 interpretar la equivalencia.
 Quién: usuario (criterio) y claude-code (forma), sesión `2026-09-25-claude-code-05`.
+
+**2026-09-25 · El repo se publica en Vercel como sitio estático generado (`npm run sitio`).**
+Por qué: el usuario pidió que el proyecto quedara visible en Vercel. Los dos proyectos de
+Vercel conectados al repo (`naty-proyecto01` y `naty.proyecto01`) compilaban "con éxito" y
+servían 404 NOT_FOUND. El repo no tenía `index.html`, ni comando de build, ni carpeta de
+salida. Ahora `vercel.json` le indica a Vercel `buildCommand: npm run sitio` y
+`outputDirectory: public`. El script, sin dependencias, publica:
+- `modulo-2/` y los contenidos del módulo 2 de PF1821 y PF1822, con cada `.md` convertido a HTML;
+- los PDF del kit;
+- los zips de producción, armados en cada despliegue.
+
+Los enlaces a lo que no se publica apuntan a GitHub. `public/` no se versiona.
+Alternativa descartada: publicar el repo completo tal cual. Vercel no muestra Markdown, y el
+repo trae `state/`, bases y material interno que no aporta a quien revisa el módulo.
+Quién: usuario (publicar) y claude-code (forma), sesión `2026-09-25-claude-code-06`.

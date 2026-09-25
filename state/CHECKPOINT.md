@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-25
-**Por:** 2026-09-25-claude-code-05 (Claude Code · opus-5.5)
+**Por:** 2026-09-25-claude-code-06 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -116,6 +116,11 @@ textuales, y cada lámina lleva el contenido del plan textual. La auditoría da 
 criterios y todos los contenidos del plan en el PPT, y narración sin símbolos. En PF1821
 se cerraron dos brechas con el plan: espacio de trabajo y navegación (AE2) e If/Switch (AE3).
 El usuario recibió las cápsulas nuevas en zip.
+
+Sesión claude-code-06, 2026-09-25: sitio en Vercel. Vercel compilaba pero servía 404 porque el
+repo no tenía página ni salida. Ahora `npm run sitio` arma `public/` (85 páginas, 0 enlaces
+rotos) y `vercel.json` lo publica en cada push; la portada ofrece los zips de producción. El
+usuario recibió el zip completo de videos actualizado (12 PPT, con las videocápsulas textuales).
 
 ## A medias
 

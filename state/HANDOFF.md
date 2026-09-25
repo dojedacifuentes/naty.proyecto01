@@ -1,7 +1,7 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` y
-`2026-09-25-claude-code-01` a `-05` — 2026-09-24/25
+`2026-09-25-claude-code-01` a `-06` — 2026-09-24/25
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
@@ -26,6 +26,15 @@ redactar el Anexo 2 y nada por institución: eso viene después (DECISIONS, 2026
    otras instituciones.
 
 Trampas de estas sesiones:
+- **Sitio en Vercel:** https://naty-proyecto01.vercel.app se reconstruye en cada push con `npm run sitio`
+  (`vercel.json`). Si agregas páginas a `modulo-2/` o a los contenidos del módulo 2, salen solas;
+  para publicar otra carpeta, agrégala a `RAICES` en `scripts/sitio.mjs`. Antes de subir, prueba con
+  `npm run sitio` y revisa que no queden enlaces rotos.
+- **Hay dos proyectos de Vercel conectados al mismo repo** (`naty-proyecto01` y `naty.proyecto01`):
+  cada push despliega dos veces. El usuario debería borrar uno en el panel de Vercel; desde el repo no
+  se puede.
+- **Las URL de cada despliegue piden iniciar sesión en Vercel** (protección de despliegues). La URL
+  pública es la de producción, la que termina en `.vercel.app` sin el hash.
 - **Las videocápsulas se generan textuales y se validan solas.** Si editas `R-capsulas.md`, la columna
   "Contenido del plan (textual)" tiene que ser copia exacta de la ficha y cubrir todos los contenidos
   del AE, o `npm run produccion` se detiene y dice qué falta. El usuario ya tiene las cápsulas nuevas

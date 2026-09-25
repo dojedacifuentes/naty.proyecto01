@@ -36,3 +36,6 @@ propuestas/**/build/
 # Informes generados por las herramientas (se regeneran con `npm run verificar`)
 state/verificacion.json
 state/diferenciacion.csv
+
+# Sitio estático que publica Vercel (npm run sitio). Se regenera en cada despliegue.
+public/

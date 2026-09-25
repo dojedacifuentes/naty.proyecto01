@@ -21,6 +21,11 @@ Los recursos educativos del módulo 2 y el checklist de lo que piden las bases e
 Estado: borrador, sin revisión humana. Para terminarlo: [`modulo-2/FLUJO-PRODUCCION.md`](modulo-2/FLUJO-PRODUCCION.md)
 y el `produccion/ESTADO.md` de cada curso.
 
+**Sitio publicado:** https://naty-proyecto01.vercel.app. Vercel lo reconstruye en cada push a
+`main` con `npm run sitio` (`vercel.json`). Muestra la sección `modulo-2/`, los contenidos del
+módulo 2 de los dos cursos y los PDF del kit, y en la portada ofrece los zips de producción
+(PPT para HeyGen y prompts de infografía). Lo que no se publica enlaza a este repositorio.
+
 ---
 
 ## Arranque en 60 segundos
@@ -65,6 +70,7 @@ Requisito: **Node ≥ 18**. No hay dependencias que instalar.
 | `npm run manual -- PF1821 PF1822 --pdf` | manual de entregables del módulo 2 en HTML y PDF (usa Edge o Chrome) |
 | `npm run kit -- PF1821 --pdf` | kit de recursos educativos del módulo 2 de un curso, en HTML y PDF (`--unico` junta todos los cursos, con ficha y entregables) |
 | `npm run zip -- PF1821 --salida <dir>` | zip de los recursos del módulo 2 de un curso, un archivo por recurso (R01 a R13) |
+| `npm run sitio` | sitio estático del módulo 2 en `public/`; es lo que Vercel publica en cada push (`vercel.json`) |
 | `npm run produccion -- PF1821 PF1822` | bases de producción del módulo 2: PPTX para HeyGen, prompts de infografía y lectura, quizzes GIFT (ver `modulo-2/FLUJO-PRODUCCION.md`) |
 
 Corre solo, además, en cada commit (hook) y en cada push (GitHub Actions).
@@ -103,6 +109,7 @@ responde con archivo y línea. Protocolo completo: **`AUDITORIA.md`**.
 | `data/sipfor/` | Respuestas de SIPFOR tal cual, por plan (`npm run sipfor`). Fuente citable. |
 | `data/planes/` | Planes formativos normalizados: módulos, aprendizajes, criterios, contenidos, recursos. |
 | `contenidos/` | Contenido canónico del módulo evaluado de cada curso, común a todas las instituciones (`docs/05`). |
+| `vercel.json` | Cómo construye Vercel el sitio: `npm run sitio` → `public/` (carpeta generada, fuera de git). |
 | `modulo-2/` | Portada del módulo 2 por curso: checklist de las bases, estado de cada recurso y zip descargable. |
 | `bases/` | PDF de las bases 2026 (SENCE, Res. Ex. N°2320) y 2024 (OTIC SOFOFA). Fuente citable por numeral y página. |
 | `entregables/` | Lo entregado a Natalia, un directorio por hito con fecha y su `README.md`. |

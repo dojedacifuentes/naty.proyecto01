@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run sitio",
+  "outputDirectory": "public",
+  "headers": [
+    {
+      "source": "/(.*)\\.(pptx|zip|gift|sql|py|csv)",
+      "headers": [{ "key": "Content-Disposition", "value": "attachment" }]
+    }
+  ]
+}
