@@ -54,7 +54,7 @@ del B, ninguno depende de otro.
 1. **Arranca todos los carriles a la vez.** Diez minutos de reparto ahorran horas de espera.
 2. **Una plantilla por carril, hecha una sola vez:**
    - B: avatar, voz y subtítulos en HeyGen;
-   - C: una infografía base con la paleta y la tipografía, que se duplica;
+   - C: la primera infografía (AE3) armada con las especificaciones visuales, como base para duplicar;
    - D: un documento base para las lecturas.
 3. **B genera en paralelo:** HeyGen renderiza varios videos a la vez. Importa todos los PPTX
    y deja la narración como viene. Pulirla es opcional; el prompt está más abajo.
@@ -99,10 +99,22 @@ tono cercano, español de Chile. Devuélvela en la misma tabla.
 
 ### C · Infografías
 
-Base: `produccion/infografias/prompts.md`, con un bloque por infografía que trae el texto exacto,
-la paleta y el formato vertical de 1080 × 1920. Exporta en PNG con el nombre de la convención.
-Si usas un generador de imágenes, pídele solo el diseño y pon el texto encima, porque suele
-deformar las letras.
+Base: `produccion/infografias/prompts.md`, o el zip `infografias-modulo2.zip` que se descarga
+de la portada del sitio. Cada prompt se pega completo en la herramienta y trae todo lo necesario:
+- el encargo y el propósito, con la cita de las bases (Anexo N°7, num. 7 c y d);
+- las medidas: ancho fijo de 1080 px y el alto calculado para ese contenido, sin achicar la letra;
+- la tipografía con sus tamaños en px, el color y el contraste mínimo (WCAG 2.1 AA), los íconos y la diagramación;
+- las reglas de texto, el CONTENIDO exacto y un control antes de entregar.
+
+El aprendizaje esperado, la competencia y los contenidos del plan van textuales, en mayúsculas,
+para el revisor. Las bases no fijan formato: las medidas y los estilos son el estándar de este
+proyecto.
+
+Exporta en PNG (y en PDF si la herramienta lo permite) con el nombre de la convención. Al subirla
+al LMS, usa el texto de `textos-alternativos.txt`. Si la herramienta no acepta un prompt tan
+largo, pega solo el bloque CONTENIDO y aplica `especificaciones-visuales.txt`. Si usas un
+generador de imágenes, pídele el diseño con los espacios de texto vacíos y escribe el texto
+encima, porque suele deformar las letras.
 
 ### D · Lecturas y notebook
 

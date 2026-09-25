@@ -1,0 +1,54 @@
+ESPECIFICACIONES VISUALES COMUNES · infografías del módulo 2
+Úsalas si tu herramienta no acepta el prompt completo: pega solo el bloque CONTENIDO y aplica esto a mano.
+
+1. FORMATO Y MEDIDAS
+- Lienzo de 1080 px de ancho (fijo) y el alto que indica cada prompt, vertical, color RGB (sRGB). El alto está calculado para que el contenido quepa con los tamaños de letra indicados.
+- Márgenes de seguridad: 72 px a los lados y 96 px arriba y abajo. Ningún texto ni ícono fuera de esa área.
+- Exportación: PNG del tamaño del lienzo, de 2 MB como máximo. Si la herramienta lo permite, también un PDF de una página, para ampliar sin perder nitidez.
+
+2. TIPOGRAFÍA
+- Una sola familia sans serif de alta legibilidad (Inter, Montserrat, Open Sans o Roboto), con dos pesos como máximo: regular y negrita.
+- El código va en fuente monoespaciada (JetBrains Mono o Consolas), sobre un fondo gris muy claro.
+- Tamaños:
+  - etiqueta superior: 22 px, en mayúsculas;
+  - título: 60 px, en negrita, 2 líneas como máximo;
+  - bajada: 30 px;
+  - texto del recuadro (aprendizaje esperado o competencia): 24 px, en mayúsculas como en el plan;
+  - encabezado de sección: 32 px, en negrita;
+  - rótulo "Contenido del plan": 20 px, en mayúsculas;
+  - texto de sección: 24 px;
+  - pie: 20 px.
+- Ningún texto por debajo de 20 px.
+- Interlineado de 1,3 a 1,4. Texto alineado a la izquierda, sin justificar y sin cortar palabras con guion.
+
+3. COLOR Y CONTRASTE
+- Fondo #F8FAFC. Títulos en azul oscuro #0F3D5E.
+- Íconos, líneas y rótulos en azul petróleo #0E7490. Texto en #1F2937. Rótulo "Contenido del plan" en #475569.
+- Naranjo #F59E0B solo para los números de sección y detalles gráficos, nunca para texto sobre fondo claro: no alcanza el contraste.
+- Contraste mínimo de 4,5:1 para texto normal y de 3:1 para texto grande (WCAG 2.1 AA). El color nunca es la única forma de distinguir información.
+
+4. ÍCONOS E IMÁGENES
+- Un ícono lineal por sección, de 72 a 80 px, con trazo uniforme de 3 px y todos del mismo estilo. Cada ícono representa el concepto de su sección; no es decoración.
+- Sin fotografías de stock, personas genéricas, texturas, degradados fuertes, sombras pesadas ni efectos 3D.
+- Diagramas simples (flechas, cajas conectadas) solo si aclaran una idea.
+
+5. DIAGRAMACIÓN Y LECTURA
+- Orden de lectura de arriba hacia abajo: etiqueta superior, título, bajada, recuadro del aprendizaje esperado, secciones y pie.
+- El recuadro del aprendizaje esperado va destacado bajo el título, con fondo #E6F3F7 y borde izquierdo de 8 px en #0E7490.
+- Cada sección es una tarjeta de ancho completo, en una sola columna: a la izquierda, el número en un círculo naranjo y el ícono; a la derecha, el encabezado, el rótulo "Contenido del plan" y el texto.
+- Las tarjetas alternan un fondo blanco y uno #F1F5F9 para separar las secciones sin líneas extra.
+
+Para la ruta del módulo:
+- Orden de lectura de arriba hacia abajo: etiqueta superior, título, bajada, recuadro de la competencia, la ruta, los dos bloques finales y el pie.
+- El recuadro de la competencia va destacado bajo el título, con fondo #E6F3F7 y borde izquierdo de 8 px en #0E7490.
+- La ruta es una línea de tiempo vertical: 4 estaciones unidas por una línea continua de 6 px en #0E7490. Cada estación lleva su número en un círculo naranjo, su ícono, el título con las horas, "Qué haces" y "Qué te llevas".
+- Bajo la ruta van dos bloques, "Cómo te acompañamos" y "Cómo te evaluamos", lado a lado en dos columnas iguales, con viñetas.
+- Separación mínima de 32 px entre bloques, con espacio en blanco generoso. Todo alineado a una misma retícula.
+
+6. REGLAS DE TEXTO
+- Usa exactamente los textos del bloque CONTENIDO: no resumas, no reescribas, no traduzcas, no agregues datos, cifras ni ejemplos.
+- Los textos marcados "textual del plan formativo" van tal cual, en mayúsculas, como están en el plan.
+- Lo que va entre acentos graves (`así`) es código: escríbelo en la fuente monoespaciada, sin los acentos graves.
+- Revisa ortografía y tildes letra por letra: ninguna palabra puede salir deformada.
+- Sin logos, nombres ni colores de instituciones: es un recurso base común a todos los oferentes.
+- Si tu herramienta no puede escribir el texto con exactitud (generadores de imágenes), entrega el diseño con los espacios de texto vacíos, en la jerarquía indicada y numerados como el bloque CONTENIDO.

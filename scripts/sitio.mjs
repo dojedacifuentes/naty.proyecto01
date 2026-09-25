@@ -154,26 +154,44 @@ function paqueteInfografias() {
   const ORDEN = [['AE3', 'M2-AE3-Infografia.png'], ['AE1', 'M2-AE1-Infografia.png'], ['AE2', 'M2-AE2-Infografia.png'],
     ['AE4', 'M2-AE4-Infografia.png'], ['ruta', 'M2-Ruta-Infografia.png']];
   const leeme = ['INFOGRAFÍAS DEL MÓDULO 2 — PF1821 y PF1822', '',
-    'Cada archivo .txt es un prompt listo para copiar y pegar completo, en el orden de producción (primero el AE3).',
-    'Formato: vertical 1080 x 1920 px, PNG. Paleta: azul petróleo #0E7490, azul oscuro #0F3D5E, acento naranjo #F59E0B.',
-    'Sin logos ni nombres de instituciones. Herramientas: Genially o Canva, Napkin o Gamma. Si usas un generador de',
-    'imágenes, pídele solo el diseño y escribe el texto encima: suelen deformar las letras.', ''];
+    'Cada archivo .txt de las carpetas de curso es un prompt completo: se copia entero en la herramienta.',
+    'Van numerados en orden de producción (primero el AE3, el aprendizaje seleccionado).',
+    'Cada prompt trae: encargo y propósito, formato y medidas, tipografía con tamaños en px, color y contraste,',
+    'íconos, diagramación, reglas de texto, el CONTENIDO exacto y un control antes de entregar.', '',
+    'QUÉ PIDEN LAS BASES Y QUÉ NO (para que no haya dudas)',
+    '- Las bases no fijan formato, medidas ni cantidad de infografías.',
+    '- Sí piden medios que apoyen el aprendizaje (Anexo N°7, num. 7 d, pág. 110) y un ambiente intuitivo, lineal y',
+    '  amigable, con íconos, multimedia e imágenes (num. 7 c, pág. 110), que se evalúa en el LMS (7.4, págs. 30-31).',
+    '- Las medidas, tipografías y colores de los prompts son el estándar de este proyecto: aseguran que se lea bien y',
+    '  que todas las infografías se vean iguales.',
+    '- El aprendizaje esperado, la competencia y los contenidos del plan van textuales, en mayúsculas como en el plan,',
+    '  para que el revisor compare sin interpretar.', '',
+    'MEDIDAS: ancho fijo de 1080 px. El alto de cada infografía está calculado para que su contenido quepa sin achicar la',
+    'letra (formato de infografía vertical larga, como el estándar de Canva de 800 x 2000). Cada prompt dice su medida.', '',
+    'HERRAMIENTAS: Genially o Canva (el equipo ya usa Genially), Gamma o Napkin. Si la herramienta no acepta un prompt',
+    'tan largo, pega solo el bloque CONTENIDO y aplica a mano ESPECIFICACIONES-VISUALES.txt. Si usas un generador de',
+    'imágenes, pídele el diseño con los espacios de texto vacíos y escribe el texto encima: suelen deformar las letras.', '',
+    'AL SUBIR AL LMS: usa el texto de textos-alternativos.txt de cada curso en el campo "texto alternativo" de la imagen.', ''];
   const entradas = [];
   for (const c of CURSOS) {
-    const md = leer(`modulo-2/${c.carpeta}/produccion/infografias/prompts.md`);
+    const dir = `modulo-2/${c.carpeta}/produccion/infografias/`;
+    const md = leer(`${dir}prompts.md`);
     const secciones = md.split(/\n(?=## )/).filter((s) => s.startsWith('## '));
     leeme.push(`${c.carpeta}:`);
     ORDEN.forEach(([clave, png], i) => {
       const s = secciones.find((x) => (clave === 'ruta' ? /^## Infografía de la ruta/.test(x) : new RegExp(`^## Infografía ${clave} `).test(x)));
       const prompt = /```text\n([\s\S]*?)\n```/.exec(s ?? '')?.[1];
       if (!prompt) throw new Error(`${c.pf}: no encuentro el prompt de la infografía ${clave}`);
+      const medida = /Lienzo de (1080 × \d+ px)/.exec(prompt)?.[1] ?? '';
       const nombre = `${i + 1}-infografia-${clave === 'ruta' ? 'ruta-del-modulo' : clave}.txt`;
-      entradas.push({ nombre: `${c.carpeta}/${nombre}`, contenido: prompt.trim() + '\r\n' });
-      leeme.push(`  ${nombre}  ->  ${png}`);
+      entradas.push({ nombre: `${c.carpeta}/${nombre}`, contenido: prompt.trim().replace(/\n/g, '\r\n') + '\r\n' });
+      leeme.push(`  ${nombre}  ->  ${png}  (${medida})`);
     });
+    entradas.push({ nombre: `${c.carpeta}/textos-alternativos.txt`, contenido: fs.readFileSync(ruta(`${dir}textos-alternativos.txt`)) });
     leeme.push('');
   }
-  return crearZip([{ nombre: 'LEEME.txt', contenido: leeme.join('\r\n') }, ...entradas]);
+  const espec = fs.readFileSync(ruta(`modulo-2/${CURSOS[0].carpeta}/produccion/infografias/especificaciones-visuales.txt`));
+  return crearZip([{ nombre: 'LEEME.txt', contenido: leeme.join('\r\n') }, { nombre: 'ESPECIFICACIONES-VISUALES.txt', contenido: espec }, ...entradas]);
 }
 
 // ------------------------------------------------------------------ armado

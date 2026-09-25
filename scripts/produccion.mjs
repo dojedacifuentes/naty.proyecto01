@@ -337,46 +337,254 @@ function videoInteractivo(pf, c, md) {
   return { pptx: crearPptx({ titulo: `${pf} · ${nombre}`, pie: `${pf} · Módulo 2 · Herramienta didáctica 2`, laminas }), guion };
 }
 
-const ESTILO = 'Estilo: plano y limpio, fondo claro, íconos lineales simples, paleta azul petróleo #0E7490, ' +
-  'azul oscuro #0F3D5E y un acento naranjo #F59E0B. En español de Chile. Sin logos ni nombres de instituciones: ' +
-  'el recurso es común a todos los oferentes. Usa exactamente el texto indicado, sin agregar datos.';
+// ------------------------------------------------------------------ infografías
 
-function infografias(pf, c, caps, f, md) {
-  const ruta = seccion(md, /^## R02\b/).slice(1).join('\n').trim();
-  const partes = [
+// Especificaciones visuales: son el estándar de este proyecto, no de las bases (las bases no
+// fijan medidas ni formato; piden medios que apoyen el aprendizaje y un ambiente con íconos,
+// multimedia e imágenes). Van completas en cada prompt para que cada uno funcione solo.
+// Tamaños de letra (px sobre un lienzo de 1080 de ancho). El alto del lienzo se calcula con
+// ellos: así el contenido cabe completo sin achicar la letra.
+const TAM = { etiqueta: 22, titulo: 60, bajada: 30, recuadro: 24, encabezado: 32, rotulo: 20, texto: 24, pie: 20 };
+const ANCHO_UTIL = 1080 - 2 * 72;
+// Líneas que ocupa un texto: ancho promedio de carácter ≈ 0,52 em en minúsculas, 0,68 en mayúsculas.
+const lineas = (t, px, ancho, mayus = false) => Math.max(1, Math.ceil(t.length / Math.floor(ancho / (px * (mayus ? 0.68 : 0.52)))));
+const alto = (t, px, ancho, mayus, interlineado = 1.35) => lineas(t, px, ancho, mayus) * px * interlineado;
+const redondear = (h) => Math.max(1920, Math.ceil(h / 60) * 60);
+
+function especificaciones(diagramacion, altoPx) {
+  return [
+    '1. FORMATO Y MEDIDAS',
+    altoPx
+      ? `- Lienzo de 1080 × ${altoPx} px, vertical, color RGB (sRGB). El ancho es fijo para todas las infografías del módulo; el alto está calculado para que este contenido quepa completo con los tamaños de letra indicados. No lo reduzcas ni achiques la letra para que quepa.`
+      : '- Lienzo de 1080 px de ancho (fijo) y el alto que indica cada prompt, vertical, color RGB (sRGB). El alto está calculado para que el contenido quepa con los tamaños de letra indicados.',
+    '- Márgenes de seguridad: 72 px a los lados y 96 px arriba y abajo. Ningún texto ni ícono fuera de esa área.',
+    `- Exportación: PNG del tamaño del lienzo, de 2 MB como máximo. Si la herramienta lo permite, también un PDF de una página, para ampliar sin perder nitidez.`,
+    '',
+    '2. TIPOGRAFÍA',
+    '- Una sola familia sans serif de alta legibilidad (Inter, Montserrat, Open Sans o Roboto), con dos pesos como máximo: regular y negrita.',
+    '- El código va en fuente monoespaciada (JetBrains Mono o Consolas), sobre un fondo gris muy claro.',
+    '- Tamaños:',
+    `  - etiqueta superior: ${TAM.etiqueta} px, en mayúsculas;`,
+    `  - título: ${TAM.titulo} px, en negrita, 2 líneas como máximo;`,
+    `  - bajada: ${TAM.bajada} px;`,
+    `  - texto del recuadro (aprendizaje esperado o competencia): ${TAM.recuadro} px, en mayúsculas como en el plan;`,
+    `  - encabezado de sección: ${TAM.encabezado} px, en negrita;`,
+    `  - rótulo "Contenido del plan": ${TAM.rotulo} px, en mayúsculas;`,
+    `  - texto de sección: ${TAM.texto} px;`,
+    `  - pie: ${TAM.pie} px.`,
+    `- Ningún texto por debajo de ${TAM.rotulo} px.`,
+    '- Interlineado de 1,3 a 1,4. Texto alineado a la izquierda, sin justificar y sin cortar palabras con guion.',
+    '',
+    '3. COLOR Y CONTRASTE',
+    '- Fondo #F8FAFC. Títulos en azul oscuro #0F3D5E.',
+    '- Íconos, líneas y rótulos en azul petróleo #0E7490. Texto en #1F2937. Rótulo "Contenido del plan" en #475569.',
+    '- Naranjo #F59E0B solo para los números de sección y detalles gráficos, nunca para texto sobre fondo claro: no alcanza el contraste.',
+    '- Contraste mínimo de 4,5:1 para texto normal y de 3:1 para texto grande (WCAG 2.1 AA). El color nunca es la única forma de distinguir información.',
+    '',
+    '4. ÍCONOS E IMÁGENES',
+    '- Un ícono lineal por sección, de 72 a 80 px, con trazo uniforme de 3 px y todos del mismo estilo. Cada ícono representa el concepto de su sección; no es decoración.',
+    '- Sin fotografías de stock, personas genéricas, texturas, degradados fuertes, sombras pesadas ni efectos 3D.',
+    '- Diagramas simples (flechas, cajas conectadas) solo si aclaran una idea.',
+    '',
+    '5. DIAGRAMACIÓN Y LECTURA',
+    ...diagramacion,
+    '- Separación mínima de 32 px entre bloques, con espacio en blanco generoso. Todo alineado a una misma retícula.',
+    '',
+    '6. REGLAS DE TEXTO',
+    '- Usa exactamente los textos del bloque CONTENIDO: no resumas, no reescribas, no traduzcas, no agregues datos, cifras ni ejemplos.',
+    '- Los textos marcados "textual del plan formativo" van tal cual, en mayúsculas, como están en el plan.',
+    '- Lo que va entre acentos graves (`así`) es código: escríbelo en la fuente monoespaciada, sin los acentos graves.',
+    '- Revisa ortografía y tildes letra por letra: ninguna palabra puede salir deformada.',
+    '- Sin logos, nombres ni colores de instituciones: es un recurso base común a todos los oferentes.',
+    '- Si tu herramienta no puede escribir el texto con exactitud (generadores de imágenes), entrega el diseño con los espacios de texto vacíos, en la jerarquía indicada y numerados como el bloque CONTENIDO.',
+  ];
+}
+
+const DIAGRAMA_AE = [
+  '- Orden de lectura de arriba hacia abajo: etiqueta superior, título, bajada, recuadro del aprendizaje esperado, secciones y pie.',
+  '- El recuadro del aprendizaje esperado va destacado bajo el título, con fondo #E6F3F7 y borde izquierdo de 8 px en #0E7490.',
+  '- Cada sección es una tarjeta de ancho completo, en una sola columna: a la izquierda, el número en un círculo naranjo y el ícono; a la derecha, el encabezado, el rótulo "Contenido del plan" y el texto.',
+  '- Las tarjetas alternan un fondo blanco y uno #F1F5F9 para separar las secciones sin líneas extra.',
+];
+const DIAGRAMA_RUTA = [
+  '- Orden de lectura de arriba hacia abajo: etiqueta superior, título, bajada, recuadro de la competencia, la ruta, los dos bloques finales y el pie.',
+  '- El recuadro de la competencia va destacado bajo el título, con fondo #E6F3F7 y borde izquierdo de 8 px en #0E7490.',
+  '- La ruta es una línea de tiempo vertical: 4 estaciones unidas por una línea continua de 6 px en #0E7490. Cada estación lleva su número en un círculo naranjo, su ícono, el título con las horas, "Qué haces" y "Qué te llevas".',
+  '- Bajo la ruta van dos bloques, "Cómo te acompañamos" y "Cómo te evaluamos", lado a lado en dos columnas iguales, con viñetas.',
+];
+
+const conComillas = (s) => `«${s}»`;
+const limpiarInfo = (t) => t.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/(^|[^*])\*([^*]+)\*/g, '$1$2')
+  .replace(/\s*\bR\d\d\b/g, '').replace(/\s+/g, ' ').trim();
+// Texto de sección: oraciones completas hasta unos 140 caracteres (unas 25 palabras), nunca
+// menos de una idea completa. El código queda entre acentos graves para la monoespaciada.
+function breveInfo(t) {
+  const oraciones = limpiarInfo(t).split(/(?<=[.!?])\s(?=[A-ZÁÉÍÓÚÑ¿¡"`(])/);
+  let out = oraciones[0];
+  for (const o of oraciones.slice(1)) {
+    if (out.length >= 60 && (out + ' ' + o).length > 140) break;
+    out += ' ' + o;
+  }
+  return out;
+}
+
+function datosModulo(fichaMd) {
+  const m = /^\| Módulo \|[^|]*`(M[AB]\d{5})`[^|]*\*\*(\d+) h\*\*/m.exec(fichaMd);
+  if (!m) throw new Error('la ficha no trae el código y las horas del módulo');
+  return { codigo: m[1], horas: m[2] };
+}
+
+function promptAE(pf, c, cap, f, mod) {
+  const n = cap.ae.slice(2);
+  const ae = f.aes[cap.ae];
+  const [portada, ...resto] = cap.laminas;
+  const secciones = resto.slice(0, -1); // la última lámina es la tarea, no va en la infografía
+  const titulo = portada.plan[0].replace(/^\d+\.\s*/, '');
+  const bajada = limpiarInfo(portada.contenido).replace(/"/g, '').split(/(?<=\.)\s/)[0].replace(/\.$/, '');
+  const etiqueta = `MÓDULO 2 · ${f.modulo} · APRENDIZAJE ESPERADO ${n}`;
+  const pie = `Plan formativo SENCE ${pf} · Módulo ${mod.codigo} · Recurso base del módulo 2 · Ejemplos con ${c.caso}, empresa ficticia`;
+  const tarjetas = secciones.map((l) => ({ titulo: l.titulo, plan: l.plan.join(' · '), texto: breveInfo(l.contenido) }));
+  // Alto: cabecera + recuadro del AE + tarjetas + pie, con los tamaños de TAM.
+  const anchoTarjeta = ANCHO_UTIL - 2 * 28 - 110;
+  const altoTarjeta = (t) => 2 * 28 + 24 + Math.max(110, alto(t.titulo, TAM.encabezado, anchoTarjeta, false, 1.25) +
+    alto(t.plan, TAM.rotulo, anchoTarjeta, true) + alto(t.texto, TAM.texto, anchoTarjeta, false, 1.4));
+  const altoPx = redondear(2 * 96 + alto(etiqueta, TAM.etiqueta, ANCHO_UTIL, true) + alto(titulo, TAM.titulo, ANCHO_UTIL, true, 1.15) +
+    alto(bajada, TAM.bajada, ANCHO_UTIL) + 2 * 32 + 30 + alto(ae.texto, TAM.recuadro, ANCHO_UTIL - 80, true, 1.4) +
+    tarjetas.reduce((s, t) => s + altoTarjeta(t), 0) + (4 + tarjetas.length) * 32 + alto(pie, TAM.pie, ANCHO_UTIL));
+  const texto = [
+    'ENCARGO',
+    `Diseña una infografía educativa vertical para el curso e-learning "${c.curso}" (${pf}), del programa Talento Digital para Chile (SENCE).`,
+    `Propósito: sintetizar, para consulta rápida del participante, los contenidos del aprendizaje esperado ${n} del módulo 2. Es un medio de apoyo al aprendizaje (bases 2026, Anexo N°7, numeral 7 d, pág. 110) y aporta al ambiente con íconos, multimedia e imágenes que piden las bases (numeral 7 c, pág. 110).`,
+    '',
+    ...especificaciones(DIAGRAMA_AE, altoPx),
+    '',
+    'CONTENIDO (texto exacto, en este orden)',
+    `Etiqueta superior: ${conComillas(etiqueta)}`,
+    `Título (textual del plan formativo): ${conComillas(titulo)}`,
+    `Bajada: ${conComillas(bajada)}`,
+    `Recuadro. Rótulo: ${conComillas(`APRENDIZAJE ESPERADO ${n} · TEXTUAL DEL PLAN FORMATIVO`)}. Texto (textual del plan formativo): ${conComillas(ae.texto)}`,
+    `Secciones (${tarjetas.length}):`,
+    ...tarjetas.map((t, i) => `${i + 1}. Encabezado: ${conComillas(t.titulo)} | Contenido del plan (textual del plan formativo): ${conComillas(t.plan)} | Texto: ${conComillas(t.texto)}`),
+    `Pie: ${conComillas(pie)}`,
+    '',
+    'CONTROL ANTES DE ENTREGAR',
+    `- Están las ${tarjetas.length} secciones, en el orden indicado, y ningún texto quedó cortado.`,
+    '- El aprendizaje esperado y los rótulos "Contenido del plan" son idénticos a los del bloque CONTENIDO.',
+    `- El lienzo mide 1080 × ${altoPx} px y los tamaños de letra son los indicados. Ninguno se redujo para que el texto cupiera.`,
+    '- Todo el texto se lee con la imagen al ancho de un computador (unos 800 px). En celular se lee ampliando o con el PDF.',
+    '- Se cumple el contraste mínimo y no hay logos, nombres ni colores de instituciones.',
+  ].join('\n');
+  const alt = `Infografía del aprendizaje esperado ${n} del módulo 2 (${pf}): ${titulo}. ` +
+    `Secciones: ${tarjetas.map((t, i) => `${i + 1}. ${t.titulo}`).join('; ')}.`;
+  return { texto, alt, nombre: `M2-AE${n}-Infografia.png`, altoPx };
+}
+
+// La ruta sale de R02, con la competencia textual de la ficha. Lo que es por institución
+// (PENDIENTE: días, horarios) no va en el recurso base.
+function promptRuta(pf, c, f, md, mod) {
+  const L = seccion(md, /^## R02\b/);
+  const bloques = {}; let actual = null;
+  for (const l of L) {
+    const b = /^\*\*(?:Bloque )?"?([^"*]+?)"?\*\*/.exec(l);
+    if (b) { actual = b[1].trim(); bloques[actual] = []; continue; }
+    if (actual && l.trim()) bloques[actual].push(l.trim());
+  }
+  const citas = (k) => (bloques[k] || []).filter((l) => l.startsWith('>')).map((l) => limpiarInfo(l.replace(/^>\s*/, '')));
+  const vinetas = (k) => (bloques[k] || []).filter((l) => l.startsWith('- '))
+    .map((l) => limpiarInfo(l.slice(2).replace(/\s*`?PENDIENTE:`?.*$/, '')).replace(/\.?$/, '.'));
+  const estaciones = (bloques['Tu ruta'] || []).filter((l) => /^\| \d \|/.test(l)).map(celdas);
+  const [encabezado, mision] = citas('Encabezado');
+  if (estaciones.length !== 4 || !mision) throw new Error(`${pf}: no pude leer la ruta del módulo en R02`);
+  const etiqueta = `RUTA DEL MÓDULO 2 · ${mod.horas} H`;
+  const bajada = mision.replace(/\.$/, '');
+  const competencia = f.competencia.replace(/\.?$/, '.');
+  const est = estaciones.map(([num, icono, tit, haces, llevas, horas]) => ({
+    num, icono: limpiarInfo(icono).toLowerCase(), titulo: `${limpiarInfo(tit)} · Aprendizaje esperado ${num} · ${horas}`,
+    haces: limpiarInfo(haces), llevas: limpiarInfo(llevas), corto: `${num}. ${limpiarInfo(tit)} (${horas})`,
+  }));
+  const acomp = vinetas('Cómo te acompañamos');
+  const evalua = vinetas('Cómo te evaluamos');
+  const pie = [...citas('Pie'), `Plan formativo SENCE ${pf} · Módulo ${mod.codigo} · Recurso base del módulo 2`].join(' · ');
+  const anchoEst = ANCHO_UTIL - 140; // la columna izquierda lleva la línea de tiempo
+  const altoEst = (e) => 2 * 20 + 12 + alto(e.titulo, TAM.encabezado, anchoEst, false, 1.25) +
+    alto(`Qué haces: ${e.haces}`, TAM.texto, anchoEst, false, 1.4) + alto(`Qué te llevas: ${e.llevas}`, TAM.texto, anchoEst, false, 1.4);
+  const anchoCol = (ANCHO_UTIL - 40) / 2 - 30;
+  const altoBloque = (arr) => 56 + arr.reduce((s, v) => s + alto(v, TAM.texto, anchoCol, false, 1.35) + 10, 0);
+  const altoPx = redondear(2 * 96 + alto(etiqueta, TAM.etiqueta, ANCHO_UTIL, true) + alto(f.modulo, TAM.titulo, ANCHO_UTIL, true, 1.15) +
+    alto(bajada, TAM.bajada, ANCHO_UTIL) + 2 * 32 + 30 + alto(competencia, TAM.recuadro, ANCHO_UTIL - 80, true, 1.4) +
+    est.reduce((s, e) => s + altoEst(e), 0) + Math.max(altoBloque(acomp), altoBloque(evalua)) + 9 * 32 + alto(pie, TAM.pie, ANCHO_UTIL));
+  const texto = [
+    'ENCARGO',
+    `Diseña una infografía educativa vertical para el curso e-learning "${c.curso}" (${pf}), del programa Talento Digital para Chile (SENCE).`,
+    'Propósito: orientar al participante al comenzar el módulo 2 con la ruta completa (qué logrará, en qué orden, con qué apoyo y cómo se le evalúa). Aporta al diseño intuitivo, lineal y amigable, con íconos e imágenes, que piden las bases (bases 2026, Anexo N°7, numeral 7 c, pág. 110).',
+    '',
+    ...especificaciones(DIAGRAMA_RUTA, altoPx),
+    '',
+    'CONTENIDO (texto exacto, en este orden)',
+    `Etiqueta superior: ${conComillas(etiqueta)}`,
+    `Título (textual del plan formativo): ${conComillas(f.modulo)}`,
+    `Bajada: ${conComillas(bajada)}`,
+    `Recuadro. Rótulo: ${conComillas('AL TERMINAR SERÁS CAPAZ DE · COMPETENCIA DEL MÓDULO, TEXTUAL DEL PLAN FORMATIVO')}. Texto (textual del plan formativo): ${conComillas(competencia)}`,
+    'Ruta (4 estaciones):',
+    ...est.map((e) => `${e.num}. Título: ${conComillas(e.titulo)} | Qué haces: ${conComillas(e.haces)} | Qué te llevas: ${conComillas(e.llevas)} | Ícono: ${e.icono}`),
+    `Bloque «Cómo te acompañamos»: ${acomp.map(conComillas).join(' / ')}`,
+    `Bloque «Cómo te evaluamos»: ${evalua.map(conComillas).join(' / ')}`,
+    `Pie: ${conComillas(pie)}`,
+    '',
+    'CONTROL ANTES DE ENTREGAR',
+    '- Están las 4 estaciones en orden, unidas por la línea de tiempo, con sus horas.',
+    '- La competencia es idéntica a la del bloque CONTENIDO.',
+    `- El lienzo mide 1080 × ${altoPx} px y los tamaños de letra son los indicados. Ninguno se redujo para que el texto cupiera.`,
+    '- Todo el texto se lee con la imagen al ancho de un computador (unos 800 px). En celular se lee ampliando o con el PDF.',
+    '- Se cumple el contraste mínimo y no hay logos, nombres, colores ni horarios de instituciones.',
+  ].join('\n');
+  const alt = `Infografía de la ruta del módulo 2 (${pf}): ${f.modulo}, ${mod.horas} horas. ` +
+    `Estaciones: ${est.map((e) => e.corto).join('; ')}.`;
+  return { texto, alt, nombre: 'M2-Ruta-Infografia.png', altoPx };
+}
+
+function infografias(pf, c, caps, f, md, fichaMd) {
+  const mod = datosModulo(fichaMd);
+  const ruta = promptRuta(pf, c, f, md, mod);
+  const porAE = caps.map((cap) => ({ cap, ...promptAE(pf, c, cap, f, mod) }));
+  const md2 = [
     `# ${pf} · Infografías del módulo 2 — prompts`,
     '',
-    '> Herramientas sugeridas: Genially o Canva (el equipo ya usa Genially), Napkin o Gamma. Si usas un',
-    '> generador de imágenes (ChatGPT, Gemini, Ideogram), pídele solo el diseño con espacios para',
-    '> el texto y escribe el texto encima: estos generadores suelen deformar las letras.',
-    '> Formato: vertical 1080 × 1920 px, exportada en PNG y, si la herramienta lo permite, interactiva.',
+    '> Cada bloque de texto es un prompt completo: se copia entero en la herramienta de diseño (Genially,',
+    '> Canva, Gamma o Napkin) o en un generador de imágenes. Trae el propósito según las bases, las',
+    '> medidas, la tipografía, el color, los íconos, la diagramación, las reglas de texto, el contenido',
+    '> exacto y un control final. Las medidas y los estilos son el estándar de este proyecto: las bases',
+    '> no fijan formato para las infografías. Los textos del plan van textuales, para el revisor.',
     '',
-    '## Infografía de la ruta del módulo (C3 · motivación)',
+    '## Infografía de la ruta del módulo (motivación · Anexo N°7, num. 7 c)',
     '',
-    '```text',
-    `Diseña una infografía vertical titulada "Ruta del módulo 2: ${f.modulo}". ${ESTILO}`,
-    'Contenido (textual, en este orden):',
-    ruta,
-    '```',
-  ];
-  for (const cap of caps) {
-    const ae = f.aes[cap.ae];
-    const secciones = cap.laminas.slice(1, -1).map((l, i) => `${i + 1}. ${l.titulo}: ${breve(l.contenido)}`);
-    partes.push(
+    `Archivo final: \`${ruta.nombre}\``,
+    '',
+    '```text', ruta.texto, '```',
+    ...porAE.flatMap((p) => ['',
+      `## Infografía ${p.cap.ae} · ${p.cap.titulo} (medio de apoyo · Anexo N°7, num. 7 d)`,
       '',
-      `## Infografía ${cap.ae} · ${cap.titulo} (herramienta didáctica · C4)`,
+      `Archivo final: \`${p.nombre}\``,
       '',
-      '```text',
-      `Diseña una infografía vertical titulada "${cap.titulo}". Subtítulo: "Aprendizaje esperado ${cap.ae.slice(2)} del módulo 2". ${ESTILO}`,
-      `Caso que ilustra los ejemplos: ${c.caso}, una empresa ficticia.`,
-      'Secciones (un ícono por sección, texto breve):',
-      ...secciones,
-      '```',
-      '',
-      `Aprendizaje esperado (textual del plan, para la ficha del recurso en el LMS): ${ae.texto}`,
-    );
-  }
-  return partes.join('\n') + '\n';
+      '```text', p.texto, '```']),
+    '',
+  ].join('\n');
+  const alt = [
+    `TEXTOS ALTERNATIVOS · ${pf} · infografías del módulo 2`,
+    'Pégalos en el campo "texto alternativo" de cada imagen al subirla al LMS (accesibilidad para lectores de pantalla).',
+    '',
+    `${ruta.nombre}: ${ruta.alt}`,
+    ...porAE.map((p) => `${p.nombre}: ${p.alt}`),
+    '',
+  ].join('\r\n');
+  const espec = [
+    'ESPECIFICACIONES VISUALES COMUNES · infografías del módulo 2',
+    'Úsalas si tu herramienta no acepta el prompt completo: pega solo el bloque CONTENIDO y aplica esto a mano.',
+    '',
+    ...especificaciones([...DIAGRAMA_AE, '', 'Para la ruta del módulo:', ...DIAGRAMA_RUTA]),
+    '',
+  ].join('\r\n');
+  return { md: md2, alt, espec };
 }
 
 // Prueba objetiva (B2, instrumento 3) → un cuestionario GIFT por aprendizaje esperado.
@@ -630,7 +838,10 @@ for (const pf of codigos) {
   const vi = videoInteractivo(pf, c, leer(`${dir}/C4-herramientas-didacticas.md`));
   guardar(`${out}/videos/H2-video-interactivo.pptx`, vi.pptx);
   guardar(`${out}/videos/H2-video-interactivo-guion.md`, vi.guion);
-  guardar(`${out}/infografias/prompts.md`, infografias(pf, c, caps, f, mdBienv));
+  const info = infografias(pf, c, caps, f, mdBienv, fichaMd);
+  guardar(`${out}/infografias/prompts.md`, info.md);
+  guardar(`${out}/infografias/textos-alternativos.txt`, info.alt);
+  guardar(`${out}/infografias/especificaciones-visuales.txt`, info.espec);
   guardar(`${out}/lecturas/prompts.md`, lecturas(pf, c, caps, f));
 
   // Carril automático: recursos finales

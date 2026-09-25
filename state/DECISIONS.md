@@ -263,3 +263,18 @@ Los enlaces a lo que no se publica apuntan a GitHub. `public/` no se versiona.
 Alternativa descartada: publicar el repo completo tal cual. Vercel no muestra Markdown, y el
 repo trae `state/`, bases y material interno que no aporta a quien revisa el módulo.
 Quién: usuario (publicar) y claude-code (forma), sesión `2026-09-25-claude-code-06`.
+
+**2026-09-25 · Prompts de infografía textuales, con especificaciones visuales y alto calculado.**
+Por qué: el usuario pidió prompts ceñidos a las bases, sin ambigüedad, con parámetros visuales
+profesionales y de claridad, y que cumplan con las medidas. Cada prompt es autosuficiente:
+- encargo y propósito, con la cita de las bases (Anexo N°7, num. 7 c y d, pág. 110);
+- tipografía con tamaños en px, color con contraste WCAG 2.1 AA, íconos, diagramación y reglas de texto;
+- el CONTENIDO exacto, con el aprendizaje, la competencia y los contenidos del plan textuales;
+- un control antes de entregar.
+
+El ancho es fijo, de 1080 px, y el alto se calcula con la cantidad de texto y los tamaños de
+letra (entre 2160 y 3480 px). Con 8 o 9 secciones, el contenido no cabe en 1080 × 1920 sin
+achicar la letra por debajo de lo legible. Las bases no fijan formato; estas medidas son el
+estándar del proyecto, y el LEEME lo dice.
+Alternativa descartada: mantener 1080 × 1920, que obliga a cortar texto o a usar letra ilegible.
+Quién: usuario (criterios) y claude-code (parámetros), sesión `2026-09-25-claude-code-07`.

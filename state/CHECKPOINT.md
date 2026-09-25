@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-25
-**Por:** 2026-09-25-claude-code-06 (Claude Code · opus-5.5)
+**Por:** 2026-09-25-claude-code-07 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -121,6 +121,11 @@ Sesión claude-code-06, 2026-09-25: sitio en Vercel. Vercel compilaba pero serv�
 repo no tenía página ni salida. Ahora `npm run sitio` arma `public/` (85 páginas, 0 enlaces
 rotos) y `vercel.json` lo publica en cada push; la portada ofrece los zips de producción. El
 usuario recibió el zip completo de videos actualizado (12 PPT, con las videocápsulas textuales).
+
+Sesión claude-code-07, 2026-09-25: prompts de infografía reescritos. Son textuales del plan y traen
+medidas calculadas para cada contenido, tipografía, color, contraste, íconos, diagramación y
+control final; además, especificaciones comunes y textos alternativos. La revisión da 10/10. El
+usuario recibió el zip nuevo; el sitio publica el mismo.
 
 ## A medias
 
