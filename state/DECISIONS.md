@@ -311,3 +311,19 @@ problema por resolver.
 Alternativa descartada: rehacer los videos de la herramienta 2. No hacía falta: las preguntas se agregan en
 H5P y el video base del usuario sirve tal cual.
 Quién: usuario (pedido de apuntar al 7) y claude-code (diseño), sesión `2026-09-25-claude-code-10`.
+
+## 2026-09-25 · Actividades del módulo 2: diseño, Moodle, zip por curso (sesión claude-code-13)
+
+- Los PDF de actividades, evaluación y medios usan el mismo diseño que las lecturas, con una ficha por documento
+  armada desde la tabla resumen de C2, con los códigos internos (R0n, B2-n, B4-x) traducidos a nombres.
+  Por qué: pedido del usuario (sesión -11); quien lee el PDF no tiene el repo. Descartado: dejar los códigos.
+- El zip de actividades separa `participante/` de `tutor/` (respuesta modelada, código y workflow corregido).
+  Por qué: la respuesta modelada no debe quedar al alcance del participante al montar la Tarea. Cuándo compartirla
+  queda como sugerencia, porque lo decide cada institución.
+- La tabla `comunas` no incluye Isla de Pascua, a propósito: es el caso borde de la misión 3 (el pedido queda sin
+  zona y, sin salida de respaldo en el Switch, desaparece). El HANDOFF anterior decía lo contrario por error.
+- `markdown()` (scripts/lib/html.mjs): la continuación de un ítem de lista se une con espacio, no con salto, y solo
+  abre renglón una línea que empieza con un rótulo en negrita ("**Entrega:**"). Por qué: cortaba oraciones a la
+  mitad en los PDF y en Moodle. Las lecturas no cambian (su HTML se comparó antes y después).
+Quién: usuario (pedido) y claude-code (diseño), sesión `2026-09-25-claude-code-13`.
+

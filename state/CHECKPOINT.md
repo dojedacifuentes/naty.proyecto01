@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-25
-**Por:** 2026-09-25-claude-code-12 (Claude Code · opus-5.5)
+**Por:** 2026-09-25-claude-code-13 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -157,6 +157,17 @@ El plan, con casillas, está al comienzo de `state/HANDOFF.md` ("EN CURSO"). Inc
 técnica de PF1821: un número escrito como texto no hace fallar a Supabase ni al Switch con conversión de
 tipos, como dicen hoy la misión 1 y la 5 de la actividad 2.
 
+Sesiones claude-code-12 y -13, 2026-09-25: el plan de actividades, hecho (casillas 1 a 6 del HANDOFF).
+- [x] Corrección técnica de PF1821 regenerada (el Switch compara `total`; la cantidad "3 unidades" se lee
+      con `parseInt`). Cambió la pregunta 5 del guion H2 de PF1821.
+- [x] Los PDF de actividades (4), evaluación (9) y cuadro comparativo de cada curso tienen el diseño de las
+      lecturas (`scripts/lib/documento.mjs`): cabecera con plan, módulo y horas, ficha y 2 familias tipográficas.
+- [x] Un HTML por actividad para la Tarea de Moodle (`entrega/actividades/moodle/`) y un PDF de respaldo
+      con los dos enunciados por curso.
+- [x] Workflow roto y corregido de PF1821, pedidos de prueba, comunas y SQL (`scripts/lib/workflow-roto.mjs`).
+      **No se importó en n8n.**
+- [x] Zip de actividades por curso con LEEME citado a las bases, publicado en `descargas/` del sitio.
+
 ## A medias
 
 - **Los entregables del módulo 2 de PF1821 y PF1822 están en borrador, sin revisión humana.**
@@ -166,7 +177,7 @@ tipos, como dicen hoy la misión 1 y la 5 de la actividad 2.
   cuando una persona revisa el recurso.
 - **Recursos base del módulo 2.** El carril A (automático, que ahora incluye las 8 lecturas) está `listo para revisión`. Faltan
   los carriles B y C, que hizo el usuario, sin los enlaces de Drive ni los PNG en el repo. Faltan el notebook
-  tutorial de PF1821 con capturas (17 pasos), el workflow roto de PF1821, correr `pytest` y probar el
+  tutorial de PF1821 con capturas (17 pasos), importar y ejecutar en n8n el workflow roto de PF1821, correr `pytest` y probar el
   notebook en Colab en PF1822, y editar los 2 videos interactivos H5P con las preguntas nuevas.
   El avance real está en los `ESTADO.md` de cada curso.
 
