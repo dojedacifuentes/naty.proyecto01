@@ -1,13 +1,28 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` y
-`2026-09-25-claude-code-01` a `-11` — 2026-09-24/25
+`2026-09-25-claude-code-01` a `-12` — 2026-09-24/25
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 ## EN CURSO: actividades del módulo 2 (pedido del usuario del 25-sep, sesión -12 en adelante)
 
-**Si esta sesión se cortó, sigue desde aquí.** El usuario pidió, textual: "haz todo lo que mencionas, dame el
+**Si esta sesión se cortó, sigue desde aquí.** La sesión -12 se cortó por falta de contexto a pedido del
+usuario. Avance real, casilla por casilla:
+- **1 · hecha en los contenidos** (C2, B2 pregunta 9, C4 paso 9 y pregunta 5 del video, lecturas AE2, AE3 y AE4 de
+  PF1821). **Falta regenerar** con `npm run produccion -- PF1821 PF1822` (después, `git checkout HEAD --
+  modulo-2/*/produccion/videos/*.pptx`) y avisar al usuario que la pregunta 5 del guion H2 de PF1821 cambió.
+- **2 · a medias:** `scripts/lib/documento.mjs` está escrito (`documentoPdfHtml` y `moodleHtml`), y
+  `lectura.mjs` ya exporta `estilos` y `flechas`. **Falta usarlo** en `documentoHtml` de `produccion.mjs`
+  (pasarle `mod` y un `kicker` y una `ficha` por documento; la ficha de actividades sale de la tabla resumen de
+  C2, con los códigos R0n y B2-n traducidos a nombres).
+- **3 · a medias:** falta llamar a `moodleHtml` por actividad → `entrega/actividades/moodle/M2-Actividad-n-Moodle.html`.
+- **4 · a medias:** `scripts/lib/workflow-roto.mjs` está escrito (versión rota y corregida desde una sola definición,
+  pedidos de prueba, comunas y SQL). **Falta llamarlo** en `produccion.mjs`, solo para PF1821: insumos
+  `pedidos_enrutados_v0.json`, `pedidos_prueba.json`, `comunas.csv` y `actividad-2-tablas.sql`; tutor
+  `respuesta-modelada/pedidos_enrutados_corregido.json`. Validar que el JSON se lea y actualizar la fila E2 del ESTADO.
+- **5 y 6 · pendientes.** El PDF de respaldo por curso se arma con `documentoPdfHtml({ partes: [...] })`, con los
+  enunciados de las dos actividades. El usuario pidió, textual: "haz todo lo que mencionas, dame el
 pdf de respaldo y luego el zip con las actividades por cada curso que estamos desarrollando, bien apegado a
 las bases". Marca cada casilla al terminarla, con su commit.
 

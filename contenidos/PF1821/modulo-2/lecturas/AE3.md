@@ -106,7 +106,7 @@ plan: MANIPULACIÓN DE DATOS.
 
 Cada valor tiene un tipo: **texto** (String), **número** (Number), **booleano** (verdadero o falso), **fecha** y las estructuras que ya viste, objeto y array. El tipo importa más de lo que parece. En la vista JSON, un texto aparece entre comillas (`"12500"`) y un número sin ellas (`12500`). Para una persona son lo mismo; para un nodo, no.
 
-Los formularios y los archivos CSV entregan casi todo como texto. Si sumas dos textos en JavaScript, se concatenan: "3" más "2" da "32". Si comparas un texto con un número, la condición puede no cumplirse aunque el valor parezca correcto. Y una base de datos que espera un número entero rechaza la fila completa. Por eso conviene **declarar el tipo** en Edit Fields apenas entran los datos: `cantidad` y `precio_unitario` como Number, `email` y `comuna` como String.
+Los formularios y los archivos CSV entregan casi todo como texto. Si sumas dos textos en JavaScript, se concatenan: "3" más "2" da "32". Si comparas un texto con un número, la condición puede no cumplirse aunque el valor parezca correcto. Y si el texto no es un número limpio, como "3 unidades", una columna de enteros de la base de datos rechaza la fila completa. Por eso conviene **declarar el tipo** en Edit Fields apenas entran los datos: `cantidad` y `precio_unitario` como Number, `email` y `comuna` como String.
 
 Las fechas se guardan como texto en formato ISO 8601, por ejemplo `2026-09-25T18:00:00`. Así se ordenan bien y cualquier base de datos las entiende. `$now` entrega la fecha actual, que puedes formatear como necesites.
 
@@ -114,8 +114,8 @@ Las fechas se guardan como texto en formato ISO 8601, por ejemplo `2026-09-25T18
 Antes de Edit Fields: `"cantidad": "2"`, `"precio_unitario": "12500"`. Después, con los dos campos declarados como Number: `"cantidad": 2`, `"precio_unitario": 12500` y el campo nuevo `"total": 25000`, todos sin comillas. Esa es la señal de que los tipos quedaron bien.
 :::
 
-:::error El total que concatena
-Si `total` quedó como String, el Summarize no suma: concatena los textos o marca un error de tipo. Revisa en la vista JSON si el valor tiene comillas y corrige el tipo en el Edit Fields que lo crea.
+:::error El total que no suma
+Si `total` quedó como String, la suma del Summarize puede salir mal o detenerse con un error de tipo. Revisa en la vista JSON si el valor tiene comillas y corrige el tipo en el Edit Fields que lo crea.
 :::
 
 ## Formatos
@@ -196,7 +196,7 @@ Llega una devolución del pedido 7. El workflow usa **Get a row** para traer el 
 :::
 
 :::error La fila rechazada
-Si Supabase responde `invalid input syntax for type integer`, un campo numérico llegó como texto, por ejemplo `"3 "` con un espacio. La corrección está antes del nodo Supabase: en Edit Fields, `{{ Number(String($json.cantidad).trim()) }}` con el tipo Number.
+Si Supabase responde `invalid input syntax for type integer`, a una columna de enteros llegó algo que no es un número entero, por ejemplo "3 unidades". Un número escrito como texto, como "3", sí lo acepta. La corrección está antes del nodo Supabase: en Edit Fields, `{{ parseInt($json.cantidad, 10) }}` con el tipo Number.
 :::
 
 ## En síntesis

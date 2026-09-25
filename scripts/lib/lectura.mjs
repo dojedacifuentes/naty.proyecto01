@@ -156,7 +156,7 @@ export function verificarLectura(lectura, unidadesAE) {
 
 const FLECHA = '<svg class="fl" viewBox="0 0 16 10" aria-label="luego" role="img"><path d="M1 5h12M9 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 // La flecha va como dibujo fuera del código; dentro de <pre> no se usa.
-const flechas = (html) => html.split(/(<pre[\s\S]*?<\/pre>)/).map((p, k) => (k % 2 ? p : p.replace(/\s*→\s*/g, ` ${FLECHA} `))).join('');
+export const flechas = (html) => html.split(/(<pre[\s\S]*?<\/pre>)/).map((p, k) => (k % 2 ? p : p.replace(/\s*→\s*/g, ` ${FLECHA} `))).join('');
 
 function caja(b, caso) {
   const rotulos = { ejemplo: `Ejemplo · ${caso}`, error: 'Error frecuente', clave: 'Idea clave' };
@@ -190,7 +190,7 @@ function fuentes() {
 // A4 · márgenes 22/26/24/26 mm · texto 11 pt/1,55 (unos 75 caracteres por línea) · escala 7,5 · 9 · 11 · 12,5 · 17 · 34 pt
 // Código en IBM Plex Mono 8,4 pt, líneas de 78 caracteres como máximo (las controla verificarLectura).
 // Colores: tinta #1F2937 (14,7:1), azul #0F3D5E (11,6:1), turquesa #0E7490 (5,4:1), gris #475569 (7,6:1), ámbar solo decorativo.
-function estilos(pie) {
+export function estilos(pie) {
   return `<style>
 ${fuentes()}
 @page { size: A4; margin: 22mm 26mm 24mm;

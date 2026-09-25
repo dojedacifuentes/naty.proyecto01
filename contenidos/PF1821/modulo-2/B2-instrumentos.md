@@ -130,8 +130,8 @@ selección y revisión del tutor en los de respuesta breve. 9 ítems de selecci�
 8. Tienes 8 pedidos y necesitas el total vendido por comuna. ¿Qué nodo usas?
    a) Merge · **b) Summarize, agrupando por comuna y sumando el total** · c) Switch · d) Split Out
    *Respuesta: b.*
-9. *(Respuesta breve, 2 puntos)* Supabase rechaza una fila con el error `invalid input syntax for type integer: "3 "`. ¿Qué ocurrió y cómo lo corriges en n8n?
-   *Respuesta: la cantidad llegó como texto con un espacio y la columna es entera (1 punto); se corrige convirtiéndola antes de guardar, por ejemplo en Edit Fields con tipo Number y `{{ Number(String($json.cantidad).trim()) }}` (1 punto).*
+9. *(Respuesta breve, 2 puntos)* Supabase rechaza una fila con el error `invalid input syntax for type integer: "3 unidades"`. ¿Qué ocurrió y cómo lo corriges en n8n?
+   *Respuesta: a la columna entera `cantidad` llegó un texto que no es un número (1 punto); se corrige antes de guardar, por ejemplo en Edit Fields con tipo Number y `{{ parseInt($json.cantidad, 10) }}`, y validando con un If que la cantidad sea mayor que 0 (1 punto).*
 
 **AE4**
 
@@ -140,7 +140,7 @@ selección y revisión del tutor en los de respuesta breve. 9 ítems de selecci�
     *Respuesta: b. If solo tiene dos salidas (verdadero o falso).*
 11. Con `tipo_cliente` = "minorista" y `total` = 219000, la expresión `{{ $json.tipo_cliente === 'mayorista' || $json.total >= 150000 }}` da:
     **a) true** · b) false · c) Un error · d) undefined
-    *Respuesta: a. Con `||` basta que una condición se cumpla, y 219000 ≥ 150000.*
+    *Respuesta: a. Con `||` basta que una condición se cumpla, y 219000 es mayor que 150000.*
 12. Un workflow termina en verde, pero faltan pedidos en la tabla. ¿Cuál es el primer paso de depuración?
     a) Volver a crear el workflow desde cero · **b) Abrir la ejecución en el historial y comparar los ítems de entrada y salida de cada nodo** · c) Cambiar las credenciales de Supabase · d) Desactivar el nodo Supabase
     *Respuesta: b.*

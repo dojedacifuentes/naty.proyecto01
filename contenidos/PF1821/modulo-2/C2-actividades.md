@@ -141,10 +141,11 @@ Resultado correcto del nodo 6 (7 pedidos válidos, $566.540 en total):
 - Sin el `trim()` del nodo 5 aparecen dos grupos: "Ñuñoa" con $25.000 y "Ñuñoa " con
   $13.800. Es la señal de que no se normalizó antes de agrupar (indicador 3.1).
 - Sin el Filter aparecen 8 pedidos y Ñuñoa suma $51.300 (indicador 3.3).
-- Si `total` quedó como texto, el Summarize concatena en vez de sumar o marca error de tipo
-  (indicador 3.3).
-- Si Supabase rechaza la fila con `invalid input syntax for type integer`, `cantidad` o
-  `precio_unitario` llegaron como texto (indicador 3.4).
+- Si `total` quedó como texto, la suma del Summarize sale mal o se detiene con un error de
+  tipo: hay que declararlo Number en el Edit Fields (indicador 3.3).
+- Si Supabase rechaza la fila con `invalid input syntax for type integer`, a una columna entera
+  llegó un valor que no es un número entero, como "2 kg" o un campo vacío (indicador 3.4). Un
+  número escrito como texto, como "2", la base de datos sí lo acepta.
 
 ---
 
@@ -171,7 +172,8 @@ y **corregirla**. Todo va a tu bitácora de depuración.
 | 5 · La ejecución en rojo | Supabase rechaza algunos pedidos y el workflow se detiene entero. | 20 |
 | Bonus · Trazabilidad | Que cada fila guardada diga por qué ruta pasó y en qué ejecución. | +10 |
 
-Cada misión vale 20 puntos: 5 por detectar, 5 por explicar y 10 por corregir. Con 60
+Algunas fallas esconden a otras: cuando corrijas una, vuelve a ejecutar con los pedidos de prueba
+y mira qué aparece. Cada misión vale 20 puntos: 5 por detectar, 5 por explicar y 10 por corregir. Con 60
 puntos obtienes la insignia **Depurador/a**; con 100 o más, **Rescatista de workflows**.
 
 **Cómo debería funcionar el workflow (requerimiento):**
@@ -185,25 +187,30 @@ puntos obtienes la insignia **Depurador/a**; con 100 o más, **Rescatista de wor
 
 ### Insumos que entrega el LMS
 
-- `pedidos_enrutados_v0.json`: el workflow con las cinco fallas.
-- Seis pedidos de prueba para fijar como datos (*pin data*) en el Webhook, incluido uno
-  mayorista por monto ($219.000), uno de Temuco, uno con `tipo_cliente` "distribuidor" y
-  uno con `cantidad` escrita "3 " con espacio.
-- Tabla `comunas` con columnas `comuna` y `zona` (RM o Regiones).
+- `pedidos_enrutados_v0.json`: el workflow con las cinco fallas, para importar en n8n (menú del
+  workflow → *Import from File*). Trae fijados como datos del Webhook los seis pedidos de prueba.
+- `pedidos_prueba.json`: los seis pedidos de prueba, por si hay que volver a fijarlos: uno
+  minorista de Santiago, uno mayorista por tipo, uno mayorista por monto ($219.000), uno de Temuco,
+  uno con `tipo_cliente` "distribuidor" de Isla de Pascua y uno con `cantidad` escrita "3 unidades".
+- `actividad-2-tablas.sql`: agrega a `pedidos` las columnas `zona`, `ruta` e `id_ejecucion`, y crea
+  las tablas `comunas` (40 comunas con su zona, RM o Regiones), `pedidos_rechazados` y
+  `revision_manual`. La misma tabla de comunas va en `comunas.csv`.
 - Plantilla de bitácora (ver `B4-retroalimentacion.md`, producto d).
 
 ### Respuesta modelada
 
-**Para armar el insumo `pedidos_enrutados_v0.json`:** el tutor parte del workflow correcto
-de esta respuesta e introduce exactamente las cinco fallas de la tabla siguiente.
+**El insumo `pedidos_enrutados_v0.json`** lo genera el carril automático junto con
+`pedidos_enrutados_corregido.json`, la versión correcta para el tutor. Los dos salen de la misma
+definición y difieren solo en las cinco fallas de la tabla siguiente. Antes de publicarlo, el tutor
+lo importa una vez en la instancia del curso, elige las credenciales de Supabase y lo prueba.
 
 | Misión | Síntoma | Cómo se detecta | Causa | Corrección | Ind. |
 | --- | --- | --- | --- | --- | --- |
-| 1 | El pedido de $219.000 cae en "bodega RM" | Abrir la ejecución y ver la entrada del Switch: `total` aparece como `"219000"` entre comillas | En Edit Fields el campo `total` está declarado como **String**; la regla del Switch compara números y la condición no se cumple | Declarar `total` como **Number** en Edit Fields (o activar *Convert types where required* en la regla) | 4.2 |
+| 1 | El pedido de $219.000 cae en "bodega RM" | Abrir la ejecución y mirar la regla de mayorista del Switch: compara `total_texto`, que vale `"219.000"` | La regla usa `total_texto`, un texto con punto de miles armado para mostrar. Como el Switch convierte tipos, lo lee como el número 219, que no llega a 150000 | Comparar `total` (Number) en la regla; el texto con formato queda solo para mostrar | 4.2 |
 | 2 | Todo sale por "datos inválidos" | En el nodo If, la vista previa de la expresión muestra `undefined` | La condición usa `{{ $json.Email }}` con mayúscula; el campo se llama `email` | Cambiar a `{{ $json.email }}` y comprobarlo con el pedido fijado | 3.3 |
 | 3 | El pedido "distribuidor" no aparece en ninguna tabla ni da error | Historial de ejecuciones: la ejecución termina en verde pero el Switch no entrega ningún ítem | El Switch no tiene salida de respaldo: lo que no calza con ninguna regla se descarta en silencio | En *Options* del Switch, *Fallback Output* = *Extra Output* y conectarla a "revisión manual" | 4.1 |
 | 4 | Cada pedido aparece repetido tantas veces como comunas hay | Contar los ítems de salida del Merge: 6 pedidos × N comunas | El Merge está en modo *Append* (o *All Possible Combinations*) en vez de unir por campo | Modo *Combine* → *Matching Fields*, campo `comuna` en ambas entradas | 3.1 |
-| 5 | Supabase rechaza el pedido con `cantidad` "3 " y todo se detiene | Ejecución en rojo; el error del nodo dice `invalid input syntax for type integer` | `cantidad` llega como texto con espacio y no hay manejo de errores | En Edit Fields, `cantidad` (Number) = `{{ Number(String($json.cantidad).trim()) }}`; en *Settings* del nodo Supabase, *On Error* = *Continue (using error output)* y enviar esa salida a `pedidos_rechazados` con el mensaje de error | 4.3 |
+| 5 | Supabase rechaza el pedido con `cantidad` "3 unidades" y todo se detiene | Ejecución en rojo; el error del nodo dice `invalid input syntax for type integer` | `cantidad` llega como texto que no es un número y el nodo no tiene manejo de errores | En Edit Fields, `cantidad` (Number) = `{{ parseInt($json.cantidad, 10) }}`; en *Settings* del nodo Supabase, *On Error* = *Continue (using error output)*, y esa salida a `pedidos_rechazados` con el mensaje de error | 4.3 |
 | Bonus | No se sabe por qué ruta pasó cada pedido | Mirar la tabla `pedidos` | Falta registrar la decisión | En cada rama, Edit Fields agrega `ruta` ("mayorista", "regiones", "bodega RM", "revisión") y `id_ejecucion` = `{{ $execution.id }}` | 4.3 |
 
 **Reglas del Switch en la versión corregida** (modo *Rules*, se envía a la primera regla que

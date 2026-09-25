@@ -42,7 +42,7 @@ otra agrupación.
 | 7 | Activa *Include Other Input Fields* para conservar `nombre`, `tipo_cliente` y `producto`. | Los 8 campos en la salida. | — |
 | | **Parte 3 · Guardar y consultar en Supabase** | | |
 | 8 | Crea la credencial de **Supabase** con la URL del proyecto y la clave de servicio que entrega el tutor. Lee la nota del paso: la clave va solo en la credencial, nunca en un nodo, un mensaje o una captura; los valores que cambian entre prueba y producción van en variables de la instancia, si el administrador las habilita. | La credencial guardada con conexión exitosa. | Revisar que la URL sea la del proyecto y que no tenga espacios. |
-| 9 | Agrega el nodo **Supabase**: *Create a row*, tabla `pedidos`, *Auto-map input data to columns*. Ejecuta el nodo. | Una fila nueva en la tabla `pedidos`, con su `id`. | Si Supabase rechaza la fila, leer el mensaje: casi siempre es un campo con el tipo equivocado (volver al paso 6). |
+| 9 | Agrega el nodo **Supabase**: *Create a row*, tabla `pedidos`, *Auto-map input data to columns*. Ejecuta el nodo. | Una fila nueva en la tabla `pedidos`, con su `id`. | Si Supabase rechaza la fila, leer el mensaje: dice qué columna y qué valor no aceptó, por ejemplo un campo obligatorio que falta o un texto donde va un entero. Revisar los pasos 5 a 7. |
 | 10 | Guarda y activa el workflow. Envía un pedido real desde la **URL de producción** del formulario. | La fila en la tabla y la ejecución en el historial. | En producción se usa la URL de producción, con el workflow activo. |
 | 11 | Crea un segundo workflow, "Consultar y exportar pedidos": **Manual Trigger** y **Supabase** *Get many rows* de la tabla `pedidos`, con el filtro `comuna` igual a "Ñuñoa". | Solo los pedidos de Ñuñoa, uno por ítem. | Revisar el nombre exacto de la columna y que el filtro no tenga espacios. |
 | | **Parte 4 · Filtrar, resumir y cambiar de formato** | | |
@@ -109,8 +109,9 @@ Cada pregunta evalúa un contenido del AE3 y va en la pausa de la escena que la 
 4. **(5:00 · selección · 3.1, Merge y datos relacionales)** Entran 6 pedidos al Merge que agrega la zona de despacho desde la tabla `comunas`, y salen 240 ítems. ¿Qué corriges?
    **a) El modo del Merge: Combine por *Matching Fields*, con el campo `comuna` en las dos entradas** · b) Borrar la tabla `comunas` y escribir la zona a mano · c) Agregar un Filter después del Merge
    *Retroalimentación:* "Con todas las combinaciones posibles, cada pedido se une con cada comuna. Al combinar por el campo en común, cada pedido recibe solo su zona."
-5. **(5:40 · completar · 3.3 y 3.4, tipos de datos y Supabase)** Supabase rechaza un pedido con el mensaje `invalid input syntax for type integer`, porque `cantidad` llegó como "3 ". Completa la expresión del Edit Fields, con el campo de tipo Number: `{{ Number(String($json.cantidad).____()) }}`.
-   **Respuesta: `trim`.** *Retroalimentación:* "Primero se quita el espacio y después se convierte a número; así la base de datos recibe un entero."
+5. **(5:40 · selección · 3.3 y 3.4, tipos de datos y Supabase)** Supabase rechaza un pedido con el mensaje `invalid input syntax for type integer: "3 unidades"`. ¿Qué pones en el campo `cantidad` del Edit Fields, con tipo Number?
+   a) `{{ $json.cantidad.trim() }}` · **b) `{{ parseInt($json.cantidad, 10) }}`** · c) `{{ String($json.cantidad) }}`
+   *Retroalimentación:* "`parseInt` lee el número del comienzo del texto (3) y la base de datos recibe un entero. `trim()` solo quita espacios: "3 unidades" seguiría siendo texto."
 
 **Registro:** el LMS guarda las respuestas; el tutor revisa quién falló las preguntas 3 y 4
 antes de la sesión sincrónica del tramo 3.

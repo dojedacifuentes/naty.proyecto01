@@ -52,7 +52,7 @@ Un pedido es mayorista si el cliente es mayorista **o** si el total es de $150.0
 :::
 
 :::error El número que era texto
-Si `total` llega como `"219000"`, entre comillas, la comparación numérica no se cumple y un pedido mayorista cae en la ruta equivocada. En JavaScript, `"219000" === 219000` es falso porque los tipos son distintos. Declara `total` como Number en Edit Fields; como alternativa, la opción *Convert types where required* del nodo convierte los tipos al comparar.
+Un texto con formato de miles, como "219.000", parece un número, pero no lo es. Si la regla lo compara como número con *Convert types where required* activado, n8n lo convierte y lo lee como 219: el pedido mayorista cae en la ruta equivocada, sin ningún error. Sin esa opción, el nodo se detiene con un error de tipo. Compara siempre el campo numérico (`total`, de tipo Number) y deja el texto con formato solo para mostrar.
 :::
 
 ## Enrutar datos
@@ -78,7 +78,7 @@ Cuando dos reglas pueden cumplirse a la vez, el orden es parte de la lógica del
 ## Casos borde
 plan: MANEJO DE CASOS EDGE.
 
-Un **caso borde** (*edge case*) es una entrada válida pero poco común, o una que nadie previó, que hace fallar una lógica que funciona con los casos normales. En los pedidos de Mercado Austral aparecen cinco tipos: **campos vacíos** (un pedido sin correo), **tipos equivocados** (una cantidad escrita "3 " con un espacio), **valores inesperados** (un `tipo_cliente` "distribuidor" que no es ni minorista ni mayorista), **duplicados** (el mismo pedido enviado dos veces) y **valores extremos** (una cantidad en cero o un monto fuera de lo habitual).
+Un **caso borde** (*edge case*) es una entrada válida pero poco común, o una que nadie previó, que hace fallar una lógica que funciona con los casos normales. En los pedidos de Mercado Austral aparecen cinco tipos: **campos vacíos** (un pedido sin correo), **tipos equivocados** (una cantidad escrita "3 unidades"), **valores inesperados** (un `tipo_cliente` "distribuidor" que no es ni minorista ni mayorista), **duplicados** (el mismo pedido enviado dos veces) y **valores extremos** (una cantidad en cero o un monto fuera de lo habitual).
 
 Se manejan con tres estrategias. **Validar temprano**: un If al comienzo separa lo que no sirve antes de procesarlo. **Normalizar**: `trim()`, `toLowerCase()` y la conversión de tipos eliminan diferencias que no importan. Y **no perder nada en silencio**: en el Switch, la **salida de respaldo** (*Fallback Output*, opción *Extra Output*) recibe todo lo que no calza con ninguna regla y lo envía a revisión manual.
 
@@ -127,7 +127,7 @@ La **trazabilidad** es poder reconstruir qué pasó con cada dato: por dónde pa
 Tres prácticas hacen que un workflow sea trazable. **Guardar la decisión**: en cada rama, un Edit Fields agrega un campo `ruta` con el nombre de la salida. **Guardar la ejecución**: el campo `id_ejecucion` con `{{ $execution.id }}` conecta cada fila con su ejecución en el historial. Y **manejar los errores**: en los ajustes de un nodo, la opción *On Error* con *Continue (using error output)* agrega una salida de error para registrar el ítem que falló sin detener todo el workflow. Además, un **workflow de errores**, que empieza con el nodo *Error Trigger* y se asigna en los ajustes del workflow principal, recibe un aviso cada vez que una ejecución falla.
 
 :::ejemplo La ejecución que ya no se detiene
-Supabase rechaza el pedido con `cantidad` "3 " y el workflow completo se detiene: los otros cinco pedidos tampoco se guardan. Con *On Error* en *Continue (using error output)*, el pedido con error sale por una salida aparte hacia `pedidos_rechazados`, con el mensaje del error, y los demás se guardan. Cada fila lleva su `ruta` y su `id_ejecucion`.
+Supabase rechaza el pedido con `cantidad` "3 unidades" y el workflow completo se detiene: los otros cinco pedidos tampoco se guardan. Con *On Error* en *Continue (using error output)*, el pedido con error sale por una salida aparte hacia `pedidos_rechazados`, con el mensaje del error, y los demás se guardan. Cada fila lleva su `ruta` y su `id_ejecucion`.
 :::
 
 ## Buenas prácticas de prueba
@@ -142,7 +142,7 @@ Probar un workflow no es ejecutarlo una vez y ver que sale en verde. Estas prác
 5. **Anotar cada falla en una bitácora**: síntoma, cómo se detectó, causa, corrección, prueba y aprendizaje.
 
 :::ejemplo Los seis pedidos de prueba
-Para el workflow de enrutamiento, Mercado Austral usa seis pedidos fijados: uno minorista de Santiago, uno mayorista por tipo, uno **mayorista por monto** ($219.000), uno **de Temuco**, uno con `tipo_cliente` **"distribuidor"** y uno con `cantidad` escrita **"3 "**. Con esos seis se prueban todas las rutas y los cuatro casos borde que ya causaron problemas.
+Para el workflow de enrutamiento, Mercado Austral usa seis pedidos fijados: uno minorista de Santiago, uno mayorista por tipo, uno **mayorista por monto** ($219.000), uno **de Temuco**, uno con `tipo_cliente` **"distribuidor"** y uno con `cantidad` escrita **"3 unidades"**. Con esos seis se prueban todas las rutas y los cuatro casos borde que ya causaron problemas.
 :::
 
 ## En síntesis

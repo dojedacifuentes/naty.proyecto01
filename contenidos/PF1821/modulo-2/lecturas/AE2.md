@@ -141,7 +141,7 @@ La depuración inicial sigue siempre el mismo orden: leer el mensaje completo, m
 | Campo vacío en la salida | La expresión no encontró el campo | El nombre exacto del campo, con mayúsculas |
 
 :::ejemplo La fila que Supabase rechazó
-Al ejecutar el nodo Supabase aparece en rojo con el mensaje `invalid input syntax for type integer`. En su panel de entrada, `cantidad` aparece como `"2"`, entre comillas. La causa está un paso antes: en el Edit Fields, `cantidad` quedó como texto. Se cambia el tipo a Number, se vuelve a ejecutar y la fila se crea.
+Al ejecutar el nodo Supabase aparece en rojo con un mensaje que dice que no encuentra la columna `Total` en la tabla `pedidos`. En su panel de entrada, el campo se llama `Total`, con mayúscula: así quedó escrito en el Edit Fields, y la columna de la tabla es `total`. Se corrige el nombre, se vuelve a ejecutar y la fila se crea.
 :::
 
 ## En síntesis
