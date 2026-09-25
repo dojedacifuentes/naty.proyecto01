@@ -1,0 +1,21 @@
+// PF1822 · Módulo 2 · Quiz AE2. Generado desde B2-instrumentos.md (instrumento 3).
+// Moodle: Banco de preguntas → Importar → formato GIFT.
+$CATEGORY: PF1822-M2/AE2
+
+::AE2-P4:: Para autenticarse en la API de OpenAI se envía\: {
+~La clave en la URL
+=El encabezado Authorization\: Bearer &lt;clave&gt;
+~Usuario y contraseña en el cuerpo
+~Una cookie de sesión
+}
+
+::AE2-P5:: Un endpoint de embeddings devuelve\: {
+~Texto generado
+=Un vector de números que representa el significado del texto
+~Una imagen
+~Solo la cantidad de tokens
+}
+
+::AE2-P6:: La respuesta del endpoint de chat se guardó en el diccionario datos. Escribe la expresión de Python que obtiene el texto generado y explica por qué conviene revisar antes el código de estado. {
+####Respuesta esperada: datos["choices"][0]["message"]["content"] (1 punto); si la API devolvió un error, la respuesta no trae choices y el programa falla con un KeyError en vez de informar el error real (1 punto).
+}

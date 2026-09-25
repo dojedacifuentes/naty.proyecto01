@@ -1,11 +1,37 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` y
-`2026-09-25-claude-code-01` — 2026-09-24/25
+`2026-09-25-claude-code-01` y `-02` — 2026-09-24/25
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
-**Para:** la siguiente sesión, sea cual sea
+**Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
-## Lo nuevo del 25-sep (UTC)
+## PRIMERO: terminar el módulo 2 de PF1821 y PF1822 (meta del usuario: mañana 25-sep temprano)
+
+La prioridad del proyecto ahora es esta, por encima de "Tu primera tarea" más abajo.
+
+1. **Abre `modulo-2/FLUJO-PRODUCCION.md`.** Explica cómo pasar de cada base al recurso final
+   y las reglas para trabajar desde otra IA.
+2. **Toma una pieza `pendiente` del tablero del curso**
+   (`modulo-2/PF1821-agentes-low-code/produccion/ESTADO.md` o el de PF1822). Primero las ★,
+   que son las del **AE3**, el aprendizaje seleccionado. Márcala `en curso`, hazla, déjala
+   `listo para revisión` con su enlace y agrega una línea al registro de ese archivo.
+3. **Las bases ya están generadas** en `produccion/`: PPTX para HeyGen con la narración en
+   las notas, prompts de infografía y de lectura, y quizzes GIFT para Moodle. Si cambias
+   contenido, regenéralas con `npm run produccion -- PF1821 PF1822`, no a mano.
+4. **Qué cumple cada curso y por qué el AE3:** `modulo-2/REVISION-BASES.md`.
+5. **La carpeta local "Licitaciones TD 2026"**, junto al repo y no dentro, tiene el molde del
+   Anexo 2: `Anexos 2 V0 y revisión/`. No la copies al repo: es público y trae propuestas de
+   otras instituciones.
+
+Trampas de esta sesión:
+- **El `hoy()` de `npm run sesion` es UTC.** A las 22:00 en Chile ya es el día siguiente, y
+  el checkpoint tiene que decir esa fecha.
+- **Rutas en `node -e` desde Git Bash:** pasa `cygpath -m <ruta>`. Node recibe la ruta estilo
+  `/c/Users/...` tal cual y la resuelve mal, con una carpeta `c` de más.
+- **Moodle lee el GIFT como HTML:** por eso `produccion.mjs` escapa `<` y `>`. Si editas un
+  `.gift` a mano, `<clave>` desaparece.
+
+## Lo nuevo del 25-sep (UTC), sesión -01
 
 - **Sección `modulo-2/` en el repo**, pedida por el usuario: una portada y una carpeta por
   curso (`PF1821-agentes-low-code/`, `PF1822-desarrollo-con-ia/`). Cada una tiene un README
@@ -16,9 +42,8 @@
   Markdown por recurso, R01 a R13. Regéneralo cada vez que cambie `contenidos/<PF>/modulo-2/`.
 - **Si cambias un recurso, revisa también el README de su curso en `modulo-2/`.** Repite a
   mano datos de `01-entregables.md` y `02-recursos.md` (nombres, cantidades, pendientes).
-- **El usuario pidió subir todo al remoto público.** El push va después del commit de cierre
-  de esta sesión; comprueba con `git log origin/main` que llegó. Desde ahora rige lo de
-  abajo: `git pull` antes de abrir sesión y `git push` después de cerrarla.
+- **Todo está en el remoto público** desde el commit `1eaf1b8`. Trabaja con `git pull`
+  antes de abrir sesión y `git push` después de cerrarla.
 
 ## Lo nuevo del 24-sep
 

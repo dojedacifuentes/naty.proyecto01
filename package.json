@@ -18,6 +18,7 @@
     "manual": "node scripts/manual-modulo.mjs",
     "kit": "node scripts/kit-recursos.mjs",
     "zip": "node scripts/zip-recursos.mjs",
+    "produccion": "node scripts/produccion.mjs",
     "verificadores": "node scripts/auditar-verificadores.mjs",
     "hooks": "node scripts/instalar-hooks.mjs",
     "test": "node scripts/verificar.mjs --estricto"

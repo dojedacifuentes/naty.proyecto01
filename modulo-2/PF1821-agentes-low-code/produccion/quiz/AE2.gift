@@ -1,0 +1,21 @@
+// PF1821 · Módulo 2 · Quiz AE2. Generado desde B2-instrumentos.md (instrumento 3).
+// Moodle: Banco de preguntas → Importar → formato GIFT.
+$CATEGORY: PF1821-M2/AE2
+
+::AE2-P4:: Un workflow tiene tres nodos\: Form Trigger → Edit Fields → Supabase. Explica qué rol cumple cada uno. {
+####Respuesta esperada: el Form Trigger es la entrada que inicia la ejecución; Edit Fields procesa y transforma los datos; Supabase es la acción de salida que los guarda. 2 puntos con los tres roles bien asignados, 1 con dos.
+}
+
+::AE2-P5:: Para probar un workflow sin llenar el formulario cada vez, lo recomendable es\: {
+~Duplicar el workflow
+=Fijar datos de prueba (pin data) en el nodo trigger
+~Desactivar el workflow
+~Borrar el historial de ejecuciones
+}
+
+::AE2-P6:: Después de ejecutar un nodo, ¿dónde verificas los datos que entregó? {
+=En el panel de salida (Output) del nodo
+~En la configuración de credenciales
+~En los Settings del workflow
+~En la lista de workflows
+}

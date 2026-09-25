@@ -19,13 +19,25 @@ herramientas y extensión al plan completo?** — ABIERTA
 Las bases dicen que el ítem D se desarrolla *"a lo largo de todo el plan formativo"*,
 pero B y C hablan del módulo. Conviene confirmarlo junto con la pregunta 1.
 
-**16. ¿Cómo se cuenta el "segundo módulo" cuando el plan empieza con un módulo transversal?** — ABIERTA
+**16. ¿Cómo se cuenta el "segundo módulo" cuando el plan empieza con un módulo transversal?** — ABIERTA · respuesta parcial
 En SIPFOR, PF1821 y PF1822 (y probablemente los 15) empiezan con `MB00171` "Orientación al
 perfil de especialidades y metodología del curso" (12 h, transversal). Contado sobre todos
 los módulos, el segundo es el primer técnico: `MA04560` en PF1821 y `MA04576` en PF1822.
 Contado solo sobre los técnicos, sería `MA04561` y `MA04577`.
 Supuesto de trabajo (2026-09-24): se cuenta sobre todos, en el orden en que SIPFOR lista el
 plan. Conviene confirmarlo contra el PDF oficial de cada plan y sumarlo a la consulta #1.
+**Evidencia del 2026-09-25:** los PDF oficiales de los planes (versión 14-09-2026, pág. 3,
+carpeta local "PF SENCE a licitar") numeran el transversal como "Módulo N°1" y a `MA04560` y
+`MA04576` como "Módulo N°2". Apoya el supuesto; falta que Natalia lo dé por cerrado o que entre
+en la consulta #1.
+
+**17. ¿Quién elige el "aprendizaje esperado seleccionado" de la metodología?** — ABIERTA
+La pauta de metodología pide 2 actividades prácticas y 2 herramientas didácticas "para el
+aprendizaje esperado seleccionado" (bases 2026, 7.4, pág. 31), pero no dice si lo elige el
+oferente o el evaluador. Supuesto de trabajo (2026-09-25): lo declara el oferente en el
+Anexo 2, como hace el V0 de PF1474 del equipo. Se declaró el AE3 en PF1821 y PF1822, y como
+resguardo cada aprendizaje tiene al menos dos herramientas didácticas en el LMS. Conviene
+sumarla a la consulta #1.
 
 ## Para Natalia
 
@@ -33,9 +45,14 @@ plan. Conviene confirmarlo contra el PDF oficial de cada plan y sumarlo a la con
 El cuadro entregado trae 15 planes y 2.670 cupos totales, pero no dice qué cliente
 postula a qué plan. La diferencia entre 45 y 90 documentos define todo el proyecto.
 
-**4. ¿Acceso a la carpeta Drive "Metodologías" con los Anexos 2 de referencia?** — ABIERTA
+**4. ¿Acceso a la carpeta Drive "Metodologías" con los Anexos 2 de referencia?** — ABIERTA · respuesta parcial
 Propietaria: natalia@hackea.pro. Sin esto no hay ingeniería inversa ni auditoría de
 verificadores.
+**2026-09-25:** el usuario dejó en local una descarga de Drive, "Licitaciones TD 2026", con 13
+Anexos 2 de 2024, el V0 de PF1474 con su revisión, los formatos oficiales 2026, los PDF de los
+planes y las planillas de recursos. No se versiona porque trae propuestas de otras
+instituciones (`DECISIONS.md`, 2026-09-25). Falta confirmar si es la carpeta "Metodologías"
+completa y revisar los verificadores de los Anexos 2 de 2024.
 
 **5. ¿Quién arma los LMS y cuántos hay que armar?** — ABIERTA · CRÍTICA
 El 35% de la propuesta técnica se evalúa navegando el LMS, no leyendo el documento.

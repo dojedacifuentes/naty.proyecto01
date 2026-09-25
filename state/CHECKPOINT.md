@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-25
-**Por:** 2026-09-25-claude-code-01 (Claude Code · opus-5.5)
+**Por:** 2026-09-25-claude-code-02 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -76,9 +76,22 @@ Sesión claude-code, 2026-09-25 (UTC; en Chile seguía siendo el 24):
 - [x] Sección `modulo-2/`: portada y una carpeta por curso con el checklist de lo que piden
       las bases para el módulo 2 (citado a numeral y página), el estado de cada ítem, los
       enlaces a cada recurso y el zip del curso. Enlazada desde el `README.md` de la raíz
-- [x] El usuario pidió subir todo a https://github.com/dojedacifuentes/naty.proyecto01. El
-      primer push se hace justo después del commit de este cierre; si `git log origin/main`
-      no muestra este checkpoint, el push falló y hay que repetirlo
+- [x] Primer push a https://github.com/dojedacifuentes/naty.proyecto01 (commit `1eaf1b8`);
+      el workflow `verificar` de GitHub Actions pasó
+
+Sesión claude-code-02, 2026-09-25 (meta del usuario: terminar el módulo 2 de los dos cursos
+la mañana del 25, apuntando a 7,0):
+
+- [x] Revisión contra las bases con la carpeta local de referencias → `modulo-2/REVISION-BASES.md`.
+      El PDF oficial de cada plan confirma que el módulo 2 es `MA04560` y `MA04576` (#16)
+- [x] AE3 declarado como aprendizaje seleccionado en los dos cursos; parte C (AE3) agregada a
+      la actividad 1 de PF1822 para que tenga dos actividades
+- [x] Flujo de producción → `modulo-2/FLUJO-PRODUCCION.md`, con un tablero por curso en
+      `modulo-2/PF18xx-*/produccion/ESTADO.md` (19 y 20 piezas)
+- [x] Bases de producción → `npm run produccion`: PPTX para HeyGen con la narración en las
+      notas (bienvenida y 4 cápsulas por curso), prompts de infografía y de lectura, quiz GIFT
+      por aprendizaje. Los 10 PPTX abren en PowerPoint 2007
+- [x] Zip y PDF de PF1822 regenerados con la parte C
 
 ## A medias
 
@@ -87,9 +100,10 @@ Sesión claude-code, 2026-09-25 (UTC; en Chile seguía siendo el 24):
   El código Python de PF1822 no se ejecutó: en esta máquina no hay Python.
   Todas las casillas de `modulo-2/PF18xx-*/README.md` están sin marcar por eso: se marcan
   cuando una persona revisa el recurso.
-- **Los recursos siguen siendo texto.** Faltan los archivos finales: video, infografía,
-  presentaciones, H5P, workflows de n8n (con el "roto" de la actividad 2 de PF1821) y el
-  notebook `.ipynb` de PF1822.
+- **Los recursos siguen siendo texto y bases de producción.** Los archivos finales (videos
+  HeyGen, infografías, lecturas, H5P, notebook `.ipynb`, workflow roto de n8n, 9 PDF) se
+  producen con otras IA siguiendo `modulo-2/FLUJO-PRODUCCION.md`. El avance real está en los
+  `ESTADO.md` de cada curso: al cierre de esta sesión, todas las piezas están `pendiente`.
 
 Lo que existe pero **nunca se ha ejercido de verdad**: el sistema de verificación no ha
 visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de conteo y el
@@ -99,7 +113,7 @@ visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de co
 
 | Qué | Bloqueado por | Quién destraba |
 | --- | --- | --- |
-| Revisión de los Anexos 2 de referencia | Sin acceso a la carpeta Drive "Metodologías" (natalia@hackea.pro) | Natalia |
+| Revisión de los Anexos 2 de referencia | Hay una descarga local desde el 25-sep (#4); falta confirmar que es la carpeta completa | Natalia |
 | Auditoría de verificadores | Depende de lo anterior | Natalia |
 | Matriz real cliente × plan | No definida | Natalia |
 | Fechas formales de la licitación | Llamado aún no publicado | SENCE / Natalia |

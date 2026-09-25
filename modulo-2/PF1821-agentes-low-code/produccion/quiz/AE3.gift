@@ -1,0 +1,22 @@
+// PF1821 · Módulo 2 · Quiz AE3. Generado desde B2-instrumentos.md (instrumento 3).
+// Moodle: Banco de preguntas → Importar → formato GIFT.
+$CATEGORY: PF1821-M2/AE3
+
+::AE3-P7:: Si $json.email vale " Ana@Correo.TEST ", la expresión \{\{ $json.email.trim().toLowerCase() \}\} devuelve\: {
+~" ana@correo.test "
+="ana@correo.test"
+~"ANA@CORREO.TEST"
+~Un error
+####trim() quita los espacios de los extremos y toLowerCase() pasa a minúsculas.
+}
+
+::AE3-P8:: Tienes 8 pedidos y necesitas el total vendido por comuna. ¿Qué nodo usas? {
+~Merge
+=Summarize, agrupando por comuna y sumando el total
+~Switch
+~Split Out
+}
+
+::AE3-P9:: Supabase rechaza una fila con el error invalid input syntax for type integer\: "3 ". ¿Qué ocurrió y cómo lo corriges en n8n? {
+####Respuesta esperada: la cantidad llegó como texto con un espacio y la columna es entera (1 punto); se corrige convirtiéndola antes de guardar, por ejemplo en Edit Fields con tipo Number y \{\{ Number(String($json.cantidad).trim()) \}\} (1 punto).
+}

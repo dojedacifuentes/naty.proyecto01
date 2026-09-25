@@ -18,7 +18,8 @@ Los recursos educativos del módulo 2 y el checklist de lo que piden las bases e
 - [PF1821 · Construcción de Agentes y Automatización con Herramientas Low Code](modulo-2/PF1821-agentes-low-code/)
 - [PF1822 · Especialización en Desarrollo con IA](modulo-2/PF1822-desarrollo-con-ia/)
 
-Estado: borrador, sin revisión humana.
+Estado: borrador, sin revisión humana. Para terminarlo: [`modulo-2/FLUJO-PRODUCCION.md`](modulo-2/FLUJO-PRODUCCION.md)
+y el `produccion/ESTADO.md` de cada curso.
 
 ---
 
@@ -64,6 +65,7 @@ Requisito: **Node ≥ 18**. No hay dependencias que instalar.
 | `npm run manual -- PF1821 PF1822 --pdf` | manual de entregables del módulo 2 en HTML y PDF (usa Edge o Chrome) |
 | `npm run kit -- PF1821 --pdf` | kit de recursos educativos del módulo 2 de un curso, en HTML y PDF (`--unico` junta todos los cursos, con ficha y entregables) |
 | `npm run zip -- PF1821 --salida <dir>` | zip de los recursos del módulo 2 de un curso, un archivo por recurso (R01 a R13) |
+| `npm run produccion -- PF1821 PF1822` | bases de producción del módulo 2: PPTX para HeyGen, prompts de infografía y lectura, quizzes GIFT (ver `modulo-2/FLUJO-PRODUCCION.md`) |
 
 Corre solo, además, en cada commit (hook) y en cada push (GitHub Actions).
 

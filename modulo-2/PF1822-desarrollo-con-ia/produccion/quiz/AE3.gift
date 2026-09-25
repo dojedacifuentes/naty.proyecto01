@@ -1,0 +1,21 @@
+// PF1822 · Módulo 2 · Quiz AE3. Generado desde B2-instrumentos.md (instrumento 3).
+// Moodle: Banco de preguntas → Importar → formato GIFT.
+$CATEGORY: PF1822-M2/AE3
+
+::AE3-P7:: Un prompt few-shot es el que\: {
+~Se envía varias veces
+=Incluye ejemplos de entrada y salida esperada antes de la tarea
+~Usa temperature alta
+~No tiene instrucciones
+}
+
+::AE3-P8:: Para resúmenes técnicos consistentes entre una ejecución y otra conviene\: {
+~Temperature alta (por ejemplo 1,5)
+=Temperature baja (0 a 0,3)
+~Quitar el mensaje de sistema
+~Subir mucho max_tokens
+}
+
+::AE3-P9:: Mejora este prompt\: "Resume esto." Escribe tu versión. {
+####Respuesta esperada: 2 puntos si incluye al menos tres de\: rol, tarea precisa, restricción de largo, formato de salida, prohibición de agregar información; 1 punto si incluye dos.
+}

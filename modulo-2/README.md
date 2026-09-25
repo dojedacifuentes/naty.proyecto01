@@ -13,6 +13,19 @@ su carpeta, con el checklist citado y un zip con un archivo por recurso.
 revisado por una persona. Falta convertir el texto en archivos finales (video, infografía,
 presentaciones, H5P, workflows y notebook) y montarlos en el LMS de cada institución.
 
+## Para terminar el módulo
+
+| Documento | Para qué |
+| --- | --- |
+| [`REVISION-BASES.md`](REVISION-BASES.md) | Qué cumple cada curso frente a las bases y qué se ajustó con las referencias del equipo |
+| [`FLUJO-PRODUCCION.md`](FLUJO-PRODUCCION.md) | Cómo pasar del texto al recurso final (HeyGen, Genially, Moodle) y cómo trabajar desde otra IA |
+| [Estado de PF1821](PF1821-agentes-low-code/produccion/ESTADO.md) · [Estado de PF1822](PF1822-desarrollo-con-ia/produccion/ESTADO.md) | Tablero de avance: una fila por pieza |
+
+**Aprendizaje esperado seleccionado: AE3 en los dos cursos.** Tiene dos actividades prácticas
+y dos herramientas didácticas, que es lo que la pauta mira para el 7,0 (bases 2026, 7.4, pág. 31).
+Las bases de producción (PPTX para HeyGen, prompts, quizzes GIFT) están en `produccion/` y se
+regeneran con `npm run produccion -- PF1821 PF1822`.
+
 ## Qué se evalúa en el módulo 2
 
 La propuesta técnica se evalúa sobre el segundo módulo del plan (bases 2026, 7.4, pág. 27).

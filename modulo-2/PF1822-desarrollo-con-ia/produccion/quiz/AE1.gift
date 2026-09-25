@@ -1,0 +1,22 @@
+// PF1822 · Módulo 2 · Quiz AE1. Generado desde B2-instrumentos.md (instrumento 3).
+// Moodle: Banco de preguntas → Importar → formato GIFT.
+$CATEGORY: PF1822-M2/AE1
+
+::AE1-P1:: Un modelo que genera imágenes partiendo de ruido y refinándolo paso a paso es\: {
+~Autorregresivo
+=De difusión
+~Basado en reglas
+~De agrupamiento
+}
+
+::AE1-P2:: En una aplicación con IA generativa, ¿qué componente debe guardar la clave de la API? {
+~La aplicación en el navegador
+=El servidor o backend
+~El vector store
+~El prompt
+####Lo que llega al navegador lo puede leer cualquiera.
+}
+
+::AE1-P3:: Da dos razones para preprocesar un texto antes de enviarlo al modelo. {
+####Respuesta esperada: 
+}

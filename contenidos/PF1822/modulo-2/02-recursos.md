@@ -64,7 +64,7 @@ fija las 21 h del módulo. La valida Natalia.
 | R04 Cuadro comparativo | ● | | | |
 | R05 Notebook guiado | | ● | ● | ● |
 | R06 Video interactivo | | ● | ● | |
-| R07 Actividad 1 | ● | ● | | |
+| R07 Actividad 1 | ● | ● | ● | |
 | R08 Actividad 2 | | | ● | ● |
 | R10 Instrumentos (los tres) | ● | ● | ● | ● |
 | R11 Portafolio | ● | ● | ● | ● |

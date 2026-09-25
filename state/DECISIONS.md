@@ -165,3 +165,41 @@ con dominio `.test`, la casilla pública de SENCE y el correo de trabajo de Nata
 `state/`.
 Alternativa descartada: seguir en local.
 Quién: usuario.
+
+**2026-09-25 · AE3 es el "aprendizaje esperado seleccionado" en PF1821 y PF1822.**
+Por qué: la pauta de metodología mira 2 actividades y 2 herramientas didácticas "para el
+aprendizaje esperado seleccionado" (bases 2026, 7.4, pág. 31). En PF1821 el AE3 ya estaba
+en las dos actividades y en las dos herramientas. En PF1822 ningún aprendizaje estaba en las
+dos actividades, así que se agregó a la actividad 1 una parte C del AE3 con respuesta
+modelada. Es el cambio más chico que lo resuelve y no necesita ejecutar código.
+Alternativa descartada: un ABP y un ABPRO por cada aprendizaje, como el V0 de PF1474. Es
+más robusto si el evaluador elige el aprendizaje, pero son ocho actividades por curso y no
+caben en el plazo. Queda como resguardo parcial: cada aprendizaje tiene dos herramientas
+didácticas en el LMS (#17).
+Quién: claude-code, sesión `2026-09-25-claude-code-02`, a pedido del usuario de apuntar a 7,0.
+
+**2026-09-25 · Se adopta el estándar de recursos del equipo por aprendizaje esperado.**
+Por qué: la propuesta de Hackea (lámina 13) y las planillas de recursos de 2023 y 2025 usan,
+por aprendizaje, videocápsula, lectura en flipbook, quiz e infografía. El kit tenía cápsulas
+por aprendizaje, pero una sola infografía y ningún quiz por aprendizaje. Con el estándar, cada
+aprendizaje queda con al menos dos herramientas didácticas, y el curso se parece a lo que el
+equipo ya sabe montar. El glosario va dentro de cada lectura.
+Alternativa descartada: mantener el kit como estaba.
+Quién: claude-code, sesión `2026-09-25-claude-code-02`.
+
+**2026-09-25 · La carpeta local "Licitaciones TD 2026" no se versiona.**
+Por qué: trae Anexos 2 de otras instituciones (Skillnest, UNAB, Mindhub, CHC), un convenio y
+la propuesta comercial de Hackea, y el repo es público. Se cita por nombre de archivo y se
+resume lo que se usó en `modulo-2/REVISION-BASES.md`, sin copiar texto.
+Alternativa descartada: agregarla a `bases/` o a `entregables/`.
+Quién: claude-code, sesión `2026-09-25-claude-code-02`.
+
+**2026-09-25 · Las bases de producción las genera `npm run produccion` desde `contenidos/`.**
+Por qué: el usuario va a producir los recursos finales con otras IA (HeyGen para los videos,
+Genially o Canva para las infografías). Generar sus insumos (PPTX con la narración en las
+notas, prompts, quizzes GIFT) desde la misma fuente evita que el video diga una cosa y el
+kit otra. El PPTX se arma en Node sin dependencias (`scripts/lib/pptx.mjs`) y se validó
+abriéndolo en PowerPoint 2007.
+Alternativa descartada: automatizar PowerPoint por COM, que solo funciona en Windows con
+Office; e instalar `pptxgenjs`, que rompe la regla de cero dependencias (AGENTS.md §8).
+Quién: claude-code, sesión `2026-09-25-claude-code-02`.

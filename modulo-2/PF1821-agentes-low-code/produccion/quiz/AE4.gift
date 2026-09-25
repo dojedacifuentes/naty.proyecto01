@@ -1,0 +1,26 @@
+// PF1821 · Módulo 2 · Quiz AE4. Generado desde B2-instrumentos.md (instrumento 3).
+// Moodle: Banco de preguntas → Importar → formato GIFT.
+$CATEGORY: PF1821-M2/AE4
+
+::AE4-P10:: Necesitas enviar cada pedido a una de cuatro rutas según reglas distintas. El nodo más adecuado es\: {
+~If
+=Switch
+~Merge
+~Filter
+####If solo tiene dos salidas (verdadero o falso).
+}
+
+::AE4-P11:: Con tipo_cliente \= "minorista" y total \= 219000, la expresión \{\{ $json.tipo_cliente \=\=\= 'mayorista' || $json.total &gt;\= 150000 \}\} da\: {
+=true
+~false
+~Un error
+~undefined
+####Con || basta que una condición se cumpla, y 219000 ≥ 150000.
+}
+
+::AE4-P12:: Un workflow termina en verde, pero faltan pedidos en la tabla. ¿Cuál es el primer paso de depuración? {
+~Volver a crear el workflow desde cero
+=Abrir la ejecución en el historial y comparar los ítems de entrada y salida de cada nodo
+~Cambiar las credenciales de Supabase
+~Desactivar el nodo Supabase
+}

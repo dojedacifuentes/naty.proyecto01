@@ -1,0 +1,22 @@
+// PF1821 · Módulo 2 · Quiz AE1. Generado desde B2-instrumentos.md (instrumento 3).
+// Moodle: Banco de preguntas → Importar → formato GIFT.
+$CATEGORY: PF1821-M2/AE1
+
+::AE1-P1:: ¿Cuál de estos procesos de Mercado Austral es el mejor candidato para automatizar con un workflow? {
+~Negociar precios con un proveedor nuevo
+=Registrar en la base cada pedido que llega por el formulario
+~Elegir el diseño del nuevo logo
+~Entrevistar a un postulante
+####Es repetitivo, de alto volumen y sigue reglas claras.
+}
+
+::AE1-P2:: En n8n, un trigger es\: {
+=El nodo que inicia la ejecución del workflow ante un evento o un horario
+~La credencial que conecta con un servicio externo
+~El registro histórico de ejecuciones
+~Una expresión que calcula un valor
+}
+
+::AE1-P3:: Nombra dos diferencias entre n8n y una plataforma como Zapier que importen a una empresa que maneja datos de sus clientes. {
+####Respuesta esperada: se acepta cualquiera de estas, 1 punto cada una\: n8n puede instalarse en infraestructura propia y así los datos no salen de la empresa; permite agregar lógica propia con el nodo Code; su modelo de cobro en la nube es por ejecución del workflow y no por cada tarea (verificar precios vigentes).
+}

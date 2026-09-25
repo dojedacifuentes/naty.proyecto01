@@ -64,7 +64,7 @@ LMS** (pág. 30), así que cada recurso cuenta cuando está montado, no cuando e
 | ✓ | Qué piden para el 7,0 | Cita | Hoy | Recurso |
 | --- | --- | --- | --- | --- |
 | [ ] | **Relación metodología-competencia** (30 %, binario): enfocada en la competencia del módulo. Si es genérica y sirve para cualquier plan, la nota es 1,0 | 7.4, pág. 30 · Anexo N°7, num. 7 a), pág. 110 | Aprendizaje basado en problemas sobre el caso Mercado Austral, partiendo de la competencia textual | [R13](../../contenidos/PF1821/modulo-2/C-metodologia.md) |
-| [ ] | **Proceso de aprendizaje** (30 %): al menos 2 actividades prácticas distintas que permitan adquirir la habilidad. La guía propone una de resolución de problemas y otra de análisis de caso con gamificación o simulación, **ambas con respuesta modelada** | 7.4, pág. 31 · Anexo N°7, num. 7 b), págs. 109–110 | Las 2 actividades con respuesta modelada | [R07](../../contenidos/PF1821/modulo-2/C2-actividades.md) · [R08](../../contenidos/PF1821/modulo-2/C2-actividades.md) |
+| [ ] | **Proceso de aprendizaje** (30 %): al menos 2 actividades prácticas distintas que permitan adquirir la habilidad. La guía propone una de resolución de problemas y otra de análisis de caso con gamificación o simulación, **ambas con respuesta modelada** | 7.4, pág. 31 · Anexo N°7, num. 7 b), págs. 109–110 | Las 2 actividades con respuesta modelada. Las dos cubren el **AE3**, el aprendizaje seleccionado | [R07](../../contenidos/PF1821/modulo-2/C2-actividades.md) · [R08](../../contenidos/PF1821/modulo-2/C2-actividades.md) |
 | [ ] | **Aspectos motivacionales** (10 %, binario): el módulo aporta al aprendizaje por la interacción con la plataforma, en un ambiente intuitivo, lineal y amigable, con íconos, multimedia e imágenes | 7.4, pág. 31 · Anexo N°7, num. 7 c), pág. 110 | Guion del video, contenido de la infografía y estrategia | [R01](../../contenidos/PF1821/modulo-2/R-bienvenida-e-infografia.md) · [R02](../../contenidos/PF1821/modulo-2/R-bienvenida-e-infografia.md) · [R13](../../contenidos/PF1821/modulo-2/C-metodologia.md) |
 | [ ] | **Uso de los medios** (20 %): 2 herramientas didácticas distintas y **las dos** efectivas. Si solo una lo es, la nota baja a 5,0 | 7.4, pág. 31 · Anexo N°7, num. 7 d), pág. 110, y pág. 111 | Tutorial "Tu primer workflow" y video interactivo "Expresiones y depuración" | [R05](../../contenidos/PF1821/modulo-2/C4-herramientas-didacticas.md) · [R06](../../contenidos/PF1821/modulo-2/C4-herramientas-didacticas.md) |
 | [ ] | **Medios de apoyo**: presentaciones, tutoriales, videos interactivos, instructivos o cuadros comparativos, enumerados y descritos | Anexo N°7, num. 7 d), pág. 110 | 4 cápsulas y cuadro n8n · Make · Zapier | [R03](../../contenidos/PF1821/modulo-2/R-capsulas.md) · [R04](../../contenidos/PF1821/modulo-2/R-capsulas.md) |
@@ -80,6 +80,9 @@ LMS** (pág. 30), así que cada recurso cuenta cuando está montado, no cuando e
 | [ ] | Enlace a la evaluación del portafolio y rúbrica de retroalimentación adjunta, en la sección V | Anexo N°2, V, pág. 90 | La rúbrica está escrita (R11 y R12); falta el enlace |
 
 ## Lo que falta para darlo por listo
+
+Avance pieza por pieza en [`produccion/ESTADO.md`](produccion/ESTADO.md); cómo producir cada pieza en
+[`FLUJO-PRODUCCION.md`](../FLUJO-PRODUCCION.md).
 
 1. **Revisión de Natalia** de los 13 recursos (etapa 3 de [`docs/05`](../../docs/05-flujo-contenidos-modulo.md)).
 2. **Convertir el texto en archivos finales:** grabar el video, diseñar la infografía, armar

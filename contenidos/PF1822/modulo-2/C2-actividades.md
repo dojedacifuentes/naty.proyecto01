@@ -14,12 +14,12 @@ ambas con respuesta modelada.
 | --- | --- | --- |
 | Nombre | Un cliente de API para el resumidor | Laboratorio de prompts y métricas |
 | Técnica | Resolución de problemas | Análisis de caso + simulación con tablero de puntajes |
-| AE que cubre | AE1, AE2 | AE3, AE4 |
-| Indicadores | 1.2, 1.3, 2.1, 2.2, 2.3 | 3.1, 3.2, 3.3, 4.1, 4.2, 4.3 |
-| Tramo del módulo | 1 y 2 | 3 y 4 |
-| Tiempo estimado | 6 h (2 h guiadas + 4 h autónomas) | 6 h (1,5 h sincrónica + 4,5 h autónomas) |
+| AE que cubre | AE1, AE2, AE3 | AE3, AE4 |
+| Indicadores | 1.2, 1.3, 2.1, 2.2, 2.3, 3.1, 3.2 | 3.1, 3.2, 3.3, 4.1, 4.2, 4.3 |
+| Tramo del módulo | 1 y 2; la parte C abre el tramo 3 | 3 y 4 |
+| Tiempo estimado | 7 h (2 h guiadas + 5 h autónomas) | 6 h (1,5 h sincrónica + 4,5 h autónomas) |
 | Apoyos | Notebook guiado R05, cápsulas R03 | Video interactivo R06 |
-| Producto | Diagrama + `cliente_ia.py` + `test_cliente_ia.py` | Notebook del pipeline + registro de prompts + tabla de métricas |
+| Producto | Diagrama + `cliente_ia.py` + `test_cliente_ia.py` + `prompts.md` | Notebook del pipeline + registro de prompts + tabla de métricas |
 | Se evalúa con | Rúbrica de solución (B2-1) | Rúbrica de solución (B2-1) + bitácora (B4-d) |
 
 ---
@@ -51,8 +51,25 @@ clase `ClienteIA` que:
 Escribe además `test_cliente_ia.py` con **al menos tres pruebas unitarias** que se ejecuten
 **sin conexión**, simulando la API.
 
-**Entrega:** el diagrama (imagen o Mermaid), los dos archivos `.py`, la salida de `pytest`
-y un `README.md` breve. Tu clave **no** puede aparecer en ningún archivo ni captura.
+**Parte C — El prompt que no sirve (AE3).** El equipo probó este prompt y el jefe de
+soporte lo rechazó:
+
+```text
+Resume esto: <ticket>
+```
+
+Con `temperature` 1,0 y el ticket *"La app móvil se cierra al abrir el historial de pedidos
+en Android 14; en iOS funciona."* devolvió dos salidas distintas: (a) *"Hay un problema con
+la app. Se recomienda reinstalarla y actualizar el sistema operativo para solucionar el
+error de forma definitiva."* y (b) *"App falla."*
+
+1. Diagnostica **tres fallas** del prompt o de sus parámetros: qué indicación falta y qué efecto tuvo en las salidas.
+2. Reescribe el prompt como **zero-shot** con rol, tarea, formato y restricciones. Elige `temperature` y límite de tokens y justifica cada uno en una línea.
+3. Pruébalo con tu `ClienteIA` sobre ese ticket y sobre este otro: *"No puedo descargar la factura de agosto desde el portal; el botón queda cargando."*
+
+**Entrega:** el diagrama (imagen o Mermaid), los dos archivos `.py`, la salida de `pytest`,
+`prompts.md` con el diagnóstico, el prompt corregido y sus dos salidas, y un `README.md`
+breve. Tu clave **no** puede aparecer en ningún archivo ni captura.
 
 ### Respuesta modelada
 
@@ -234,9 +251,36 @@ modelo de ejemplo antes de publicar la actividad; las URL de ese servicio han ca
 `max_tokens` o no aceptan `temperature`. El participante lo comprueba en la documentación
 del modelo que use: es parte del indicador 2.1.
 
+**Parte C — respuesta modelada.**
+
+*Diagnóstico:*
+1. **No dice qué es un buen resumen** (largo, foco, persona gramatical). Efecto: la salida (b) es tan corta que no nombra la plataforma ni la condición en que falla.
+2. **No prohíbe agregar información.** Efecto: la salida (a) inventa una solución ("reinstalarla") que no está en el ticket.
+3. **`temperature` 1,0 y sin límite de tokens** para una tarea que debe ser estable. Efecto: dos ejecuciones dan resultados muy distintos y el largo no está acotado.
+
+*Prompt corregido (zero-shot):*
+
+```text
+[system] Eres analista de soporte de Nube Sur. Resume el ticket en UNA oración de máximo
+25 palabras, en tercera persona. Indica qué falla, en qué producto y en qué condición
+ocurre. No propongas soluciones ni agregues datos que no estén en el ticket.
+[user] Ticket: <ticket limpio>
+```
+
+*Parámetros:* `temperature` 0,2, porque resumir es extraer y se busca la misma respuesta
+cada vez; límite de 60 tokens, porque una oración de 25 palabras cabe con margen.
+
+*Salidas esperadas (pueden variar en la redacción):* "La app móvil se cierra al abrir el
+historial de pedidos en Android 14; en iOS funciona correctamente." y "El usuario no puede
+descargar la factura de agosto desde el portal porque el botón queda cargando."
+
+*Nivel logrado (indicadores 3.1 y 3.2):* identifica al menos dos fallas con su efecto; el
+prompt corregido tiene rol, tarea, formato y restricción; los parámetros se justifican.
+
 **Errores típicos:** la clave escrita en el código o en el notebook (falla grave, criterio 2
 de la rúbrica); pruebas que llaman a la API real y fallan sin internet; no revisar el código
-de estado y leer `choices` de una respuesta de error.
+de estado y leer `choices` de una respuesta de error. En la parte C: corregir el prompt
+agregando la solución correcta en vez de prohibir las soluciones.
 
 ---
 

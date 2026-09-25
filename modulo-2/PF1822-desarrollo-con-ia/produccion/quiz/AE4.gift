@@ -1,0 +1,24 @@
+// PF1822 · Módulo 2 · Quiz AE4. Generado desde B2-instrumentos.md (instrumento 3).
+// Moodle: Banco de preguntas → Importar → formato GIFT.
+$CATEGORY: PF1822-M2/AE4
+
+::AE4-P10:: Las stopwords son\: {
+=Palabras muy frecuentes y con poco contenido propio, como "el", "de" o "y"
+~Palabras mal escritas
+~Los signos de puntuación
+~Las palabras que el modelo no conoce
+}
+
+::AE4-P11:: ¿Qué diferencia a la lematización del stemming? {
+~Son lo mismo
+=La lematización lleva la palabra a su forma de diccionario ("corriendo" → "correr"); el stemming solo recorta la raíz
+~El stemming usa un diccionario y la lematización no
+~La lematización quita tildes
+}
+
+::AE4-P12:: Un resumen obtiene ROUGE-1 recall \= 0,625 frente a su referencia. Significa que\: {
+~El 62,5 % del resumen es incorrecto
+=El 62,5 % de las palabras de la referencia aparecen en el resumen generado
+~El resumen tiene 62,5 % de coherencia
+~El modelo acertó 62,5 de cada 100 tokens
+}
