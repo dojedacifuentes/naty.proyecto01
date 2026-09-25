@@ -203,3 +203,32 @@ abriéndolo en PowerPoint 2007.
 Alternativa descartada: automatizar PowerPoint por COM, que solo funciona en Windows con
 Office; e instalar `pptxgenjs`, que rompe la regla de cero dependencias (AGENTS.md §8).
 Quién: claude-code, sesión `2026-09-25-claude-code-02`.
+
+**2026-09-25 · Alcance de la etapa: recursos base neutros, listos para subir.**
+Por qué: el usuario lo acotó así: por ahora nada de LMS, nada de redactar el Anexo 2 y nada
+por institución. Sí hacen falta los recursos base de PF1821 y PF1822 y los insumos para
+rellenar el Anexo después. `modulo-2/FLUJO-PRODUCCION.md` y los `ESTADO.md` se reescribieron
+con ese alcance, en seis carriles paralelos por herramienta (A automático, B video, C diseño,
+D texto IA, E técnico, F interactivo).
+Alternativa descartada: el flujo anterior, que incluía montar Moodle y redactar el Anexo.
+Quién: usuario (alcance) y claude-code (carriles), sesión `2026-09-25-claude-code-03`.
+
+**2026-09-25 · Los recursos finales viven en `modulo-2/<curso>/entrega/`, y ahí se versionan los PDF.**
+Por qué: separar las bases (`produccion/`, lo que se carga en otra herramienta) de lo que se
+sube (`entrega/`). `.gitignore` y el control 05 aceptan PDF en `modulo-2/*/entrega/`, además de
+`bases/` y `entregables/`. Los videos y los `.h5p` quedan fuera de git (`*.mp4`, `*.mov`,
+`*.webm`, `*.h5p`): pesan decenas de MB. Van a Drive con la misma estructura y su enlace va
+en `ESTADO.md`.
+Alternativa descartada: dejar los recursos en `entregables/`, que es por hito con fecha y no
+por curso; y versionar los videos, que infla el repo y roza el límite de 100 MB de GitHub.
+Quién: claude-code, sesión `2026-09-25-claude-code-03`.
+
+**2026-09-25 · Carril automático en `npm run produccion` y Markdown→HTML compartido en `scripts/lib/html.mjs`.**
+Por qué: todo lo que ya está escrito en `contenidos/` se convierte en archivo final sin
+pasar por otra herramienta: 9 PDF de evaluación, enunciados y respuestas modeladas, insumos
+SQL y CSV, código `.py`, cuadro comparativo, quizzes GIFT e insumos del Anexo en HTML. El
+conversor y los estilos del kit pasaron a `lib/html.mjs` para reutilizarlos; el HTML del kit
+sale idéntico (comprobado con `cmp`).
+Alternativa descartada: pedir esos documentos a otra IA, que es más lento y abre la puerta a
+que diverjan de la fuente.
+Quién: claude-code, sesión `2026-09-25-claude-code-03`.

@@ -7,11 +7,18 @@ secrets*
 *.key
 *.pem
 
-# PDFs: solo se versionan las bases y los entregables (DECISIONS.md, 2026-09-24).
-# Cualquier otro PDF suelto sigue fuera, para que no entre algo por accidente.
+# PDFs: solo se versionan las bases, los entregables y los recursos finales del módulo 2
+# (DECISIONS.md, 2026-09-24 y 2026-09-25). Cualquier otro PDF suelto sigue fuera.
 *.pdf
 !bases/*.pdf
 !entregables/**/*.pdf
+!modulo-2/*/entrega/**/*.pdf
+
+# Videos e interactivos pesados: viven en Drive y su enlace va en ESTADO.md (DECISIONS.md, 2026-09-25)
+*.mp4
+*.mov
+*.webm
+*.h5p
 
 # Trabajo local
 .DS_Store

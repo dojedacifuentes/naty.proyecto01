@@ -1,23 +1,25 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` y
-`2026-09-25-claude-code-01` y `-02` — 2026-09-24/25
+`2026-09-25-claude-code-01` a `-03` — 2026-09-24/25
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
-## PRIMERO: terminar el módulo 2 de PF1821 y PF1822 (meta del usuario: mañana 25-sep temprano)
+## PRIMERO: recursos base del módulo 2 de PF1821 y PF1822 (meta del usuario: 25-sep temprano)
 
 La prioridad del proyecto ahora es esta, por encima de "Tu primera tarea" más abajo.
+**El alcance es solo de recursos base, neutros y listos para subir.** Nada de LMS, nada de
+redactar el Anexo 2 y nada por institución: eso viene después (DECISIONS, 2026-09-25).
 
-1. **Abre `modulo-2/FLUJO-PRODUCCION.md`.** Explica cómo pasar de cada base al recurso final
-   y las reglas para trabajar desde otra IA.
-2. **Toma una pieza `pendiente` del tablero del curso**
-   (`modulo-2/PF1821-agentes-low-code/produccion/ESTADO.md` o el de PF1822). Primero las ★,
-   que son las del **AE3**, el aprendizaje seleccionado. Márcala `en curso`, hazla, déjala
-   `listo para revisión` con su enlace y agrega una línea al registro de ese archivo.
-3. **Las bases ya están generadas** en `produccion/`: PPTX para HeyGen con la narración en
-   las notas, prompts de infografía y de lectura, y quizzes GIFT para Moodle. Si cambias
-   contenido, regenéralas con `npm run produccion -- PF1821 PF1822`, no a mano.
+1. **Abre `modulo-2/FLUJO-PRODUCCION.md`.** Reparte el trabajo en seis carriles paralelos por
+   herramienta: A automático, B video (HeyGen), C diseño, D texto IA, E técnico e F interactivo H5P.
+2. **El carril A ya está hecho** y su resultado está en `modulo-2/<curso>/entrega/`: quizzes
+   GIFT, 9 PDF de evaluación, actividades, insumos, código `.py`, cuadro comparativo y textos
+   para el Anexo. Se rehace con `npm run produccion -- PF1821 PF1822`.
+3. **Toma una fila `pendiente` de tu carril** en `modulo-2/<curso>/produccion/ESTADO.md`.
+   Primero las ★ (AE3, el aprendizaje seleccionado). Déjala `listo para revisión` con su
+   archivo o enlace y agrega una línea al registro. Los videos y los `.h5p` van a Drive: git
+   los ignora.
 4. **Qué cumple cada curso y por qué el AE3:** `modulo-2/REVISION-BASES.md`.
 5. **La carpeta local "Licitaciones TD 2026"**, junto al repo y no dentro, tiene el molde del
    Anexo 2: `Anexos 2 V0 y revisión/`. No la copies al repo: es público y trae propuestas de

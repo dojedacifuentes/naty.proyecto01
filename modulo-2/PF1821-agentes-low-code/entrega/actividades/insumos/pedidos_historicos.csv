@@ -1,0 +1,9 @@
+id,fecha,nombre,email,comuna,tipo_cliente,producto,cantidad,precio_unitario
+1,2026-09-01,Ana Rojas,ana.rojas@correo.test,Ñuñoa,minorista,Café en grano 1 kg,2,12500
+2,2026-09-01,Pedro Soto,PEDRO.SOTO@correo.test,Maipú,minorista,Té verde 100 u,3,4200
+3,2026-09-02,Almacén El Sol,compras@elsol.test,Temuco,mayorista,Azúcar 25 kg,10,21900
+4,2026-09-02,Lucía Díaz,,Ñuñoa,minorista,Café en grano 1 kg,1,12500
+5,2026-09-03,Minimarket Doña Rosa,rosa@donarosa.test,Maipú,mayorista,Arroz 25 kg,8,24500
+6,2026-09-03,Jorge Muñoz,jorge.munoz@correo.test,Ñuñoa ,minorista,Yerba mate 1 kg,2,6900
+7,2026-09-04,Almacén El Sol,compras@elsol.test,Temuco,mayorista,Aceite 5 L,6,15990
+8,2026-09-04,Camila Pérez,camila.perez@correo.test,Valparaíso,minorista,Té verde 100 u,1,4200

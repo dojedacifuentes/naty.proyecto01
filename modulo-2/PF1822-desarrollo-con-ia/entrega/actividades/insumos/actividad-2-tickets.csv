@@ -1,0 +1,7 @@
+"id","ticket","resumen_de_referencia"
+"T1","<p>Hola equipo,</p><p>Desde ayer en la tarde no puedo iniciar sesión en la app de facturación después de cambiar mi contraseña. Me dice ""credenciales inválidas"" aunque estoy segura de que la escribo bien.</p><p>Saludos,<br>Marta</p>
+-- Marta Vidal · Contabilidad · marta.vidal@cliente.test","El usuario no puede iniciar sesión en la app de facturación tras cambiar su contraseña."
+"T2","Buenas, el reporte mensual de ventas en PDF sale con las tildes rotas (aparece ""CompaÃ±Ã­a""). Pasa desde la actualización del lunes. Enviado desde mi teléfono","El reporte mensual de ventas en PDF muestra caracteres rotos desde la actualización del lunes."
+"T3","URGENTE!!! la API de pagos responde error 504 en el 30% de las llamadas desde las 09:00, afecta a clientes en Chile y Perú. Logs: https://logs.nubesur.test/abc","La API de pagos devuelve error 504 en parte de las llamadas desde las 09:00 en Chile y Perú."
+"T4","Hola, ¿se puede exportar el listado de clientes a Excel? No encuentro la opción en el panel. Gracias","El usuario pregunta cómo exportar el listado de clientes a Excel desde el panel."
+"T5","El botón ""Guardar"" del formulario de proveedores no hace nada en Firefox; en Chrome funciona bien. Probé borrando caché.","El botón Guardar del formulario de proveedores no funciona en Firefox."

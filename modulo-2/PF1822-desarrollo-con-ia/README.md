@@ -16,6 +16,7 @@ y **el código Python no se ha ejecutado**.
 | Archivo | Qué trae |
 | --- | --- |
 | [`recursos-modulo2-PF1822.zip`](recursos-modulo2-PF1822.zip) | Un archivo Markdown por recurso, de R01 a R13, más el índice y la ficha SIPFOR |
+| [`entrega/`](entrega/) | **Recursos finales listos para subir:** quizzes GIFT, 9 PDF de evaluación, actividades con insumos, cuadro comparativo y textos para el Anexo. Lo demás se agrega a medida que se produce ([`produccion/ESTADO.md`](produccion/ESTADO.md)) |
 | [`kit-recursos-modulo2-PF1822.pdf`](../../entregables/2026-09-24-modulo2/kit-recursos-modulo2-PF1822.pdf) | El mismo kit para leer o imprimir (32 págs.) |
 | [`modulo2-PF1821-PF1822-completo.pdf`](../../entregables/2026-09-24-modulo2/modulo2-PF1821-PF1822-completo.pdf) | Ficha SIPFOR + entregables + kit de los dos cursos (75 págs.) |
 | [`manual-entregables-modulo2-PF1821-PF1822.pdf`](../../entregables/2026-09-24-modulo2/manual-entregables-modulo2-PF1821-PF1822.pdf) | Qué hay que entregar y con qué cantidad para el 7,0 |

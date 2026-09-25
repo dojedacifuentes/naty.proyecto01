@@ -185,8 +185,7 @@ puntos obtienes la insignia **Depurador/a**; con 100 o más, **Rescatista de wor
 
 ### Insumos que entrega el LMS
 
-- `pedidos_enrutados_v0.json`: el workflow con las cinco fallas (lo arma el tutor a partir
-  de la respuesta modelada, introduciendo exactamente las fallas de la tabla de abajo).
+- `pedidos_enrutados_v0.json`: el workflow con las cinco fallas.
 - Seis pedidos de prueba para fijar como datos (*pin data*) en el Webhook, incluido uno
   mayorista por monto ($219.000), uno de Temuco, uno con `tipo_cliente` "distribuidor" y
   uno con `cantidad` escrita "3 " con espacio.
@@ -194,6 +193,9 @@ puntos obtienes la insignia **Depurador/a**; con 100 o más, **Rescatista de wor
 - Plantilla de bitácora (ver `B4-retroalimentacion.md`, producto d).
 
 ### Respuesta modelada
+
+**Para armar el insumo `pedidos_enrutados_v0.json`:** el tutor parte del workflow correcto
+de esta respuesta e introduce exactamente las cinco fallas de la tabla siguiente.
 
 | Misión | Síntoma | Cómo se detecta | Causa | Corrección | Ind. |
 | --- | --- | --- | --- | --- | --- |

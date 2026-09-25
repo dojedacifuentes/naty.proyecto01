@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-25
-**Por:** 2026-09-25-claude-code-02 (Claude Code · opus-5.5)
+**Por:** 2026-09-25-claude-code-03 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -93,6 +93,19 @@ la mañana del 25, apuntando a 7,0):
       por aprendizaje. Los 10 PPTX abren en PowerPoint 2007
 - [x] Zip y PDF de PF1822 regenerados con la parte C
 
+Sesión claude-code-03, 2026-09-25 (el usuario acota el alcance: recursos base neutros, sin LMS,
+sin redactar el Anexo y sin instituciones):
+
+- [x] Flujo reescrito en seis carriles paralelos → `modulo-2/FLUJO-PRODUCCION.md`; tableros
+      nuevos en `modulo-2/PF18xx-*/produccion/ESTADO.md` (19 y 22 filas)
+- [x] Carril automático en `npm run produccion` → `modulo-2/<curso>/entrega/`, por curso:
+      4 quizzes GIFT, 9 PDF de evaluación, 4 PDF de actividades, insumos (SQL y CSV de
+      PF1821; tickets en CSV de PF1822), código de las respuestas de PF1822, cuadro
+      comparativo en PDF y 2 HTML de insumos para el Anexo
+- [x] Base del video interactivo (herramienta 2): PPTX para HeyGen + guion con las 5 pausas para H5P
+- [x] `scripts/lib/html.mjs` compartido entre el kit y la producción (el HTML del kit sale idéntico)
+- [x] PDF permitidos en `modulo-2/*/entrega/`; videos y `.h5p` fuera de git (a Drive)
+
 ## A medias
 
 - **Los entregables del módulo 2 de PF1821 y PF1822 están en borrador, sin revisión humana.**
@@ -100,10 +113,10 @@ la mañana del 25, apuntando a 7,0):
   El código Python de PF1822 no se ejecutó: en esta máquina no hay Python.
   Todas las casillas de `modulo-2/PF18xx-*/README.md` están sin marcar por eso: se marcan
   cuando una persona revisa el recurso.
-- **Los recursos siguen siendo texto y bases de producción.** Los archivos finales (videos
-  HeyGen, infografías, lecturas, H5P, notebook `.ipynb`, workflow roto de n8n, 9 PDF) se
-  producen con otras IA siguiendo `modulo-2/FLUJO-PRODUCCION.md`. El avance real está en los
-  `ESTADO.md` de cada curso: al cierre de esta sesión, todas las piezas están `pendiente`.
+- **Recursos base del módulo 2.** El carril A (automático) está `listo para revisión`. Faltan
+  los carriles B a F: 12 videos HeyGen, 10 infografías, 8 lecturas, el notebook de PF1822, el
+  tutorial y el workflow roto de PF1821, correr `pytest` en PF1822 y 2 videos interactivos H5P.
+  El avance real está en los `ESTADO.md` de cada curso.
 
 Lo que existe pero **nunca se ha ejercido de verdad**: el sistema de verificación no ha
 visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de conteo y el

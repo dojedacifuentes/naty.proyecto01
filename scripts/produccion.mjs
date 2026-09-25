@@ -1,20 +1,31 @@
 #!/usr/bin/env node
 /**
- * Arma las bases de producción del módulo 2 de un curso: los archivos que se cargan en otras
- * herramientas para obtener cada recurso final (el flujo está en modulo-2/FLUJO-PRODUCCION.md).
+ * Arma, para el módulo 2 de un curso, las bases de producción y el carril automático de
+ * entregables (el flujo está en modulo-2/FLUJO-PRODUCCION.md).
  *
- *   npm run produccion -- PF1821 PF1822
+ *   npm run produccion -- PF1821 PF1822 [--sin-pdf]
  *
- * Salida en modulo-2/<carpeta del curso>/produccion/:
+ * modulo-2/<carpeta del curso>/produccion/  lo que se carga en otras herramientas:
  *   videos/      PPTX con narración en las notas (HeyGen: una escena por lámina) + guion.md
  *   infografias/ prompts.md, uno por aprendizaje esperado y uno para la ruta del módulo
- *   quiz/        un .gift por aprendizaje esperado (Moodle: Banco de preguntas → Importar → GIFT)
  *   lecturas/    prompts.md para redactar el material de lectura (flipbook) de cada AE
  *
- * La fuente es contenidos/<PF>/modulo-2/. Estos archivos se regeneran; no se editan a mano.
+ * modulo-2/<carpeta del curso>/entrega/  recursos finales, neutros y listos para subir:
+ *   AE1..AE4/        M2-AEn-Quiz.gift (Moodle: Banco de preguntas → Importar → GIFT)
+ *   evaluacion/      9 PDF: 3 instrumentos, guía e instrumento del portafolio, retroalimentación,
+ *                    autoevaluación, coevaluación y bitácora
+ *   actividades/     enunciado (participante) y respuesta modelada (tutor) de cada actividad,
+ *                    insumos/ (SQL, CSV) y respuesta-modelada/codigo/ (.py para pytest)
+ *   medios/          cuadro comparativo en PDF
+ *   insumos-anexo/   textos de las secciones V y VI del Anexo 2 en HTML, para copiar a Word
+ * Las demás piezas de entrega/ (videos, infografías, lecturas) las agrega quien las produce.
+ *
+ * La fuente es contenidos/<PF>/modulo-2/. Lo que genera este script no se edita a mano.
  */
 import { leer, escribir, ruta, rel } from './lib/repo.mjs';
 import { crearPptx } from './lib/pptx.mjs';
+import { markdown, estilos, esc } from './lib/html.mjs';
+import { imprimirPdf, navegador } from './lib/pdf.mjs';
 import fs from 'node:fs';
 
 const CURSOS = {
@@ -25,7 +36,12 @@ const CURSOS = {
 const args = process.argv.slice(2);
 const codigos = args.filter((a) => /^PF\d{4}$/i.test(a)).map((a) => a.toUpperCase());
 if (!codigos.length || codigos.some((c) => !CURSOS[c])) {
-  console.error(`Uso: npm run produccion -- ${Object.keys(CURSOS).join(' ')}`);
+  console.error(`Uso: npm run produccion -- ${Object.keys(CURSOS).join(' ')} [--sin-pdf]`);
+  process.exit(1);
+}
+const conPdf = !args.includes('--sin-pdf');
+if (conPdf && !navegador()) {
+  console.error('No encontré Edge ni Chrome para imprimir los PDF. Usa --sin-pdf o define NAVEGADOR_PDF.');
   process.exit(1);
 }
 
@@ -168,6 +184,40 @@ function videoBienvenida(pf, c, md, modulo) {
   return { pptx: crearPptx({ titulo: `${pf} · Video de bienvenida`, pie: `${pf} · Módulo 2 · Bienvenida`, laminas }), guion };
 }
 
+// Herramienta didáctica 2: el video base va a HeyGen y las preguntas se agregan después en H5P.
+function videoInteractivo(pf, c, md) {
+  const H = seccion(md, /^## Herramienta 2\b/);
+  const nombre = H[0].replace(/^## Herramienta 2 · /, '').replace(/"/g, '');
+  const filas = H.filter((l) => /^\| *\d+:\d\d–/.test(l)).map(celdas);
+  const pausas = H.filter((l) => /^\| *\*\*\d+:\d\d\*\*/.test(l)).map((l) => celdas(l).map((x) => x.replace(/\*/g, '')));
+  const preguntas = subseccion(H, /^### Preguntas/);
+  if (!filas.length || !preguntas) throw new Error(`${pf}: la herramienta 2 no tiene guion o preguntas`);
+  const laminas = filas.map(([, pantalla, locucion], i) => ({
+    portada: i === 0,
+    titulo: i === 0 ? nombre : `Escena ${i + 1}`,
+    vinetas: i === 0 ? [`Video interactivo · ${c.curso}`] : [`Pantalla sugerida (reemplazar antes de grabar): ${pantalla.replace(/\*/g, '')}`],
+    notas: hablar(locucion.replace(/^"|"$/g, '')),
+  }));
+  const guion = [
+    `# ${pf} · Herramienta didáctica 2 · ${nombre} — guion y preguntas`,
+    '',
+    '1. **Video base en HeyGen:** `H2-video-interactivo.pptx` (narración en las notas). Reemplaza el texto',
+    '   "Pantalla sugerida" de cada lámina por la captura que indica, o graba esa pantalla aparte.',
+    '2. **Preguntas en H5P** (Interactive Video, por ejemplo en Lumi): agrega cada pregunta en su pausa. Si el',
+    '   video final dura distinto, ajusta los tiempos a los cortes entre escenas.',
+    '',
+    '| Tiempo | Pantalla | Narración |',
+    '| --- | --- | --- |',
+    ...filas.map(([t, p, l]) => `| ${t} | ${p} | ${hablar(l.replace(/^"|"$/g, ''))} |`),
+    '',
+    `**Pausas:** ${pausas.map(([t, q]) => `${q} en ${t}`).join(' · ')}`,
+    '',
+    ...preguntas.map((l) => l.replace(/^###/, '##')),
+    '',
+  ].join('\n');
+  return { pptx: crearPptx({ titulo: `${pf} · ${nombre}`, pie: `${pf} · Módulo 2 · Herramienta didáctica 2`, laminas }), guion };
+}
+
 const ESTILO = 'Estilo: plano y limpio, fondo claro, íconos lineales simples, paleta azul petróleo #0E7490, ' +
   'azul oscuro #0F3D5E y un acento naranjo #F59E0B. En español de Chile. Sin logos ni nombres de instituciones: ' +
   'el recurso es común a todos los oferentes. Usa exactamente el texto indicado, sin agregar datos.';
@@ -284,41 +334,200 @@ function lecturas(pf, c, caps, f) {
   return partes.join('\n') + '\n';
 }
 
+// ------------------------------------------------------- carril automático
+
+// Subsección "### …" de un bloque de líneas, hasta el siguiente "##" o "###".
+function subseccion(lineas, desde) {
+  const i = lineas.findIndex((l) => desde.test(l));
+  if (i < 0) return null;
+  const j = lineas.findIndex((l, k) => k > i && /^#{2,3} /.test(l));
+  return lineas.slice(i, j < 0 ? lineas.length : j);
+}
+
+const cuerpo = (lineas) => lineas.slice(1).join('\n').trim();
+const titulo = (lineas) => lineas[0].replace(/^#+\s*/, '').trim();
+
+// En los documentos para subir, las menciones a archivos del repo pasan a ser el PDF que
+// corresponde o una descripción: quien los lea no tiene el repo.
+const PDF_B4 = { a: 'M2-Retroalimentacion.pdf', b: 'M2-Autoevaluacion.pdf', c: 'M2-Coevaluacion.pdf', d: 'M2-Bitacora.pdf' };
+const REFS = {
+  'B2-instrumentos.md': 'los instrumentos de evaluación del módulo',
+  'B4-retroalimentacion.md': 'los documentos de retroalimentación del módulo',
+  'C2-actividades.md': 'las actividades prácticas del módulo',
+  '01-entregables.md': 'la lista de entregables',
+  '00-ficha-sipfor.md': 'la ficha del plan formativo',
+};
+const sinRefs = (md) => md
+  .replace(/`B4-retroalimentacion\.md`,?\s*producto ([a-d])/g, (_, l) => `\`${PDF_B4[l]}\``)
+  .replace(/`B2-instrumentos\.md`,?\s*instrumento (\d)/g, (_, n) => `\`M2-Instrumento-${n}.pdf\``)
+  .replace(/`([\w.-]+\.md)`/g, (m, f) => REFS[f] ?? m);
+
+// Un documento A4 con encabezado del curso; lo imprime a PDF el mismo Edge que usa el kit.
+function documentoHtml(pf, c, f, tit, mdOriginal) {
+  const md = sinRefs(mdOriginal);
+  const pie = `${pf} · Módulo 2 · ${tit}`;
+  return `<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>${esc(tit)}</title>${estilos(pie)}</head><body>
+<section class="parte" style="break-before:auto"><p class="kicker">${pf} · ${esc(c.curso)} · Módulo 2: ${esc(f.modulo)}</p>
+<h2>${esc(tit)}</h2>
+${markdown(md)}
+</section></body></html>`;
+}
+
+// Los 9 documentos evaluativos, según la práctica del equipo (revisión del V0 de PF1474).
+function documentosEvaluacion(dir) {
+  const b2 = leer(`${dir}/B2-instrumentos.md`);
+  const b3 = leer(`${dir}/B3-portafolio.md`);
+  const b4 = leer(`${dir}/B4-retroalimentacion.md`);
+  const docs = [1, 2, 3].map((n) => {
+    const L = seccion(b2, new RegExp(`^## Instrumento ${n}\\b`));
+    return { archivo: `M2-Instrumento-${n}.pdf`, titulo: titulo(L), md: cuerpo(L) };
+  });
+  const L3 = b3.split('\n');
+  const i1 = L3.findIndex((l) => /^## Elemento 1\b/.test(l));
+  const i6 = L3.findIndex((l) => /^## Elemento 6\b/.test(l));
+  if (i1 < 0 || i6 < 0) throw new Error(`${dir}/B3-portafolio.md: no encuentro los elementos 1 y 6`);
+  docs.push({ archivo: 'M2-Portafolio-Guia.pdf', titulo: 'Guía del portafolio de proyectos', md: L3.slice(i1, i6).join('\n') });
+  const L6 = seccion(b3, /^## Elemento 6\b/);
+  docs.push({ archivo: 'M2-Portafolio-Instrumento.pdf', titulo: 'Instrumento de evaluación del portafolio', md: cuerpo(L6) });
+  for (const [letra, archivo] of [['a', 'M2-Retroalimentacion.pdf'], ['b', 'M2-Autoevaluacion.pdf'], ['c', 'M2-Coevaluacion.pdf'], ['d', 'M2-Bitacora.pdf']]) {
+    const L = seccion(b4, new RegExp(`^## ${letra}\\) `));
+    docs.push({ archivo, titulo: titulo(L).replace(/^[a-d]\)\s*/, ''), md: cuerpo(L) });
+  }
+  return docs;
+}
+
+// Bloques de código de una sección → archivos. El nombre sale del texto que los presenta.
+function archivosDeCodigo(lineas, lenguajes) {
+  const out = [];
+  let previo = [];
+  for (let i = 0; i < lineas.length; i++) {
+    const m = /^```(\w+)/.exec(lineas[i]);
+    if (m) {
+      const j = lineas.findIndex((l, k) => k > i && l.startsWith('```'));
+      if (lenguajes.includes(m[1])) {
+        const contexto = previo.slice(-3).join(' ');
+        const conExt = [...contexto.matchAll(/`([\w.-]+\.(?:sql|csv|json|py))`/g)].map((x) => x[1]).pop();
+        const base = /`(\w+)`/.exec(contexto)?.[1];
+        let nombre = conExt ?? (base ? `${base}.${m[1]}` : `fragmento-${out.length + 1}.${m[1]}`);
+        if (out.some((o) => o.nombre === nombre)) nombre = nombre.replace(/(\.\w+)$/, `-${out.length + 1}$1`);
+        out.push({ nombre, contenido: lineas.slice(i + 1, j).join('\n') + '\n' });
+      }
+      i = j; previo = [];
+      continue;
+    }
+    if (lineas[i].trim()) previo.push(lineas[i]);
+  }
+  return out;
+}
+
+// Tabla Markdown → CSV (celdas entre comillas; los tickets traen comas y HTML).
+function tablaCsv(lineas) {
+  const filas = lineas.filter((l) => l.startsWith('|')).map(celdas).filter((f) => !f.every((x) => /^:?-+:?$/.test(x)));
+  if (filas.length < 2) return null;
+  const limpia = (x) => x.replace(/`\s*\+\s*firma\s*`/g, '\n').replace(/`/g, '').trim();
+  const cab = filas[0].map((h) => h.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\(.*?\)/g, '').trim().replace(/\s+/g, '_'));
+  return [cab, ...filas.slice(1).map((f) => f.map(limpia))]
+    .map((f) => f.map((x) => `"${x.replace(/"/g, '""')}"`).join(',')).join('\n') + '\n';
+}
+
+function actividades(dir) {
+  const md = leer(`${dir}/C2-actividades.md`);
+  const resumen = md.split('\n').slice(0, md.split('\n').findIndex((l) => /^## Actividad 1\b/.test(l))).filter((l) => l.startsWith('|'));
+  const docs = [];
+  const archivos = [];
+  for (const n of [1, 2]) {
+    const A = seccion(md, new RegExp(`^## Actividad ${n}\\b`));
+    const tit = titulo(A);
+    const enun = subseccion(A, /^### Enunciado/);
+    const ins = subseccion(A, /^### Insumos/);
+    const resp = subseccion(A, /^### Respuesta modelada/);
+    if (!enun || !resp) throw new Error(`${dir}/C2-actividades.md: la actividad ${n} no tiene enunciado o respuesta modelada`);
+    docs.push({ archivo: `M2-Actividad-${n}-Enunciado.pdf`, titulo: tit,
+      md: [cuerpo(enun), ...(ins ? ['', '### Insumos', '', cuerpo(ins)] : [])].join('\n') });
+    docs.push({ archivo: `M2-Actividad-${n}-Respuesta-modelada.pdf`, titulo: `${tit} · respuesta modelada (tutor)`,
+      md: ['### Resumen de las actividades', '', ...resumen, '', cuerpo(resp)].join('\n') });
+    if (ins) {
+      for (const a of archivosDeCodigo(ins, ['sql', 'csv', 'json'])) archivos.push({ nombre: `insumos/${a.nombre}`, contenido: a.contenido });
+      const csv = tablaCsv(ins);
+      if (csv) archivos.push({ nombre: `insumos/actividad-${n}-tickets.csv`, contenido: csv });
+    }
+    for (const a of archivosDeCodigo(resp, ['python'])) archivos.push({ nombre: `respuesta-modelada/codigo/${a.nombre}`, contenido: a.contenido });
+  }
+  return { docs, archivos };
+}
+
+// Textos para rellenar el Anexo 2: HTML con tablas, que se copia a Word sin perder formato.
+function insumosAnexo(pf, c, f, dir) {
+  const partes = (lista) => lista.map((a) => markdown(leer(`${dir}/${a}`))).join('\n<hr>\n');
+  const doc = (tit, lista) => `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>${esc(tit)}</title>${estilos(tit)}</head><body>
+<section class="parte" style="break-before:auto"><p class="kicker">${pf} · ${esc(c.curso)} · Módulo 2: ${esc(f.modulo)}</p><h2>${esc(tit)}</h2>
+<p><em>Insumo para el Anexo 2, no el Anexo. Copia a Word lo que corresponda y reemplaza los enlaces cuando existan.</em></p>
+${partes(lista)}</section></body></html>`;
+  return [
+    { nombre: 'Anexo2-V-Estrategia-evaluativa.html', html: doc('Sección V · Estrategia evaluativa', ['B1-indicadores.md', 'B2-instrumentos.md', 'B3-portafolio.md', 'B4-retroalimentacion.md']) },
+    { nombre: 'Anexo2-VI-Metodologia.html', html: doc('Sección VI · Metodología (incluye actividades y horas del módulo)', ['C-metodologia.md', 'C2-actividades.md', 'C4-herramientas-didacticas.md']) },
+  ];
+}
+
 // ------------------------------------------------------------------ principal
 
 for (const pf of codigos) {
   const c = CURSOS[pf];
   const dir = `contenidos/${pf}/modulo-2`;
   const out = `${c.carpeta}/produccion`;
+  const ent = `${c.carpeta}/entrega`;
   const f = ficha(leer(`${dir}/00-ficha-sipfor.md`));
   const mdCaps = leer(`${dir}/R-capsulas.md`);
   const mdBienv = leer(`${dir}/R-bienvenida-e-infografia.md`);
   const caps = capsulas(mdCaps);
   const hechos = [];
-  const guardar = (nombre, contenido) => {
-    const destino = ruta(out, nombre);
-    fs.mkdirSync(ruta(out, nombre.split('/').slice(0, -1).join('/')), { recursive: true });
+  const guardar = (destinoRel, contenido) => {
+    const destino = ruta(destinoRel);
+    fs.mkdirSync(ruta(destinoRel.split('/').slice(0, -1).join('/')), { recursive: true });
     if (Buffer.isBuffer(contenido)) fs.writeFileSync(destino, contenido); else escribir(destino, contenido);
     hechos.push(rel(destino));
   };
+  // HTML intermedio en .scratch/ (ignorado por git); el PDF queda en entrega/.
+  const pdf = (destinoRel, html) => {
+    if (!conPdf) return;
+    const tmp = `.scratch/produccion/${pf}/${destinoRel.split('/').pop().replace(/\.pdf$/, '.html')}`;
+    escribir(tmp, html);
+    fs.mkdirSync(ruta(destinoRel.split('/').slice(0, -1).join('/')), { recursive: true });
+    imprimirPdf(tmp, destinoRel);
+    hechos.push(destinoRel);
+  };
 
+  // Bases para otras herramientas
   const b = videoBienvenida(pf, c, mdBienv, f.modulo);
-  guardar('videos/00-bienvenida.pptx', b.pptx);
-  guardar('videos/00-bienvenida-guion.md', b.guion);
+  guardar(`${out}/videos/00-bienvenida.pptx`, b.pptx);
+  guardar(`${out}/videos/00-bienvenida-guion.md`, b.guion);
   for (const cap of caps) {
     const v = videoCapsula(pf, c, cap);
-    guardar(`videos/${cap.ae}-capsula.pptx`, v.pptx);
-    guardar(`videos/${cap.ae}-guion.md`, v.guion);
+    guardar(`${out}/videos/${cap.ae}-capsula.pptx`, v.pptx);
+    guardar(`${out}/videos/${cap.ae}-guion.md`, v.guion);
   }
-  guardar('infografias/prompts.md', infografias(pf, c, caps, f, mdBienv));
+  const vi = videoInteractivo(pf, c, leer(`${dir}/C4-herramientas-didacticas.md`));
+  guardar(`${out}/videos/H2-video-interactivo.pptx`, vi.pptx);
+  guardar(`${out}/videos/H2-video-interactivo-guion.md`, vi.guion);
+  guardar(`${out}/infografias/prompts.md`, infografias(pf, c, caps, f, mdBienv));
+  guardar(`${out}/lecturas/prompts.md`, lecturas(pf, c, caps, f));
+
+  // Carril automático: recursos finales
   const items = preguntas(leer(`${dir}/B2-instrumentos.md`));
   for (const ae of ['AE1', 'AE2', 'AE3', 'AE4']) {
     const suyas = items.filter((it) => it.ae === ae);
     if (!suyas.length) throw new Error(`${pf}: la prueba objetiva no tiene preguntas de ${ae}`);
-    guardar(`quiz/${ae}.gift`, quizGift(pf, ae, suyas));
+    guardar(`${ent}/${ae}/M2-${ae}-Quiz.gift`, quizGift(pf, ae, suyas));
   }
-  guardar('lecturas/prompts.md', lecturas(pf, c, caps, f));
+  for (const d of documentosEvaluacion(dir)) pdf(`${ent}/evaluacion/${d.archivo}`, documentoHtml(pf, c, f, d.titulo, d.md));
+  const act = actividades(dir);
+  for (const d of act.docs) pdf(`${ent}/actividades/${d.archivo}`, documentoHtml(pf, c, f, d.titulo, d.md));
+  for (const a of act.archivos) guardar(`${ent}/actividades/${a.nombre}`, a.contenido);
+  const r04 = seccion(mdCaps, /^## R04\b/);
+  pdf(`${ent}/medios/M2-Cuadro-comparativo.pdf`, documentoHtml(pf, c, f, titulo(r04).replace(/^R04 · /, ''), cuerpo(r04)));
+  for (const a of insumosAnexo(pf, c, f, dir)) guardar(`${ent}/insumos-anexo/${a.nombre}`, a.html);
 
-  console.log(`${pf} → ${out}/  (${hechos.length} archivos, ${items.length} preguntas de quiz)`);
-  hechos.forEach((h) => console.log(`  ${h.slice(out.length + 1)}`));
+  console.log(`${pf} → ${c.carpeta}/  (${hechos.length} archivos, ${items.length} preguntas de quiz)`);
+  hechos.forEach((h) => console.log(`  ${h.slice(c.carpeta.length + 1)}`));
 }

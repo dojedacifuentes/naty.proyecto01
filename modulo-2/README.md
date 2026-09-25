@@ -23,8 +23,14 @@ presentaciones, H5P, workflows y notebook) y montarlos en el LMS de cada institu
 
 **Aprendizaje esperado seleccionado: AE3 en los dos cursos.** Tiene dos actividades prácticas
 y dos herramientas didácticas, que es lo que la pauta mira para el 7,0 (bases 2026, 7.4, pág. 31).
-Las bases de producción (PPTX para HeyGen, prompts, quizzes GIFT) están en `produccion/` y se
-regeneran con `npm run produccion -- PF1821 PF1822`.
+
+**Etapa actual:** producir los recursos base, neutros y listos para subir. Subir al LMS, redactar
+el Anexo 2 y el trabajo por institución vienen después. En cada curso:
+- `produccion/` tiene las bases que se cargan en otras herramientas: PPTX para HeyGen y prompts.
+- `entrega/` tiene los recursos finales. Los quizzes, los 9 PDF de evaluación, las actividades,
+  los insumos, el cuadro comparativo y los textos para el Anexo **ya están listos**.
+
+Todo se regenera con `npm run produccion -- PF1821 PF1822`.
 
 ## Qué se evalúa en el módulo 2
 
