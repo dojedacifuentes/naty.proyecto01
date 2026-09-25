@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-25
-**Por:** 2026-09-25-claude-code-08 (Claude Code · opus-5.5)
+**Por:** 2026-09-25-claude-code-09 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -136,6 +136,11 @@ caso por sección, errores frecuentes, síntesis, práctica, autocomprobación y
 `scripts/fuentes/`). La generación se detiene si falta un contenido del plan: cobertura 100 % en las
 8. Se eliminaron los prompts de lectura. El sitio ofrece `lecturas-modulo2.zip`.
 
+Sesión claude-code-09, 2026-09-25: el usuario informa que hizo en HeyGen la bienvenida, las 4
+videocápsulas y el video base de la herramienta 2, y las 5 infografías, en los dos cursos. Quedaron
+registrados como `listo para revisión` en los ESTADO. El video interactivo (F1) tiene la base y falta
+editarlo. Faltan los enlaces de Drive de los videos y los PNG en `entrega/`.
+
 ## A medias
 
 - **Los entregables del módulo 2 de PF1821 y PF1822 están en borrador, sin revisión humana.**
@@ -144,8 +149,9 @@ caso por sección, errores frecuentes, síntesis, práctica, autocomprobación y
   Todas las casillas de `modulo-2/PF18xx-*/README.md` están sin marcar por eso: se marcan
   cuando una persona revisa el recurso.
 - **Recursos base del módulo 2.** El carril A (automático, que ahora incluye las 8 lecturas) está `listo para revisión`. Faltan
-  los carriles B a F: 12 videos HeyGen, 10 infografías, el notebook de PF1822, el
-  tutorial y el workflow roto de PF1821, correr `pytest` en PF1822 y 2 videos interactivos H5P.
+  los carriles B y C, que hizo el usuario, sin los enlaces de Drive ni los PNG en el repo. Faltan el notebook
+  de PF1822, el tutorial y el workflow roto de PF1821, correr `pytest` en PF1822 y editar los 2 videos
+  interactivos H5P.
   El avance real está en los `ESTADO.md` de cada curso.
 
 Lo que existe pero **nunca se ha ejercido de verdad**: el sistema de verificación no ha

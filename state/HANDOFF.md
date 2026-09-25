@@ -1,7 +1,7 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` y
-`2026-09-25-claude-code-01` a `-08` — 2026-09-24/25
+`2026-09-25-claude-code-01` a `-09` — 2026-09-24/25
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
@@ -51,6 +51,14 @@ Trampas de estas sesiones:
   obligarían a usar una tercera fuente; la revisión los rechaza. La flecha → sí se puede usar: se dibuja.
   El control 05 toma por credencial la palabra clave seguida de dos puntos o de un signo igual, incluso en un ejemplo: en el código usa `clave_api`.
   El usuario ya tiene el zip `lecturas-modulo2.zip`, el mismo del sitio.
+- **Videos e infografías (sesión -09):** el usuario ya hizo los 12 videos base (bienvenida, 4 videocápsulas
+  y video de la herramienta 2, por curso) y las 10 infografías: están `listo para revisión` en los ESTADO, a
+  nombre del usuario. No los regeneres ni reenvíes prompts o PPT: el trabajo está hecho con los que tiene. Faltan
+  los enlaces de Drive de los videos, los PNG en `entrega/AEn/` y `entrega/00-bienvenida/`, y editar el
+  interactivo (F1). Lo que sigue del lado de la IA: notebook de PF1822 (D3★), workflow roto (E2★) y tutorial
+  (E1★) de PF1821.
+- **Horas de las lecturas en la metodología:** el usuario pidió dejarlo pendiente (sesión -09). No lo cambies
+  sin su decisión.
 - **Pendientes que dejó la sesión -08 (sin pedido del usuario, no los hice):** 1) la tabla de actividades
   de `C-metodologia.md` no nombra las lecturas; si el Anexo 2 las declara como actividad asincrónica
   "Lectura", hay que darles horas dentro de las 18 y 21 h. 2) El cuadro R04 de PF1822 dice "búsqueda
