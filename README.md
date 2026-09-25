@@ -10,6 +10,18 @@ Repositorio de trabajo para la producción sistematizada de propuestas técnicas
 
 ---
 
+## Módulo 2 de los cursos desarrollados
+
+Los recursos educativos del módulo 2 y el checklist de lo que piden las bases están en
+**[`modulo-2/`](modulo-2/)**, con una carpeta por curso:
+
+- [PF1821 · Construcción de Agentes y Automatización con Herramientas Low Code](modulo-2/PF1821-agentes-low-code/)
+- [PF1822 · Especialización en Desarrollo con IA](modulo-2/PF1822-desarrollo-con-ia/)
+
+Estado: borrador, sin revisión humana.
+
+---
+
 ## Arranque en 60 segundos
 
 Si eres un agente (Claude Code, Codex, otro) o una persona retomando el trabajo:
@@ -51,6 +63,7 @@ Requisito: **Node ≥ 18**. No hay dependencias que instalar.
 | `npm run ficha -- PF1821` | genera la ficha y la lista de entregables del módulo 2 del plan |
 | `npm run manual -- PF1821 PF1822 --pdf` | manual de entregables del módulo 2 en HTML y PDF (usa Edge o Chrome) |
 | `npm run kit -- PF1821 --pdf` | kit de recursos educativos del módulo 2 de un curso, en HTML y PDF (`--unico` junta todos los cursos, con ficha y entregables) |
+| `npm run zip -- PF1821 --salida <dir>` | zip de los recursos del módulo 2 de un curso, un archivo por recurso (R01 a R13) |
 
 Corre solo, además, en cada commit (hook) y en cada push (GitHub Actions).
 
@@ -88,6 +101,7 @@ responde con archivo y línea. Protocolo completo: **`AUDITORIA.md`**.
 | `data/sipfor/` | Respuestas de SIPFOR tal cual, por plan (`npm run sipfor`). Fuente citable. |
 | `data/planes/` | Planes formativos normalizados: módulos, aprendizajes, criterios, contenidos, recursos. |
 | `contenidos/` | Contenido canónico del módulo evaluado de cada curso, común a todas las instituciones (`docs/05`). |
+| `modulo-2/` | Portada del módulo 2 por curso: checklist de las bases, estado de cada recurso y zip descargable. |
 | `bases/` | PDF de las bases 2026 (SENCE, Res. Ex. N°2320) y 2024 (OTIC SOFOFA). Fuente citable por numeral y página. |
 | `entregables/` | Lo entregado a Natalia, un directorio por hito con fecha y su `README.md`. |
 

@@ -1,8 +1,24 @@
 # HANDOFF
 
-**De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` — 2026-09-24
+**De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` y
+`2026-09-25-claude-code-01` — 2026-09-24/25
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea
+
+## Lo nuevo del 25-sep (UTC)
+
+- **Sección `modulo-2/` en el repo**, pedida por el usuario: una portada y una carpeta por
+  curso (`PF1821-agentes-low-code/`, `PF1822-desarrollo-con-ia/`). Cada una tiene un README
+  con el checklist de lo que piden las bases para el módulo 2, citado a numeral y página
+  (7.4 págs. 27–31, Anexo N°2 pág. 90, Anexo N°7 págs. 99–111), y el zip de sus recursos.
+  **Las casillas se marcan solo cuando una persona revisó el recurso.** Hoy están todas vacías.
+- **`npm run zip -- PF1821 --salida modulo-2/PF1821-agentes-low-code`** regenera el zip: un
+  Markdown por recurso, R01 a R13. Regéneralo cada vez que cambie `contenidos/<PF>/modulo-2/`.
+- **Si cambias un recurso, revisa también el README de su curso en `modulo-2/`.** Repite a
+  mano datos de `01-entregables.md` y `02-recursos.md` (nombres, cantidades, pendientes).
+- **El usuario pidió subir todo al remoto público.** El push va después del commit de cierre
+  de esta sesión; comprueba con `git log origin/main` que llegó. Desde ahora rige lo de
+  abajo: `git pull` antes de abrir sesión y `git push` después de cerrarla.
 
 ## Lo nuevo del 24-sep
 
@@ -21,8 +37,7 @@
 - **Manual PDF para Natalia** con todo lo que hay que entregar en el módulo 2 de los dos cursos:
   `entregables/2026-09-24-modulo2/manual-entregables-modulo2-PF1821-PF1822.pdf`. Sus
   "sugerencias para este módulo" son propuestas a validar, no contenido aprobado.
-- **Todo queda en local por ahora.** El usuario pidió no empujar todavía, aunque el remoto
-  ya está decidido y es público.
+- ~~Todo queda en local por ahora.~~ Superado el 25-sep: el usuario pidió subir todo.
 
 - **Todo el proyecto vive ahora en el repo.** Los entregables del 24-sep están en
   `entregables/2026-09-24-modulo2/` y los PDF de las bases en `bases/`. La carpeta de

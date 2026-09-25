@@ -145,3 +145,23 @@ filtre al texto común. Flujo completo en `docs/05-flujo-contenidos-modulo.md`.
 Alternativa descartada: un directorio `propuestas/_canon/`, que el control 01 leería como
 un cliente inexistente.
 Quién: claude-code, sesión `2026-09-24-claude-code-03`.
+
+**2026-09-25 · Sección `modulo-2/` en la raíz, con una carpeta por curso y su checklist.**
+Por qué: el usuario pidió una sección propia para los entregables del módulo 2 de cada
+curso, con el checklist de lo que piden las bases. En GitHub, el README de cada carpeta se
+ve al abrirla. La sección enlaza a `contenidos/` y a los PDF de `entregables/` en vez de
+copiarlos, para que el contenido siga teniendo una sola fuente. Solo el zip de cada curso
+vive en su carpeta, porque se genera.
+Alternativa descartada: README dentro de `contenidos/<PF>/modulo-2/`, que queda tres
+niveles abajo y no se encuentra desde la portada; y mover los PDF del hito del 24-sep, que
+rompería las rutas que ya citan el handoff y el README de ese hito.
+Quién: usuario (la sección) y claude-code (la forma), sesión `2026-09-25-claude-code-01`.
+
+**2026-09-25 · Se sube todo al remoto público.**
+Por qué: el usuario lo pidió explícitamente en la sesión `2026-09-25-claude-code-01`,
+dejando sin efecto el "todo en local por ahora" del 24-sep. Antes del push se revisó que
+no hubiera credenciales (control 05) ni datos personales: solo aparecen correos de ejemplo
+con dominio `.test`, la casilla pública de SENCE y el correo de trabajo de Natalia en
+`state/`.
+Alternativa descartada: seguir en local.
+Quién: usuario.

@@ -2,8 +2,8 @@
 
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
-**Última actualización:** 2026-09-24
-**Por:** 2026-09-24-claude-code-06 (Claude Code · opus-5.5)
+**Última actualización:** 2026-09-25
+**Por:** 2026-09-25-claude-code-01 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -70,13 +70,26 @@ Sesión claude-code-05, 2026-09-24 (recursos educativos del módulo 2):
 
 - [x] PDF único con todo el módulo 2 de PF1821 y PF1822 → `entregables/2026-09-24-modulo2/modulo2-PF1821-PF1822-completo.pdf` (75 págs.)
 
+Sesión claude-code, 2026-09-25 (UTC; en Chile seguía siendo el 24):
+
+- [x] Zip por curso con un archivo por recurso, R01 a R13 → `npm run zip`, `scripts/zip-recursos.mjs`
+- [x] Sección `modulo-2/`: portada y una carpeta por curso con el checklist de lo que piden
+      las bases para el módulo 2 (citado a numeral y página), el estado de cada ítem, los
+      enlaces a cada recurso y el zip del curso. Enlazada desde el `README.md` de la raíz
+- [x] El usuario pidió subir todo a https://github.com/dojedacifuentes/naty.proyecto01. El
+      primer push se hace justo después del commit de este cierre; si `git log origin/main`
+      no muestra este checkpoint, el push falló y hay que repetirlo
+
 ## A medias
 
 - **Los entregables del módulo 2 de PF1821 y PF1822 están en borrador, sin revisión humana.**
   Falta la etapa 3 del flujo (revisión de Natalia) y `IV-actividades.md` (todos los módulos).
   El código Python de PF1822 no se ejecutó: en esta máquina no hay Python.
-- **Nada empujado a GitHub.** El usuario pidió dejar todo en local por ahora; el remoto
-  `origin` está configurado y es público.
+  Todas las casillas de `modulo-2/PF18xx-*/README.md` están sin marcar por eso: se marcan
+  cuando una persona revisa el recurso.
+- **Los recursos siguen siendo texto.** Faltan los archivos finales: video, infografía,
+  presentaciones, H5P, workflows de n8n (con el "roto" de la actividad 2 de PF1821) y el
+  notebook `.ipynb` de PF1822.
 
 Lo que existe pero **nunca se ha ejercido de verdad**: el sistema de verificación no ha
 visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de conteo y el
@@ -109,8 +122,8 @@ visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de co
 - 3 avisos del control 06: afirmaciones sobre las bases sin numeral ni página en
   `docs/03-anexo2-estructura.md:41`, `:43` y `docs/04-verificadores-protocolo.md:17`.
   Son citas reales de las bases a las que les falta la referencia exacta.
-- 1 aviso del control 07: las dos sesiones de `claude-code` siguen sin auditar. No pueden
-  auditarse solas: le tocan a Codex, a Cursor o a una persona.
+- 1 aviso del control 07: las sesiones de `claude-code` siguen sin auditar (ocho al abrir
+  esta). No pueden auditarse solas: le tocan a Codex, a Cursor o a una persona.
 
 La sesión inicial ya está auditada (veredicto **observaciones**). Sus tres hallazgos
 accionables están en el handoff como trabajo corto: la columna `fuente` en

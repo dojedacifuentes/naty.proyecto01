@@ -18,6 +18,9 @@ modificar su contenido, solo con nombres de archivo normalizados.
 | `kit-recursos-modulo2-PF18xx.html` | Fuente de los kits. Se regeneran con `npm run kit -- PF1821 PF1822 --salida entregables/2026-09-24-modulo2 --pdf`. | — (nuevo) |
 | `manual-entregables-modulo2-PF1821-PF1822.html` | Fuente del manual. Se regenera con `npm run manual -- PF1821 PF1822 --salida entregables/2026-09-24-modulo2 --pdf`. | — (nuevo) |
 
+Los zips con un archivo por recurso (R01 a R13) y el checklist de las bases de cada curso
+no están aquí: viven en [`modulo-2/`](../../modulo-2/), una carpeta por curso.
+
 ## El panel de ML y Agentes
 
 **Versión viva:** https://claude.ai/artifact/BpgYipB5aa4YY8c4LGiDuP (privada; se comparte
