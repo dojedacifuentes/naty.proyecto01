@@ -18,7 +18,8 @@ const DOC = `<style>
 .ficha-doc div.ancha { grid-column: 1 / -1; }
 .ficha-doc dt { font: 600 7pt 'IBM Plex Sans'; letter-spacing: .12em; text-transform: uppercase; color: var(--gris); margin: 0 0 1mm; }
 .ficha-doc dd { margin: 0; font: 400 9pt/1.4 'IBM Plex Sans'; color: var(--tinta); }
-.ficha-doc div.ancha dd { font-weight: 600; color: var(--azul); }
+.ficha-doc div.ancha dd { font-size: 8.5pt; color: var(--azul); }
+.ficha-doc div.ancha dd span { display: block; margin: 0 0 1mm; }
 .doc h2 { font: 700 15pt/1.25 'IBM Plex Sans'; color: var(--azul); margin: 16pt 0 6pt; padding-top: 7pt; border-top: .75pt solid var(--linea); break-after: avoid; }
 .doc h3 { font-size: 12.5pt; margin: 14pt 0 5pt; }
 .doc h4 { font-size: 11pt; margin: 11pt 0 4pt; }
@@ -36,7 +37,7 @@ const DOC = `<style>
 </style>`;
 
 /**
- * d = { pf, curso, modulo, codigo, horas, kicker, titulo, ficha: [[rótulo, valor, ancha?]], md, pie }
+ * d = { pf, curso, modulo, codigo, horas, kicker, titulo, ficha: [[rótulo, valor o [valores], ancha?]], md, pie }
  * Varios documentos en uno: d.partes = [{ kicker, titulo, ficha, md }] (cada parte empieza en página nueva).
  */
 export function documentoPdfHtml(d) {
@@ -45,7 +46,7 @@ export function documentoPdfHtml(d) {
   const cuerpo = partes.map((p, i) => `<section class="${i ? 'parte-doc' : ''}">
   <header class="cabecera"><p class="kicker">${esc(p.kicker)}</p><h1>${inline(p.titulo)}</h1>
     <p class="curso">${esc(d.pf)} · ${esc(d.curso)}<br>Módulo 2 · ${esc(d.codigo)} · ${esc(d.modulo)} · ${esc(d.horas)} h</p><div class="regla"></div></header>
-  ${p.ficha?.length ? `<dl class="ficha-doc">${p.ficha.map(([r, v, ancha]) => `<div${ancha ? ' class="ancha"' : ''}><dt>${esc(r)}</dt><dd>${inline(v)}</dd></div>`).join('')}</dl>` : ''}
+  ${p.ficha?.length ? `<dl class="ficha-doc">${p.ficha.map(([r, v, ancha]) => `<div${ancha ? ' class="ancha"' : ''}><dt>${esc(r)}</dt><dd>${Array.isArray(v) ? v.map((x) => `<span>${inline(x)}</span>`).join('') : inline(v)}</dd></div>`).join('')}</dl>` : ''}
   <div class="doc">${markdown(p.md)}</div>
 </section>`).join('\n');
   return `<!doctype html>

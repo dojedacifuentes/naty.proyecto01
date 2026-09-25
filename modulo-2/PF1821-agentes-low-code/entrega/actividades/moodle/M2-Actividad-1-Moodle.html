@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>PF1821 · M2 · Actividad 1 · Del formulario a la base de datos</title></head>
+<body style="font-family:Arial,Helvetica,sans-serif;color:#1F2937;line-height:1.5;max-width:880px;margin:24px auto;padding:0 16px">
+<!-- Para Moodle: abre este archivo en el navegador, selecciona todo desde "Qué vas a lograr" hasta el final,
+     cópialo y pégalo en la descripción de la Tarea. O bien, en el editor de Moodle, usa el botón de código
+     HTML y pega el contenido de <div id="moodle">. El nombre de la Tarea va en el campo "Nombre". -->
+<div id="moodle">
+<div style="background:#EFF6FF;border-left:4px solid #0F3D5E;padding:10px 14px;margin:0 0 1em"><p style="margin:0 0 .4em"><strong>Actividad práctica 1 · Del formulario a la base de datos</strong></p>
+<p style="margin:0"><strong>Técnica:</strong> Resolución de problemas · <strong>Tiempo estimado:</strong> 5 h (2 h guiadas + 3 h autónomas)<br>
+<strong>Aprendizajes esperados:</strong> AE1. DISTINGUIR LOS CONCEPTOS FUNDAMENTALES DE AUTOMATIZACIÓN DE WORKFLOWS Y LAS CARACTERÍSTICAS DE N8N, DE ACUERDO CON CASOS DE USO EMPRESARIALES REALES.<br>AE2. CREAR WORKFLOWS BÁSICOS UTILIZANDO LA INTERFAZ VISUAL DE N8N, PARA AUTOMATIZAR PROCESOS SIMPLES SEGÚN REQUERIMIENTOS DEFINIDOS.<br>AE3. MANIPULAR DATOS UTILIZANDO NODOS FUNDAMENTALES DE N8N, PARA TRANSFORMAR INFORMACIÓN SEGÚN REQUERIMIENTOS ESPECÍFICOS DEL WORKFLOW.<br>
+<strong>Indicadores de logro:</strong> 1.1, 2.1, 2.2, 2.3, 3.1, 3.2, 3.3, 3.4 · <strong>Apoyos:</strong> Tutorial guiado "Tu primer workflow con datos limpios"; Cuatro cápsulas de contenido, una por AE<br>
+<strong>Producto:</strong> 2 workflows exportados + captura de Supabase + nota breve</p></div>
+<p>Mercado Austral (empresa ficticia) recibe pedidos por un formulario web. Hoy una persona los copia a una planilla y todos los viernes suma a mano cuánto se vendió por comuna para avisarle al sistema de facturación, que solo acepta archivos XML. Tu trabajo es reemplazar ese proceso manual por dos workflows en n8n.</p>
+<p><strong>Parte A — Antes de construir (AE1).</strong> Lee el caso y responde en 5 a 8 líneas: ¿qué tres tareas de este proceso conviene automatizar y qué gana la empresa con cada una (tiempo, errores evitados, información nueva)?</p>
+<p><strong>Parte B — Workflow "Pedido a registro" (AE2 y AE3).</strong> Construye un workflow que:</p>
+<ol><li>reciba un pedido desde un formulario de n8n con estos campos: <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">nombre</code>, <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">email</code>, <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">comuna</code>, <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">tipo_cliente</code> (minorista o mayorista), <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">producto</code>, <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">cantidad</code>, <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">precio_unitario</code>;</li><li>normalice los datos: email en minúsculas y sin espacios, comuna sin espacios al inicio ni al final, cantidad y precio como números, y un campo nuevo <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">total</code>;</li><li>guarde el pedido como una fila nueva en la tabla <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">pedidos</code> de Supabase.</li></ol>
+<p><strong>Parte C — Workflow "Resumen semanal" (AE3).</strong> Construye un segundo workflow que:</p>
+<ol><li>descargue el archivo <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">pedidos_historicos.csv</code> desde el enlace publicado en el LMS;</li><li>descarte los pedidos sin email;</li><li>calcule, por comuna, la cantidad de pedidos y el total vendido;</li><li>entregue ese resumen en formato XML para facturación.</li></ol>
+<p><strong>Entrega:</strong> los dos workflows exportados (menú del workflow → <em>Download</em>), una captura de la tabla <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">pedidos</code> en Supabase con al menos tres filas creadas por tu workflow, y tu respuesta a la parte A.</p>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Insumos que se adjuntan</h5>
+<p><strong>Tabla <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">pedidos</code> en Supabase</strong> (el tutor la crea en el proyecto del curso o la entrega como script SQL):</p>
+<p><em>(Se adjunta como archivo en esta Tarea.)</em></p>
+<p><strong>Archivo <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">pedidos_historicos.csv</code></strong> (datos ficticios; los correos usan el dominio reservado <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">.test</code>):</p>
+<p><em>(Se adjunta como archivo en esta Tarea.)</em></p>
+<p>El archivo trae dos trampas a propósito: la fila 4 no tiene email y la fila 6 tiene "Ñuñoa " con un espacio al final.</p>
+<p>Archivos adjuntos a esta Tarea:</p>
+<ul><li><code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">pedidos.sql</code></li><li><code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">pedidos_historicos.csv</code></li></ul>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Cómo se evalúa</h5>
+<p>Se evalúa con: Rúbrica de revisión de workflow (observación) (M2-Instrumento-1.pdf). El instrumento está publicado en el curso y recibes tu nivel en cada criterio, no solo una nota.</p>
+</div>
+</body></html>

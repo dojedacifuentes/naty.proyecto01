@@ -17,6 +17,6 @@ $CATEGORY: PF1821-M2/AE3
 ~Split Out
 }
 
-::AE3-P9:: Supabase rechaza una fila con el error invalid input syntax for type integer\: "3 ". ¿Qué ocurrió y cómo lo corriges en n8n? {
-####Respuesta esperada: la cantidad llegó como texto con un espacio y la columna es entera (1 punto); se corrige convirtiéndola antes de guardar, por ejemplo en Edit Fields con tipo Number y \{\{ Number(String($json.cantidad).trim()) \}\} (1 punto).
+::AE3-P9:: Supabase rechaza una fila con el error invalid input syntax for type integer\: "3 unidades". ¿Qué ocurrió y cómo lo corriges en n8n? {
+####Respuesta esperada: a la columna entera cantidad llegó un texto que no es un número (1 punto); se corrige antes de guardar, por ejemplo en Edit Fields con tipo Number y \{\{ parseInt($json.cantidad, 10) \}\}, y validando con un If que la cantidad sea mayor que 0 (1 punto).
 }

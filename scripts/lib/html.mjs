@@ -76,7 +76,7 @@ export function markdown(md) {
         const m = /^(\s*)([-*]|\d+\.)\s+(.*)$/.exec(L[i]);
         if (m && m[1].length < 2) items.push({ texto: m[3], sub: [] });
         else if (m) items[items.length - 1].sub.push(m[3]);
-        else items[items.length - 1].texto += '<br>' + L[i].trim();
+        else items[items.length - 1].texto += ' ' + L[i].trim();
         i++;
       }
       const li = (t) => {
@@ -89,8 +89,9 @@ export function markdown(md) {
     }
     const buf = [];
     while (i < L.length && L[i].trim() && !/^(#{1,4}\s|```|\||>|-{3,}\s*$)/.test(L[i]) && !esLista(L[i])) buf.push(L[i++]);
-    // Una línea que empieza en negrita ("**Estado:**", "**Para el 7,0:**") abre renglón nuevo.
-    const unido = buf.map((x, k) => (k && x.startsWith('**') ? '\u0001' : k ? ' ' : '') + x).join('');
+    // Una línea que empieza con un rótulo en negrita ("**Estado:**", "**Para el 7,0:**") abre renglón
+    // nuevo; otra negrita a inicio de línea ("**detectarla** (qué síntoma…") sigue la oración.
+    const unido = buf.map((x, k) => (k && /^\*\*[^*]*[:.]\*\*|^\*\*[^*]+\*\*\s*[:—]/.test(x) ? '\u0001' : k ? ' ' : '') + x).join('');
     html.push(`<p>${inline(unido).replace(/\u0001/g, '<br>')}</p>`);
   }
   return html.join('\n');

@@ -1,0 +1,560 @@
+{
+  "name": "Pedidos enrutados v0 (practicante)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pedidos-mercado-austral",
+        "options": {}
+      },
+      "id": "0afe8815-59c1-dd99-22f6-58de93f09a1a",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ],
+      "webhookId": "2e9e4f1d-cbc9-6bf3-fea9-6fe9ed27f2fc"
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "965fb517-d419-7fb2-bb27-902c53d540eb",
+              "name": "nombre",
+              "value": "={{ $json.body.nombre }}",
+              "type": "string"
+            },
+            {
+              "id": "4d2a1c70-1350-7c30-f1f7-896018dd503c",
+              "name": "email",
+              "value": "={{ $json.body.email.trim().toLowerCase() }}",
+              "type": "string"
+            },
+            {
+              "id": "7e21ca66-4efd-c7c2-aaff-3e5afb55a9dc",
+              "name": "comuna",
+              "value": "={{ $json.body.comuna.trim() }}",
+              "type": "string"
+            },
+            {
+              "id": "03620410-7a9f-8395-4386-0c6bcd3ad824",
+              "name": "tipo_cliente",
+              "value": "={{ $json.body.tipo_cliente }}",
+              "type": "string"
+            },
+            {
+              "id": "e8ab644f-93b2-8b1a-7b14-6ba2d388c356",
+              "name": "producto",
+              "value": "={{ $json.body.producto }}",
+              "type": "string"
+            },
+            {
+              "id": "c4cdc4db-0443-8929-f92a-f255ae31657f",
+              "name": "cantidad",
+              "value": "={{ $json.body.cantidad }}",
+              "type": "string"
+            },
+            {
+              "id": "ba5bb711-48ce-cc80-7e15-d04c31fe6e3f",
+              "name": "precio_unitario",
+              "value": "={{ Number($json.body.precio_unitario) }}",
+              "type": "number"
+            },
+            {
+              "id": "75ba82db-d5de-2f87-d85e-638c9e36ee05",
+              "name": "total",
+              "value": "={{ parseFloat($json.body.cantidad) * Number($json.body.precio_unitario) }}",
+              "type": "number"
+            },
+            {
+              "id": "70d447d3-140f-046e-6f7f-544a0593e04f",
+              "name": "total_texto",
+              "value": "={{ (parseFloat($json.body.cantidad) * Number($json.body.precio_unitario)).toLocaleString('es-CL') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": false,
+        "options": {}
+      },
+      "id": "9778bb55-c604-b1a6-6a39-bdd75f3fc523",
+      "name": "Normalizar pedido",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "73a15a73-3be7-aa38-d8a7-9b42f8dce4e0",
+              "leftValue": "={{ $json.Email }}",
+              "rightValue": "@",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "ca3110ce-2577-9ec2-ddab-65675ae5c356",
+              "leftValue": "={{ parseFloat($json.cantidad) > 0 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "d4ac7607-9010-5d37-7205-66fe41361339",
+      "name": "Validar pedido",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        440,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "comunas",
+        "returnAll": true
+      },
+      "id": "66d306a3-65d7-4c0f-3b34-6c1e5080cf3a",
+      "name": "Leer comunas",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        660,
+        460
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "4ddbcfa6-d57f-7b39-6a1e-63e95cc13227",
+      "name": "Unir zona",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        880,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c2479f03-88f2-3eaf-b6bb-c9ea7503e010",
+                    "leftValue": "={{ $json.tipo_cliente }}",
+                    "rightValue": "mayorista",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  },
+                  {
+                    "id": "aade32e7-6572-79af-6de9-516030588b69",
+                    "leftValue": "={{ $json.total_texto }}",
+                    "rightValue": 150000,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    }
+                  }
+                ],
+                "combinator": "or"
+              },
+              "renameOutput": true,
+              "outputKey": "mayorista"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8cd1917c-a1b6-8f70-7673-5768ad2c7e29",
+                    "leftValue": "={{ $json.zona }}",
+                    "rightValue": "Regiones",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "or"
+              },
+              "renameOutput": true,
+              "outputKey": "regiones"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5c1e9270-57c4-50cf-b64c-92fb69d0ccda",
+                    "leftValue": "={{ $json.tipo_cliente }}",
+                    "rightValue": "minorista",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "or"
+              },
+              "renameOutput": true,
+              "outputKey": "bodega RM"
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "28428eb1-b444-1848-8491-2bd0f0ac4e35",
+      "name": "Enrutar pedido",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "tableId": "pedidos",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nombre",
+              "fieldValue": "={{ $json.nombre }}"
+            },
+            {
+              "fieldId": "email",
+              "fieldValue": "={{ $json.email }}"
+            },
+            {
+              "fieldId": "comuna",
+              "fieldValue": "={{ $json.comuna }}"
+            },
+            {
+              "fieldId": "tipo_cliente",
+              "fieldValue": "={{ $json.tipo_cliente }}"
+            },
+            {
+              "fieldId": "producto",
+              "fieldValue": "={{ $json.producto }}"
+            },
+            {
+              "fieldId": "cantidad",
+              "fieldValue": "={{ $json.cantidad }}"
+            },
+            {
+              "fieldId": "precio_unitario",
+              "fieldValue": "={{ $json.precio_unitario }}"
+            },
+            {
+              "fieldId": "total",
+              "fieldValue": "={{ $json.total }}"
+            },
+            {
+              "fieldId": "zona",
+              "fieldValue": "={{ $json.zona }}"
+            }
+          ]
+        }
+      },
+      "id": "c1fc4656-2b83-f24b-4e6c-c93b9c57722e",
+      "name": "Guardar pedido",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "tableId": "pedidos_rechazados",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nombre",
+              "fieldValue": "={{ $json.nombre }}"
+            },
+            {
+              "fieldId": "email",
+              "fieldValue": "={{ $json.email }}"
+            },
+            {
+              "fieldId": "comuna",
+              "fieldValue": "={{ $json.comuna }}"
+            },
+            {
+              "fieldId": "cantidad",
+              "fieldValue": "={{ String($json.cantidad) }}"
+            },
+            {
+              "fieldId": "motivo",
+              "fieldValue": "Datos inválidos: correo sin @ o cantidad no válida"
+            }
+          ]
+        }
+      },
+      "id": "75674e8c-fe48-d784-24d7-89952db78eb6",
+      "name": "Registrar rechazado",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        660,
+        140
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Normalizar pedido",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar pedido": {
+      "main": [
+        [
+          {
+            "node": "Validar pedido",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar pedido": {
+      "main": [
+        [
+          {
+            "node": "Unir zona",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Leer comunas",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Registrar rechazado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer comunas": {
+      "main": [
+        [
+          {
+            "node": "Unir zona",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Unir zona": {
+      "main": [
+        [
+          {
+            "node": "Enrutar pedido",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enrutar pedido": {
+      "main": [
+        [
+          {
+            "node": "Guardar pedido",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Guardar pedido",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Guardar pedido",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {},
+          "params": {},
+          "query": {},
+          "body": {
+            "nombre": "Ana Rojas",
+            "email": " Ana.Rojas@Correo.test ",
+            "comuna": "Ñuñoa",
+            "tipo_cliente": "minorista",
+            "producto": "Café en grano 1 kg",
+            "cantidad": 2,
+            "precio_unitario": 12500
+          }
+        }
+      },
+      {
+        "json": {
+          "headers": {},
+          "params": {},
+          "query": {},
+          "body": {
+            "nombre": "Minimarket Doña Rosa",
+            "email": "rosa@donarosa.test",
+            "comuna": "Maipú",
+            "tipo_cliente": "mayorista",
+            "producto": "Arroz 25 kg",
+            "cantidad": 8,
+            "precio_unitario": 24500
+          }
+        }
+      },
+      {
+        "json": {
+          "headers": {},
+          "params": {},
+          "query": {},
+          "body": {
+            "nombre": "Pedro Soto",
+            "email": "pedro.soto@correo.test",
+            "comuna": "Providencia",
+            "tipo_cliente": "minorista",
+            "producto": "Azúcar 25 kg",
+            "cantidad": 10,
+            "precio_unitario": 21900
+          }
+        }
+      },
+      {
+        "json": {
+          "headers": {},
+          "params": {},
+          "query": {},
+          "body": {
+            "nombre": "Luis Pérez",
+            "email": "luis.perez@correo.test",
+            "comuna": "Temuco",
+            "tipo_cliente": "minorista",
+            "producto": "Aceite 5 L",
+            "cantidad": 6,
+            "precio_unitario": 15990
+          }
+        }
+      },
+      {
+        "json": {
+          "headers": {},
+          "params": {},
+          "query": {},
+          "body": {
+            "nombre": "Comercial Rapa Nui",
+            "email": "ventas@rapanui.test",
+            "comuna": "Isla de Pascua",
+            "tipo_cliente": "distribuidor",
+            "producto": "Yerba mate 1 kg",
+            "cantidad": 12,
+            "precio_unitario": 6900
+          }
+        }
+      },
+      {
+        "json": {
+          "headers": {},
+          "params": {},
+          "query": {},
+          "body": {
+            "nombre": "Camila Pérez",
+            "email": "camila.perez@correo.test",
+            "comuna": "Valparaíso",
+            "tipo_cliente": "minorista",
+            "producto": "Té verde 100 u",
+            "cantidad": "3 unidades",
+            "precio_unitario": 4200
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "meta": {},
+  "tags": []
+}

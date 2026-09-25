@@ -15,7 +15,7 @@ $CATEGORY: PF1821-M2/AE4
 ~false
 ~Un error
 ~undefined
-####Con || basta que una condición se cumpla, y 219000 ≥ 150000.
+####Con || basta que una condición se cumpla, y 219000 es mayor que 150000.
 }
 
 ::AE4-P12:: Un workflow termina en verde, pero faltan pedidos en la tabla. ¿Cuál es el primer paso de depuración? {

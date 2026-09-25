@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>PF1822 · M2 · Actividad 2 · Laboratorio de prompts y métricas</title></head>
+<body style="font-family:Arial,Helvetica,sans-serif;color:#1F2937;line-height:1.5;max-width:880px;margin:24px auto;padding:0 16px">
+<!-- Para Moodle: abre este archivo en el navegador, selecciona todo desde "Qué vas a lograr" hasta el final,
+     cópialo y pégalo en la descripción de la Tarea. O bien, en el editor de Moodle, usa el botón de código
+     HTML y pega el contenido de <div id="moodle">. El nombre de la Tarea va en el campo "Nombre". -->
+<div id="moodle">
+<div style="background:#EFF6FF;border-left:4px solid #0F3D5E;padding:10px 14px;margin:0 0 1em"><p style="margin:0 0 .4em"><strong>Actividad práctica 2 · Laboratorio de prompts y métricas</strong></p>
+<p style="margin:0"><strong>Técnica:</strong> Análisis de caso + simulación con tablero de puntajes · <strong>Tiempo estimado:</strong> 6 h (1,5 h sincrónica + 4,5 h autónomas)<br>
+<strong>Aprendizajes esperados:</strong> AE3. FORMULAR PROMPTS EFECTIVOS PARA MODELOS GENERATIVOS EN ESCENARIOS ZERO-SHOT O FEW-SHOT, CONSIDERANDO LA TAREA SOLICITADA Y LOS PARÁMETROS DE GENERACIÓN DISPONIBLES.<br>AE4. IMPLEMENTAR UN PIPELINE DE PREPROCESAMIENTO Y EVALUACIÓN BÁSICA DE TEXTO EN PYTHON, APLICANDO TÉCNICAS DE LIMPIEZA, NORMALIZACIÓN Y MÉTRICAS INICIALES DE CALIDAD, DE ACUERDO CON LOS REQUISITOS DE ENTRADA Y SALIDA DEL MODELO.<br>
+<strong>Indicadores de logro:</strong> 3.1, 3.2, 3.3, 4.1, 4.2, 4.3 · <strong>Apoyos:</strong> Video interactivo "Del prompt a la respuesta"<br>
+<strong>Producto:</strong> Notebook del pipeline + registro de prompts + tabla de métricas</p></div>
+<p>El jefe de soporte de Nube Sur va a elegir <strong>una</strong> configuración para el resumidor y quiere evidencia, no opiniones. Te entrega 5 tickets reales (anonimizados, ficticios para el curso) con el resumen que escribió una persona de su equipo para cada uno. Tu misión es simular la decisión: preparar los tickets, probar estrategias de prompt y medir cuál resume mejor.</p>
+<ol><li><strong>Preprocesa (AE4).</strong> Programa funciones que limpien HTML y firmas, reemplacen correos y enlaces por marcas, normalicen espacios y tokenicen. Explica con un ticket qué cambió.</li><li><strong>Diseña (AE3).</strong> Escribe un prompt <strong>zero-shot</strong> y uno <strong>few-shot</strong> (con dos ejemplos) para resumir un ticket en una oración de máximo 25 palabras.</li><li><strong>Itera (AE3).</strong> Registra al menos tres versiones del prompt con qué cambiaste y qué efecto tuvo. Prueba cada estrategia con <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">temperature</code> 0,2 y 0,9.</li><li><strong>Mide (AE4).</strong> Calcula ROUGE-1, ROUGE-L y BLEU de cada resumen contra la referencia, valora coherencia y relevancia de 1 a 3, y registra todo en <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">resultados.csv</code>.</li><li><strong>Decide.</strong> Recomienda una configuración en 5 líneas, con números.</li></ol>
+<p><strong>Tablero del laboratorio (gamificación):</strong> cada participante publica en el LMS su mejor ROUGE-L promedio y la configuración que lo logró. Hay insignias para <strong>"Mejor ROUGE-L"</strong>, <strong>"Prompt más corto con ROUGE-L sobre 0,5"</strong> y <strong>"Mejor bitácora de iteraciones"</strong> (esta la elige el tutor). Lo que puntúa en la nota no es el primer lugar, sino el proceso registrado.</p>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Insumos que se adjuntan</h5>
+<p><em>(Los datos de esta tabla se adjuntan como archivo CSV en esta Tarea.)</em></p>
+<p>Todos los nombres, correos y dominios son ficticios (el dominio <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">.test</code> está reservado).</p>
+<p>Archivos adjuntos a esta Tarea:</p>
+<ul><li><code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">actividad-2-tickets.csv</code></li></ul>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Entrega</h5>
+<p>Sube a esta Tarea: Notebook del pipeline + registro de prompts + tabla de métricas.</p>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Cómo se evalúa</h5>
+<p>Se evalúa con: Rúbrica de revisión de la solución (observación) (M2-Instrumento-1.pdf); Bitácora de registro de resultados y plan de trabajo (M2-Bitacora.pdf). El instrumento está publicado en el curso y recibes tu nivel en cada criterio, no solo una nota.</p>
+</div>
+</body></html>

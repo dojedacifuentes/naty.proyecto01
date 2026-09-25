@@ -1,0 +1,56 @@
+[
+  {
+    "nombre": "Ana Rojas",
+    "email": " Ana.Rojas@Correo.test ",
+    "comuna": "Ñuñoa",
+    "tipo_cliente": "minorista",
+    "producto": "Café en grano 1 kg",
+    "cantidad": 2,
+    "precio_unitario": 12500
+  },
+  {
+    "nombre": "Minimarket Doña Rosa",
+    "email": "rosa@donarosa.test",
+    "comuna": "Maipú",
+    "tipo_cliente": "mayorista",
+    "producto": "Arroz 25 kg",
+    "cantidad": 8,
+    "precio_unitario": 24500
+  },
+  {
+    "nombre": "Pedro Soto",
+    "email": "pedro.soto@correo.test",
+    "comuna": "Providencia",
+    "tipo_cliente": "minorista",
+    "producto": "Azúcar 25 kg",
+    "cantidad": 10,
+    "precio_unitario": 21900
+  },
+  {
+    "nombre": "Luis Pérez",
+    "email": "luis.perez@correo.test",
+    "comuna": "Temuco",
+    "tipo_cliente": "minorista",
+    "producto": "Aceite 5 L",
+    "cantidad": 6,
+    "precio_unitario": 15990
+  },
+  {
+    "nombre": "Comercial Rapa Nui",
+    "email": "ventas@rapanui.test",
+    "comuna": "Isla de Pascua",
+    "tipo_cliente": "distribuidor",
+    "producto": "Yerba mate 1 kg",
+    "cantidad": 12,
+    "precio_unitario": 6900
+  },
+  {
+    "nombre": "Camila Pérez",
+    "email": "camila.perez@correo.test",
+    "comuna": "Valparaíso",
+    "tipo_cliente": "minorista",
+    "producto": "Té verde 100 u",
+    "cantidad": "3 unidades",
+    "precio_unitario": 4200
+  }
+]

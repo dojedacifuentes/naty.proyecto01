@@ -15,7 +15,10 @@
  *   evaluacion/      9 PDF: 3 instrumentos, guía e instrumento del portafolio, retroalimentación,
  *                    autoevaluación, coevaluación y bitácora
  *   actividades/     enunciado (participante) y respuesta modelada (tutor) de cada actividad,
- *                    insumos/ (SQL, CSV) y respuesta-modelada/codigo/ (.py para pytest)
+ *                    un PDF de respaldo con los dos enunciados, moodle/ (HTML con estilos en línea
+ *                    para la descripción de la Tarea), insumos/ (SQL, CSV y, en PF1821, el workflow
+ *                    roto de n8n) y respuesta-modelada/ (.py para pytest o el workflow corregido)
+ * Los PDF de actividades, evaluación y medios usan el diseño de las lecturas (scripts/lib/documento.mjs).
  *   medios/          cuadro comparativo en PDF
  *   insumos-anexo/   textos de las secciones V y VI del Anexo 2 en HTML, para copiar a Word
  * Las demás piezas de entrega/ (videos e infografías) las agrega quien las produce.
@@ -28,6 +31,8 @@ import { markdown, estilos, esc } from './lib/html.mjs';
 import { imprimirPdf, navegador } from './lib/pdf.mjs';
 import { leerLectura, verificarLectura, lecturaHtml, palabras } from './lib/lectura.mjs';
 import { leerNotebook, notebookJson, verificarNotebook } from './lib/notebook.mjs';
+import { documentoPdfHtml, moodleHtml } from './lib/documento.mjs';
+import { workflowActividad2, pedidosPruebaJson, comunasCsv, sqlActividad2 } from './lib/workflow-roto.mjs';
 import fs from 'node:fs';
 
 const CURSOS = {
@@ -661,16 +666,18 @@ const sinRefs = (md) => md
   .replace(/`B2-instrumentos\.md`,?\s*instrumento (\d)/g, (_, n) => `\`M2-Instrumento-${n}.pdf\``)
   .replace(/`([\w.-]+\.md)`/g, (m, f) => REFS[f] ?? m);
 
-// Un documento A4 con encabezado del curso; lo imprime a PDF el mismo Edge que usa el kit.
-function documentoHtml(pf, c, f, tit, mdOriginal) {
-  const md = sinRefs(mdOriginal);
-  const pie = `${pf} · Módulo 2 · ${tit}`;
-  return `<!doctype html>
-<html lang="es"><head><meta charset="utf-8"><title>${esc(tit)}</title>${estilos(pie)}</head><body>
-<section class="parte" style="break-before:auto"><p class="kicker">${pf} · ${esc(c.curso)} · Módulo 2: ${esc(f.modulo)}</p>
-<h2>${esc(tit)}</h2>
-${markdown(md)}
-</section></body></html>`;
+// Aprendizajes esperados que nombra un texto, en orden: "AE1 · AE3".
+const aesDe = (md) => [...new Set(md.match(/\bAE[1-4]\b/g) ?? [])].sort().join(' · ') || 'AE1 · AE2 · AE3 · AE4';
+
+// Un documento A4 con el diseño de las lecturas (scripts/lib/documento.mjs); lo imprime el mismo Edge.
+// d = { kicker, titulo, ficha, md } o { titulo, partes: [...] }; los md pasan por sinRefs.
+function documentoHtml(pf, c, f, mod, d) {
+  const limpia = (p) => ({ ...p, md: sinRefs(p.md) });
+  return documentoPdfHtml({
+    pf, curso: c.curso, modulo: f.modulo, codigo: mod.codigo, horas: mod.horas,
+    pie: `${pf} · Módulo 2 · ${d.pie ?? d.titulo}`,
+    ...(d.partes ? { titulo: d.titulo, partes: d.partes.map(limpia) } : limpia(d)),
+  });
 }
 
 // Los 9 documentos evaluativos, según la práctica del equipo (revisión del V0 de PF1474).
@@ -680,20 +687,20 @@ function documentosEvaluacion(dir) {
   const b4 = leer(`${dir}/B4-retroalimentacion.md`);
   const docs = [1, 2, 3].map((n) => {
     const L = seccion(b2, new RegExp(`^## Instrumento ${n}\\b`));
-    return { archivo: `M2-Instrumento-${n}.pdf`, titulo: titulo(L), md: cuerpo(L) };
+    return { archivo: `M2-Instrumento-${n}.pdf`, titulo: titulo(L), md: cuerpo(L), kicker: `Evaluación del módulo · instrumento ${n}` };
   });
   const L3 = b3.split('\n');
   const i1 = L3.findIndex((l) => /^## Elemento 1\b/.test(l));
   const i6 = L3.findIndex((l) => /^## Elemento 6\b/.test(l));
   if (i1 < 0 || i6 < 0) throw new Error(`${dir}/B3-portafolio.md: no encuentro los elementos 1 y 6`);
-  docs.push({ archivo: 'M2-Portafolio-Guia.pdf', titulo: 'Guía del portafolio de proyectos', md: L3.slice(i1, i6).join('\n') });
+  docs.push({ archivo: 'M2-Portafolio-Guia.pdf', titulo: 'Guía del portafolio de proyectos', md: L3.slice(i1, i6).join('\n'), kicker: 'Evaluación del módulo · portafolio' });
   const L6 = seccion(b3, /^## Elemento 6\b/);
-  docs.push({ archivo: 'M2-Portafolio-Instrumento.pdf', titulo: 'Instrumento de evaluación del portafolio', md: cuerpo(L6) });
+  docs.push({ archivo: 'M2-Portafolio-Instrumento.pdf', titulo: 'Instrumento de evaluación del portafolio', md: cuerpo(L6), kicker: 'Evaluación del módulo · portafolio' });
   for (const [letra, archivo] of [['a', 'M2-Retroalimentacion.pdf'], ['b', 'M2-Autoevaluacion.pdf'], ['c', 'M2-Coevaluacion.pdf'], ['d', 'M2-Bitacora.pdf']]) {
     const L = seccion(b4, new RegExp(`^## ${letra}\\) `));
-    docs.push({ archivo, titulo: titulo(L).replace(/^[a-d]\)\s*/, ''), md: cuerpo(L) });
+    docs.push({ archivo, titulo: titulo(L).replace(/^[a-d]\)\s*/, ''), md: cuerpo(L), kicker: 'Evaluación del módulo · retroalimentación' });
   }
-  return docs;
+  return docs.map((d) => ({ ...d, ficha: [['Aprendizajes esperados', aesDe(d.md)], ['Documento', d.archivo], ['Se publica en', 'El LMS del curso']] }));
 }
 
 // Bloques de código de una sección → archivos. El nombre sale del texto que los presenta.
@@ -730,30 +737,103 @@ function tablaCsv(lineas) {
     .map((f) => f.map((x) => `"${x.replace(/"/g, '""')}"`).join(',')).join('\n') + '\n';
 }
 
-function actividades(dir) {
+// Nombres legibles de los códigos internos (R0n de 02-recursos.md, B2-n de B2 y B4-x de B4), para que
+// la ficha de una actividad se entienda sin el repo.
+function nombresInternos(dir) {
+  const nombres = {};
+  for (const l of leer(`${dir}/02-recursos.md`).split('\n')) {
+    const m = /^\| (R\d\d) \| ([^|]+) \|/.exec(l);
+    if (m) nombres[m[1]] = m[2].replace(/\*\*/g, '').replace(/^[^:"]*:\s*/, '').trim();
+  }
+  for (const l of leer(`${dir}/B2-instrumentos.md`).split('\n')) {
+    const m = /^## Instrumento (\d) · (.+?)(?: \(\w+\))?$/.exec(l);
+    if (m) nombres[`B2-${m[1]}`] = `${m[2]} (M2-Instrumento-${m[1]}.pdf)`;
+  }
+  for (const [x, pdf] of Object.entries(PDF_B4)) {
+    const m = new RegExp(`^## ${x}\\) (.+)$`, 'm').exec(leer(`${dir}/B4-retroalimentacion.md`));
+    if (m) nombres[`B4-${x}`] = `${m[1]} (${pdf})`;
+  }
+  return nombres;
+}
+const mayuscula = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+// "Tutorial R05, cápsulas R03" → nombres; "Rúbrica de workflow (B2-1) + bitácora (B4-d)" → nombres.
+const traducir = (celda, nombres) => celda.split(/\s*[,+]\s*/).map((parte) => {
+  const cod = /\b(R\d\d|B[24]-\w)\b/.exec(parte)?.[1];
+  return cod && nombres[cod] ? mayuscula(nombres[cod]) : parte;
+}).join('; ');
+
+function actividades(dir, f) {
   const md = leer(`${dir}/C2-actividades.md`);
-  const resumen = md.split('\n').slice(0, md.split('\n').findIndex((l) => /^## Actividad 1\b/.test(l))).filter((l) => l.startsWith('|'));
+  const L = md.split('\n');
+  const resumen = L.slice(0, L.findIndex((l) => /^## Actividad 1\b/.test(l))).filter((l) => l.startsWith('|')).map(celdas);
+  const fila = (rotulo, n) => resumen.find((r) => r[0] === rotulo)?.[n];
+  const nombres = nombresInternos(dir);
   const docs = [];
   const archivos = [];
+  const lista = [];
   for (const n of [1, 2]) {
     const A = seccion(md, new RegExp(`^## Actividad ${n}\\b`));
-    const tit = titulo(A);
+    const tit = titulo(A).replace(/^Actividad \d · /, '');
     const enun = subseccion(A, /^### Enunciado/);
     const ins = subseccion(A, /^### Insumos/);
     const resp = subseccion(A, /^### Respuesta modelada/);
     if (!enun || !resp) throw new Error(`${dir}/C2-actividades.md: la actividad ${n} no tiene enunciado o respuesta modelada`);
-    docs.push({ archivo: `M2-Actividad-${n}-Enunciado.pdf`, titulo: tit,
-      md: [cuerpo(enun), ...(ins ? ['', '### Insumos', '', cuerpo(ins)] : [])].join('\n') });
-    docs.push({ archivo: `M2-Actividad-${n}-Respuesta-modelada.pdf`, titulo: `${tit} · respuesta modelada (tutor)`,
-      md: ['### Resumen de las actividades', '', ...resumen, '', cuerpo(resp)].join('\n') });
+    const dato = (r) => { const v = fila(r, n); if (!v) throw new Error(`${dir}/C2-actividades.md: la tabla resumen no trae "${r}" de la actividad ${n}`); return v; };
+    const aes = dato('AE que cubre').match(/AE\d/g);
+    const info = {
+      n, titulo: tit, tecnica: dato('Técnica'), aes, indicadores: dato('Indicadores'), tiempo: dato('Tiempo estimado'),
+      apoyos: traducir(dato('Apoyos'), nombres), producto: dato('Producto'), evaluacion: traducir(dato('Se evalúa con'), nombres),
+      aprendizajes: aes.map((ae) => `${ae}. ${f.aes[ae].texto}`),
+      enunciado: cuerpo(enun), insumos: ins ? cuerpo(ins) : null,
+    };
+    const ficha = [
+      ['Técnica', info.tecnica], ['Tiempo estimado', info.tiempo], ['Indicadores de logro', info.indicadores],
+      ['Apoyos', info.apoyos], ['Producto', info.producto], ['Se evalúa con', info.evaluacion],
+      ['Aprendizajes esperados', info.aprendizajes, true],
+    ];
+    const mdEnun = [info.enunciado, ...(ins ? ['', '### Insumos', '', info.insumos] : [])].join('\n');
+    docs.push({ archivo: `M2-Actividad-${n}-Enunciado.pdf`, kicker: `Actividad práctica ${n} · enunciado para el participante`, titulo: tit, ficha, md: mdEnun });
+    docs.push({ archivo: `M2-Actividad-${n}-Respuesta-modelada.pdf`, kicker: `Actividad práctica ${n} · respuesta modelada · solo tutor`,
+      titulo: tit, pie: `${tit} · respuesta modelada`, ficha, md: cuerpo(resp) });
+    const suyos = [];
     if (ins) {
-      for (const a of archivosDeCodigo(ins, ['sql', 'csv', 'json'])) archivos.push({ nombre: `insumos/${a.nombre}`, contenido: a.contenido });
+      for (const a of archivosDeCodigo(ins, ['sql', 'csv', 'json'])) suyos.push({ nombre: `insumos/${a.nombre}`, contenido: a.contenido });
       const csv = tablaCsv(ins);
-      if (csv) archivos.push({ nombre: `insumos/actividad-${n}-tickets.csv`, contenido: csv });
+      if (csv) suyos.push({ nombre: `insumos/actividad-${n}-tickets.csv`, contenido: csv });
     }
+    info.adjuntos = suyos.map((a) => a.nombre.replace('insumos/', ''));
+    archivos.push(...suyos);
     for (const a of archivosDeCodigo(resp, ['python'])) archivos.push({ nombre: `respuesta-modelada/codigo/${a.nombre}`, contenido: a.contenido });
+    lista.push(info);
   }
-  return { docs, archivos };
+  return { docs, archivos, lista };
+}
+
+// Descripción de la Tarea de Moodle de una actividad: el enunciado con sus insumos como adjuntos, la
+// entrega y cómo se evalúa. Los bloques de código de los insumos no se pegan: van como archivos.
+function moodleActividad(pf, a) {
+  const adjuntos = a.adjuntos;
+  const sinTablas = (t) => t.split('\n').reduce((out, l) => {
+    if (!l.startsWith('|')) out.push(l);
+    else if (!out.at(-1)?.startsWith('*(Los datos')) out.push('*(Los datos de esta tabla se adjuntan como archivo CSV en esta Tarea.)*');
+    return out;
+  }, []).join('\n');
+  const insumos = a.insumos ? sinTablas(a.insumos.replace(/```\w*\n[\s\S]*?```/g, '*(Se adjunta como archivo en esta Tarea.)*')) : null;
+  const tieneEntrega = /\*\*Entrega:\*\*/.test(a.enunciado);
+  const md = [
+    a.enunciado,
+    ...(insumos ? ['', '## Insumos que se adjuntan', '', insumos] : []),
+    ...(adjuntos.length ? ['', 'Archivos adjuntos a esta Tarea:', '', ...adjuntos.map((x) => `- \`${x}\``)] : []),
+    ...(tieneEntrega ? [] : ['', '## Entrega', '', `Sube a esta Tarea: ${a.producto}.`]),
+    '', '## Cómo se evalúa', '',
+    `Se evalúa con: ${a.evaluacion}. El instrumento está publicado en el curso y recibes tu nivel en cada criterio, no solo una nota.`,
+  ].join('\n');
+  const intro = `<p style="margin:0 0 .4em"><strong>Actividad práctica ${a.n} · ${esc(a.titulo)}</strong></p>
+<p style="margin:0"><strong>Técnica:</strong> ${esc(a.tecnica)} · <strong>Tiempo estimado:</strong> ${esc(a.tiempo)}<br>
+<strong>Aprendizajes esperados:</strong> ${a.aprendizajes.map(esc).join('<br>')}<br>
+<strong>Indicadores de logro:</strong> ${esc(a.indicadores)} · <strong>Apoyos:</strong> ${esc(a.apoyos)}<br>
+<strong>Producto:</strong> ${esc(a.producto.replace(/`/g, ''))}</p>`;
+  return moodleHtml({ titulo: `${pf} · M2 · Actividad ${a.n} · ${a.titulo}`, intro, md: sinRefs(md) });
 }
 
 // Textos para rellenar el Anexo 2: HTML con tablas, que se copia a Word sin perder formato.
@@ -850,12 +930,30 @@ for (const pf of codigos) {
     if (!suyas.length) throw new Error(`${pf}: la prueba objetiva no tiene preguntas de ${ae}`);
     guardar(`${ent}/${ae}/M2-${ae}-Quiz.gift`, quizGift(pf, ae, suyas));
   }
-  for (const d of documentosEvaluacion(dir)) pdf(`${ent}/evaluacion/${d.archivo}`, documentoHtml(pf, c, f, d.titulo, d.md));
-  const act = actividades(dir);
-  for (const d of act.docs) pdf(`${ent}/actividades/${d.archivo}`, documentoHtml(pf, c, f, d.titulo, d.md));
+  for (const d of documentosEvaluacion(dir)) pdf(`${ent}/evaluacion/${d.archivo}`, documentoHtml(pf, c, f, mod, d));
+  const act = actividades(dir, f);
+  // Actividad 2 de PF1821: el workflow roto (insumo) y el corregido (tutor) salen de la misma definición.
+  if (pf === 'PF1821') {
+    const roto = workflowActividad2({ roto: true });
+    const corregido = workflowActividad2({ roto: false });
+    for (const w of [roto, corregido]) JSON.parse(w);
+    const extra = [['insumos/pedidos_enrutados_v0.json', roto], ['insumos/pedidos_prueba.json', pedidosPruebaJson()],
+      ['insumos/comunas.csv', comunasCsv()], ['insumos/actividad-2-tablas.sql', sqlActividad2()]];
+    act.archivos.push(...extra.map(([nombre, contenido]) => ({ nombre, contenido })),
+      { nombre: 'respuesta-modelada/pedidos_enrutados_corregido.json', contenido: corregido });
+    act.lista[1].adjuntos.push(...extra.map(([n]) => n.replace('insumos/', '')));
+  }
+  for (const d of act.docs) pdf(`${ent}/actividades/${d.archivo}`, documentoHtml(pf, c, f, mod, d));
   for (const a of act.archivos) guardar(`${ent}/actividades/${a.nombre}`, a.contenido);
+  for (const a of act.lista) guardar(`${ent}/actividades/moodle/M2-Actividad-${a.n}-Moodle.html`, moodleActividad(pf, a));
+  // PDF de respaldo: los enunciados de las dos actividades en un solo documento.
+  const enunciados = act.docs.filter((d) => /Enunciado/.test(d.archivo));
+  pdf(`${ent}/actividades/M2-Actividades-Enunciados-respaldo.pdf`, documentoHtml(pf, c, f, mod, {
+    titulo: 'Actividades prácticas del módulo 2', pie: 'Enunciados de las actividades prácticas', partes: enunciados }));
   const r04 = seccion(mdCaps, /^## R04\b/);
-  pdf(`${ent}/medios/M2-Cuadro-comparativo.pdf`, documentoHtml(pf, c, f, titulo(r04).replace(/^R04 · /, ''), cuerpo(r04)));
+  pdf(`${ent}/medios/M2-Cuadro-comparativo.pdf`, documentoHtml(pf, c, f, mod, {
+    kicker: 'Medio didáctico · cuadro comparativo', titulo: titulo(r04).replace(/^R04 · /, ''), md: cuerpo(r04),
+    ficha: [['Aprendizajes esperados', aesDe(cuerpo(r04))], ['Documento', 'M2-Cuadro-comparativo.pdf'], ['Se publica en', 'El LMS del curso']] }));
   for (const a of insumosAnexo(pf, c, f, dir)) guardar(`${ent}/insumos-anexo/${a.nombre}`, a.html);
 
   console.log(`${pf} → ${c.carpeta}/  (${hechos.length} archivos, ${items.length} preguntas de quiz)`);

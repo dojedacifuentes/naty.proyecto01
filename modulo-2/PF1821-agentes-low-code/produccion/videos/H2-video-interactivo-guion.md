@@ -33,8 +33,9 @@ Cada pregunta evalúa un contenido del AE3 y va en la pausa de la escena que la 
 4. **(5:00 · selección · 3.1, Merge y datos relacionales)** Entran 6 pedidos al Merge que agrega la zona de despacho desde la tabla `comunas`, y salen 240 ítems. ¿Qué corriges?
    **a) El modo del Merge: Combine por *Matching Fields*, con el campo `comuna` en las dos entradas** · b) Borrar la tabla `comunas` y escribir la zona a mano · c) Agregar un Filter después del Merge
    *Retroalimentación:* "Con todas las combinaciones posibles, cada pedido se une con cada comuna. Al combinar por el campo en común, cada pedido recibe solo su zona."
-5. **(5:40 · completar · 3.3 y 3.4, tipos de datos y Supabase)** Supabase rechaza un pedido con el mensaje `invalid input syntax for type integer`, porque `cantidad` llegó como "3 ". Completa la expresión del Edit Fields, con el campo de tipo Number: `{{ Number(String($json.cantidad).____()) }}`.
-   **Respuesta: `trim`.** *Retroalimentación:* "Primero se quita el espacio y después se convierte a número; así la base de datos recibe un entero."
+5. **(5:40 · selección · 3.3 y 3.4, tipos de datos y Supabase)** Supabase rechaza un pedido con el mensaje `invalid input syntax for type integer: "3 unidades"`. ¿Qué pones en el campo `cantidad` del Edit Fields, con tipo Number?
+   a) `{{ $json.cantidad.trim() }}` · **b) `{{ parseInt($json.cantidad, 10) }}`** · c) `{{ String($json.cantidad) }}`
+   *Retroalimentación:* "`parseInt` lee el número del comienzo del texto (3) y la base de datos recibe un entero. `trim()` solo quita espacios: "3 unidades" seguiría siendo texto."
 
 **Registro:** el LMS guarda las respuestas; el tutor revisa quién falló las preguntas 3 y 4
 antes de la sesión sincrónica del tramo 3.
