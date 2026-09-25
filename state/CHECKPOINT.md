@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-25
-**Por:** 2026-09-25-claude-code-11 (Claude Code · opus-5.5)
+**Por:** 2026-09-25-claude-code-12 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
