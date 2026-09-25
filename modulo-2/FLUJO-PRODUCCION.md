@@ -40,11 +40,11 @@ del B, ninguno depende de otro.
 
 | Carril | Quién | Piezas (PF1821 + PF1822) | Entra | Sale a `entrega/` |
 | --- | --- | --- | --- | --- |
-| **A · Automático** | `npm run produccion` | Quizzes, 8 lecturas en PDF, 9 PDF de evaluación, actividades, insumos, código, cuadro comparativo, insumos para el Anexo | `contenidos/` | **Hecho** ✔ |
+| **A · Automático** | `npm run produccion` | Quizzes, 8 lecturas en PDF, notebook de PF1822, 9 PDF de evaluación, actividades, insumos, código, cuadro comparativo, insumos para el Anexo | `contenidos/` | **Hecho** ✔ |
 | **B · Video** | HeyGen | 12 videos: bienvenida + 4 cápsulas + video base de la herramienta 2, por curso | `produccion/videos/*.pptx` | MP4 a Drive |
 | **C · Diseño** | Genially o Canva | 10 infografías: ruta + 4 aprendizajes, por curso | `produccion/infografias/prompts.md` | PNG |
-| **D · Texto IA** | ChatGPT, Claude o Gemini | Notebook de PF1822 (las lecturas ya salen del carril A) | prompt de abajo | `.ipynb` |
-| **E · Técnico** | Persona con n8n y Python | PF1821: tutorial con capturas y workflow roto. PF1822: correr `pytest` y probar el notebook | `contenidos/…/C4` y `C2`, `entrega/actividades/` | PDF + JSON; código probado |
+| **D · Texto IA** | — | Sin piezas: las lecturas y el notebook de PF1822 salen del carril A | — | **Hecho** ✔ |
+| **E · Técnico** | Persona con n8n y Python | PF1821: tutorial "Tu primer workflow con datos limpios" con capturas (17 pasos) y workflow roto. PF1822: correr `pytest` y probar el notebook en Colab | `contenidos/…/C4` y `C2`, `entrega/actividades/` | PDF + JSON; código probado |
 | **F · Interactivo** | Lumi (H5P de escritorio) | 2 videos interactivos, uno por curso | MP4 del carril B + `H2-video-interactivo-guion.md` | `.h5p` a Drive |
 
 **Orden dentro de cada carril:** primero AE3 (★), después AE1, AE2 y AE4, y al final la bienvenida o la ruta.
@@ -57,7 +57,7 @@ del B, ninguno depende de otro.
    - C: la primera infografía (AE3) armada con las especificaciones visuales, como base para duplicar;
 3. **B genera en paralelo:** HeyGen renderiza varios videos a la vez. Importa todos los PPTX
    y deja la narración como viene. Pulirla es opcional; el prompt está más abajo.
-4. **Las lecturas ya están hechas:** salen del carril A. D solo arma el notebook de PF1822.
+4. **Las lecturas y el notebook ya están hechos:** salen del carril A.
 5. **"Listo" es cumplir, no pulir.** Revisa cada pieza con los 5 puntos de abajo y sigue.
 6. **El carril A se repite solo:** si alguien corrige un contenido, `npm run produccion -- PF1821 PF1822`
    rehace los PDF, quizzes y bases en un minuto.
@@ -115,7 +115,7 @@ largo, pega solo el bloque CONTENIDO y aplica `especificaciones-visuales.txt`. S
 generador de imágenes, pídele el diseño con los espacios de texto vacíos y escribe el texto
 encima, porque suele deformar las letras.
 
-### Lecturas (carril A) y notebook (carril D)
+### Lecturas y notebook (carril A)
 
 - **Lecturas, hechas:** `entrega/AEn/M2-AEn-Lectura.pdf`, o las 8 juntas en el zip
   `lecturas-modulo2.zip` de la portada del sitio. La fuente es `contenidos/<PF>/modulo-2/lecturas/AEn.md`.
@@ -123,23 +123,18 @@ encima, porque suele deformar las letras.
   y que haya un ejemplo por sección, 3 preguntas con respuesta y 8 términos de glosario. Si alguna
   falla, no se imprime. Para corregir una lectura, edita su `.md` y corre
   `npm run produccion -- PF1821 PF1822 --solo-lecturas`. El flipbook se arma después, al subir.
-- **Notebook de PF1822** (herramienta didáctica 1, ★), `M2-Herramienta-1-Notebook.ipynb`:
-
-```text
-Genera un notebook Jupyter (.ipynb) en español con estas secciones, en este orden, cada una
-con una celda de explicación, una de código y una de autocomprobación con assert y un mensaje
-que diga qué revisar si falla: <pega la tabla de la Herramienta 1 de
-contenidos/PF1822/modulo-2/C4-herramientas-didacticas.md>. La clave se lee con
-userdata.get("OPENAI_API_KEY") en Colab o desde una variable de entorno, nunca escrita en una
-celda. Usa httpx. Las funciones limpiar() y tokenizar() son las de
-entrega/actividades/respuesta-modelada/codigo/preprocesar.py.
-```
+- **Notebook de PF1822, hecho** (herramienta didáctica 1 del AE3, ★):
+  `entrega/herramientas/M2-Herramienta-1-Notebook.ipynb`, "Laboratorio de prompts". La fuente es
+  `contenidos/PF1822/modulo-2/notebook/M2-Herramienta-1-Notebook.md`: cada bloque `python` es una
+  celda de código. Al generarlo, el script revisa que cubra, textuales, los 10 contenidos del AE3,
+  que cada sección tenga su autocomprobación y que no haya claves escritas. Falta probarlo en Colab
+  con una clave (carril E).
 
 ### E · Técnico
 
-- **PF1821 · tutorial "Tu primer workflow" (★):** sigue los pasos de la herramienta 1 en
-  `C4-herramientas-didacticas.md` con n8n abierto. Captura cada paso y arma un PDF,
-  `M2-Herramienta-1-Tutorial.pdf`.
+- **PF1821 · tutorial "Tu primer workflow con datos limpios" (★):** sigue los 17 pasos de la
+  herramienta 1 en `C4-herramientas-didacticas.md` con n8n abierto. Captura cada paso y arma un
+  PDF, `M2-Herramienta-1-Tutorial.pdf`. Los pasos 5 a 17 son del AE3: son los que sostienen el 7,0.
 - **PF1821 · actividad 2 (★):** en n8n, arma el workflow correcto de la respuesta modelada,
   introduce las 5 fallas de su tabla y expórtalo como `M2-Actividad-2-workflow-roto.json`.
   Guarda también los 6 pedidos de prueba y la tabla `comunas` que describe el enunciado, como
@@ -147,13 +142,15 @@ entrega/actividades/respuesta-modelada/codigo/preprocesar.py.
 - **PF1822 · código (★):** en una máquina con Python 3.10 o superior, instala `httpx`, `pytest`,
   `spacy` (con `es_core_news_sm`), `nltk`, `rouge-score` y `scikit-learn`. Corre `pytest` en
   `entrega/actividades/respuesta-modelada/codigo/`. Si algo falla, **corrige en `contenidos/`** y
-  regenera. Prueba también el notebook del carril D en Colab.
+  regenera. Prueba también el notebook (`entrega/herramientas/`) en Colab: define `MODELO_CHAT`, corre
+  todas las celdas y anota en el ESTADO las comprobaciones que no pasaron.
 
 ### F · Videos interactivos
 
 En Lumi (o cualquier editor H5P), crea un *Interactive Video* con el MP4 de la herramienta 2
 del carril B. Agrega las 5 preguntas de `H2-video-interactivo-guion.md` en sus pausas, con su
-retroalimentación. Exporta como `M2-Herramienta-2-Interactivo.h5p` y súbelo a Drive.
+retroalimentación. **Usa las preguntas de la versión del 25-sep**, orientadas al AE3; el video base
+no cambia. Exporta como `M2-Herramienta-2-Interactivo.h5p` y súbelo a Drive.
 
 ## Insumos para el Anexo 2 (para cuando se redacte)
 

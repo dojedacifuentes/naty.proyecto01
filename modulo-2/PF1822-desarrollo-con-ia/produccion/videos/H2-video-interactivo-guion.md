@@ -19,18 +19,24 @@
 
 ## Preguntas incrustadas
 
-1. **(1:30 · selección)** ¿Dónde va la clave en la solicitud?
-   a) En el cuerpo JSON, campo `key` · **b) En el encabezado `Authorization: Bearer <clave>`** · c) Al final de la URL
-   *Correcta:* "Así la clave no queda en registros de URL ni en el cuerpo." · *Incorrecta:* "Revisa la sección de autenticación de la documentación: va en un encabezado."
-2. **(2:30 · verdadero o falso)** "Si la API responde 429, el texto igual está en `choices`."
-   **Falso.** *Retroalimentación:* "429 es demasiadas solicitudes: la respuesta trae un error, no `choices`. Espera y reintenta."
-3. **(3:40 · selección)** Quieres que todos los resúmenes empiecen con "El usuario…". ¿Qué es lo más efectivo?
+Cada pregunta evalúa un criterio del AE3 y va en la pausa de la escena que la prepara.
+
+1. **(1:30 · selección · 3.1, estructura de entrada)** En la solicitud de la documentación, ¿dónde van las reglas que el modelo debe seguir siempre, como el rol, el formato y las restricciones?
+   a) En el campo `model` · **b) En el mensaje con rol `system`** · c) En el parámetro `temperature`
+   *Correcta:* "Eso es. El mensaje de sistema fija el comportamiento; el de usuario trae la tarea y los datos." · *Incorrecta:* "Revisa `messages`: cada mensaje tiene un rol, y el de sistema es el que fija las reglas."
+2. **(2:30 · verdadero o falso · 3.3, parámetros)** "Si la respuesta trae `finish_reason` igual a `length`, el resumen salió completo."
+   **Falso.** *Retroalimentación:* "`length` significa que la respuesta se cortó al llegar a `max_tokens`. El largo se pide en el prompt, por ejemplo 'máximo 25 palabras'; `max_tokens` es solo un tope de seguridad."
+3. **(3:40 · selección · 3.2, few-shot)** Quieres que todos los resúmenes empiecen con "El usuario…". ¿Qué es lo más efectivo?
    a) Subir temperature · **b) Agregar dos ejemplos (few-shot) que empiecen así** · c) Aumentar max_tokens
-4. **(4:50 · selección)** Necesitas el mismo resumen cada vez que corres el proceso. ¿Qué haces?
+   *Retroalimentación:* "Los ejemplos fijan el formato mejor que una instrucción larga."
+4. **(4:50 · selección · 3.3, parámetros)** Necesitas el mismo resumen cada vez que corres el proceso. ¿Qué haces?
    **a) Bajar temperature a 0–0,2** · b) Subir top_p a 1 · c) Quitar el mensaje de sistema
-5. **(5:40 · respuesta corta)** Escribe una restricción que agregarías al prompt para evitar que el modelo invente datos.
+   *Retroalimentación:* "Con temperature baja, el modelo elige casi siempre los tokens más probables."
+5. **(5:40 · respuesta corta · 3.1 y 3.2, limitaciones)** Escribe una restricción que agregarías al prompt para evitar que el modelo invente datos.
    *Retroalimentación modelo:* "Por ejemplo: 'Usa solo información que esté en el ticket; si falta, escribe «sin datos»'."
 
-**Registro:** el LMS guarda las respuestas; el tutor revisa quién falló las preguntas 3 y 4
+**Registro:** el LMS guarda las respuestas; el tutor revisa quién falló las preguntas 2 y 4
 antes de la sesión en vivo del tramo 3.
+
+---
 

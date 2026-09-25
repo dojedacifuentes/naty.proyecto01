@@ -200,6 +200,7 @@ Si en una misma iteración cambias el rol, agregas ejemplos y bajas la temperatu
 
 - **Actividad 1, "Un cliente de API para el resumidor", parte C.** Diagnosticas el prompt que no sirve, lo reescribes como zero-shot y justificas los parámetros.
 - **Actividad 2, "Laboratorio de prompts y métricas", pasos 2 y 3.** Diseñas un prompt zero-shot y uno few-shot, y registras al menos tres iteraciones con temperature 0,2 y 0,9.
+- **Notebook guiado "Laboratorio de prompts", secciones 1 a 9.** Envías el prompt que no sirve, lo reescribes como zero-shot, few-shot e instruccional, pides JSON, mides temperature y max_tokens, y registras tus versiones con un puntaje.
 - **Video interactivo "Del prompt a la respuesta".** Predice el efecto de un prompt y de temperature antes de verlo.
 - **Documentación oficial.** Las guías de prompting de OpenAI (platform.openai.com/docs) y la referencia de cada endpoint, con los parámetros que acepta cada modelo.
 

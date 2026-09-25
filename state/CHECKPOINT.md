@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-25
-**Por:** 2026-09-25-claude-code-09 (Claude Code · opus-5.5)
+**Por:** 2026-09-25-claude-code-10 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -141,6 +141,14 @@ videocápsulas y el video base de la herramienta 2, y las 5 infografías, en los
 registrados como `listo para revisión` en los ESTADO. El video interactivo (F1) tiene la base y falta
 editarlo. Faltan los enlaces de Drive de los videos y los PNG en `entrega/`.
 
+Sesión claude-code-10, 2026-09-25: herramientas didácticas rediseñadas para el 7,0 en "Uso de los
+medios" (7.4, pág. 31, que pide 2 herramientas para los contenidos del aprendizaje seleccionado). En
+PF1822 el notebook era del AE2 y el AE4; ahora es el "Laboratorio de prompts" del AE3, generado por el
+carril A (`scripts/lib/notebook.mjs`), con los 10 contenidos del AE3 revisados solos. En PF1821 el
+tutorial pasa a 17 pasos, 13 de ellos del AE3. En los dos cursos, las preguntas del video interactivo
+se reorientaron al AE3 sin tocar el video base que el usuario ya grabó. Las dos herramientas quedan
+en el tramo 3 de la ruta, y cada C4 trae una tabla de cobertura del AE3.
+
 ## A medias
 
 - **Los entregables del módulo 2 de PF1821 y PF1822 están en borrador, sin revisión humana.**
@@ -150,8 +158,8 @@ editarlo. Faltan los enlaces de Drive de los videos y los PNG en `entrega/`.
   cuando una persona revisa el recurso.
 - **Recursos base del módulo 2.** El carril A (automático, que ahora incluye las 8 lecturas) está `listo para revisión`. Faltan
   los carriles B y C, que hizo el usuario, sin los enlaces de Drive ni los PNG en el repo. Faltan el notebook
-  de PF1822, el tutorial y el workflow roto de PF1821, correr `pytest` en PF1822 y editar los 2 videos
-  interactivos H5P.
+  tutorial de PF1821 con capturas (17 pasos), el workflow roto de PF1821, correr `pytest` y probar el
+  notebook en Colab en PF1822, y editar los 2 videos interactivos H5P con las preguntas nuevas.
   El avance real está en los `ESTADO.md` de cada curso.
 
 Lo que existe pero **nunca se ha ejercido de verdad**: el sistema de verificación no ha

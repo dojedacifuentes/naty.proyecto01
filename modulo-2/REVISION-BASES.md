@@ -27,7 +27,7 @@ adaptación que hizo el equipo a partir de ellos.
 | B4 · retroalimentación, autoevaluación, coevaluación y bitácora | 7.4, pág. 29 · num. 5.4, pág. 106 | ✔ | ✔ |
 | C1 · metodología anclada a la competencia, no genérica | 7.4, pág. 30 | ✔ Parte de la competencia textual y de un caso propio | ✔ Igual |
 | C2 · 2 actividades prácticas para **el aprendizaje esperado seleccionado** | 7.4, pág. 31 | ✔ El **AE3** está en las dos actividades | **Corregido hoy.** Ningún aprendizaje estaba en las dos. Se agregó a la actividad 1 una parte C del **AE3** (diagnosticar y corregir un prompt), con respuesta modelada |
-| C4 · 2 herramientas didácticas para el aprendizaje seleccionado, las dos efectivas | 7.4, pág. 31 | ✔ AE3: tutorial y video interactivo | ✔ AE3: notebook y video interactivo |
+| C4 · 2 herramientas didácticas para el aprendizaje seleccionado, las dos efectivas | 7.4, pág. 31 | **Corregido el 25-sep.** El tutorial era sobre todo del AE2 y las preguntas del video, del AE4. Ahora las dos son del AE3, cubren sus 16 contenidos y están en el tramo del AE3 | **Corregido el 25-sep.** El notebook era del AE2 y el AE4. Ahora es un laboratorio de prompts del AE3; con el video cubren sus 10 contenidos y están en el tramo del AE3 |
 | C3 · el módulo aporta por la interacción con la plataforma (binario) | 7.4, pág. 31 | Se cumple al montar: bienvenida, infografías, quiz e insignias | Igual |
 | C5 · 3 estrategias para 3 habilidades | 7.4, pág. 31 | ✔ | ✔ |
 | Actividades del módulo con horas, sincrónicas o asincrónicas | Anexo N°2, VI a), pág. 90 | Ruta propuesta de 18 h; falta pasarla al formato de actividades del V0 | Ruta de 21 h; igual |

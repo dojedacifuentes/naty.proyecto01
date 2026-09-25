@@ -5,7 +5,7 @@
   "outputDirectory": "public",
   "headers": [
     {
-      "source": "/(.*)\\.(pptx|zip|gift|sql|py|csv)",
+      "source": "/(.*)\\.(pptx|zip|gift|sql|py|csv|ipynb)",
       "headers": [{ "key": "Content-Disposition", "value": "attachment" }]
     }
   ]

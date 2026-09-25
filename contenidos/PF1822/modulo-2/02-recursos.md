@@ -44,8 +44,8 @@ fija las 21 h del módulo. La valida Natalia.
 | R02 | Infografía "Ruta del módulo" | Imagen descargable + versión accesible en texto | C3 · medio | `R-bienvenida-e-infografia.md` |
 | R03 | Cuatro cápsulas de contenido, una por AE | Presentaciones narradas (11 o 12 láminas, con el aprendizaje esperado y los contenidos del plan textuales) | C4 d) presentaciones | `R-capsulas.md` |
 | R04 | Cuadro comparativo de modelos generativos | Tabla interactiva o PDF | C4 d) cuadro comparativo · AE1 | `R-capsulas.md` |
-| R05 | **Herramienta didáctica 1:** notebook guiado "Tu primera llamada a un modelo" | Notebook (Colab o JupyterLab) con celdas de autocomprobación | **C4** | `C4-herramientas-didacticas.md` |
-| R06 | **Herramienta didáctica 2:** video interactivo "Del prompt a la respuesta" | Video con preguntas incrustadas (H5P) | **C4** | `C4-herramientas-didacticas.md` |
+| R05 | **Herramienta didáctica 1 (AE3):** notebook guiado "Laboratorio de prompts" | Notebook (Colab o JupyterLab) con celdas de autocomprobación | **C4** | `C4-herramientas-didacticas.md` |
+| R06 | **Herramienta didáctica 2 (AE3):** video interactivo "Del prompt a la respuesta" | Video con preguntas incrustadas (H5P) | **C4** | `C4-herramientas-didacticas.md` |
 | R07 | **Actividad práctica 1:** "Un cliente de API para el resumidor" | Entrega de código con pruebas | **C2** · resolución de problemas | `C2-actividades.md` |
 | R08 | **Actividad práctica 2:** "Laboratorio de prompts y métricas" | Simulación con tablero de puntajes (gamificación) | **C2** · análisis de caso | `C2-actividades.md` |
 | R09 | Indicadores de logro | Tabla en la guía del participante | B1 | `B1-indicadores.md` |
@@ -62,7 +62,7 @@ fija las 21 h del módulo. La valida Natalia.
 | R02 Infografía | ● | ● | ● | ● |
 | R03 Cápsulas | ● | ● | ● | ● |
 | R04 Cuadro comparativo | ● | | | |
-| R05 Notebook guiado | | ● | ● | ● |
+| R05 Notebook guiado | | ● | ● | |
 | R06 Video interactivo | | ● | ● | |
 | R07 Actividad 1 | ● | ● | ● | |
 | R08 Actividad 2 | | | ● | ● |

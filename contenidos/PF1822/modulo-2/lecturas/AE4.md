@@ -221,7 +221,6 @@ En la actividad 2, el registro muestra que el few-shot v3 con temperature 0,2 ob
 
 ## Para practicar
 
-- **Notebook guiado "Tu primera llamada a un modelo", secciones 7 y 8.** Limpias el ticket T1 y lo tokenizas con spaCy, con celdas que comprueban el resultado.
 - **Actividad 2, "Laboratorio de prompts y métricas", pasos 1, 4 y 5.** Programas el preprocesamiento, mides cada resumen con ROUGE, BLEU, coherencia y relevancia, registras todo en `resultados.csv` y recomiendas una configuración con números.
 - **Documentación oficial.** La de spaCy (spacy.io), NLTK (nltk.org) y scikit-learn (scikit-learn.org), con ejemplos de cada función.
 

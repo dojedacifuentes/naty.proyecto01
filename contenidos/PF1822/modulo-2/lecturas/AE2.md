@@ -254,9 +254,9 @@ Una prueba que llama al servicio real falla sin internet, gasta en cada ejecuci�
 
 ## Para practicar
 
-- **Notebook guiado "Tu primera llamada a un modelo", secciones 0 a 6.** GET, POST, tokens, temperature, embeddings y errores, con celdas que te dicen si lo lograste.
+- **Notebook guiado "Laboratorio de prompts", sección 0.** Tu primera llamada al modelo desde Colab, con la clave en *Secrets* y una comprobación de que no quedó escrita.
 - **Actividad 1, "Un cliente de API para el resumidor", parte B.** Programas `ClienteIA` y al menos tres pruebas unitarias que corren sin conexión.
-- **Video interactivo "Del prompt a la respuesta".** Lees una solicitud y una respuesta reales y predices qué pasa con un 429.
+- **Video interactivo "Del prompt a la respuesta".** Lees una solicitud y una respuesta reales de la documentación.
 - **Documentación oficial.** La referencia de OpenAI (platform.openai.com/docs) y la de Hugging Face (huggingface.co/docs).
 
 ## Autocomprobación

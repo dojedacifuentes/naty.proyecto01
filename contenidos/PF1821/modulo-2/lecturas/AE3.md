@@ -212,8 +212,8 @@ Si Supabase responde `invalid input syntax for type integer`, un campo numérico
 ## Para practicar
 
 - **Actividad 1, "Del formulario a la base de datos", partes B y C.** Construyes los workflows "Pedido a registro" y "Resumen semanal". Usan todo lo de esta lectura, y el resultado correcto del resumen es el del ejemplo de la sección 2.
-- **Tutorial guiado "Tu primer workflow en n8n", pasos 6 a 9.** Normalización con Edit Fields y la primera fila en Supabase, paso a paso.
-- **Video interactivo "Expresiones y depuración".** Predice el resultado de una expresión antes de verlo.
+- **Tutorial guiado "Tu primer workflow con datos limpios", pasos 5 a 17.** Expresiones y tipos en Edit Fields, Supabase, Filter, Summarize, CSV, XML y Split Out, con el valor esperado de cada paso.
+- **Video interactivo "Expresiones y depuración".** Predices el resultado de una expresión, de un If, de un Switch, de un Merge y de un tipo de dato antes de verlo.
 - **Documentación oficial.** La de n8n (docs.n8n.io) describe cada nodo con sus parámetros, y la de Supabase (supabase.com/docs), la creación de tablas y claves.
 
 ## Autocomprobación

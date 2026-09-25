@@ -29,9 +29,9 @@ autónoma que el tutor retroalimenta antes del tramo siguiente.
 | Tramo | Actividades del módulo | Horas | Sincrónica | Asincrónica |
 | --- | --- | --: | --: | --: |
 | 1 · AE1 | Video de bienvenida, autodiagnóstico, cápsula 1, cuadro comparativo, mapa de procesos del caso; sesión en vivo: análisis del caso | 3 | 1,5 | 1,5 |
-| 2 · AE2 | Cápsula 2, tutorial "Tu primer workflow", actividad 1 parte B; sesión en vivo: construcción guiada y dudas | 4 | 1,5 | 2,5 |
-| 3 · AE3 | Cápsula 3, actividad 1 parte C, prueba de Supabase; sesión en vivo: expresiones y tipos de datos | 6 | 1,5 | 4,5 |
-| 4 · AE4 | Cápsula 4, video interactivo, actividad 2 "Rescate", coevaluación, prueba objetiva, caso "Devoluciones", portafolio; sesión en vivo: depuración en grupo | 5 | 1,5 | 3,5 |
+| 2 · AE2 | Cápsula 2, tutorial "Tu primer workflow con datos limpios" parte 1 (crear y probar el workflow), actividad 1 parte B (inicio); sesión en vivo: construcción guiada y dudas | 4 | 1,5 | 2,5 |
+| 3 · AE3 | Cápsula 3, tutorial partes 2 a 4 (transformar, Supabase, filtrar, resumir y cambiar de formato), video interactivo "Expresiones y depuración", actividad 1 partes B y C, prueba de Supabase; sesión en vivo: expresiones y tipos de datos | 6 | 1,5 | 4,5 |
+| 4 · AE4 | Cápsula 4, actividad 2 "Rescate" (apoyada en el video interactivo del tramo 3), coevaluación, prueba objetiva, caso "Devoluciones", portafolio; sesión en vivo: depuración en grupo | 5 | 1,5 | 3,5 |
 | | **Total** | **18** | **6** | **12** |
 
 **Rol del tutor académico.** En lo teórico, presenta cada tramo y conduce la sesión en vivo
@@ -59,8 +59,9 @@ Dos actividades prácticas distintas, desarrolladas en `C2-actividades.md`:
 
 Enlace al LMS: `PENDIENTE:` por institución (va aquí, dentro de esta respuesta).
 Medios del módulo: video de bienvenida (R01), infografía de la ruta (R02), cuatro cápsulas
-narradas (R03), cuadro comparativo (R04), **tutorial guiado** (R05) y **video interactivo**
-(R06) —las dos herramientas didácticas de C4—, plantillas de bitácora y portafolio, n8n y
+narradas (R03), cuadro comparativo (R04), **tutorial guiado "Tu primer workflow con datos limpios"** (R05)
+y **video interactivo "Expresiones y depuración"** (R06) —las dos herramientas didácticas de C4, ambas
+del AE3, el aprendizaje seleccionado—, plantillas de bitácora y portafolio, n8n y
 Supabase como entorno de práctica.
 
 ## d) Aspectos motivacionales (C3)

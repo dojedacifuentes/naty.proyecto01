@@ -19,19 +19,25 @@
 
 ## Preguntas incrustadas
 
-1. **(1:30 · selección)** Si `$json.comuna` vale `" Temuco "`, ¿qué devuelve `{{ $json.comuna.trim() }}`?
+Cada pregunta evalúa un contenido del AE3 y va en la pausa de la escena que la prepara.
+
+1. **(1:30 · selección · 3.3, expresiones)** Si `$json.comuna` vale `" Temuco "`, ¿qué devuelve `{{ $json.comuna.trim() }}`?
    a) `" Temuco "` · **b) `"Temuco"`** · c) `"temuco"`
    *Correcta:* "Exacto: `trim()` quita los espacios de los extremos, no cambia mayúsculas." ·
    *Incorrecta:* "Revisa: `trim()` solo quita espacios al inicio y al final. Para minúsculas se usa `toLowerCase()`."
-2. **(2:40 · verdadero o falso)** "Con la condición *tipo_cliente es mayorista* **AND** *total ≥ 150000*, un minorista que compra $219.000 va por la rama verdadera."
+2. **(2:40 · verdadero o falso · 3.3, If y expresiones para filtrar)** "Con la condición *tipo_cliente es mayorista* **AND** *total mayor o igual que 150000*, un minorista que compra $219.000 va por la rama verdadera."
    **Falso.** *Retroalimentación:* "Con AND deben cumplirse las dos. Para que baste una, la condición debe ir con OR."
-3. **(3:50 · selección)** Un pedido con `tipo_cliente` "distribuidor" no calza en ninguna regla del Switch y no hay salida de respaldo. ¿Qué pasa?
+3. **(3:50 · selección · 3.1, Switch)** Un pedido con `tipo_cliente` "distribuidor" no calza en ninguna regla del Switch y no hay salida de respaldo. ¿Qué pasa?
    a) El workflow se detiene con error · **b) El pedido se descarta sin aviso** · c) Va a la primera regla
    *Retroalimentación:* "Por eso la ejecución puede salir en verde y aun así perder datos."
-4. **(5:00 · selección)** Entran 6 pedidos al Switch y salen 5 en total. ¿Qué haces primero?
-   **a) Revisar cuál pedido no salió y con qué valores entró** · b) Borrar el Switch y crearlo de nuevo · c) Cambiar las credenciales
-5. **(5:40 · arrastrar)** Ordena los pasos para depurar: *leer el síntoma* → *abrir la ejecución* → *comparar ítems por nodo* → *identificar la causa* → *corregir* → *volver a probar*.
+4. **(5:00 · selección · 3.1, Merge y datos relacionales)** Entran 6 pedidos al Merge que agrega la zona de despacho desde la tabla `comunas`, y salen 240 ítems. ¿Qué corriges?
+   **a) El modo del Merge: Combine por *Matching Fields*, con el campo `comuna` en las dos entradas** · b) Borrar la tabla `comunas` y escribir la zona a mano · c) Agregar un Filter después del Merge
+   *Retroalimentación:* "Con todas las combinaciones posibles, cada pedido se une con cada comuna. Al combinar por el campo en común, cada pedido recibe solo su zona."
+5. **(5:40 · completar · 3.3 y 3.4, tipos de datos y Supabase)** Supabase rechaza un pedido con el mensaje `invalid input syntax for type integer`, porque `cantidad` llegó como "3 ". Completa la expresión del Edit Fields, con el campo de tipo Number: `{{ Number(String($json.cantidad).____()) }}`.
+   **Respuesta: `trim`.** *Retroalimentación:* "Primero se quita el espacio y después se convierte a número; así la base de datos recibe un entero."
 
 **Registro:** el LMS guarda las respuestas; el tutor revisa quién falló las preguntas 3 y 4
-antes de la sesión sincrónica del tramo 4.
+antes de la sesión sincrónica del tramo 3.
+
+---
 

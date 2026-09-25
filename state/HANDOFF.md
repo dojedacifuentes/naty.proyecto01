@@ -1,7 +1,7 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` y
-`2026-09-25-claude-code-01` a `-09` — 2026-09-24/25
+`2026-09-25-claude-code-01` a `-10` — 2026-09-24/25
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
@@ -57,6 +57,14 @@ Trampas de estas sesiones:
   los enlaces de Drive de los videos, los PNG en `entrega/AEn/` y `entrega/00-bienvenida/`, y editar el
   interactivo (F1). Lo que sigue del lado de la IA: notebook de PF1822 (D3★), workflow roto (E2★) y tutorial
   (E1★) de PF1821.
+- **Herramientas didácticas (sesión -10):** las dos de cada curso son del AE3, y cada C4 trae la tabla de
+  cobertura. No vuelvas a poner en la ruta una herramienta fuera del tramo 3: la pauta pide herramientas
+  "para trabajar los diferentes contenidos del aprendizaje esperado seleccionado" (7.4, pág. 31).
+  - El notebook de PF1822 sale de `contenidos/PF1822/modulo-2/notebook/M2-Herramienta-1-Notebook.md`
+    (`scripts/lib/notebook.mjs`). No se ha ejecutado: falta probarlo en Colab (E1 del ESTADO).
+  - Las escenas del guion de la herramienta 2 (tabla "Tiempo | Pantalla | Locución") son las del video que el
+    usuario ya grabó: **no las cambies**. Solo cambiaron las preguntas, que se agregan en H5P.
+  - El tutorial de PF1821 (E1) está diseñado en C4 (17 pasos); falta tomar las capturas en n8n.
 - **Horas de las lecturas en la metodología:** el usuario pidió dejarlo pendiente (sesión -09). No lo cambies
   sin su decisión.
 - **Pendientes que dejó la sesión -08 (sin pedido del usuario, no los hice):** 1) la tabla de actividades

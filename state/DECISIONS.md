@@ -292,3 +292,22 @@ módulos del plan se nombran, no se numeran, porque el orden de la ficha está p
 Alternativa descartada: los prompts por aprendizaje (`produccion/lecturas/prompts.md`), que se
 eliminaron. Dejaban el formato y la cobertura a criterio de cada IA.
 Quién: usuario (encargo y criterios) y claude-code (contenido y diseño), sesión `2026-09-25-claude-code-08`.
+
+**2026-09-25 · Las dos herramientas didácticas de cada curso trabajan el AE3, el aprendizaje seleccionado.**
+Por qué: la pauta de "Uso de los medios" (7.4, pág. 31) da el 7,0 si "se observan 2 herramientas didácticas
+distintas que serán utilizadas para trabajar los diferentes contenidos del aprendizaje esperado
+seleccionado" y las dos permiten adquirir su habilidad; si solo una lo hace, es 5,0. En PF1822 el notebook
+trabajaba el AE2 y el AE4, y en PF1821 el tutorial era sobre todo del AE2 y el video preguntaba por el AE4.
+Ahora:
+- PF1822: el notebook es un laboratorio de prompts del AE3 (secciones 1 a 9; la 0 repasa el AE2).
+- PF1821: el tutorial tiene 17 pasos, y del 5 al 17 son del AE3 (expresiones, tipos, Supabase, Filter,
+  Summarize, CSV, XML y Split Out).
+- En los dos cursos, las 5 preguntas del video interactivo evalúan criterios del AE3.
+- Las dos herramientas de cada curso cubren juntas todos los contenidos del AE3 (tabla en C4) y están en
+  el tramo 3 de la ruta, sin cambiar las horas.
+
+El tutorial y el notebook usan otros datos que las actividades, para que las actividades sigan siendo un
+problema por resolver.
+Alternativa descartada: rehacer los videos de la herramienta 2. No hacía falta: las preguntas se agregan en
+H5P y el video base del usuario sirve tal cual.
+Quién: usuario (pedido de apuntar al 7) y claude-code (diseño), sesión `2026-09-25-claude-code-10`.

@@ -159,7 +159,7 @@ Para el workflow de enrutamiento, Mercado Austral usa seis pedidos fijados: uno 
 ## Para practicar
 
 - **Actividad 2, "Rescate del workflow roto".** Cinco misiones, cada una con una falla escondida: detectarla, explicar la causa y corregirla, con tu bitácora de depuración.
-- **Video interactivo "Expresiones y depuración".** Cinco preguntas que detienen el video: condiciones con AND y OR, salida de respaldo y conteo de ítems.
+- **Video interactivo "Expresiones y depuración".** Condiciones con AND y OR, salida de respaldo del Switch y conteo de ítems a la salida de un Merge.
 - **Documentación oficial.** La de n8n (docs.n8n.io) describe los nodos If y Switch, el manejo de errores y los workflows de errores.
 
 ## Autocomprobación

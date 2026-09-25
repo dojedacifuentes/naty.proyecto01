@@ -157,7 +157,7 @@ Al ejecutar el nodo Supabase aparece en rojo con el mensaje `invalid input synta
 
 ## Para practicar
 
-- **Tutorial guiado "Tu primer workflow en n8n".** Diez pasos con capturas, desde el workflow vacío hasta el pedido real guardado en Supabase.
+- **Tutorial guiado "Tu primer workflow con datos limpios", partes 1 y 3.** Desde el workflow vacío hasta el pedido real guardado en Supabase por la URL de producción.
 - **Actividad 1, "Del formulario a la base de datos", parte B.** Construyes el workflow "Pedido a registro" y lo entregas exportado, con una captura de la tabla con tres filas creadas por él.
 - **Documentación oficial.** La de n8n (docs.n8n.io) describe el editor, cada trigger y el uso de datos fijados.
 

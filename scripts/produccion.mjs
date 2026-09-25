@@ -27,6 +27,7 @@ import { crearPptx } from './lib/pptx.mjs';
 import { markdown, estilos, esc } from './lib/html.mjs';
 import { imprimirPdf, navegador } from './lib/pdf.mjs';
 import { leerLectura, verificarLectura, lecturaHtml, palabras } from './lib/lectura.mjs';
+import { leerNotebook, notebookJson, verificarNotebook } from './lib/notebook.mjs';
 import fs from 'node:fs';
 
 const CURSOS = {
@@ -811,6 +812,17 @@ for (const pf of codigos) {
       pf, curso: c.curso, caso: c.caso, modulo: f.modulo, codigo: mod.codigo, horas: mod.horas,
       ae: cap.ae, titulo: cap.titulo, aprendizaje: ae.texto, criterios: ae.criterios, unidadesAE: u, lectura }));
     console.log(`  lectura ${cap.ae}: ${palabras(lectura)} palabras, ${lectura.secciones.filter((x) => x.tipo === 'tema').length} secciones, cobertura del plan ${u.length}/${u.length}`);
+  }
+  // Notebook guiado (herramienta didáctica 1 de PF1822): cubre los contenidos del AE3, el
+  // aprendizaje seleccionado, textuales; si falta alguno o hay una clave escrita, no se genera.
+  const fuenteNb = `${dir}/notebook/M2-Herramienta-1-Notebook.md`;
+  if (fs.existsSync(ruta(fuenteNb))) {
+    const u3 = unidades(fichaMd, 3);
+    const nb = leerNotebook(leer(fuenteNb), { aprendizaje: f.aes.AE3.texto, criterios: f.aes.AE3.criterios });
+    const errNb = verificarNotebook(nb, u3);
+    if (errNb.length) throw new Error(`${fuenteNb}:\n  - ${errNb.join('\n  - ')}`);
+    guardar(`${ent}/herramientas/M2-Herramienta-1-Notebook.ipynb`, notebookJson(nb));
+    console.log(`  notebook: ${nb.celdas.length} celdas, cobertura del AE3 ${u3.length}/${u3.length}`);
   }
   if (soloLecturas) { hechos.forEach((h) => console.log(`  ${h.slice(c.carpeta.length + 1)}`)); continue; }
 

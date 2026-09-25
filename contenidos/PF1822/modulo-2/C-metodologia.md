@@ -32,9 +32,9 @@ autónoma en el repositorio del participante, revisada por el tutor antes del tr
 | Tramo | Actividades del módulo | Horas | Sincrónica | Asincrónica |
 | --- | --- | --: | --: | --: |
 | 1 · AE1 | Video de bienvenida, autodiagnóstico, cápsula 1, cuadro de familias de modelos, diagrama del resumidor; sesión en vivo: diseño de arquitectura en grupo | 4 | 1,5 | 2,5 |
-| 2 · AE2 | Cápsula 2, notebook guiado (secciones 0 a 6), actividad 1 parte B, pruebas unitarias; sesión en vivo: revisión de código | 6 | 1,5 | 4,5 |
-| 3 · AE3 | Cápsula 3, video interactivo, actividad 2 pasos 2 y 3; sesión en vivo: taller de prompts | 5 | 1,5 | 3,5 |
-| 4 · AE4 | Cápsula 4, notebook guiado (secciones 7 a 9), actividad 2 pasos 1, 4 y 5, tablero, coevaluación, prueba objetiva, proyecto final, portafolio; sesión en vivo: lectura de métricas | 6 | 1,5 | 4,5 |
+| 2 · AE2 | Cápsula 2, notebook guiado sección 0 (primera llamada al modelo), actividad 1 parte B, pruebas unitarias; sesión en vivo: revisión de código | 6 | 1,5 | 4,5 |
+| 3 · AE3 | Cápsula 3, notebook guiado "Laboratorio de prompts" (secciones 1 a 9), video interactivo "Del prompt a la respuesta", actividad 1 parte C, actividad 2 pasos 2 y 3; sesión en vivo: taller de prompts | 5 | 1,5 | 3,5 |
+| 4 · AE4 | Cápsula 4, actividad 2 pasos 1, 4 y 5, tablero, coevaluación, prueba objetiva, proyecto final, portafolio; sesión en vivo: lectura de métricas | 6 | 1,5 | 4,5 |
 | | **Total** | **21** | **6** | **15** |
 
 **Rol del tutor académico.** En lo teórico, presenta cada tramo y conduce la sesión en vivo
@@ -60,8 +60,9 @@ Dos actividades prácticas distintas, desarrolladas en `C2-actividades.md`:
 
 Enlace al LMS: `PENDIENTE:` por institución (va aquí, dentro de esta respuesta).
 Medios del módulo: video de bienvenida (R01), infografía de la ruta (R02), cuatro cápsulas
-narradas (R03), cuadro comparativo de familias de modelos (R04), **notebook guiado** (R05) y
-**video interactivo** (R06) —las dos herramientas didácticas de C4—, plantillas de bitácora y
+narradas (R03), cuadro comparativo de familias de modelos (R04), **notebook guiado "Laboratorio de
+prompts"** (R05) y **video interactivo "Del prompt a la respuesta"** (R06) —las dos herramientas
+didácticas de C4, ambas del AE3, el aprendizaje seleccionado—, plantillas de bitácora y
 portafolio, Python, Git y GitHub como entorno de práctica.
 
 ## d) Aspectos motivacionales (C3)

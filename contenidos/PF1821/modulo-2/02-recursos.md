@@ -43,8 +43,8 @@ fija las 18 h del módulo. La valida Natalia.
 | R02 | Infografía "Ruta del módulo" | Imagen descargable + versión accesible en texto | C3 · medio | `R-bienvenida-e-infografia.md` |
 | R03 | Cuatro cápsulas de contenido, una por AE | Presentaciones narradas (11 o 12 láminas, con el aprendizaje esperado y los contenidos del plan textuales) | C4 d) presentaciones | `R-capsulas.md` |
 | R04 | Cuadro comparativo n8n · Make · Zapier | Tabla interactiva o PDF | C4 d) cuadro comparativo · AE1 | `R-capsulas.md` |
-| R05 | **Herramienta didáctica 1:** tutorial guiado "Tu primer workflow" | Página paso a paso con capturas | **C4** | `C4-herramientas-didacticas.md` |
-| R06 | **Herramienta didáctica 2:** video interactivo "Expresiones y depuración" | Video con preguntas incrustadas (H5P) | **C4** | `C4-herramientas-didacticas.md` |
+| R05 | **Herramienta didáctica 1 (AE3):** tutorial guiado "Tu primer workflow con datos limpios" | Página paso a paso con capturas (17 pasos) | **C4** | `C4-herramientas-didacticas.md` |
+| R06 | **Herramienta didáctica 2 (AE3):** video interactivo "Expresiones y depuración" | Video con preguntas incrustadas (H5P) | **C4** | `C4-herramientas-didacticas.md` |
 | R07 | **Actividad práctica 1:** "Del formulario a la base de datos" | Tarea con entrega de workflow | **C2** · resolución de problemas | `C2-actividades.md` |
 | R08 | **Actividad práctica 2:** "Rescate del workflow roto" | Misiones con puntaje (gamificación) | **C2** · análisis de caso | `C2-actividades.md` |
 | R09 | Indicadores de logro | Tabla en la guía del participante | B1 | `B1-indicadores.md` |
