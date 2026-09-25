@@ -26,6 +26,7 @@ export function imprimirPdf(htmlRel, pdfRel) {
   if (!nav) throw new Error('No encontré Edge ni Chrome. Define NAVEGADOR_PDF con la ruta al ejecutable.');
   const pdfAbs = ruta(pdfRel);
   execFileSync(nav, ['--headless=new', '--disable-gpu', '--no-pdf-header-footer', '--run-all-compositor-stages-before-draw',
+    '--generate-pdf-document-outline',
     `--print-to-pdf=${pdfAbs}`, pathToFileURL(ruta(htmlRel)).href], { stdio: 'ignore', timeout: 120000 });
   return Math.round(fs.statSync(pdfAbs).size / 1024);
 }

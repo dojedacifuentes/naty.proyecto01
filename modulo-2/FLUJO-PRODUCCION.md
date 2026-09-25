@@ -16,7 +16,7 @@ modulo-2/<curso>/
   produccion/   BASES: lo que se carga en otra herramienta (no se sube al LMS)
   entrega/      RECURSOS FINALES: lo que se sube después
     00-bienvenida/   M2-Bienvenida.mp4 · M2-Ruta-Infografia.png
-    AE1/ … AE4/      M2-AEn-Videocapsula.mp4 · M2-AEn-Infografia.png · M2-AEn-Lectura.pdf · M2-AEn-Quiz.gift ✔
+    AE1/ … AE4/      M2-AEn-Videocapsula.mp4 · M2-AEn-Infografia.png · M2-AEn-Lectura.pdf ✔ · M2-AEn-Quiz.gift ✔
     herramientas/    M2-Herramienta-1-… · M2-Herramienta-2-Video.mp4 · M2-Herramienta-2-Interactivo.h5p
     actividades/     enunciados y respuestas modeladas ✔ · insumos/ ✔ · código de respuesta ✔ · workflow roto (PF1821)
     evaluacion/      9 PDF ✔
@@ -40,10 +40,10 @@ del B, ninguno depende de otro.
 
 | Carril | Quién | Piezas (PF1821 + PF1822) | Entra | Sale a `entrega/` |
 | --- | --- | --- | --- | --- |
-| **A · Automático** | `npm run produccion` | Quizzes, 9 PDF de evaluación, actividades, insumos, código, cuadro comparativo, insumos para el Anexo | `contenidos/` | **Hecho** ✔ |
+| **A · Automático** | `npm run produccion` | Quizzes, 8 lecturas en PDF, 9 PDF de evaluación, actividades, insumos, código, cuadro comparativo, insumos para el Anexo | `contenidos/` | **Hecho** ✔ |
 | **B · Video** | HeyGen | 12 videos: bienvenida + 4 cápsulas + video base de la herramienta 2, por curso | `produccion/videos/*.pptx` | MP4 a Drive |
 | **C · Diseño** | Genially o Canva | 10 infografías: ruta + 4 aprendizajes, por curso | `produccion/infografias/prompts.md` | PNG |
-| **D · Texto IA** | ChatGPT, Claude o Gemini | 8 lecturas (4 por curso) + notebook de PF1822 | `produccion/lecturas/prompts.md` + prompt de abajo | PDF + `.ipynb` |
+| **D · Texto IA** | ChatGPT, Claude o Gemini | Notebook de PF1822 (las lecturas ya salen del carril A) | prompt de abajo | `.ipynb` |
 | **E · Técnico** | Persona con n8n y Python | PF1821: tutorial con capturas y workflow roto. PF1822: correr `pytest` y probar el notebook | `contenidos/…/C4` y `C2`, `entrega/actividades/` | PDF + JSON; código probado |
 | **F · Interactivo** | Lumi (H5P de escritorio) | 2 videos interactivos, uno por curso | MP4 del carril B + `H2-video-interactivo-guion.md` | `.h5p` a Drive |
 
@@ -55,10 +55,9 @@ del B, ninguno depende de otro.
 2. **Una plantilla por carril, hecha una sola vez:**
    - B: avatar, voz y subtítulos en HeyGen;
    - C: la primera infografía (AE3) armada con las especificaciones visuales, como base para duplicar;
-   - D: un documento base para las lecturas.
 3. **B genera en paralelo:** HeyGen renderiza varios videos a la vez. Importa todos los PPTX
    y deja la narración como viene. Pulirla es opcional; el prompt está más abajo.
-4. **D abre ocho chats a la vez**, uno por lectura, con los prompts ya escritos.
+4. **Las lecturas ya están hechas:** salen del carril A. D solo arma el notebook de PF1822.
 5. **"Listo" es cumplir, no pulir.** Revisa cada pieza con los 5 puntos de abajo y sigue.
 6. **El carril A se repite solo:** si alguien corrige un contenido, `npm run produccion -- PF1821 PF1822`
    rehace los PDF, quizzes y bases en un minuto.
@@ -116,11 +115,14 @@ largo, pega solo el bloque CONTENIDO y aplica `especificaciones-visuales.txt`. S
 generador de imágenes, pídele el diseño con los espacios de texto vacíos y escribe el texto
 encima, porque suele deformar las letras.
 
-### D · Lecturas y notebook
+### Lecturas (carril A) y notebook (carril D)
 
-- **Lecturas:** `produccion/lecturas/prompts.md` trae un prompt por aprendizaje. Revisa el
-  resultado contra `00-ficha-sipfor.md`: todos los contenidos del plan tienen que aparecer.
-  Exporta en PDF como `M2-AEn-Lectura.pdf`. El flipbook se arma después, al subir.
+- **Lecturas, hechas:** `entrega/AEn/M2-AEn-Lectura.pdf`, o las 8 juntas en el zip
+  `lecturas-modulo2.zip` de la portada del sitio. La fuente es `contenidos/<PF>/modulo-2/lecturas/AEn.md`.
+  Al generarlas, el script revisa que estén todos los contenidos del plan del aprendizaje, textuales,
+  y que haya un ejemplo por sección, 3 preguntas con respuesta y 8 términos de glosario. Si alguna
+  falla, no se imprime. Para corregir una lectura, edita su `.md` y corre
+  `npm run produccion -- PF1821 PF1822 --solo-lecturas`. El flipbook se arma después, al subir.
 - **Notebook de PF1822** (herramienta didáctica 1, ★), `M2-Herramienta-1-Notebook.ipynb`:
 
 ```text

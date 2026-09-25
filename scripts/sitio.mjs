@@ -194,6 +194,58 @@ function paqueteInfografias() {
   return crearZip([{ nombre: 'LEEME.txt', contenido: leeme.join('\r\n') }, { nombre: 'ESPECIFICACIONES-VISUALES.txt', contenido: espec }, ...entradas]);
 }
 
+// Los 8 PDF de lectura (carril automático) con un LEEME que dice qué son y cómo se diseñaron.
+function paqueteLecturas() {
+  const leeme = ['LECTURAS DEL MÓDULO 2 — PF1821 y PF1822', '',
+    'Ocho PDF listos para subir, uno por aprendizaje esperado: M2-AEn-Lectura.pdf. Sin logos ni nombres de instituciones.', '',
+    'QUÉ TRAE CADA LECTURA',
+    '- Portada con el aprendizaje esperado textual del plan formativo, el plan, el módulo, el caso y el tiempo de lectura.',
+    '- Guía: los criterios de evaluación textuales, el índice y la tabla "Contenidos del plan y dónde se tratan".',
+    '- Secciones numeradas, cada una rotulada con su contenido del plan (textual), con un ejemplo del caso ficticio',
+    '  (Mercado Austral o Nube Sur) y recuadros de "Error frecuente" e "Idea clave".',
+    '- Cierre: en síntesis, para practicar (actividades y herramientas del módulo), autocomprobación con 3 preguntas',
+    '  y sus respuestas, y un glosario de 8 términos.', '',
+    'QUÉ PIDEN LAS BASES Y EL PLAN, Y QUÉ NO',
+    '- El plan formativo de cada curso exige, en sus materiales e insumos, "MANUAL DIDÁCTICO CON TODOS LOS CONTENIDOS',
+    '  DEL MÓDULO" y "PLATAFORMA LMS IMPLEMENTADA CON MATERIAL DIDÁCTICO". Las 4 lecturas de cada curso cubren el 100 %',
+    '  de los contenidos del módulo 2, textuales.',
+    '- Las bases valoran los medios de apoyo al aprendizaje (Anexo N°7, num. 7 d, pág. 110). No fijan formato ni diseño.',
+    '- Una lectura por aprendizaje esperado es el estándar del equipo (videocápsula, flipbook de lectura, quiz e infografía).', '',
+    'DISEÑO GRÁFICO (estándar de este proyecto)',
+    '- Formato A4 vertical. Márgenes de 22 mm arriba, 24 mm abajo y 26 mm a los lados. Unos 75 caracteres por línea.',
+    '- Dos familias tipográficas, incrustadas en el PDF: IBM Plex Sans para el texto y los títulos, e IBM Plex Mono para',
+    '  el código. Las dos tienen licencia SIL Open Font License.',
+    '- Tamaños: texto 11 pt con interlineado 1,55; títulos de sección 17 pt; título de portada 34 pt; código 8,4 pt;',
+    '  rótulos y pies de 7,5 pt como mínimo.',
+    '- Color: azul #0F3D5E (títulos y tablas), turquesa #0E7490 (rótulos y ejemplos), tinta #1F2937 (texto), gris',
+    '  #475569 (texto secundario) y ámbar #F59E0B solo decorativo. Todo texto cumple el contraste WCAG 2.1 AA (4,5:1).',
+    '- Recuadros con código de color: ejemplo del caso (turquesa), error frecuente (ámbar) e idea clave (azul).',
+    '  Diagramas de flujo dibujados en el documento, sin imágenes externas.',
+    '- Pie en cada página con el plan, el módulo, el aprendizaje y la página ("3 / 14"). Marcadores por título.', '',
+    'VERIFICACIÓN AUTOMÁTICA (no se imprime una lectura que falle)',
+    '- Cada contenido del plan del aprendizaje aparece, textual, en una sección, y ningún rótulo es ajeno al plan.',
+    '- El aprendizaje esperado y los criterios salen de la ficha SIPFOR, no se escriben a mano.',
+    '- Cada sección tiene un ejemplo; hay al menos 3 errores frecuentes, 3 preguntas con respuesta y 8 términos.',
+    '- Sin nombres de instituciones ni marcas de trabajo, y sin caracteres que obliguen a usar una tercera tipografía.', '',
+    'AL SUBIR AL LMS: como recurso "Archivo" o convertido en flipbook (Heyzine o FlipHTML5 importan el PDF), con el',
+    'nombre "Lectura AE1" a "Lectura AE4". La fuente editable está en contenidos/<curso>/modulo-2/lecturas/AEn.md del',
+    'repositorio; "npm run produccion -- PF1821 PF1822 --solo-lecturas" revisa y vuelve a generar los PDF.', ''];
+  const entradas = [];
+  for (const c of CURSOS) {
+    leeme.push(`${c.carpeta}:`);
+    for (const n of [1, 2, 3, 4]) {
+      const pdf = `modulo-2/${c.carpeta}/entrega/AE${n}/M2-AE${n}-Lectura.pdf`;
+      const datos = fs.readFileSync(ruta(pdf));
+      const paginasPdf = (datos.toString('latin1').match(/\/Type\s*\/Page[^s]/g) || []).length;
+      const titulo = /^# Lectura AE\d · (.+)$/m.exec(leer(`contenidos/${c.pf}/modulo-2/lecturas/AE${n}.md`))?.[1] ?? '';
+      entradas.push({ nombre: `${c.carpeta}/M2-AE${n}-Lectura.pdf`, contenido: datos });
+      leeme.push(`  M2-AE${n}-Lectura.pdf  ${titulo} (${paginasPdf} páginas)`);
+    }
+    leeme.push('');
+  }
+  return crearZip([{ nombre: 'LEEME.txt', contenido: leeme.join('\r\n') }, ...entradas]);
+}
+
 // ------------------------------------------------------------------ armado
 
 fs.rmSync(ruta(SALIDA), { recursive: true, force: true });
@@ -237,6 +289,7 @@ for (const d of [...carpetas].filter((d) => RAICES.some((r) => d === r || d.star
 // Paquetes descargables.
 escribirSalida('descargas/videos-heygen-modulo2.zip', paqueteVideos());
 escribirSalida('descargas/infografias-modulo2.zip', paqueteInfografias());
+escribirSalida('descargas/lecturas-modulo2.zip', paqueteLecturas());
 
 // Portada: la del módulo 2, con los enlaces resueltos desde la raíz, y las descargas.
 {
@@ -244,6 +297,7 @@ escribirSalida('descargas/infografias-modulo2.zip', paqueteInfografias());
   const descargas = `<h3>Descargas para producción</h3><ul class="lista">
 <li><a href="descargas/videos-heygen-modulo2.zip">videos-heygen-modulo2.zip</a>: los 12 PPT para HeyGen (bienvenida, 4 videocápsulas y video de la herramienta 2, por curso), con guiones y pasos.</li>
 <li><a href="descargas/infografias-modulo2.zip">infografias-modulo2.zip</a>: los 10 prompts de infografía, uno por archivo.</li>
+<li><a href="descargas/lecturas-modulo2.zip">lecturas-modulo2.zip</a>: las 8 lecturas en PDF (una por aprendizaje esperado), listas para subir.</li>
 ${CURSOS.map((c) => `<li>${c.pf} · <a href="modulo-2/${c.carpeta}/entrega/">recursos listos para subir</a> · <a href="modulo-2/${c.carpeta}/produccion/ESTADO.html">estado de producción</a></li>`).join('\n')}
 </ul>`;
   const cuerpo = envolverTablas(reescribirEnlaces(markdown(md), 'modulo-2', '.')) + descargas;
@@ -251,4 +305,4 @@ ${CURSOS.map((c) => `<li>${c.pf} · <a href="modulo-2/${c.carpeta}/entrega/">rec
   paginas++;
 }
 
-console.log(`${SALIDA}/ → ${paginas} páginas, ${copiados} archivos copiados, 2 paquetes en descargas/`);
+console.log(`${SALIDA}/ → ${paginas} páginas, ${copiados} archivos copiados, 3 paquetes en descargas/`);

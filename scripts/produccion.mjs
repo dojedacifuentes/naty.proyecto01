@@ -3,22 +3,22 @@
  * Arma, para el módulo 2 de un curso, las bases de producción y el carril automático de
  * entregables (el flujo está en modulo-2/FLUJO-PRODUCCION.md).
  *
- *   npm run produccion -- PF1821 PF1822 [--sin-pdf]
+ *   npm run produccion -- PF1821 PF1822 [--sin-pdf] [--solo-lecturas]
  *
  * modulo-2/<carpeta del curso>/produccion/  lo que se carga en otras herramientas:
  *   videos/      PPTX con narración en las notas (HeyGen: una escena por lámina) + guion.md
  *   infografias/ prompts.md, uno por aprendizaje esperado y uno para la ruta del módulo
- *   lecturas/    prompts.md para redactar el material de lectura (flipbook) de cada AE
  *
  * modulo-2/<carpeta del curso>/entrega/  recursos finales, neutros y listos para subir:
- *   AE1..AE4/        M2-AEn-Quiz.gift (Moodle: Banco de preguntas → Importar → GIFT)
+ *   AE1..AE4/        M2-AEn-Quiz.gift (Moodle: Banco de preguntas → Importar → GIFT) y
+ *                    M2-AEn-Lectura.pdf (fuente: contenidos/<PF>/modulo-2/lecturas/AEn.md)
  *   evaluacion/      9 PDF: 3 instrumentos, guía e instrumento del portafolio, retroalimentación,
  *                    autoevaluación, coevaluación y bitácora
  *   actividades/     enunciado (participante) y respuesta modelada (tutor) de cada actividad,
  *                    insumos/ (SQL, CSV) y respuesta-modelada/codigo/ (.py para pytest)
  *   medios/          cuadro comparativo en PDF
  *   insumos-anexo/   textos de las secciones V y VI del Anexo 2 en HTML, para copiar a Word
- * Las demás piezas de entrega/ (videos, infografías, lecturas) las agrega quien las produce.
+ * Las demás piezas de entrega/ (videos e infografías) las agrega quien las produce.
  *
  * La fuente es contenidos/<PF>/modulo-2/. Lo que genera este script no se edita a mano.
  */
@@ -26,6 +26,7 @@ import { leer, escribir, ruta, rel } from './lib/repo.mjs';
 import { crearPptx } from './lib/pptx.mjs';
 import { markdown, estilos, esc } from './lib/html.mjs';
 import { imprimirPdf, navegador } from './lib/pdf.mjs';
+import { leerLectura, verificarLectura, lecturaHtml, palabras } from './lib/lectura.mjs';
 import fs from 'node:fs';
 
 const CURSOS = {
@@ -40,6 +41,7 @@ if (!codigos.length || codigos.some((c) => !CURSOS[c])) {
   process.exit(1);
 }
 const conPdf = !args.includes('--sin-pdf');
+const soloLecturas = args.includes('--solo-lecturas');
 if (conPdf && !navegador()) {
   console.error('No encontré Edge ni Chrome para imprimir los PDF. Usa --sin-pdf o define NAVEGADOR_PDF.');
   process.exit(1);
@@ -630,37 +632,6 @@ function quizGift(pf, ae, items) {
   return out.join('\n');
 }
 
-function lecturas(pf, c, caps, f) {
-  const partes = [
-    `# ${pf} · Material de lectura (flipbook) por aprendizaje esperado — prompts`,
-    '',
-    '> Pega cada bloque en la IA de texto que uses. Revisa el resultado contra la ficha antes de',
-    '> maquetarlo (Heyzine, FlipHTML5 o PDF del LMS). Largo sugerido: 6 a 8 páginas por AE.',
-  ];
-  for (const cap of caps) {
-    const ae = f.aes[cap.ae];
-    partes.push(
-      '',
-      `## Lectura ${cap.ae} · ${cap.titulo}`,
-      '',
-      '```text',
-      `Escribe el material de lectura del aprendizaje esperado ${cap.ae.slice(2)} del módulo "${f.modulo}" del curso "${c.curso}" (e-learning, nivel 4).`,
-      `Aprendizaje esperado (textual): ${ae.texto}`,
-      'Criterios de evaluación (textuales):',
-      ...ae.criterios,
-      'Contenidos que debes cubrir, todos y en este orden (textuales del plan):',
-      ...ae.contenidos,
-      `Sigue la misma secuencia de la videocápsula: ${cap.laminas.slice(1, -1).map((l) => l.titulo).join(' / ')}.`,
-      `Usa como ejemplo continuo el caso de ${c.caso}, una empresa ficticia; no nombres instituciones reales.`,
-      'Formato: títulos cortos, párrafos de 3 a 5 líneas, un ejemplo por sección, un recuadro "Error frecuente" y al final:',
-      '3 preguntas de autocomprobación con su respuesta y un glosario de 8 términos del AE.',
-      'Español de Chile, tono de colega; no inventes datos, cifras ni funciones que no existan en las herramientas.',
-      '```',
-    );
-  }
-  return partes.join('\n') + '\n';
-}
-
 // ------------------------------------------------------- carril automático
 
 // Subsección "### …" de un bloque de líneas, hasta el siguiente "##" o "###".
@@ -826,6 +797,23 @@ for (const pf of codigos) {
     hechos.push(destinoRel);
   };
 
+  // Material de lectura de cada AE: se revisa contra el plan antes de imprimirlo.
+  const mod = datosModulo(fichaMd);
+  for (const cap of caps) {
+    const fuente = `${dir}/lecturas/${cap.ae}.md`;
+    if (!fs.existsSync(ruta(fuente))) { console.warn(`  AVISO: falta ${fuente}; no se genera su lectura`); continue; }
+    const lectura = leerLectura(leer(fuente));
+    const u = unidades(fichaMd, +cap.ae.slice(2));
+    const errores = verificarLectura(lectura, u);
+    if (errores.length) throw new Error(`${fuente}:\n  - ${errores.join('\n  - ')}`);
+    const ae = f.aes[cap.ae];
+    pdf(`${ent}/${cap.ae}/M2-${cap.ae}-Lectura.pdf`, lecturaHtml({
+      pf, curso: c.curso, caso: c.caso, modulo: f.modulo, codigo: mod.codigo, horas: mod.horas,
+      ae: cap.ae, titulo: cap.titulo, aprendizaje: ae.texto, criterios: ae.criterios, unidadesAE: u, lectura }));
+    console.log(`  lectura ${cap.ae}: ${palabras(lectura)} palabras, ${lectura.secciones.filter((x) => x.tipo === 'tema').length} secciones, cobertura del plan ${u.length}/${u.length}`);
+  }
+  if (soloLecturas) { hechos.forEach((h) => console.log(`  ${h.slice(c.carpeta.length + 1)}`)); continue; }
+
   // Bases para otras herramientas
   const b = videoBienvenida(pf, c, mdBienv, f.modulo);
   guardar(`${out}/videos/00-bienvenida.pptx`, b.pptx);
@@ -842,7 +830,6 @@ for (const pf of codigos) {
   guardar(`${out}/infografias/prompts.md`, info.md);
   guardar(`${out}/infografias/textos-alternativos.txt`, info.alt);
   guardar(`${out}/infografias/especificaciones-visuales.txt`, info.espec);
-  guardar(`${out}/lecturas/prompts.md`, lecturas(pf, c, caps, f));
 
   // Carril automático: recursos finales
   const items = preguntas(leer(`${dir}/B2-instrumentos.md`));

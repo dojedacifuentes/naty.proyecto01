@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-25
-**Por:** 2026-09-25-claude-code-07 (Claude Code · opus-5.5)
+**Por:** 2026-09-25-claude-code-08 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -127,6 +127,15 @@ medidas calculadas para cada contenido, tipografía, color, contraste, íconos, 
 control final; además, especificaciones comunes y textos alternativos. La revisión da 10/10. El
 usuario recibió el zip nuevo; el sitio publica el mismo.
 
+Sesión claude-code-08, 2026-09-25: las 8 lecturas (una por aprendizaje esperado) escritas en el
+repo, en `contenidos/<PF>/modulo-2/lecturas/AEn.md`, y generadas en PDF por el carril automático
+(`scripts/lib/lectura.mjs`, `npm run produccion -- PF1821 PF1822 --solo-lecturas`). Cada una trae
+portada con el aprendizaje textual, criterios textuales, tabla de cobertura del plan, un ejemplo del
+caso por sección, errores frecuentes, síntesis, práctica, autocomprobación y glosario. Tienen de 11 a
+14 páginas A4, con 2 familias tipográficas incrustadas (IBM Plex Sans y Mono, OFL, en
+`scripts/fuentes/`). La generación se detiene si falta un contenido del plan: cobertura 100 % en las
+8. Se eliminaron los prompts de lectura. El sitio ofrece `lecturas-modulo2.zip`.
+
 ## A medias
 
 - **Los entregables del módulo 2 de PF1821 y PF1822 están en borrador, sin revisión humana.**
@@ -134,8 +143,8 @@ usuario recibió el zip nuevo; el sitio publica el mismo.
   El código Python de PF1822 no se ejecutó: en esta máquina no hay Python.
   Todas las casillas de `modulo-2/PF18xx-*/README.md` están sin marcar por eso: se marcan
   cuando una persona revisa el recurso.
-- **Recursos base del módulo 2.** El carril A (automático) está `listo para revisión`. Faltan
-  los carriles B a F: 12 videos HeyGen, 10 infografías, 8 lecturas, el notebook de PF1822, el
+- **Recursos base del módulo 2.** El carril A (automático, que ahora incluye las 8 lecturas) está `listo para revisión`. Faltan
+  los carriles B a F: 12 videos HeyGen, 10 infografías, el notebook de PF1822, el
   tutorial y el workflow roto de PF1821, correr `pytest` en PF1822 y 2 videos interactivos H5P.
   El avance real está en los `ESTADO.md` de cada curso.
 

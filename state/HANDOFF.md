@@ -1,7 +1,7 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` y
-`2026-09-25-claude-code-01` a `-07` — 2026-09-24/25
+`2026-09-25-claude-code-01` a `-08` — 2026-09-24/25
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
@@ -14,8 +14,8 @@ redactar el Anexo 2 y nada por institución: eso viene después (DECISIONS, 2026
 1. **Abre `modulo-2/FLUJO-PRODUCCION.md`.** Reparte el trabajo en seis carriles paralelos por
    herramienta: A automático, B video (HeyGen), C diseño, D texto IA, E técnico e F interactivo H5P.
 2. **El carril A ya está hecho** y su resultado está en `modulo-2/<curso>/entrega/`: quizzes
-   GIFT, 9 PDF de evaluación, actividades, insumos, código `.py`, cuadro comparativo y textos
-   para el Anexo. Se rehace con `npm run produccion -- PF1821 PF1822`.
+   GIFT, **las 8 lecturas en PDF**, 9 PDF de evaluación, actividades, insumos, código `.py`,
+   cuadro comparativo y textos para el Anexo. Se rehace con `npm run produccion -- PF1821 PF1822`.
 3. **Toma una fila `pendiente` de tu carril** en `modulo-2/<curso>/produccion/ESTADO.md`.
    Primero las ★ (AE3, el aprendizaje seleccionado). Déjala `listo para revisión` con su
    archivo o enlace y agrega una línea al registro. Los videos y los `.h5p` van a Drive: git
@@ -42,6 +42,20 @@ Trampas de estas sesiones:
 - **Infografías:** el usuario tiene los prompts nuevos (zip `infografias-modulo2.zip`, el mismo del sitio).
   Traen el alto calculado para cada contenido. Si cambias el texto de una cápsula, regenera y reenvía:
   el alto y las secciones cambian. Ninguna infografía debe volver a 1080 × 1920 si no cabe.
+- **Lecturas:** la fuente es `contenidos/<PF>/modulo-2/lecturas/AEn.md` (formato en la cabecera de
+  `scripts/lib/lectura.mjs`). Para rehacer solo los PDF, sin tocar los PPTX:
+  `npm run produccion -- PF1821 PF1822 --solo-lecturas`. Si falta un contenido del plan, un ejemplo
+  por sección, las 3 preguntas o los 8 términos, o si una línea de código pasa de 78 caracteres, no se
+  imprime y el mensaje dice qué corregir. Las 2 fuentes (IBM Plex Sans y Mono, OFL) están en
+  `scripts/fuentes/` y van incrustadas: no uses caracteres fuera del latín básico (≥, ≈, ✔), porque
+  obligarían a usar una tercera fuente; la revisión los rechaza. La flecha → sí se puede usar: se dibuja.
+  El control 05 toma por credencial la palabra clave seguida de dos puntos o de un signo igual, incluso en un ejemplo: en el código usa `clave_api`.
+  El usuario ya tiene el zip `lecturas-modulo2.zip`, el mismo del sitio.
+- **Pendientes que dejó la sesión -08 (sin pedido del usuario, no los hice):** 1) la tabla de actividades
+  de `C-metodologia.md` no nombra las lecturas; si el Anexo 2 las declara como actividad asincrónica
+  "Lectura", hay que darles horas dentro de las 18 y 21 h. 2) El cuadro R04 de PF1822 dice "búsqueda
+  semántica del módulo 3 del plan", pero según la ficha, la recuperación con almacenamiento vectorial es
+  `MA04578`, que la ficha lista 4.° (orden por confirmar). Las lecturas nombran los módulos, no su número.
 - **`npm run produccion` reescribe los PPTX aunque no cambien:** la fecha va dentro del zip.
   Si solo cambiaste prompts o PDF, restaura los PPTX con `git checkout HEAD -- modulo-2/*/produccion/videos/`
   antes del commit, para no subir binarios idénticos.

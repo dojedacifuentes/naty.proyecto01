@@ -278,3 +278,17 @@ achicar la letra por debajo de lo legible. Las bases no fijan formato; estas med
 estándar del proyecto, y el LEEME lo dice.
 Alternativa descartada: mantener 1080 × 1920, que obliga a cortar texto o a usar letra ilegible.
 Quién: usuario (criterios) y claude-code (parámetros), sesión `2026-09-25-claude-code-07`.
+
+**2026-09-25 · Las lecturas se escriben en el repo y se generan en PDF con diseño propio (carril A).**
+Por qué: el usuario pidió los 8 PDF con diseño profesional, máximo dos fuentes, todos los parámetros
+de diseño gráfico y los contenidos verificados. Escribirlas en el repo, en vez de repartir 8 prompts
+entre otras IA, da el mismo formato en las 8 y permite revisarlas solas. El plan formativo exige un
+"MANUAL DIDÁCTICO CON TODOS LOS CONTENIDOS DEL MÓDULO" (ficha, materiales e insumos), y
+`scripts/lib/lectura.mjs` no imprime una lectura que no cubra, textuales, todos los contenidos de su
+aprendizaje. El diseño es A4, con IBM Plex Sans para el texto e IBM Plex Mono para el código: dos
+familias con licencia OFL, versionadas en `scripts/fuentes/` e incrustadas en el PDF. La paleta es la
+de las infografías, con contraste WCAG 2.1 AA, y los diagramas se dibujan sin imágenes externas. Los
+módulos del plan se nombran, no se numeran, porque el orden de la ficha está por confirmar.
+Alternativa descartada: los prompts por aprendizaje (`produccion/lecturas/prompts.md`), que se
+eliminaron. Dejaban el formato y la cobertura a criterio de cada IA.
+Quién: usuario (encargo y criterios) y claude-code (contenido y diseño), sesión `2026-09-25-claude-code-08`.
