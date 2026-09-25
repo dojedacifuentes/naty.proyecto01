@@ -950,6 +950,13 @@ for (const pf of codigos) {
   const enunciados = act.docs.filter((d) => /Enunciado/.test(d.archivo));
   pdf(`${ent}/actividades/M2-Actividades-Enunciados-respaldo.pdf`, documentoHtml(pf, c, f, mod, {
     titulo: 'Actividades prácticas del módulo 2', pie: 'Enunciados de las actividades prácticas', partes: enunciados }));
+  // Metodología (qué, cómo y con qué; motivación; habilidades del siglo XXI), sin la cabecera de trabajo
+  // ni los códigos internos de recurso.
+  const met = leer(`${dir}/C-metodologia.md`);
+  const mdMet = met.slice(met.indexOf('## a)')).replace(/\s*\((?:R\d\d|C\d)\)/g, '').replace(/ de C4\b/g, '');
+  pdf(`${ent}/metodologia/M2-Metodologia.pdf`, documentoHtml(pf, c, f, mod, {
+    kicker: 'Metodología del módulo', titulo: 'Metodología, motivación y habilidades del siglo XXI', md: mdMet,
+    ficha: [['Aprendizajes esperados', aesDe(mdMet)], ['Documento', 'M2-Metodologia.pdf'], ['Va en', 'Anexo N°2, sección VI']] }));
   const r04 = seccion(mdCaps, /^## R04\b/);
   pdf(`${ent}/medios/M2-Cuadro-comparativo.pdf`, documentoHtml(pf, c, f, mod, {
     kicker: 'Medio didáctico · cuadro comparativo', titulo: titulo(r04).replace(/^R04 · /, ''), md: cuerpo(r04),

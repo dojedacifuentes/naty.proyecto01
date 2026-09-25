@@ -357,7 +357,39 @@ function paqueteActividades(c) {
   return crearZip([{ nombre: 'LEEME.txt', contenido: leeme.join('\r\n') }, ...entradas]);
 }
 
+// Evaluación, metodología y actividades de un curso, en carpetas numeradas, para subir a Drive.
+function paqueteDrive(c) {
+  const ent = `modulo-2/${c.carpeta}/entrega`;
+  const leido = (r) => fs.readFileSync(ruta(`${ent}/${r}`));
+  const EVAL = [
+    ['M2-Instrumento-1.pdf', 'Instrumento 1: rúbrica (observación)'], ['M2-Instrumento-2.pdf', 'Instrumento 2: caso práctico (desempeño)'],
+    ['M2-Instrumento-3.pdf', 'Instrumento 3: prueba objetiva'], ['M2-Portafolio-Guia.pdf', 'Portafolio: guía con los elementos 1 a 5'],
+    ['M2-Portafolio-Instrumento.pdf', 'Portafolio: instrumento de evaluación (elemento 6)'], ['M2-Retroalimentacion.pdf', 'Mecanismo de retroalimentación'],
+    ['M2-Autoevaluacion.pdf', 'Pauta de autoevaluación'], ['M2-Coevaluacion.pdf', 'Pauta de coevaluación'], ['M2-Bitacora.pdf', 'Bitácora de resultados y plan de trabajo']];
+  const entradas = EVAL.map(([a]) => ({ nombre: `1-evaluacion/${a}`, contenido: leido(`evaluacion/${a}`) }));
+  entradas.push({ nombre: '2-metodologia/M2-Metodologia.pdf', contenido: leido('metodologia/M2-Metodologia.pdf') });
+  for (const a of ['Anexo2-V-Estrategia-evaluativa.html', 'Anexo2-VI-Metodologia.html']) entradas.push({ nombre: `2-metodologia/para-el-anexo-2/${a}`, contenido: leido(`insumos-anexo/${a}`) });
+  const actividades = listar(ruta(`${ent}/actividades`)).map((a) => path.relative(ruta(`${ent}/actividades`), a).replace(/\\/g, '/'));
+  for (const a of actividades) entradas.push({ nombre: `3-actividades/${a}`, contenido: leido(`actividades/${a}`) });
+  const leeme = [`MÓDULO 2 — ${c.pf} · ${c.nombre}`, 'Evaluación, metodología y actividades prácticas, para subir a Drive.', '',
+    'Recursos neutros, sin logos ni nombres de instituciones. Casos y datos ficticios. Estado: borrador para revisión.', '',
+    '1-evaluacion/  (bases 2026, 7.4, págs. 28-29; Anexo N°7, págs. 100-106)',
+    ...EVAL.map(([a, d]) => `  ${a.padEnd(32)}${d}`), '',
+    '2-metodologia/  (7.4, págs. 30-31; Anexo N°2, VI, pág. 90; Anexo N°7, num. 7, págs. 109-111)',
+    '  M2-Metodologia.pdf              qué hará, cómo y con qué; aspectos motivacionales; habilidades del siglo XXI',
+    '  para-el-anexo-2/                textos de las secciones V y VI en HTML, para copiar a Word (insumo, no el Anexo)', '',
+    '3-actividades/  (7.4, pág. 31; Anexo N°7, num. 7 b), págs. 109-110)',
+    '  M2-Actividades-Enunciados-respaldo.pdf   los enunciados de las 2 actividades en un solo documento',
+    '  M2-Actividad-n-Enunciado.pdf / -Respuesta-modelada.pdf   (la respuesta modelada es solo para el tutor)',
+    '  moodle/        descripción de cada Tarea, lista para pegar en Moodle',
+    '  insumos/       archivos que se adjuntan a la Tarea',
+    '  respuesta-modelada/   código o workflow del tutor', '',
+    'Falta el enlace del LMS y el del portafolio publicado (Anexo N°2, V y VI c), pág. 90): dependen de cada institución.', ''];
+  return crearZip([{ nombre: 'LEEME.txt', contenido: leeme.join('\r\n') }, ...entradas]);
+}
+
 // Paquetes descargables.
+for (const c of CURSOS) escribirSalida(`descargas/modulo2-${c.pf}-evaluacion-metodologia-actividades.zip`, paqueteDrive(c));
 for (const c of CURSOS) escribirSalida(`descargas/actividades-modulo2-${c.pf}.zip`, paqueteActividades(c));
 escribirSalida('descargas/videos-heygen-modulo2.zip', paqueteVideos());
 escribirSalida('descargas/infografias-modulo2.zip', paqueteInfografias());
@@ -370,7 +402,8 @@ escribirSalida('descargas/lecturas-modulo2.zip', paqueteLecturas());
 <li><a href="descargas/videos-heygen-modulo2.zip">videos-heygen-modulo2.zip</a>: los 12 PPT para HeyGen (bienvenida, 4 videocápsulas y video de la herramienta 2, por curso), con guiones y pasos.</li>
 <li><a href="descargas/infografias-modulo2.zip">infografias-modulo2.zip</a>: los 10 prompts de infografía, uno por archivo.</li>
 <li><a href="descargas/lecturas-modulo2.zip">lecturas-modulo2.zip</a>: las 8 lecturas en PDF (una por aprendizaje esperado), listas para subir.</li>
-${CURSOS.map((c) => `<li><a href="descargas/actividades-modulo2-${c.pf}.zip">actividades-modulo2-${c.pf}.zip</a>: las 2 actividades prácticas de ${c.pf} (enunciados, PDF de respaldo, HTML para Moodle, insumos y respuesta modelada), con un LEEME ceñido a las bases.</li>`).join('\n')}
+${CURSOS.map((c) => `<li><a href="descargas/actividades-modulo2-${c.pf}.zip">actividades-modulo2-${c.pf}.zip</a>: las 2 actividades prácticas de ${c.pf} (enunciados, PDF de respaldo, HTML para Moodle, insumos y respuesta modelada), con un LEEME ceñido a las bases.</li>
+<li><a href="descargas/modulo2-${c.pf}-evaluacion-metodologia-actividades.zip">modulo2-${c.pf}-evaluacion-metodologia-actividades.zip</a>: evaluación (9 PDF), metodología en PDF y actividades de ${c.pf}, en carpetas para subir a Drive.</li>`).join('\n')}
 ${CURSOS.map((c) => `<li>${c.pf} · <a href="modulo-2/${c.carpeta}/entrega/">recursos listos para subir</a> · <a href="modulo-2/${c.carpeta}/produccion/ESTADO.html">estado de producción</a></li>`).join('\n')}
 </ul>`;
   const cuerpo = envolverTablas(reescribirEnlaces(markdown(md), 'modulo-2', '.')) + descargas;
@@ -378,4 +411,4 @@ ${CURSOS.map((c) => `<li>${c.pf} · <a href="modulo-2/${c.carpeta}/entrega/">rec
   paginas++;
 }
 
-console.log(`${SALIDA}/ → ${paginas} páginas, ${copiados} archivos copiados, ${3 + CURSOS.length} paquetes en descargas/`);
+console.log(`${SALIDA}/ → ${paginas} páginas, ${copiados} archivos copiados, ${3 + 2 * CURSOS.length} paquetes en descargas/`);
