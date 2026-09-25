@@ -56,31 +56,49 @@ function rectangulo(id, [x, y, cx, cy], color) {
 // herramientas que no aplican el autoajuste.
 function tamano(vinetas) {
   const largo = vinetas.join(' ').length;
+  if (largo > 650) return 1300;
+  if (largo > 520) return 1400;
   if (largo > 420) return 1600;
   if (largo > 300) return 1800;
   if (largo > 200) return 2000;
   return 2400;
 }
 
-function lamina({ titulo, vinetas = [], portada = false }, pie) {
+// `etiqueta` es una línea breve sobre el título (por ejemplo, el contenido del plan que cubre la
+// lámina, textual). Una viñeta que empieza con "## " se muestra como subtítulo, sin viñeta.
+function lamina({ titulo, vinetas = [], portada = false, etiqueta = '' }, pie) {
   const sz = tamano(vinetas);
-  const vin = vinetas.map((v) =>
-    `<a:p><a:pPr marL="342900" indent="-342900"><a:spcBef><a:spcPts val="900"/></a:spcBef><a:buClr><a:srgbClr val="${COLOR.acento}"/></a:buClr><a:buFont typeface="Arial"/><a:buChar char="•"/></a:pPr>${runs(v, { sz, color: COLOR.texto })}</a:p>`).join('');
+  const vin = vinetas.map((v) => (v.startsWith('## ')
+    ? `<a:p><a:pPr marL="0" indent="0"><a:spcBef><a:spcPts val="1400"/></a:spcBef><a:buNone/></a:pPr>${runs(v.slice(3), { sz: Math.max(1100, sz - 200), color: COLOR.acento, negrita: true })}</a:p>`
+    : `<a:p><a:pPr marL="342900" indent="-342900"><a:spcBef><a:spcPts val="900"/></a:spcBef><a:buClr><a:srgbClr val="${COLOR.acento}"/></a:buClr><a:buFont typeface="Arial"/><a:buChar char="•"/></a:pPr>${runs(v, { sz, color: COLOR.texto })}</a:p>`)).join('');
+  const conEtiqueta = Boolean(etiqueta);
   const formas = portada
     ? [
         rectangulo(2, [0, 0, ANCHO, ALTO], COLOR.oscuro),
         rectangulo(3, [609600, 3276600, 1524000, 76200], COLOR.naranjo),
+        ...(conEtiqueta ? [cuadro(7, 'Etiqueta', [609600, 609600, 7315200, 533400], `<a:p>${runs(etiqueta, { sz: 1200, color: '9FC3E6', negrita: true })}</a:p>`, 'b')] : []),
         cuadro(4, 'Título', [609600, 1219200, 7315200, 1981200], `<a:p>${runs(titulo, { sz: 4000, color: 'FFFFFF', negrita: true })}</a:p>`, 'b'),
         cuadro(5, 'Subtítulo', [609600, 3505200, 7315200, 1828800], vinetas.map((v) => `<a:p>${runs(v, { sz: 2200, color: 'E5E7EB' })}</a:p>`).join('')),
         cuadro(6, 'Pie', [609600, 6248400, 7315200, 381000], `<a:p>${runs(pie, { sz: 1200, color: 'CBD5E1' })}</a:p>`),
       ]
-    : [
-        rectangulo(2, [0, 0, ANCHO, 152400], COLOR.acento),
-        cuadro(3, 'Título', [609600, 381000, 7315200, 990600], `<a:p>${runs(titulo, { sz: 3200, color: COLOR.oscuro, negrita: true })}</a:p>`, 'b'),
-        rectangulo(4, [609600, 1447800, 1066800, 50800], COLOR.naranjo),
-        cuadro(5, 'Contenido', [609600, 1676400, 7315200, 4419600], vin || '<a:p><a:endParaRPr lang="es-CL"/></a:p>'),
-        cuadro(6, 'Pie', [609600, 6248400, 7315200, 381000], `<a:p>${runs(pie, { sz: 1200, color: COLOR.gris })}</a:p>`),
-      ];
+    : conEtiqueta
+      ? [
+          rectangulo(2, [0, 0, ANCHO, 152400], COLOR.acento),
+          // Una línea por elemento: con varios contenidos del plan, cada uno se lee entero.
+          cuadro(7, 'Etiqueta', [609600, 228600, 7315200, 914400], [].concat(etiqueta).map((e, k) =>
+            `<a:p>${runs(e, { sz: [].concat(etiqueta).length > 3 ? 1100 : 1200, color: k ? COLOR.oscuro : COLOR.acento, negrita: true })}</a:p>`).join(''), 'b'),
+          cuadro(3, 'Título', [609600, 1181100, 7315200, 685800], `<a:p>${runs(titulo, { sz: 2800, color: COLOR.oscuro, negrita: true })}</a:p>`, 'b'),
+          rectangulo(4, [609600, 1943100, 1066800, 50800], COLOR.naranjo),
+          cuadro(5, 'Contenido', [609600, 2095500, 7315200, 4000500], vin || '<a:p><a:endParaRPr lang="es-CL"/></a:p>'),
+          cuadro(6, 'Pie', [609600, 6248400, 7315200, 381000], `<a:p>${runs(pie, { sz: 1200, color: COLOR.gris })}</a:p>`),
+        ]
+      : [
+          rectangulo(2, [0, 0, ANCHO, 152400], COLOR.acento),
+          cuadro(3, 'Título', [609600, 381000, 7315200, 990600], `<a:p>${runs(titulo, { sz: 3200, color: COLOR.oscuro, negrita: true })}</a:p>`, 'b'),
+          rectangulo(4, [609600, 1447800, 1066800, 50800], COLOR.naranjo),
+          cuadro(5, 'Contenido', [609600, 1676400, 7315200, 4419600], vin || '<a:p><a:endParaRPr lang="es-CL"/></a:p>'),
+          cuadro(6, 'Pie', [609600, 6248400, 7315200, 381000], `<a:p>${runs(pie, { sz: 1200, color: COLOR.gris })}</a:p>`),
+        ];
   return XML + `<p:sld ${NS}><p:cSld><p:spTree>${grupoVacio}${formas.join('')}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>`;
 }
 

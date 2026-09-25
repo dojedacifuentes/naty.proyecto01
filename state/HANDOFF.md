@@ -1,7 +1,7 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` y
-`2026-09-25-claude-code-01` a `-04` — 2026-09-24/25
+`2026-09-25-claude-code-01` a `-05` — 2026-09-24/25
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
@@ -26,6 +26,14 @@ redactar el Anexo 2 y nada por institución: eso viene después (DECISIONS, 2026
    otras instituciones.
 
 Trampas de estas sesiones:
+- **Las videocápsulas se generan textuales y se validan solas.** Si editas `R-capsulas.md`, la columna
+  "Contenido del plan (textual)" tiene que ser copia exacta de la ficha y cubrir todos los contenidos
+  del AE, o `npm run produccion` se detiene y dice qué falta. El usuario ya tiene las cápsulas nuevas
+  en zip (`videocapsulas-revisadas-modulo2.zip`).
+- **Los prompts de infografía de PF1821 en el repo son los que tiene el usuario (sesión -04).** A su
+  pedido, la revisión del 25-sep fue solo para videocápsulas. La próxima vez que corra
+  `npm run produccion`, los prompts de AE2 y AE3 cambiarán: la lámina de nodos core se partió y el
+  AE2 suma espacio de trabajo. Avísale antes de reenviarlos.
 - **`npm run produccion` reescribe los PPTX aunque no cambien:** la fecha va dentro del zip.
   Si solo cambiaste prompts o PDF, restaura los PPTX con `git checkout HEAD -- modulo-2/*/produccion/videos/`
   antes del commit, para no subir binarios idénticos.

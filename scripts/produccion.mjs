@@ -75,8 +75,10 @@ function capsulas(md) {
     if (m) { actual = { n: +m[1], titulo: m[2], ae: m[3], laminas: [] }; out.push(actual); continue; }
     if (/^## /.test(l)) { actual = null; continue; }
     if (actual && /^\| *\d+ *\|/.test(l)) {
+      // | # | Lámina | Contenido del plan (textual) | Contenido |
       const c = celdas(l);
-      actual.laminas.push({ titulo: c[1], contenido: c[2] });
+      const plan = c.length >= 4 && c[2] !== '—' ? c[2].split(' / ').map((s) => s.trim()) : [];
+      actual.laminas.push({ titulo: c[1], plan, contenido: c.length >= 4 ? c[3] : c[2] });
     }
   }
   if (out.length !== 4) throw new Error(`esperaba 4 cápsulas y encontré ${out.length}`);
@@ -113,6 +115,84 @@ const hablar = (t) => t
   .replace(/\s+/g, ' ')
   .trim();
 
+// ------------------------------------------------ textual del plan (videocápsulas)
+
+// Contenidos del plan por AE, en unidades: cada ítem de la ficha partido por " *" (así los
+// junta SIPFOR) y por oración, sin cambiar una palabra. Son los rótulos de las láminas.
+function unidades(fichaMd, n) {
+  const bloque = fichaMd.split(`### AE${n}.`)[1].split(/\n### |\n## /)[0];
+  const items = bloque.split('**Contenidos**')[1].split('\n').filter((l) => /^\s*- /.test(l)).map((l) => l.trim().slice(2));
+  return items.flatMap((it) => it.split(/\s\*/).flatMap((p) => p.split(/(?<=\D\.)\s+(?=[A-ZÁÉÍÓÚÑ])/))).map((s) => s.trim()).filter(Boolean);
+}
+
+// Cada rótulo de lámina tiene que ser textual del plan, y cada contenido del plan tiene que
+// estar en alguna lámina. Si no, no se genera: el revisor compara lámina contra plan.
+function verificarTextual(pf, cap, fichaMd) {
+  const u = unidades(fichaMd, +cap.ae.slice(2));
+  const usadas = cap.laminas.flatMap((l) => l.plan);
+  const ajenas = usadas.filter((x) => !u.includes(x));
+  const faltan = u.filter((x) => !usadas.includes(x));
+  if (ajenas.length) throw new Error(`${pf} cápsula ${cap.n}: rótulos que no son textuales del plan: ${ajenas.join(' | ')}`);
+  if (faltan.length) throw new Error(`${pf} cápsula ${cap.n}: contenidos del plan sin lámina: ${faltan.join(' | ')}`);
+}
+
+// Texto del plan (en mayúsculas en SIPFOR) → oración para la voz, con las mismas palabras.
+// Algunas voces deletrean las palabras en mayúsculas; las siglas y nombres propios se restauran.
+const PROPIOS = [
+  ['apis', 'APIs'], ['api', 'API'], ['http', 'HTTP'], ['json', 'JSON'], ['csv', 'CSV'], ['xml', 'XML'],
+  ['roi', 'ROI'], ['crud', 'CRUD'], ['ia', 'IA'], ['nlp', 'NLP'], ['bleu', 'BLEU'], ['rouge', 'ROUGE'],
+  ['tf-idf', 'TF-IDF'], ['qa', 'QA'], ['rest', 'REST'], ['get', 'GET'], ['post', 'POST'], ['nltk', 'NLTK'],
+  ['spacy', 'spaCy'], ['openai', 'OpenAI'], ['hugging face', 'Hugging Face'], ['supabase', 'Supabase'],
+  ['python', 'Python'], ['if/switch', 'If/Switch'], ['merge', 'Merge'], ['filter', 'Filter'],
+  ['summarize', 'Summarize'], ['split', 'Split'], ['set', 'Set'], ['tensorflow', 'TensorFlow'],
+  ['pytorch', 'PyTorch'], ['langchain', 'LangChain'], ['diffusers', 'Diffusers'], ['transformers', 'Transformers'],
+  ['countvectorizer', 'CountVectorizer'],
+];
+function oracion(t) {
+  let s = t.toLowerCase();
+  for (const [a, b] of PROPIOS) {
+    const patron = a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // en modo u, "-" y "/" no se escapan
+    s = s.replace(new RegExp(`(?<![\\p{L}\\d])${patron}(?![\\p{L}\\d])`, 'gu'), b);
+  }
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+// Código dentro de la narración: lo corto se dice ("json punto campo"); lo largo o con
+// símbolos se nombra ("la expresión que ves en pantalla"), porque leído en voz no se entiende.
+const DICHOS = {
+  "$('Nombre del nodo').item.json.campo": 'la referencia a otro nodo por su nombre',
+  '===': 'triple igual',
+  '>=': 'mayor o igual',
+  '&&': 'doble ampersand (y)',
+  '\\|\\|': 'doble barra',
+  '!': 'signo de exclamación (no)',
+  '{{ $execution.id }}': 'el identificador de la ejecución',
+  'Authorization: Bearer <clave>': 'Authorization, con la palabra Bearer y la clave',
+  'json=': 'el parámetro json',
+};
+function hablarCodigo(c) {
+  const t = c.trim();
+  if (DICHOS[t]) return DICHOS[t];
+  if (/^\{\{\s*\}\}$/.test(t)) return 'dobles llaves';
+  if (t.length > 24 || /["'[\]{}<>=/\\]/.test(t)) return 'la expresión que ves en pantalla';
+  return t.replace(/^\$/, '').replace(/\(\)/g, '').replace(/\./g, ' punto ').replace(/_/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+// Narración de videocápsula: como hablar(), pero además dice el código y las barras.
+const narrar = (t) => t
+  .replace(/`([^`]+)`/g, (_, c) => hablarCodigo(c))
+  .replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\*([^*]+)\*/g, '$1')
+  .replace(/\s*\bR\d\d\b/g, '')
+  .replace(/(\p{L})_(\p{L})/gu, '$1 $2')
+  .replace(/(\p{L})\s*\/\s*(\p{L})/gu, '$1 o $2')
+  .replace(/\s*→\s*/g, ', luego ')
+  .replace(/\s*·\s*/g, ', ')
+  .replace(/\s*×\s*/g, ' por ')
+  .replace(/\s*≈\s*/g, ', aproximadamente ')
+  .replace(/\s+=\s+/g, ' es ')
+  .replace(/\s+/g, ' ')
+  .trim();
+
 // Contenido de lámina → viñetas: una por oración, cuatro como máximo.
 function vinetas(contenido) {
   const oraciones = contenido.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡"*`])/).map((s) => s.trim()).filter(Boolean);
@@ -134,28 +214,66 @@ function breve(t) {
 
 // ------------------------------------------------------------------ piezas
 
-function videoCapsula(pf, c, cap) {
-  const pie = `${pf} · Módulo 2 · Cápsula ${cap.n} · ${cap.ae}`;
-  const laminas = cap.laminas.map((l, i) => {
-    if (i === 0) {
-      return {
-        portada: true,
-        titulo: `Cápsula ${cap.n}: ${cap.titulo}`,
-        vinetas: [l.contenido],
-        notas: `Te doy la bienvenida a la cápsula ${cap.n} del módulo 2: ${hablar(cap.titulo)}. ${hablar(l.contenido)}`,
-      };
-    }
-    return { titulo: l.titulo, vinetas: vinetas(l.contenido), notas: `${hablar(l.titulo)}. ${hablar(l.contenido)}` };
-  });
+// Videocápsula: portada, lámina del aprendizaje esperado con sus criterios (textuales del plan)
+// y una lámina por tema, rotulada con el contenido del plan que cubre, también textual.
+function videoCapsula(pf, c, cap, f, fichaMd) {
+  verificarTextual(pf, cap, fichaMd);
+  const n = cap.ae.slice(2);
+  const ae = f.aes[cap.ae];
+  const criterios = ae.criterios.map((x) => x.replace(/^\s*-\s*/, ''));
+  const pie = `${pf} · Módulo 2 · Cápsula ${cap.n} · Aprendizaje esperado ${n}`;
+  const [portada, ...resto] = cap.laminas;
+  const laminas = [
+    {
+      portada: true,
+      etiqueta: `MÓDULO 2 · ${f.modulo}`,
+      titulo: `Cápsula ${cap.n}: ${cap.titulo}`,
+      vinetas: [portada.contenido, `Contenido del plan: ${portada.plan.join(' / ')}`],
+      plan: portada.plan,
+      notas: `Te doy la bienvenida a la cápsula ${cap.n} del módulo 2, ${narrar(oracion(f.modulo))}: ${narrar(cap.titulo)}. ${narrar(portada.contenido)}`,
+    },
+    {
+      etiqueta: 'APRENDIZAJE Y CRITERIOS TEXTUALES DEL PLAN FORMATIVO',
+      titulo: `Aprendizaje esperado ${n}`,
+      vinetas: [`**${ae.texto}**`, '## CRITERIOS DE EVALUACIÓN', ...criterios],
+      plan: [],
+      notas: `Esta cápsula corresponde al aprendizaje esperado ${n} del plan formativo: ${narrar(oracion(ae.texto))} ` +
+        `Sus criterios de evaluación son: ${criterios.map((x) => narrar(oracion(x.replace(/^\d+\.\d+\s*/, '')))).join(' ')}`,
+    },
+    ...resto.map((l) => ({
+      etiqueta: l.plan.length ? ['CONTENIDO DEL PLAN (TEXTUAL)', ...l.plan] : `PRÁCTICA DEL APRENDIZAJE ESPERADO ${n}`,
+      titulo: l.titulo,
+      vinetas: vinetas(l.contenido),
+      plan: l.plan,
+      notas: `${narrar(l.titulo)}. ${narrar(l.contenido)}`,
+    })),
+  ];
+  const celda = (s) => s.replace(/\|/g, '/');
+  const cobertura = unidades(fichaMd, +n).map((u) =>
+    `| ${celda(u)} | ${laminas.map((l, i) => (l.plan.includes(u) ? i + 1 : null)).filter(Boolean).join(', ')} |`);
   const guion = [
     `# ${pf} · Cápsula ${cap.n} (${cap.ae}) · ${cap.titulo} — guion`,
     '',
-    `Base para HeyGen: \`${cap.ae}-capsula.pptx\` (una escena por lámina; la narración está en las notas).`,
-    'Esta tabla es la misma narración, para otras herramientas o para pulirla antes de grabar.',
+    `Base para HeyGen: \`${cap.ae}-capsula.pptx\`, una escena por lámina, con la narración en las notas.`,
+    'Esta tabla trae la misma narración, para otras herramientas o para pulirla antes de grabar.',
     '',
-    '| Lámina | En pantalla | Narración |',
-    '| --- | --- | --- |',
-    ...laminas.map((l, i) => `| ${i + 1} | ${l.titulo.replace(/\|/g, '/')} | ${l.notas.replace(/\|/g, '/')} |`),
+    `**Aprendizaje esperado ${n} (textual del plan):** ${ae.texto}`,
+    '',
+    '**Criterios de evaluación (textuales del plan):**',
+    '',
+    ...criterios.map((x) => `- ${x}`),
+    '',
+    '| Lámina | Contenido del plan (textual) | En pantalla | Narración |',
+    '| --- | --- | --- | --- |',
+    ...laminas.map((l, i) => `| ${i + 1} | ${i === 1 ? 'Aprendizaje esperado y criterios de evaluación' : celda(l.plan.join(' / ')) || '—'} | ${celda(l.titulo)} | ${celda(l.notas)} |`),
+    '',
+    '## Cobertura de los contenidos del plan',
+    '',
+    `Cada contenido del aprendizaje esperado ${n}, tal como está en el plan, y la lámina donde aparece rotulado.`,
+    '',
+    '| Contenido del plan (textual) | Lámina |',
+    '| --- | --- |',
+    ...cobertura,
     '',
   ].join('\n');
   return { pptx: crearPptx({ titulo: `${pf} · Cápsula ${cap.n} · ${cap.titulo}`, pie, laminas }), guion };
@@ -478,7 +596,8 @@ for (const pf of codigos) {
   const dir = `contenidos/${pf}/modulo-2`;
   const out = `${c.carpeta}/produccion`;
   const ent = `${c.carpeta}/entrega`;
-  const f = ficha(leer(`${dir}/00-ficha-sipfor.md`));
+  const fichaMd = leer(`${dir}/00-ficha-sipfor.md`);
+  const f = ficha(fichaMd);
   const mdCaps = leer(`${dir}/R-capsulas.md`);
   const mdBienv = leer(`${dir}/R-bienvenida-e-infografia.md`);
   const caps = capsulas(mdCaps);
@@ -504,7 +623,7 @@ for (const pf of codigos) {
   guardar(`${out}/videos/00-bienvenida.pptx`, b.pptx);
   guardar(`${out}/videos/00-bienvenida-guion.md`, b.guion);
   for (const cap of caps) {
-    const v = videoCapsula(pf, c, cap);
+    const v = videoCapsula(pf, c, cap, f, fichaMd);
     guardar(`${out}/videos/${cap.ae}-capsula.pptx`, v.pptx);
     guardar(`${out}/videos/${cap.ae}-guion.md`, v.guion);
   }

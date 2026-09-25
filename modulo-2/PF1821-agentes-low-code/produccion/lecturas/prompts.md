@@ -46,7 +46,7 @@ Contenidos que debes cubrir, todos y en este orden (textuales del plan):
   - ESTRUCTURA TRIGGER, PROCESAR Y EJECUTAR.
   - CONFIGURACIÓN DE NODOS BÁSICOS.
   - TESTING Y DEBUGGING INICIAL.
-Sigue la misma secuencia de la videocápsula: El editor visual / La estructura base / Tipos de trigger / Configurar un nodo / Mirar los datos / Probar sin repetir / Prueba y producción / Primeros errores.
+Sigue la misma secuencia de la videocápsula: Editor visual y espacio de trabajo / La estructura base / Tipos de trigger / Configurar un nodo / Mirar los datos / Probar sin repetir / Prueba y producción / Primeros errores.
 Usa como ejemplo continuo el caso de Mercado Austral, una empresa ficticia; no nombres instituciones reales.
 Formato: títulos cortos, párrafos de 3 a 5 líneas, un ejemplo por sección, un recuadro "Error frecuente" y al final:
 3 preguntas de autocomprobación con su respuesta y un glosario de 8 términos del AE.
@@ -80,7 +80,7 @@ Contenidos que debes cubrir, todos y en este orden (textuales del plan):
   - SUPABASE: CONFIGURACIÓN BÁSICA.
   - OPERACIONES CRUD BÁSICAS.
   - MANEJO DE DATOS RELACIONALES
-Sigue la misma secuencia de la videocápsula: Cómo viajan los datos / Nodos core de transformación / Expresiones / Tipos de datos / Formatos / Variables y configuración / Supabase en 5 minutos / CRUD con el nodo Supabase.
+Sigue la misma secuencia de la videocápsula: Cómo viajan los datos / Nodos core (1): modificar, filtrar y resumir / Nodos core (2): dividir, combinar y decidir / Expresiones / Tipos de datos / Formatos / Variables y configuración / Supabase en 5 minutos / CRUD con el nodo Supabase.
 Usa como ejemplo continuo el caso de Mercado Austral, una empresa ficticia; no nombres instituciones reales.
 Formato: títulos cortos, párrafos de 3 a 5 líneas, un ejemplo por sección, un recuadro "Error frecuente" y al final:
 3 preguntas de autocomprobación con su respuesta y un glosario de 8 términos del AE.

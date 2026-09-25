@@ -232,3 +232,19 @@ sale idéntico (comprobado con `cmp`).
 Alternativa descartada: pedir esos documentos a otra IA, que es más lento y abre la puerta a
 que diverjan de la fuente.
 Quién: claude-code, sesión `2026-09-25-claude-code-03`.
+
+**2026-09-25 · Las videocápsulas usan el texto del plan tal cual, para el revisor.**
+Por qué: el usuario pidió "usar textual para facilitar el trabajo del revisor". Cada
+videocápsula lleva:
+- una lámina 2 con el aprendizaje esperado y sus criterios de evaluación, textuales de
+  SIPFOR y también narrados;
+- en cada lámina, el contenido del plan que cubre, copiado de la ficha sin cambiar una palabra.
+
+La fuente es la columna nueva "Contenido del plan (textual)" de las tablas de
+`R-capsulas.md`, y `npm run produccion` no genera si un rótulo no es textual del plan o si
+un contenido del plan queda sin lámina. En pantalla va en mayúsculas, como en el plan; en la
+narración va en minúsculas con las mismas palabras, porque algunas voces deletrean lo que
+está en mayúsculas.
+Alternativa descartada: resumir el plan con otras palabras, que obliga al revisor a
+interpretar la equivalencia.
+Quién: usuario (criterio) y claude-code (forma), sesión `2026-09-25-claude-code-05`.

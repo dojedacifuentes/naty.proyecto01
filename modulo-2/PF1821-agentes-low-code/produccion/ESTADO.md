@@ -39,3 +39,4 @@ Una línea por pieza terminada o cambio de estado: fecha, pieza, quién (persona
 - 2026-09-25 · bases de B, C y D · claude-code · generadas con `npm run produccion`: PPTX con narración, prompts de infografía y de lectura.
 - 2026-09-25 · A1–A6 · claude-code · carril automático generado: 4 quizzes, 9 PDF de evaluación, 4 PDF de actividades, insumos, cuadro comparativo e insumos para el Anexo.
 - 2026-09-25 · B2 · claude-code · agregada la base del video de la herramienta 2 (PPTX + guion con las 5 pausas para H5P).
+- 2026-09-25 · B1 y B3 · claude-code · videocápsulas revisadas (zip `videocapsulas-revisadas-modulo2.zip`): lámina 2 con el aprendizaje esperado y los criterios textuales, y cada lámina rotulada con el contenido del plan textual. **Reemplazan a los PPT de cápsula anteriores.**

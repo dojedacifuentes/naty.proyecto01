@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-25
-**Por:** 2026-09-25-claude-code-04 (Claude Code · opus-5.5)
+**Por:** 2026-09-25-claude-code-05 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -109,6 +109,13 @@ sin redactar el Anexo y sin instituciones):
 Sesión claude-code-04, 2026-09-25: el usuario empezó por los carriles B (videos) y C
 (infografías). Se le entregaron los 12 PPT y los 10 prompts de infografía en zip, fuera del
 repo. En los prompts, ninguna sección de infografía queda con menos de una idea completa.
+
+Sesión claude-code-05, 2026-09-25: revisión textual de las 8 videocápsulas, solo de ellas, a
+pedido del usuario. Cada una tiene ahora una lámina con el aprendizaje esperado y los criterios
+textuales, y cada lámina lleva el contenido del plan textual. La auditoría da 8/8: AE,
+criterios y todos los contenidos del plan en el PPT, y narración sin símbolos. En PF1821
+se cerraron dos brechas con el plan: espacio de trabajo y navegación (AE2) e If/Switch (AE3).
+El usuario recibió las cápsulas nuevas en zip.
 
 ## A medias
 

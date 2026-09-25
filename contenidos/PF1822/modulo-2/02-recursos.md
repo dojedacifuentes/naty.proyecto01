@@ -42,7 +42,7 @@ fija las 21 h del módulo. La valida Natalia.
 | --- | --- | --- | --- | --- |
 | R01 | Video de bienvenida | Video 1:40 con avatar o docente | C3 motivación | `R-bienvenida-e-infografia.md` |
 | R02 | Infografía "Ruta del módulo" | Imagen descargable + versión accesible en texto | C3 · medio | `R-bienvenida-e-infografia.md` |
-| R03 | Cuatro cápsulas de contenido, una por AE | Presentaciones narradas (8–10 láminas) | C4 d) presentaciones | `R-capsulas.md` |
+| R03 | Cuatro cápsulas de contenido, una por AE | Presentaciones narradas (11 o 12 láminas, con el aprendizaje esperado y los contenidos del plan textuales) | C4 d) presentaciones | `R-capsulas.md` |
 | R04 | Cuadro comparativo de modelos generativos | Tabla interactiva o PDF | C4 d) cuadro comparativo · AE1 | `R-capsulas.md` |
 | R05 | **Herramienta didáctica 1:** notebook guiado "Tu primera llamada a un modelo" | Notebook (Colab o JupyterLab) con celdas de autocomprobación | **C4** | `C4-herramientas-didacticas.md` |
 | R06 | **Herramienta didáctica 2:** video interactivo "Del prompt a la respuesta" | Video con preguntas incrustadas (H5P) | **C4** | `C4-herramientas-didacticas.md` |
