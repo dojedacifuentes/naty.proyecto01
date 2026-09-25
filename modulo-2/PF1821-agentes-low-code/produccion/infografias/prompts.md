@@ -94,7 +94,7 @@ Caso que ilustra los ejemplos: Mercado Austral, una empresa ficticia.
 Secciones (un ícono por sección, texto breve):
 1. Cómo viajan los datos: Cada ítem es un objeto JSON con campos; un nodo puede recibir muchos ítems y procesa cada uno. Arrays y objetos anidados.
 2. Nodos core de transformación: Edit Fields (Set): crear, cambiar o quitar campos, Filter: dejar pasar solo lo que cumple, Summarize: agrupar y sumar, contar, promediar, Split Out: separar una lista en ítems, Merge: unir dos flujos (por campo o por posición), If / Switch: se ven en el tramo 4.
-3. Expresiones: Entre {{ }}.
+3. Expresiones: Entre {{ }}. $json.campo (datos del nodo), $('Nombre del nodo').item.json.campo (datos de otro nodo), $now (fecha y hora), métodos de texto y número: trim(), toLowerCase(), Number(), toFixed().
 4. Tipos de datos: Texto, número, booleano, fecha. Un número guardado como texto suma mal y la base de datos lo rechaza. Declarar el tipo en Edit Fields.
 5. Formatos: JSON (nativo de n8n), CSV (Extract from File para leerlo, Convert to File para generarlo), XML (nodo XML, de JSON a XML y de vuelta).
 6. Variables y configuración: Valores que no se escriben a mano en cada nodo: credenciales guardadas y variables del entorno de la instancia, cuando el administrador lo habilita.

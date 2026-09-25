@@ -1,7 +1,7 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` y
-`2026-09-25-claude-code-01` a `-03` — 2026-09-24/25
+`2026-09-25-claude-code-01` a `-04` — 2026-09-24/25
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
@@ -25,7 +25,12 @@ redactar el Anexo 2 y nada por institución: eso viene después (DECISIONS, 2026
    Anexo 2: `Anexos 2 V0 y revisión/`. No la copies al repo: es público y trae propuestas de
    otras instituciones.
 
-Trampas de esta sesión:
+Trampas de estas sesiones:
+- **`npm run produccion` reescribe los PPTX aunque no cambien:** la fecha va dentro del zip.
+  Si solo cambiaste prompts o PDF, restaura los PPTX con `git checkout HEAD -- modulo-2/*/produccion/videos/`
+  antes del commit, para no subir binarios idénticos.
+- **El usuario ya tiene los 12 PPT (carril B) y los 10 prompts de infografía (carril C) en zip.**
+  Si los regeneras con cambios, avísale: los que tiene quedan desactualizados.
 - **El `hoy()` de `npm run sesion` es UTC.** A las 22:00 en Chile ya es el día siguiente, y
   el checkpoint tiene que decir esa fecha.
 - **Rutas en `node -e` desde Git Bash:** pasa `cygpath -m <ruta>`. Node recibe la ruta estilo

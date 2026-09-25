@@ -120,12 +120,13 @@ function vinetas(contenido) {
   return [...oraciones.slice(0, 3), oraciones.slice(3).join(' ')];
 }
 
-// Texto breve para una sección de infografía: oraciones completas hasta unos 170 caracteres.
+// Texto breve para una sección de infografía: oraciones completas hasta unos 170 caracteres,
+// pero nunca menos de una idea completa ("Entre {{ }}." sola no dice nada).
 function breve(t) {
   const oraciones = hablar(t).split(/(?<=[.!?])\s/);
   let out = oraciones[0];
   for (const o of oraciones.slice(1)) {
-    if ((out + ' ' + o).length > 170) break;
+    if (out.length >= 60 && (out + ' ' + o).length > 170) break;
     out += ' ' + o;
   }
   return out;

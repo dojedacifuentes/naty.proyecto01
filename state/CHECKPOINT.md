@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-25
-**Por:** 2026-09-25-claude-code-03 (Claude Code · opus-5.5)
+**Por:** 2026-09-25-claude-code-04 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -105,6 +105,10 @@ sin redactar el Anexo y sin instituciones):
 - [x] Base del video interactivo (herramienta 2): PPTX para HeyGen + guion con las 5 pausas para H5P
 - [x] `scripts/lib/html.mjs` compartido entre el kit y la producción (el HTML del kit sale idéntico)
 - [x] PDF permitidos en `modulo-2/*/entrega/`; videos y `.h5p` fuera de git (a Drive)
+
+Sesión claude-code-04, 2026-09-25: el usuario empezó por los carriles B (videos) y C
+(infografías). Se le entregaron los 12 PPT y los 10 prompts de infografía en zip, fuera del
+repo. En los prompts, ninguna sección de infografía queda con menos de una idea completa.
 
 ## A medias
 
