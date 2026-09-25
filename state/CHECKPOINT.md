@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-25
-**Por:** 2026-09-25-claude-code-10 (Claude Code · opus-5.5)
+**Por:** 2026-09-25-claude-code-11 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -148,6 +148,14 @@ carril A (`scripts/lib/notebook.mjs`), con los 10 contenidos del AE3 revisados s
 tutorial pasa a 17 pasos, 13 de ellos del AE3. En los dos cursos, las preguntas del video interactivo
 se reorientaron al AE3 sin tocar el video base que el usuario ya grabó. Las dos herramientas quedan
 en el tramo 3 de la ruta, y cada C4 trae una tabla de cobertura del AE3.
+
+Sesión claude-code-11, 2026-09-25: solo el plan. El usuario pidió:
+- las actividades con el diseño de las lecturas, un HTML para Moodle y el workflow roto;
+- un PDF de respaldo y un zip por curso.
+
+El plan, con casillas, está al comienzo de `state/HANDOFF.md` ("EN CURSO"). Incluye una corrección
+técnica de PF1821: un número escrito como texto no hace fallar a Supabase ni al Switch con conversión de
+tipos, como dicen hoy la misión 1 y la 5 de la actividad 2.
 
 ## A medias
 

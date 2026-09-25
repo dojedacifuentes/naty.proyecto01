@@ -1,9 +1,53 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` y
-`2026-09-25-claude-code-01` a `-10` — 2026-09-24/25
+`2026-09-25-claude-code-01` a `-11` — 2026-09-24/25
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
+
+## EN CURSO: actividades del módulo 2 (pedido del usuario del 25-sep, sesión -12 en adelante)
+
+**Si esta sesión se cortó, sigue desde aquí.** El usuario pidió, textual: "haz todo lo que mencionas, dame el
+pdf de respaldo y luego el zip con las actividades por cada curso que estamos desarrollando, bien apegado a
+las bases". Marca cada casilla al terminarla, con su commit.
+
+- [ ] **1. Exactitud técnica de PF1821 (va primero: cambia contenido).** Postgres y PostgREST aceptan un número
+  escrito como texto ("2", "3 "), y el Switch con conversión de tipos también: esos casos no fallan como dicen
+  los textos. Hay que corregir:
+  - misión 1 de la actividad 2: la regla del Switch compara `total_texto`, que es texto con punto de miles
+    ("219.000", armado con `toLocaleString('es-CL')` para el aviso a ventas); n8n lo convierte y lo lee como
+    219. La corrección es comparar `total` (Number);
+  - misión 5: la cantidad llega como "3 unidades", y se corrige con `{{ parseInt($json.cantidad, 10) }}` y
+    *On Error: Continue (using error output)*;
+  - dónde está: `C2-actividades.md` (errores típicos de la actividad 1, insumos y tabla de misiones de la
+    actividad 2), `B2-instrumentos.md` pregunta 9 (y su quiz GIFT), `C4` (paso 9 del tutorial y pregunta 5
+    del video) y las lecturas AE2 ("La fila que Supabase rechazó"), AE3 (sección 5 y "La fila rechazada") y
+    AE4 ("El número que era texto", casos borde, trazabilidad y los seis pedidos).
+  - **Aviso al usuario:** el guion H2 de PF1821 que ya recibió cambia en la pregunta 5. No tocar
+    `R-capsulas.md`: sus videos ya están grabados.
+- [ ] **2. Diseño unificado de los PDF.** Los 4 PDF de actividades y los 9 de evaluación de cada curso pasan al
+  diseño de las lecturas: A4, 2 fuentes (IBM Plex Sans y Mono), encabezado con plan, módulo y aprendizajes,
+  recuadros y pie con página. Reutilizar `scripts/lib/lectura.mjs` desde `documentoHtml` de
+  `scripts/produccion.mjs`. Revisar que los PDF solo tengan esas 2 familias (`.scratch/fuentes-pdf.mjs`).
+- [ ] **3. HTML para Moodle.** Un archivo por actividad, en `entrega/actividades/moodle/`, con estilos en línea
+  para pegarlo en la descripción de la Tarea: enunciado, insumos que se adjuntan, entrega y cómo se evalúa.
+- [ ] **4. Workflow roto de PF1821.** Se entrega:
+  - `M2-Actividad-2-workflow-roto.json`, para importar en n8n, con las 5 misiones;
+  - los 6 pedidos de prueba en JSON;
+  - la tabla `comunas` (40 comunas: 30 de la RM y 10 de regiones, entre ellas Isla de Pascua);
+  - el SQL de las tablas de la actividad 2 (columnas `zona`, `ruta` e `id_ejecucion` en `pedidos`, más
+    `pedidos_rechazados` y `revision_manual`);
+  - también el workflow corregido, para el tutor.
+
+  Hay que importarlo en n8n para confirmar que funciona: no hay n8n en esta máquina.
+- [ ] **5. Zip por curso** con las actividades, que también publica el sitio:
+  - los PDF de respaldo del enunciado y la respuesta modelada;
+  - el HTML para Moodle y los insumos;
+  - el código o el workflow;
+  - un LEEME ceñido a las bases: 7.4, pág. 31, "Proceso de aprendizaje" (30 %); Anexo N°7, num. 7 b),
+    págs. 109–110; Anexo 2, VI a) a c), pág. 90; evaluación en el LMS, pág. 30.
+- [ ] **6. Entregar al usuario:** un PDF de respaldo por curso, con los enunciados de las dos actividades, y los
+  2 zips. Avisarle también del cambio en la pregunta 5 del video de PF1821.
 
 ## PRIMERO: recursos base del módulo 2 de PF1821 y PF1822 (meta del usuario: 25-sep temprano)
 
