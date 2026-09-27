@@ -469,3 +469,13 @@ Quién: usuario (postergar), claude-code (hallazgo), sesión `2026-09-27-claude-
 - El push incluye la nota de la sesión -12 sobre el acceso "cualquiera con el enlace, editor" de NATY 2.0 (#20), aunque el repo es
   público y la carpeta sigue abierta. Se le ofreció al usuario cerrar primero el acceso o dejar el detalle en `privado/`; eligió subir todo.
 Quién: usuario (decisión), sesión `2026-09-27-claude-code-13`.
+
+## 2026-09-27 · Quiz GIFT en la planilla (sesión claude-code, 2026-09-27-claude-code-14)
+
+- Pedido del usuario: que Natalia vea los GIFT desde la planilla de Drive. La planilla enlaza la vista web
+  (`quiz-modulo2.html#<PF>-q<n>` y `#<PF>-ae<n>`) en vez del archivo .gift, que el sitio sirve como descarga. La vista suma los
+  quiz por aprendizaje, con las preguntas abiertas y su respuesta esperada.
+- Se corrigió el lector del instrumento 3 en `scripts/produccion.mjs` para aceptar "*Respuesta," además de "*Respuesta:". Solo cambió
+  el GIFT del AE1 de PF1822; los PDF regenerados diferían solo en la fecha y se restauraron.
+- La planilla nueva se subió sin tocar la anterior: el conector resultó estar conectado con otra cuenta (#21).
+Quién: usuario (pedido), claude-code, sesión `2026-09-27-claude-code-14`.

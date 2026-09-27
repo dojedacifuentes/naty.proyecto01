@@ -42,6 +42,11 @@ cerrarlo, lo hace en Drive → Compartir → Acceso general. El usuario pidió s
 **Quiz GIFT en la web (sesión -13):** https://naty-proyecto01.vercel.app/quiz-modulo2.html muestra los 6 quiz GIFT como en Moodle.
 Sale sola de los `.gift` en cada build (`scripts/lib/quiz-gift.mjs`): si cambian los quiz, basta `npm run produccion` y push.
 Si el GIFT trae otra sintaxis (preguntas abiertas, emparejamiento), la vista se detiene y el build de Vercel falla: amplía el lector.
+**Planilla con la vista GIFT (sesión -14):** hay DOS "01 Planilla de seguimiento" en NATY 2.0. La nueva (id
+`1WupQSaktADlUaurlkssVvXdFuDcCs8y_n0mwr0MDKGk`) enlaza la vista de los quiz; la anterior (`1yjgTnjmrIxpQ3a1JBF3ZpSWC0rrKlG6-8qQvFI2Ypn4`)
+no. **El conector de Drive está conectado como maturana.eco@gmail.com, no como el usuario**: todo lo que crea queda a nombre de esa
+cuenta, y escribe en NATY 2.0 solo porque la carpeta está abierta como editor a cualquiera (#20). Pregunta #21 antes de mover o
+reemplazar la anterior. Si se cierra el acceso de la carpeta, el conector deja de poder escribir en ella salvo que se comparta con esa cuenta.
 **Drive y planilla (sesión -07, antecedente):** `npm run drive` arma la carpeta para subir a Drive; el usuario la sube a mano. Después:
 buscar la carpeta con el conector de Drive, escribir `privado/drive/enlaces.json` (ruta relativa → URL), `npm run planilla` y
 subir el .xlsx con `create_file` (se convierte en Sheets). La versión 1 (sin enlaces de Drive) está en Drive con id
