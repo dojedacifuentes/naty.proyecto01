@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-01 (Claude Code · opus-5.5)
+**Por:** 2026-09-27-claude-code-02 (Canva · sesión operada desde Codex)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -173,6 +173,14 @@ Sesión claude-code-01, 2026-09-27: estándar de recursos de la contraparte.
 - [x] 3 quiz para Canva por curso, con preguntas nuevas y validadas (falta armarlos en Canva).
 - [x] Glosario del módulo en PDF, CSV y XML de Moodle; metodología en PDF; zips de Drive con glosario.
 - [ ] Marca por cliente: comando listo (`npm run marca`); faltan logos y colores de UNAB, Skillnest y Autónoma.
+
+Sesión claude-code-02, 2026-09-27: quizzes del módulo 2 en Canva.
+
+- [x] Creados los 6 quizzes formativos de G3: tres para PF1821 y tres para PF1822.
+- [x] Cada diseño tiene 11 páginas: portada, 5 preguntas y 5 retroalimentaciones; nombres, AE, momento de aplicación y casos ficticios verificados.
+- [x] Las preguntas, alternativas, respuestas correctas y retroalimentaciones se mantuvieron literales desde `produccion/quiz-canva/Quiz-n.txt`; no se modificaron las fuentes.
+- [x] Los seis enlaces quedaron registrados como `listo para revisión` en la fila G3 y en el registro de ambos `ESTADO.md`.
+- [ ] Conversión a elemento Quiz interactivo: manual en Canva, porque el conector disponible solo crea y edita diseños y no expone elementos de quiz o formularios con respuestas.
 
 ## A medias
 
