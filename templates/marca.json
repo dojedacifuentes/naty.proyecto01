@@ -1,9 +1,10 @@
 {
   "nombre": "PENDIENTE: nombre de la institución, como va en el pie de cada PDF",
   "corto": "PENDIENTE: sigla o nombre corto (opcional; si falta se usa el nombre)",
-  "logo": "logo.png  (PNG con fondo transparente, o SVG con el texto convertido a trazos: si el SVG trae texto, agrega una tipografía al PDF)",
+  "logo": "logo.png  (PNG con fondo transparente, o SVG con viewBox y el texto convertido a trazos: si el SVG trae texto, agrega una tipografía al PDF)",
   "logo_fondo": "blanco  (o \"ninguno\": el logo va directo sobre el color primario, para logos con texto blanco)",
-  "logo_alto_mm": "11  (alto del logo en mm; súbelo para logos casi cuadrados)",
+  "logo_negativo": "(opcional) logo-blanco.png  (versión en blanco del logo: si está, va sin placa sobre el color primario, en vez de \"logo\" con placa)",
+  "logo_alto_mm": "14  (tope del alto del logo en la cabecera, en mm; el tamaño se calcula solo según la forma del logo, a igual área, y las portadas lo escalan)",
   "colores": {
     "primario": "PENDIENTE: #RRGGBB, color principal (cabeceras y tablas; con texto blanco encima, contraste 4,5:1)",
     "secundario": "PENDIENTE: #RRGGBB, segundo color (subtítulos y enlaces sobre blanco, contraste 4,5:1)",
