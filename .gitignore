@@ -39,3 +39,6 @@ state/diferenciacion.csv
 
 # Sitio estático que publica Vercel (npm run sitio). Se regenera en cada despliegue.
 public/
+
+# Marcas de clientes y recursos con marca: fuera del repo publico (DECISIONS.md, 2026-09-27)
+privado/

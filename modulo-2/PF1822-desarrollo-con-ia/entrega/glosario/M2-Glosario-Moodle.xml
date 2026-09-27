@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GLOSSARY>
+  <INFO>
+    <NAME>Glosario del módulo 2</NAME>
+    <INTRO>PF1822 · Módulo 2: INTRODUCCIÓN A MODELOS GENERATIVOS Y CONSUMO POR API</INTRO>
+    <INTROFORMAT>1</INTROFORMAT>
+    <ALLOWDUPLICATEDENTRIES>0</ALLOWDUPLICATEDENTRIES>
+    <DISPLAYFORMAT>dictionary</DISPLAYFORMAT>
+    <SHOWSPECIAL>1</SHOWSPECIAL>
+    <SHOWALPHABET>1</SHOWALPHABET>
+    <SHOWALL>1</SHOWALL>
+    <ALLOWCOMMENTS>0</ALLOWCOMMENTS>
+    <USEDYNALINK>0</USEDYNALINK>
+    <DEFAULTAPPROVAL>1</DEFAULTAPPROVAL>
+    <GLOBALGLOSSARY>0</GLOBALGLOSSARY>
+    <ENTBYPAGE>40</ENTBYPAGE>
+    <ENTRIES>
+      <ENTRY>
+        <CONCEPT>Alucinación</CONCEPT>
+        <DEFINITION>Respuesta que suena correcta pero contiene información falsa o que no estaba en la entrada. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>API REST</CONCEPT>
+        <DEFINITION>Interfaz que expone recursos en URL y se usa con métodos HTTP como GET y POST, con respuestas casi siempre en JSON. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Bearer</CONCEPT>
+        <DEFINITION>Esquema de autenticación en que la clave se envía en el encabezado Authorization precedida de esa palabra. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>BLEU</CONCEPT>
+        <DEFINITION>Métrica que mide cuánto de un texto generado aparece en la referencia, con penalización por ser demasiado corto. (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Código de estado</CONCEPT>
+        <DEFINITION>Número de tres cifras de una respuesta HTTP que indica el resultado: 2xx éxito, 4xx error de la solicitud, 5xx error del servicio. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Docstring</CONCEPT>
+        <DEFINITION>Texto de documentación al comienzo de una clase o función de Python, que explica qué hace, qué recibe y qué devuelve. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Embedding</CONCEPT>
+        <DEFINITION>Representación de un texto como vector de números, que permite comparar textos por su significado. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Endpoint</CONCEPT>
+        <DEFINITION>URL de una API que ofrece una operación concreta, como /v1/embeddings. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Few-shot</CONCEPT>
+        <DEFINITION>Estrategia de prompting que agrega a las instrucciones algunos ejemplos resueltos de entrada y salida. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>httpx</CONCEPT>
+        <DEFINITION>Biblioteca de Python para hacer solicitudes HTTP, con tiempos de espera por defecto y simulación para pruebas. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>IA generativa</CONCEPT>
+        <DEFINITION>Rama de la inteligencia artificial que produce contenido nuevo, como texto, código, imágenes o audio. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Lema</CONCEPT>
+        <DEFINITION>Forma de diccionario de una palabra, como "poder" para "pude". (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Mensaje de sistema</CONCEPT>
+        <DEFINITION>Mensaje con rol system que fija el comportamiento general del modelo: rol, reglas y formato. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Modelo autorregresivo</CONCEPT>
+        <DEFINITION>Modelo que genera la salida un token a la vez, prediciendo cada uno a partir de los anteriores. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Modelo de difusión</CONCEPT>
+        <DEFINITION>Modelo que genera imágenes o audio refinando ruido aleatorio en muchos pasos. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>N-grama</CONCEPT>
+        <DEFINITION>Secuencia de n tokens consecutivos, como el bigrama "iniciar sesión". (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Pipeline</CONCEPT>
+        <DEFINITION>Arquitectura de etapas encadenadas, donde la salida de cada etapa es la entrada de la siguiente. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Prompt</CONCEPT>
+        <DEFINITION>Entrada que recibe un modelo generativo; contiene la instrucción de la tarea y los datos sobre los que debe trabajar. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Prueba unitaria</CONCEPT>
+        <DEFINITION>Prueba automática que verifica una pieza de código de forma aislada, como un método de un cliente de API. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>ROUGE</CONCEPT>
+        <DEFINITION>Métrica que mide cuánto de un texto de referencia aparece en un texto generado. (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Solicitud–respuesta</CONCEPT>
+        <DEFINITION>Arquitectura en que la aplicación hace una llamada al modelo y espera su respuesta para mostrarla. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Stemming</CONCEPT>
+        <DEFINITION>Técnica que reduce una palabra a su raíz recortando sufijos con reglas fijas. (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Stopwords</CONCEPT>
+        <DEFINITION>Palabras muy frecuentes y de poco contenido, como artículos y preposiciones, que se quitan al analizar temas. (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Temperature</CONCEPT>
+        <DEFINITION>Parámetro que controla la variedad de la respuesta; valores bajos dan salidas más estables. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>TF-IDF</CONCEPT>
+        <DEFINITION>Forma de vectorizar un texto que pondera cada palabra por su frecuencia en el texto y su rareza en el conjunto. (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Token</CONCEPT>
+        <DEFINITION>Unidad de texto que procesa el modelo; puede ser una palabra, parte de una palabra o un signo. (AE3, AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Top_p</CONCEPT>
+        <DEFINITION>Parámetro que limita la elección a los tokens más probables hasta una probabilidad acumulada. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Transformer</CONCEPT>
+        <DEFINITION>Arquitectura de red neuronal basada en atención, en la que se apoyan la mayoría de los modelos de lenguaje actuales. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Variable de entorno</CONCEPT>
+        <DEFINITION>Valor que el sistema entrega al programa al ejecutarlo; se usa para guardar claves fuera del código. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Vector store</CONCEPT>
+        <DEFINITION>Base de datos que guarda embeddings y permite buscar los más parecidos a uno dado. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Zero-shot</CONCEPT>
+        <DEFINITION>Estrategia de prompting que pide la tarea solo con instrucciones, sin ejemplos. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+    </ENTRIES>
+  </INFO>
+</GLOSSARY>

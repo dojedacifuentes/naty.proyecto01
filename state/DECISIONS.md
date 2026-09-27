@@ -327,3 +327,24 @@ Quién: usuario (pedido de apuntar al 7) y claude-code (diseño), sesión `2026-
   mitad en los PDF y en Moodle. Las lecturas no cambian (su HTML se comparó antes y después).
 Quién: usuario (pedido) y claude-code (diseño), sesión `2026-09-25-claude-code-13`.
 
+## 2026-09-27 · Estándar de recursos de la contraparte (sesión claude-code, 2026-09-27-claude-code-01)
+
+- Se adopta el estándar de la contraparte (planilla "Recursos a desarrollar", con cursos que sacaron 7):
+  por curso, **video de bienvenida al curso** (no al módulo), **video resumen del módulo**, **3 quiz**
+  (en Canva), **infografía** y **lectura** (en Rise, en lugar de flipbook, hecha desde los PDF de lectura),
+  más un **glosario** del módulo. Por qué: la contraparte dice que así se aterriza lo amplio de las bases
+  y que con eso han obtenido 7. Lo ya hecho (cápsulas por AE, 5 infografías, quiz GIFT) se mantiene.
+  Nota: las bases no exigen cápsulas ni este formato; se justifican en el Anexo N°7, num. 7 c) y d), pág. 110.
+- Los 3 quiz se reparten por tramo (Quiz 1: AE1 y AE2 · Quiz 2: AE3 · Quiz 3: AE4), 5 preguntas cada uno,
+  con preguntas **nuevas**: no repiten la prueba objetiva ni el video interactivo, para no adelantar la
+  evaluación. Quién: usuario (reparto). Alternativas descartadas: diagnóstico-avance-cierre, y uno por AE sin el AE1.
+- El glosario del módulo junta los 32 términos de las 4 lecturas; un término repetido (Credencial en
+  PF1821, Token en PF1822) queda una vez, con la definición de la primera lectura y los dos aprendizajes.
+- **Marca por cliente fuera del repo:** `npm run marca -- <cliente>` reimprime los PDF con los colores, el
+  logo y el nombre del cliente desde `privado/marcas/<cliente>/`, que git ignora. Por qué: el repo es
+  público y los clientes compiten entre sí (#11). Los colores deben cumplir 4,5:1 con el blanco, como el
+  diseño neutro; el comando se niega si no. No se inventaron colores ni logos: faltan los manuales de marca.
+- `npm run produccion` deja en `.scratch/produccion/<PF>/manifiesto.json` qué HTML da cada PDF (lo usa
+  `npm run marca`), y escribe los HTML también con `--sin-pdf`.
+Quién: usuario y contraparte (estándar), claude-code (implementación), sesión `2026-09-27-claude-code-01`.
+

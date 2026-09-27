@@ -1,9 +1,28 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06` y
-`2026-09-25-claude-code-01` a `-13` — 2026-09-24/25
+`2026-09-25-claude-code-01` a `-13` y `2026-09-27-claude-code-01` — 2026-09-24/27
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
+
+## EN CURSO: estándar de recursos de la contraparte (27-sep)
+
+La contraparte revisó los entregables y pidió su estándar (DECISIONS, 2026-09-27). Estado:
+- **Hecho:** guiones y PPT para HeyGen de la **bienvenida al curso** y el **resumen del módulo**
+  (`contenidos/<PF>/modulo-2/R-videos-curso.md` → `produccion/videos/00-bienvenida-curso` y `90-resumen-modulo`);
+  **3 quiz para Canva** por curso (`R-quiz-canva.md` → `produccion/quiz-canva/Quiz-n.txt`, validados al generar);
+  **glosario** (`entrega/glosario/`, PDF, CSV y XML de Moodle). Todo en el zip `estandar-contraparte-modulo2.zip` del sitio,
+  y el glosario también en los zips de Drive.
+- **Marca por cliente:** el comando existe (`npm run marca -- <cliente>`, probado con una marca de prueba que se
+  borró). **Faltan los logos y colores** de UNAB, Skillnest y Autónoma: van en `privado/marcas/<cliente>/`
+  (`marca.json` + `logo.png`), que git ignora a propósito. Las carpetas y su `marca.json` con los cursos ya existen
+  en la máquina del usuario, con los colores `PENDIENTE:`. **No inventes colores ni logos.** Antes de correrlo,
+  `npm run produccion -- PF1821 PF1822` (deja el manifiesto que usa).
+- **Riesgo abierto (#18):** los mismos recursos con distinta marca para clientes que compiten en el mismo plan.
+  Hay que decirlo al entregar los PDF con marca.
+- **Del usuario:** grabar G1 y G2 en HeyGen, armar G3 en Canva y G5 en Rise (desde los PDF de lectura).
+- Después de cerrar la sesión -13 se hizo un commit fuera de sesión (`7c3f51f`: metodología en PDF y zip de Drive);
+  queda registrado en el log de esta sesión.
 
 ## HECHO: actividades del módulo 2 (pedido del usuario del 25-sep, sesiones -12 y -13)
 

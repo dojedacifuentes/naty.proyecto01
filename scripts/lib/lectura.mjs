@@ -103,7 +103,7 @@ function preguntas(lineas) {
   return out;
 }
 
-function terminos(lineas) {
+export function terminos(lineas) {
   return lineas.map((l) => /^- \*\*(.+?)\*\*:?\s*(.+)$/.exec(l)).filter(Boolean)
     .map((m) => ({ termino: m[1].replace(/:$/, ''), definicion: m[2] }))
     .sort((a, b) => a.termino.localeCompare(b.termino, 'es', { sensitivity: 'base' }));

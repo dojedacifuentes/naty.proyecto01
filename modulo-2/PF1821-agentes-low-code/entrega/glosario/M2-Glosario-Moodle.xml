@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GLOSSARY>
+  <INFO>
+    <NAME>Glosario del módulo 2</NAME>
+    <INTRO>PF1821 · Módulo 2: FUNDAMENTOS DE N8N Y MANIPULACIÓN DE DATOS</INTRO>
+    <INTROFORMAT>1</INTROFORMAT>
+    <ALLOWDUPLICATEDENTRIES>0</ALLOWDUPLICATEDENTRIES>
+    <DISPLAYFORMAT>dictionary</DISPLAYFORMAT>
+    <SHOWSPECIAL>1</SHOWSPECIAL>
+    <SHOWALPHABET>1</SHOWALPHABET>
+    <SHOWALL>1</SHOWALL>
+    <ALLOWCOMMENTS>0</ALLOWCOMMENTS>
+    <USEDYNALINK>0</USEDYNALINK>
+    <DEFAULTAPPROVAL>1</DEFAULTAPPROVAL>
+    <GLOBALGLOSSARY>0</GLOBALGLOSSARY>
+    <ENTBYPAGE>40</ENTBYPAGE>
+    <ENTRIES>
+      <ENTRY>
+        <CONCEPT>Autoalojamiento</CONCEPT>
+        <DEFINITION>Instalar una aplicación en infraestructura propia en vez de usarla como servicio del proveedor. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Canvas</CONCEPT>
+        <DEFINITION>Lienzo del editor de n8n donde se ven y se conectan los nodos de un workflow. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Caso borde</CONCEPT>
+        <DEFINITION>Entrada poco común o no prevista, como un campo vacío o un valor inesperado, que puede romper la lógica. (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Clave foránea</CONCEPT>
+        <DEFINITION>Columna que guarda el identificador de una fila de otra tabla y así las relaciona, como pedido_id en devoluciones. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Conexión</CONCEPT>
+        <DEFINITION>Línea que une dos nodos y define por dónde pasan los datos. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Credencial</CONCEPT>
+        <DEFINITION>Dato de acceso a otro servicio que n8n guarda cifrado y fuera del workflow. (AE1, AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>CRUD</CONCEPT>
+        <DEFINITION>Las cuatro operaciones básicas sobre datos: crear, leer, actualizar y borrar. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Datos fijados</CONCEPT>
+        <DEFINITION>Salida de un nodo que se deja fija (*pin data*) para probar los nodos siguientes sin repetir el trigger. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Edit Fields (Set)</CONCEPT>
+        <DEFINITION>Nodo que crea, modifica o elimina campos de los ítems y declara su tipo. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Ejecución</CONCEPT>
+        <DEFINITION>Cada vez que un workflow corre de principio a fin, registrada con los datos de cada nodo. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Error Trigger</CONCEPT>
+        <DEFINITION>Nodo que inicia un workflow de errores cada vez que falla una ejecución de otro workflow. (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Expresión</CONCEPT>
+        <DEFINITION>Código entre dobles llaves que n8n evalúa para cada ítem, como {{ $json.email }}. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Historial de ejecuciones</CONCEPT>
+        <DEFINITION>Registro de cada vez que corrió un workflow, con su estado y los datos de cada nodo. (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>If</CONCEPT>
+        <DEFINITION>Nodo que evalúa una condición y envía cada ítem por la salida verdadera o por la falsa. (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Ítem</CONCEPT>
+        <DEFINITION>Unidad de datos que pasa de un nodo a otro en n8n; es un objeto JSON con campos y valores. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Merge</CONCEPT>
+        <DEFINITION>Nodo que une los ítems de dos entradas, a continuación o combinándolos por un campo, por posición o en todas sus combinaciones. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Nodo</CONCEPT>
+        <DEFINITION>Cada paso de un workflow en n8n; puede ser disparador, acción, lógica o transformación. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Operador lógico</CONCEPT>
+        <DEFINITION>Operador que combina condiciones: AND exige todas, OR al menos una y la negación invierte el resultado. (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Panel de configuración</CONCEPT>
+        <DEFINITION>Vista que se abre al hacer doble clic en un nodo, con sus parámetros, su credencial, sus ajustes y los paneles de entrada y salida. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Parámetro</CONCEPT>
+        <DEFINITION>Dato que un nodo necesita para hacer su trabajo, como la operación, la tabla o un campo. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>ROI</CONCEPT>
+        <DEFINITION>Retorno de la inversión; compara el beneficio obtenido con el costo de lograrlo. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Salida de respaldo</CONCEPT>
+        <DEFINITION>Salida extra del Switch (*Fallback Output*) que recibe los ítems que no cumplen ninguna regla. (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Schedule Trigger</CONCEPT>
+        <DEFINITION>Trigger que ejecuta un workflow cada cierto tiempo o en un momento fijo. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Summarize</CONCEPT>
+        <DEFINITION>Nodo que agrupa los ítems por uno o más campos y calcula sumas, conteos o promedios por grupo. (AE3)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Switch</CONCEPT>
+        <DEFINITION>Nodo que envía cada ítem a una de varias salidas según reglas o según el resultado de una expresión. (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Trazabilidad</CONCEPT>
+        <DEFINITION>Capacidad de reconstruir qué pasó con cada dato: su ruta, su decisión y su ejecución. (AE4)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Trigger</CONCEPT>
+        <DEFINITION>Nodo disparador que inicia un workflow, como la llegada de un formulario o una hora programada. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>URL de producción</CONCEPT>
+        <DEFINITION>Dirección de un formulario o webhook que recibe datos cuando el workflow está activo. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>URL de prueba</CONCEPT>
+        <DEFINITION>Dirección de un formulario o webhook que solo recibe datos mientras el editor está escuchando. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Webhook</CONCEPT>
+        <DEFINITION>URL que entrega n8n para que otra aplicación inicie un workflow enviando una solicitud HTTP. (AE2)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+      <ENTRY>
+        <CONCEPT>Workflow</CONCEPT>
+        <DEFINITION>Secuencia de pasos que transforma una entrada en un resultado; automatizado, se ejecuta solo al ocurrir un disparador. (AE1)</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>
+    </ENTRIES>
+  </INFO>
+</GLOSSARY>

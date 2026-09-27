@@ -1,0 +1,43 @@
+PF1821 · Módulo 2 · Quiz 2 · Transformar datos (AE3)
+Cuándo: al cerrar el tramo 3, después del tutorial y de la parte C de la actividad 1.
+Formativo: sin nota. Muestra la retroalimentación al responder.
+
+PREGUNTA 1 (AE3)
+En n8n, cada ítem que viaja de un nodo a otro es:
+  A) Una fila de Excel
+  B) Un objeto JSON con campos y valores   <- CORRECTA
+  C) Un archivo XML
+  D) Un texto plano sin estructura
+  Retroalimentación: n8n trabaja con ítems en JSON: cada uno tiene campos con su valor, como nombre, comuna o total. Los nodos procesan los ítems uno por uno.
+
+PREGUNTA 2 (AE3)
+Necesitas quedarte solo con los pedidos de la comuna de Temuco. ¿Qué nodo usas?
+  A) Summarize
+  B) Merge
+  C) Split Out
+  D) Filter   <- CORRECTA
+  Retroalimentación: Filter deja pasar solo los ítems que cumplen una condición. Summarize agrupa y calcula, Merge une dos flujos y Split Out separa una lista en ítems.
+
+PREGUNTA 3 (AE3)
+Un pedido trae una lista productos con tres elementos y necesitas un ítem por producto. ¿Qué nodo usas?
+  A) Split Out   <- CORRECTA
+  B) Merge
+  C) Summarize
+  D) If
+  Retroalimentación: Split Out convierte los elementos de una lista en ítems separados, para procesar cada producto por su cuenta.
+
+PREGUNTA 4 (AE3)
+¿Qué nodo transforma los ítems en un archivo CSV para descargarlo o enviarlo?
+  A) Extract from File
+  B) Edit Fields (Set)
+  C) Convert to File   <- CORRECTA
+  D) Summarize
+  Retroalimentación: Convert to File genera el archivo, en CSV u otros formatos. Extract from File hace lo contrario: lee un archivo y lo convierte en ítems.
+
+PREGUNTA 5 (AE3)
+¿Qué operación del nodo de Supabase usas para agregar un pedido nuevo a la tabla pedidos?
+  A) Get many rows
+  B) Create a row   <- CORRECTA
+  C) Update a row
+  D) Delete a row
+  Retroalimentación: Crear, leer, actualizar y borrar son las cuatro operaciones CRUD. Un pedido nuevo es una fila nueva: Create a row.

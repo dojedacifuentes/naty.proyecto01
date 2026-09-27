@@ -1,0 +1,12 @@
+{
+  "nombre": "PENDIENTE: nombre de la institución, como va en el pie de cada PDF",
+  "corto": "PENDIENTE: sigla o nombre corto (opcional; si falta se usa el nombre)",
+  "logo": "logo.png  (PNG con fondo transparente, o SVG con el texto convertido a trazos: si el SVG trae texto, agrega una tipografía al PDF)",
+  "colores": {
+    "primario": "PENDIENTE: #RRGGBB, color principal (cabeceras y tablas; con texto blanco encima, contraste 4,5:1)",
+    "secundario": "PENDIENTE: #RRGGBB, segundo color (subtítulos y enlaces sobre blanco, contraste 4,5:1)",
+    "acento": "PENDIENTE: #RRGGBB, color de detalle (líneas y números grandes; solo decorativo)"
+  },
+  "cursos": ["PF1821"],
+  "fuente": "PENDIENTE: de dónde salen los colores y el logo (manual de marca, versión y fecha)"
+}

@@ -1,0 +1,43 @@
+PF1822 · Módulo 2 · Quiz 1 · Modelos y consumo por API (AE1 y AE2)
+Cuándo: al cerrar la estación 2, después de la parte B de la actividad 1.
+Formativo: sin nota. Muestra la retroalimentación al responder.
+
+PREGUNTA 1 (AE1)
+¿Qué diferencia a la IA generativa de un sistema basado en reglas?
+  A) Solo responde con reglas escritas a mano por un programador
+  B) No necesita datos para funcionar
+  C) Produce contenido nuevo a partir de patrones aprendidos de datos   <- CORRECTA
+  D) Siempre da exactamente la misma respuesta
+  Retroalimentación: Un sistema de reglas hace solo lo que alguien programó. Un modelo generativo aprendió patrones de muchos datos y con ellos produce texto, imágenes o código nuevos.
+
+PREGUNTA 2 (AE1)
+¿Cuál de estas tareas de la mesa de ayuda de Nube Sur es un caso de uso de la IA generativa de texto?
+  A) Calcular el IVA de una factura
+  B) Resumir un ticket largo en una oración   <- CORRECTA
+  C) Ordenar los tickets por fecha
+  D) Respaldar la base de datos
+  Retroalimentación: Resumir es uno de los casos de uso típicos, como generar texto o código y responder preguntas. Las otras tareas se resuelven mejor con reglas o consultas fijas.
+
+PREGUNTA 3 (AE1)
+En la arquitectura del resumidor, ¿qué componente limpia y prepara el texto antes de enviarlo al modelo?
+  A) El vector store
+  B) El cliente
+  C) El modelo de IA
+  D) El módulo de preprocesamiento   <- CORRECTA
+  Retroalimentación: El preprocesamiento quita HTML, firmas y datos personales antes de llamar al modelo: la entrada queda más limpia y más segura.
+
+PREGUNTA 4 (AE2)
+¿Qué método HTTP se usa normalmente para enviar un prompt a la API de un modelo y recibir la respuesta?
+  A) POST   <- CORRECTA
+  B) GET
+  C) DELETE
+  D) HEAD
+  Retroalimentación: El prompt y los parámetros van en el cuerpo de la solicitud, y eso se hace con POST. GET se usa para consultar recursos, como la lista de modelos.
+
+PREGUNTA 5 (AE2)
+La API responde con el código de estado 401. ¿Qué es lo más probable?
+  A) Se superó el límite de solicitudes
+  B) El servidor tuvo un error interno
+  C) La clave de la API falta o no es válida   <- CORRECTA
+  D) La solicitud salió bien
+  Retroalimentación: 401 significa que no hay autenticación válida. Si fuera un exceso de solicitudes sería 429, y un error del servidor, 500. Éxito es 200.

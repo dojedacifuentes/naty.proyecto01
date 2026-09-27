@@ -1,0 +1,41 @@
+PF1821 · Módulo 2 · Quiz 1 · Entender y construir (AE1 y AE2)
+Cuándo: al cerrar el tramo 2, después del workflow "Pedido a registro".
+Formativo: sin nota. Muestra la retroalimentación al responder.
+
+PREGUNTA 1 (AE1)
+¿Cuál de estas tareas de Mercado Austral conviene menos automatizar?
+  A) Enviar un correo de confirmación por cada pedido
+  B) Sumar las ventas por comuna cada viernes
+  C) Decidir qué proveedor nuevo contratar   <- CORRECTA
+  D) Registrar en la base los pedidos del formulario
+  Retroalimentación: Conviene automatizar lo repetitivo, de alto volumen y con reglas claras. Elegir un proveedor es una decisión de criterio, distinta cada vez: sigue siendo de las personas.
+
+PREGUNTA 2 (AE1)
+Mercado Austral recibe 40 pedidos al día y copiar cada uno a la planilla toma 3 minutos. ¿Cuánto tiempo diario libera automatizar ese registro?
+  A) 40 minutos
+  B) 2 horas   <- CORRECTA
+  C) 3 horas
+  D) 12 horas
+  Retroalimentación: 40 pedidos × 3 minutos = 120 minutos, o sea 2 horas al día. Es la base para calcular el retorno de una automatización.
+
+PREGUNTA 3 (AE1)
+¿Dónde guarda n8n, de forma segura, los datos de acceso a un servicio como Supabase?
+  A) En una expresión dentro del nodo
+  B) En el nombre del workflow
+  C) En el historial de ejecuciones
+  D) En una credencial   <- CORRECTA
+  Retroalimentación: Las credenciales se guardan cifradas y fuera del workflow. Así no quedan escritas en un nodo ni aparecen en una captura.
+
+PREGUNTA 4 (AE2)
+Verdadero o falso: "Un workflow sin trigger se ejecuta solo cada vez que llega un pedido nuevo."
+  A) Verdadero
+  B) Falso   <- CORRECTA
+  Retroalimentación: Para ejecutarse solo ante un evento, el workflow necesita un trigger, como un Form Trigger o un Webhook. Sin trigger, solo se ejecuta cuando lo corres a mano.
+
+PREGUNTA 5 (AE2)
+Tu workflow "Pedido a registro" falla en el nodo de Supabase. ¿Qué revisas primero?
+  A) El nombre del workflow
+  B) La lista de workflows de la cuenta
+  C) El panel de entrada (Input) del nodo de Supabase, para ver qué datos le llegaron   <- CORRECTA
+  D) El idioma de la interfaz de n8n
+  Retroalimentación: Cada nodo muestra lo que recibe y lo que entrega. Si el nodo que guarda falla, casi siempre la pista está en los datos que le llegaron.

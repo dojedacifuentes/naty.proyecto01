@@ -2,8 +2,8 @@
 
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
-**Última actualización:** 2026-09-25
-**Por:** 2026-09-25-claude-code-13 (Claude Code · opus-5.5)
+**Última actualización:** 2026-09-27
+**Por:** 2026-09-27-claude-code-01 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -167,6 +167,12 @@ Sesiones claude-code-12 y -13, 2026-09-25: el plan de actividades, hecho (casill
 - [x] Workflow roto y corregido de PF1821, pedidos de prueba, comunas y SQL (`scripts/lib/workflow-roto.mjs`).
       **No se importó en n8n.**
 - [x] Zip de actividades por curso con LEEME citado a las bases, publicado en `descargas/` del sitio.
+
+Sesión claude-code-01, 2026-09-27: estándar de recursos de la contraparte.
+- [x] Guion y PPT de bienvenida al curso y de resumen del módulo, por curso (falta grabarlos).
+- [x] 3 quiz para Canva por curso, con preguntas nuevas y validadas (falta armarlos en Canva).
+- [x] Glosario del módulo en PDF, CSV y XML de Moodle; metodología en PDF; zips de Drive con glosario.
+- [ ] Marca por cliente: comando listo (`npm run marca`); faltan logos y colores de UNAB, Skillnest y Autónoma.
 
 ## A medias
 

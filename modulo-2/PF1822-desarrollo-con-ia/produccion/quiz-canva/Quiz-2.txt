@@ -1,0 +1,43 @@
+PF1822 · Módulo 2 · Quiz 2 · Diseño de prompts (AE3)
+Cuándo: al cerrar la estación 3, después del notebook guiado y del video interactivo.
+Formativo: sin nota. Muestra la retroalimentación al responder.
+
+PREGUNTA 1 (AE3)
+Un prompt zero-shot es:
+  A) Un prompt que siempre usa temperatura 0
+  B) Una instrucción sin ejemplos resueltos   <- CORRECTA
+  C) Un prompt vacío
+  D) Un prompt que el modelo no puede responder
+  Retroalimentación: Zero-shot: le das la tarea sin ejemplos. Si agregas ejemplos resueltos de entrada y salida, pasa a ser few-shot.
+
+PREGUNTA 2 (AE3)
+En un prompt para el resumidor, ¿cuál de estas frases es una restricción?
+  A) "Eres un analista de soporte."
+  B) "Este ticket viene de la app de facturación."
+  C) "Hola, ¿cómo estás?"
+  D) "Responde en una sola oración de máximo 25 palabras."   <- CORRECTA
+  Retroalimentación: 'Eres un analista de soporte' es el rol y 'Este ticket viene de la app de facturación' es el contexto. La restricción limita la respuesta: largo, formato o lo que no debe hacer.
+
+PREGUNTA 3 (AE3)
+¿Qué efecto tiene subir la temperatura de 0,2 a 0,9?
+  A) Respuestas más variadas y menos predecibles   <- CORRECTA
+  B) Respuestas siempre más cortas
+  C) Respuestas más exactas
+  D) El modelo deja de responder
+  Retroalimentación: Con más temperatura, el modelo elige palabras menos probables: gana variedad y pierde consistencia. Para resúmenes técnicos conviene una temperatura baja.
+
+PREGUNTA 4 (AE3)
+Además del rol, el contexto y las restricciones, un buen prompt para el resumidor incluye:
+  A) Emojis para que suene amable
+  B) La clave de la API
+  C) El formato de salida esperado   <- CORRECTA
+  D) El historial del navegador
+  Retroalimentación: Decir el formato, como una oración que empiece con 'El usuario…', hace que las respuestas sean comparables y fáciles de usar.
+
+PREGUNTA 5 (AE3)
+Al iterar un prompt, la buena práctica es:
+  A) Cambiar todo en cada versión
+  B) Cambiar una cosa a la vez y anotar qué efecto tuvo   <- CORRECTA
+  C) Borrar las versiones anteriores
+  D) Probar solo con un ticket
+  Retroalimentación: Si cambias varias cosas juntas no sabes cuál produjo la mejora. El registro de iteraciones es la evidencia para decidir.

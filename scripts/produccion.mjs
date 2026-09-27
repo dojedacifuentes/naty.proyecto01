@@ -29,7 +29,7 @@ import { leer, escribir, ruta, rel } from './lib/repo.mjs';
 import { crearPptx } from './lib/pptx.mjs';
 import { markdown, estilos, esc } from './lib/html.mjs';
 import { imprimirPdf, navegador } from './lib/pdf.mjs';
-import { leerLectura, verificarLectura, lecturaHtml, palabras } from './lib/lectura.mjs';
+import { leerLectura, verificarLectura, lecturaHtml, palabras, terminos } from './lib/lectura.mjs';
 import { leerNotebook, notebookJson, verificarNotebook } from './lib/notebook.mjs';
 import { documentoPdfHtml, moodleHtml } from './lib/documento.mjs';
 import { workflowActividad2, pedidosPruebaJson, comunasCsv, sqlActividad2 } from './lib/workflow-roto.mjs';
@@ -287,29 +287,44 @@ function videoCapsula(pf, c, cap, f, fichaMd) {
   return { pptx: crearPptx({ titulo: `${pf} · Cápsula ${cap.n} · ${cap.titulo}`, pie, laminas }), guion };
 }
 
-function videoBienvenida(pf, c, md, modulo) {
-  const filas = seccion(md, /^## R01\b/).filter((l) => /^\| *\d+:\d\d/.test(l)).map(celdas);
+// Video con presentador desde una tabla "Tiempo | Imagen | Locución" de una sección del contenido.
+function videoPresentador(pf, md, desde, { titulo, portada, subtitulo, archivo, pie, final }) {
+  const filas = seccion(md, desde).filter((l) => /^\| *\d+:\d\d/.test(l)).map(celdas);
+  if (!filas.length) throw new Error(`${pf}: la sección ${desde} no trae la tabla del guion`);
   const laminas = filas.map(([tiempo, imagen, locucion], i) => ({
     portada: i === 0,
-    titulo: i === 0 ? `Módulo 2: ${modulo}` : `Escena ${i + 1}`,
-    vinetas: i === 0 ? [c.curso] : [`Imagen sugerida (reemplazar antes de grabar): ${imagen.replace(/\*/g, '')}`],
+    titulo: i === 0 ? portada : `Escena ${i + 1}`,
+    vinetas: i === 0 ? [subtitulo] : [`Imagen sugerida (reemplazar antes de grabar): ${imagen.replace(/\*/g, '')}`],
     notas: hablar(locucion.replace(/^"|"$/g, '')),
   }));
   const guion = [
-    `# ${pf} · Video de bienvenida — guion`,
+    `# ${pf} · ${titulo} — guion`,
     '',
-    'Base para HeyGen: `00-bienvenida.pptx`. Antes de grabar, reemplaza el texto "Imagen sugerida"',
+    `Base para HeyGen: \`${archivo}.pptx\`. Antes de grabar, reemplaza el texto "Imagen sugerida"`,
     'de cada lámina por la imagen o captura que indica (o déjala solo con el avatar).',
     '',
     '| Tiempo | Imagen | Narración |',
     '| --- | --- | --- |',
     ...filas.map(([t, img, loc]) => `| ${t} | ${img} | ${hablar(loc.replace(/^"|"$/g, ''))} |`),
     '',
-    'Placa final (la completa cada institución): nombre del tutor y horario de las sesiones sincrónicas.',
-    '',
+    ...(final ? [final, ''] : []),
   ].join('\n');
-  return { pptx: crearPptx({ titulo: `${pf} · Video de bienvenida`, pie: `${pf} · Módulo 2 · Bienvenida`, laminas }), guion };
+  return { pptx: crearPptx({ titulo: `${pf} · ${titulo}`, pie, laminas }), guion };
 }
+
+const videoBienvenida = (pf, c, md, modulo) => videoPresentador(pf, md, /^## R01\b/, {
+  titulo: 'Video de bienvenida', portada: `Módulo 2: ${modulo}`, subtitulo: c.curso, archivo: '00-bienvenida',
+  pie: `${pf} · Módulo 2 · Bienvenida`, final: 'Placa final (la completa cada institución): nombre del tutor y horario de las sesiones sincrónicas.' });
+
+// Estándar de la contraparte: un video de bienvenida al curso completo y uno de resumen del módulo.
+const videosCurso = (pf, c, md, modulo) => [
+  { archivo: '00-bienvenida-curso', ...videoPresentador(pf, md, /^## V1\b/, {
+    titulo: 'Video de bienvenida al curso', portada: c.curso, subtitulo: `${pf} · Curso completo`, archivo: '00-bienvenida-curso',
+    pie: `${pf} · Bienvenida al curso`, final: 'Placa final (la completa cada institución): nombre del tutor y dónde encontrar el calendario del curso.' }) },
+  { archivo: '90-resumen-modulo', ...videoPresentador(pf, md, /^## V2\b/, {
+    titulo: 'Video resumen del módulo 2', portada: `Módulo 2: ${modulo}`, subtitulo: c.curso, archivo: '90-resumen-modulo',
+    pie: `${pf} · Módulo 2 · Resumen` }) },
+];
 
 // Herramienta didáctica 2: el video base va a HeyGen y las preguntas se agregan después en H5P.
 function videoInteractivo(pf, c, md) {
@@ -849,6 +864,106 @@ ${partes(lista)}</section></body></html>`;
   ];
 }
 
+// Quiz para Canva (estándar de la contraparte): 3 por curso, uno por tramo, en texto plano para
+// copiar pregunta por pregunta. No se genera si una pregunta no tiene exactamente una respuesta
+// correcta y su retroalimentación, o si trae un aprendizaje que no es de su quiz.
+const AES_QUIZ = { 1: ['AE1', 'AE2'], 2: ['AE3'], 3: ['AE4'] };
+function quizCanva(pf, md) {
+  const errores = [];
+  const quizzes = [1, 2, 3].map((n) => {
+    const L = seccion(md, new RegExp(`^## Quiz ${n}\\b`));
+    if (!L.length) { errores.push(`falta el quiz ${n}`); return null; }
+    const cuando = /^\*\*Cuándo:\*\*\s*(.+)$/m.exec(L.join('\n'))?.[1] ?? '';
+    const preguntas = [];
+    for (const l of L) {
+      const p = /^(\d+)\. \*\((AE\d)\)\*\s*(.+)$/.exec(l);
+      if (p) { preguntas.push({ n: +p[1], ae: p[2], texto: p[3], opciones: [], retro: '' }); continue; }
+      const o = /^\s+- (\*\*)?([a-d])\) (.+?)(\*\*)?$/.exec(l);
+      if (o && preguntas.length) { preguntas.at(-1).opciones.push({ letra: o[2], texto: o[3], correcta: Boolean(o[1]) }); continue; }
+      const r = /^\s+\*Retroalimentación:\*\s*"?(.+?)"?$/.exec(l);
+      if (r && preguntas.length) preguntas.at(-1).retro = r[1];
+    }
+    if (preguntas.length !== 5) errores.push(`quiz ${n}: tiene ${preguntas.length} preguntas y deben ser 5`);
+    for (const p of preguntas) {
+      if (p.opciones.filter((o) => o.correcta).length !== 1) errores.push(`quiz ${n}, pregunta ${p.n}: debe tener una sola respuesta correcta en negrita`);
+      if (p.opciones.length < 2) errores.push(`quiz ${n}, pregunta ${p.n}: faltan opciones`);
+      if (!p.retro) errores.push(`quiz ${n}, pregunta ${p.n}: falta la retroalimentación`);
+      if (!AES_QUIZ[n].includes(p.ae)) errores.push(`quiz ${n}, pregunta ${p.n}: el ${p.ae} no es de este quiz (${AES_QUIZ[n].join(' y ')})`);
+    }
+    return { n, titulo: titulo(L), cuando, preguntas };
+  });
+  if (errores.length) throw new Error(`${pf} · R-quiz-canva.md:\n  - ${errores.join('\n  - ')}`);
+  const plano = (t) => t.replace(/\*\*|\*|`/g, '');
+  return quizzes.map((q) => ({
+    archivo: `Quiz-${q.n}.txt`,
+    texto: [`${pf} · Módulo 2 · ${plano(q.titulo)}`, `Cuándo: ${plano(q.cuando)}`, 'Formativo: sin nota. Muestra la retroalimentación al responder.', '',
+      ...q.preguntas.flatMap((p) => [
+        `PREGUNTA ${p.n} (${p.ae})`, plano(p.texto),
+        ...p.opciones.map((o) => `  ${o.letra.toUpperCase()}) ${plano(o.texto)}${o.correcta ? '   <- CORRECTA' : ''}`),
+        `  Retroalimentación: ${plano(p.retro)}`, '']),
+    ].join('\r\n'),
+  }));
+}
+
+// Glosario del módulo: los términos de las 4 lecturas, en orden alfabético y sin repetir (un término
+// que aparece en dos lecturas conserva la definición de la primera y nombra los dos aprendizajes).
+// Sale en PDF, en CSV (Rise, Canva, planillas) y en XML para importar en la actividad Glosario de Moodle.
+function glosarioModulo(pf, c, f, mod, lista, pdf, guardar, ent) {
+  if (!lista.length) return;
+  const unicos = [];
+  for (const t of lista) {
+    const previo = unicos.find((u) => u.termino.localeCompare(t.termino, 'es', { sensitivity: 'base' }) === 0);
+    if (previo) previo.aes.push(t.ae); else unicos.push({ termino: t.termino, definicion: mayuscula(t.definicion), aes: [t.ae] });
+  }
+  unicos.sort((a, b) => a.termino.localeCompare(b.termino, 'es', { sensitivity: 'base' }));
+  const plano = (t) => t.replace(/\*\*|`/g, '');
+  const md = [
+    `Los ${unicos.length} términos clave del módulo, tomados de los glosarios de las cuatro lecturas. La última columna dice en qué aprendizaje esperado se trabaja cada uno.`,
+    '',
+    '| Término | Definición | Aprendizaje |',
+    '| --- | --- | --- |',
+    ...unicos.map((t) => `| **${t.termino}** | ${t.definicion} | ${t.aes.join(' · ')} |`),
+  ].join('\n');
+  pdf(`${ent}/glosario/M2-Glosario.pdf`, documentoPdfHtml({
+    pf, curso: c.curso, modulo: f.modulo, codigo: mod.codigo, horas: mod.horas, pie: `${pf} · Módulo 2 · Glosario`,
+    kicker: 'Glosario del módulo', titulo: 'Glosario del módulo 2', md,
+    ficha: [['Términos', String(unicos.length)], ['Aprendizajes esperados', 'AE1 · AE2 · AE3 · AE4'], ['Documento', 'M2-Glosario.pdf']] }));
+  const csv = (x) => `"${plano(x).replace(/"/g, '""')}"`;
+  guardar(`${ent}/glosario/M2-Glosario.csv`, ['termino,definicion,aprendizaje', ...unicos.map((t) => [t.termino, t.definicion, t.aes.join(' · ')].map(csv).join(','))].join('\n') + '\n');
+  const xml = (x) => plano(x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  guardar(`${ent}/glosario/M2-Glosario-Moodle.xml`, `<?xml version="1.0" encoding="UTF-8"?>
+<GLOSSARY>
+  <INFO>
+    <NAME>Glosario del módulo 2</NAME>
+    <INTRO>${xml(`${pf} · Módulo 2: ${f.modulo}`)}</INTRO>
+    <INTROFORMAT>1</INTROFORMAT>
+    <ALLOWDUPLICATEDENTRIES>0</ALLOWDUPLICATEDENTRIES>
+    <DISPLAYFORMAT>dictionary</DISPLAYFORMAT>
+    <SHOWSPECIAL>1</SHOWSPECIAL>
+    <SHOWALPHABET>1</SHOWALPHABET>
+    <SHOWALL>1</SHOWALL>
+    <ALLOWCOMMENTS>0</ALLOWCOMMENTS>
+    <USEDYNALINK>0</USEDYNALINK>
+    <DEFAULTAPPROVAL>1</DEFAULTAPPROVAL>
+    <GLOBALGLOSSARY>0</GLOBALGLOSSARY>
+    <ENTBYPAGE>40</ENTBYPAGE>
+    <ENTRIES>
+${unicos.map((t) => `      <ENTRY>
+        <CONCEPT>${xml(t.termino)}</CONCEPT>
+        <DEFINITION>${xml(`${t.definicion} (${t.aes.join(', ')})`)}</DEFINITION>
+        <FORMAT>1</FORMAT>
+        <USEDYNALINK>0</USEDYNALINK>
+        <CASESENSITIVE>0</CASESENSITIVE>
+        <FULLMATCH>0</FULLMATCH>
+        <TEACHERENTRY>1</TEACHERENTRY>
+      </ENTRY>`).join('\n')}
+    </ENTRIES>
+  </INFO>
+</GLOSSARY>
+`);
+  console.log(`  glosario: ${unicos.length} términos`);
+}
+
 // ------------------------------------------------------------------ principal
 
 for (const pf of codigos) {
@@ -869,10 +984,15 @@ for (const pf of codigos) {
     hechos.push(rel(destino));
   };
   // HTML intermedio en .scratch/ (ignorado por git); el PDF queda en entrega/.
+  // El manifiesto dice qué HTML da cada PDF: lo usa `npm run marca` para imprimirlos con la marca de un cliente.
+  const manifiesto = `.scratch/produccion/${pf}/manifiesto.json`;
   const pdf = (destinoRel, html) => {
-    if (!conPdf) return;
     const tmp = `.scratch/produccion/${pf}/${destinoRel.split('/').pop().replace(/\.pdf$/, '.html')}`;
     escribir(tmp, html);
+    const m = fs.existsSync(ruta(manifiesto)) ? JSON.parse(leer(manifiesto)) : {};
+    m[destinoRel.slice(ent.length + 1)] = tmp;
+    escribir(manifiesto, JSON.stringify(m, null, 2) + '\n');
+    if (!conPdf) return;
     fs.mkdirSync(ruta(destinoRel.split('/').slice(0, -1).join('/')), { recursive: true });
     imprimirPdf(tmp, destinoRel);
     hechos.push(destinoRel);
@@ -880,6 +1000,7 @@ for (const pf of codigos) {
 
   // Material de lectura de cada AE: se revisa contra el plan antes de imprimirlo.
   const mod = datosModulo(fichaMd);
+  const glosario = [];
   for (const cap of caps) {
     const fuente = `${dir}/lecturas/${cap.ae}.md`;
     if (!fs.existsSync(ruta(fuente))) { console.warn(`  AVISO: falta ${fuente}; no se genera su lectura`); continue; }
@@ -888,11 +1009,14 @@ for (const pf of codigos) {
     const errores = verificarLectura(lectura, u);
     if (errores.length) throw new Error(`${fuente}:\n  - ${errores.join('\n  - ')}`);
     const ae = f.aes[cap.ae];
+    const glos = lectura.secciones.find((x) => x.tipo === 'glosario');
+    if (glos) glosario.push(...terminos(glos.lineas).map((t) => ({ ...t, ae: cap.ae })));
     pdf(`${ent}/${cap.ae}/M2-${cap.ae}-Lectura.pdf`, lecturaHtml({
       pf, curso: c.curso, caso: c.caso, modulo: f.modulo, codigo: mod.codigo, horas: mod.horas,
       ae: cap.ae, titulo: cap.titulo, aprendizaje: ae.texto, criterios: ae.criterios, unidadesAE: u, lectura }));
     console.log(`  lectura ${cap.ae}: ${palabras(lectura)} palabras, ${lectura.secciones.filter((x) => x.tipo === 'tema').length} secciones, cobertura del plan ${u.length}/${u.length}`);
   }
+  glosarioModulo(pf, c, f, mod, glosario, pdf, guardar, ent);
   // Notebook guiado (herramienta didáctica 1 de PF1822): cubre los contenidos del AE3, el
   // aprendizaje seleccionado, textuales; si falta alguno o hay una clave escrita, no se genera.
   const fuenteNb = `${dir}/notebook/M2-Herramienta-1-Notebook.md`;
@@ -910,6 +1034,11 @@ for (const pf of codigos) {
   const b = videoBienvenida(pf, c, mdBienv, f.modulo);
   guardar(`${out}/videos/00-bienvenida.pptx`, b.pptx);
   guardar(`${out}/videos/00-bienvenida-guion.md`, b.guion);
+  for (const q of quizCanva(pf, leer(`${dir}/R-quiz-canva.md`))) guardar(`${out}/quiz-canva/${q.archivo}`, q.texto);
+  for (const v of videosCurso(pf, c, leer(`${dir}/R-videos-curso.md`), f.modulo)) {
+    guardar(`${out}/videos/${v.archivo}.pptx`, v.pptx);
+    guardar(`${out}/videos/${v.archivo}-guion.md`, v.guion);
+  }
   for (const cap of caps) {
     const v = videoCapsula(pf, c, cap, f, fichaMd);
     guardar(`${out}/videos/${cap.ae}-capsula.pptx`, v.pptx);

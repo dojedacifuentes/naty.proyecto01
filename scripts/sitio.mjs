@@ -371,7 +371,8 @@ function paqueteDrive(c) {
   for (const a of ['Anexo2-V-Estrategia-evaluativa.html', 'Anexo2-VI-Metodologia.html']) entradas.push({ nombre: `2-metodologia/para-el-anexo-2/${a}`, contenido: leido(`insumos-anexo/${a}`) });
   const actividades = listar(ruta(`${ent}/actividades`)).map((a) => path.relative(ruta(`${ent}/actividades`), a).replace(/\\/g, '/'));
   for (const a of actividades) entradas.push({ nombre: `3-actividades/${a}`, contenido: leido(`actividades/${a}`) });
-  const leeme = [`MÓDULO 2 — ${c.pf} · ${c.nombre}`, 'Evaluación, metodología y actividades prácticas, para subir a Drive.', '',
+  for (const a of ['M2-Glosario.pdf', 'M2-Glosario.csv', 'M2-Glosario-Moodle.xml']) entradas.push({ nombre: `4-glosario/${a}`, contenido: leido(`glosario/${a}`) });
+  const leeme = [`MÓDULO 2 — ${c.pf} · ${c.nombre}`, 'Evaluación, metodología, actividades prácticas y glosario, para subir a Drive.', '',
     'Recursos neutros, sin logos ni nombres de instituciones. Casos y datos ficticios. Estado: borrador para revisión.', '',
     '1-evaluacion/  (bases 2026, 7.4, págs. 28-29; Anexo N°7, págs. 100-106)',
     ...EVAL.map(([a, d]) => `  ${a.padEnd(32)}${d}`), '',
@@ -384,11 +385,43 @@ function paqueteDrive(c) {
     '  moodle/        descripción de cada Tarea, lista para pegar en Moodle',
     '  insumos/       archivos que se adjuntan a la Tarea',
     '  respuesta-modelada/   código o workflow del tutor', '',
+    '4-glosario/  (los términos clave de las 4 lecturas, sin repetir)',
+    '  M2-Glosario.pdf                 para leer o imprimir',
+    '  M2-Glosario.csv                 para Rise, Canva o una planilla',
+    '  M2-Glosario-Moodle.xml          para importar en una actividad Glosario de Moodle (Importar entradas)', '',
     'Falta el enlace del LMS y el del portafolio publicado (Anexo N°2, V y VI c), pág. 90): dependen de cada institución.', ''];
   return crearZip([{ nombre: 'LEEME.txt', contenido: leeme.join('\r\n') }, ...entradas]);
 }
 
+// Lo nuevo del estándar de la contraparte (27-sep): bienvenida al curso y resumen del módulo para
+// HeyGen, 3 quiz para Canva y el glosario, por curso.
+function paqueteEstandar() {
+  const entradas = [];
+  const leeme = ['RECURSOS NUEVOS DEL MÓDULO 2 — PF1821 y PF1822 (estándar de la contraparte)', '',
+    'Por curso:',
+    '  videos/   2 PPT para HeyGen, con la narración en las notas, y su guion:',
+    '            1-bienvenida-curso: presenta el CURSO completo (no el módulo 2). Placa final por institución.',
+    '            2-resumen-modulo:   resume el módulo 2, sus 4 aprendizajes esperados y lo que se entrega.',
+    '  quiz-canva/   3 quiz formativos de 5 preguntas: Quiz 1 = AE1 y AE2, Quiz 2 = AE3, Quiz 3 = AE4.',
+    '            La respuesta correcta está marcada "<- CORRECTA" y cada pregunta trae su retroalimentación.',
+    '            No repiten preguntas de la prueba objetiva ni del video interactivo.',
+    '  glosario/  PDF, CSV y XML para Moodle.', '',
+    'Para Rise (en lugar de flipbook): usa los PDF de lectura del zip lecturas-modulo2.zip, una lección por lectura.', ''];
+  for (const c of CURSOS) {
+    const base = `modulo-2/${c.carpeta}`;
+    const f = (r) => fs.readFileSync(ruta(`${base}/${r}`));
+    [['00-bienvenida-curso', '1-bienvenida-curso'], ['90-resumen-modulo', '2-resumen-modulo']].forEach(([o, d]) => {
+      entradas.push({ nombre: `${c.carpeta}/videos/${d}.pptx`, contenido: f(`produccion/videos/${o}.pptx`) });
+      entradas.push({ nombre: `${c.carpeta}/videos/${d}-guion.md`, contenido: f(`produccion/videos/${o}-guion.md`) });
+    });
+    for (const n of [1, 2, 3]) entradas.push({ nombre: `${c.carpeta}/quiz-canva/Quiz-${n}.txt`, contenido: f(`produccion/quiz-canva/Quiz-${n}.txt`) });
+    for (const a of ['M2-Glosario.pdf', 'M2-Glosario.csv', 'M2-Glosario-Moodle.xml']) entradas.push({ nombre: `${c.carpeta}/glosario/${a}`, contenido: f(`entrega/glosario/${a}`) });
+  }
+  return crearZip([{ nombre: 'LEEME.txt', contenido: leeme.join('\r\n') }, ...entradas]);
+}
+
 // Paquetes descargables.
+escribirSalida('descargas/estandar-contraparte-modulo2.zip', paqueteEstandar());
 for (const c of CURSOS) escribirSalida(`descargas/modulo2-${c.pf}-evaluacion-metodologia-actividades.zip`, paqueteDrive(c));
 for (const c of CURSOS) escribirSalida(`descargas/actividades-modulo2-${c.pf}.zip`, paqueteActividades(c));
 escribirSalida('descargas/videos-heygen-modulo2.zip', paqueteVideos());
@@ -402,6 +435,7 @@ escribirSalida('descargas/lecturas-modulo2.zip', paqueteLecturas());
 <li><a href="descargas/videos-heygen-modulo2.zip">videos-heygen-modulo2.zip</a>: los 12 PPT para HeyGen (bienvenida, 4 videocápsulas y video de la herramienta 2, por curso), con guiones y pasos.</li>
 <li><a href="descargas/infografias-modulo2.zip">infografias-modulo2.zip</a>: los 10 prompts de infografía, uno por archivo.</li>
 <li><a href="descargas/lecturas-modulo2.zip">lecturas-modulo2.zip</a>: las 8 lecturas en PDF (una por aprendizaje esperado), listas para subir.</li>
+<li><a href="descargas/estandar-contraparte-modulo2.zip">estandar-contraparte-modulo2.zip</a>: bienvenida al curso y resumen del módulo (PPT para HeyGen), 3 quiz para Canva y glosario, por curso.</li>
 ${CURSOS.map((c) => `<li><a href="descargas/actividades-modulo2-${c.pf}.zip">actividades-modulo2-${c.pf}.zip</a>: las 2 actividades prácticas de ${c.pf} (enunciados, PDF de respaldo, HTML para Moodle, insumos y respuesta modelada), con un LEEME ceñido a las bases.</li>
 <li><a href="descargas/modulo2-${c.pf}-evaluacion-metodologia-actividades.zip">modulo2-${c.pf}-evaluacion-metodologia-actividades.zip</a>: evaluación (9 PDF), metodología en PDF y actividades de ${c.pf}, en carpetas para subir a Drive.</li>`).join('\n')}
 ${CURSOS.map((c) => `<li>${c.pf} · <a href="modulo-2/${c.carpeta}/entrega/">recursos listos para subir</a> · <a href="modulo-2/${c.carpeta}/produccion/ESTADO.html">estado de producción</a></li>`).join('\n')}
@@ -411,4 +445,4 @@ ${CURSOS.map((c) => `<li>${c.pf} · <a href="modulo-2/${c.carpeta}/entrega/">rec
   paginas++;
 }
 
-console.log(`${SALIDA}/ → ${paginas} páginas, ${copiados} archivos copiados, ${3 + 2 * CURSOS.length} paquetes en descargas/`);
+console.log(`${SALIDA}/ → ${paginas} páginas, ${copiados} archivos copiados, ${4 + 2 * CURSOS.length} paquetes en descargas/`);

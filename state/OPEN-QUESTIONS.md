@@ -41,9 +41,12 @@ sumarla a la consulta #1.
 
 ## Para Natalia
 
-**3. ¿Cuál es la matriz real cliente × plan?** — ABIERTA · CRÍTICA
+**3. ¿Cuál es la matriz real cliente × plan?** — ABIERTA · CRÍTICA · respuesta parcial
 El cuadro entregado trae 15 planes y 2.670 cupos totales, pero no dice qué cliente
 postula a qué plan. La diferencia entre 45 y 90 documentos define todo el proyecto.
+**Respuesta parcial del usuario, 2026-09-27** (sesión `2026-09-27-claude-code-01`, al pedir la marca de
+los PDF): PF1821 → `unab` y `skillnest`; PF1822 → `unab`, `skillnest` y `u-autonoma`. Falta el resto
+de los planes y confirmar si esa lista es la definitiva para estos dos.
 
 **4. ¿Acceso a la carpeta Drive "Metodologías" con los Anexos 2 de referencia?** — ABIERTA · respuesta parcial
 Propietaria: natalia@hackea.pro. Sin esto no hay ingeniería inversa ni auditoría de
@@ -107,3 +110,13 @@ verdad. El umbral de diferenciación en particular es un número elegido para qu
 fuera ejecutable, no medido. Al cerrar el primer lote real hay que mirar la distribución
 de similitudes y recalibrar, dejando el cambio en `DECISIONS.md`.
 Responsable: quien produzca el primer lote.
+
+**18. ¿Pueden dos clientes que compiten en el mismo plan presentar los mismos recursos con distinta marca?** — ABIERTA
+El 27-sep la contraparte pidió aplicar la marca de cada cliente a los PDF del módulo 2. Con eso,
+UNAB y Skillnest mostrarían en PF1821 las mismas lecturas, actividades e instrumentos, cambiando solo
+colores y logo, y en PF1822 también la Autónoma. `AGENTS.md` §6 advierte que dos propuestas gemelas
+en la misma mesa de evaluación dañan a los dos clientes, y que la diferenciación no se logra
+cambiando la superficie. El control 04 compara el texto del Anexo 2, no los recursos del LMS, así que
+no lo detectaría. Opciones: aceptar el riesgo; variar por cliente el caso de estudio, las actividades o
+el tono; o reservar los recursos neutros para un solo cliente por plan. Lo decide Natalia o la contraparte.
+
