@@ -36,7 +36,7 @@ nuevo. Guía de Rise para el usuario en `modulo-2/GUIA-RISE.md`.
 buscar la carpeta con el conector de Drive, escribir `privado/drive/enlaces.json` (ruta relativa → URL), `npm run planilla` y
 subir el .xlsx con `create_file` (se convierte en Sheets). La versión 1 (sin enlaces de Drive) está en Drive con id
 `1COAVLdVPOgVyWpCfO_mds9ZSXr0_KLrdWd_pEDw6NSs`: al subir la nueva, manda esa a la papelera (pregunta antes).
-Pendientes del usuario: subir la carpeta a Drive, grabar G1 y G2, editar los 2 H5P (F1), Rise con los PDF de lectura (G5, ver la guía), enlaces de Drive de
+Pendientes del usuario: subir la carpeta a Drive (con los videos G1 y G2, ya grabados el 27-sep), editar los 2 H5P (F1), Rise con los PDF de lectura (G5, ver la guía), enlaces de Drive de
 los videos y PNG de infografías, convertir los quiz a interactivos. Falta también: capturas del tutorial de PF1821 (E1). Después: herramientas de la industria, vinculación temprana y
 actividades de extensión (35 % de la técnica, por institución), LMS y Anexo 2.
 
