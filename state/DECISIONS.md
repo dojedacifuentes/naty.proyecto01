@@ -429,3 +429,14 @@ Quién: usuario (pedido) y claude-code, sesión `2026-09-27-claude-code-07`.
   proponer salvo que el usuario lo pida.
 Quién: usuario (decisión), sesión `2026-09-27-claude-code-09`.
 
+## 2026-09-27 · Planilla final con los enlaces de Drive (sesión claude-code, 2026-09-27-claude-code-10)
+
+- El usuario subió su propia carpeta "NATY 2.0" (id 1fGgwXUyr2wUyyxEn8J36vdmy62Ul2lsv), organizada distinto de la de
+  `npm run drive`: los 5 paquetes por cliente como zip, y una carpeta ENTREGABLES con lecturas, quiz en PDF, videos e
+  infografías por curso. `privado/drive/enlaces.json` guarda ahora los id de esa carpeta por curso (F: carpeta, A: archivo)
+  y `npm run planilla` los usa. Versión final en Drive, dentro de NATY 2.0:
+  "Módulo 2 · Recursos TD 2026 · PF1821 y PF1822 (final)", id 16QGjakEMzXL28pC1zvqMk85GBcsgJgu0b8w6Dyx4B9M.
+- En Drive, las carpetas de actividades y los zips de evaluación son anteriores a la organización de las actividades y a
+  los indicadores de logro: queda como pendiente en la planilla. Lo vigente está en los paquetes por cliente.
+Quién: usuario (carpeta) y claude-code, sesión `2026-09-27-claude-code-10`.
+

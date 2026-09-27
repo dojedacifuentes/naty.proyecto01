@@ -32,7 +32,8 @@ La contraparte revisó los entregables y pidió su estándar (DECISIONS, 2026-09
 
 **Sin pruebas técnicas** (n8n, pytest, Colab), **sin videos interactivos H5P y sin capturas del tutorial de PF1821**,
 por decisión del usuario (DECISIONS, 2026-09-27): no los propongas de nuevo. Guía de Rise para el usuario en `modulo-2/GUIA-RISE.md`.
-**Drive y planilla (sesión -07):** `npm run drive` arma la carpeta para subir a Drive; el usuario la sube a mano. Después:
+**Planilla final (sesión -10):** id `16QGjakEMzXL28pC1zvqMk85GBcsgJgu0b8w6Dyx4B9M`, en la carpeta NATY 2.0 del usuario;
+los enlaces salen de `privado/drive/enlaces.json`. **Drive y planilla (sesión -07, antecedente):** `npm run drive` arma la carpeta para subir a Drive; el usuario la sube a mano. Después:
 buscar la carpeta con el conector de Drive, escribir `privado/drive/enlaces.json` (ruta relativa → URL), `npm run planilla` y
 subir el .xlsx con `create_file` (se convierte en Sheets). La versión 1 (sin enlaces de Drive) está en Drive con id
 `1COAVLdVPOgVyWpCfO_mds9ZSXr0_KLrdWd_pEDw6NSs`: al subir la nueva, manda esa a la papelera (pregunta antes).

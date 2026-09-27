@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-09 (Claude Code · opus-5.5)
+**Por:** 2026-09-27-claude-code-10 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -175,7 +175,7 @@ Sesión claude-code-01, 2026-09-27: estándar de recursos de la contraparte.
 - [x] Marca por cliente (sesión -04): UNAB, Skillnest y Autónoma, con 6 cuadernillos con portada por cliente y curso; zips entregados.
 - [x] PDF de indicadores de logro y organización de las actividades en la ficha y en Moodle (sesión -04).
 - [x] Los 3 quiz por curso también en GIFT para Moodle (sesión -05). Pendiente: convertirlos a quiz interactivo en Canva.
-- [x] Carpeta para Drive (`npm run drive`) y planilla de seguimiento en Google Sheets (`npm run planilla`), versión 1 sin enlaces de Drive (sesión -07).
+- [x] Carpeta para Drive (`npm run drive`) y planilla de seguimiento en Google Sheets (`npm run planilla`), versión 1 sin enlaces de Drive (sesión -07); versión final con los enlaces de la carpeta NATY 2.0 del usuario (sesión -10).
 - [x] Pruebas técnicas fuera del plan por decisión del usuario y guía de Rise (`modulo-2/GUIA-RISE.md`) (sesión -06).
 
 Sesión claude-code-02, 2026-09-27: quizzes del módulo 2 en Canva.

@@ -28,7 +28,6 @@ const OBS = {
   UNAB: 'Colores y logo del manual de marca (nov. 2024).',
 };
 const enlaces = fs.existsSync(ruta('privado/drive/enlaces.json')) ? JSON.parse(leer('privado/drive/enlaces.json')) : {};
-const drive = (rel) => enlaces[rel] ?? null;
 
 // ------------------------------------------------------------ datos
 
@@ -46,20 +45,24 @@ const S = (texto, estado) => ({ texto, estado });
 
 const resumen = [];
 for (const c of CURSOS) {
-  for (const [cliente, carpetaCli] of c.clientes) {
-    const base = `${c.drive}/${carpetaCli}`;
-    const cu = (a) => { const u = drive(`${base}/1 Cuadernillos/${c.pf}-${a}`); return u ? L('Abrir PDF', u) : S('Por subir a Drive', E.subir); };
-    const carpeta = drive(base);
+  const d = enlaces[c.pf] ?? {};
+  // "F:id" es una carpeta de Drive y "A:id", un archivo.
+  const u = (v) => (!v ? null : v.startsWith('F:') ? `https://drive.google.com/drive/folders/${v.slice(2)}` : `https://drive.google.com/file/d/${v.slice(2)}/view`);
+  const en = (v, texto) => (u(v) ? L(texto, u(v)) : S('Por subir a Drive', E.subir));
+  for (const [cliente] of c.clientes) {
     resumen.push([
       S(`${c.pf} · ${c.nombre}`, 'curso'), 'Especialidad', S(cliente, 'curso'),
       'AE1 a AE4 (hoja Aprendizajes)',
-      cu('M2-Lecturas.pdf'), S('Pendiente: armar en Rise', E.pend),
-      S('Grabado: falta enlace', E.pend), S('Grabado: falta enlace', E.pend), S('Grabadas: falta enlace', E.pend),
+      en(d.lecturas, 'Lecturas AE1 a AE4 (PDF)'), S('Pendiente: armar en Rise', E.pend),
+      en(d.bienvenidaCurso, 'Ver video'), en(d.resumen, 'Ver video'), en(d.bienvenidaModulo, 'Ver video'),
+      en(d.videos, 'Carpeta de videos'), en(d.herramienta2, 'Ver video'),
       ...canva[c.pf].map((q, i) => L(`Quiz ${i + 1} (Canva)`, q.url)),
-      S('Hechas: falta PNG', E.pend),
-      cu('M2-Glosario.pdf'), cu('M2-Evaluacion.pdf'), cu('M2-Actividades.pdf'), cu('M2-Metodologia-y-medios.pdf'),
-      carpeta ? L('Abrir carpeta', carpeta) : S('Por subir a Drive', E.subir),
-      S('En producción', E.pend), OBS[cliente],
+      ...[0, 1, 2].map((i) => en(d.quizPdf?.[i], `Quiz ${i + 1} (PDF)`)),
+      en(d.infografias, 'Infografías (PNG)'),
+      en(d.evaluacion, 'Evaluación, metodología y glosario (zip)'), en(d.actividades, 'Actividades'),
+      en(d.clientes?.[cliente], `Paquete ${cliente} (zip)`),
+      en(d.carpeta, 'Carpeta del curso'),
+      S('Listo para revisión', E.ok), OBS[cliente],
     ]);
   }
 }
@@ -98,10 +101,8 @@ for (const c of CURSOS) {
 }
 
 const pendientes = [
-  ['Usuario', 'Subir los videos de bienvenida al curso y de resumen del módulo (ya grabados)', 'Carpeta "3 Videos" de cada cliente', S('Pendiente', E.pend)],
-  ['Usuario', 'Subir los MP4 de las videocápsulas AE1 a AE4 y la bienvenida del módulo', 'Carpeta "3 Videos"', S('Pendiente', E.pend)],
-  ['Usuario', 'Subir los PNG de las infografías (ruta y AE1 a AE4)', 'Carpeta "4 Infografias"', S('Pendiente', E.pend)],
-  ['Usuario', 'Armar las lecturas en Rise, un curso por cliente (guía: modulo-2/GUIA-RISE.md)', 'Carpeta "5 Rise"', S('Pendiente', E.pend)],
+  ['Usuario', 'Actualizar en Drive las carpetas de actividades y los zips de evaluación: son del 25-sep y no traen la organización de las actividades ni los indicadores de logro. Lo vigente está en los 5 paquetes por cliente', 'Carpeta NATY 2.0', S('Pendiente', E.pend)],
+  ['Usuario', 'Armar las lecturas en Rise, un curso por cliente (guía: modulo-2/GUIA-RISE.md)', 'Drive (NATY 2.0)', S('Pendiente', E.pend)],
   ['Usuario', 'Convertir los 6 quiz de Canva en interactivos (Elementos > Formularios)', 'Canva', S('Pendiente', E.pend)],
   ['Contraparte / Natalia', '¿El aprendizaje seleccionado es el AE3? (pregunta abierta #17)', '—', S('Por confirmar', E.pend)],
   ['Contraparte / Natalia', '¿Mismos recursos con distinta marca para clientes que compiten en el mismo plan? (#18)', '—', S('Por confirmar', E.pend)],
@@ -191,10 +192,11 @@ const STYLES = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 const fecha = new Date().toLocaleDateString('es-CL');
 const HOJAS = [
   { nombre: 'Resumen', titulo: 'Módulo 2 · Recursos educativos · PF1821 y PF1822', subtitulo: `Una fila por cliente y curso · estándar de la contraparte · actualizado ${fecha}`,
-    encabezados: ['Curso', 'Tipo', 'Cliente', 'Aprendizajes esperados (M2)', 'Lecturas (cuadernillo)', 'Lecturas (Rise)', 'Video de bienvenida (curso)',
-      'Video resumen (módulo)', 'Videocápsulas AE1 a AE4', 'Quiz 1', 'Quiz 2', 'Quiz 3', 'Infografías', 'Glosario', 'Evaluación', 'Actividades',
-      'Metodología y medios', 'Carpeta en Drive', 'Estado', 'Observaciones'],
-    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 14, 22, 18, 20, 18, 18, 20, 16, 16, 16, 18, 16, 16, 16, 18, 18, 16, 40] } },
+    encabezados: ['Curso', 'Tipo', 'Cliente', 'Aprendizajes esperados (M2)', 'Lecturas', 'Lecturas (Rise)', 'Video de bienvenida (curso)',
+      'Video resumen (módulo)', 'Video de bienvenida (módulo)', 'Videocápsulas AE1 a AE4', 'Video herramienta 2 (AE3)', 'Quiz 1', 'Quiz 2', 'Quiz 3',
+      'Quiz 1 (PDF)', 'Quiz 2 (PDF)', 'Quiz 3 (PDF)', 'Infografías', 'Evaluación, metodología y glosario', 'Actividades', 'Paquete con marca del cliente',
+      'Carpeta del curso', 'Estado', 'Observaciones'],
+    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 13, 22, 20, 20, 16, 16, 16, 18, 16, 15, 15, 15, 14, 14, 14, 18, 24, 16, 22, 18, 18, 40] } },
   { nombre: 'Aprendizajes', titulo: 'Aprendizajes esperados del módulo 2', subtitulo: 'Textuales de la ficha SIPFOR · con su lectura y su quiz',
     encabezados: ['Curso', 'Módulo', 'AE', 'Aprendizaje esperado (textual del plan)', 'Lectura', 'Quiz'],
     filas: aprendizajes, anchos: { fijas: 1, cols: [10, 34, 6, 70, 34, 20] } },
