@@ -9,6 +9,37 @@
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
 
+## PRIMERO (sesión -16): el logo de marca se monta sobre el título
+
+El usuario lo vio en la mayoría de los PDF con marca (UNAB, Skillnest, U. Autónoma). Causa, medida con capturas de los
+HTML de `.scratch/marcas/` al ancho útil de la página:
+- **Cabecera de los documentos** (`scripts/marca.mjs:69-70`): el logo va en `position: absolute` arriba a la derecha y el
+  texto solo se limita a 128 mm, pero dentro de la cabecera caben 142 mm (158 mm útiles de A4 menos 8 + 8 mm de relleno). La
+  caja del logo mide 36 a 55 mm de ancho (UNAB 851×342 px a 13 mm de alto con placa blanca; U. Autónoma 988×552 px a 16 mm;
+  Skillnest 1427×255 px a 11 mm, topa en 48 mm), así que se come 22 a 34 mm del título. El kicker no tiene límite. Pasa en
+  cada cabecera: documentos sueltos y cuadernillos.
+- **Portada de las lecturas** (`scripts/marca.mjs:71-72` sobre `scripts/lib/lectura.mjs:223-230`): también absoluto; el
+  curso (hasta 120 mm) llega a tocar el logo, y bajar el número del AE a 50 mm deja poco aire con títulos de 3 líneas.
+- **Portada de los cuadernillos** (`.pc-logo`, `scripts/marca.mjs:150`): el logo va en el flujo y no se solapa. Es el modelo.
+Arreglo: sacar el logo del posicionamiento absoluto y reservarle su espacio en el diseño (cabecera en grilla texto | logo,
+portada con fila superior para el logo), con tamaño calculado desde las proporciones del PNG, zona de resguardo y un control
+automático que detenga `npm run marca` si una caja de logo se cruza con un texto. No cambies colores ni tipografías (#19).
+El encargo completo para una sesión nueva se le entregó al usuario en el chat de la sesión -16.
+
+## Planilla del usuario a medio editar (sesión -16)
+
+El usuario quiere los cambios de la sesión -14 en **su** planilla, `01 Planilla de seguimiento`
+(id `1yjgTnjmrIxpQ3a1JBF3ZpSWC0rrKlG6-8qQvFI2Ypn4`), no en la copia nueva. El conector no edita celdas; se editó en el navegador
+integrado, **sin sesión de Google** (la carpeta deja editar a cualquiera). La hoja se redibuja con retraso y varias escrituras se
+perdieron. Estado al cortar:
+- Resumen: columna Q "Quiz GIFT (vista web)" insertada con su encabezado. Q5 y Q6 (PF1821) muestran "Ver quiz GIFT": **revisa que
+  Q5 apunte a `#PF1821`** (una escritura pudo caer ahí con `#PF1822`). Faltan Q7, Q8 y Q9 (PF1822, `#PF1822`).
+- Aprendizajes (columna F, 8 filas: `#PF1821-ae1` … `#PF1822-ae4`) y Entregables (14 filas .gift: `#<PF>-q<n>` y `#<PF>-ae<n>`):
+  sin tocar.
+- Propuesta al usuario, sin respuesta: que inicie sesión con su cuenta y usar Archivo → Importar → Reemplazar hoja de cálculo con
+  la copia nueva (`1WupQSaktADlUaurlkssVvXdFuDcCs8y_n0mwr0MDKGk`): mismo enlace, todo de una vez. Después, la copia sobra.
+- Las fórmulas van en español o inglés con `;` como separador (la hoja usa `=HIPERVINCULO(...;...)`).
+
 ## ESTADO AL 27-SEP: estándar de la contraparte, marca por cliente y cuadernillos
 
 La contraparte revisó los entregables y pidió su estándar (DECISIONS, 2026-09-27). Hecho:
@@ -44,10 +75,10 @@ Sale sola de los `.gift` en cada build (`scripts/lib/quiz-gift.mjs`): si cambian
 Si el GIFT trae otra sintaxis (preguntas abiertas, emparejamiento), la vista se detiene y el build de Vercel falla: amplía el lector.
 **Planilla con la vista GIFT (sesión -14):** hay DOS "01 Planilla de seguimiento" en NATY 2.0. La nueva (id
 `1WupQSaktADlUaurlkssVvXdFuDcCs8y_n0mwr0MDKGk`) enlaza la vista de los quiz; la anterior (`1yjgTnjmrIxpQ3a1JBF3ZpSWC0rrKlG6-8qQvFI2Ypn4`)
-no. **El conector de Drive está conectado como maturana.eco@gmail.com, no como el usuario**: todo lo que crea queda a nombre de esa
+no. **El conector de Drive está conectado como otra cuenta de Google (no la del usuario), no como el usuario**: todo lo que crea queda a nombre de esa
 cuenta, y escribe en NATY 2.0 solo porque la carpeta está abierta como editor a cualquiera (#20). Pregunta #21 antes de mover o
 reemplazar la anterior. El usuario eligió dejar vigente la nueva (sesión -15), pero mover la anterior con el conector fue bloqueado por el control
-de permisos: lo hace el usuario a mano. No lo reintentes. La búsqueda del conector solo ve archivos de maturana.eco (usa ids de `privado/drive/enlaces.json`),
+de permisos: lo hace el usuario a mano. No lo reintentes. La búsqueda del conector solo ve archivos de esa otra cuenta (usa ids de `privado/drive/enlaces.json`),
 y esa cuenta tiene archivos personales ajenos al proyecto: no los abras. Si se cierra el acceso de la carpeta, el conector deja de poder escribir en ella salvo que se comparta con esa cuenta.
 **Drive y planilla (sesión -07, antecedente):** `npm run drive` arma la carpeta para subir a Drive; el usuario la sube a mano. Después:
 buscar la carpeta con el conector de Drive, escribir `privado/drive/enlaces.json` (ruta relativa → URL), `npm run planilla` y

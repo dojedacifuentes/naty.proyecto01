@@ -479,3 +479,12 @@ Quién: usuario (decisión), sesión `2026-09-27-claude-code-13`.
   el GIFT del AE1 de PF1822; los PDF regenerados diferían solo en la fecha y se restauraron.
 - La planilla nueva se subió sin tocar la anterior: el conector resultó estar conectado con otra cuenta (#21).
 Quién: usuario (pedido), claude-code, sesión `2026-09-27-claude-code-14`.
+
+## 2026-09-27 · Sin correos de terceros en el repo público y diagnóstico del logo (sesión claude-code, 2026-09-27-claude-code-16)
+
+- Se quitó de `state/` el correo de la cuenta con que está conectado el conector de Drive: es de un tercero y el repo es público.
+  Queda en el historial de git (commits `2ec8895` y `daa4551`); borrarlo de ahí exige reescribir `main`, que AGENTS.md §4 prohíbe
+  sin decisión expresa del usuario.
+- El solapamiento del logo con el título se corrige en el diseño (espacio reservado, sin posición absoluta) y no achicando el
+  logo ni el título; colores y tipografías no se tocan mientras #19 siga abierta.
+Quién: claude-code (corrección propia) y usuario (reporte del solapamiento), sesión `2026-09-27-claude-code-16`.

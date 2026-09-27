@@ -135,7 +135,7 @@ dejar el enlace como lector; o mantenerlo. Se cambia en Drive → Compartir → 
 permisos). Lo decide el usuario.
 
 **21. ¿Con qué cuenta debe trabajar el conector de Drive, y qué planilla queda vigente?** — ABIERTA
-Detectado el 2026-09-27 (sesión `2026-09-27-claude-code-14`): el conector de Drive está conectado como maturana.eco@gmail.com
+Detectado el 2026-09-27 (sesión `2026-09-27-claude-code-14`): el conector de Drive está conectado como otra cuenta de Google (no la del usuario)
 (los archivos que crea quedan a su nombre), no como dojedacifuentes@gmail.com, dueño de NATY 2.0. La planilla nueva, con los enlaces
 a la vista de los quiz GIFT, es de esa cuenta; la anterior, del usuario, sigue en la carpeta con el mismo nombre. Opciones: reconectar el
 conector con la cuenta del usuario y volver a subir la planilla; o dejar la nueva y mover la anterior a "Archivo (versiones anteriores)".

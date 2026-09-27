@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-15 (Claude Code · opus-5.5)
+**Por:** 2026-09-27-claude-code-16 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -208,11 +208,14 @@ Sesión claude-code-14, 2026-09-27: quiz GIFT enlazados en la planilla de Drive.
 - [x] La vista web suma el quiz de cada AE (preguntas abiertas con respuesta esperada) y abre un quiz por ancla (`#PF1822-ae1`).
 - [x] `npm run planilla` enlaza la vista: columna "Quiz GIFT (vista web)" en Resumen, columna Quiz de Aprendizajes y los `.gift` de Entregables.
 - [x] Corregido el GIFT del AE1 de PF1822: la respuesta esperada de la pregunta 3 salía vacía (la fuente usa "*Respuesta, 1 punto…").
-- [x] Planilla nueva en NATY 2.0, id `1WupQSaktADlUaurlkssVvXdFuDcCs8y_n0mwr0MDKGk`. **Su dueña es maturana.eco@gmail.com**, la cuenta del
+- [x] Planilla nueva en NATY 2.0, id `1WupQSaktADlUaurlkssVvXdFuDcCs8y_n0mwr0MDKGk`. **Su dueña es otra cuenta de Google (no la del usuario)**, la cuenta del
       conector de Drive, no la del usuario. La anterior (`1yjgTnjm…`) sigue en NATY 2.0 con el mismo nombre: falta decidir (#21).
 
 Sesión claude-code-15, 2026-09-27: ordenar NATY 2.0.
 
+- [ ] (Sesión -16) El usuario pidió los cambios en SU planilla (`1yjgTnjm…`), no en la nueva. Se editó a mano en el navegador
+      integrado, sin sesión de Google: ver HANDOFF, "Planilla del usuario a medio editar".
+- [ ] (Sesión -16) **Logo de marca solapado con el título** en la mayoría de los PDF con marca: diagnóstico y encargo en HANDOFF.
 - [ ] Mover la planilla anterior a "Archivo (versiones anteriores)": el control de permisos de Claude Code bloqueó el movimiento (archivo del usuario, cuenta del conector ajena). Queda para el usuario.
 
 ## A medias
