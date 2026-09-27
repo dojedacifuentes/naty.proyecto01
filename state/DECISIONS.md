@@ -393,3 +393,16 @@ Quién: usuario (pedido, manuales y logos) y claude-code (aplicación), sesión 
   Para convertirlos hay que operar el editor con una sesión de Canva iniciada en el navegador.
 Quién: usuario (pidió ambos) y claude-code, sesión `2026-09-27-claude-code-05`.
 
+## 2026-09-27 · Sin pruebas técnicas (sesión claude-code, 2026-09-27-claude-code-06)
+
+- **No se harán pruebas técnicas** del workflow roto (n8n), del código de PF1822 (`pytest`) ni del notebook (Colab):
+  el usuario pidió "obliterarlas" y dar por hecho que funcionan. Se quitaron de los entregables y del plan los avisos
+  de "sin ejecutar" y las tareas de prueba; las filas E1 y E2 de PF1822 quedan "no aplica". **Nota para quien audite:**
+  nada de eso se ejecutó; los textos ya no lo dicen, pero tampoco afirman que se probó.
+  Se mantiene lo que es montaje (elegir la credencial de Supabase al importar, la clave de la API como variable de
+  entorno) y las capturas del tutorial de PF1821 (E1), que son contenido y no una prueba.
+- **Guía de Rise** en `modulo-2/GUIA-RISE.md`: un curso por cliente y curso, una sección por lectura, con AI Assistant
+  (hay que devolver a su forma textual lo que el asistente reescriba) o a mano; tema con logo y colores de cada marca;
+  publicación en SCORM 1.2 para Moodle.
+Quién: usuario (decisión) y claude-code, sesión `2026-09-27-claude-code-06`.
+

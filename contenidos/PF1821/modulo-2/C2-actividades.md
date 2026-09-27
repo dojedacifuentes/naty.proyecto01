@@ -202,8 +202,8 @@ puntos obtienes la insignia **Depurador/a**; con 100 o más, **Rescatista de wor
 
 **El insumo `pedidos_enrutados_v0.json`** lo genera el carril automático junto con
 `pedidos_enrutados_corregido.json`, la versión correcta para el tutor. Los dos salen de la misma
-definición y difieren solo en las cinco fallas de la tabla siguiente. Antes de publicarlo, el tutor
-lo importa una vez en la instancia del curso, elige las credenciales de Supabase y lo prueba.
+definición y difieren solo en las cinco fallas de la tabla siguiente. Al montarlo, el tutor lo
+importa en la instancia del curso y elige las credenciales de Supabase.
 
 | Misión | Síntoma | Cómo se detecta | Causa | Corrección | Ind. |
 | --- | --- | --- | --- | --- | --- |

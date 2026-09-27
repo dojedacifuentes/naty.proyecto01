@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-05 (Claude Code · opus-5.5)
+**Por:** 2026-09-27-claude-code-06 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -175,6 +175,7 @@ Sesión claude-code-01, 2026-09-27: estándar de recursos de la contraparte.
 - [x] Marca por cliente (sesión -04): UNAB, Skillnest y Autónoma, con 6 cuadernillos con portada por cliente y curso; zips entregados.
 - [x] PDF de indicadores de logro y organización de las actividades en la ficha y en Moodle (sesión -04).
 - [x] Los 3 quiz por curso también en GIFT para Moodle (sesión -05). Pendiente: convertirlos a quiz interactivo en Canva.
+- [x] Pruebas técnicas fuera del plan por decisión del usuario y guía de Rise (`modulo-2/GUIA-RISE.md`) (sesión -06).
 
 Sesión claude-code-02, 2026-09-27: quizzes del módulo 2 en Canva.
 
@@ -199,7 +200,7 @@ Sesión claude-code-03, 2026-09-27: ZIP ordenado de los quizzes de Canva.
   cuando una persona revisa el recurso.
 - **Recursos base del módulo 2.** El carril A (automático, que ahora incluye las 8 lecturas) está `listo para revisión`. Faltan
   los carriles B y C, que hizo el usuario, sin los enlaces de Drive ni los PNG en el repo. Faltan el notebook
-  tutorial de PF1821 con capturas (17 pasos), importar y ejecutar en n8n el workflow roto de PF1821, correr `pytest` y probar el
+  tutorial de PF1821 con capturas (17 pasos), el tutorial de PF1821 con capturas; ya no hay pruebas técnicas (decisión del usuario, 27-sep); falta
   notebook en Colab en PF1822, y editar los 2 videos interactivos H5P con las preguntas nuevas.
   El avance real está en los `ESTADO.md` de cada curso.
 

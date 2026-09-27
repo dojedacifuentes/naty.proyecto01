@@ -6,10 +6,6 @@ Siguen el ejemplo de la guía (pág. 110): una de **resolución de problemas** a
 tutoriales y videos, y otra de **análisis de caso** con **gamificación y simulación**,
 ambas con respuesta modelada.
 
-> **Aviso para quien revise:** el código de las respuestas modeladas está escrito y revisado
-> a mano, pero **no se ejecutó** en la máquina donde se produjo este kit (no tiene Python).
-> Antes de publicarlo, el tutor lo corre una vez con `pytest` y con una clave de prueba.
-
 | | Actividad 1 | Actividad 2 |
 | --- | --- | --- |
 | Nombre | Un cliente de API para el resumidor | Laboratorio de prompts y métricas |

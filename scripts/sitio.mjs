@@ -347,12 +347,8 @@ function paqueteActividades(c) {
     '3) Archivos adicionales: los de insumos/ que nombra la descripción y el PDF del enunciado.',
     '4) Tipo de entrega: archivos. Calificación: rúbrica, con los criterios del instrumento que nombra la ficha de la actividad.',
     '5) Sugerencia (decisión de cada institución): compartir la respuesta modelada después del plazo de entrega.', '',
-    'ANTES DE PUBLICAR (pendiente, no se pudo hacer en la máquina donde se generó)',
-    ...(esN8n
-      ? ['- Importar insumos/pedidos_enrutados_v0.json y tutor/pedidos_enrutados_corregido.json en n8n, correr',
-        '  insumos/actividad-2-tablas.sql en Supabase, conectar la credencial de Supabase y ejecutar los 6 pedidos de prueba:',
-        '  el roto debe mostrar las 5 fallas y el corregido debe guardar cada pedido en su ruta.']
-      : ['- Ejecutar el código de tutor/codigo/ con pytest y una clave de prueba (no se ejecutó: no había Python).']),
+    'ANTES DE PUBLICAR',
+    ...(esN8n ? ['- Importar el workflow en n8n, correr insumos/actividad-2-tablas.sql en Supabase y elegir la credencial de Supabase.'] : ['- Configurar la clave de la API como variable de entorno del curso (nunca escrita en el código).']),
     '- Revisión de contenido por una persona (las casillas del README del curso se marcan solo después de esa revisión).', ''];
   return crearZip([{ nombre: 'LEEME.txt', contenido: leeme.join('\r\n') }, ...entradas]);
 }

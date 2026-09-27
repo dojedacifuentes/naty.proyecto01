@@ -4,8 +4,7 @@
 e-learning · 4 aprendizajes esperados · 12 criterios en SIPFOR
 **Plan:** 190 h · 9 módulos · Nivel 4 · **Caso del módulo:** *Nube Sur*, una empresa de
 software **ficticia** cuya mesa de ayuda necesita un resumidor de tickets hecho en Python.
-**Estado:** borrador. Todo el contenido está escrito; ninguna persona lo ha revisado todavía,
-y **el código Python no se ha ejecutado**.
+**Estado:** borrador. Todo el contenido está escrito; ninguna persona lo ha revisado todavía.
 
 > Las casillas se marcan **solo cuando una persona revisó el recurso**, no cuando existe el
 > borrador (misma regla que [`01-entregables.md`](../../contenidos/PF1822/modulo-2/01-entregables.md)).

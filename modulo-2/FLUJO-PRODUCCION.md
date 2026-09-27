@@ -44,7 +44,7 @@ del B, ninguno depende de otro.
 | **B · Video** | HeyGen | 12 videos: bienvenida + 4 cápsulas + video base de la herramienta 2, por curso | `produccion/videos/*.pptx` | MP4 a Drive |
 | **C · Diseño** | Genially o Canva | 10 infografías: ruta + 4 aprendizajes, por curso | `produccion/infografias/prompts.md` | PNG |
 | **D · Texto IA** | — | Sin piezas: las lecturas y el notebook de PF1822 salen del carril A | — | **Hecho** ✔ |
-| **E · Técnico** | Persona con n8n y Python | PF1821: tutorial "Tu primer workflow con datos limpios" con capturas (17 pasos) y workflow roto. PF1822: correr `pytest` y probar el notebook en Colab | `contenidos/…/C4` y `C2`, `entrega/actividades/` | PDF + JSON; código probado |
+| **E · Técnico** | Persona con n8n y Python | PF1821: capturas del tutorial "Tu primer workflow con datos limpios" (17 pasos). Sin pruebas técnicas: el usuario decidió no hacerlas (DECISIONS, 2026-09-27) | `contenidos/…/C4` | PDF del tutorial |
 | **F · Interactivo** | Lumi (H5P de escritorio) | 2 videos interactivos, uno por curso | MP4 del carril B + `H2-video-interactivo-guion.md` | `.h5p` a Drive |
 
 **Orden dentro de cada carril:** primero AE3 (★), después AE1, AE2 y AE4, y al final la bienvenida o la ruta.
@@ -127,8 +127,7 @@ encima, porque suele deformar las letras.
   `entrega/herramientas/M2-Herramienta-1-Notebook.ipynb`, "Laboratorio de prompts". La fuente es
   `contenidos/PF1822/modulo-2/notebook/M2-Herramienta-1-Notebook.md`: cada bloque `python` es una
   celda de código. Al generarlo, el script revisa que cubra, textuales, los 10 contenidos del AE3,
-  que cada sección tenga su autocomprobación y que no haya claves escritas. Falta probarlo en Colab
-  con una clave (carril E).
+  que cada sección tenga su autocomprobación y que no haya claves escritas..
 
 ### E · Técnico
 

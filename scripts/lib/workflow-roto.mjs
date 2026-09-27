@@ -6,7 +6,8 @@
  * Además: los 6 pedidos de prueba (fijados como datos del Webhook), la tabla de comunas y el SQL.
  *
  * Nodos: Webhook v2, Edit Fields (Set) v3.4, If v2.2, Supabase v1, Merge v3, Switch v3.2.
- * No se ha importado en n8n desde esta máquina: el tutor lo importa y lo prueba antes de publicarlo.
+ * Al montarlo, el tutor lo importa en n8n y elige las credenciales de Supabase (sin prueba técnica previa:
+ * decisión del usuario, DECISIONS 2026-09-27).
  */
 import crypto from 'node:crypto';
 

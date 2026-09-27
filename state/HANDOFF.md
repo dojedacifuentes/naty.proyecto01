@@ -30,9 +30,10 @@ La contraparte revisó los entregables y pidió su estándar (DECISIONS, 2026-09
 - **Abierto:** #18 (mismos recursos con distinta marca para clientes que compiten) y #19 (colores de Skillnest sin
   manual; la Autónoma pide Montserrat y se usa IBM Plex).
 
-Pendientes del usuario: grabar G1 y G2, editar los 2 H5P (F1), Rise con los PDF de lectura (G5), enlaces de Drive de
-los videos y PNG de infografías, convertir los quiz a interactivos. Pruebas pendientes: workflow roto en n8n, capturas
-del tutorial de PF1821, `pytest` y notebook de PF1822. Después: herramientas de la industria, vinculación temprana y
+**Sin pruebas técnicas** (n8n, pytest, Colab) por decisión del usuario (DECISIONS, 2026-09-27): no las propongas de
+nuevo. Guía de Rise para el usuario en `modulo-2/GUIA-RISE.md`.
+Pendientes del usuario: grabar G1 y G2, editar los 2 H5P (F1), Rise con los PDF de lectura (G5, ver la guía), enlaces de Drive de
+los videos y PNG de infografías, convertir los quiz a interactivos. Falta también: capturas del tutorial de PF1821 (E1). Después: herramientas de la industria, vinculación temprana y
 actividades de extensión (35 % de la técnica, por institución), LMS y Anexo 2.
 
 Trampas nuevas:

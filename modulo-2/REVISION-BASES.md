@@ -63,5 +63,4 @@ tendrá al menos dos herramientas didácticas en el LMS**: su videocápsula, su 
 ## Riesgos que quedan
 
 - **Quién elige el "aprendizaje esperado seleccionado"** (#17). Mitigado con herramientas en todos los aprendizajes.
-- **El código Python de PF1822 no se ha ejecutado.** Hay que correrlo antes de montarlo.
 - **LMS, credenciales y video de evidencia de cada institución** (#5 y #6).
