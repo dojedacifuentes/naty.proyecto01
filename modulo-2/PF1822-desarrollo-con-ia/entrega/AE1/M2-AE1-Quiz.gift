@@ -18,5 +18,5 @@ $CATEGORY: PF1822-M2/AE1
 }
 
 ::AE1-P3:: Da dos razones para preprocesar un texto antes de enviarlo al modelo. {
-####Respuesta esperada: 
+####Respuesta esperada: 1 punto cada una\: menos tokens y por lo tanto menor costo; mejor calidad de respuesta al quitar ruido; protección de datos personales al no enviarlos a un tercero.
 }

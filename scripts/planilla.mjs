@@ -16,6 +16,7 @@ import { ruta, leer, listar } from './lib/repo.mjs';
 import { crearZip } from './lib/zip.mjs';
 
 const SITIO = 'https://naty-proyecto01.vercel.app';
+const QUIZ_WEB = `${SITIO}/quiz-modulo2.html`; // anclas #PF1821, #PF1821-q1, #PF1821-ae1
 const CURSOS = [
   { pf: 'PF1821', nombre: 'Construcción de Agentes y Automatización con Herramientas Low Code', carpeta: 'PF1821-agentes-low-code', drive: 'PF1821 - Agentes y Automatizacion Low Code',
     clientes: [['UNAB', 'UNAB'], ['Skillnest', 'Skillnest']] },
@@ -58,7 +59,7 @@ for (const c of CURSOS) {
       en(d.bienvenidaCurso, 'Ver video'), en(d.resumen, 'Ver video'), en(d.bienvenidaModulo, 'Ver video'),
       en(d.videos, 'Carpeta de videos'), en(d.herramienta2, 'Ver video'),
       ...canva[c.pf].map((q, i) => L(`Quiz ${i + 1} (Canva)`, q.url)),
-      en(d.quiz, 'Quiz en PDF y GIFT'), en(d.infografias, 'Infografías (PNG)'),
+      en(d.quiz, 'Quiz en PDF y GIFT'), L('Ver quiz GIFT', `${QUIZ_WEB}#${c.pf}`), en(d.infografias, 'Infografías (PNG)'),
       en(cl.carpeta, `Carpeta ${cliente}`), en(d.carpeta, 'Carpeta del curso'),
       S('Listo para revisión', E.ok), OBS[cliente],
     ]);
@@ -73,7 +74,7 @@ for (const c of CURSOS) {
     const k = `AE${ae.n}`;
     aprendizajes.push([S(c.pf, 'curso'), `${m2.codigo} · ${m2.nombre} · ${m2.horas} h`, k, ae.texto,
       L(`Lectura ${k} · ${lecturas[k]}`, `${SITIO}/modulo-2/${c.carpeta}/entrega/${k}/M2-${k}-Lectura.pdf`),
-      L('Quiz GIFT (Moodle)', `${SITIO}/modulo-2/${c.carpeta}/entrega/${k}/M2-${k}-Quiz.gift`)]);
+      L(`Ver quiz ${k} (GIFT)`, `${QUIZ_WEB}#${c.pf}-ae${ae.n}`)]);
   }
 }
 
@@ -92,8 +93,12 @@ for (const c of CURSOS) {
     for (const r of archivos.filter((x) => (clave === 'AE' ? /^AE\d\//.test(x) : x.startsWith(`${clave}/`))).sort()) {
       const nombre = path.basename(r);
       const tutor = /Respuesta-modelada|respuesta-modelada\//.test(r);
+      // Un .gift se descarga: se enlaza a su quiz en la vista web (scripts/lib/quiz-gift.mjs).
+      const quiz = /^quiz\/M2-Quiz-(\d)-Moodle\.gift$/.exec(r) ?? /^AE(\d)\/M2-AE\d-Quiz\.gift$/.exec(r);
+      const enlace = quiz ? L('Ver en la web', `${QUIZ_WEB}#${c.pf}-${r.startsWith('quiz/') ? 'q' : 'ae'}${quiz[1]}`)
+        : L('Abrir', `${SITIO}/${ent}/${r}`);
       entregables.push([S(c.pf, 'curso'), grupo, nombre, path.extname(nombre).slice(1).toUpperCase(),
-        tutor ? 'Solo tutor' : 'Participante', L('Abrir', `${SITIO}/${ent}/${r}`), S('Listo para revisión', E.ok)]);
+        tutor ? 'Solo tutor' : 'Participante', enlace, S('Listo para revisión', E.ok)]);
     }
   }
 }
@@ -191,8 +196,8 @@ const HOJAS = [
   { nombre: 'Resumen', titulo: 'Módulo 2 · Recursos educativos · PF1821 y PF1822', subtitulo: `Una fila por cliente y curso · estándar de la contraparte · actualizado ${fecha}`,
     encabezados: ['Curso', 'Tipo', 'Cliente', 'Aprendizajes esperados (M2)', 'Cuadernillos (lecturas, actividades, evaluación, metodología, tutor, glosario)',
       'Documentos sueltos', 'Lecturas (Rise)', 'Video de bienvenida (curso)', 'Video resumen (módulo)', 'Video de bienvenida (módulo)', 'Videocápsulas AE1 a AE4',
-      'Video herramienta 2 (AE3)', 'Quiz 1', 'Quiz 2', 'Quiz 3', 'Quiz (PDF y Moodle)', 'Infografías', 'Carpeta del cliente', 'Carpeta del curso', 'Estado', 'Observaciones'],
-    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 13, 22, 26, 18, 20, 16, 16, 16, 18, 16, 15, 15, 15, 18, 18, 18, 18, 18, 40] } },
+      'Video herramienta 2 (AE3)', 'Quiz 1', 'Quiz 2', 'Quiz 3', 'Quiz (PDF y Moodle)', 'Quiz GIFT (vista web)', 'Infografías', 'Carpeta del cliente', 'Carpeta del curso', 'Estado', 'Observaciones'],
+    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 13, 22, 26, 18, 20, 16, 16, 16, 18, 16, 15, 15, 15, 18, 18, 18, 18, 18, 18, 40] } },
   { nombre: 'Aprendizajes', titulo: 'Aprendizajes esperados del módulo 2', subtitulo: 'Textuales de la ficha SIPFOR · con su lectura y su quiz',
     encabezados: ['Curso', 'Módulo', 'AE', 'Aprendizaje esperado (textual del plan)', 'Lectura', 'Quiz'],
     filas: aprendizajes, anchos: { fijas: 1, cols: [10, 34, 6, 70, 34, 20] } },

@@ -437,7 +437,7 @@ paginas++;
 {
   const md = leer('modulo-2/README.md');
   const descargas = `<h3>Quiz del módulo 2</h3><ul class="lista">
-<li><a href="quiz-modulo2.html">Quiz GIFT del módulo 2</a>: los 6 quiz (3 por curso) como quedan al importarlos en Moodle, con la respuesta correcta y la retroalimentación, o para contestarlos.</li>
+<li><a href="quiz-modulo2.html">Quiz GIFT del módulo 2</a>: por curso, los 3 quiz formativos y el quiz de cada aprendizaje esperado, como quedan al importarlos en Moodle, con la respuesta correcta y la retroalimentación, o para contestarlos.</li>
 </ul>
 <h3>Descargas para producción</h3><ul class="lista">
 <li><a href="descargas/videos-heygen-modulo2.zip">videos-heygen-modulo2.zip</a>: los 12 PPT para HeyGen (bienvenida, 4 videocápsulas y video de la herramienta 2, por curso), con guiones y pasos.</li>

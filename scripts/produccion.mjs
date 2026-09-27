@@ -627,7 +627,8 @@ function preguntas(md) {
     if (mIt && ae) { item = { ae, n: +mIt[1], enunciado: mIt[2], opciones: null, respuesta: '' }; items.push(item); continue; }
     if (!item) continue;
     const t = l.trim();
-    if (/^\*Respuesta:/.test(t)) item.respuesta = t.replace(/^\*Respuesta:\s*/, '').replace(/\*$/, '');
+    // "*Respuesta:" o "*Respuesta, 1 punto cada una:" (B2 de PF1822, AE1).
+    if (/^\*Respuesta[:,]/.test(t)) item.respuesta = t.replace(/^\*Respuesta[:,]\s*/, '').replace(/\*$/, '');
     else if (!item.opciones && / · /.test(t) && /^\**[a-d]\)/.test(t)) {
       item.opciones = t.split(' · ').map((o) => ({ correcta: /^\*\*.+\*\*$/.test(o.trim()), texto: limpio(o).replace(/^[a-d]\)\s*/, '') }));
     }

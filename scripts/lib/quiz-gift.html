@@ -45,7 +45,7 @@ h1{font-size:28px;line-height:1.2;font-weight:600;margin:0;text-wrap:balance}
 .nav a:hover{border-color:var(--accent)}
 section.quiz{display:flex;flex-direction:column;gap:14px;scroll-margin-top:16px}
 .qhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px;border-bottom:2px solid var(--ink);padding-bottom:8px}
-.qhead h2{font-size:20px;font-weight:600;margin:0;text-wrap:balance}
+.qhead h3{font-size:20px;font-weight:600;margin:0;text-wrap:balance}
 .meta{font:12px/1.4 var(--mono);color:var(--muted)}
 .score{font:500 13px/1 var(--mono);color:var(--accent)}
 .q{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:12px}
@@ -65,6 +65,9 @@ section.quiz{display:flex;flex-direction:column;gap:14px;scroll-margin-top:16px}
 .fb{margin:0;padding:10px 12px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 6px 6px 0;font-size:14px}
 .fb b{font-weight:600}
 .reset{align-self:flex-start;font:500 13px/1 var(--sans);color:var(--accent);background:none;border:1px solid var(--line);border-radius:6px;padding:8px 12px;cursor:pointer}
+.grupo{font-size:22px;font-weight:600;margin:12px 0 0;text-wrap:balance}
+#nav{display:flex;flex-direction:column;gap:12px}
+.navgrupo{display:flex;flex-direction:column;gap:8px}
 footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
 footer code{font:12px var(--mono)}
 @media (max-width:480px){h1{font-size:23px}.q{padding:14px}}
@@ -75,7 +78,7 @@ footer code{font:12px var(--mono)}
     <a class="volver" href="index.html">← Módulo 2 · PF1821 y PF1822</a>
     <span class="eyebrow">Talento Digital 2026 · Módulo 2 · Formato GIFT para Moodle</span>
     <h1>Quiz del módulo 2</h1>
-    <p class="lede">Los 6 quiz formativos de PF1821 y PF1822 tal como quedan al importar los archivos GIFT en Moodle. En modo revisión se ven la respuesta correcta y la retroalimentación; en modo responder, el quiz se contesta como lo haría un estudiante.</p>
+    <p class="lede">Los quiz GIFT de PF1821 y PF1822 tal como quedan al importarlos en Moodle: los 3 quiz formativos de cada curso y el quiz de cada aprendizaje esperado (prueba objetiva). En modo revisión se ven la respuesta correcta y la retroalimentación; en modo responder, se contestan como lo haría un estudiante.</p>
     <div class="controls">
       <div class="seg" role="group" aria-label="Curso" id="seg-curso"></div>
       <div class="seg" role="group" aria-label="Modo" id="seg-modo">
@@ -84,16 +87,20 @@ footer code{font:12px var(--mono)}
       </div>
     </div>
     <p class="course" id="curso-nombre"></p>
-    <nav class="nav" id="nav" aria-label="Quiz del curso"></nav>
+    <div id="nav"></div>
   </header>
   <main id="quizzes" class="wrap" style="padding:0"></main>
-  <footer>Fuente: <code>modulo-2/&lt;curso&gt;/entrega/quiz/M2-Quiz-n-Moodle.gift</code>, generados desde <code>R-quiz-canva.md</code>. Para importarlos: Banco de preguntas → Importar → GIFT. Cada archivo crea su categoría (por ejemplo <code>PF1821-M2/Quiz-1</code>).</footer>
+  <footer>Fuente: los archivos <code>.gift</code> de <code>modulo-2/[curso]/entrega/quiz/</code> (formativos) y <code>entrega/AEn/</code> (por aprendizaje). Para importarlos: Banco de preguntas → Importar → GIFT. Cada archivo crea su categoría (por ejemplo <code>PF1821-M2/Quiz-1</code>).</footer>
 </div>
 
 <script>
 const DATA = /*DATA*/;
-const estado = { curso: DATA[0].codigo, modo: "revision", respuestas: {} };
+const estado = { curso: DATA[0].codigo, modo: "revision", respuestas: {}, vistas: {} };
 try { const g = JSON.parse(localStorage.getItem("quiz-gift-vista") || "{}"); if (DATA.some(c => c.codigo === g.curso)) estado.curso = g.curso; if (g.modo === "responder") estado.modo = g.modo; } catch (e) {}
+// Un enlace como quiz-modulo2.html#PF1822-ae1 abre ese curso y ese quiz.
+const destino = decodeURIComponent(location.hash.slice(1));
+const cursoHash = DATA.find(c => destino === c.codigo || destino.startsWith(c.codigo + "-"));
+if (cursoHash) estado.curso = cursoHash.codigo;
 const guardar = () => { try { localStorage.setItem("quiz-gift-vista", JSON.stringify({ curso: estado.curso, modo: estado.modo })); } catch (e) {} };
 const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const LETRAS = "abcdefgh";
@@ -103,48 +110,67 @@ segCurso.innerHTML = DATA.map(c => `<button type="button" data-curso="${c.codigo
 segCurso.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; estado.curso = b.dataset.curso; guardar(); pintar(); });
 document.getElementById("seg-modo").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; estado.modo = b.dataset.modo; guardar(); pintar(); });
 
+function pregunta(p, k, responder) {
+  if (p.tipo === "abierta") {
+    const ver = !responder || estado.vistas[k];
+    return `<article class="q ${responder ? "answer" : ""}">
+      <span class="qtag">${esc(p.id)} · pregunta abierta, la corrige el tutor</span>
+      <p class="stem">${esc(p.enunciado)}</p>
+      ${ver ? `<p class="fb"><b>Respuesta esperada.</b> ${p.retro ? esc(p.retro) : "<em>El archivo GIFT no trae respuesta esperada.</em>"}</p>`
+        : `<button type="button" class="reset" data-ver="${k}">Ver respuesta esperada</button>`}
+    </article>`;
+  }
+  const elegida = estado.respuestas[k];
+  const visto = !responder || elegida !== undefined;
+  return `<article class="q ${responder ? "answer" : ""}">
+    <span class="qtag">${esc(p.id)}</span>
+    <p class="stem">${esc(p.enunciado)}</p>
+    <ul class="opts">${p.opciones.map((o, j) => {
+      let cls = "", chip = "";
+      if (visto && j === p.correcta) { cls = "ok"; chip = responder && elegida === j ? "Tu respuesta · correcta" : "Correcta"; }
+      else if (responder && elegida === j) { cls = "bad"; chip = "Tu respuesta"; }
+      const inner = `<span class="l">${LETRAS[j]})</span><span class="t">${esc(o)}</span>${chip ? `<span class="chip">${chip}</span>` : ""}`;
+      return `<li>${responder && elegida === undefined
+        ? `<button type="button" class="opt" data-k="${k}" data-j="${j}">${inner}</button>`
+        : `<div class="opt ${cls}">${inner}</div>`}</li>`;
+    }).join("")}</ul>
+    ${visto && p.retro ? `<p class="fb"><b>Retroalimentación.</b> ${esc(p.retro)}</p>` : ""}
+  </article>`;
+}
+
 function pintar() {
   segCurso.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.curso === estado.curso));
   document.querySelectorAll("#seg-modo button").forEach(b => b.setAttribute("aria-pressed", b.dataset.modo === estado.modo));
   const c = DATA.find(x => x.codigo === estado.curso);
   document.getElementById("curso-nombre").innerHTML = `<b>${c.codigo}</b> · ${esc(c.nombre)}`;
-  document.getElementById("nav").innerHTML = c.quizzes.map(q => `<a href="#${c.codigo}-q${q.n}">Quiz ${q.n} · ${esc(q.tema)}</a>`).join("");
+  document.getElementById("nav").innerHTML = c.grupos.map(g => `<div class="navgrupo"><span class="eyebrow">${esc(g.titulo)}</span>
+    <nav class="nav" aria-label="${esc(g.titulo)}">${g.quizzes.map(q => `<a href="#${q.clave}">${esc(q.titulo)}${q.tema ? " · " + esc(q.tema) : ""}</a>`).join("")}</nav></div>`).join("");
   const responder = estado.modo === "responder";
-  document.getElementById("quizzes").innerHTML = c.quizzes.map(q => {
-    const clave = `${c.codigo}-q${q.n}`;
-    const aciertos = q.preguntas.filter((p, i) => estado.respuestas[`${clave}-${i}`] === p.correcta).length;
-    const contestadas = q.preguntas.filter((p, i) => estado.respuestas[`${clave}-${i}`] !== undefined).length;
-    return `<section class="quiz" id="${clave}">
-      <div class="qhead"><h2>Quiz ${q.n} · ${esc(q.tema)}</h2>
-        <span class="meta">${esc(q.categoria)} · ${q.preguntas.length} preguntas · ${esc(q.ae)}</span></div>
-      ${responder ? `<span class="score">${contestadas} de ${q.preguntas.length} respondidas · ${aciertos} correctas</span>` : ""}
-      ${q.preguntas.map((p, i) => {
-        const k = `${clave}-${i}`; const elegida = estado.respuestas[k];
-        const visto = !responder || elegida !== undefined;
-        return `<article class="q ${responder ? "answer" : ""}">
-          <span class="qtag">${esc(p.id)}</span>
-          <p class="stem">${esc(p.enunciado)}</p>
-          <ul class="opts">${p.opciones.map((o, j) => {
-            let cls = "", chip = "";
-            if (visto && j === p.correcta) { cls = "ok"; chip = responder && elegida === j ? "Tu respuesta · correcta" : "Correcta"; }
-            else if (responder && elegida === j) { cls = "bad"; chip = "Tu respuesta"; }
-            const inner = `<span class="l">${LETRAS[j]})</span><span class="t">${esc(o)}</span>${chip ? `<span class="chip">${chip}</span>` : ""}`;
-            return `<li>${responder && elegida === undefined
-              ? `<button type="button" class="opt" data-k="${k}" data-j="${j}">${inner}</button>`
-              : `<div class="opt ${cls}">${inner}</div>`}</li>`;
-          }).join("")}</ul>
-          ${visto ? `<p class="fb"><b>Retroalimentación.</b> ${esc(p.retro)}</p>` : ""}
-        </article>`;
-      }).join("")}
-      ${responder && contestadas ? `<button type="button" class="reset" data-reset="${clave}">Reiniciar este quiz</button>` : ""}
+  document.getElementById("quizzes").innerHTML = c.grupos.map(g => `<h2 class="grupo">${esc(g.titulo)}</h2>` + g.quizzes.map(q => {
+    const cerradas = q.preguntas.map((p, i) => [p, `${q.clave}-${i}`]).filter(([p]) => p.tipo !== "abierta");
+    const aciertos = cerradas.filter(([p, k]) => estado.respuestas[k] === p.correcta).length;
+    const contestadas = cerradas.filter(([, k]) => estado.respuestas[k] !== undefined).length;
+    const tocado = contestadas || q.preguntas.some((p, i) => estado.vistas[`${q.clave}-${i}`]);
+    return `<section class="quiz" id="${q.clave}">
+      <div class="qhead"><h3>${esc(q.titulo)}${q.tema ? " · " + esc(q.tema) : ""}</h3>
+        <span class="meta">${esc(q.categoria)} · ${q.preguntas.length} preguntas${q.ae ? " · " + esc(q.ae) : ""}</span></div>
+      ${responder && cerradas.length ? `<span class="score">${contestadas} de ${cerradas.length} de alternativas respondidas · ${aciertos} correctas</span>` : ""}
+      ${q.preguntas.map((p, i) => pregunta(p, `${q.clave}-${i}`, responder)).join("")}
+      ${responder && tocado ? `<button type="button" class="reset" data-reset="${q.clave}">Reiniciar este quiz</button>` : ""}
     </section>`;
-  }).join("");
+  }).join("")).join("");
 }
 document.getElementById("quizzes").addEventListener("click", e => {
   const o = e.target.closest("button.opt");
   if (o) { estado.respuestas[o.dataset.k] = Number(o.dataset.j); pintar(); return; }
+  const v = e.target.closest("button[data-ver]");
+  if (v) { estado.vistas[v.dataset.ver] = true; pintar(); return; }
   const r = e.target.closest("button[data-reset]");
-  if (r) { Object.keys(estado.respuestas).forEach(k => { if (k.startsWith(r.dataset.reset + "-")) delete estado.respuestas[k]; }); pintar(); }
+  if (r) {
+    for (const m of [estado.respuestas, estado.vistas]) Object.keys(m).forEach(k => { if (k.startsWith(r.dataset.reset + "-")) delete m[k]; });
+    pintar();
+  }
 });
 pintar();
+if (destino) document.getElementById(destino)?.scrollIntoView();
 </script>
