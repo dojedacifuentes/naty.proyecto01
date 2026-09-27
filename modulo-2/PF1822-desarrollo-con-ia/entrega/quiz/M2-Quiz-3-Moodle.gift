@@ -1,0 +1,43 @@
+// PF1822 · Módulo 2 · Quiz 3 · Preparar y medir texto (AE4). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1822-M2/Quiz-3
+
+::Q3-P1 (AE4):: ¿Qué hace esta línea de Python? re.sub(r"&lt;[^&gt;]+&gt;", " ", texto) {
+~Borra los correos electrónicos
+~Pasa el texto a minúsculas
+~Cuenta las palabras del texto
+=Reemplaza las etiquetas HTML por espacios
+####La expresión regular busca todo lo que va entre &lt; y &gt;, es decir, las etiquetas HTML, y lo reemplaza por un espacio.
+}
+
+::Q3-P2 (AE4):: Tokenizar un texto es\: {
+=Dividirlo en unidades, como palabras, partes de palabras o signos
+~Traducirlo a otro idioma
+~Cifrarlo para protegerlo
+~Resumirlo en una oración
+####Los tokens son las unidades con que se procesa y se mide un texto. También con ellos se cuenta el costo de usar un modelo.
+}
+
+::Q3-P3 (AE4):: BLEU compara un texto generado con uno de referencia según\: {
+~La corrección gramatical del texto
+~El tiempo que tardó el modelo en responder
+=Cuántos n-gramas del texto generado aparecen también en la referencia
+~La cantidad de oraciones
+####BLEU mide coincidencia de n-gramas, con énfasis en la precisión, y penaliza los textos demasiado cortos.
+}
+
+::Q3-P4 (AE4):: ROUGE-L se basa en\: {
+~El largo total del resumen
+=La subsecuencia común más larga entre el resumen y la referencia
+~La cantidad de tokens del prompt
+~El número de párrafos
+####ROUGE-L busca la secuencia de palabras en común más larga, aunque no estén seguidas\: premia que el resumen conserve el orden de las ideas.
+}
+
+::Q3-P5 (AE4):: ¿Por qué no basta con ROUGE y BLEU para elegir la mejor configuración del resumidor? {
+~Porque son muy lentas de calcular
+~Porque solo funcionan en inglés
+~Porque siempre dan el mismo valor
+=Porque miden coincidencia de palabras, no si el resumen es coherente y relevante
+####Un resumen puede usar otras palabras y ser muy bueno. Por eso en el laboratorio también valoras coherencia y relevancia de 1 a 3.
+}

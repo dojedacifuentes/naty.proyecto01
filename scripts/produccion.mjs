@@ -912,6 +912,14 @@ function quizCanva(pf, md) {
         ...p.opciones.map((o) => `  ${o.letra.toUpperCase()}) ${plano(o.texto)}${o.correcta ? '   <- CORRECTA' : ''}`),
         `  Retroalimentación: ${plano(p.retro)}`, '']),
     ].join('\r\n'),
+    // El mismo quiz para Moodle (Banco de preguntas → Importar → GIFT): la retroalimentación sale al responder.
+    gift: [`// ${pf} · Módulo 2 · ${plano(q.titulo)}. Formativo, sin nota. Generado desde R-quiz-canva.md.`,
+      '// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.',
+      `$CATEGORY: ${pf}-M2/Quiz-${q.n}`, '',
+      ...q.preguntas.flatMap((p) => [`::Q${q.n}-P${p.n} (${p.ae}):: ${gift(limpio(p.texto))} {`,
+        ...p.opciones.map((o) => `${o.correcta ? '=' : '~'}${gift(limpio(o.texto))}`),
+        `####${gift(limpio(p.retro))}`, '}', '']),
+    ].join('\n'),
   }));
 }
 
@@ -1047,7 +1055,10 @@ for (const pf of codigos) {
   const b = videoBienvenida(pf, c, mdBienv, f.modulo);
   guardar(`${out}/videos/00-bienvenida.pptx`, b.pptx);
   guardar(`${out}/videos/00-bienvenida-guion.md`, b.guion);
-  for (const q of quizCanva(pf, leer(`${dir}/R-quiz-canva.md`))) guardar(`${out}/quiz-canva/${q.archivo}`, q.texto);
+  for (const q of quizCanva(pf, leer(`${dir}/R-quiz-canva.md`))) {
+    guardar(`${out}/quiz-canva/${q.archivo}`, q.texto);
+    guardar(`${ent}/quiz/M2-${q.archivo.replace('.txt', '')}-Moodle.gift`, q.gift);
+  }
   for (const v of videosCurso(pf, c, leer(`${dir}/R-videos-curso.md`), f.modulo)) {
     guardar(`${out}/videos/${v.archivo}.pptx`, v.pptx);
     guardar(`${out}/videos/${v.archivo}-guion.md`, v.guion);

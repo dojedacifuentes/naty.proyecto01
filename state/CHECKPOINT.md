@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-04 (Claude Code · opus-5.5)
+**Por:** 2026-09-27-claude-code-05 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -174,6 +174,7 @@ Sesión claude-code-01, 2026-09-27: estándar de recursos de la contraparte.
 - [x] Glosario del módulo en PDF, CSV y XML de Moodle; metodología en PDF; zips de Drive con glosario.
 - [x] Marca por cliente (sesión -04): UNAB, Skillnest y Autónoma, con 6 cuadernillos con portada por cliente y curso; zips entregados.
 - [x] PDF de indicadores de logro y organización de las actividades en la ficha y en Moodle (sesión -04).
+- [x] Los 3 quiz por curso también en GIFT para Moodle (sesión -05). Pendiente: convertirlos a quiz interactivo en Canva.
 
 Sesión claude-code-02, 2026-09-27: quizzes del módulo 2 en Canva.
 

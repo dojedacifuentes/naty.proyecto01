@@ -405,6 +405,8 @@ function paqueteEstandar() {
     '  quiz-canva/   3 quiz formativos de 5 preguntas: Quiz 1 = AE1 y AE2, Quiz 2 = AE3, Quiz 3 = AE4.',
     '            La respuesta correcta está marcada "<- CORRECTA" y cada pregunta trae su retroalimentación.',
     '            No repiten preguntas de la prueba objetiva ni del video interactivo.',
+    '  quiz-moodle/  los mismos 3 quiz en GIFT: Moodle > Banco de preguntas > Importar > GIFT; luego un Cuestionario',
+    '            con esas 5 preguntas. La retroalimentación aparece al responder y el intento queda en el LMS.',
     '  glosario/  PDF, CSV y XML para Moodle.', '',
     'Para Rise (en lugar de flipbook): usa los PDF de lectura del zip lecturas-modulo2.zip, una lección por lectura.', ''];
   for (const c of CURSOS) {
@@ -415,6 +417,7 @@ function paqueteEstandar() {
       entradas.push({ nombre: `${c.carpeta}/videos/${d}-guion.md`, contenido: f(`produccion/videos/${o}-guion.md`) });
     });
     for (const n of [1, 2, 3]) entradas.push({ nombre: `${c.carpeta}/quiz-canva/Quiz-${n}.txt`, contenido: f(`produccion/quiz-canva/Quiz-${n}.txt`) });
+    for (const n of [1, 2, 3]) entradas.push({ nombre: `${c.carpeta}/quiz-moodle/M2-Quiz-${n}-Moodle.gift`, contenido: f(`entrega/quiz/M2-Quiz-${n}-Moodle.gift`) });
     for (const a of ['M2-Glosario.pdf', 'M2-Glosario.csv', 'M2-Glosario-Moodle.xml']) entradas.push({ nombre: `${c.carpeta}/glosario/${a}`, contenido: f(`entrega/glosario/${a}`) });
   }
   return crearZip([{ nombre: 'LEEME.txt', contenido: leeme.join('\r\n') }, ...entradas]);

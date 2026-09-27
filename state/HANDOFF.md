@@ -16,7 +16,8 @@ La contraparte revisó los entregables y pidió su estándar (DECISIONS, 2026-09
   (`contenidos/<PF>/modulo-2/R-videos-curso.md` → `produccion/videos/00-bienvenida-curso` y `90-resumen-modulo`). Falta grabarlos (G1, G2).
 - **Quiz en Canva** (G3, sesiones -02 y -03): 3 por curso, formativos, desde `R-quiz-canva.md`. Enlaces en los ESTADO;
   PDF exportados en `entregables/quiz-modulo-2-canva-PF1821-PF1822.zip`. El conector no crea el elemento Quiz
-  interactivo: la conversión es manual en Canva. Falta revisión humana. No reescribas las preguntas en Canva: la fuente es `R-quiz-canva.md`.
+  interactivo: la conversión es manual en Canva (o con Claude in Chrome y una sesión de Canva iniciada; se intentó en la
+  sesión -05 y la extensión no estaba conectada). Los mismos quiz están en GIFT para Moodle (`entrega/quiz/`, G8). Falta revisión humana. No reescribas las preguntas en Canva: la fuente es `R-quiz-canva.md`.
 - **Glosario** del módulo (G4) e **indicadores de logro en PDF** (G7): `entrega/glosario/` y `entrega/evaluacion/M2-Indicadores.pdf`.
 - **Organización de las actividades**: fila "Organización" en la tabla resumen de C2 (sale en la ficha y en Moodle).
 - **Marca por cliente y cuadernillos** (G6, sesión -04): `npm run marca -- CLIENTE [PF]` imprime los 22 PDF con los

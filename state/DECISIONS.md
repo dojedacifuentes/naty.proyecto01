@@ -383,3 +383,13 @@ Quién: usuario (pedido del ZIP) y claude-code (exportación y empaquetado).
   en parejas en PF1821, tablero compartido en PF1822). No se agregó trabajo grupal nuevo.
 Quién: usuario (pedido, manuales y logos) y claude-code (aplicación), sesión `2026-09-27-claude-code-04`.
 
+## 2026-09-27 · Quiz formativos también en Moodle (sesión claude-code, 2026-09-27-claude-code-05)
+
+- Los 3 quiz de cada curso se generan también en GIFT (`entrega/quiz/M2-Quiz-n-Moodle.gift`), desde la misma fuente
+  (`R-quiz-canva.md`). Por qué: el quiz interactivo de Canva guarda las respuestas en Canva y solo funciona por enlace;
+  la metodología se evalúa en el LMS (bases 2026, 7.4, pág. 30). Se hacen las dos cosas, a pedido del usuario.
+- El conector de Canva no crea cuestionarios (solo edita texto, formas, imágenes y páginas); la ayuda oficial de Canva
+  dice que se agregan en el editor (Elementos > Formularios > cuestionario, respuesta correcta marcada, hasta 10 preguntas).
+  Para convertirlos hay que operar el editor con una sesión de Canva iniciada en el navegador.
+Quién: usuario (pidió ambos) y claude-code, sesión `2026-09-27-claude-code-05`.
+

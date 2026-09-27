@@ -1,0 +1,43 @@
+// PF1821 · Módulo 2 · Quiz 2 · Transformar datos (AE3). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1821-M2/Quiz-2
+
+::Q2-P1 (AE3):: En n8n, cada ítem que viaja de un nodo a otro es\: {
+~Una fila de Excel
+=Un objeto JSON con campos y valores
+~Un archivo XML
+~Un texto plano sin estructura
+####n8n trabaja con ítems en JSON\: cada uno tiene campos con su valor, como nombre, comuna o total. Los nodos procesan los ítems uno por uno.
+}
+
+::Q2-P2 (AE3):: Necesitas quedarte solo con los pedidos de la comuna de Temuco. ¿Qué nodo usas? {
+~Summarize
+~Merge
+~Split Out
+=Filter
+####Filter deja pasar solo los ítems que cumplen una condición. Summarize agrupa y calcula, Merge une dos flujos y Split Out separa una lista en ítems.
+}
+
+::Q2-P3 (AE3):: Un pedido trae una lista productos con tres elementos y necesitas un ítem por producto. ¿Qué nodo usas? {
+=Split Out
+~Merge
+~Summarize
+~If
+####Split Out convierte los elementos de una lista en ítems separados, para procesar cada producto por su cuenta.
+}
+
+::Q2-P4 (AE3):: ¿Qué nodo transforma los ítems en un archivo CSV para descargarlo o enviarlo? {
+~Extract from File
+~Edit Fields (Set)
+=Convert to File
+~Summarize
+####Convert to File genera el archivo, en CSV u otros formatos. Extract from File hace lo contrario\: lee un archivo y lo convierte en ítems.
+}
+
+::Q2-P5 (AE3):: ¿Qué operación del nodo de Supabase usas para agregar un pedido nuevo a la tabla pedidos? {
+~Get many rows
+=Create a row
+~Update a row
+~Delete a row
+####Crear, leer, actualizar y borrar son las cuatro operaciones CRUD. Un pedido nuevo es una fila nueva\: Create a row.
+}
