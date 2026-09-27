@@ -140,3 +140,5 @@ Detectado el 2026-09-27 (sesión `2026-09-27-claude-code-14`): el conector de Dr
 a la vista de los quiz GIFT, es de esa cuenta; la anterior, del usuario, sigue en la carpeta con el mismo nombre. Opciones: reconectar el
 conector con la cuenta del usuario y volver a subir la planilla; o dejar la nueva y mover la anterior a "Archivo (versiones anteriores)".
 Se cruza con #20. Lo decide el usuario.
+**Respuesta parcial (2026-09-27, sesión `2026-09-27-claude-code-15`):** el usuario pidió dejar la nueva y ordenar la carpeta. Falta
+mover la anterior a Archivo (a mano) y decidir si el conector se reconecta con la cuenta del usuario.

@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-14 (Claude Code · opus-5.5)
+**Por:** 2026-09-27-claude-code-15 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -210,6 +210,10 @@ Sesión claude-code-14, 2026-09-27: quiz GIFT enlazados en la planilla de Drive.
 - [x] Corregido el GIFT del AE1 de PF1822: la respuesta esperada de la pregunta 3 salía vacía (la fuente usa "*Respuesta, 1 punto…").
 - [x] Planilla nueva en NATY 2.0, id `1WupQSaktADlUaurlkssVvXdFuDcCs8y_n0mwr0MDKGk`. **Su dueña es maturana.eco@gmail.com**, la cuenta del
       conector de Drive, no la del usuario. La anterior (`1yjgTnjm…`) sigue en NATY 2.0 con el mismo nombre: falta decidir (#21).
+
+Sesión claude-code-15, 2026-09-27: ordenar NATY 2.0.
+
+- [ ] Mover la planilla anterior a "Archivo (versiones anteriores)": el control de permisos de Claude Code bloqueó el movimiento (archivo del usuario, cuenta del conector ajena). Queda para el usuario.
 
 ## A medias
 
