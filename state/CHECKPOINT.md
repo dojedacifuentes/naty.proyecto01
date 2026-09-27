@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-03 (exportación y ZIP de los quiz de Canva)
+**Por:** 2026-09-27-claude-code-04 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -172,7 +172,8 @@ Sesión claude-code-01, 2026-09-27: estándar de recursos de la contraparte.
 - [x] Guion y PPT de bienvenida al curso y de resumen del módulo, por curso (falta grabarlos).
 - [x] 3 quiz para Canva por curso, con preguntas nuevas y validadas (falta armarlos en Canva).
 - [x] Glosario del módulo en PDF, CSV y XML de Moodle; metodología en PDF; zips de Drive con glosario.
-- [ ] Marca por cliente: comando listo (`npm run marca`); faltan logos y colores de UNAB, Skillnest y Autónoma.
+- [x] Marca por cliente (sesión -04): UNAB, Skillnest y Autónoma, con 6 cuadernillos con portada por cliente y curso; zips entregados.
+- [x] PDF de indicadores de logro y organización de las actividades en la ficha y en Moodle (sesión -04).
 
 Sesión claude-code-02, 2026-09-27: quizzes del módulo 2 en Canva.
 

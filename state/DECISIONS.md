@@ -360,3 +360,26 @@ Quién: usuario (aprobación del prototipo) y claude-code (construcción y verif
 - El paquete descargable usa PDF digital: un archivo por quiz, agrupado por curso y numerado 01–03. Por qué: preserva las 11 páginas y la lectura sin depender de una cuenta de Canva; los enlaces editables se mantienen en `LEEME.md`.
 - El ZIP contiene además un índice con los seis enlaces de Canva. Alternativa descartada: imágenes PNG por página, porque bajarían la resolución y multiplicarían innecesariamente los archivos.
 Quién: usuario (pedido del ZIP) y claude-code (exportación y empaquetado).
+
+## 2026-09-27 · Marca de clientes, cuadernillos, indicadores y organización (sesión claude-code, 2026-09-27-claude-code-04)
+
+- **Paletas y logos por cliente** (en `privado/marcas/<cliente>/marca.json`, fuera de git), con la fuente escrita en cada archivo:
+  - UNAB: logo horizontal del manual (nov. 2024, pág. 4); azul Pantone 296 #051C2C y rojo Pantone 187 #AA182C, leídos
+    de las muestras del manual porque no trae HEX. Principal azul, secundario y acento rojo.
+  - U. Autónoma: logo comercial versión original (manual ene. 2025, rev. 12, pág. 7); rojo #DA291C y gris #3D3935
+    (pág. 20). Principal gris, secundario y acento rojo; logo a 16 mm porque es casi cuadrado.
+  - Skillnest: **sin manual**; logo PNG del usuario (texto blanco, va directo sobre el principal) y colores muestreados:
+    #1E1E2A (sitio), #2470B1 (sitio) y #00ADE5 (logo). Hay que confirmarlos (#19).
+  Todos cumplen 4,5:1 con el blanco en principal y secundario. Se mantiene IBM Plex: el manual de la Autónoma pide
+  Montserrat y Barlow (#19). Descartado: inventar colores o elegirlos a ojo.
+- **Cuadernillos:** `npm run marca` une los PDF del mismo tipo en uno, con portada del cliente, presentación e índice:
+  lecturas, actividades, evaluación, metodología y medios, tutor (respuestas modeladas) y el glosario aparte. Por qué:
+  pedido del usuario ("une los PDF cada uno con portada de cliente, glosario aparte"). Los documentos sueltos se
+  mantienen en `documentos/` del zip. Se unen los HTML, no los PDF, porque no hay herramientas de PDF sin dependencias.
+- **Indicadores de logro en PDF** (`evaluacion/M2-Indicadores.pdf`, primero del cuadernillo de evaluación): faltaba como
+  documento aunque B1 estaba escrito.
+- **Organización de las actividades:** fila nueva en la tabla resumen de C2 (sale en la ficha del PDF y en Moodle).
+  Las cuatro son individuales, con los momentos en grupo que ya declaraba la metodología (sesiones en vivo, coevaluación
+  en parejas en PF1821, tablero compartido en PF1822). No se agregó trabajo grupal nuevo.
+Quién: usuario (pedido, manuales y logos) y claude-code (aplicación), sesión `2026-09-27-claude-code-04`.
+

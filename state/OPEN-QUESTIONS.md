@@ -120,3 +120,8 @@ cambiando la superficie. El control 04 compara el texto del Anexo 2, no los recu
 no lo detectaría. Opciones: aceptar el riesgo; variar por cliente el caso de estudio, las actividades o
 el tono; o reservar los recursos neutros para un solo cliente por plan. Lo decide Natalia o la contraparte.
 
+**19. ¿Colores y tipografía de marca definitivos de Skillnest y de la Autónoma?** — ABIERTA
+Skillnest no entregó manual: sus colores (#1E1E2A, #2470B1, #00ADE5) salen del logo y de una captura del sitio.
+La Autónoma pide Montserrat y Barlow Condensed en su manual; los PDF usan IBM Plex (2 familias, igual para todos).
+Si el cliente lo exige, se agrega la tipografía por marca. Lo confirma el usuario con cada cliente.
+

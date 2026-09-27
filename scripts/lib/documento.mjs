@@ -47,7 +47,7 @@ export function documentoPdfHtml(d) {
   <header class="cabecera"><p class="kicker">${esc(p.kicker)}</p><h1>${inline(p.titulo)}</h1>
     <p class="curso">${esc(d.pf)} · ${esc(d.curso)}<br>Módulo 2 · ${esc(d.codigo)} · ${esc(d.modulo)} · ${esc(d.horas)} h</p><div class="regla"></div></header>
   ${p.ficha?.length ? `<dl class="ficha-doc">${p.ficha.map(([r, v, ancha]) => `<div${ancha ? ' class="ancha"' : ''}><dt>${esc(r)}</dt><dd>${Array.isArray(v) ? v.map((x) => `<span>${inline(x)}</span>`).join('') : inline(v)}</dd></div>`).join('')}</dl>` : ''}
-  <div class="doc">${markdown(p.md)}</div>
+  <div class="doc">${markdown(p.md).replace(/&lt;br&gt;/g, '<br>')}</div>
 </section>`).join('\n');
   return `<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><title>${esc(d.titulo ?? partes[0].titulo)}</title>

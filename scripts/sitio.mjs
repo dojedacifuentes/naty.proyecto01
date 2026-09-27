@@ -362,7 +362,7 @@ function paqueteDrive(c) {
   const ent = `modulo-2/${c.carpeta}/entrega`;
   const leido = (r) => fs.readFileSync(ruta(`${ent}/${r}`));
   const EVAL = [
-    ['M2-Instrumento-1.pdf', 'Instrumento 1: rúbrica (observación)'], ['M2-Instrumento-2.pdf', 'Instrumento 2: caso práctico (desempeño)'],
+    ['M2-Indicadores.pdf', 'Indicadores de logro por aprendizaje esperado'], ['M2-Instrumento-1.pdf', 'Instrumento 1: rúbrica (observación)'], ['M2-Instrumento-2.pdf', 'Instrumento 2: caso práctico (desempeño)'],
     ['M2-Instrumento-3.pdf', 'Instrumento 3: prueba objetiva'], ['M2-Portafolio-Guia.pdf', 'Portafolio: guía con los elementos 1 a 5'],
     ['M2-Portafolio-Instrumento.pdf', 'Portafolio: instrumento de evaluación (elemento 6)'], ['M2-Retroalimentacion.pdf', 'Mecanismo de retroalimentación'],
     ['M2-Autoevaluacion.pdf', 'Pauta de autoevaluación'], ['M2-Coevaluacion.pdf', 'Pauta de coevaluación'], ['M2-Bitacora.pdf', 'Bitácora de resultados y plan de trabajo']];

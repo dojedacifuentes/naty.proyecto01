@@ -698,12 +698,20 @@ function documentoHtml(pf, c, f, mod, d) {
 // Los 9 documentos evaluativos, según la práctica del equipo (revisión del V0 de PF1474).
 function documentosEvaluacion(dir) {
   const b2 = leer(`${dir}/B2-instrumentos.md`);
+  // Indicadores de logro (B1): la tabla por aprendizaje esperado y su relación con los criterios del plan.
+  const b1 = leer(`${dir}/B1-indicadores.md`).split('\n');
+  const iTraz = b1.findIndex((l) => /^## Trazabilidad/.test(l));
+  const tabla = b1.slice(0, iTraz).filter((l) => l.startsWith('|'));
+  if (iTraz < 0 || tabla.length < 6) throw new Error(`${dir}/B1-indicadores.md: no encuentro la tabla de indicadores o la trazabilidad`);
+  const mdIndicadores = ['Los indicadores de logro dicen qué debe demostrar el participante para dar por logrado cada aprendizaje esperado del módulo. Los aprendizajes van textuales del plan formativo. Cada indicador se observa en las actividades y se evalúa con los instrumentos del módulo, que los citan por su número.',
+    '', ...tabla, '', '### Relación con los criterios de evaluación del plan', '', ...b1.slice(iTraz + 1).filter((l) => l.startsWith('|'))].join('\n');
   const b3 = leer(`${dir}/B3-portafolio.md`);
   const b4 = leer(`${dir}/B4-retroalimentacion.md`);
-  const docs = [1, 2, 3].map((n) => {
+  const docs = [{ archivo: 'M2-Indicadores.pdf', titulo: 'Indicadores de logro del módulo', md: mdIndicadores, kicker: 'Evaluación del módulo · indicadores de logro' }];
+  docs.push(...[1, 2, 3].map((n) => {
     const L = seccion(b2, new RegExp(`^## Instrumento ${n}\\b`));
     return { archivo: `M2-Instrumento-${n}.pdf`, titulo: titulo(L), md: cuerpo(L), kicker: `Evaluación del módulo · instrumento ${n}` };
-  });
+  }));
   const L3 = b3.split('\n');
   const i1 = L3.findIndex((l) => /^## Elemento 1\b/.test(l));
   const i6 = L3.findIndex((l) => /^## Elemento 6\b/.test(l));
@@ -796,13 +804,14 @@ function actividades(dir, f) {
     const dato = (r) => { const v = fila(r, n); if (!v) throw new Error(`${dir}/C2-actividades.md: la tabla resumen no trae "${r}" de la actividad ${n}`); return v; };
     const aes = dato('AE que cubre').match(/AE\d/g);
     const info = {
-      n, titulo: tit, tecnica: dato('Técnica'), aes, indicadores: dato('Indicadores'), tiempo: dato('Tiempo estimado'),
+      n, titulo: tit, tecnica: dato('Técnica'), aes, indicadores: dato('Indicadores'), tiempo: dato('Tiempo estimado'), organizacion: dato('Organización'),
       apoyos: traducir(dato('Apoyos'), nombres), producto: dato('Producto'), evaluacion: traducir(dato('Se evalúa con'), nombres),
       aprendizajes: aes.map((ae) => `${ae}. ${f.aes[ae].texto}`),
       enunciado: cuerpo(enun), insumos: ins ? cuerpo(ins) : null,
     };
     const ficha = [
-      ['Técnica', info.tecnica], ['Tiempo estimado', info.tiempo], ['Indicadores de logro', info.indicadores],
+      ['Técnica', info.tecnica], ['Tiempo estimado', info.tiempo], ['Organización', info.organizacion],
+      ['Indicadores de logro', info.indicadores],
       ['Apoyos', info.apoyos], ['Producto', info.producto], ['Se evalúa con', info.evaluacion],
       ['Aprendizajes esperados', info.aprendizajes, true],
     ];
@@ -845,6 +854,7 @@ function moodleActividad(pf, a) {
   ].join('\n');
   const intro = `<p style="margin:0 0 .4em"><strong>Actividad práctica ${a.n} · ${esc(a.titulo)}</strong></p>
 <p style="margin:0"><strong>Técnica:</strong> ${esc(a.tecnica)} · <strong>Tiempo estimado:</strong> ${esc(a.tiempo)}<br>
+<strong>Organización:</strong> ${esc(a.organizacion)}<br>
 <strong>Aprendizajes esperados:</strong> ${a.aprendizajes.map(esc).join('<br>')}<br>
 <strong>Indicadores de logro:</strong> ${esc(a.indicadores)} · <strong>Apoyos:</strong> ${esc(a.apoyos)}<br>
 <strong>Producto:</strong> ${esc(a.producto.replace(/`/g, ''))}</p>`;
@@ -989,8 +999,11 @@ for (const pf of codigos) {
   const pdf = (destinoRel, html) => {
     const tmp = `.scratch/produccion/${pf}/${destinoRel.split('/').pop().replace(/\.pdf$/, '.html')}`;
     escribir(tmp, html);
-    const m = fs.existsSync(ruta(manifiesto)) ? JSON.parse(leer(manifiesto)) : {};
-    m[destinoRel.slice(ent.length + 1)] = tmp;
+    const previo = fs.existsSync(ruta(manifiesto)) ? JSON.parse(leer(manifiesto)) : {};
+    const m = previo.pdfs ? previo : { pdfs: {} };
+    m.meta = { pf, curso: c.curso, caso: c.caso, modulo: f.modulo, codigo: mod.codigo, horas: mod.horas,
+      lecturas: Object.fromEntries(caps.map((x) => [x.ae, x.titulo])) };
+    m.pdfs[destinoRel.slice(ent.length + 1)] = tmp;
     escribir(manifiesto, JSON.stringify(m, null, 2) + '\n');
     if (!conPdf) return;
     fs.mkdirSync(ruta(destinoRel.split('/').slice(0, -1).join('/')), { recursive: true });
