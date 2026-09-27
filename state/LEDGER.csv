@@ -25,4 +25,4 @@ sesion_id,herramienta,modelo,rama,commit_inicio,commit_cierre,abierta_utc,cerrad
 2026-09-27-claude-code-02,claude-code,(no declarado),main,65c51c8e81e8,5c0d4ba101f9,2026-09-27T05:10:43Z,2026-09-27T05:27:45Z,cerrada,9,"9 files changed, 118 insertions(+), 280 deletions(-)",8/8 ok,80e0e3d705eeeff1,,,
 2026-09-27-claude-code-03,claude-code,(no declarado),main,ff7cda4aadf3,ff7cda4aadf3,2026-09-27T05:30:06Z,2026-09-27T05:57:39Z,cerrada,38,"28 files changed, 178 insertions(+), 64 deletions(-)",8/8 ok,c107429b33074e51,,,
 2026-09-27-claude-code-04,claude-code,(no declarado),main,e68d1e4982fd,c73154fe7e63,2026-09-27T06:01:58Z,2026-09-27T06:39:11Z,cerrada,33,"33 files changed, 525 insertions(+), 47 deletions(-)",8/8 ok,7814064f4e3e2b49,,,
-2026-09-27-claude-code-05,claude-code,(no declarado),main,d46dd583e4e4,,2026-09-27T06:46:01Z,,abierta,,,,,,,
+2026-09-27-claude-code-05,claude-code,(no declarado),main,d46dd583e4e4,62950692780b,2026-09-27T06:46:01Z,2026-09-27T06:55:42Z,cerrada,15,"15 files changed, 325 insertions(+), 3 deletions(-)",8/8 ok,a0ede9557324c61a,,,
