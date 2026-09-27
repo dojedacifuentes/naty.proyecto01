@@ -460,3 +460,12 @@ Quién: usuario (pedido y subida) y claude-code (orden), sesión `2026-09-27-cla
   No se tocó: cambiar el acceso es decisión del usuario (OPEN-QUESTIONS #20). El conector de Drive no quita permisos:
   solo los agrega o los sube.
 Quién: usuario (postergar), claude-code (hallazgo), sesión `2026-09-27-claude-code-12`.
+
+## 2026-09-27 · Vista web de los quiz GIFT y push con la nota de permisos (sesión claude-code, 2026-09-27-claude-code-13)
+
+- Los quiz GIFT se revisan en el sitio de Vercel (`quiz-modulo2.html`), generados en cada build desde los `.gift`, en vez de
+  un artifact aparte: lo pidió el usuario. No se agrega dependencia: el lector de GIFT es propio y solo acepta la sintaxis que
+  produce `npm run produccion`.
+- El push incluye la nota de la sesión -12 sobre el acceso "cualquiera con el enlace, editor" de NATY 2.0 (#20), aunque el repo es
+  público y la carpeta sigue abierta. Se le ofreció al usuario cerrar primero el acceso o dejar el detalle en `privado/`; eligió subir todo.
+Quién: usuario (decisión), sesión `2026-09-27-claude-code-13`.

@@ -17,6 +17,7 @@ import path from 'node:path';
 import { ruta, listar, rel, leer, git } from './lib/repo.mjs';
 import { markdown, esc } from './lib/html.mjs';
 import { crearZip } from './lib/zip.mjs';
+import { quizGiftHtml } from './lib/quiz-gift.mjs';
 
 const REPO = 'https://github.com/dojedacifuentes/naty.proyecto01';
 const SALIDA = 'public';
@@ -65,6 +66,7 @@ function pagina(titulo, cuerpo, dirSalida) {
     ['PF1822 · IA', `${a('modulo-2/PF1822-desarrollo-con-ia')}/`],
     ['Revisión contra bases', a('modulo-2/REVISION-BASES.html')],
     ['Flujo de producción', a('modulo-2/FLUJO-PRODUCCION.html')],
+    ['Quiz GIFT', a('quiz-modulo2.html')],
   ].map(([t, h]) => `<a href="${h}">${t}</a>`).join('');
   return `<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -427,10 +429,17 @@ escribirSalida('descargas/videos-heygen-modulo2.zip', paqueteVideos());
 escribirSalida('descargas/infografias-modulo2.zip', paqueteInfografias());
 escribirSalida('descargas/lecturas-modulo2.zip', paqueteLecturas());
 
+// Vista web de los quiz GIFT (scripts/lib/quiz-gift.mjs).
+escribirSalida('quiz-modulo2.html', quizGiftHtml(CURSOS));
+paginas++;
+
 // Portada: la del módulo 2, con los enlaces resueltos desde la raíz, y las descargas.
 {
   const md = leer('modulo-2/README.md');
-  const descargas = `<h3>Descargas para producción</h3><ul class="lista">
+  const descargas = `<h3>Quiz del módulo 2</h3><ul class="lista">
+<li><a href="quiz-modulo2.html">Quiz GIFT del módulo 2</a>: los 6 quiz (3 por curso) como quedan al importarlos en Moodle, con la respuesta correcta y la retroalimentación, o para contestarlos.</li>
+</ul>
+<h3>Descargas para producción</h3><ul class="lista">
 <li><a href="descargas/videos-heygen-modulo2.zip">videos-heygen-modulo2.zip</a>: los 12 PPT para HeyGen (bienvenida, 4 videocápsulas y video de la herramienta 2, por curso), con guiones y pasos.</li>
 <li><a href="descargas/infografias-modulo2.zip">infografias-modulo2.zip</a>: los 10 prompts de infografía, uno por archivo.</li>
 <li><a href="descargas/lecturas-modulo2.zip">lecturas-modulo2.zip</a>: las 8 lecturas en PDF (una por aprendizaje esperado), listas para subir.</li>

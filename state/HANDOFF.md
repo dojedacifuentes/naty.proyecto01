@@ -38,7 +38,11 @@ curso → cliente → cuadernillos/documentos, más videos, infografías y quiz 
 **Compartir con Natalia (sesión -12):** se propuso natalia@hackea.pro (el de OPEN-QUESTIONS #4) y el usuario dijo
 "todavía no": no compartas hasta que confirme el correo; entonces `share_file` con rol `reader`. **Antes, ojo:** la carpeta
 tiene acceso "cualquier persona con el enlace" como **editor** (#20). El conector no quita permisos; si el usuario quiere
-cerrarlo, lo hace en Drive → Compartir → Acceso general. **Drive y planilla (sesión -07, antecedente):** `npm run drive` arma la carpeta para subir a Drive; el usuario la sube a mano. Después:
+cerrarlo, lo hace en Drive → Compartir → Acceso general. El usuario pidió subir esta nota al repo público igual (sesión -13).
+**Quiz GIFT en la web (sesión -13):** https://naty-proyecto01.vercel.app/quiz-modulo2.html muestra los 6 quiz GIFT como en Moodle.
+Sale sola de los `.gift` en cada build (`scripts/lib/quiz-gift.mjs`): si cambian los quiz, basta `npm run produccion` y push.
+Si el GIFT trae otra sintaxis (preguntas abiertas, emparejamiento), la vista se detiene y el build de Vercel falla: amplía el lector.
+**Drive y planilla (sesión -07, antecedente):** `npm run drive` arma la carpeta para subir a Drive; el usuario la sube a mano. Después:
 buscar la carpeta con el conector de Drive, escribir `privado/drive/enlaces.json` (ruta relativa → URL), `npm run planilla` y
 subir el .xlsx con `create_file` (se convierte en Sheets). La versión 1 (sin enlaces de Drive) está en Drive con id
 `1COAVLdVPOgVyWpCfO_mds9ZSXr0_KLrdWd_pEDw6NSs`: al subir la nueva, manda esa a la papelera (pregunta antes).

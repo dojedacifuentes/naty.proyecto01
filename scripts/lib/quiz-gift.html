@@ -1,0 +1,150 @@
+<title>Quiz GIFT del módulo 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#f5f7f6; --surface:#ffffff; --ink:#1b2530; --muted:#5b6a74; --line:#dce2e0;
+  --accent:#1f5f8b; --accent-soft:#e6eff6;
+  --ok:#2a7a3c; --ok-soft:#e7f3e9; --bad:#b2412e; --bad-soft:#f8e9e5;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#11171c; --surface:#19222a; --ink:#e3e9ec; --muted:#98a6ae; --line:#2b3740;
+    --accent:#72b1dd; --accent-soft:#1c2e3c;
+    --ok:#72c485; --ok-soft:#18301f; --bad:#ec8573; --bad-soft:#3a201b;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#11171c; --surface:#19222a; --ink:#e3e9ec; --muted:#98a6ae; --line:#2b3740;
+  --accent:#72b1dd; --accent-soft:#1c2e3c;
+  --ok:#72c485; --ok-soft:#18301f; --bad:#ec8573; --bad-soft:#3a201b;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans);padding-inline:16px;padding-block:28px 64px}
+.volver{font-size:14px;color:var(--accent);text-decoration:none}
+.volver:hover{text-decoration:underline}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:14px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:28px;line-height:1.2;font-weight:600;margin:0;text-wrap:balance}
+.lede{margin:0;color:var(--muted);max-width:62ch}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:3px;gap:3px}
+.seg button{font:500 14px/1 var(--sans);color:var(--muted);background:none;border:0;border-radius:6px;padding:9px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
+.seg button:focus-visible,.opt:focus-visible,.nav a:focus-visible,.reset:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.course{font-size:14px;color:var(--muted);margin:0}
+.course b{color:var(--ink);font-weight:600}
+.nav{display:flex;flex-wrap:wrap;gap:8px}
+.nav a{font:500 13px/1 var(--sans);color:var(--accent);text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 12px}
+.nav a:hover{border-color:var(--accent)}
+section.quiz{display:flex;flex-direction:column;gap:14px;scroll-margin-top:16px}
+.qhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.qhead h2{font-size:20px;font-weight:600;margin:0;text-wrap:balance}
+.meta{font:12px/1.4 var(--mono);color:var(--muted)}
+.score{font:500 13px/1 var(--mono);color:var(--accent)}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.qtag{font:500 12px/1 var(--mono);color:var(--muted);letter-spacing:.03em}
+.stem{margin:0;font-weight:500}
+.opts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.opt{width:100%;text-align:left;font:inherit;color:var(--ink);background:none;border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start}
+.opt .l{font:500 13px/1.55 var(--mono);color:var(--muted);flex:none;width:1.4em}
+.opt .t{flex:1}
+.opt .chip{flex:none;font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.05em;padding:5px 7px;border-radius:5px;align-self:center}
+.answer .opt{cursor:pointer}
+.answer .opt:hover{border-color:var(--accent)}
+.opt.ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.ok .chip{background:var(--ok);color:var(--surface)}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt.bad .chip{background:var(--bad);color:var(--surface)}
+.fb{margin:0;padding:10px 12px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 6px 6px 0;font-size:14px}
+.fb b{font-weight:600}
+.reset{align-self:flex-start;font:500 13px/1 var(--sans);color:var(--accent);background:none;border:1px solid var(--line);border-radius:6px;padding:8px 12px;cursor:pointer}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+footer code{font:12px var(--mono)}
+@media (max-width:480px){h1{font-size:23px}.q{padding:14px}}
+</style>
+
+<div class="wrap">
+  <header>
+    <a class="volver" href="index.html">← Módulo 2 · PF1821 y PF1822</a>
+    <span class="eyebrow">Talento Digital 2026 · Módulo 2 · Formato GIFT para Moodle</span>
+    <h1>Quiz del módulo 2</h1>
+    <p class="lede">Los 6 quiz formativos de PF1821 y PF1822 tal como quedan al importar los archivos GIFT en Moodle. En modo revisión se ven la respuesta correcta y la retroalimentación; en modo responder, el quiz se contesta como lo haría un estudiante.</p>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Curso" id="seg-curso"></div>
+      <div class="seg" role="group" aria-label="Modo" id="seg-modo">
+        <button type="button" data-modo="revision" aria-pressed="true">Revisión</button>
+        <button type="button" data-modo="responder" aria-pressed="false">Responder</button>
+      </div>
+    </div>
+    <p class="course" id="curso-nombre"></p>
+    <nav class="nav" id="nav" aria-label="Quiz del curso"></nav>
+  </header>
+  <main id="quizzes" class="wrap" style="padding:0"></main>
+  <footer>Fuente: <code>modulo-2/&lt;curso&gt;/entrega/quiz/M2-Quiz-n-Moodle.gift</code>, generados desde <code>R-quiz-canva.md</code>. Para importarlos: Banco de preguntas → Importar → GIFT. Cada archivo crea su categoría (por ejemplo <code>PF1821-M2/Quiz-1</code>).</footer>
+</div>
+
+<script>
+const DATA = /*DATA*/;
+const estado = { curso: DATA[0].codigo, modo: "revision", respuestas: {} };
+try { const g = JSON.parse(localStorage.getItem("quiz-gift-vista") || "{}"); if (DATA.some(c => c.codigo === g.curso)) estado.curso = g.curso; if (g.modo === "responder") estado.modo = g.modo; } catch (e) {}
+const guardar = () => { try { localStorage.setItem("quiz-gift-vista", JSON.stringify({ curso: estado.curso, modo: estado.modo })); } catch (e) {} };
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const LETRAS = "abcdefgh";
+
+const segCurso = document.getElementById("seg-curso");
+segCurso.innerHTML = DATA.map(c => `<button type="button" data-curso="${c.codigo}">${c.codigo}</button>`).join("");
+segCurso.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; estado.curso = b.dataset.curso; guardar(); pintar(); });
+document.getElementById("seg-modo").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; estado.modo = b.dataset.modo; guardar(); pintar(); });
+
+function pintar() {
+  segCurso.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.curso === estado.curso));
+  document.querySelectorAll("#seg-modo button").forEach(b => b.setAttribute("aria-pressed", b.dataset.modo === estado.modo));
+  const c = DATA.find(x => x.codigo === estado.curso);
+  document.getElementById("curso-nombre").innerHTML = `<b>${c.codigo}</b> · ${esc(c.nombre)}`;
+  document.getElementById("nav").innerHTML = c.quizzes.map(q => `<a href="#${c.codigo}-q${q.n}">Quiz ${q.n} · ${esc(q.tema)}</a>`).join("");
+  const responder = estado.modo === "responder";
+  document.getElementById("quizzes").innerHTML = c.quizzes.map(q => {
+    const clave = `${c.codigo}-q${q.n}`;
+    const aciertos = q.preguntas.filter((p, i) => estado.respuestas[`${clave}-${i}`] === p.correcta).length;
+    const contestadas = q.preguntas.filter((p, i) => estado.respuestas[`${clave}-${i}`] !== undefined).length;
+    return `<section class="quiz" id="${clave}">
+      <div class="qhead"><h2>Quiz ${q.n} · ${esc(q.tema)}</h2>
+        <span class="meta">${esc(q.categoria)} · ${q.preguntas.length} preguntas · ${esc(q.ae)}</span></div>
+      ${responder ? `<span class="score">${contestadas} de ${q.preguntas.length} respondidas · ${aciertos} correctas</span>` : ""}
+      ${q.preguntas.map((p, i) => {
+        const k = `${clave}-${i}`; const elegida = estado.respuestas[k];
+        const visto = !responder || elegida !== undefined;
+        return `<article class="q ${responder ? "answer" : ""}">
+          <span class="qtag">${esc(p.id)}</span>
+          <p class="stem">${esc(p.enunciado)}</p>
+          <ul class="opts">${p.opciones.map((o, j) => {
+            let cls = "", chip = "";
+            if (visto && j === p.correcta) { cls = "ok"; chip = responder && elegida === j ? "Tu respuesta · correcta" : "Correcta"; }
+            else if (responder && elegida === j) { cls = "bad"; chip = "Tu respuesta"; }
+            const inner = `<span class="l">${LETRAS[j]})</span><span class="t">${esc(o)}</span>${chip ? `<span class="chip">${chip}</span>` : ""}`;
+            return `<li>${responder && elegida === undefined
+              ? `<button type="button" class="opt" data-k="${k}" data-j="${j}">${inner}</button>`
+              : `<div class="opt ${cls}">${inner}</div>`}</li>`;
+          }).join("")}</ul>
+          ${visto ? `<p class="fb"><b>Retroalimentación.</b> ${esc(p.retro)}</p>` : ""}
+        </article>`;
+      }).join("")}
+      ${responder && contestadas ? `<button type="button" class="reset" data-reset="${clave}">Reiniciar este quiz</button>` : ""}
+    </section>`;
+  }).join("");
+}
+document.getElementById("quizzes").addEventListener("click", e => {
+  const o = e.target.closest("button.opt");
+  if (o) { estado.respuestas[o.dataset.k] = Number(o.dataset.j); pintar(); return; }
+  const r = e.target.closest("button[data-reset]");
+  if (r) { Object.keys(estado.respuestas).forEach(k => { if (k.startsWith(r.dataset.reset + "-")) delete estado.respuestas[k]; }); pintar(); }
+});
+pintar();
+</script>

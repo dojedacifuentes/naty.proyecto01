@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-12 (Claude Code · opus-5.5)
+**Por:** 2026-09-27-claude-code-13 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -196,6 +196,12 @@ Sesión claude-code-12, 2026-09-27: compartir NATY 2.0 con Natalia.
 
 - [ ] No se compartió: el usuario respondió "todavía no" al correo propuesto (natalia@hackea.pro).
 - [x] Hallazgo: NATY 2.0 está abierta a cualquiera con el enlace **como editor**. Sin tocar; decide el usuario (#20).
+
+Sesión claude-code-13, 2026-09-27: vista web de los quiz GIFT.
+
+- [x] Página `quiz-modulo2.html` en el sitio de Vercel (enlace en la portada y en el menú): los 6 quiz GIFT en modo revisión
+      (respuesta correcta y retroalimentación) o para contestarlos. La arma `npm run sitio` con `scripts/lib/quiz-gift.mjs`,
+      que lee los `.gift` de `entrega/quiz/` en cada build; el diseño está en `scripts/lib/quiz-gift.html`.
 
 ## A medias
 
