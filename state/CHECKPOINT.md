@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-08 (Claude Code · opus-5.5)
+**Por:** 2026-09-27-claude-code-09 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -201,7 +201,7 @@ Sesión claude-code-03, 2026-09-27: ZIP ordenado de los quizzes de Canva.
   cuando una persona revisa el recurso.
 - **Recursos base del módulo 2.** El carril A (automático, que ahora incluye las 8 lecturas) está `listo para revisión`. Faltan
   los carriles B y C, que hizo el usuario, sin los enlaces de Drive ni los PNG en el repo. Faltan el notebook
-  tutorial de PF1821 con capturas (17 pasos), el tutorial de PF1821 con capturas; ya no hay pruebas técnicas (decisión del usuario, 27-sep); falta
+  tutorial de PF1821 con capturas (17 pasos), ya no hay pruebas técnicas, H5P ni capturas del tutorial (decisión del usuario, 27-sep); falta
   notebook en Colab en PF1822, y editar los 2 videos interactivos H5P con las preguntas nuevas.
   El avance real está en los `ESTADO.md` de cada curso.
 

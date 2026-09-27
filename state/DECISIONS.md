@@ -419,3 +419,13 @@ Quién: usuario (decisión) y claude-code, sesión `2026-09-27-claude-code-06`.
   id 1COAVLdVPOgVyWpCfO_mds9ZSXr0_KLrdWd_pEDw6NSs.
 Quién: usuario (pedido) y claude-code, sesión `2026-09-27-claude-code-07`.
 
+## 2026-09-27 · Sin videos interactivos H5P ni capturas del tutorial (sesión claude-code, 2026-09-27-claude-code-09)
+
+- El usuario saca del plan la edición de los 2 videos interactivos H5P (F1) y las capturas del tutorial de PF1821 (E1).
+  Quedan el video base de la herramienta 2 (B2, grabado) con sus preguntas escritas en el guion, y el tutorial en texto
+  (C4, 17 pasos). **Riesgo, para quien audite:** la pauta de "Uso de los medios" pide 2 herramientas didácticas del
+  aprendizaje seleccionado que permitan adquirir la habilidad (bases 2026, 7.4, pág. 31); si el evaluador no ve
+  interacción en el video o el tutorial sin capturas le parece incompleto, la nota puede bajar a 5,0. No se vuelve a
+  proponer salvo que el usuario lo pida.
+Quién: usuario (decisión), sesión `2026-09-27-claude-code-09`.
+

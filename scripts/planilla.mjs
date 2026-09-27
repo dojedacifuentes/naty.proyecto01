@@ -54,7 +54,7 @@ for (const c of CURSOS) {
       S(`${c.pf} · ${c.nombre}`, 'curso'), 'Especialidad', S(cliente, 'curso'),
       'AE1 a AE4 (hoja Aprendizajes)',
       cu('M2-Lecturas.pdf'), S('Pendiente: armar en Rise', E.pend),
-      S('Pendiente: grabar', E.pend), S('Pendiente: grabar', E.pend), S('Grabadas: falta enlace', E.pend),
+      S('Grabado: falta enlace', E.pend), S('Grabado: falta enlace', E.pend), S('Grabadas: falta enlace', E.pend),
       ...canva[c.pf].map((q, i) => L(`Quiz ${i + 1} (Canva)`, q.url)),
       S('Hechas: falta PNG', E.pend),
       cu('M2-Glosario.pdf'), cu('M2-Evaluacion.pdf'), cu('M2-Actividades.pdf'), cu('M2-Metodologia-y-medios.pdf'),
@@ -98,13 +98,11 @@ for (const c of CURSOS) {
 }
 
 const pendientes = [
-  ['Usuario', 'Grabar en HeyGen la bienvenida al curso y el resumen del módulo (2 por curso)', 'Carpeta "3 Videos" de cada cliente', S('Pendiente', E.pend)],
-  ['Usuario', 'Editar los 2 videos interactivos H5P (herramienta didáctica 2 del AE3)', 'Carpeta "3 Videos"', S('Pendiente', E.pend)],
+  ['Usuario', 'Subir los videos de bienvenida al curso y de resumen del módulo (ya grabados)', 'Carpeta "3 Videos" de cada cliente', S('Pendiente', E.pend)],
   ['Usuario', 'Subir los MP4 de las videocápsulas AE1 a AE4 y la bienvenida del módulo', 'Carpeta "3 Videos"', S('Pendiente', E.pend)],
   ['Usuario', 'Subir los PNG de las infografías (ruta y AE1 a AE4)', 'Carpeta "4 Infografias"', S('Pendiente', E.pend)],
   ['Usuario', 'Armar las lecturas en Rise, un curso por cliente (guía: modulo-2/GUIA-RISE.md)', 'Carpeta "5 Rise"', S('Pendiente', E.pend)],
   ['Usuario', 'Convertir los 6 quiz de Canva en interactivos (Elementos > Formularios)', 'Canva', S('Pendiente', E.pend)],
-  ['Usuario', 'Tomar las capturas del tutorial de PF1821 (17 pasos)', 'Carpeta "0 Produccion" de PF1821', S('Pendiente', E.pend)],
   ['Contraparte / Natalia', '¿El aprendizaje seleccionado es el AE3? (pregunta abierta #17)', '—', S('Por confirmar', E.pend)],
   ['Contraparte / Natalia', '¿Mismos recursos con distinta marca para clientes que compiten en el mismo plan? (#18)', '—', S('Por confirmar', E.pend)],
   ['Clientes', 'Colores oficiales de Skillnest y tipografía de la U. Autónoma (#19)', '—', S('Por confirmar', E.pend)],
