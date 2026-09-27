@@ -50,18 +50,16 @@ for (const c of CURSOS) {
   const u = (v) => (!v ? null : v.startsWith('F:') ? `https://drive.google.com/drive/folders/${v.slice(2)}` : `https://drive.google.com/file/d/${v.slice(2)}/view`);
   const en = (v, texto) => (u(v) ? L(texto, u(v)) : S('Por subir a Drive', E.subir));
   for (const [cliente] of c.clientes) {
+    const cl = d.clientes?.[cliente] ?? {};
     resumen.push([
       S(`${c.pf} · ${c.nombre}`, 'curso'), 'Especialidad', S(cliente, 'curso'),
       'AE1 a AE4 (hoja Aprendizajes)',
-      en(d.lecturas, 'Lecturas AE1 a AE4 (PDF)'), S('Pendiente: armar en Rise', E.pend),
+      en(cl.cuadernillos, 'Cuadernillos con marca'), en(cl.documentos, 'Documentos con marca'), S('Pendiente: armar en Rise', E.pend),
       en(d.bienvenidaCurso, 'Ver video'), en(d.resumen, 'Ver video'), en(d.bienvenidaModulo, 'Ver video'),
       en(d.videos, 'Carpeta de videos'), en(d.herramienta2, 'Ver video'),
       ...canva[c.pf].map((q, i) => L(`Quiz ${i + 1} (Canva)`, q.url)),
-      ...[0, 1, 2].map((i) => en(d.quizPdf?.[i], `Quiz ${i + 1} (PDF)`)),
-      en(d.infografias, 'Infografías (PNG)'),
-      en(d.evaluacion, 'Evaluación, metodología y glosario (zip)'), en(d.actividades, 'Actividades'),
-      en(d.clientes?.[cliente], `Paquete ${cliente} (zip)`),
-      en(d.carpeta, 'Carpeta del curso'),
+      en(d.quiz, 'Quiz en PDF y GIFT'), en(d.infografias, 'Infografías (PNG)'),
+      en(cl.carpeta, `Carpeta ${cliente}`), en(d.carpeta, 'Carpeta del curso'),
       S('Listo para revisión', E.ok), OBS[cliente],
     ]);
   }
@@ -101,7 +99,6 @@ for (const c of CURSOS) {
 }
 
 const pendientes = [
-  ['Usuario', 'Actualizar en Drive las carpetas de actividades y los zips de evaluación: son del 25-sep y no traen la organización de las actividades ni los indicadores de logro. Lo vigente está en los 5 paquetes por cliente', 'Carpeta NATY 2.0', S('Pendiente', E.pend)],
   ['Usuario', 'Armar las lecturas en Rise, un curso por cliente (guía: modulo-2/GUIA-RISE.md)', 'Drive (NATY 2.0)', S('Pendiente', E.pend)],
   ['Usuario', 'Convertir los 6 quiz de Canva en interactivos (Elementos > Formularios)', 'Canva', S('Pendiente', E.pend)],
   ['Contraparte / Natalia', '¿El aprendizaje seleccionado es el AE3? (pregunta abierta #17)', '—', S('Por confirmar', E.pend)],
@@ -192,11 +189,10 @@ const STYLES = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 const fecha = new Date().toLocaleDateString('es-CL');
 const HOJAS = [
   { nombre: 'Resumen', titulo: 'Módulo 2 · Recursos educativos · PF1821 y PF1822', subtitulo: `Una fila por cliente y curso · estándar de la contraparte · actualizado ${fecha}`,
-    encabezados: ['Curso', 'Tipo', 'Cliente', 'Aprendizajes esperados (M2)', 'Lecturas', 'Lecturas (Rise)', 'Video de bienvenida (curso)',
-      'Video resumen (módulo)', 'Video de bienvenida (módulo)', 'Videocápsulas AE1 a AE4', 'Video herramienta 2 (AE3)', 'Quiz 1', 'Quiz 2', 'Quiz 3',
-      'Quiz 1 (PDF)', 'Quiz 2 (PDF)', 'Quiz 3 (PDF)', 'Infografías', 'Evaluación, metodología y glosario', 'Actividades', 'Paquete con marca del cliente',
-      'Carpeta del curso', 'Estado', 'Observaciones'],
-    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 13, 22, 20, 20, 16, 16, 16, 18, 16, 15, 15, 15, 14, 14, 14, 18, 24, 16, 22, 18, 18, 40] } },
+    encabezados: ['Curso', 'Tipo', 'Cliente', 'Aprendizajes esperados (M2)', 'Cuadernillos (lecturas, actividades, evaluación, metodología, tutor, glosario)',
+      'Documentos sueltos', 'Lecturas (Rise)', 'Video de bienvenida (curso)', 'Video resumen (módulo)', 'Video de bienvenida (módulo)', 'Videocápsulas AE1 a AE4',
+      'Video herramienta 2 (AE3)', 'Quiz 1', 'Quiz 2', 'Quiz 3', 'Quiz (PDF y Moodle)', 'Infografías', 'Carpeta del cliente', 'Carpeta del curso', 'Estado', 'Observaciones'],
+    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 13, 22, 26, 18, 20, 16, 16, 16, 18, 16, 15, 15, 15, 18, 18, 18, 18, 18, 40] } },
   { nombre: 'Aprendizajes', titulo: 'Aprendizajes esperados del módulo 2', subtitulo: 'Textuales de la ficha SIPFOR · con su lectura y su quiz',
     encabezados: ['Curso', 'Módulo', 'AE', 'Aprendizaje esperado (textual del plan)', 'Lectura', 'Quiz'],
     filas: aprendizajes, anchos: { fijas: 1, cols: [10, 34, 6, 70, 34, 20] } },

@@ -440,3 +440,14 @@ Quién: usuario (decisión), sesión `2026-09-27-claude-code-09`.
   los indicadores de logro: queda como pendiente en la planilla. Lo vigente está en los paquetes por cliente.
 Quién: usuario (carpeta) y claude-code, sesión `2026-09-27-claude-code-10`.
 
+## 2026-09-27 · Drive ordenado para la revisión (sesión claude-code, 2026-09-27-claude-code-11)
+
+- NATY 2.0 queda así: "00 Cómo revisar" (Google Doc para Natalia), "01 Planilla de seguimiento"
+  (id 1yjgTnjmrIxpQ3a1JBF3ZpSWC0rrKlG6-8qQvFI2Ypn4), una carpeta por curso (1 <cliente> con 1 Cuadernillos y 2 Documentos,
+  2 Videos, 3 Infografías, 4 Quiz, 9 Producción) y "Archivo (versiones anteriores)" con los zips, la carpeta ENTREGABLES y
+  las planillas v1 y v2. Nada se borró: todo se movió con el conector.
+- Los paquetes por cliente se subieron descomprimidos (zip `Subir-a-NATY-2.0`, armado por `npm run drive`). Videos,
+  infografías y quiz en PDF se renombraron con numeración (01 Bienvenida al curso … 08 Resumen del módulo 2).
+- Falta compartir con Natalia: se hace solo cuando el usuario dé su correo.
+Quién: usuario (pedido y subida) y claude-code (orden), sesión `2026-09-27-claude-code-11`.
+
