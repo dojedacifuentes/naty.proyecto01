@@ -1,7 +1,7 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
-`2026-09-27-claude-code-01` a `-17` — 2026-09-24/27
+`2026-09-27-claude-code-01` a `-18` — 2026-09-24/27
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
@@ -9,17 +9,29 @@
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
 
-## PRIMERO (sesión -17): reemplazar en Drive los PDF con marca corregidos
+## HECHO (sesiones -17 y -18): logo de marca sin solapar el título, y PDF reemplazados en Drive
 
 **El logo ya no toca ningún texto** (diseño en DECISIONS, 2026-09-27, sesión -17). Los 140 PDF con marca (UNAB PF1821 y
 PF1822, Skillnest PF1821 y PF1822, U. Autónoma PF1822) y los 5 zips se regeneraron en `privado/marcas/<cliente>/<PF>/`, y
-`npm run drive` rehízo `privado/drive/Subir a NATY 2.0/`. **Falta que el usuario los reemplace en Drive** (NATY 2.0 → curso →
-cliente → "1 Cuadernillos" y "2 Documentos"): el conector no sirve, porque `update_file` solo cambia nombre y carpeta, y
-`create_file` crearía copias a nombre de la otra cuenta (#21). La planilla (`1yjgTnjm…`) enlaza las **carpetas** de cada cliente,
-no los PDF: si los archivos se reemplazan dentro de esas carpetas, la planilla no cambia. La forma que conserva también los enlaces
-de cada PDF es arrastrar los archivos nuevos a su carpeta de Drive y elegir "Reemplazar el archivo existente" (o, uno por uno,
-clic derecho → Administrar versiones → Subir nueva versión). No subas carpetas enteras encima: Drive no las fusiona, crea
-otra con el mismo nombre. El usuario además debe dar el visto bueno a la hoja de contacto de la sesión -17 (en su chat).
+`npm run drive` rehízo `privado/drive/Subir a NATY 2.0/`. **En Drive ya están los 140 nuevos** (sesión -18): cada PDF se subió
+como nueva versión del mismo archivo en NATY 2.0 → curso → cliente → "1 Cuadernillos" y "2 Documentos"/<subcarpeta>, así que los
+enlaces y los permisos no cambiaron. La planilla (`1yjgTnjm…`) enlaza las **carpetas** de cada cliente, no los PDF: no se tocó.
+El usuario pidió el reemplazo tras ver la hoja de contacto de la sesión -17.
+
+**Si vuelves a regenerar las marcas, hay que volver a reemplazar en Drive.** El conector no sirve (`update_file` solo cambia nombre
+y carpeta; `create_file` crearía copias a nombre de la otra cuenta, #21). Cómo se hizo en la sesión -18, con Claude in Chrome en el
+Chrome del usuario (sesión de Google propia, verifícala en el botón de la cuenta antes de subir nada):
+1. Navegar a la carpeta por su id (los de cada cliente están en `privado/drive/enlaces.json`; los de las subcarpetas de "2 Documentos",
+   en el DOM: `[data-id]`, con el nombre en el `aria-label` de sus hijos). Esperar ~7 s: si el título aún dice "Carpeta", reintentar.
+2. Con `javascript_tool`, parchar `HTMLInputElement.prototype.click` (y `showPicker`) para que, si el input es `type=file`, lo guarde,
+   le ponga un `aria-label` y lo agregue al DOM **sin abrir el cuadro "Abrir" de Windows**.
+3. Abrir "Nuevo → Subir archivo" **por código** (eventos `pointerdown/mousedown/mouseup/click` sobre el botón y el `menuitem`): los
+   clics reales tras navegar a veces se pierden, y el atajo Alt+C, U falla igual.
+4. `find` del input y `file_upload` con las rutas locales (máximo 10 MB por llamada).
+5. En el diálogo "Opciones de subida", comprobar que está marcada "Reemplazar…" y pulsar "Subir"; esperar "N subidas completadas" y
+   que cada archivo diga "Versión N". No navegar antes: una subida en curso se corta.
+Los scripts de `javascript_tool` que devuelven una promesa sin `await` arriba no esperan; y un `await` largo justo después de navegar
+puede colgar la pestaña 45 s: primero una espera, luego la revisión síncrona.
 
 Qué cambió, por si hay que tocarlo:
 - **Cabecera** (`conMarca()` en `scripts/marca.mjs`): `<header class="cabecera con-logo"><div class="cabecera-texto">…</div>

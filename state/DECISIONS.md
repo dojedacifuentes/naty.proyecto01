@@ -515,3 +515,14 @@ Quién: claude-code (corrección propia) y usuario (reporte del solapamiento), s
 - No se tocaron colores, tipografías (IBM Plex, #19), textos ni el diseño neutro: los PDF neutros regenerados solo cambiaban la
   fecha y se restauraron.
 Quién: usuario (encargo), claude-code, sesión `2026-09-27-claude-code-17`.
+
+## 2026-09-27 · PDF con marca reemplazados en Drive como nuevas versiones, desde el Chrome del usuario (sesión claude-code, 2026-09-27-claude-code-18)
+
+- Los 140 PDF corregidos de la sesión -17 se subieron a NATY 2.0 como **nueva versión de cada archivo existente** (opción
+  "Reemplazar" de Drive), carpeta por carpeta (50), desde el Chrome del usuario con su propia sesión de Google, verificada antes de
+  subir. Por qué: conserva el id, el enlace y los permisos de cada PDF, y la planilla enlaza las carpetas, que no cambian.
+- Descartado: el conector de Drive (está conectado con otra cuenta, #21, y `update_file` no sube contenido); borrar y volver a
+  subir las carpetas (cambian los ids y se rompen los enlaces a cada PDF); dejárselo al usuario (pidió que se hiciera).
+- El cuadro "Abrir" de Windows nunca se usó: un parche en la página intercepta el input de archivos de Drive y los archivos se le
+  entregan con `file_upload`. Procedimiento en HANDOFF.
+Quién: usuario (pedido: "reemplaza los pdf del drive"), claude-code, sesión `2026-09-27-claude-code-18`.

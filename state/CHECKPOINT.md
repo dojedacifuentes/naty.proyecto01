@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-17 (Claude Code · opus-5.5)
+**Por:** 2026-09-27-claude-code-18 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -225,8 +225,14 @@ Sesión claude-code-17, 2026-09-27: logo de marca sin solapar el título.
 - [x] Revisión automática en `npm run marca` (`scripts/lib/revision-marca.mjs`): mide en Edge el logo y cada texto y se detiene antes de
       imprimir si se cruzan, si quedan menos de 4 mm o si algo se corta. Sobre los HTML anteriores detectó el problema en los 3 clientes.
 - [x] Regenerados los 140 PDF con marca (110 documentos y 30 cuadernillos) y los 5 zips en `privado/marcas/`, y `privado/drive/Subir a NATY 2.0/`.
-- [ ] **Reemplazar esos PDF en Drive** (NATY 2.0 → curso → cliente → "1 Cuadernillos" y "2 Documentos"): lo hace el usuario; la planilla
-      enlaza las carpetas y no cambia. Visto bueno del usuario a la hoja de contacto, pendiente.
+- [x] **Reemplazar esos PDF en Drive**: hecho en la sesión -18 (abajo). La planilla enlaza las carpetas y no cambió.
+
+Sesión claude-code-18, 2026-09-27: reemplazar en Drive los PDF con marca corregidos (pedido del usuario tras ver la hoja de contacto).
+
+- [x] Los 140 PDF reemplazados en NATY 2.0 (5 clientes-curso × "1 Cuadernillos" y las 9 subcarpetas con PDF de "2 Documentos"),
+      desde el Chrome del usuario con su propia sesión de Google (la cuenta dueña de NATY 2.0, verificada), no con el conector (#21).
+      Cada archivo quedó como **Versión 2** del mismo archivo: mismo id, mismo enlace y mismos permisos. 50 de 50 carpetas confirmadas.
+- [x] Comprobado en Drive: la vista previa del Instrumento 2 de UNAB PF1822 ya muestra la cabecera nueva (logo en su columna).
 
 ## A medias
 
