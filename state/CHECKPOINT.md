@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-02 (Canva · sesión operada desde Codex)
+**Por:** 2026-09-27-claude-code-03 (exportación y ZIP de los quiz de Canva)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -181,6 +181,12 @@ Sesión claude-code-02, 2026-09-27: quizzes del módulo 2 en Canva.
 - [x] Las preguntas, alternativas, respuestas correctas y retroalimentaciones se mantuvieron literales desde `produccion/quiz-canva/Quiz-n.txt`; no se modificaron las fuentes.
 - [x] Los seis enlaces quedaron registrados como `listo para revisión` en la fila G3 y en el registro de ambos `ESTADO.md`.
 - [ ] Conversión a elemento Quiz interactivo: manual en Canva, porque el conector disponible solo crea y edita diseños y no expone elementos de quiz o formularios con respuestas.
+
+Sesión claude-code-03, 2026-09-27: ZIP ordenado de los quizzes de Canva.
+
+- [x] Exportados desde Canva los seis diseños como PDF digital, con 11 páginas verificadas por archivo.
+- [x] Ordenados por curso y número en `entregables/quiz-modulo-2-canva/`, con un `LEEME.md` que conserva los seis enlaces editables.
+- [x] Generado y revisado `entregables/quiz-modulo-2-canva-PF1821-PF1822.zip` (6 PDF + LEEME).
 
 ## A medias
 

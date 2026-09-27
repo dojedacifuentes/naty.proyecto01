@@ -354,3 +354,9 @@ Quién: usuario y contraparte (estándar), claude-code (implementación), sesió
 - La interactividad queda como paso manual en Canva. Alternativa descartada: simular respuestas mediante enlaces entre páginas, porque no equivale a un quiz con registro de respuesta y podría confundir la revisión.
 - Se adopta la línea visual neutra aprobada por el usuario en PF1821 Quiz 2 para los otros cinco diseños: sin logos ni instituciones, contraste alto y opciones legibles. El contenido se conserva literal desde los `.txt`; cuando la generación inicial reescribió opciones, se corrigió elemento por elemento antes de guardar.
 Quién: usuario (aprobación del prototipo) y claude-code (construcción y verificación).
+
+## 2026-09-27 · Entrega local de los quiz de Canva en PDF y ZIP (sesión 2026-09-27-claude-code-03)
+
+- El paquete descargable usa PDF digital: un archivo por quiz, agrupado por curso y numerado 01–03. Por qué: preserva las 11 páginas y la lectura sin depender de una cuenta de Canva; los enlaces editables se mantienen en `LEEME.md`.
+- El ZIP contiene además un índice con los seis enlaces de Canva. Alternativa descartada: imágenes PNG por página, porque bajarían la resolución y multiplicarían innecesariamente los archivos.
+Quién: usuario (pedido del ZIP) y claude-code (exportación y empaquetado).
