@@ -488,3 +488,30 @@ Quién: usuario (pedido), claude-code, sesión `2026-09-27-claude-code-14`.
 - El solapamiento del logo con el título se corrige en el diseño (espacio reservado, sin posición absoluta) y no achicando el
   logo ni el título; colores y tipografías no se tocan mientras #19 siga abierta.
 Quién: claude-code (corrección propia) y usuario (reporte del solapamiento), sesión `2026-09-27-claude-code-16`.
+
+## 2026-09-27 · Logo de marca en su propio espacio y revisión automática antes de imprimir (sesión claude-code, 2026-09-27-claude-code-17)
+
+- **Cabecera de cada documento** (también dentro de los cuadernillos): el logo deja la posición absoluta y va en su propia columna
+  a la derecha (flex, 8 mm de separación), alineado arriba con el kicker y a la derecha con el relleno de la cabecera. El título y el
+  curso se acomodan en el ancho que queda; se quitó el tope de 128 mm. Por qué: con el logo absoluto el texto pasaba de 22 a 34 mm
+  por debajo (diagnóstico de la sesión -16). Descartado: achicar el título o el logo para que quepan. Costo: los títulos largos
+  ocupan una línea más (el Instrumento 2 de PF1822 pasa a 4 líneas).
+- **Portada de las lecturas:** grilla de filas que no se cruzan: logo arriba a la izquierda (como en la portada de los cuadernillos),
+  kicker y curso debajo, número del AE en su columna arriba a la derecha, y título, regla y bajada abajo. Capacidad medida con el
+  logo más alto (U. Autónoma): título de 3 líneas con bajada de 2, o de 2 con bajada de 3; 3 + 3 no cabe y la revisión lo detiene.
+  Las 8 lecturas actuales tienen títulos de 1 o 2 líneas.
+- **Tamaño del logo según su forma:** se lee la proporción del PNG (cabecera IHDR, bytes 16-23) o del `viewBox` del SVG, y el
+  tamaño sale a igual área (cabecera 380 mm², portada de lectura 600, portada de cuadernillo 900), con el alto topado por
+  `logo_alto_mm` (14 por defecto; ×1,25 y ×1,5 en las portadas) y un ancho máximo de 44, 60 y 80 mm. En la cabecera: UNAB
+  30,8 × 12,4 mm, U. Autónoma 26,1 × 14,6 y Skillnest 44 × 7,9. La placa blanca lleva el mismo relleno en los cuatro lados
+  (2,5, 3 y 4 mm). El logo debe ser PNG o SVG (de ellos se leen las medidas sin dependencias); se dejó de aceptar JPG y WEBP.
+- **Campo opcional `logo_negativo`** en `marca.json`: si un cliente entrega su logo en blanco, va sin placa sobre el color
+  primario. Ningún cliente lo tiene hoy: UNAB y la Autónoma siguen con placa blanca.
+- **`npm run marca` revisa antes de imprimir** (`scripts/lib/revision-marca.mjs`): Edge headless con `--dump-dom` y un script
+  inyectado mide las cajas del logo y de cada línea de texto de cabeceras y portadas, y se detiene sin imprimir nada si se
+  cruzan, si quedan menos de 4 mm entre el logo (o el número del AE) y un texto, o si algo se sale de la banda o invade más de
+  1 mm su margen interior. Sobre los HTML anteriores detectó 38 problemas en UNAB PF1822, 43 en Skillnest PF1821 y 60 en la
+  Autónoma. Descartado: medir el PDF (la máquina no tiene herramientas de PDF).
+- No se tocaron colores, tipografías (IBM Plex, #19), textos ni el diseño neutro: los PDF neutros regenerados solo cambiaban la
+  fecha y se restauraron.
+Quién: usuario (encargo), claude-code, sesión `2026-09-27-claude-code-17`.

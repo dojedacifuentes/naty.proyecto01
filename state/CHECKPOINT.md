@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-16 (Claude Code · opus-5.5)
+**Por:** 2026-09-27-claude-code-17 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -215,8 +215,18 @@ Sesión claude-code-15, 2026-09-27: ordenar NATY 2.0.
 
 - [ ] (Sesión -16) El usuario pidió los cambios en SU planilla (`1yjgTnjm…`), no en la nueva. Se editó a mano en el navegador
       integrado, sin sesión de Google: ver HANDOFF, "Planilla del usuario a medio editar".
-- [ ] (Sesión -16) **Logo de marca solapado con el título** en la mayoría de los PDF con marca: diagnóstico y encargo en HANDOFF.
+- [x] (Sesión -16) **Logo de marca solapado con el título** en la mayoría de los PDF con marca: corregido en la sesión -17.
 - [ ] Mover la planilla anterior a "Archivo (versiones anteriores)": el control de permisos de Claude Code bloqueó el movimiento (archivo del usuario, cuenta del conector ajena). Queda para el usuario.
+
+Sesión claude-code-17, 2026-09-27: logo de marca sin solapar el título.
+
+- [x] Cabecera de los documentos con el logo en su propia columna; portada de las lecturas en grilla (logo arriba a la izquierda, AE
+      a la derecha, título abajo); tamaño del logo según su forma, leído del PNG. Todo en `scripts/marca.mjs`; el diseño neutro no cambió.
+- [x] Revisión automática en `npm run marca` (`scripts/lib/revision-marca.mjs`): mide en Edge el logo y cada texto y se detiene antes de
+      imprimir si se cruzan, si quedan menos de 4 mm o si algo se corta. Sobre los HTML anteriores detectó el problema en los 3 clientes.
+- [x] Regenerados los 140 PDF con marca (110 documentos y 30 cuadernillos) y los 5 zips en `privado/marcas/`, y `privado/drive/Subir a NATY 2.0/`.
+- [ ] **Reemplazar esos PDF en Drive** (NATY 2.0 → curso → cliente → "1 Cuadernillos" y "2 Documentos"): lo hace el usuario; la planilla
+      enlaza las carpetas y no cambia. Visto bueno del usuario a la hoja de contacto, pendiente.
 
 ## A medias
 

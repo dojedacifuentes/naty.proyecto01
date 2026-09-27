@@ -1,7 +1,7 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
-`2026-09-27-claude-code-01` a `-12` — 2026-09-24/27
+`2026-09-27-claude-code-01` a `-17` — 2026-09-24/27
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
@@ -9,22 +9,28 @@
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
 
-## PRIMERO (sesión -16): el logo de marca se monta sobre el título
+## PRIMERO (sesión -17): reemplazar en Drive los PDF con marca corregidos
 
-El usuario lo vio en la mayoría de los PDF con marca (UNAB, Skillnest, U. Autónoma). Causa, medida con capturas de los
-HTML de `.scratch/marcas/` al ancho útil de la página:
-- **Cabecera de los documentos** (`scripts/marca.mjs:69-70`): el logo va en `position: absolute` arriba a la derecha y el
-  texto solo se limita a 128 mm, pero dentro de la cabecera caben 142 mm (158 mm útiles de A4 menos 8 + 8 mm de relleno). La
-  caja del logo mide 36 a 55 mm de ancho (UNAB 851×342 px a 13 mm de alto con placa blanca; U. Autónoma 988×552 px a 16 mm;
-  Skillnest 1427×255 px a 11 mm, topa en 48 mm), así que se come 22 a 34 mm del título. El kicker no tiene límite. Pasa en
-  cada cabecera: documentos sueltos y cuadernillos.
-- **Portada de las lecturas** (`scripts/marca.mjs:71-72` sobre `scripts/lib/lectura.mjs:223-230`): también absoluto; el
-  curso (hasta 120 mm) llega a tocar el logo, y bajar el número del AE a 50 mm deja poco aire con títulos de 3 líneas.
-- **Portada de los cuadernillos** (`.pc-logo`, `scripts/marca.mjs:150`): el logo va en el flujo y no se solapa. Es el modelo.
-Arreglo: sacar el logo del posicionamiento absoluto y reservarle su espacio en el diseño (cabecera en grilla texto | logo,
-portada con fila superior para el logo), con tamaño calculado desde las proporciones del PNG, zona de resguardo y un control
-automático que detenga `npm run marca` si una caja de logo se cruza con un texto. No cambies colores ni tipografías (#19).
-El encargo completo para una sesión nueva se le entregó al usuario en el chat de la sesión -16.
+**El logo ya no toca ningún texto** (diseño en DECISIONS, 2026-09-27, sesión -17). Los 140 PDF con marca (UNAB PF1821 y
+PF1822, Skillnest PF1821 y PF1822, U. Autónoma PF1822) y los 5 zips se regeneraron en `privado/marcas/<cliente>/<PF>/`, y
+`npm run drive` rehízo `privado/drive/Subir a NATY 2.0/`. **Falta que el usuario los reemplace en Drive** (NATY 2.0 → curso →
+cliente → "1 Cuadernillos" y "2 Documentos"): el conector no sirve, porque `update_file` solo cambia nombre y carpeta, y
+`create_file` crearía copias a nombre de la otra cuenta (#21). La planilla (`1yjgTnjm…`) enlaza las **carpetas** de cada cliente,
+no los PDF: si los archivos se reemplazan dentro de esas carpetas, la planilla no cambia. La forma que conserva también los enlaces
+de cada PDF es arrastrar los archivos nuevos a su carpeta de Drive y elegir "Reemplazar el archivo existente" (o, uno por uno,
+clic derecho → Administrar versiones → Subir nueva versión). No subas carpetas enteras encima: Drive no las fusiona, crea
+otra con el mismo nombre. El usuario además debe dar el visto bueno a la hoja de contacto de la sesión -17 (en su chat).
+
+Qué cambió, por si hay que tocarlo:
+- **Cabecera** (`conMarca()` en `scripts/marca.mjs`): `<header class="cabecera con-logo"><div class="cabecera-texto">…</div>
+  <span class="marca-logo">…</span></header>`, en flex con 8 mm de separación. Sin `position: absolute` ni tope de 128 mm.
+- **Portada de las lecturas**: `.banda.con-logo` en grilla (logo, kicker y curso a la izquierda; AE arriba a la derecha; título,
+  regla y bajada abajo). Con el logo de la Autónoma caben título de 3 líneas + bajada de 2, o 2 + 3; más, y la revisión se detiene.
+- **Tamaño del logo**: `LUGARES` y `cajaLogo()` en `scripts/marca.mjs` (igual área, tope y ancho máximo por lugar).
+- **Revisión automática**: `scripts/lib/revision-marca.mjs`, llamada por `npm run marca` antes de imprimir. Si falla, no se imprime
+  nada y los PDF anteriores quedan intactos. `npm run marca -- <cliente> --solo-revisar` arma los HTML y solo revisa (1 min).
+- **Si el cliente entrega el logo en blanco**, déjalo junto a `logo.png` y agrega `"logo_negativo": "<archivo>"` en su `marca.json`:
+  va sin placa. Hoy nadie lo tiene (el usuario puede pedírselo a UNAB y a la Autónoma).
 
 ## Planilla del usuario a medio editar (sesión -16)
 
@@ -56,7 +62,8 @@ La contraparte revisó los entregables y pidió su estándar (DECISIONS, 2026-09
   metodología y medios, tutor y glosario aparte). Clientes: UNAB (PF1821 y PF1822), Skillnest (PF1821 y PF1822) y
   U. Autónoma (PF1822). Todo vive en `privado/marcas/`, que git ignora (repo público, clientes que compiten).
   **Antes corre `npm run produccion -- PF1821 PF1822`**: deja el manifiesto con los datos del curso. Cada combinación
-  tarda unos 2 minutos: no edites `scripts/marca.mjs` mientras corre (el lote lo relee en cada cliente).
+  tarda unos 3 minutos: no edites `scripts/marca.mjs` mientras corre (el lote lo relee en cada cliente).
+  Antes de imprimir, revisa en Edge que el logo no toque ningún texto y se detiene si lo toca (sesión -17, arriba).
   Si cambias un recurso, regenera producción y marcas y reenvía los 5 zips al usuario.
 - **Abierto:** #18 (mismos recursos con distinta marca para clientes que compiten) y #19 (colores de Skillnest sin
   manual; la Autónoma pide Montserrat y se usa IBM Plex).
@@ -94,6 +101,11 @@ Trampas nuevas:
 - **No hay pdftoppm ni otra herramienta de PDF**: para ver páginas de un PDF, pdf.js servido por HTTP local y Edge por
   DevTools (script en el scratchpad de la sesión -04, no en el repo). Para capturar un HTML basta
   `msedge --headless --screenshot=archivo.png --window-size=900,1200 file:///...`.
+- **La ventana de Edge headless en Windows pierde 26 px de marco** (sesión -17): `--window-size=597,…` deja 571 px de página.
+  Para capturar al ancho útil de A4 (158 mm) usa 623 px, y para la hoja completa (210 mm), 820. La revisión del logo no depende
+  de eso: fija el ancho del `<body>` en mm. Las capturas de la sesión -16 se tomaron a 571 px.
+- **Edge headless falla a veces al arrancar varios a la vez** (`FATAL:ui\gfx\win\hwnd_util.cc:65] 87`): la revisión del logo
+  reintenta hasta 4 veces con 3 en paralelo. `imprimirPdf` corre de a uno y no lo ha mostrado.
 - Los heredocs de Bash con `node -` se comen `\n` y `\.` dentro de plantillas: usa la herramienta de edición.
 - PowerShell bloquea `npm.ps1`: usa `npm.cmd` o el Bash.
 - Canva puede responder 503 al abrir varios diseños seguidos; reintentar funciona.

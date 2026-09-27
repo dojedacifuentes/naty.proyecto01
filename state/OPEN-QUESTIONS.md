@@ -124,6 +124,9 @@ el tono; o reservar los recursos neutros para un solo cliente por plan. Lo decid
 Skillnest no entregó manual: sus colores (#1E1E2A, #2470B1, #00ADE5) salen del logo y de una captura del sitio.
 La Autónoma pide Montserrat y Barlow Condensed en su manual; los PDF usan IBM Plex (2 familias, igual para todos).
 Si el cliente lo exige, se agrega la tipografía por marca. Lo confirma el usuario con cada cliente.
+**Nota (2026-09-27, sesión `2026-09-27-claude-code-17`):** UNAB y la Autónoma van con su logo en una placa blanca sobre el color
+primario. Si entregan la versión en blanco (negativo) de su logo, va sin placa: basta dejarla junto a `logo.png` y declararla en el
+campo `logo_negativo` de su `marca.json`. Pedirla también es parte de esta pregunta.
 
 
 **20. ¿La carpeta NATY 2.0 debe seguir abierta a cualquiera con el enlace, como editor?** — ABIERTA
