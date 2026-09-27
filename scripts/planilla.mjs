@@ -1,0 +1,222 @@
+#!/usr/bin/env node
+/**
+ * Planilla de seguimiento del módulo 2 (a la manera de la planilla "Recursos a desarrollar" de la
+ * contraparte), en .xlsx con formato, para subirla a Google Drive convertida en Google Sheets:
+ *
+ *   npm run planilla
+ *
+ * Hojas: Resumen (una fila por cliente y curso), Aprendizajes, Entregables (recursos neutros con
+ * enlace público al sitio) y Pendientes. Los enlaces de Drive salen de privado/drive/enlaces.json
+ * ({ "ruta/relativa/en/la/carpeta": "https://drive…" }); si falta uno, la celda dice "Por subir".
+ * Salida: privado/drive/Planilla-Modulo2-TD2026.xlsx (fuera de git: nombra a los clientes).
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+import { ruta, leer, listar } from './lib/repo.mjs';
+import { crearZip } from './lib/zip.mjs';
+
+const SITIO = 'https://naty-proyecto01.vercel.app';
+const CURSOS = [
+  { pf: 'PF1821', nombre: 'Construcción de Agentes y Automatización con Herramientas Low Code', carpeta: 'PF1821-agentes-low-code', drive: 'PF1821 - Agentes y Automatizacion Low Code',
+    clientes: [['UNAB', 'UNAB'], ['Skillnest', 'Skillnest']] },
+  { pf: 'PF1822', nombre: 'Especialización en Desarrollo con IA', carpeta: 'PF1822-desarrollo-con-ia', drive: 'PF1822 - Especializacion en Desarrollo con IA',
+    clientes: [['UNAB', 'UNAB'], ['Skillnest', 'Skillnest'], ['U. Autónoma', 'U. Autonoma']] },
+];
+const OBS = {
+  Skillnest: 'Colores tomados del logo y del sitio (sin manual): confirmar con el cliente.',
+  'U. Autónoma': 'El manual pide Montserrat; los PDF usan IBM Plex: confirmar.',
+  UNAB: 'Colores y logo del manual de marca (nov. 2024).',
+};
+const enlaces = fs.existsSync(ruta('privado/drive/enlaces.json')) ? JSON.parse(leer('privado/drive/enlaces.json')) : {};
+const drive = (rel) => enlaces[rel] ?? null;
+
+// ------------------------------------------------------------ datos
+
+const plan = (pf) => JSON.parse(leer(`data/planes/${pf}.json`));
+const canva = {};
+for (const bloque of leer('entregables/quiz-modulo-2-canva/LEEME.md').split(/\n(?=## )/)) {
+  const pf = /^## (PF\d{4})/.exec(bloque)?.[1];
+  if (pf) canva[pf] = [...bloque.matchAll(/^\d\. (.+?) — (https:\S+)/gm)].map((m) => ({ titulo: m[1], url: m[2] }));
+}
+const meta = (pf) => JSON.parse(leer(`.scratch/produccion/${pf}/manifiesto.json`)).meta;
+
+const E = { ok: 'ok', pend: 'pend', subir: 'subir' };
+const L = (texto, url) => ({ texto, url });
+const S = (texto, estado) => ({ texto, estado });
+
+const resumen = [];
+for (const c of CURSOS) {
+  for (const [cliente, carpetaCli] of c.clientes) {
+    const base = `${c.drive}/${carpetaCli}`;
+    const cu = (a) => { const u = drive(`${base}/1 Cuadernillos/${c.pf}-${a}`); return u ? L('Abrir PDF', u) : S('Por subir a Drive', E.subir); };
+    const carpeta = drive(base);
+    resumen.push([
+      S(`${c.pf} · ${c.nombre}`, 'curso'), 'Especialidad', S(cliente, 'curso'),
+      'AE1 a AE4 (hoja Aprendizajes)',
+      cu('M2-Lecturas.pdf'), S('Pendiente: armar en Rise', E.pend),
+      S('Pendiente: grabar', E.pend), S('Pendiente: grabar', E.pend), S('Grabadas: falta enlace', E.pend),
+      ...canva[c.pf].map((q, i) => L(`Quiz ${i + 1} (Canva)`, q.url)),
+      S('Hechas: falta PNG', E.pend),
+      cu('M2-Glosario.pdf'), cu('M2-Evaluacion.pdf'), cu('M2-Actividades.pdf'), cu('M2-Metodologia-y-medios.pdf'),
+      carpeta ? L('Abrir carpeta', carpeta) : S('Por subir a Drive', E.subir),
+      S('En producción', E.pend), OBS[cliente],
+    ]);
+  }
+}
+
+const aprendizajes = [];
+for (const c of CURSOS) {
+  const m2 = plan(c.pf).modulos.find((m) => m.n === 2);
+  const lecturas = meta(c.pf).lecturas;
+  for (const ae of m2.aprendizajes_esperados) {
+    const k = `AE${ae.n}`;
+    aprendizajes.push([S(c.pf, 'curso'), `${m2.codigo} · ${m2.nombre} · ${m2.horas} h`, k, ae.texto,
+      L(`Lectura ${k} · ${lecturas[k]}`, `${SITIO}/modulo-2/${c.carpeta}/entrega/${k}/M2-${k}-Lectura.pdf`),
+      L('Quiz GIFT (Moodle)', `${SITIO}/modulo-2/${c.carpeta}/entrega/${k}/M2-${k}-Quiz.gift`)]);
+  }
+}
+
+// Recursos neutros publicados en el sitio, agrupados.
+const GRUPOS = [
+  ['AE', 'Lecturas y quiz por aprendizaje'], ['evaluacion', 'Evaluación'], ['actividades', 'Actividades'],
+  ['metodologia', 'Metodología'], ['medios', 'Medios'], ['glosario', 'Glosario'], ['quiz', 'Quiz formativos (Moodle)'],
+  ['herramientas', 'Herramientas didácticas'],
+];
+const entregables = [];
+for (const c of CURSOS) {
+  const ent = `modulo-2/${c.carpeta}/entrega`;
+  const archivos = listar(ruta(ent)).map((a) => path.relative(ruta(ent), a).replace(/\\/g, '/'))
+    .filter((r) => !r.startsWith('insumos-anexo/') && !r.endsWith('.html') || r.startsWith('actividades/moodle/'));
+  for (const [clave, grupo] of GRUPOS) {
+    for (const r of archivos.filter((x) => (clave === 'AE' ? /^AE\d\//.test(x) : x.startsWith(`${clave}/`))).sort()) {
+      const nombre = path.basename(r);
+      const tutor = /Respuesta-modelada|respuesta-modelada\//.test(r);
+      entregables.push([S(c.pf, 'curso'), grupo, nombre, path.extname(nombre).slice(1).toUpperCase(),
+        tutor ? 'Solo tutor' : 'Participante', L('Abrir', `${SITIO}/${ent}/${r}`), S('Listo para revisión', E.ok)]);
+    }
+  }
+}
+
+const pendientes = [
+  ['Usuario', 'Grabar en HeyGen la bienvenida al curso y el resumen del módulo (2 por curso)', 'Carpeta "3 Videos" de cada cliente', S('Pendiente', E.pend)],
+  ['Usuario', 'Editar los 2 videos interactivos H5P (herramienta didáctica 2 del AE3)', 'Carpeta "3 Videos"', S('Pendiente', E.pend)],
+  ['Usuario', 'Subir los MP4 de las videocápsulas AE1 a AE4 y la bienvenida del módulo', 'Carpeta "3 Videos"', S('Pendiente', E.pend)],
+  ['Usuario', 'Subir los PNG de las infografías (ruta y AE1 a AE4)', 'Carpeta "4 Infografias"', S('Pendiente', E.pend)],
+  ['Usuario', 'Armar las lecturas en Rise, un curso por cliente (guía: modulo-2/GUIA-RISE.md)', 'Carpeta "5 Rise"', S('Pendiente', E.pend)],
+  ['Usuario', 'Convertir los 6 quiz de Canva en interactivos (Elementos > Formularios)', 'Canva', S('Pendiente', E.pend)],
+  ['Usuario', 'Tomar las capturas del tutorial de PF1821 (17 pasos)', 'Carpeta "0 Produccion" de PF1821', S('Pendiente', E.pend)],
+  ['Contraparte / Natalia', '¿El aprendizaje seleccionado es el AE3? (pregunta abierta #17)', '—', S('Por confirmar', E.pend)],
+  ['Contraparte / Natalia', '¿Mismos recursos con distinta marca para clientes que compiten en el mismo plan? (#18)', '—', S('Por confirmar', E.pend)],
+  ['Clientes', 'Colores oficiales de Skillnest y tipografía de la U. Autónoma (#19)', '—', S('Por confirmar', E.pend)],
+  ['Equipo', 'Herramientas de la industria (5), vinculación temprana (4) y actividades de extensión', 'Anexo 2 de cada institución', S('Pendiente', E.pend)],
+];
+
+// ------------------------------------------------------------ xlsx
+
+const x = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const col = (n) => { let s = ''; for (n++; n; n = Math.floor((n - 1) / 26)) s = String.fromCharCode(65 + ((n - 1) % 26)) + s; return s; };
+// Estilos (índices de cellXfs): 1 encabezado · 2 título · 3 subtítulo · 4/5 texto (normal/cebra) · 6/7 enlace ·
+// 8 listo · 9 pendiente · 10 por subir · 11/12 negrita (normal/cebra)
+const ESTILO = { ok: 8, pend: 9, subir: 10 };
+function celda(ref, v, fila) {
+  const z = fila % 2 === 1;
+  if (v == null || v === '') return `<c r="${ref}" s="${z ? 5 : 4}"/>`;
+  if (typeof v === 'object' && v.url) {
+    const f = `HYPERLINK("${v.url.replace(/"/g, '""')}","${v.texto.replace(/"/g, '""')}")`;
+    return `<c r="${ref}" s="${z ? 7 : 6}" t="str"><f>${x(f)}</f><v>${x(v.texto)}</v></c>`;
+  }
+  if (typeof v === 'object') {
+    const s = v.estado === 'curso' ? (z ? 12 : 11) : ESTILO[v.estado];
+    return `<c r="${ref}" s="${s}" t="inlineStr"><is><t>${x(v.texto)}</t></is></c>`;
+  }
+  return `<c r="${ref}" s="${z ? 5 : 4}" t="inlineStr"><is><t>${x(v)}</t></is></c>`;
+}
+function hoja({ titulo, subtitulo, encabezados, filas, anchos }) {
+  const n = encabezados.length;
+  const r = [];
+  r.push(`<row r="1" ht="30" customHeight="1"><c r="A1" s="2" t="inlineStr"><is><t>${x(titulo)}</t></is></c></row>`);
+  r.push(`<row r="2" ht="18" customHeight="1"><c r="A2" s="3" t="inlineStr"><is><t>${x(subtitulo)}</t></is></c></row>`);
+  r.push(`<row r="4" ht="34" customHeight="1">${encabezados.map((h, i) => `<c r="${col(i)}4" s="1" t="inlineStr"><is><t>${x(h)}</t></is></c>`).join('')}</row>`);
+  filas.forEach((f, k) => {
+    const fila = 5 + k;
+    r.push(`<row r="${fila}" ht="36" customHeight="1">${f.map((v, i) => celda(`${col(i)}${fila}`, v, k)).join('')}</row>`);
+  });
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+<sheetViews><sheetView workbookViewId="0" showGridLines="0"><pane xSplit="${anchos.fijas ?? 0}" ySplit="4" topLeftCell="${col(anchos.fijas ?? 0)}5" activePane="bottomRight" state="frozen"/></sheetView></sheetViews>
+<cols>${anchos.cols.map((w, i) => `<col min="${i + 1}" max="${i + 1}" width="${w}" customWidth="1"/>`).join('')}</cols>
+<sheetData>${r.join('')}</sheetData>
+<mergeCells count="2"><mergeCell ref="A1:${col(n - 1)}1"/><mergeCell ref="A2:${col(n - 1)}2"/></mergeCells>
+<autoFilter ref="A4:${col(n - 1)}${4 + filas.length}"/>
+</worksheet>`;
+}
+const STYLES = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+<fonts count="9">
+<font><sz val="10"/><color rgb="FF1F2937"/><name val="Arial"/></font>
+<font><b/><sz val="10"/><color rgb="FFFFFFFF"/><name val="Arial"/></font>
+<font><b/><sz val="16"/><color rgb="FF0F3D5E"/><name val="Arial"/></font>
+<font><i/><sz val="10"/><color rgb="FF475569"/><name val="Arial"/></font>
+<font><u/><sz val="10"/><color rgb="FF0E7490"/><name val="Arial"/></font>
+<font><b/><sz val="10"/><color rgb="FF0F3D5E"/><name val="Arial"/></font>
+<font><b/><sz val="10"/><color rgb="FF166534"/><name val="Arial"/></font>
+<font><b/><sz val="10"/><color rgb="FF92400E"/><name val="Arial"/></font>
+<font><b/><sz val="10"/><color rgb="FF475569"/><name val="Arial"/></font>
+</fonts>
+<fills count="7">
+<fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FF0F3D5E"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FFF1F5F9"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FFDCFCE7"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FFFEF3C7"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FFE2E8F0"/></patternFill></fill>
+</fills>
+<borders count="2"><border/><border><bottom style="thin"><color rgb="FFCBD5E1"/></bottom></border></borders>
+<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>
+<cellXfs count="13">
+<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>
+<xf numFmtId="0" fontId="1" fillId="2" borderId="1" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>
+<xf numFmtId="0" fontId="2" fillId="0" borderId="0" xfId="0" applyFont="1" applyAlignment="1"><alignment vertical="center"/></xf>
+<xf numFmtId="0" fontId="3" fillId="0" borderId="0" xfId="0" applyFont="1"/>
+<xf numFmtId="0" fontId="0" fillId="0" borderId="1" xfId="0" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>
+<xf numFmtId="0" fontId="0" fillId="3" borderId="1" xfId="0" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>
+<xf numFmtId="0" fontId="4" fillId="0" borderId="1" xfId="0" applyFont="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>
+<xf numFmtId="0" fontId="4" fillId="3" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>
+<xf numFmtId="0" fontId="6" fillId="4" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1"/></xf>
+<xf numFmtId="0" fontId="7" fillId="5" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1"/></xf>
+<xf numFmtId="0" fontId="8" fillId="6" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1"/></xf>
+<xf numFmtId="0" fontId="5" fillId="0" borderId="1" xfId="0" applyFont="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>
+<xf numFmtId="0" fontId="5" fillId="3" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>
+</cellXfs>
+</styleSheet>`;
+
+const fecha = new Date().toLocaleDateString('es-CL');
+const HOJAS = [
+  { nombre: 'Resumen', titulo: 'Módulo 2 · Recursos educativos · PF1821 y PF1822', subtitulo: `Una fila por cliente y curso · estándar de la contraparte · actualizado ${fecha}`,
+    encabezados: ['Curso', 'Tipo', 'Cliente', 'Aprendizajes esperados (M2)', 'Lecturas (cuadernillo)', 'Lecturas (Rise)', 'Video de bienvenida (curso)',
+      'Video resumen (módulo)', 'Videocápsulas AE1 a AE4', 'Quiz 1', 'Quiz 2', 'Quiz 3', 'Infografías', 'Glosario', 'Evaluación', 'Actividades',
+      'Metodología y medios', 'Carpeta en Drive', 'Estado', 'Observaciones'],
+    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 14, 22, 18, 20, 18, 18, 20, 16, 16, 16, 18, 16, 16, 16, 18, 18, 16, 40] } },
+  { nombre: 'Aprendizajes', titulo: 'Aprendizajes esperados del módulo 2', subtitulo: 'Textuales de la ficha SIPFOR · con su lectura y su quiz',
+    encabezados: ['Curso', 'Módulo', 'AE', 'Aprendizaje esperado (textual del plan)', 'Lectura', 'Quiz'],
+    filas: aprendizajes, anchos: { fijas: 1, cols: [10, 34, 6, 70, 34, 20] } },
+  { nombre: 'Entregables', titulo: 'Entregables del módulo 2 (versión neutra, sin marca)', subtitulo: `Enlaces públicos al sitio ${SITIO} · las versiones con marca están en la carpeta de cada cliente en Drive`,
+    encabezados: ['Curso', 'Grupo', 'Archivo', 'Formato', 'Para', 'Enlace', 'Estado'],
+    filas: entregables, anchos: { fijas: 1, cols: [10, 28, 46, 9, 13, 10, 20] } },
+  { nombre: 'Pendientes', titulo: 'Pendientes del módulo 2', subtitulo: 'Quién, qué y dónde se sube',
+    encabezados: ['Quién', 'Qué', 'Dónde', 'Estado'], filas: pendientes, anchos: { fijas: 0, cols: [22, 80, 34, 16] } },
+];
+const archivos = [
+  { nombre: '[Content_Types].xml', contenido: `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>${HOJAS.map((_, i) => `<Override PartName="/xl/worksheets/sheet${i + 1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join('')}</Types>` },
+  { nombre: '_rels/.rels', contenido: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>' },
+  { nombre: 'xl/workbook.xml', contenido: `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>${HOJAS.map((h, i) => `<sheet name="${x(h.nombre)}" sheetId="${i + 1}" r:id="rId${i + 1}"/>`).join('')}</sheets><definedNames>${HOJAS.map((h, i) => `<definedName name="_xlnm._FilterDatabase" localSheetId="${i}" hidden="1">'${h.nombre}'!$A$4:$${col(h.encabezados.length - 1)}$${4 + h.filas.length}</definedName>`).join('')}</definedNames></workbook>` },
+  { nombre: 'xl/_rels/workbook.xml.rels', contenido: `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${HOJAS.map((_, i) => `<Relationship Id="rId${i + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i + 1}.xml"/>`).join('')}<Relationship Id="rId${HOJAS.length + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>` },
+  { nombre: 'xl/styles.xml', contenido: STYLES },
+  ...HOJAS.map((h, i) => ({ nombre: `xl/worksheets/sheet${i + 1}.xml`, contenido: hoja(h) })),
+];
+const salida = 'privado/drive/Planilla-Modulo2-TD2026.xlsx';
+fs.mkdirSync(ruta('privado/drive'), { recursive: true });
+fs.writeFileSync(ruta(salida), crearZip(archivos));
+const conDrive = Object.keys(enlaces).length;
+console.log(`${salida} → ${resumen.length} filas en Resumen, ${aprendizajes.length} aprendizajes, ${entregables.length} entregables, ${pendientes.length} pendientes · enlaces de Drive: ${conDrive}`);

@@ -21,6 +21,8 @@
     "produccion": "node scripts/produccion.mjs",
     "sitio": "node scripts/sitio.mjs",
     "marca": "node scripts/marca.mjs",
+    "drive": "node scripts/drive.mjs",
+    "planilla": "node scripts/planilla.mjs",
     "build": "node scripts/sitio.mjs",
     "verificadores": "node scripts/auditar-verificadores.mjs",
     "hooks": "node scripts/instalar-hooks.mjs",

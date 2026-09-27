@@ -406,3 +406,16 @@ Quién: usuario (pidió ambos) y claude-code, sesión `2026-09-27-claude-code-05
   publicación en SCORM 1.2 para Moodle.
 Quién: usuario (decisión) y claude-code, sesión `2026-09-27-claude-code-06`.
 
+## 2026-09-27 · Carpeta de Drive y planilla de seguimiento (sesión claude-code, 2026-09-27-claude-code-07)
+
+- `npm run drive` arma `privado/drive/Modulo 2 - Recursos TD 2026/` (curso → cliente → 1 Cuadernillos, 2 Documentos,
+  3 Videos, 4 Infografias, 5 Rise, más "0 Produccion (sin marca)" por curso) para que el usuario la suba a Drive de un
+  arrastre. Por qué: el conector de Drive solo sube archivos pasándolos por la conversación, inviable para 283 archivos.
+- `npm run planilla` genera un .xlsx con formato (Resumen por cliente y curso, Aprendizajes, Entregables con enlace
+  público al sitio, Pendientes) que se sube a Drive y se convierte en Google Sheets. Los enlaces de Drive se leen de
+  `privado/drive/enlaces.json`, que se arma buscando la carpeta subida con el conector. El conector no edita celdas:
+  para actualizar la planilla se sube una versión nueva.
+- Primera versión en Drive (sin enlaces de Drive): "Módulo 2 · Recursos TD 2026 · PF1821 y PF1822",
+  id 1COAVLdVPOgVyWpCfO_mds9ZSXr0_KLrdWd_pEDw6NSs.
+Quién: usuario (pedido) y claude-code, sesión `2026-09-27-claude-code-07`.
+
