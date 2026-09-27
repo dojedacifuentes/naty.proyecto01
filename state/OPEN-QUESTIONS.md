@@ -125,3 +125,11 @@ Skillnest no entregó manual: sus colores (#1E1E2A, #2470B1, #00ADE5) salen del 
 La Autónoma pide Montserrat y Barlow Condensed en su manual; los PDF usan IBM Plex (2 familias, igual para todos).
 Si el cliente lo exige, se agrega la tipografía por marca. Lo confirma el usuario con cada cliente.
 
+
+**20. ¿La carpeta NATY 2.0 debe seguir abierta a cualquiera con el enlace, como editor?** — ABIERTA
+Detectado el 2026-09-27 (sesión `2026-09-27-claude-code-12`) con `get_file_permissions`: la carpeta
+(id 1fGgwXUyr2wUyyxEn8J36vdmy62Ul2lsv) tiene `anyone` con rol `writer`. Cualquiera que reciba el enlace
+puede editar, mover o borrar, y la carpeta trae recursos con la marca de UNAB, Skillnest y la Autónoma, que
+compiten entre sí (#11, #18); por eso las marcas viven fuera de git. Opciones: restringir a personas invitadas;
+dejar el enlace como lector; o mantenerlo. Se cambia en Drive → Compartir → Acceso general (el conector no quita
+permisos). Lo decide el usuario.

@@ -451,3 +451,12 @@ Quién: usuario (carpeta) y claude-code, sesión `2026-09-27-claude-code-10`.
 - Falta compartir con Natalia: se hace solo cuando el usuario dé su correo.
 Quién: usuario (pedido y subida) y claude-code (orden), sesión `2026-09-27-claude-code-11`.
 
+
+## 2026-09-27 · Compartir NATY 2.0 con Natalia, postergado (sesión claude-code, 2026-09-27-claude-code-12)
+
+- Se propuso compartir la carpeta como lectora con natalia@hackea.pro (el correo que aparece en OPEN-QUESTIONS #4).
+  El usuario respondió "todavía no": no se compartió. Se hace cuando el usuario confirme el correo.
+- Al revisar los permisos se vio que NATY 2.0 tiene acceso "cualquier persona con el enlace" con rol **editor**.
+  No se tocó: cambiar el acceso es decisión del usuario (OPEN-QUESTIONS #20). El conector de Drive no quita permisos:
+  solo los agrega o los sube.
+Quién: usuario (postergar), claude-code (hallazgo), sesión `2026-09-27-claude-code-12`.

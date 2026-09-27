@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-11 (Claude Code · opus-5.5)
+**Por:** 2026-09-27-claude-code-12 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -191,6 +191,11 @@ Sesión claude-code-03, 2026-09-27: ZIP ordenado de los quizzes de Canva.
 - [x] Exportados desde Canva los seis diseños como PDF digital, con 11 páginas verificadas por archivo.
 - [x] Ordenados por curso y número en `entregables/quiz-modulo-2-canva/`, con un `LEEME.md` que conserva los seis enlaces editables.
 - [x] Generado y revisado `entregables/quiz-modulo-2-canva-PF1821-PF1822.zip` (6 PDF + LEEME).
+
+Sesión claude-code-12, 2026-09-27: compartir NATY 2.0 con Natalia.
+
+- [ ] No se compartió: el usuario respondió "todavía no" al correo propuesto (natalia@hackea.pro).
+- [x] Hallazgo: NATY 2.0 está abierta a cualquiera con el enlace **como editor**. Sin tocar; decide el usuario (#20).
 
 ## A medias
 

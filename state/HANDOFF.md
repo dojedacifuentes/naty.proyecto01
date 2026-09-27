@@ -1,7 +1,7 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
-`2026-09-27-claude-code-01` a `-04` — 2026-09-24/27
+`2026-09-27-claude-code-01` a `-12` — 2026-09-24/27
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
@@ -35,7 +35,10 @@ por decisión del usuario (DECISIONS, 2026-09-27): no los propongas de nuevo. Gu
 **Drive para revisión (sesión -11):** carpeta NATY 2.0 del usuario (id `1fGgwXUyr2wUyyxEn8J36vdmy62Ul2lsv`) ordenada por
 curso → cliente → cuadernillos/documentos, más videos, infografías y quiz por curso, y Archivo. Planilla vigente:
 `01 Planilla de seguimiento` (id `1yjgTnjmrIxpQ3a1JBF3ZpSWC0rrKlG6-8qQvFI2Ypn4`); enlaces en `privado/drive/enlaces.json`.
-Falta compartir con Natalia (pedir su correo). **Drive y planilla (sesión -07, antecedente):** `npm run drive` arma la carpeta para subir a Drive; el usuario la sube a mano. Después:
+**Compartir con Natalia (sesión -12):** se propuso natalia@hackea.pro (el de OPEN-QUESTIONS #4) y el usuario dijo
+"todavía no": no compartas hasta que confirme el correo; entonces `share_file` con rol `reader`. **Antes, ojo:** la carpeta
+tiene acceso "cualquier persona con el enlace" como **editor** (#20). El conector no quita permisos; si el usuario quiere
+cerrarlo, lo hace en Drive → Compartir → Acceso general. **Drive y planilla (sesión -07, antecedente):** `npm run drive` arma la carpeta para subir a Drive; el usuario la sube a mano. Después:
 buscar la carpeta con el conector de Drive, escribir `privado/drive/enlaces.json` (ruta relativa → URL), `npm run planilla` y
 subir el .xlsx con `create_file` (se convierte en Sheets). La versión 1 (sin enlaces de Drive) está en Drive con id
 `1COAVLdVPOgVyWpCfO_mds9ZSXr0_KLrdWd_pEDw6NSs`: al subir la nueva, manda esa a la papelera (pregunta antes).
