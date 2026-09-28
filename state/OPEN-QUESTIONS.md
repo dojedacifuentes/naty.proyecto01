@@ -145,6 +145,9 @@ conector con la cuenta del usuario y volver a subir la planilla; o dejar la nuev
 Se cruza con #20. Lo decide el usuario.
 **Respuesta parcial (2026-09-27, sesión `2026-09-27-claude-code-15`):** el usuario pidió dejar la nueva y ordenar la carpeta. Falta
 mover la anterior a Archivo (a mano) y decidir si el conector se reconecta con la cuenta del usuario.
+**Nota (2026-09-28, sesión `2026-09-28-claude-code-04`):** hay otra vía que no usa el conector: el usuario inició sesión de Google en
+el navegador integrado de la app y desde ahí se subieron archivos a su nombre (HANDOFF, "Quiz gamificados en Drive"). Todos los
+cambios del 28-sep a la planilla se hicieron en la del usuario (`1yjgTnjm…`), que es la que revisa Natalia. La pregunta sigue abierta.
 
 **22. ¿La contraparte acepta el quiz gamificado en HTML y SCORM, y con qué nombres de insignia?** — ABIERTA
 El 28-sep se generaron los 3 quiz de cada curso como juego (G9: misión, puntos, estrellas e insignia), en HTML y en paquete SCORM
@@ -153,6 +156,8 @@ interactivos (G3) se mantienen. Falta saber si el juego va además de Canva o en
 (`R-quiz-canva.md`). Lo decide la contraparte, vía el usuario o Natalia.
 **Respuesta parcial (usuario, 2026-09-28, sesión `2026-09-28-claude-code-02`):** "lo de la contraparte está por confirmar pero mejor
 llegar con algo": se presenta igual. Quedó en la planilla de revisión (Resumen, Entregables y Pendientes) para que Natalia lo revise.
+**Nota (sesión `2026-09-28-claude-code-04`):** a pedido del usuario, los 12 archivos están también en Drive (NATY 2.0 → curso →
+"4 Quiz" → "Quiz gamificados (juego y SCORM)") y la planilla los enlaza como archivo, ya no al sitio.
 
 **23. ¿Cómo quedan configurados los formularios de Canva?** — ABIERTA
 Los 30 formularios de los quiz de Canva tienen activado por defecto "Evita respuestas duplicadas" (cada persona responde una sola

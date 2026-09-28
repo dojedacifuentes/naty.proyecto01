@@ -43,13 +43,15 @@ const meta = (pf) => JSON.parse(leer(`.scratch/produccion/${pf}/manifiesto.json`
 const E = { ok: 'ok', pend: 'pend', subir: 'subir' };
 const L = (texto, url) => ({ texto, url });
 const S = (texto, estado) => ({ texto, estado });
+// "F:id" es una carpeta de Drive y "A:id", un archivo.
+const u = (v) => (!v ? null : v.startsWith('F:') ? `https://drive.google.com/drive/folders/${v.slice(2)}` : `https://drive.google.com/file/d/${v.slice(2)}/view`);
+const en = (v, texto) => (u(v) ? L(texto, u(v)) : S('Por subir a Drive', E.subir));
 
 const resumen = [];
 for (const c of CURSOS) {
   const d = enlaces[c.pf] ?? {};
-  // "F:id" es una carpeta de Drive y "A:id", un archivo.
-  const u = (v) => (!v ? null : v.startsWith('F:') ? `https://drive.google.com/drive/folders/${v.slice(2)}` : `https://drive.google.com/file/d/${v.slice(2)}/view`);
-  const en = (v, texto) => (u(v) ? L(texto, u(v)) : S('Por subir a Drive', E.subir));
+  // Quiz gamificados: cada juego como archivo en Drive (se descarga y se abre) y la carpeta con los SCORM.
+  const juegos = [1, 2, 3].map((n) => en(d.quizJuego?.[`M2-Quiz-${n}-Juego.html`], `M2-Quiz-${n}-Juego.html`));
   for (const [cliente] of c.clientes) {
     const cl = d.clientes?.[cliente] ?? {};
     resumen.push([
@@ -60,7 +62,7 @@ for (const c of CURSOS) {
       en(d.videos, 'Carpeta de videos'), en(d.herramienta2, 'Ver video'),
       ...canva[c.pf].map((q, i) => L(`Quiz ${i + 1} (Canva)`, q.url)),
       en(d.quiz, 'Quiz en PDF y GIFT'), L('Ver quiz GIFT', `${QUIZ_WEB}#${c.pf}`),
-      L('Jugar los 3 quiz', `${SITIO}/modulo-2/${c.carpeta}/entrega/quiz/`), en(d.infografias, 'Infografías (PNG)'),
+      ...juegos, en(d.quizJuego?.carpeta, 'Juegos y SCORM (carpeta)'), en(d.infografias, 'Infografías (PNG)'),
       en(cl.carpeta, `Carpeta ${cliente}`), en(d.carpeta, 'Carpeta del curso'),
       S('Listo para revisión', E.ok), OBS[cliente],
     ]);
@@ -100,7 +102,10 @@ for (const c of CURSOS) {
       // Un .gift se descarga: se enlaza a su quiz en la vista web (scripts/lib/quiz-gift.mjs).
       const quiz = /^quiz\/M2-Quiz-(\d)-Moodle\.gift$/.exec(r) ?? /^AE(\d)\/M2-AE\d-Quiz\.gift$/.exec(r);
       const scorm = r.endsWith('-SCORM.zip');
+      // Los quiz gamificados se revisan como archivo en Drive; el sitio queda solo si aún no se subieron.
+      const drive = JUEGO.test(r) ? u(enlaces[c.pf]?.quizJuego?.[nombre]) : null;
       const enlace = quiz ? L('Ver en la web', `${QUIZ_WEB}#${c.pf}-${r.startsWith('quiz/') ? 'q' : 'ae'}${quiz[1]}`)
+        : drive ? L('Abrir en Drive', drive)
         : L(JUEGO.test(r) ? (scorm ? 'Descargar' : 'Jugar') : 'Abrir', `${SITIO}/${ent}/${r}`);
       const formato = JUEGO.test(r) ? (scorm ? 'SCORM 1.2 (Moodle)' : 'HTML (juego)') : path.extname(nombre).slice(1).toUpperCase();
       entregables.push([S(c.pf, 'curso'), grupo, nombre, formato,
@@ -200,15 +205,18 @@ const STYLES = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
 const fecha = new Date().toLocaleDateString('es-CL');
 const HOJAS = [
-  { nombre: 'Resumen', titulo: 'Módulo 2 · Recursos educativos · PF1821 y PF1822', subtitulo: `Una fila por cliente y curso · estándar de la contraparte · actualizado ${fecha}`,
+  { nombre: 'Resumen', titulo: 'Módulo 2 · Recursos educativos · PF1821 y PF1822',
+    subtitulo: `Una fila por cliente y curso · estándar de la contraparte · actualizado ${fecha} · los quiz gamificados se descargan de Drive y se abren con doble clic en el navegador; el .zip (SCORM) es para subir al LMS`,
     encabezados: ['Curso', 'Tipo', 'Cliente', 'Aprendizajes esperados (M2)', 'Cuadernillos (lecturas, actividades, evaluación, metodología, tutor, glosario)',
       'Documentos sueltos', 'Lecturas (Rise)', 'Video de bienvenida (curso)', 'Video resumen (módulo)', 'Video de bienvenida (módulo)', 'Videocápsulas AE1 a AE4',
-      'Video herramienta 2 (AE3)', 'Quiz 1', 'Quiz 2', 'Quiz 3', 'Quiz (PDF y Moodle)', 'Quiz GIFT (vista web)', 'Quiz gamificados (juego y SCORM)', 'Infografías', 'Carpeta del cliente', 'Carpeta del curso', 'Estado', 'Observaciones'],
-    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 13, 22, 26, 18, 20, 16, 16, 16, 18, 16, 15, 15, 15, 18, 18, 20, 18, 18, 18, 18, 40] } },
+      'Video herramienta 2 (AE3)', 'Quiz 1', 'Quiz 2', 'Quiz 3', 'Quiz (PDF y Moodle)', 'Quiz GIFT (vista web)',
+      'Quiz 1 gamificado (archivo)', 'Quiz 2 gamificado (archivo)', 'Quiz 3 gamificado (archivo)', 'Quiz gamificados: juegos y SCORM (carpeta)',
+      'Infografías', 'Carpeta del cliente', 'Carpeta del curso', 'Estado', 'Observaciones'],
+    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 13, 22, 26, 18, 20, 16, 16, 16, 18, 16, 15, 15, 15, 18, 18, 20, 20, 20, 22, 18, 18, 18, 18, 40] } },
   { nombre: 'Aprendizajes', titulo: 'Aprendizajes esperados del módulo 2', subtitulo: 'Textuales de la ficha SIPFOR · con su lectura y su quiz',
     encabezados: ['Curso', 'Módulo', 'AE', 'Aprendizaje esperado (textual del plan)', 'Lectura', 'Quiz'],
     filas: aprendizajes, anchos: { fijas: 1, cols: [10, 34, 6, 70, 34, 20] } },
-  { nombre: 'Entregables', titulo: 'Entregables del módulo 2 (versión neutra, sin marca)', subtitulo: `Enlaces públicos al sitio ${SITIO} · las versiones con marca están en la carpeta de cada cliente en Drive`,
+  { nombre: 'Entregables', titulo: 'Entregables del módulo 2 (versión neutra, sin marca)', subtitulo: `Enlaces públicos al sitio ${SITIO}, salvo los quiz gamificados, que abren su archivo en Drive · las versiones con marca están en la carpeta de cada cliente en Drive`,
     encabezados: ['Curso', 'Grupo', 'Archivo', 'Formato', 'Para', 'Enlace', 'Estado'],
     filas: entregables, anchos: { fijas: 1, cols: [10, 28, 46, 9, 13, 10, 20] } },
   { nombre: 'Pendientes', titulo: 'Pendientes del módulo 2', subtitulo: 'Quién, qué y dónde se sube',

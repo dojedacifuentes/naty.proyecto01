@@ -585,3 +585,19 @@ Quién: usuario (pedido), claude-code, sesión `2026-09-28-claude-code-02`.
 - Descartado: descargar una tipografía "gamer" (se quedan las 2 familias del proyecto); ilustraciones con conceptos que son
   respuestas; temporizador por pregunta (presiona sin enseñar y complica la accesibilidad).
 Quién: usuario (pedido), claude-code (diseño e implementación), sesión `2026-09-28-claude-code-03`.
+
+## 2026-09-28 · Quiz gamificados como archivos en Drive, una casilla por quiz en la planilla (sesión claude-code, 2026-09-28-claude-code-04)
+
+- Pedido del usuario: "necesito que cada archivo esté dentro del google sheet y que Natalia pueda verlo… no desde el vercel sino
+  como archivo independiente… crea la casilla y sube cada quiz como elemento independiente".
+- **Dónde:** Drive del usuario, NATY 2.0 → curso → "4 Quiz" → "Quiz gamificados (juego y SCORM)", junto a "Quiz Moodle (GIFT)" y
+  "Quiz Canva (PDF)": el HTML para jugar y el zip SCORM para el LMS. Mismos nombres que en el repo (la carpeta dice el curso).
+- **En la planilla:** en Resumen, una casilla por quiz con su archivo (como las de Canva) más una con la carpeta, que trae los SCORM;
+  en Entregables, cada fila abre su archivo en Drive. Los enlaces al sitio de esas filas se reemplazaron, porque el usuario no quiere
+  que la revisión dependa del sitio. Los de los otros recursos no se tocaron.
+- **Cómo:** con la sesión de Google que el usuario abrió en el navegador integrado de la app (Claude in Chrome seguía sin conectar).
+  El conector de Drive se descartó: habría que escribir cada archivo (220 KB) completo en la llamada y quedaría a nombre de otra
+  cuenta (#21). También se ofreció que el usuario arrastrara las carpetas; eligió que se hiciera desde la app.
+- Enlaces a la vista de Drive (`/file/d/<id>/view`), no a la descarga directa: así se ven como archivo en la hoja y en Drive; como
+  Drive no ejecuta el HTML (muestra el código), la planilla dice que se descarga y se abre con doble clic.
+Quién: usuario (pedido y sesión de Google), claude-code, sesión `2026-09-28-claude-code-04`.

@@ -19,9 +19,10 @@ const CURSOS = [
   { pf: 'PF1822', carpeta: 'PF1822-desarrollo-con-ia', nombre: 'PF1822 - Especialización en Desarrollo con IA', clientes: [['unab', 'UNAB'], ['skillnest', 'Skillnest'], ['u-autonoma', 'U. Autónoma']] },
 ];
 const copiar = (desde, hasta) => { fs.mkdirSync(ruta(path.dirname(hasta)), { recursive: true }); fs.copyFileSync(ruta(desde), ruta(hasta)); };
-const copiarArbol = (desde, hasta) => {
+const JUEGO = /-Juego(-SCORM)?\.(html|zip)$/;
+const copiarArbol = (desde, hasta, filtro = () => true) => {
   if (!fs.existsSync(ruta(desde))) return 0;
-  const lista = listar(ruta(desde));
+  const lista = listar(ruta(desde)).filter((a) => filtro(path.basename(a)));
   for (const a of lista) copiar(path.relative(ruta(''), a), `${hasta}/${path.relative(ruta(desde), a)}`);
   return lista.length;
 };
@@ -41,7 +42,9 @@ for (const c of CURSOS) {
   // Material de producción, sin marca: bases para HeyGen, quiz (Canva y Moodle) y prompts de infografía.
   // Videos, infografías y quiz de Canva ya están en Drive: se mueven allá a 2 Videos, 3 Infografías y 4 Quiz.
   const p = `modulo-2/${c.carpeta}`;
-  total += copiarArbol(`${p}/entrega/quiz`, `${base}/4 Quiz/Quiz Moodle (GIFT)`);
+  total += copiarArbol(`${p}/entrega/quiz`, `${base}/4 Quiz/Quiz Moodle (GIFT)`, (n) => !JUEGO.test(n));
+  // Juego y paquete SCORM de cada quiz (G9), como archivos sueltos para revisarlos y subirlos al LMS.
+  total += copiarArbol(`${p}/entrega/quiz`, `${base}/4 Quiz/Quiz gamificados (juego y SCORM)`, (n) => JUEGO.test(n));
   const prod = `${base}/9 Producción (equipo)`;
   total += copiarArbol(`${p}/produccion/videos`, `${prod}/Videos HeyGen (PPT y guiones)`);
   total += copiarArbol(`${p}/produccion/infografias`, `${prod}/Infografías (prompts)`);

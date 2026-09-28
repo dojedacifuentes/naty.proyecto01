@@ -1,7 +1,7 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
-`2026-09-27-claude-code-01` a `-18` y `2026-09-28-claude-code-01` a `-03` — 2026-09-24/28
+`2026-09-27-claude-code-01` a `-18` y `2026-09-28-claude-code-01` a `-04` — 2026-09-24/28
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
@@ -79,6 +79,33 @@ Qué cambió, por si hay que tocarlo:
 - **Si el cliente entrega el logo en blanco**, déjalo junto a `logo.png` y agrega `"logo_negativo": "<archivo>"` en su `marca.json`:
   va sin placa. Hoy nadie lo tiene (el usuario puede pedírselo a UNAB y a la Autónoma).
 
+## Quiz gamificados en Drive y en la planilla (sesión 2026-09-28-04)
+
+El usuario pidió que Natalia vea cada quiz como **archivo** desde la planilla, no en el sitio de Vercel. Quedó así:
+- **Drive:** NATY 2.0 → curso → "4 Quiz" → **"Quiz gamificados (juego y SCORM)"** (PF1821 `1R8PAnCH…`, PF1822 `1xF1Oalp…`), con
+  `M2-Quiz-n-Juego.html` y `M2-Quiz-n-Juego-SCORM.zip`. Ids de carpeta y archivos en `privado/drive/enlaces.json` → `<PF>.quizJuego`.
+  Son del usuario y se abren con el enlace sin sesión (heredan el acceso de NATY 2.0, #20).
+- **Planilla** (`1yjgTnjm…`): Resumen R, S y T "Quiz n gamificado (archivo)" y U "Quiz gamificados: juegos y SCORM (carpeta)";
+  Entregables F84 a F95 "Abrir en Drive". `npm run planilla` genera lo mismo desde `enlaces.json` (si falta un id, vuelve al sitio).
+- **Drive no ejecuta el HTML:** su vista previa muestra el código. Se descarga y se abre con doble clic (lo dice A2 de Resumen).
+- **Si regeneras los juegos** (`npm run quiz-juego`), hay que subirlos otra vez como nueva versión del mismo archivo, para no
+  cambiar los enlaces: "Administrar versiones" en Drive, o el diálogo "Reemplazar" al subir con el mismo nombre en esa carpeta.
+
+Cómo se subió **sin Claude in Chrome** (seguía sin conectar): el usuario inició sesión de Google en el **navegador integrado** de
+la app (Google lo permitió; el agente de usuario es Chromium 152 con "Claude/…", `navigator.webdriver` falso). Con esa sesión:
+1. Comprobar la cuenta: el `aria-label` del botón "Cuenta de Google" incluye el correo del dueño de NATY 2.0.
+2. El sitio sirve los archivos con `Access-Control-Allow-Origin: *`: `fetch` desde la página de Drive, SHA-256 contra el repo y
+   `new File([buf], nombre, { type })`.
+3. Parchar `HTMLInputElement.prototype.click` y `showPicker` para guardar el input `type=file` sin abrir el cuadro de Windows;
+   "Nuevo" (clic en el botón visible) → `find` "Subir archivo" → clic por `ref`; luego `input.files = dataTransfer.files` y
+   despachar `change`. Drive muestra "6 subidas completadas".
+4. La lista de Drive es virtual: para leer los 6 `data-id`, emular una ventana alta (`resize_window` 1200×1800) y volver a
+   "desktop" antes de hacer clics (con la emulación, los clics por coordenada caen mal).
+**Trampa:** con el panel angosto, un clic que no alcanzó el menú cayó en el logo de Drive, y lo que se escribió después fue a la
+página principal (Drive tiene atajos de una tecla). No pasó nada (se revisó "Reciente": solo los 6 archivos nuevos, ningún
+archivo sin título), pero **antes de escribir, confirma con `document.activeElement` que el foco está en el campo del diálogo**.
+Navegar con `navigate` recarga la página y borra lo que el script dejó en `window`.
+
 ## Quiz gamificados, versión videojuego (sesión 2026-09-28-03)
 
 Los 6 juegos (`npm run quiz-juego`) tienen ahora diseño de videojuego tecnológico, a pedido de la contraparte: fondo animado por
@@ -96,11 +123,13 @@ curso, color e ilustración por quiz, XP, combos, energía, comodín 50:50, nive
 ## Planilla de revisión del usuario: cómo editarla (sesión 2026-09-28-02)
 
 Natalia revisa en **la planilla del usuario**, `01 Planilla de seguimiento` (id `1yjgTnjmrIxpQ3a1JBF3ZpSWC0rrKlG6-8qQvFI2Ypn4`; ella
-tiene permiso de edición). Estado al 28-sep: Resumen con la columna R "Quiz gamificados (juego y SCORM)" y la Q "Quiz GIFT (vista
-web)" completa y corregida; Entregables hasta la fila 95 (84-95: quiz gamificados); Pendientes hasta la fila 11. **Lo de la sesión
--16 (abajo) quedó resuelto en Q; Aprendizajes F y las filas .gift de Entregables siguen sin la vista web.**
+tiene permiso de edición). Estado al 28-sep (sesión -04): Resumen con los quiz gamificados en R a U (archivos y carpeta en Drive,
+ver arriba) y la Q "Quiz GIFT (vista web)" completa y corregida; Infografías en V y Observaciones en Z; Entregables hasta la fila 95
+(84-95: quiz gamificados, a Drive); Pendientes hasta la fila 11. **Lo de la sesión -16 (abajo) quedó resuelto en Q; Aprendizajes F y
+las filas .gift de Entregables siguen sin la vista web.**
 
-Cómo se editó sin Claude in Chrome ni sesión de Google (la hoja deja editar a cualquiera con el enlace, #20):
+Cómo se editó sin Claude in Chrome (en la sesión -02 sin sesión de Google, porque la hoja deja editar a cualquiera con el enlace,
+#20; en la -04, con la sesión que el usuario abrió en el navegador integrado; la técnica es la misma):
 1. Abrirla en el navegador integrado. Si la ventana de Claude queda detrás de otra, no hay capturas y la barra de fórmulas no se
    refresca: **no leas la hoja en pantalla, descárgala**: `curl -L ".../export?format=xlsx"` y lee celdas y fórmulas del xlsx.
 2. Ir a una celda: `javascript_tool` enfoca `#t-name-box` y le hace `select()`; luego `type` "Hoja!A84" y `key` Return.

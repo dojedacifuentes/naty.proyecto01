@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-28
-**Por:** 2026-09-28-claude-code-03 (Claude Code · opus-5.5)
+**Por:** 2026-09-28-claude-code-04 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -281,6 +281,22 @@ tecnológicos, no planos").
       Corregidos en la prueba: contador de XP negativo o detenido, cartel de nivel sobre la pantalla final, encabezado encimado en
       celular. `npm run sitio`: 0 enlaces rotos. `npm run verificar`: 0 errores.
 - [ ] Sin probar en un Moodle real ni en un celular físico; el sonido no se escuchó (se probó que no rompe nada).
+
+Sesión claude-code-04, 2026-09-28: quiz gamificados como archivos en Drive y en la planilla (pedido: "que cada archivo esté dentro
+del google sheet y que Natalia pueda verlo… no desde el vercel sino como archivo independiente… crea la casilla").
+
+- [x] En Drive del usuario, NATY 2.0 → cada curso → "4 Quiz" → nueva carpeta **"Quiz gamificados (juego y SCORM)"** con sus 6
+      archivos (3 HTML y 3 SCORM). Subidos desde el navegador integrado con la sesión de Google que abrió el usuario; idénticos a los
+      del repo (SHA-256 antes de subir y en la descarga anónima), tipos `text/html` y `application/zip`, dueño el usuario, y se abren
+      con el enlace sin sesión (heredan "cualquiera con el enlace" de NATY 2.0, #20). Ids en `privado/drive/enlaces.json` (`quizJuego`).
+- [x] Planilla del usuario (`1yjgTnjm…`), comprobada con la descarga en xlsx: en Resumen, la columna del juego pasó a 4 casillas,
+      **R, S y T "Quiz 1/2/3 gamificado (archivo)"** (cada una abre su HTML en Drive) y **U "Quiz gamificados: juegos y SCORM (carpeta)"**;
+      el resto se corrió 3 columnas (Infografías en V, Observaciones en Z). Subtítulo A2: cómo se abren. En Entregables, F84 a F95
+      "Abrir en Drive" (ya no Vercel) y A2 lo explica. Aprendizajes y Pendientes sin cambios.
+- [x] `npm run planilla` genera las mismas casillas y enlaces (mismo archivo de Drive para los 12 entregables; en el generador las
+      filas del juego van dentro de cada curso, en la planilla al final, como antes). `npm run drive` separa ahora "Quiz Moodle (GIFT)"
+      de "Quiz gamificados (juego y SCORM)". `npm run verificar`: 0 errores.
+- [ ] Drive muestra el HTML como código en su vista previa: Natalia tiene que descargarlo y abrirlo (lo dice la planilla).
 
 ## A medias
 
