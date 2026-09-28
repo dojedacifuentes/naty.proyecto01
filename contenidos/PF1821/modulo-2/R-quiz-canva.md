@@ -6,12 +6,17 @@
 **Son formativos:** no llevan nota y **no repiten** las preguntas de la prueba objetiva
 (instrumento 3) ni las del video interactivo, para no adelantar la evaluación.
 **Formato:** la respuesta correcta va en negrita. Cada pregunta dice su aprendizaje esperado.
+**Versión juego** (HTML y SCORM para el LMS, `npm run quiz-juego`): las mismas preguntas como una
+misión de 5 niveles, con puntos, estrellas e insignia. Usa la misión del curso y, de cada quiz, su
+insignia y su siguiente parada en la ruta.
+**Misión:** automatizar los pedidos de Mercado Austral.
 
 ---
 
 ## Quiz 1 · Entender y construir (AE1 y AE2)
 
 **Cuándo:** al cerrar el tramo 2, después del workflow "Pedido a registro".
+**Insignia:** Constructor/a de workflows · **Siguiente parada:** tramo 3, Transformar.
 
 1. *(AE1)* ¿Cuál de estas tareas de Mercado Austral conviene **menos** automatizar?
    - a) Enviar un correo de confirmación por cada pedido
@@ -47,6 +52,7 @@
 ## Quiz 2 · Transformar datos (AE3)
 
 **Cuándo:** al cerrar el tramo 3, después del tutorial y de la parte C de la actividad 1.
+**Insignia:** Transformador/a de datos · **Siguiente parada:** tramo 4, Decidir y depurar.
 
 1. *(AE3)* En n8n, cada ítem que viaja de un nodo a otro es:
    - a) Una fila de Excel
@@ -84,6 +90,7 @@
 ## Quiz 3 · Decidir y depurar (AE4)
 
 **Cuándo:** al cerrar el tramo 4, antes del rescate del workflow roto.
+**Insignia:** Estratega de rutas · **Siguiente parada:** el rescate del workflow roto.
 
 1. *(AE4)* En una condición, ¿qué hace el operador NOT?
    - a) Exige que se cumplan todas las condiciones

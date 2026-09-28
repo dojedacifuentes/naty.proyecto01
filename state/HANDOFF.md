@@ -1,13 +1,48 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
-`2026-09-27-claude-code-01` a `-18` — 2026-09-24/27
+`2026-09-27-claude-code-01` a `-18` y `2026-09-28-claude-code-01` — 2026-09-24/28
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 > **Ojo (sesión -04):** las sesiones -02 y -03 del 27-sep, que armaron los quiz en Canva, reemplazaron este archivo
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
+
+## HECHO (sesión 2026-09-28-01): quiz de Canva interactivos y quiz gamificados en HTML y SCORM
+
+La sesión corrió en dos chats seguidos, desde dos cuentas del usuario. El primero se cortó por límite de uso sin cerrar.
+
+- **Canva (G3):** los 6 quiz tienen un **Formulario** nativo (Elementos → Formularios) en cada página de pregunta (2, 4, 6, 8 y
+  10), con la respuesta correcta marcada, colores del diseño y Montserrat. No hace falta cuenta de Canva para responder; las
+  respuestas se ven en "Respuestas" de cada formulario. Siguen por defecto "Evita respuestas duplicadas" y el correo por respuesta
+  (#23). **Nadie probó todavía un envío real en modo Presentar.**
+- **Gamificación en Canva: a medias solo en PF1821 Quiz 1** (rótulos MISIÓN, NIVEL y "+1 ★"). Si se retoma, en cada quiz:
+  Archivo → **Encuentra y reemplaza texto** (Ctrl+F), "Reemplazar todo", en este orden: `RETROALIMENTACIÓN · PREGUNTA ` →
+  `+1 ★ · COMPLETASTE EL NIVEL `; `PREGUNTA ` → `NIVEL `; `QUIZ FORMATIVO · SIN NOTA` → `MISIÓN · 5 NIVELES · QUIZ FORMATIVO SIN NOTA`;
+  `Cuándo:` → `Tu misión: supera los 5 niveles, suma 1 ★ por nivel y gana la insignia «…». Cuándo:`. Página final: duplicar la
+  página 11 y cambiar sus textos con "Reemplazar" (de a uno) sobre la última coincidencia. **No edites texto con doble clic en el
+  lienzo: congeló Canva dos veces.** Insignias y siguiente parada: `R-quiz-canva.md`.
+- **Quiz gamificados (G9):** `npm run quiz-juego` escribe en `modulo-2/<curso>/entrega/quiz/` `M2-Quiz-n-Juego.html` (un archivo,
+  fuentes incrustadas, sin internet) y `M2-Quiz-n-Juego-SCORM.zip` (SCORM 1.2: guarda en Moodle el mejor puntaje, 0-100, y
+  "completed"). Preguntas desde los GIFT de G8; la misión del curso y, por quiz, la insignia y la siguiente parada, desde
+  `R-quiz-canva.md` (el generador se detiene si faltan). **Si cambian los quiz:** `npm run produccion -- PF1821 PF1822` y después
+  `npm run quiz-juego`. El sitio los publica solo (se copian desde `modulo-2/`) y la portada los enlaza. Diseño en
+  `scripts/lib/quiz-juego.html`: los datos entran en el marcador DATA y las fuentes en FUENTES.
+- **Cómo se montan:** Moodle → Agregar actividad → **Paquete SCORM** (el zip). Rise → bloque **Embed** con la URL del juego en el
+  sitio (existe solo después del push). También sirve subir el HTML como archivo.
+- **Cómo se probó** (script fuera del repo): una copia del HTML con un objeto `window.API` falso que anota las llamadas SCORM y un
+  guion que juega solo; Edge `--headless=new --virtual-time-budget=15000 --dump-dom` devuelve el resultado, y `--screenshot` las
+  capturas. **Edge headless no baja de ~500 px de ancho:** para ver un celular, mete el juego en un `<iframe>` de 375 px.
+- **Pendiente:** #22 (¿la contraparte lo acepta, además de Canva o en su lugar? y los nombres de insignia), #23, importarlo en un
+  Moodle real, push, Rise (G5, sin empezar).
+
+Trampas de esta sesión:
+- **Claude in Chrome:** su herramienta `find` usa la cuota de la cuenta de la extensión y respondió 429 (límite de 5 horas); poco
+  después la extensión se desconectó y no volvió aunque el usuario abrió el panel. El navegador integrado de la app no tiene sesión
+  de Canva, y el usuario no pudo iniciarla ahí.
+- **Canva:** en el editor, un clic en el formulario lo "responde" en vez de seleccionarlo (usa el panel de capas); pegar entre
+  páginas con el portapapeles pegó capturas del usuario (no uses el portapapeles).
 
 ## HECHO (sesiones -17 y -18): logo de marca sin solapar el título, y PDF reemplazados en Drive
 

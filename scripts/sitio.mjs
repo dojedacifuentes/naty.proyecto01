@@ -438,6 +438,7 @@ paginas++;
   const md = leer('modulo-2/README.md');
   const descargas = `<h3>Quiz del módulo 2</h3><ul class="lista">
 <li><a href="quiz-modulo2.html">Quiz GIFT del módulo 2</a>: por curso, los 3 quiz formativos y el quiz de cada aprendizaje esperado, como quedan al importarlos en Moodle, con la respuesta correcta y la retroalimentación, o para contestarlos.</li>
+${CURSOS.map((c) => `<li>Quiz gamificados de ${c.pf} (misión de 5 niveles con puntos, estrellas e insignia; las mismas preguntas de Canva y Moodle): ${[1, 2, 3].map((n) => `<a href="modulo-2/${c.carpeta}/entrega/quiz/M2-Quiz-${n}-Juego.html">Quiz ${n}</a>`).join(' · ')}. Para Moodle, como paquete SCORM que registra el puntaje: ${[1, 2, 3].map((n) => `<a href="modulo-2/${c.carpeta}/entrega/quiz/M2-Quiz-${n}-Juego-SCORM.zip">Quiz ${n}</a>`).join(' · ')}.</li>`).join('\n')}
 </ul>
 <h3>Descargas para producción</h3><ul class="lista">
 <li><a href="descargas/videos-heygen-modulo2.zip">videos-heygen-modulo2.zip</a>: los 12 PPT para HeyGen (bienvenida, 4 videocápsulas y video de la herramienta 2, por curso), con guiones y pasos.</li>

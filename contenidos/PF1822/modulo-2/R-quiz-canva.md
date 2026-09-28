@@ -7,12 +7,17 @@ retroalimentación.
 **Son formativos:** no llevan nota y **no repiten** las preguntas de la prueba objetiva
 (instrumento 3) ni las del video interactivo, para no adelantar la evaluación.
 **Formato:** la respuesta correcta va en negrita. Cada pregunta dice su aprendizaje esperado.
+**Versión juego** (HTML y SCORM para el LMS, `npm run quiz-juego`): las mismas preguntas como una
+misión de 5 niveles, con puntos, estrellas e insignia. Usa la misión del curso y, de cada quiz, su
+insignia y su siguiente parada en la ruta.
+**Misión:** construir el resumidor de tickets de Nube Sur.
 
 ---
 
 ## Quiz 1 · Modelos y consumo por API (AE1 y AE2)
 
 **Cuándo:** al cerrar la estación 2, después de la parte B de la actividad 1.
+**Insignia:** Conector/a de APIs · **Siguiente parada:** estación 3, Pedir bien.
 
 1. *(AE1)* ¿Qué diferencia a la IA generativa de un sistema basado en reglas?
    - a) Solo responde con reglas escritas a mano por un programador
@@ -50,6 +55,7 @@ retroalimentación.
 ## Quiz 2 · Diseño de prompts (AE3)
 
 **Cuándo:** al cerrar la estación 3, después del notebook guiado y del video interactivo.
+**Insignia:** Diseñador/a de prompts · **Siguiente parada:** estación 4, Limpiar y medir.
 
 1. *(AE3)* Un prompt zero-shot es:
    - a) Un prompt que siempre usa temperatura 0
@@ -87,6 +93,7 @@ retroalimentación.
 ## Quiz 3 · Preparar y medir texto (AE4)
 
 **Cuándo:** al cerrar la estación 4, antes de publicar tu resultado en el tablero del laboratorio.
+**Insignia:** Evaluador/a de resúmenes · **Siguiente parada:** publicar tu resultado en el tablero del laboratorio.
 
 1. *(AE4)* ¿Qué hace esta línea de Python? `re.sub(r"<[^>]+>", " ", texto)`
    - a) Borra los correos electrónicos

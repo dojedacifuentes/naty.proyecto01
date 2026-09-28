@@ -15,7 +15,7 @@ import { leer, existe } from './repo.mjs';
 
 const desescapar = (s) => s.replace(/\\([:=~#{}])/g, '$1').trim();
 
-function leerGift(archivo) {
+export function leerGift(archivo) {
   const txt = leer(archivo);
   const categoria = (txt.match(/^\$CATEGORY: (.+)$/m) || [])[1] || '';
   const preguntas = [...txt.matchAll(/^::(.+?)::\s*(.+?)\s*\{\n([\s\S]*?)\n?\}/gm)].map(([, id, enunciado, cuerpo]) => {

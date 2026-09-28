@@ -2,8 +2,8 @@
 
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
-**Última actualización:** 2026-09-27
-**Por:** 2026-09-27-claude-code-18 (Claude Code · opus-5.5)
+**Última actualización:** 2026-09-28
+**Por:** 2026-09-28-claude-code-01 (Claude Code · opus-5.5; dos chats seguidos, desde dos cuentas del usuario)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -233,6 +233,30 @@ Sesión claude-code-18, 2026-09-27: reemplazar en Drive los PDF con marca correg
       desde el Chrome del usuario con su propia sesión de Google (la cuenta dueña de NATY 2.0, verificada), no con el conector (#21).
       Cada archivo quedó como **Versión 2** del mismo archivo: mismo id, mismo enlace y mismos permisos. 50 de 50 carpetas confirmadas.
 - [x] Comprobado en Drive: la vista previa del Instrumento 2 de UNAB PF1822 ya muestra la cabecera nueva (logo en su columna).
+
+Sesión claude-code-01, 2026-09-28: quiz de Canva interactivos (desde el Chrome del usuario, con su sesión de Canva).
+
+- [x] Los 6 quiz (PF1821 y PF1822) tienen en cada página de pregunta (2, 4, 6, 8, 10) un elemento **Formulario** nativo de Canva
+      con la respuesta correcta marcada, etiqueta "Elige tu respuesta", botón "Responder", colores del diseño y Montserrat 22.
+      Se borraron los recuadros estáticos A-D y el texto "Selecciona una alternativa.". 30 de 30 verificadas por DOM (aria-pressed).
+- [x] Revisados los duplicados del Quiz 1 y el Quiz 2 de PF1821 (se borraron dos formularios pegados de más).
+- [x] (Segundo chat) Revisado en Canva, sin tocar: los 6 diseños siguen con 11 páginas y los 30 formularios están guardados.
+- [ ] Gamificación en Canva: **a medias solo en PF1821 Quiz 1**, hecha con **Archivo → Encuentra y reemplaza texto** (Ctrl+F): portada
+      "MISIÓN · 5 NIVELES · QUIZ FORMATIVO SIN NOTA", preguntas "NIVEL n DE 5 · AEx" y retroalimentaciones "+1 ★ · COMPLETASTE EL NIVEL n".
+      La barra de progreso 1/5 a 5/5 ya venía en el diseño. No se siguió: el doble clic en un texto del lienzo congeló Canva y Claude in
+      Chrome se desconectó (límite de uso). Los otros 5 Canva no tienen gamificación.
+- [x] **Quiz gamificados (G9)**, a pedido del usuario: `npm run quiz-juego` (`scripts/quiz-juego.mjs` + `scripts/lib/quiz-juego.html`)
+      genera en `modulo-2/<curso>/entrega/quiz/` los 6 quiz como misión de 5 niveles (puntos, estrellas, 2 intentos, insignia de oro,
+      plata o bronce, siguiente parada y revisión de respuestas), en HTML de un archivo y en paquete SCORM 1.2 que registra el puntaje
+      en Moodle. Preguntas desde los GIFT de G8; misión, insignias y siguiente parada en `R-quiz-canva.md`. El sitio los publica
+      (portada, "Quiz del módulo 2").
+- [x] Probado en Edge headless con un LMS SCORM simulado: partida mixta en PF1821 Quiz 1 (250 puntos, bronce, SCORM 50, "completed")
+      y partida perfecta en los 6 (oro, SCORM 100); capturas de portada, nivel, final y pantallas de 375 y 320 px.
+      `npm run produccion -- PF1821 PF1822 --sin-pdf` sigue leyendo `R-quiz-canva.md` (GIFT y txt idénticos; PPTX restaurados).
+      `npm run sitio`: 0 enlaces rotos. `npm run verificar`: 0 errores, los 4 avisos de siempre.
+- [ ] Sin importar en un Moodle real ni en Rise. Sin push: el sitio no los muestra hasta que se suba.
+- [ ] Nota: dos capturas de pantalla del portapapeles del usuario se pegaron por error en Canva y se borraron del diseño, pero pueden quedar en "Subidos" de Canva.
+- [ ] Rise (lecturas por cliente, G5): sin empezar.
 
 ## A medias
 

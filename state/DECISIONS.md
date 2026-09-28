@@ -526,3 +526,26 @@ Quién: usuario (encargo), claude-code, sesión `2026-09-27-claude-code-17`.
 - El cuadro "Abrir" de Windows nunca se usó: un parche en la página intercepta el input de archivos de Drive y los archivos se le
   entregan con `file_upload`. Procedimiento en HANDOFF.
 Quién: usuario (pedido: "reemplaza los pdf del drive"), claude-code, sesión `2026-09-27-claude-code-18`.
+
+## 2026-09-28 · Quiz de Canva interactivos y quiz gamificados en HTML y SCORM (sesión claude-code, 2026-09-28-claude-code-01)
+
+- **Canva (G3):** la interactividad se hizo con el elemento **Formulario** nativo de Canva (Elementos → Formularios), una por
+  página de pregunta, con la respuesta correcta marcada, como pide la planilla del usuario ("Pendientes"). Descartado: enlaces
+  entre páginas (ya descartados el 27-sep: no registran la respuesta). Se dejaron por defecto "Evita respuestas duplicadas" y el
+  correo por respuesta: lo decide el usuario (#23).
+- **Gamificación:** no se terminó en Canva. El editor se congeló al editar texto en el lienzo y Claude in Chrome se desconectó
+  (límite de uso). En Canva solo quedó a medias el Quiz 1 de PF1821, con **Encuentra y reemplaza texto** (sin tocar el lienzo).
+- **Quiz gamificados (G9), a pedido del usuario** ("¿y si generamos otro tipo de quiz gamificado con los mismos contenidos? puede
+  ser un html"): `npm run quiz-juego` genera cada quiz como una misión de 5 niveles, con puntos (100 al primer intento, 50 al
+  segundo), estrellas, barra de progreso, 2 intentos por nivel (1 en verdadero o falso) e insignia de oro, plata o bronce; al
+  final, la siguiente parada de la ruta y la revisión de respuestas. Sale en HTML de un archivo (fuentes incrustadas, sin
+  internet) y en **paquete SCORM 1.2** que registra en Moodle el mejor puntaje (0-100) y la finalización.
+  Por qué: la metodología se evalúa navegando el LMS (bases 2026, 7.4, pág. 30) y C3 se cumple con lo que se monta en la
+  plataforma, entre ello quiz e insignias (7.4, pág. 31; `modulo-2/REVISION-BASES.md`); Canva no calcula puntaje ni lo informa al
+  LMS. Las bases no exigen Canva: es el estándar de la contraparte, y los Canva interactivos se mantienen (#22).
+- Las preguntas salen de los GIFT de G8 (mismo texto que Canva y Moodle). La misión del curso y, por quiz, la insignia y la
+  siguiente parada se escribieron en `R-quiz-canva.md` (línea **Misión:** y línea **Insignia:** · **Siguiente parada:**), con el
+  vocabulario de la ruta del curso (tramos en PF1821, estaciones en PF1822). No se reusan "Depurador/a" ni "Rescatista de
+  workflows": son las insignias de la actividad 2 de PF1821. Los nombres de insignia son propuesta y se validan (#22).
+- Descartado: Canva Code (depende del plan y reescribe el contenido); H5P (el usuario lo sacó del plan el 27-sep).
+Quién: usuario (pedido y formato), claude-code (diseño e implementación), sesión `2026-09-28-claude-code-01`.

@@ -145,3 +145,14 @@ conector con la cuenta del usuario y volver a subir la planilla; o dejar la nuev
 Se cruza con #20. Lo decide el usuario.
 **Respuesta parcial (2026-09-27, sesión `2026-09-27-claude-code-15`):** el usuario pidió dejar la nueva y ordenar la carpeta. Falta
 mover la anterior a Archivo (a mano) y decidir si el conector se reconecta con la cuenta del usuario.
+
+**22. ¿La contraparte acepta el quiz gamificado en HTML y SCORM, y con qué nombres de insignia?** — ABIERTA
+El 28-sep se generaron los 3 quiz de cada curso como juego (G9: misión, puntos, estrellas e insignia), en HTML y en paquete SCORM
+para Moodle, porque Canva no calcula puntaje ni lo informa al LMS. El estándar de la contraparte dice "3 quiz en Canva": los Canva
+interactivos (G3) se mantienen. Falta saber si el juego va además de Canva o en su lugar, y validar las 6 insignias propuestas
+(`R-quiz-canva.md`). Lo decide la contraparte, vía el usuario o Natalia.
+
+**23. ¿Cómo quedan configurados los formularios de Canva?** — ABIERTA
+Los 30 formularios de los quiz de Canva tienen activado por defecto "Evita respuestas duplicadas" (cada persona responde una sola
+vez) y el aviso por correo de cada respuesta. Con muchos participantes, el correo satura; y con una sola respuesta no se puede
+reintentar. Se cambia en la Configuración de cada formulario, en Canva. Lo decide el usuario.

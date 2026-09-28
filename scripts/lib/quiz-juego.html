@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITULO__</title>
+<!--
+  Plantilla del quiz gamificado del módulo 2 (npm run quiz-juego). Un solo archivo, sin conexión a
+  internet: las fuentes entran en FUENTES y las preguntas en DATA. Si hay un LMS con SCORM 1.2
+  (Moodle, paquete SCORM), registra el puntaje y la finalización; si no, funciona igual y no guarda nada.
+-->
+<style>
+/*FUENTES*/
+:root{
+  --fondo:#0a2230; --panel:#113446; --panel-2:#174257; --borde:#285b72;
+  --tinta:#eef6f7; --suave:#a9c2c9; --acento:#2cc4bf; --acento-tinta:#04282b;
+  --ok:#3ddc97; --ok-fondo:#123d31; --mal:#ff8a7a; --mal-fondo:#40222a;
+  --oro:#ffc83d; --plata:#cfd8dd; --bronce:#e0a06a;
+  --sans:"Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;background:radial-gradient(120% 80% at 50% 0%,#12394b 0%,var(--fondo) 60%);color:var(--tinta);
+  font:16px/1.5 var(--sans);padding:16px}
+.app{max-width:760px;margin:8px auto 24px;display:flex;flex-direction:column;gap:14px}
+.pantalla{background:var(--panel);border:1px solid var(--borde);border-radius:18px;padding:28px;
+  box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.kicker{margin:0 0 10px;font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--acento)}
+h1{margin:0 0 12px;font-size:34px;line-height:1.15;font-weight:700;text-wrap:balance}
+h2{margin:0;font-size:22px;line-height:1.35;font-weight:600;text-wrap:pretty}
+h1:focus,h2:focus,p:focus{outline:none}
+p{margin:0}
+.mision{font-size:18px;color:var(--tinta);margin-bottom:18px}
+.reglas{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:10px}
+.reglas li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;color:var(--suave)}
+.reglas .ico{width:34px;height:34px;border-radius:50%;background:var(--panel-2);display:grid;place-items:center;color:var(--oro);font-weight:700}
+.reglas .ico svg{width:18px;height:18px}
+.cuando{font-size:14px;color:var(--suave);margin-bottom:6px}
+.nota{font-size:14px;color:var(--suave);margin-bottom:22px}
+.btn{font:600 16px/1 var(--sans);color:var(--tinta);background:transparent;border:2px solid var(--acento);
+  border-radius:999px;padding:13px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:10px}
+.btn.principal{background:var(--acento);color:var(--acento-tinta)}
+.btn:hover{filter:brightness(1.08)}
+.btn svg{width:16px;height:16px}
+button:focus-visible{outline:3px solid var(--oro);outline-offset:3px}
+.acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+
+/* Barra superior: curso, puntos, estrellas y progreso por nivel */
+.hud{display:grid;grid-template-columns:1fr auto;gap:10px 16px;align-items:center;
+  background:rgba(17,52,70,.72);border:1px solid var(--borde);border-radius:14px;padding:12px 16px}
+.hud-titulo{font-size:13px;color:var(--suave);font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hud-datos{display:flex;gap:14px;align-items:center;font-weight:700;font-variant-numeric:tabular-nums}
+.hud-datos .est{display:inline-flex;align-items:center;gap:6px;color:var(--oro)}
+.hud-datos .est svg{width:18px;height:18px}
+.progreso{grid-column:1/-1;display:grid;grid-template-columns:repeat(var(--n),1fr);gap:6px}
+.seg{height:8px;border-radius:4px;background:rgba(255,255,255,.12)}
+.seg.actual{background:var(--acento);animation:latido 1.4s ease-in-out infinite}
+.seg.oro{background:var(--oro)} .seg.ok{background:var(--ok)} .seg.mal{background:var(--mal)}
+@keyframes latido{50%{opacity:.45}}
+
+/* Nivel */
+.nivel .kicker{display:flex;gap:10px;align-items:center}
+.chip{background:var(--panel-2);color:var(--tinta);border-radius:999px;padding:3px 10px;font-size:11px;letter-spacing:.06em}
+.pista{margin:12px 0 18px;color:var(--suave);font-size:14px}
+.opciones{display:grid;gap:10px}
+.opcion{display:grid;grid-template-columns:34px 1fr 24px;gap:14px;align-items:center;width:100%;text-align:left;
+  font:16px/1.4 var(--sans);color:var(--tinta);background:var(--panel-2);border:2px solid transparent;border-radius:14px;
+  padding:14px 16px;cursor:pointer;transition:transform .12s ease,border-color .12s ease,background-color .12s ease}
+.opcion:hover:not(:disabled){border-color:var(--acento);transform:translateY(-1px)}
+.opcion:disabled{cursor:default}
+.letra{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:rgba(255,255,255,.1)}
+.marca svg{width:22px;height:22px;display:block}
+.opcion.correcta{background:var(--ok-fondo);border-color:var(--ok)}
+.opcion.correcta .letra{background:var(--ok);color:#05291d}
+.opcion.correcta .marca{color:var(--ok)}
+.opcion.revelada{border-color:var(--ok);border-style:dashed}
+.opcion.revelada .marca{color:var(--ok)}
+.opcion.incorrecta{background:var(--mal-fondo);border-color:var(--mal)}
+.opcion.incorrecta .letra{background:var(--mal);color:#3a0d0d}
+.opcion.incorrecta .marca{color:var(--mal)}
+.opcion.apagada{opacity:.55}
+.sacudir{animation:sacudir .36s ease}
+@keyframes sacudir{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.retro{margin-top:18px;border-radius:14px;padding:16px 18px;border-left:5px solid var(--ok);background:rgba(61,220,151,.1)}
+.retro.mal{border-left-color:var(--mal);background:rgba(255,138,122,.1)}
+.retro-titulo{font-weight:700;margin-bottom:6px}
+.retro-texto{color:var(--tinta)}
+.retro .acciones{margin-top:16px}
+.flotante{position:fixed;pointer-events:none;font-weight:700;font-size:22px;color:var(--oro);
+  animation:flotar 1.1s ease-out forwards;z-index:5;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+@keyframes flotar{from{opacity:1;transform:translate(-50%,0) scale(.9)}to{opacity:0;transform:translate(-50%,-60px) scale(1.15)}}
+
+/* Final */
+.final{text-align:center}
+.final .kicker{margin-bottom:6px}
+.medalla{width:132px;height:132px;margin:6px auto 14px;animation:aparecer .6s cubic-bezier(.2,1.4,.4,1) both}
+.medalla.oro{color:var(--oro)} .medalla.plata{color:var(--plata)} .medalla.bronce{color:var(--bronce)}
+@keyframes aparecer{from{transform:scale(.4) rotate(-12deg);opacity:0}to{transform:none;opacity:1}}
+.final h2{font-size:26px;margin-bottom:6px}
+.resumen-nivel{color:var(--suave);margin-bottom:12px}
+.fila-estrellas{display:flex;justify-content:center;gap:6px;margin:4px 0 18px}
+.fila-estrellas svg{width:30px;height:30px;color:rgba(255,255,255,.18)}
+.fila-estrellas svg.gana{color:var(--oro)}
+.resumen{list-style:none;padding:0;margin:0 auto 18px;max-width:520px;text-align:left;display:grid;gap:8px}
+.resumen li{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:var(--panel-2);border-radius:12px;padding:10px 14px;font-size:14px}
+.resumen .pts{font-weight:700;font-variant-numeric:tabular-nums}
+.resumen .i-oro{color:var(--oro)} .resumen .i-ok{color:var(--ok)} .resumen .i-mal{color:var(--mal)}
+.resumen svg{width:18px;height:18px;display:block}
+.siguiente{margin-bottom:6px}
+.registro{font-size:13px;color:var(--suave)}
+.final .acciones{justify-content:center}
+.revision{text-align:left;margin-top:22px;display:grid;gap:12px}
+.revision article{background:var(--panel-2);border-radius:14px;padding:14px 16px}
+.revision h3{margin:0 0 6px;font-size:15px;line-height:1.4}
+.revision .r-ok{color:var(--ok);font-weight:600;margin-bottom:6px}
+.revision p{font-size:14px;color:var(--suave)}
+.pie{text-align:center;font-size:12px;color:var(--suave)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#confeti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:4}
+
+@media (max-width:540px){
+  body{padding:10px}
+  .pantalla{padding:20px 18px}
+  h1{font-size:27px}
+  h2{font-size:19px}
+  .opcion{grid-template-columns:30px 1fr 22px;gap:10px;padding:12px}
+  .letra{width:30px;height:30px}
+  .hud-titulo{grid-column:1/-1}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<main id="app" class="app"></main>
+<p class="pie" id="pie"></p>
+<div id="aviso" class="sr" role="status" aria-live="polite"></div>
+<canvas id="confeti" aria-hidden="true"></canvas>
+<script>
+const DATOS = /*DATA*/;
+(() => {
+  'use strict';
+  const D = DATOS;
+  const N = D.preguntas.length;
+  const LETRAS = 'ABCD';
+  const PUNTOS = [100, 50];           // por acierto al primer y al segundo intento
+  const MAXIMO = N * PUNTOS[0];
+  const app = document.getElementById('app');
+  const aviso = document.getElementById('aviso');
+  const reducido = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const svg = {
+    estrella: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2.6l2.85 6.03 6.62.82-4.88 4.55 1.28 6.55L12 17.3l-5.87 3.25 1.28-6.55-4.88-4.55 6.62-.82z"/></svg>',
+    ok: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    mal: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+    seguir: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M8 5l11 7-11 7z"/></svg>',
+    repetir: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v5h5"/></svg>',
+    niveles: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="3" y="14" width="4" height="7" rx="1"/><rect x="10" y="9" width="4" height="12" rx="1"/><rect x="17" y="4" width="4" height="17" rx="1"/></svg>',
+    medalla: '<svg viewBox="0 0 120 120" aria-hidden="true"><path d="M38 6h18l10 34H48z" fill="#2cc4bf"/><path d="M82 6H64L54 40h18z" fill="#1f8f8b"/><circle cx="60" cy="74" r="40" fill="currentColor"/><circle cx="60" cy="74" r="31" fill="none" stroke="rgba(0,0,0,.22)" stroke-width="4"/><path d="M60 50l7.1 15 16.4 2-12.1 11.3 3.2 16.3L60 86.5l-14.6 8.1 3.2-16.3L36.5 67l16.4-2z" fill="rgba(0,0,0,.28)"/></svg>',
+  };
+
+  // ---------------------------------------------------------------- SCORM 1.2
+  // Solo actúa si el LMS ofrece la API (Moodle, actividad "Paquete SCORM"). Guarda el mejor puntaje (0-100).
+  const scorm = (() => {
+    let api = null;
+    let activo = false;
+    let previo = 0;
+    const buscar = (w) => {
+      for (let n = 0; w && n < 12; n++) {
+        try { if (w.API) return w.API; } catch (e) { return null; }
+        if (!w.parent || w.parent === w) break;
+        w = w.parent;
+      }
+      return null;
+    };
+    try { api = buscar(window) || (window.opener ? buscar(window.opener) : null); } catch (e) { api = null; }
+    const llamar = (f, ...a) => { try { return String(api[f](...a)); } catch (e) { return ''; } };
+    return {
+      get activo() { return activo; },
+      iniciar() {
+        if (!api) return;
+        activo = llamar('LMSInitialize', '') === 'true';
+        if (!activo) return;
+        previo = Number(llamar('LMSGetValue', 'cmi.core.score.raw')) || 0;
+        const estado = llamar('LMSGetValue', 'cmi.core.lesson_status');
+        if (!estado || estado === 'not attempted') llamar('LMSSetValue', 'cmi.core.lesson_status', 'incomplete');
+        llamar('LMSCommit', '');
+      },
+      registrar(porcentaje) {
+        if (!activo) return;
+        previo = Math.max(previo, porcentaje);
+        llamar('LMSSetValue', 'cmi.core.score.min', '0');
+        llamar('LMSSetValue', 'cmi.core.score.max', '100');
+        llamar('LMSSetValue', 'cmi.core.score.raw', String(previo));
+        llamar('LMSSetValue', 'cmi.core.lesson_status', 'completed');
+        llamar('LMSCommit', '');
+      },
+      cerrar() { if (!activo) return; activo = false; llamar('LMSFinish', ''); },
+    };
+  })();
+
+  // ---------------------------------------------------------------- estado
+  let est;
+  const reiniciar = () => { est = { nivel: 0, puntos: 0, intentos: 0, cerrado: false, resultados: [] }; };
+  const estrellas = () => est.resultados.filter((r) => r && r.intento === 1).length;
+  const intentosDe = (p) => (p.opciones.length > 2 ? 2 : 1);
+
+  function anunciar(texto) { aviso.textContent = ''; setTimeout(() => { aviso.textContent = texto; }, 60); }
+  function enfocar() { const f = document.getElementById('foco'); if (f) f.focus({ preventScroll: false }); }
+
+  function hud() {
+    const segs = D.preguntas.map((_, k) => {
+      const r = est.resultados[k];
+      const c = r ? (r.intento === 1 ? 'oro' : r.intento === 2 ? 'ok' : 'mal') : (k === est.nivel ? 'actual' : '');
+      return `<span class="seg ${c}"></span>`;
+    }).join('');
+    const hechos = est.resultados.filter(Boolean).length;
+    return `<header class="hud" id="hud">
+      <div class="hud-titulo">${esc(D.curso)} · Módulo 2 · Quiz ${D.quiz} · ${esc(D.tema)}</div>
+      <div class="hud-datos"><span>${est.puntos} pts</span><span class="est">${svg.estrella}<span>${estrellas()}</span><span class="sr">&nbsp;estrellas</span></span></div>
+      <div class="progreso" style="--n:${N}" role="progressbar" aria-label="Niveles completados" aria-valuemin="0" aria-valuemax="${N}" aria-valuenow="${hechos}">${segs}</div>
+    </header>`;
+  }
+  const refrescarHud = () => { const h = document.getElementById('hud'); if (h) h.outerHTML = hud(); };
+
+  // ---------------------------------------------------------------- pantallas
+  function portada() {
+    app.innerHTML = `<section class="pantalla portada">
+      <p class="kicker">Misión · ${esc(D.curso)} · Módulo 2 · Quiz ${D.quiz}</p>
+      <h1 id="foco" tabindex="-1">${esc(D.tema)}</h1>
+      <p class="mision">Tu misión: ${esc(D.mision)}.</p>
+      <ul class="reglas">
+        <li><span class="ico">${svg.niveles}</span><span>${N} niveles, uno por pregunta (${esc(D.aes)}).</span></li>
+        <li><span class="ico">${svg.estrella}</span><span>Aciertas al primer intento: ${PUNTOS[0]} puntos y una estrella. Al segundo intento: ${PUNTOS[1]} puntos.</span></li>
+        <li><span class="ico">${svg.repetir}</span><span>Si fallas, tienes otro intento (en verdadero o falso, uno solo). Después ves la respuesta correcta y por qué.</span></li>
+        <li><span class="ico">${svg.medalla}</span><span>Al final ganas la insignia «${esc(D.insignia)}»: de oro con ${N} estrellas, de plata con 3 o 4, de bronce con menos.</span></li>
+      </ul>
+      <p class="cuando"><strong>Cuándo:</strong> ${esc(D.cuando)}</p>
+      <p class="nota">Quiz formativo: no lleva nota. Lo que vale es la explicación de cada nivel.</p>
+      <button class="btn principal" id="empezar">Comenzar misión ${svg.seguir}</button>
+    </section>`;
+    document.getElementById('empezar').addEventListener('click', () => { reiniciar(); nivel(); });
+    enfocar();
+  }
+
+  function nivel() {
+    const i = est.nivel;
+    const p = D.preguntas[i];
+    est.intentos = 0;
+    est.cerrado = false;
+    const max = intentosDe(p);
+    app.innerHTML = `${hud()}
+    <section class="pantalla nivel">
+      <p class="kicker">Nivel ${i + 1} de ${N} <span class="chip">${esc(p.ae)}</span></p>
+      <h2 id="foco" tabindex="-1">${esc(p.enunciado)}</h2>
+      <p class="pista" id="pista">${max > 1 ? 'Tienes 2 intentos.' : 'Tienes 1 intento.'} Elige con el mouse o con las teclas ${LETRAS.slice(0, p.opciones.length).split('').join(', ')}.</p>
+      <div class="opciones" role="group" aria-labelledby="foco">
+        ${p.opciones.map((o, k) => `<button class="opcion" data-k="${k}"><span class="letra" aria-hidden="true">${LETRAS[k]}</span><span class="texto"><span class="sr">${LETRAS[k]}) </span>${esc(o)}</span><span class="marca"></span></button>`).join('')}
+      </div>
+      <div class="retro" id="retro" hidden></div>
+    </section>`;
+    app.querySelectorAll('.opcion').forEach((b) => b.addEventListener('click', () => responder(Number(b.dataset.k), b)));
+    enfocar();
+  }
+
+  function marcar(b, tipo, texto) {
+    b.querySelector('.marca').innerHTML = svg[tipo] + `<span class="sr">${texto}</span>`;
+  }
+
+  function flotar(b, texto) {
+    if (reducido) return;
+    const r = b.getBoundingClientRect();
+    const f = document.createElement('div');
+    f.className = 'flotante';
+    f.textContent = texto;
+    f.style.left = `${r.left + r.width / 2}px`;
+    f.style.top = `${r.top - 6}px`;
+    document.body.appendChild(f);
+    setTimeout(() => f.remove(), 1200);
+  }
+
+  function responder(k, b) {
+    if (est.cerrado || b.disabled) return;
+    const i = est.nivel;
+    const p = D.preguntas[i];
+    const botones = [...app.querySelectorAll('.opcion')];
+    est.intentos++;
+    if (k === p.correcta) {
+      const pts = PUNTOS[est.intentos - 1] || 0;
+      est.puntos += pts;
+      est.resultados[i] = { intento: est.intentos, puntos: pts };
+      b.classList.add('correcta');
+      marcar(b, 'ok', 'Correcta');
+      flotar(b, est.intentos === 1 ? `+${pts} ★` : `+${pts}`);
+      cerrarNivel(true, pts, botones);
+      return;
+    }
+    b.classList.add('incorrecta');
+    b.disabled = true;
+    marcar(b, 'mal', 'Incorrecta');
+    if (!reducido) { b.classList.remove('sacudir'); void b.offsetWidth; b.classList.add('sacudir'); }
+    if (est.intentos < intentosDe(p)) {
+      const t = 'No es esa. Te queda un intento.';
+      document.getElementById('pista').textContent = t;
+      anunciar(t);
+      return;
+    }
+    est.resultados[i] = { intento: null, puntos: 0 };
+    botones[p.correcta].classList.add('revelada');
+    marcar(botones[p.correcta], 'ok', 'Respuesta correcta');
+    cerrarNivel(false, 0, botones);
+  }
+
+  function cerrarNivel(acierto, pts, botones) {
+    est.cerrado = true;
+    const p = D.preguntas[est.nivel];
+    botones.forEach((x, k) => { x.disabled = true; if (k !== p.correcta && !x.classList.contains('incorrecta')) x.classList.add('apagada'); });
+    document.getElementById('pista').textContent = acierto ? 'Nivel superado.' : 'Se acabaron los intentos de este nivel.';
+    const ultimo = est.nivel === N - 1;
+    const titulo = acierto
+      ? (est.intentos === 1 ? `¡Correcto! +${pts} puntos y una estrella.` : `¡Bien! Lo lograste al segundo intento: +${pts} puntos.`)
+      : `Esta vez no. La respuesta correcta es la ${LETRAS[p.correcta]}.`;
+    const retro = document.getElementById('retro');
+    retro.className = `retro${acierto ? '' : ' mal'}`;
+    retro.innerHTML = `<p class="retro-titulo" id="retro-titulo" tabindex="-1">${esc(titulo)}</p>
+      <p class="retro-texto">${esc(p.retro)}</p>
+      <div class="acciones"><button class="btn principal" id="seguir">${ultimo ? 'Ver mi insignia' : 'Siguiente nivel'} ${svg.seguir}</button></div>`;
+    retro.hidden = false;
+    refrescarHud();
+    document.getElementById('seguir').addEventListener('click', () => {
+      if (ultimo) final(); else { est.nivel++; nivel(); }
+    });
+    document.getElementById('retro-titulo').focus({ preventScroll: true });
+    retro.scrollIntoView({ behavior: reducido ? 'auto' : 'smooth', block: 'nearest' });
+    anunciar(`${titulo} ${p.retro}`);
+  }
+
+  function final() {
+    const e = estrellas();
+    const nivelInsignia = e === N ? 'oro' : e >= 3 ? 'plata' : 'bronce';
+    const porcentaje = Math.round((est.puntos / MAXIMO) * 100);
+    scorm.registrar(porcentaje);
+    const filas = D.preguntas.map((p, k) => {
+      const r = est.resultados[k];
+      const [cls, icono, texto] = r.intento === 1 ? ['i-oro', svg.estrella, 'al primer intento']
+        : r.intento === 2 ? ['i-ok', svg.ok, 'al segundo intento'] : ['i-mal', svg.mal, 'repasa la explicación'];
+      return `<li><span class="${cls}">${icono}</span><span>Nivel ${k + 1} · ${esc(p.ae)}: ${texto}</span><span class="pts">+${r.puntos}</span></li>`;
+    }).join('');
+    app.innerHTML = `<section class="pantalla final">
+      <p class="kicker">Misión cumplida · ${esc(D.curso)} · Quiz ${D.quiz}</p>
+      <div class="medalla ${nivelInsignia}">${svg.medalla}</div>
+      <h2 id="foco" tabindex="-1">Insignia «${esc(D.insignia)}»</h2>
+      <p class="resumen-nivel">Nivel ${nivelInsignia} · ${e} de ${N} estrellas · ${est.puntos} de ${MAXIMO} puntos</p>
+      <div class="fila-estrellas">${D.preguntas.map((_, k) => svg.estrella.replace('<svg ', `<svg class="${k < e ? 'gana' : ''}" `)).join('')}</div>
+      <ol class="resumen">${filas}</ol>
+      <p class="siguiente"><strong>Siguiente parada:</strong> ${esc(D.siguiente)}.</p>
+      <p class="registro">${scorm.activo ? 'Tu resultado quedó registrado en el curso.' : 'Es una práctica: tu resultado no se guarda.'}${nivelInsignia !== 'oro' ? ` Repite la misión para llegar a oro: ${N} estrellas.` : ''}</p>
+      <div class="acciones">
+        <button class="btn principal" id="repetir">${svg.repetir} Repetir misión</button>
+        <button class="btn" id="revisar" aria-expanded="false" aria-controls="revision">Revisar respuestas</button>
+      </div>
+      <div class="revision" id="revision" hidden>${D.preguntas.map((p, k) => `<article>
+        <h3>Nivel ${k + 1} · ${esc(p.ae)} · ${esc(p.enunciado)}</h3>
+        <p class="r-ok">Respuesta correcta: ${LETRAS[p.correcta]}) ${esc(p.opciones[p.correcta])}</p>
+        <p>${esc(p.retro)}</p></article>`).join('')}</div>
+    </section>`;
+    document.getElementById('repetir').addEventListener('click', () => { reiniciar(); nivel(); });
+    document.getElementById('revisar').addEventListener('click', (ev) => {
+      const r = document.getElementById('revision');
+      r.hidden = !r.hidden;
+      ev.currentTarget.setAttribute('aria-expanded', String(!r.hidden));
+    });
+    enfocar();
+    anunciar(`Misión cumplida. Insignia ${D.insignia}, nivel ${nivelInsignia}. ${e} de ${N} estrellas y ${est.puntos} puntos.`);
+    confeti(nivelInsignia);
+  }
+
+  // ---------------------------------------------------------------- confeti
+  function confeti(nivelInsignia) {
+    if (reducido) return;
+    const c = document.getElementById('confeti');
+    const ctx = c.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    c.width = innerWidth * dpr; c.height = innerHeight * dpr;
+    ctx.scale(dpr, dpr);
+    const colores = ['#2cc4bf', '#3ddc97', '#ffc83d', '#eef6f7', nivelInsignia === 'oro' ? '#ffc83d' : '#cfd8dd'];
+    const piezas = Array.from({ length: nivelInsignia === 'oro' ? 160 : 90 }, () => ({
+      x: innerWidth / 2 + (Math.random() - 0.5) * 160, y: innerHeight * 0.35,
+      vx: (Math.random() - 0.5) * 12, vy: -Math.random() * 11 - 4,
+      r: Math.random() * 6 + 4, g: Math.random() * 0.25 + 0.22, rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.3,
+      color: colores[Math.floor(Math.random() * colores.length)],
+    }));
+    const inicio = performance.now();
+    (function cuadro(t) {
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      for (const p of piezas) {
+        p.vy += p.g; p.x += p.vx; p.y += p.vy; p.vx *= 0.99; p.rot += p.vr;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.color;
+        ctx.fillRect(-p.r / 2, -p.r / 3, p.r, p.r * 0.66); ctx.restore();
+      }
+      if (t - inicio < 3200) requestAnimationFrame(cuadro); else ctx.clearRect(0, 0, innerWidth, innerHeight);
+    })(inicio);
+  }
+
+  // ---------------------------------------------------------------- teclado y arranque
+  document.addEventListener('keydown', (ev) => {
+    if (ev.altKey || ev.ctrlKey || ev.metaKey || est.cerrado) return;
+    const k = LETRAS.indexOf(ev.key.toUpperCase());
+    const n = '1234'.indexOf(ev.key);
+    const idx = k >= 0 ? k : n;
+    if (idx < 0) return;
+    const b = app.querySelector(`.opcion[data-k="${idx}"]`);
+    if (b && !b.disabled) { ev.preventDefault(); b.click(); }
+  });
+  window.addEventListener('pagehide', () => scorm.cerrar());
+  window.addEventListener('beforeunload', () => scorm.cerrar());
+  document.getElementById('pie').textContent = `${D.curso} · ${D.cursoNombre} · Módulo 2 · Quiz formativo, sin nota`;
+  reiniciar();
+  est.cerrado = true;   // en la portada las teclas A-D no hacen nada
+  scorm.iniciar();
+  portada();
+})();
+</script>
+</body>
+</html>
