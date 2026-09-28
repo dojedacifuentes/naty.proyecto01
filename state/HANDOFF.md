@@ -1,7 +1,7 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
-`2026-09-27-claude-code-01` a `-18` y `2026-09-28-claude-code-01` y `-02` — 2026-09-24/28
+`2026-09-27-claude-code-01` a `-18` y `2026-09-28-claude-code-01` a `-03` — 2026-09-24/28
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
@@ -78,6 +78,20 @@ Qué cambió, por si hay que tocarlo:
   nada y los PDF anteriores quedan intactos. `npm run marca -- <cliente> --solo-revisar` arma los HTML y solo revisa (1 min).
 - **Si el cliente entrega el logo en blanco**, déjalo junto a `logo.png` y agrega `"logo_negativo": "<archivo>"` en su `marca.json`:
   va sin placa. Hoy nadie lo tiene (el usuario puede pedírselo a UNAB y a la Autónoma).
+
+## Quiz gamificados, versión videojuego (sesión 2026-09-28-03)
+
+Los 6 juegos (`npm run quiz-juego`) tienen ahora diseño de videojuego tecnológico, a pedido de la contraparte: fondo animado por
+curso, color e ilustración por quiz, XP, combos, energía, comodín 50:50, nivel final, logros y medalla. Lo que conviene saber:
+- **Estilos:** `ESTILOS` en `scripts/quiz-juego.mjs` (fondo, colores, lema e ilustración con sus etiquetas). **Si cambias una
+  pregunta, revisa que las etiquetas de su ilustración no adelanten la respuesta.** La mecánica y los números están arriba del
+  script de `scripts/lib/quiz-juego.html` (BASE, COMBO, ENERGIA, POR_ENERGIA, CON_COMODIN; el máximo se calcula: 900).
+- **Cómo se prueba:** una copia del HTML con un `window.API` falso (SCORM) y un guion que juega solo; Edge `--headless=new
+  --virtual-time-budget=15000 --dump-dom` y `--screenshot`, cada corrida con su propio `--user-data-dir`. **Desde el 28-sep, el
+  Bash de la sesión no deja arrancar navegadores (salen sin error y sin salida): córrelos desde PowerShell.** En la captura, las
+  animaciones quedan a medio camino; con `--force-prefers-reduced-motion` salen los valores finales. El XP visible se comprueba
+  leyendo el texto 2,5 s después (el contador tiene respaldo por temporizador).
+- Mismos nombres de archivo: el sitio y la planilla ya enlazan la versión nueva después del push.
 
 ## Planilla de revisión del usuario: cómo editarla (sesión 2026-09-28-02)
 

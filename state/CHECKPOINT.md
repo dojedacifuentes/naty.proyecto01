@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-28
-**Por:** 2026-09-28-claude-code-02 (Claude Code · opus-5.5)
+**Por:** 2026-09-28-claude-code-03 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -268,6 +268,19 @@ quizzes para subirlos a la planilla donde Natalia revisa").
       "Quiz formativos gamificados"); Pendientes: Canva "Hecho" y fila 11 con la revisión de la contraparte (#22).
 - [x] `npm run planilla` genera lo mismo (`scripts/planilla.mjs`): 91 entregables, 7 pendientes.
 - [ ] En la planilla siguen como estaban: Aprendizajes F y las filas .gift de Entregables (descargan el GIFT; la vista web está en Q).
+
+Sesión claude-code-03, 2026-09-28: quiz gamificados con diseño de videojuego tecnológico (pedido: "full bonitos, llamativos,
+tecnológicos, no planos").
+
+- [x] `scripts/lib/quiz-juego.html` rehecho: fondo animado por curso (circuito en PF1821, red neuronal en PF1822), paneles de vidrio
+      con neón, HUD con ruta de niveles, XP, estrellas, energía y sonido; portada con ilustración animada propia de cada quiz; XP con
+      combos, 3 de energía, comodín 50:50, nivel final, logros y medalla animada. Estilos por curso y quiz en `ESTILOS`
+      (`scripts/quiz-juego.mjs`), con etiquetas revisadas contra las respuestas. Mismos archivos y enlaces.
+- [x] Probado en Edge headless (desde PowerShell): partida perfecta en los 6 (900 XP visibles, oro, SCORM 100), mixta con comodín
+      en PF1821 Quiz 1 (375, bronce, 42), plata en PF1822 Quiz 3, movimiento reducido (625, plata, 69) y pantallas de 375 y 320 px.
+      Corregidos en la prueba: contador de XP negativo o detenido, cartel de nivel sobre la pantalla final, encabezado encimado en
+      celular. `npm run sitio`: 0 enlaces rotos. `npm run verificar`: 0 errores.
+- [ ] Sin probar en un Moodle real ni en un celular físico; el sonido no se escuchó (se probó que no rompe nada).
 
 ## A medias
 

@@ -565,3 +565,23 @@ Quién: usuario (pedido y formato), claude-code (diseño e implementación), ses
 - `npm run planilla` genera lo mismo: los archivos `M2-Quiz-n-Juego*` salen en su propio grupo de Entregables (antes el .html se
   excluía y el zip caía en "Quiz formativos (Moodle)"), con la columna nueva en Resumen y los pendientes actualizados.
 Quién: usuario (pedido), claude-code, sesión `2026-09-28-claude-code-02`.
+
+## 2026-09-28 · Quiz gamificados con diseño de videojuego tecnológico (sesión claude-code, 2026-09-28-claude-code-03)
+
+- Pedido del usuario, a nombre de quienes revisan: "más atractivos visualmente, con diseños ad hoc, más personalizados, más
+  visuales, más gamificados… full bonitos, llamativos, tecnológicos, no planos".
+- **Diseño:** interfaz oscura de videojuego con paneles de vidrio y borde de neón, tipografía IBM Plex Sans y Mono (las mismas
+  familias de los PDF, incrustadas), fondo animado por curso (circuito con paquetes de datos en PF1821, red neuronal en PF1822) y,
+  por quiz, color propio e ilustración animada de su tema (`ESTILOS` en `scripts/quiz-juego.mjs`). Las etiquetas de las
+  ilustraciones se revisaron contra las respuestas correctas para que ninguna adelante una (p. ej., "Entrada, Transformación,
+  Salida" en vez de nombres de nodos que son respuestas).
+- **Mecánica:** XP (100 al primer intento, 50 al segundo), combos por racha (+25, +50, +75, +100), 3 de energía (cada error gasta
+  una; las que quedan valen +50 al final), un comodín 50:50 por misión (el nivel vale 50 y no da estrella), nivel final destacado,
+  5 logros, estrellas y medalla de oro, plata o bronce según las estrellas (igual que antes). Máximo: 900 XP; a Moodle va el
+  porcentaje (0-100). Sonido sintetizado, apagado de partida. Con "reducir movimiento" no hay animaciones y los números salen
+  al instante. El contador de XP tiene un respaldo por temporizador porque el navegador pausa las animaciones en pestañas y
+  marcos ocultos (en la prueba mostró "-1075" y "0" antes de corregirlo).
+- Se mantienen los nombres de archivo y el contenido literal (GIFT): los enlaces del sitio y de la planilla no cambian.
+- Descartado: descargar una tipografía "gamer" (se quedan las 2 familias del proyecto); ilustraciones con conceptos que son
+  respuestas; temporizador por pregunta (presiona sin enseñar y complica la accesibilidad).
+Quién: usuario (pedido), claude-code (diseño e implementación), sesión `2026-09-28-claude-code-03`.

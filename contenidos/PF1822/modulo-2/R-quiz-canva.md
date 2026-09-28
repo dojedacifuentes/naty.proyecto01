@@ -8,7 +8,7 @@ retroalimentación.
 (instrumento 3) ni las del video interactivo, para no adelantar la evaluación.
 **Formato:** la respuesta correcta va en negrita. Cada pregunta dice su aprendizaje esperado.
 **Versión juego** (HTML y SCORM para el LMS, `npm run quiz-juego`): las mismas preguntas como una
-misión de 5 niveles, con puntos, estrellas e insignia. Usa la misión del curso y, de cada quiz, su
+misión de 5 niveles con XP, combos, energía, comodín 50:50, estrellas, logros e insignia. Usa la misión del curso y, de cada quiz, su
 insignia y su siguiente parada en la ruta.
 **Misión:** construir el resumidor de tickets de Nube Sur.
 
