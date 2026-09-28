@@ -59,7 +59,8 @@ for (const c of CURSOS) {
       en(d.bienvenidaCurso, 'Ver video'), en(d.resumen, 'Ver video'), en(d.bienvenidaModulo, 'Ver video'),
       en(d.videos, 'Carpeta de videos'), en(d.herramienta2, 'Ver video'),
       ...canva[c.pf].map((q, i) => L(`Quiz ${i + 1} (Canva)`, q.url)),
-      en(d.quiz, 'Quiz en PDF y GIFT'), L('Ver quiz GIFT', `${QUIZ_WEB}#${c.pf}`), en(d.infografias, 'Infografías (PNG)'),
+      en(d.quiz, 'Quiz en PDF y GIFT'), L('Ver quiz GIFT', `${QUIZ_WEB}#${c.pf}`),
+      L('Jugar los 3 quiz', `${SITIO}/modulo-2/${c.carpeta}/entrega/quiz/`), en(d.infografias, 'Infografías (PNG)'),
       en(cl.carpeta, `Carpeta ${cliente}`), en(d.carpeta, 'Carpeta del curso'),
       S('Listo para revisión', E.ok), OBS[cliente],
     ]);
@@ -79,25 +80,30 @@ for (const c of CURSOS) {
 }
 
 // Recursos neutros publicados en el sitio, agrupados.
+const JUEGO = /^quiz\/M2-Quiz-\d-Juego/; // quiz gamificados (npm run quiz-juego): HTML y SCORM
 const GRUPOS = [
   ['AE', 'Lecturas y quiz por aprendizaje'], ['evaluacion', 'Evaluación'], ['actividades', 'Actividades'],
   ['metodologia', 'Metodología'], ['medios', 'Medios'], ['glosario', 'Glosario'], ['quiz', 'Quiz formativos (Moodle)'],
-  ['herramientas', 'Herramientas didácticas'],
+  ['juego', 'Quiz formativos gamificados'], ['herramientas', 'Herramientas didácticas'],
 ];
+const delGrupo = (clave, x) => (clave === 'AE' ? /^AE\d\//.test(x) : clave === 'juego' ? JUEGO.test(x)
+  : x.startsWith(`${clave}/`) && !JUEGO.test(x));
 const entregables = [];
 for (const c of CURSOS) {
   const ent = `modulo-2/${c.carpeta}/entrega`;
   const archivos = listar(ruta(ent)).map((a) => path.relative(ruta(ent), a).replace(/\\/g, '/'))
-    .filter((r) => !r.startsWith('insumos-anexo/') && !r.endsWith('.html') || r.startsWith('actividades/moodle/'));
+    .filter((r) => !r.startsWith('insumos-anexo/') && !r.endsWith('.html') || r.startsWith('actividades/moodle/') || JUEGO.test(r));
   for (const [clave, grupo] of GRUPOS) {
-    for (const r of archivos.filter((x) => (clave === 'AE' ? /^AE\d\//.test(x) : x.startsWith(`${clave}/`))).sort()) {
+    for (const r of archivos.filter((x) => delGrupo(clave, x)).sort()) {
       const nombre = path.basename(r);
       const tutor = /Respuesta-modelada|respuesta-modelada\//.test(r);
       // Un .gift se descarga: se enlaza a su quiz en la vista web (scripts/lib/quiz-gift.mjs).
       const quiz = /^quiz\/M2-Quiz-(\d)-Moodle\.gift$/.exec(r) ?? /^AE(\d)\/M2-AE\d-Quiz\.gift$/.exec(r);
+      const scorm = r.endsWith('-SCORM.zip');
       const enlace = quiz ? L('Ver en la web', `${QUIZ_WEB}#${c.pf}-${r.startsWith('quiz/') ? 'q' : 'ae'}${quiz[1]}`)
-        : L('Abrir', `${SITIO}/${ent}/${r}`);
-      entregables.push([S(c.pf, 'curso'), grupo, nombre, path.extname(nombre).slice(1).toUpperCase(),
+        : L(JUEGO.test(r) ? (scorm ? 'Descargar' : 'Jugar') : 'Abrir', `${SITIO}/${ent}/${r}`);
+      const formato = JUEGO.test(r) ? (scorm ? 'SCORM 1.2 (Moodle)' : 'HTML (juego)') : path.extname(nombre).slice(1).toUpperCase();
+      entregables.push([S(c.pf, 'curso'), grupo, nombre, formato,
         tutor ? 'Solo tutor' : 'Participante', enlace, S('Listo para revisión', E.ok)]);
     }
   }
@@ -105,7 +111,8 @@ for (const c of CURSOS) {
 
 const pendientes = [
   ['Usuario', 'Armar las lecturas en Rise, un curso por cliente (guía: modulo-2/GUIA-RISE.md)', 'Drive (NATY 2.0)', S('Pendiente', E.pend)],
-  ['Usuario', 'Convertir los 6 quiz de Canva en interactivos (Elementos > Formularios)', 'Canva', S('Pendiente', E.pend)],
+  ['Usuario', 'Convertir los 6 quiz de Canva en interactivos (Elementos > Formularios)', 'Canva', S('Hecho (28-sep): formulario en las 30 preguntas', E.ok)],
+  ['Contraparte / Natalia', 'Revisar los quiz gamificados (juego en HTML y paquete SCORM para Moodle) y confirmar si van además de Canva o en su lugar (#22)', 'Hoja Entregables · Quiz formativos gamificados', S('Por confirmar', E.pend)],
   ['Contraparte / Natalia', '¿El aprendizaje seleccionado es el AE3? (pregunta abierta #17)', '—', S('Por confirmar', E.pend)],
   ['Contraparte / Natalia', '¿Mismos recursos con distinta marca para clientes que compiten en el mismo plan? (#18)', '—', S('Por confirmar', E.pend)],
   ['Clientes', 'Colores oficiales de Skillnest y tipografía de la U. Autónoma (#19)', '—', S('Por confirmar', E.pend)],
@@ -196,8 +203,8 @@ const HOJAS = [
   { nombre: 'Resumen', titulo: 'Módulo 2 · Recursos educativos · PF1821 y PF1822', subtitulo: `Una fila por cliente y curso · estándar de la contraparte · actualizado ${fecha}`,
     encabezados: ['Curso', 'Tipo', 'Cliente', 'Aprendizajes esperados (M2)', 'Cuadernillos (lecturas, actividades, evaluación, metodología, tutor, glosario)',
       'Documentos sueltos', 'Lecturas (Rise)', 'Video de bienvenida (curso)', 'Video resumen (módulo)', 'Video de bienvenida (módulo)', 'Videocápsulas AE1 a AE4',
-      'Video herramienta 2 (AE3)', 'Quiz 1', 'Quiz 2', 'Quiz 3', 'Quiz (PDF y Moodle)', 'Quiz GIFT (vista web)', 'Infografías', 'Carpeta del cliente', 'Carpeta del curso', 'Estado', 'Observaciones'],
-    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 13, 22, 26, 18, 20, 16, 16, 16, 18, 16, 15, 15, 15, 18, 18, 18, 18, 18, 18, 40] } },
+      'Video herramienta 2 (AE3)', 'Quiz 1', 'Quiz 2', 'Quiz 3', 'Quiz (PDF y Moodle)', 'Quiz GIFT (vista web)', 'Quiz gamificados (juego y SCORM)', 'Infografías', 'Carpeta del cliente', 'Carpeta del curso', 'Estado', 'Observaciones'],
+    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 13, 22, 26, 18, 20, 16, 16, 16, 18, 16, 15, 15, 15, 18, 18, 20, 18, 18, 18, 18, 40] } },
   { nombre: 'Aprendizajes', titulo: 'Aprendizajes esperados del módulo 2', subtitulo: 'Textuales de la ficha SIPFOR · con su lectura y su quiz',
     encabezados: ['Curso', 'Módulo', 'AE', 'Aprendizaje esperado (textual del plan)', 'Lectura', 'Quiz'],
     filas: aprendizajes, anchos: { fijas: 1, cols: [10, 34, 6, 70, 34, 20] } },

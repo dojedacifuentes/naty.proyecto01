@@ -151,6 +151,8 @@ El 28-sep se generaron los 3 quiz de cada curso como juego (G9: misión, puntos,
 para Moodle, porque Canva no calcula puntaje ni lo informa al LMS. El estándar de la contraparte dice "3 quiz en Canva": los Canva
 interactivos (G3) se mantienen. Falta saber si el juego va además de Canva o en su lugar, y validar las 6 insignias propuestas
 (`R-quiz-canva.md`). Lo decide la contraparte, vía el usuario o Natalia.
+**Respuesta parcial (usuario, 2026-09-28, sesión `2026-09-28-claude-code-02`):** "lo de la contraparte está por confirmar pero mejor
+llegar con algo": se presenta igual. Quedó en la planilla de revisión (Resumen, Entregables y Pendientes) para que Natalia lo revise.
 
 **23. ¿Cómo quedan configurados los formularios de Canva?** — ABIERTA
 Los 30 formularios de los quiz de Canva tienen activado por defecto "Evita respuestas duplicadas" (cada persona responde una sola

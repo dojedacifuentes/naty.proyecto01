@@ -1,7 +1,7 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
-`2026-09-27-claude-code-01` a `-18` y `2026-09-28-claude-code-01` — 2026-09-24/28
+`2026-09-27-claude-code-01` a `-18` y `2026-09-28-claude-code-01` y `-02` — 2026-09-24/28
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
@@ -78,6 +78,25 @@ Qué cambió, por si hay que tocarlo:
   nada y los PDF anteriores quedan intactos. `npm run marca -- <cliente> --solo-revisar` arma los HTML y solo revisa (1 min).
 - **Si el cliente entrega el logo en blanco**, déjalo junto a `logo.png` y agrega `"logo_negativo": "<archivo>"` en su `marca.json`:
   va sin placa. Hoy nadie lo tiene (el usuario puede pedírselo a UNAB y a la Autónoma).
+
+## Planilla de revisión del usuario: cómo editarla (sesión 2026-09-28-02)
+
+Natalia revisa en **la planilla del usuario**, `01 Planilla de seguimiento` (id `1yjgTnjmrIxpQ3a1JBF3ZpSWC0rrKlG6-8qQvFI2Ypn4`; ella
+tiene permiso de edición). Estado al 28-sep: Resumen con la columna R "Quiz gamificados (juego y SCORM)" y la Q "Quiz GIFT (vista
+web)" completa y corregida; Entregables hasta la fila 95 (84-95: quiz gamificados); Pendientes hasta la fila 11. **Lo de la sesión
+-16 (abajo) quedó resuelto en Q; Aprendizajes F y las filas .gift de Entregables siguen sin la vista web.**
+
+Cómo se editó sin Claude in Chrome ni sesión de Google (la hoja deja editar a cualquiera con el enlace, #20):
+1. Abrirla en el navegador integrado. Si la ventana de Claude queda detrás de otra, no hay capturas y la barra de fórmulas no se
+   refresca: **no leas la hoja en pantalla, descárgala**: `curl -L ".../export?format=xlsx"` y lee celdas y fórmulas del xlsx.
+2. Ir a una celda: `javascript_tool` enfoca `#t-name-box` y le hace `select()`; luego `type` "Hoja!A84" y `key` Return.
+3. Escribir: `type` sobre la celda **no** hace nada; sirve F2, ctrl+a, `type` y Return. Mejor aún, para un bloque: un
+   `ClipboardEvent('paste')` con un `DataTransfer` en text/plain (columnas con tabulador, filas con salto de línea) despachado al
+   `document.activeElement` (`waffle-rich-text-editor`); las fórmulas `=HIPERVINCULO("url";"texto")` se evalúan.
+4. Insertar filas o columnas que hereden el formato: menú Insertar por código (`#docs-insert-menu`, eventos mouseover, mousedown,
+   mouseup y click; hover sobre "Filas" o "Columnas" y clic en "Insertar N filas debajo" o "Insertar 1 columna a la izquierda").
+5. Comprobar siempre con la descarga. Las fórmulas iguales y seguidas quedan como fórmula compartida (`<f t="shared">`).
+El generador (`npm run planilla`) produce lo mismo en `privado/drive/Planilla-Modulo2-TD2026.xlsx`.
 
 ## Planilla del usuario a medio editar (sesión -16)
 

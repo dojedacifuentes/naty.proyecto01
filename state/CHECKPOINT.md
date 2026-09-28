@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-28
-**Por:** 2026-09-28-claude-code-01 (Claude Code · opus-5.5; dos chats seguidos, desde dos cuentas del usuario)
+**Por:** 2026-09-28-claude-code-02 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -257,6 +257,17 @@ Sesión claude-code-01, 2026-09-28: quiz de Canva interactivos (desde el Chrome 
 - [ ] Sin importar en un Moodle real ni en Rise. Sin push: el sitio no los muestra hasta que se suba.
 - [ ] Nota: dos capturas de pantalla del portapapeles del usuario se pegaron por error en Canva y se borraron del diseño, pero pueden quedar en "Subidos" de Canva.
 - [ ] Rise (lecturas por cliente, G5): sin empezar.
+
+Sesión claude-code-02, 2026-09-28: quiz del módulo 2 en la planilla de revisión (pedido del usuario: "sube a git… necesito todos los
+quizzes para subirlos a la planilla donde Natalia revisa").
+
+- [x] Push de `38a5832`: los 6 juegos y sus SCORM responden en el sitio (200), igual que la página de cada carpeta `entrega/quiz/`.
+- [x] Planilla del usuario (`1yjgTnjm…`), editada en el navegador integrado sin sesión de Google y comprobada con la descarga en xlsx:
+      Resumen con la columna R "Quiz gamificados (juego y SCORM)" ("Jugar los 3 quiz" por curso) y el subtítulo al 28-09-2026;
+      columna Q "Quiz GIFT (vista web)" corregida (Q6 a PF1821) y completada (Q7 a Q9, PF1822); Entregables filas 84 a 95 (grupo
+      "Quiz formativos gamificados"); Pendientes: Canva "Hecho" y fila 11 con la revisión de la contraparte (#22).
+- [x] `npm run planilla` genera lo mismo (`scripts/planilla.mjs`): 91 entregables, 7 pendientes.
+- [ ] En la planilla siguen como estaban: Aprendizajes F y las filas .gift de Entregables (descargan el GIFT; la vista web está en Q).
 
 ## A medias
 

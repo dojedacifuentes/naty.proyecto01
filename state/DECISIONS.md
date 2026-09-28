@@ -549,3 +549,19 @@ Quién: usuario (pedido: "reemplaza los pdf del drive"), claude-code, sesión `2
   workflows": son las insignias de la actividad 2 de PF1821. Los nombres de insignia son propuesta y se validan (#22).
 - Descartado: Canva Code (depende del plan y reescribe el contenido); H5P (el usuario lo sacó del plan el 27-sep).
 Quién: usuario (pedido y formato), claude-code (diseño e implementación), sesión `2026-09-28-claude-code-01`.
+
+## 2026-09-28 · Quiz gamificados en el sitio y en la planilla de revisión (sesión claude-code, 2026-09-28-claude-code-02)
+
+- Se hizo push (pedido del usuario: "sube a git") y los 6 juegos y sus SCORM quedaron en el sitio. En la planilla del usuario
+  ("01 Planilla de seguimiento", `1yjgTnjm…`), donde Natalia revisa: columna nueva "Quiz gamificados (juego y SCORM)" en Resumen
+  (junto a la vista GIFT, con enlace a la carpeta `entrega/quiz/` de cada curso), 12 filas en Entregables (grupo "Quiz formativos
+  gamificados": "Jugar" el HTML y "Descargar" el SCORM) y una fila en Pendientes (#22); la de Canva pasa a "Hecho".
+- De paso se cerró lo que la sesión -16 dejó a medias en la columna "Quiz GIFT (vista web)": Q6 apuntaba a PF1822 siendo de PF1821,
+  y Q7 a Q9 (PF1822) estaban vacías. Las columnas Aprendizajes F y los .gift de Entregables siguen como estaban.
+- Cómo: navegador integrado de la app, **sin sesión de Google** (la hoja deja editar a cualquiera con el enlace, #20); filas y columna
+  insertadas con el menú Insertar (heredan el formato) y el contenido pegado con un evento de pegado sintético. Cada paso se
+  comprobó descargando la hoja como xlsx. Por qué: Claude in Chrome seguía desconectado, el conector de Drive no edita celdas y
+  reemplazar la hoja entera con la importación exige iniciar sesión. Descartado: pedirle al usuario que pegue a mano.
+- `npm run planilla` genera lo mismo: los archivos `M2-Quiz-n-Juego*` salen en su propio grupo de Entregables (antes el .html se
+  excluía y el zip caía en "Quiz formativos (Moodle)"), con la columna nueva en Resumen y los pendientes actualizados.
+Quién: usuario (pedido), claude-code, sesión `2026-09-28-claude-code-02`.
