@@ -171,3 +171,5 @@ contra 210) y PF1493 (201). Importa para las horas del Anexo 2 y para la regla d
 mirar el PDF oficial de cada plan o consultarlo a SENCE. Lo decide el usuario o Natalia. Detectado en la sesión `2026-09-29-claude-code-01`.
 **Nota a #22 (2026-09-29, sesión `2026-09-29-claude-code-02`):** el usuario pidió un quiz por aprendizaje esperado (4 por curso) con la misma
 gamificación y SCORM. Ya no son "3 quiz en Canva": falta confirmar con la contraparte si acepta los 4 y rehacer los de Canva.
+**Nota a #22 y #23 (2026-09-29, sesión `2026-09-29-claude-code-03`):** el usuario descartó los quiz de Canva; #23 (configuración de sus formularios)
+deja de aplicar. Queda de #22 solo si la contraparte acepta los 4 juegos en lugar de "3 quiz en Canva".

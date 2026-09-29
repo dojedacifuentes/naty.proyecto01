@@ -629,3 +629,13 @@ Quién: usuario (pedido), claude-code, sesión `2026-09-29-claude-code-01`.
   no cambiar las rutas que usan el sitio, Drive y la planilla.
 - **Queda en contra del estándar de la contraparte**, que pedía "3 quiz en Canva" (#22): lo decidió el usuario.
 Quién: usuario (pedido), claude-code, sesión `2026-09-29-claude-code-02`.
+
+## 2026-09-29 · Sin quiz en Canva; Drive y planilla con un quiz por aprendizaje (sesión claude-code, 2026-09-29-claude-code-03)
+
+- **Qué:** se descartan los quiz de Canva (G3). Los quiz formativos quedan como juego HTML, paquete SCORM y GIFT, uno por aprendizaje.
+- **Por qué:** el usuario: "los de canva elimínalos, no los usaremos"; y luego "olvida meterte a canva, lo importante es el drive y los
+  archivos que se suben".
+- **Cómo:** en Drive se reemplazó cada archivo como nueva versión (conserva enlace y permisos) y se subieron los del Quiz 4; lo antiguo
+  que quedaba (Canva PDF y los GIFT del reparto anterior en las carpetas de cliente) se mandó a la papelera, no se borró definitivamente.
+- **Descartado:** borrar los 6 diseños de Canva: el usuario lo detuvo después del primero.
+Quién: usuario (pedido), claude-code, sesión `2026-09-29-claude-code-03`.

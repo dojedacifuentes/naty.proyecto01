@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-29
-**Por:** 2026-09-29-claude-code-02 (Claude Code · opus-5.5)
+**Por:** 2026-09-29-claude-code-03 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -334,6 +334,21 @@ aprendizaje esperado del modulo 2 de cada curso… tomando la misma dinámica de
 - [ ] **Drive y planilla del usuario desactualizados:** los 6 archivos de "Quiz gamificados (juego y SCORM)" son la versión de 3 quiz y
       faltan los del Quiz 4; la hoja de Google tiene 3 columnas de juegos. `npm run planilla` ya genera 4.
 - [ ] Sin push: el sitio publicado sigue con la versión anterior.
+
+Sesión claude-code-03, 2026-09-29: quiz por aprendizaje esperado en Drive y en la planilla de Google (pedido: "deja subido el quizz x
+aprendizaje esperado en casillas diferentes por cursos… los juegos en casillas diferentes bien ordenado"; "los de Canva elimínalos, no los
+usaremos"; "los demás juegos antiguos sácalos de ese drive").
+
+- [x] Drive (Claude in Chrome, sesión del usuario): en "4 Quiz" de cada curso, los 8 juegos/SCORM, los 4 GIFT y en "9 Producción → Quiz
+      (texto)" los 4 textos; 3 de cada grupo como **nueva versión** (mismo id y enlace) y los del Quiz 4 nuevos. Tamaños iguales a los del
+      repo (32 de 32). Ids del Quiz 4 en `privado/drive/enlaces.json`.
+- [x] A la papelera de Drive (recuperables 30 días): las 2 carpetas "Quiz Canva (PDF)" y las 5 subcarpetas "quiz" de "2 Documentos" de
+      cada cliente, que solo tenían los 3 GIFT del reparto anterior. No quedaron juegos antiguos en otras carpetas (búsqueda en todo el Drive).
+- [x] Planilla "01 Planilla de seguimiento" (`1yjgTnjm…`): en Resumen, R a U = "Quiz AE1 … AE4 gamificado (archivo)" con su enlace por
+      curso (U insertada; la carpeta pasó a V). En Entregables, filas 90–91 (PF1821) y 98–99 (PF1822) con el Quiz 4 (HTML y SCORM).
+      Comprobado leyendo la hoja.
+- [x] Canva: el usuario pidió no seguir. Alcanzó a quedar en la papelera de Canva 1 diseño ("PF1821 · M2 · Quiz 2 · Transformar datos");
+      los otros 5 siguen. Las columnas "Quiz 1/2/3" (Canva) de la planilla no se tocaron: la de PF1821 Quiz 2 apunta a ese diseño.
 
 ## A medias
 

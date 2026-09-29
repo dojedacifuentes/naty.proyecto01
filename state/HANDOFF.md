@@ -1,13 +1,21 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
-`2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` y `-02` — 2026-09-24/29
+`2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-03` — 2026-09-24/29
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 > **Ojo (sesión -04):** las sesiones -02 y -03 del 27-sep, que armaron los quiz en Canva, reemplazaron este archivo
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
+
+## HECHO (sesión 2026-09-29-03): Drive y planilla con un quiz por aprendizaje; Canva descartado
+
+- Drive al día: "4 Quiz" de cada curso tiene los 4 juegos con su SCORM y los 4 GIFT; "Quiz (texto)", los 4 textos. Lo antiguo, en la papelera.
+- Planilla de Google: Resumen R–U = Quiz AE1–AE4 gamificado; V = carpeta. Entregables con las filas del Quiz 4.
+- **Canva no se usa más** (lo pidió el usuario). No retomar el borrado de los diseños de Canva salvo que lo pida: se detuvo a propósito.
+- Si cambian los juegos: regenerar (`npm run quiz-juego`) y subirlos como **nueva versión** en las mismas carpetas (procedimiento de más
+  abajo); así la planilla no necesita cambios.
 
 ## HECHO (sesión 2026-09-29-02): un quiz formativo por aprendizaje esperado
 
