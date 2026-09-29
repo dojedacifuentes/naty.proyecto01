@@ -616,3 +616,16 @@ Quién: usuario (pedido y sesión de Google), claude-code, sesión `2026-09-28-c
   contraseña) se siguen buscando ahí. Alternativa descartada: marcar cada línea con `verificacion:ignorar-secretos`, que se pierde al
   volver a extraer.
 Quién: usuario (pedido), claude-code, sesión `2026-09-29-claude-code-01`.
+
+## 2026-09-29 · Un quiz formativo por aprendizaje esperado (sesión claude-code, 2026-09-29-claude-code-02)
+
+- **Qué:** los quiz formativos del módulo 2 pasan de 3 por curso (Quiz 1: AE1 y AE2 · Quiz 2: AE3 · Quiz 3: AE4) a **uno por
+  aprendizaje esperado**: Quiz n = AEn, 4 por curso, 5 preguntas cada uno. Misma gamificación y mismo SCORM.
+- **Por qué:** pedido del usuario: "el problema es que debe ser un quizz por aprendizaje esperado del modulo 2 de cada curso".
+- **Cómo:** se conservaron textuales las 15 preguntas existentes de cada curso y se escribieron 5 nuevas (2 del AE1, 3 del AE2),
+  desde las lecturas y cápsulas del curso, sin repetir la prueba objetiva ni el video interactivo. Los números se corren: el
+  anterior Quiz 2 (AE3) es ahora el Quiz 3 y el anterior Quiz 3 (AE4), el Quiz 4; se mantuvieron sus colores e ilustraciones.
+- **Descartado:** numerar los archivos por AE (`M2-Quiz-AE1-…`): se mantuvo `M2-Quiz-n-…` con n = número del aprendizaje, para
+  no cambiar las rutas que usan el sitio, Drive y la planilla.
+- **Queda en contra del estándar de la contraparte**, que pedía "3 quiz en Canva" (#22): lo decidió el usuario.
+Quién: usuario (pedido), claude-code, sesión `2026-09-29-claude-code-02`.

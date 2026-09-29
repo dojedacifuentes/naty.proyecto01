@@ -1,0 +1,43 @@
+// PF1821 · Módulo 2 · Quiz 4 · Decidir y depurar (AE4). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1821-M2/Quiz-4
+
+::Q4-P1 (AE4):: En una condición, ¿qué hace el operador NOT? {
+~Exige que se cumplan todas las condiciones
+~Basta con que se cumpla una
+~Detiene el workflow
+=Invierte el resultado\: lo verdadero pasa a falso y lo falso a verdadero
+####AND exige todas las condiciones, OR al menos una y NOT invierte el resultado. Combinándolos se arman las reglas de enrutamiento.
+}
+
+::Q4-P2 (AE4):: ¿Qué nodo inicia un workflow de errores cada vez que falla la ejecución de otro workflow? {
+=Error Trigger
+~Schedule Trigger
+~Webhook
+~If
+####Con Error Trigger armas un workflow que avisa o registra cada falla, sin revisar el historial a mano.
+}
+
+::Q4-P3 (AE4):: Guardar en cada fila la ruta que tomó el pedido y el número de ejecución sirve para\: {
+~Que el workflow corra más rápido
+~Ahorrar espacio en la base de datos
+=La trazabilidad\: reconstruir qué pasó con cada pedido
+~No tener que usar credenciales
+####Con la ruta y el id de ejecución, cualquier fila de la tabla te lleva a la ejecución exacta que la creó.
+}
+
+::Q4-P4 (AE4):: Un "caso borde" es\: {
+~El último nodo de un workflow
+=Una entrada poco común o no prevista, como un campo vacío, que puede romper la lógica
+~Un error de conexión a internet
+~Un workflow desactivado
+####Los casos borde se prueban a propósito\: un correo vacío, una comuna que no está en la tabla o una cantidad escrita con texto.
+}
+
+::Q4-P5 (AE4):: En los ajustes de un nodo, la opción On Error\: Continue (using error output) hace que\: {
+~El workflow se detenga completo en el primer error
+~Los ítems con error se borren sin aviso
+~El nodo se reintente para siempre
+=Los ítems que fallan salgan por una salida de error y el workflow siga con los demás
+####Así un pedido con problemas no detiene a los demás\: sale por la salida de error y lo puedes registrar para revisarlo.
+}

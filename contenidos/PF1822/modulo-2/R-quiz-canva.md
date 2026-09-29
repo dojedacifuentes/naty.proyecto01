@@ -1,9 +1,9 @@
 # PF1822 · Quiz del módulo 2 para Canva
 
-**Estado:** borrador · **Estándar:** el de la contraparte: 3 quiz por curso, hechos en Canva.
-**Reparto:** por estación de la ruta. Quiz 1: AE1 y AE2 · Quiz 2: AE3 (el aprendizaje
-seleccionado) · Quiz 3: AE4. Cinco preguntas cada uno, con una sola respuesta correcta y
-retroalimentación.
+**Estado:** borrador · **Estándar:** un quiz por aprendizaje esperado del módulo 2 (pedido del usuario,
+2026-09-29); antes eran 3, el estándar de la contraparte, y el Quiz 1 juntaba el AE1 y el AE2.
+**Reparto:** Quiz 1: AE1 · Quiz 2: AE2 · Quiz 3: AE3 (el aprendizaje seleccionado) · Quiz 4: AE4. Cada uno
+cierra su estación de la ruta. Cinco preguntas cada uno, con una sola respuesta correcta y retroalimentación.
 **Son formativos:** no llevan nota y **no repiten** las preguntas de la prueba objetiva
 (instrumento 3) ni las del video interactivo, para no adelantar la evaluación.
 **Formato:** la respuesta correcta va en negrita. Cada pregunta dice su aprendizaje esperado.
@@ -14,10 +14,10 @@ insignia y su siguiente parada en la ruta.
 
 ---
 
-## Quiz 1 · Modelos y consumo por API (AE1 y AE2)
+## Quiz 1 · Modelos generativos y su arquitectura (AE1)
 
-**Cuándo:** al cerrar la estación 2, después de la parte B de la actividad 1.
-**Insignia:** Conector/a de APIs · **Siguiente parada:** estación 3, Pedir bien.
+**Cuándo:** al cerrar la estación 1, después de la parte A de la actividad 1 (el diagrama del resumidor).
+**Insignia:** Arquitecto/a de IA · **Siguiente parada:** estación 2, Consumir.
 
 1. *(AE1)* ¿Qué diferencia a la IA generativa de un sistema basado en reglas?
    - a) Solo responde con reglas escritas a mano por un programador
@@ -37,22 +37,60 @@ insignia y su siguiente parada en la ruta.
    - c) El modelo de IA
    - **d) El módulo de preprocesamiento**
    *Retroalimentación:* "El preprocesamiento quita HTML, firmas y datos personales antes de llamar al modelo: la entrada queda más limpia y más segura."
-4. *(AE2)* ¿Qué método HTTP se usa normalmente para enviar un prompt a la API de un modelo y recibir la respuesta?
+4. *(AE1)* Cada noche, Nube Sur toma los tickets del día que no tienen resumen y los limpia, resume, evalúa y guarda, etapa tras etapa. ¿Qué arquitectura es?
+   - a) Solicitud–respuesta
+   - **b) Pipeline**
+   - c) Vector store
+   - d) Transformer codificador
+   *Retroalimentación:* "En un pipeline, la salida de cada etapa es la entrada de la siguiente y se procesan muchos elementos en lote. En solicitud–respuesta, una persona pide un resumen y espera la respuesta de esa llamada."
+5. *(AE1)* El equipo reúne todas las llamadas al modelo en un solo módulo, para cambiar de proveedor sin reescribir la aplicación. ¿Qué criterio de arquitectura privilegia?
+   - a) Escalabilidad
+   - b) Seguridad
+   - c) Costo
+   - **d) Mantenimiento**
+   *Retroalimentación:* "Mantenimiento: si cambia el modelo o el proveedor, se cambia un solo módulo. La escalabilidad es aguantar más carga; la seguridad, proteger la clave y los datos; y el costo, cuánto se gasta en tokens."
+
+---
+
+## Quiz 2 · Consumir modelos por API (AE2)
+
+**Cuándo:** al cerrar la estación 2, después de la parte B de la actividad 1 (la clase ClienteIA).
+**Insignia:** Conector/a de APIs · **Siguiente parada:** estación 3, Pedir bien.
+
+1. *(AE2)* ¿Qué método HTTP se usa normalmente para enviar un prompt a la API de un modelo y recibir la respuesta?
    - **a) POST**
    - b) GET
    - c) DELETE
    - d) HEAD
    *Retroalimentación:* "El prompt y los parámetros van en el cuerpo de la solicitud, y eso se hace con POST. GET se usa para consultar recursos, como la lista de modelos."
-5. *(AE2)* La API responde con el código de estado 401. ¿Qué es lo más probable?
+2. *(AE2)* Antes de programar la llamada al endpoint de embeddings, ¿dónde confirmas su URL, sus parámetros obligatorios y la forma de su respuesta?
+   - a) En un tutorial de hace un año
+   - **b) En la referencia de la API, en la documentación oficial**
+   - c) En los comentarios de un foro
+   - d) En el historial del notebook
+   *Retroalimentación:* "La referencia oficial describe cada endpoint: URL y método, autenticación, parámetros, respuesta y errores. Los tutoriales envejecen: un ejemplo antiguo puede usar un modelo retirado."
+3. *(AE2)* La API responde con el código de estado 401. ¿Qué es lo más probable?
    - a) Se superó el límite de solicitudes
    - b) El servidor tuvo un error interno
    - **c) La clave de la API falta o no es válida**
    - d) La solicitud salió bien
    *Retroalimentación:* "401 significa que no hay autenticación válida. Si fuera un exceso de solicitudes sería 429, y un error del servidor, 500. Éxito es 200."
+4. *(AE2)* La API responde con el código de estado 429. ¿Qué debe hacer `ClienteIA`?
+   - a) Pedir una clave nueva, porque la actual venció
+   - b) Corregir el cuerpo de la solicitud, sin reintentar
+   - **c) Esperar y reintentar, con esperas cada vez más largas**
+   - d) Repetir la solicitud con el método GET
+   *Retroalimentación:* "429 significa demasiadas solicitudes o cuota agotada: se espera y se reintenta, por ejemplo a los 1, 2 y 4 segundos, con un máximo de intentos. Con 400 o 401 reintentar no sirve: hay que corregir la solicitud o la clave."
+5. *(AE2)* En la docstring del método `generar()` de `ClienteIA`, ¿qué describe la sección *Args*?
+   - a) Lo que devuelve el método
+   - **b) Los parámetros que recibe y para qué sirve cada uno**
+   - c) El historial de cambios del archivo
+   - d) La clave de la API
+   *Retroalimentación:* "Args describe lo que recibe; Returns, lo que devuelve, y Raises, los errores que puede lanzar. `help(ClienteIA.generar)` muestra la docstring, y los editores la presentan al escribir."
 
 ---
 
-## Quiz 2 · Diseño de prompts (AE3)
+## Quiz 3 · Diseño de prompts (AE3)
 
 **Cuándo:** al cerrar la estación 3, después del notebook guiado y del video interactivo.
 **Insignia:** Diseñador/a de prompts · **Siguiente parada:** estación 4, Limpiar y medir.
@@ -90,7 +128,7 @@ insignia y su siguiente parada en la ruta.
 
 ---
 
-## Quiz 3 · Preparar y medir texto (AE4)
+## Quiz 4 · Preparar y medir texto (AE4)
 
 **Cuándo:** al cerrar la estación 4, antes de publicar tu resultado en el tablero del laboratorio.
 **Insignia:** Evaluador/a de resúmenes · **Siguiente parada:** publicar tu resultado en el tablero del laboratorio.

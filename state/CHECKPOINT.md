@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-29
-**Por:** 2026-09-29-claude-code-01 (Claude Code · opus-5.5)
+**Por:** 2026-09-29-claude-code-02 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -317,6 +317,23 @@ pide el plan formativo oficial del sence para cada curso"; antes, revisar que lo
 - [ ] Horas que no cuadran en SIPFOR (#24): el total del plan difiere de la suma de módulos en PF1462, PF1487, PF1485, PF1493 y PF1495,
       y de la planilla de oferta en PF1482 y PF1493. La planilla lo marca en amarillo.
 - [ ] La planilla no está en Drive: se entregó el archivo. Subirla (convertida en Google Sheets) si el usuario lo pide.
+
+Sesión claude-code-02, 2026-09-29: un quiz formativo por aprendizaje esperado (pedido del usuario: "debe ser un quizz por
+aprendizaje esperado del modulo 2 de cada curso… tomando la misma dinámica de gamificación… el formato scorm está bien").
+
+- [x] `R-quiz-canva.md` de PF1821 y PF1822: 4 quiz por curso, **Quiz n = AEn**, 5 preguntas cada uno. El Quiz 1 anterior (AE1 y AE2) se
+      separó: 5 preguntas nuevas por curso (2 del AE1 y 3 del AE2), revisadas contra la prueba objetiva (`entrega/AEn/M2-AEn-Quiz.gift`)
+      y el video interactivo para no repetir. Las del AE3 y el AE4 no cambiaron (antes Quiz 2 y 3). Insignias nuevas: «Analista de
+      procesos» (PF1821 AE1) y «Arquitecto/a de IA» (PF1822 AE1); el resto se mantiene, en su nuevo número.
+- [x] Generadores sin el "3" fijo: `produccion.mjs` (tantos quiz como aprendizajes de la ficha; cada pregunta, del AE de su quiz),
+      `quiz-juego.mjs` (tantos como "## Quiz n"; estilo nuevo para el Quiz 1 de cada curso), `planilla.mjs` (4 columnas de juegos),
+      `sitio.mjs` y `lib/quiz-gift.*`.
+- [x] Regenerados los 4 GIFT, los 4 textos para Canva y los 8 juegos con su SCORM. Probados en Edge headless con un `window.API`
+      falso: los 8 se juegan completos (5 niveles, oro, 900 XP) y registran `score.raw=100` y `completed`. `npm run verificar`: 0 errores.
+- [ ] **Canva (G3) desactualizado:** los 6 diseños tienen el reparto anterior; hay que rehacerlos con 4 quiz por curso (y sus formularios).
+- [ ] **Drive y planilla del usuario desactualizados:** los 6 archivos de "Quiz gamificados (juego y SCORM)" son la versión de 3 quiz y
+      faltan los del Quiz 4; la hoja de Google tiene 3 columnas de juegos. `npm run planilla` ya genera 4.
+- [ ] Sin push: el sitio publicado sigue con la versión anterior.
 
 ## A medias
 

@@ -1,43 +1,41 @@
-// PF1821 · Módulo 2 · Quiz 2 · Transformar datos (AE3). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// PF1821 · Módulo 2 · Quiz 2 · Construir tu primer workflow (AE2). Formativo, sin nota. Generado desde R-quiz-canva.md.
 // Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
 $CATEGORY: PF1821-M2/Quiz-2
 
-::Q2-P1 (AE3):: En n8n, cada ítem que viaja de un nodo a otro es\: {
-~Una fila de Excel
-=Un objeto JSON con campos y valores
-~Un archivo XML
-~Un texto plano sin estructura
-####n8n trabaja con ítems en JSON\: cada uno tiene campos con su valor, como nombre, comuna o total. Los nodos procesan los ítems uno por uno.
+::Q2-P1 (AE2):: El resumen de ventas de Mercado Austral debe generarse solo, todos los viernes a las 18\:00. ¿Qué trigger usas en producción? {
+~Manual
+~Formulario de n8n (n8n Form Trigger)
+~Webhook
+=Programado (Schedule Trigger)
+####El trigger programado corre en un momento fijo o cada cierto tiempo. El manual sirve para probar, el formulario corre con cada envío y el webhook, cuando otra aplicación avisa.
 }
 
-::Q2-P2 (AE3):: Necesitas quedarte solo con los pedidos de la comuna de Temuco. ¿Qué nodo usas? {
-~Summarize
-~Merge
-~Split Out
-=Filter
-####Filter deja pasar solo los ítems que cumplen una condición. Summarize agrupa y calcula, Merge une dos flujos y Split Out separa una lista en ítems.
+::Q2-P2 (AE2):: Verdadero o falso\: "Un workflow sin trigger se ejecuta solo cada vez que llega un pedido nuevo." {
+~Verdadero
+=Falso
+####Para ejecutarse solo ante un evento, el workflow necesita un trigger, como un Form Trigger o un Webhook. Sin trigger, solo se ejecuta cuando lo corres a mano.
 }
 
-::Q2-P3 (AE3):: Un pedido trae una lista productos con tres elementos y necesitas un ítem por producto. ¿Qué nodo usas? {
-=Split Out
-~Merge
-~Summarize
-~If
-####Split Out convierte los elementos de una lista en ítems separados, para procesar cada producto por su cuenta.
+::Q2-P3 (AE2):: En el formulario escribiste la etiqueta "Email", pero el nodo siguiente busca el campo email. ¿Qué pasa? {
+~n8n corrige la mayúscula por su cuenta
+=El nodo no encuentra el campo y recibe un valor vacío
+~El formulario deja de publicarse
+~El workflow se desactiva
+####Las etiquetas del formulario se convierten en los nombres de los campos, y n8n distingue mayúsculas de minúsculas. Decide una convención, como todo en minúsculas, y úsala en todo el workflow.
 }
 
-::Q2-P4 (AE3):: ¿Qué nodo transforma los ítems en un archivo CSV para descargarlo o enviarlo? {
-~Extract from File
-~Edit Fields (Set)
-=Convert to File
-~Summarize
-####Convert to File genera el archivo, en CSV u otros formatos. Extract from File hace lo contrario\: lee un archivo y lo convierte en ítems.
+::Q2-P4 (AE2):: El sitio de Mercado Austral enlaza la URL de prueba del formulario, no la de producción. ¿Qué pasa con los pedidos? {
+~Se registran igual que con la URL de producción
+=Solo se registran mientras alguien tiene el editor abierto y escuchando
+~Se registran dos veces
+~Quedan en el historial, pero no en la tabla
+####La URL de prueba solo funciona mientras el editor escucha. En el sitio va la URL de producción, con el workflow activo\: así cada envío genera una ejecución.
 }
 
-::Q2-P5 (AE3):: ¿Qué operación del nodo de Supabase usas para agregar un pedido nuevo a la tabla pedidos? {
-~Get many rows
-=Create a row
-~Update a row
-~Delete a row
-####Crear, leer, actualizar y borrar son las cuatro operaciones CRUD. Un pedido nuevo es una fila nueva\: Create a row.
+::Q2-P5 (AE2):: Tu workflow "Pedido a registro" falla en el nodo de Supabase. ¿Qué revisas primero? {
+~El nombre del workflow
+~La lista de workflows de la cuenta
+=El panel de entrada (Input) del nodo de Supabase, para ver qué datos le llegaron
+~El idioma de la interfaz de n8n
+####Cada nodo muestra lo que recibe y lo que entrega. Si el nodo que guarda falla, casi siempre la pista está en los datos que le llegaron.
 }

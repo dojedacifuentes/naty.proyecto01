@@ -50,8 +50,9 @@ const en = (v, texto) => (u(v) ? L(texto, u(v)) : S('Por subir a Drive', E.subir
 const resumen = [];
 for (const c of CURSOS) {
   const d = enlaces[c.pf] ?? {};
-  // Quiz gamificados: cada juego como archivo en Drive (se descarga y se abre) y la carpeta con los SCORM.
-  const juegos = [1, 2, 3].map((n) => en(d.quizJuego?.[`M2-Quiz-${n}-Juego.html`], `M2-Quiz-${n}-Juego.html`));
+  // Quiz gamificados, uno por aprendizaje esperado: cada juego como archivo en Drive (se descarga y se abre) y la
+  // carpeta con los SCORM.
+  const juegos = [1, 2, 3, 4].map((n) => en(d.quizJuego?.[`M2-Quiz-${n}-Juego.html`], `M2-Quiz-${n}-Juego.html`));
   for (const [cliente] of c.clientes) {
     const cl = d.clientes?.[cliente] ?? {};
     resumen.push([
@@ -133,9 +134,10 @@ const HOJAS = [
     encabezados: ['Curso', 'Tipo', 'Cliente', 'Aprendizajes esperados (M2)', 'Cuadernillos (lecturas, actividades, evaluación, metodología, tutor, glosario)',
       'Documentos sueltos', 'Lecturas (Rise)', 'Video de bienvenida (curso)', 'Video resumen (módulo)', 'Video de bienvenida (módulo)', 'Videocápsulas AE1 a AE4',
       'Video herramienta 2 (AE3)', 'Quiz 1', 'Quiz 2', 'Quiz 3', 'Quiz (PDF y Moodle)', 'Quiz GIFT (vista web)',
-      'Quiz 1 gamificado (archivo)', 'Quiz 2 gamificado (archivo)', 'Quiz 3 gamificado (archivo)', 'Quiz gamificados: juegos y SCORM (carpeta)',
+      'Quiz AE1 gamificado (archivo)', 'Quiz AE2 gamificado (archivo)', 'Quiz AE3 gamificado (archivo)', 'Quiz AE4 gamificado (archivo)',
+      'Quiz gamificados: juegos y SCORM (carpeta)',
       'Infografías', 'Carpeta del cliente', 'Carpeta del curso', 'Estado', 'Observaciones'],
-    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 13, 22, 26, 18, 20, 16, 16, 16, 18, 16, 15, 15, 15, 18, 18, 20, 20, 20, 22, 18, 18, 18, 18, 40] } },
+    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 13, 22, 26, 18, 20, 16, 16, 16, 18, 16, 15, 15, 15, 18, 18, 20, 20, 20, 20, 22, 18, 18, 18, 18, 40] } },
   { nombre: 'Aprendizajes', titulo: 'Aprendizajes esperados del módulo 2', subtitulo: 'Textuales de la ficha SIPFOR · con su lectura y su quiz',
     encabezados: ['Curso', 'Módulo', 'AE', 'Aprendizaje esperado (textual del plan)', 'Lectura', 'Quiz'],
     filas: aprendizajes, anchos: { fijas: 1, cols: [10, 34, 6, 70, 34, 20] } },

@@ -169,3 +169,5 @@ En SIPFOR, el total del plan no es la suma de sus módulos en PF1462 (198 contra
 PF1493 (201 contra 204) y PF1495 (207 contra 210); y la planilla de oferta (`data/planes-formativos.csv`) dice otra cosa en PF1482 (204
 contra 210) y PF1493 (201). Importa para las horas del Anexo 2 y para la regla de 1 actividad de extensión cada 50 horas. Se puede
 mirar el PDF oficial de cada plan o consultarlo a SENCE. Lo decide el usuario o Natalia. Detectado en la sesión `2026-09-29-claude-code-01`.
+**Nota a #22 (2026-09-29, sesión `2026-09-29-claude-code-02`):** el usuario pidió un quiz por aprendizaje esperado (4 por curso) con la misma
+gamificación y SCORM. Ya no son "3 quiz en Canva": falta confirmar con la contraparte si acepta los 4 y rehacer los de Canva.

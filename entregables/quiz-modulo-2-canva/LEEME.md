@@ -1,5 +1,9 @@
 # Quiz formativos del módulo 2
 
+> **Versión anterior (3 quiz por curso).** Desde el 29-09-2026 hay un quiz por aprendizaje esperado (4 por curso: Quiz n = AEn).
+> Estos diseños de Canva todavía tienen el reparto anterior (Quiz 1: AE1 y AE2) y hay que rehacerlos con el texto de
+> `modulo-2/<curso>/produccion/quiz-canva/Quiz-1.txt` a `Quiz-4.txt`.
+
 Contenido ordenado por curso y número de quiz. Cada PDF contiene 11 páginas: portada, cinco preguntas y cinco páginas de retroalimentación.
 
 ## PF1821 · Construcción de Agentes y Automatización con Herramientas Low Code

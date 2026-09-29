@@ -1,43 +1,43 @@
-// PF1821 · Módulo 2 · Quiz 3 · Decidir y depurar (AE4). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// PF1821 · Módulo 2 · Quiz 3 · Transformar datos (AE3). Formativo, sin nota. Generado desde R-quiz-canva.md.
 // Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
 $CATEGORY: PF1821-M2/Quiz-3
 
-::Q3-P1 (AE4):: En una condición, ¿qué hace el operador NOT? {
-~Exige que se cumplan todas las condiciones
-~Basta con que se cumpla una
-~Detiene el workflow
-=Invierte el resultado\: lo verdadero pasa a falso y lo falso a verdadero
-####AND exige todas las condiciones, OR al menos una y NOT invierte el resultado. Combinándolos se arman las reglas de enrutamiento.
+::Q3-P1 (AE3):: En n8n, cada ítem que viaja de un nodo a otro es\: {
+~Una fila de Excel
+=Un objeto JSON con campos y valores
+~Un archivo XML
+~Un texto plano sin estructura
+####n8n trabaja con ítems en JSON\: cada uno tiene campos con su valor, como nombre, comuna o total. Los nodos procesan los ítems uno por uno.
 }
 
-::Q3-P2 (AE4):: ¿Qué nodo inicia un workflow de errores cada vez que falla la ejecución de otro workflow? {
-=Error Trigger
-~Schedule Trigger
-~Webhook
+::Q3-P2 (AE3):: Necesitas quedarte solo con los pedidos de la comuna de Temuco. ¿Qué nodo usas? {
+~Summarize
+~Merge
+~Split Out
+=Filter
+####Filter deja pasar solo los ítems que cumplen una condición. Summarize agrupa y calcula, Merge une dos flujos y Split Out separa una lista en ítems.
+}
+
+::Q3-P3 (AE3):: Un pedido trae una lista productos con tres elementos y necesitas un ítem por producto. ¿Qué nodo usas? {
+=Split Out
+~Merge
+~Summarize
 ~If
-####Con Error Trigger armas un workflow que avisa o registra cada falla, sin revisar el historial a mano.
+####Split Out convierte los elementos de una lista en ítems separados, para procesar cada producto por su cuenta.
 }
 
-::Q3-P3 (AE4):: Guardar en cada fila la ruta que tomó el pedido y el número de ejecución sirve para\: {
-~Que el workflow corra más rápido
-~Ahorrar espacio en la base de datos
-=La trazabilidad\: reconstruir qué pasó con cada pedido
-~No tener que usar credenciales
-####Con la ruta y el id de ejecución, cualquier fila de la tabla te lleva a la ejecución exacta que la creó.
+::Q3-P4 (AE3):: ¿Qué nodo transforma los ítems en un archivo CSV para descargarlo o enviarlo? {
+~Extract from File
+~Edit Fields (Set)
+=Convert to File
+~Summarize
+####Convert to File genera el archivo, en CSV u otros formatos. Extract from File hace lo contrario\: lee un archivo y lo convierte en ítems.
 }
 
-::Q3-P4 (AE4):: Un "caso borde" es\: {
-~El último nodo de un workflow
-=Una entrada poco común o no prevista, como un campo vacío, que puede romper la lógica
-~Un error de conexión a internet
-~Un workflow desactivado
-####Los casos borde se prueban a propósito\: un correo vacío, una comuna que no está en la tabla o una cantidad escrita con texto.
-}
-
-::Q3-P5 (AE4):: En los ajustes de un nodo, la opción On Error\: Continue (using error output) hace que\: {
-~El workflow se detenga completo en el primer error
-~Los ítems con error se borren sin aviso
-~El nodo se reintente para siempre
-=Los ítems que fallan salgan por una salida de error y el workflow siga con los demás
-####Así un pedido con problemas no detiene a los demás\: sale por la salida de error y lo puedes registrar para revisarlo.
+::Q3-P5 (AE3):: ¿Qué operación del nodo de Supabase usas para agregar un pedido nuevo a la tabla pedidos? {
+~Get many rows
+=Create a row
+~Update a row
+~Delete a row
+####Crear, leer, actualizar y borrar son las cuatro operaciones CRUD. Un pedido nuevo es una fila nueva\: Create a row.
 }

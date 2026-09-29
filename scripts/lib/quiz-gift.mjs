@@ -1,6 +1,6 @@
 /**
  * Vista web de los quiz GIFT del módulo 2. Lee, por curso:
- *   - los 3 quiz formativos: `modulo-2/<curso>/entrega/quiz/M2-Quiz-n-Moodle.gift`
+ *   - los quiz formativos, uno por aprendizaje esperado: `modulo-2/<curso>/entrega/quiz/M2-Quiz-n-Moodle.gift`
  *   - el quiz de cada aprendizaje (prueba objetiva): `modulo-2/<curso>/entrega/AEn/M2-AEn-Quiz.gift`
  * y arma una página que los muestra como quedan en Moodle (modo revisión, con la respuesta correcta y la
  * retroalimentación) o para contestarlos (modo responder). La publica `npm run sitio` en quiz-modulo2.html.
@@ -44,6 +44,12 @@ function formativo(c, n) {
   return { clave: `${c.pf}-q${n}`, titulo: `Quiz ${n}`, tema: m[1], ae: m[2], categoria: g.categoria, preguntas: g.preguntas };
 }
 
+function formativos(c) {
+  const quizzes = [];
+  for (let n = 1; existe(`modulo-2/${c.carpeta}/entrega/quiz/M2-Quiz-${n}-Moodle.gift`); n++) quizzes.push(formativo(c, n));
+  return quizzes;
+}
+
 function porAprendizaje(c) {
   const quizzes = [];
   for (let n = 1; existe(`modulo-2/${c.carpeta}/entrega/AE${n}/M2-AE${n}-Quiz.gift`); n++) {
@@ -59,7 +65,7 @@ export function quizGiftHtml(cursos) {
     codigo: c.pf,
     nombre: c.nombre,
     grupos: [
-      { titulo: 'Quiz formativos (Canva y Moodle)', quizzes: [1, 2, 3].map((n) => formativo(c, n)) },
+      { titulo: 'Quiz formativos, uno por aprendizaje (Canva y Moodle)', quizzes: formativos(c) },
       { titulo: 'Quiz por aprendizaje esperado (prueba objetiva)', quizzes: porAprendizaje(c) },
     ],
   }));

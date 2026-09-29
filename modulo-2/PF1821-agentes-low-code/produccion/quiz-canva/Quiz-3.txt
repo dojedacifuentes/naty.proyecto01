@@ -1,43 +1,43 @@
-PF1821 · Módulo 2 · Quiz 3 · Decidir y depurar (AE4)
-Cuándo: al cerrar el tramo 4, antes del rescate del workflow roto.
+PF1821 · Módulo 2 · Quiz 3 · Transformar datos (AE3)
+Cuándo: al cerrar el tramo 3, después del tutorial y de la parte C de la actividad 1.
 Formativo: sin nota. Muestra la retroalimentación al responder.
 
-PREGUNTA 1 (AE4)
-En una condición, ¿qué hace el operador NOT?
-  A) Exige que se cumplan todas las condiciones
-  B) Basta con que se cumpla una
-  C) Detiene el workflow
-  D) Invierte el resultado: lo verdadero pasa a falso y lo falso a verdadero   <- CORRECTA
-  Retroalimentación: AND exige todas las condiciones, OR al menos una y NOT invierte el resultado. Combinándolos se arman las reglas de enrutamiento.
+PREGUNTA 1 (AE3)
+En n8n, cada ítem que viaja de un nodo a otro es:
+  A) Una fila de Excel
+  B) Un objeto JSON con campos y valores   <- CORRECTA
+  C) Un archivo XML
+  D) Un texto plano sin estructura
+  Retroalimentación: n8n trabaja con ítems en JSON: cada uno tiene campos con su valor, como nombre, comuna o total. Los nodos procesan los ítems uno por uno.
 
-PREGUNTA 2 (AE4)
-¿Qué nodo inicia un workflow de errores cada vez que falla la ejecución de otro workflow?
-  A) Error Trigger   <- CORRECTA
-  B) Schedule Trigger
-  C) Webhook
+PREGUNTA 2 (AE3)
+Necesitas quedarte solo con los pedidos de la comuna de Temuco. ¿Qué nodo usas?
+  A) Summarize
+  B) Merge
+  C) Split Out
+  D) Filter   <- CORRECTA
+  Retroalimentación: Filter deja pasar solo los ítems que cumplen una condición. Summarize agrupa y calcula, Merge une dos flujos y Split Out separa una lista en ítems.
+
+PREGUNTA 3 (AE3)
+Un pedido trae una lista productos con tres elementos y necesitas un ítem por producto. ¿Qué nodo usas?
+  A) Split Out   <- CORRECTA
+  B) Merge
+  C) Summarize
   D) If
-  Retroalimentación: Con Error Trigger armas un workflow que avisa o registra cada falla, sin revisar el historial a mano.
+  Retroalimentación: Split Out convierte los elementos de una lista en ítems separados, para procesar cada producto por su cuenta.
 
-PREGUNTA 3 (AE4)
-Guardar en cada fila la ruta que tomó el pedido y el número de ejecución sirve para:
-  A) Que el workflow corra más rápido
-  B) Ahorrar espacio en la base de datos
-  C) La trazabilidad: reconstruir qué pasó con cada pedido   <- CORRECTA
-  D) No tener que usar credenciales
-  Retroalimentación: Con la ruta y el id de ejecución, cualquier fila de la tabla te lleva a la ejecución exacta que la creó.
+PREGUNTA 4 (AE3)
+¿Qué nodo transforma los ítems en un archivo CSV para descargarlo o enviarlo?
+  A) Extract from File
+  B) Edit Fields (Set)
+  C) Convert to File   <- CORRECTA
+  D) Summarize
+  Retroalimentación: Convert to File genera el archivo, en CSV u otros formatos. Extract from File hace lo contrario: lee un archivo y lo convierte en ítems.
 
-PREGUNTA 4 (AE4)
-Un "caso borde" es:
-  A) El último nodo de un workflow
-  B) Una entrada poco común o no prevista, como un campo vacío, que puede romper la lógica   <- CORRECTA
-  C) Un error de conexión a internet
-  D) Un workflow desactivado
-  Retroalimentación: Los casos borde se prueban a propósito: un correo vacío, una comuna que no está en la tabla o una cantidad escrita con texto.
-
-PREGUNTA 5 (AE4)
-En los ajustes de un nodo, la opción On Error: Continue (using error output) hace que:
-  A) El workflow se detenga completo en el primer error
-  B) Los ítems con error se borren sin aviso
-  C) El nodo se reintente para siempre
-  D) Los ítems que fallan salgan por una salida de error y el workflow siga con los demás   <- CORRECTA
-  Retroalimentación: Así un pedido con problemas no detiene a los demás: sale por la salida de error y lo puedes registrar para revisarlo.
+PREGUNTA 5 (AE3)
+¿Qué operación del nodo de Supabase usas para agregar un pedido nuevo a la tabla pedidos?
+  A) Get many rows
+  B) Create a row   <- CORRECTA
+  C) Update a row
+  D) Delete a row
+  Retroalimentación: Crear, leer, actualizar y borrar son las cuatro operaciones CRUD. Un pedido nuevo es una fila nueva: Create a row.

@@ -875,13 +875,13 @@ ${partes(lista)}</section></body></html>`;
   ];
 }
 
-// Quiz para Canva (estándar de la contraparte): 3 por curso, uno por tramo, en texto plano para
-// copiar pregunta por pregunta. No se genera si una pregunta no tiene exactamente una respuesta
-// correcta y su retroalimentación, o si trae un aprendizaje que no es de su quiz.
-const AES_QUIZ = { 1: ['AE1', 'AE2'], 2: ['AE3'], 3: ['AE4'] };
-function quizCanva(pf, md) {
+// Quiz formativos: uno por aprendizaje esperado (Quiz n = AEn, pedido del usuario del 2026-09-29; antes
+// eran 3, el estándar de la contraparte), en texto plano para copiar pregunta por pregunta en Canva y en
+// GIFT para Moodle. No se genera si una pregunta no tiene exactamente una respuesta correcta y su
+// retroalimentación, o si trae un aprendizaje que no es el de su quiz.
+function quizCanva(pf, md, nAes) {
   const errores = [];
-  const quizzes = [1, 2, 3].map((n) => {
+  const quizzes = Array.from({ length: nAes }, (_, i) => i + 1).map((n) => {
     const L = seccion(md, new RegExp(`^## Quiz ${n}\\b`));
     if (!L.length) { errores.push(`falta el quiz ${n}`); return null; }
     const cuando = /^\*\*Cuándo:\*\*\s*(.+)$/m.exec(L.join('\n'))?.[1] ?? '';
@@ -899,7 +899,7 @@ function quizCanva(pf, md) {
       if (p.opciones.filter((o) => o.correcta).length !== 1) errores.push(`quiz ${n}, pregunta ${p.n}: debe tener una sola respuesta correcta en negrita`);
       if (p.opciones.length < 2) errores.push(`quiz ${n}, pregunta ${p.n}: faltan opciones`);
       if (!p.retro) errores.push(`quiz ${n}, pregunta ${p.n}: falta la retroalimentación`);
-      if (!AES_QUIZ[n].includes(p.ae)) errores.push(`quiz ${n}, pregunta ${p.n}: el ${p.ae} no es de este quiz (${AES_QUIZ[n].join(' y ')})`);
+      if (p.ae !== `AE${n}`) errores.push(`quiz ${n}, pregunta ${p.n}: el ${p.ae} no es de este quiz (AE${n})`);
     }
     return { n, titulo: titulo(L), cuando, preguntas };
   });
@@ -1056,7 +1056,7 @@ for (const pf of codigos) {
   const b = videoBienvenida(pf, c, mdBienv, f.modulo);
   guardar(`${out}/videos/00-bienvenida.pptx`, b.pptx);
   guardar(`${out}/videos/00-bienvenida-guion.md`, b.guion);
-  for (const q of quizCanva(pf, leer(`${dir}/R-quiz-canva.md`))) {
+  for (const q of quizCanva(pf, leer(`${dir}/R-quiz-canva.md`), Object.keys(f.aes).length)) {
     guardar(`${out}/quiz-canva/${q.archivo}`, q.texto);
     guardar(`${ent}/quiz/M2-${q.archivo.replace('.txt', '')}-Moodle.gift`, q.gift);
   }

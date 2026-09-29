@@ -1,43 +1,43 @@
-PF1822 · Módulo 2 · Quiz 3 · Preparar y medir texto (AE4)
-Cuándo: al cerrar la estación 4, antes de publicar tu resultado en el tablero del laboratorio.
+PF1822 · Módulo 2 · Quiz 3 · Diseño de prompts (AE3)
+Cuándo: al cerrar la estación 3, después del notebook guiado y del video interactivo.
 Formativo: sin nota. Muestra la retroalimentación al responder.
 
-PREGUNTA 1 (AE4)
-¿Qué hace esta línea de Python? re.sub(r"<[^>]+>", " ", texto)
-  A) Borra los correos electrónicos
-  B) Pasa el texto a minúsculas
-  C) Cuenta las palabras del texto
-  D) Reemplaza las etiquetas HTML por espacios   <- CORRECTA
-  Retroalimentación: La expresión regular busca todo lo que va entre < y >, es decir, las etiquetas HTML, y lo reemplaza por un espacio.
+PREGUNTA 1 (AE3)
+Un prompt zero-shot es:
+  A) Un prompt que siempre usa temperatura 0
+  B) Una instrucción sin ejemplos resueltos   <- CORRECTA
+  C) Un prompt vacío
+  D) Un prompt que el modelo no puede responder
+  Retroalimentación: Zero-shot: le das la tarea sin ejemplos. Si agregas ejemplos resueltos de entrada y salida, pasa a ser few-shot.
 
-PREGUNTA 2 (AE4)
-Tokenizar un texto es:
-  A) Dividirlo en unidades, como palabras, partes de palabras o signos   <- CORRECTA
-  B) Traducirlo a otro idioma
-  C) Cifrarlo para protegerlo
-  D) Resumirlo en una oración
-  Retroalimentación: Los tokens son las unidades con que se procesa y se mide un texto. También con ellos se cuenta el costo de usar un modelo.
+PREGUNTA 2 (AE3)
+En un prompt para el resumidor, ¿cuál de estas frases es una restricción?
+  A) "Eres un analista de soporte."
+  B) "Este ticket viene de la app de facturación."
+  C) "Hola, ¿cómo estás?"
+  D) "Responde en una sola oración de máximo 25 palabras."   <- CORRECTA
+  Retroalimentación: 'Eres un analista de soporte' es el rol y 'Este ticket viene de la app de facturación' es el contexto. La restricción limita la respuesta: largo, formato o lo que no debe hacer.
 
-PREGUNTA 3 (AE4)
-BLEU compara un texto generado con uno de referencia según:
-  A) La corrección gramatical del texto
-  B) El tiempo que tardó el modelo en responder
-  C) Cuántos n-gramas del texto generado aparecen también en la referencia   <- CORRECTA
-  D) La cantidad de oraciones
-  Retroalimentación: BLEU mide coincidencia de n-gramas, con énfasis en la precisión, y penaliza los textos demasiado cortos.
+PREGUNTA 3 (AE3)
+¿Qué efecto tiene subir la temperatura de 0,2 a 0,9?
+  A) Respuestas más variadas y menos predecibles   <- CORRECTA
+  B) Respuestas siempre más cortas
+  C) Respuestas más exactas
+  D) El modelo deja de responder
+  Retroalimentación: Con más temperatura, el modelo elige palabras menos probables: gana variedad y pierde consistencia. Para resúmenes técnicos conviene una temperatura baja.
 
-PREGUNTA 4 (AE4)
-ROUGE-L se basa en:
-  A) El largo total del resumen
-  B) La subsecuencia común más larga entre el resumen y la referencia   <- CORRECTA
-  C) La cantidad de tokens del prompt
-  D) El número de párrafos
-  Retroalimentación: ROUGE-L busca la secuencia de palabras en común más larga, aunque no estén seguidas: premia que el resumen conserve el orden de las ideas.
+PREGUNTA 4 (AE3)
+Además del rol, el contexto y las restricciones, un buen prompt para el resumidor incluye:
+  A) Emojis para que suene amable
+  B) La clave de la API
+  C) El formato de salida esperado   <- CORRECTA
+  D) El historial del navegador
+  Retroalimentación: Decir el formato, como una oración que empiece con 'El usuario…', hace que las respuestas sean comparables y fáciles de usar.
 
-PREGUNTA 5 (AE4)
-¿Por qué no basta con ROUGE y BLEU para elegir la mejor configuración del resumidor?
-  A) Porque son muy lentas de calcular
-  B) Porque solo funcionan en inglés
-  C) Porque siempre dan el mismo valor
-  D) Porque miden coincidencia de palabras, no si el resumen es coherente y relevante   <- CORRECTA
-  Retroalimentación: Un resumen puede usar otras palabras y ser muy bueno. Por eso en el laboratorio también valoras coherencia y relevancia de 1 a 3.
+PREGUNTA 5 (AE3)
+Al iterar un prompt, la buena práctica es:
+  A) Cambiar todo en cada versión
+  B) Cambiar una cosa a la vez y anotar qué efecto tuvo   <- CORRECTA
+  C) Borrar las versiones anteriores
+  D) Probar solo con un ticket
+  Retroalimentación: Si cambias varias cosas juntas no sabes cuál produjo la mejora. El registro de iteraciones es la evidencia para decidir.

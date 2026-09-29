@@ -1,5 +1,5 @@
-PF1821 · Módulo 2 · Quiz 1 · Entender y construir (AE1 y AE2)
-Cuándo: al cerrar el tramo 2, después del workflow "Pedido a registro".
+PF1821 · Módulo 2 · Quiz 1 · Entender qué automatizar (AE1)
+Cuándo: al cerrar el tramo 1, después del mapa de procesos de Mercado Austral.
 Formativo: sin nota. Muestra la retroalimentación al responder.
 
 PREGUNTA 1 (AE1)
@@ -26,16 +26,18 @@ PREGUNTA 3 (AE1)
   D) En una credencial   <- CORRECTA
   Retroalimentación: Las credenciales se guardan cifradas y fuera del workflow. Así no quedan escritas en un nodo ni aparecen en una captura.
 
-PREGUNTA 4 (AE2)
-Verdadero o falso: "Un workflow sin trigger se ejecuta solo cada vez que llega un pedido nuevo."
-  A) Verdadero
-  B) Falso   <- CORRECTA
-  Retroalimentación: Para ejecutarse solo ante un evento, el workflow necesita un trigger, como un Form Trigger o un Webhook. Sin trigger, solo se ejecuta cuando lo corres a mano.
+PREGUNTA 4 (AE1)
+El sistema de facturación de Mercado Austral no tiene nodo propio en n8n, pero expone una API. ¿Con qué nodo lo conectas?
+  A) Edit Fields (Set)
+  B) HTTP Request   <- CORRECTA
+  C) Filter
+  D) Summarize
+  Retroalimentación: HTTP Request conecta con cualquier servicio que tenga una API, aunque no exista un nodo nativo para él. Es parte del ecosistema de nodos de n8n, junto con los nodos nativos, los core, Code y los de la comunidad.
 
-PREGUNTA 5 (AE2)
-Tu workflow "Pedido a registro" falla en el nodo de Supabase. ¿Qué revisas primero?
-  A) El nombre del workflow
-  B) La lista de workflows de la cuenta
-  C) El panel de entrada (Input) del nodo de Supabase, para ver qué datos le llegaron   <- CORRECTA
-  D) El idioma de la interfaz de n8n
-  Retroalimentación: Cada nodo muestra lo que recibe y lo que entrega. Si el nodo que guarda falla, casi siempre la pista está en los datos que le llegaron.
+PREGUNTA 5 (AE1)
+Un workflow de Mercado Austral tiene 8 pasos y corre 1.000 veces al mes. En la nube de n8n, ¿cómo se cuenta ese uso?
+  A) 8.000 tareas, una por cada paso ejecutado
+  B) 1.000 ejecuciones, una por cada vez que corre el workflow   <- CORRECTA
+  C) 8 nodos, sin importar cuántas veces corra
+  D) Un cobro fijo por cada usuario
+  Retroalimentación: n8n cuenta en su nube cada ejecución del workflow completo, tenga los pasos que tenga. Make cobra por cada acción y Zapier por cada tarea: con workflows de muchos pasos, esa diferencia pesa en el costo.

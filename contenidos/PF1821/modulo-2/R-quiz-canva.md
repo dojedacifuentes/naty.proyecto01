@@ -1,8 +1,9 @@
 # PF1821 · Quiz del módulo 2 para Canva
 
-**Estado:** borrador · **Estándar:** el de la contraparte: 3 quiz por curso, hechos en Canva.
-**Reparto:** por tramo de la ruta. Quiz 1: AE1 y AE2 · Quiz 2: AE3 (el aprendizaje seleccionado)
-· Quiz 3: AE4. Cinco preguntas cada uno, con una sola respuesta correcta y retroalimentación.
+**Estado:** borrador · **Estándar:** un quiz por aprendizaje esperado del módulo 2 (pedido del usuario,
+2026-09-29); antes eran 3, el estándar de la contraparte, y el Quiz 1 juntaba el AE1 y el AE2.
+**Reparto:** Quiz 1: AE1 · Quiz 2: AE2 · Quiz 3: AE3 (el aprendizaje seleccionado) · Quiz 4: AE4. Cada uno
+cierra su tramo de la ruta. Cinco preguntas cada uno, con una sola respuesta correcta y retroalimentación.
 **Son formativos:** no llevan nota y **no repiten** las preguntas de la prueba objetiva
 (instrumento 3) ni las del video interactivo, para no adelantar la evaluación.
 **Formato:** la respuesta correcta va en negrita. Cada pregunta dice su aprendizaje esperado.
@@ -13,10 +14,10 @@ insignia y su siguiente parada en la ruta.
 
 ---
 
-## Quiz 1 · Entender y construir (AE1 y AE2)
+## Quiz 1 · Entender qué automatizar (AE1)
 
-**Cuándo:** al cerrar el tramo 2, después del workflow "Pedido a registro".
-**Insignia:** Constructor/a de workflows · **Siguiente parada:** tramo 3, Transformar.
+**Cuándo:** al cerrar el tramo 1, después del mapa de procesos de Mercado Austral.
+**Insignia:** Analista de procesos · **Siguiente parada:** tramo 2, Construir.
 
 1. *(AE1)* ¿Cuál de estas tareas de Mercado Austral conviene **menos** automatizar?
    - a) Enviar un correo de confirmación por cada pedido
@@ -36,10 +37,48 @@ insignia y su siguiente parada en la ruta.
    - c) En el historial de ejecuciones
    - **d) En una credencial**
    *Retroalimentación:* "Las credenciales se guardan cifradas y fuera del workflow. Así no quedan escritas en un nodo ni aparecen en una captura."
-4. *(AE2)* Verdadero o falso: "Un workflow sin trigger se ejecuta solo cada vez que llega un pedido nuevo."
+4. *(AE1)* El sistema de facturación de Mercado Austral no tiene nodo propio en n8n, pero expone una API. ¿Con qué nodo lo conectas?
+   - a) Edit Fields (Set)
+   - **b) HTTP Request**
+   - c) Filter
+   - d) Summarize
+   *Retroalimentación:* "HTTP Request conecta con cualquier servicio que tenga una API, aunque no exista un nodo nativo para él. Es parte del ecosistema de nodos de n8n, junto con los nodos nativos, los core, Code y los de la comunidad."
+5. *(AE1)* Un workflow de Mercado Austral tiene 8 pasos y corre 1.000 veces al mes. En la nube de n8n, ¿cómo se cuenta ese uso?
+   - a) 8.000 tareas, una por cada paso ejecutado
+   - **b) 1.000 ejecuciones, una por cada vez que corre el workflow**
+   - c) 8 nodos, sin importar cuántas veces corra
+   - d) Un cobro fijo por cada usuario
+   *Retroalimentación:* "n8n cuenta en su nube cada ejecución del workflow completo, tenga los pasos que tenga. Make cobra por cada acción y Zapier por cada tarea: con workflows de muchos pasos, esa diferencia pesa en el costo."
+
+---
+
+## Quiz 2 · Construir tu primer workflow (AE2)
+
+**Cuándo:** al cerrar el tramo 2, después del workflow "Pedido a registro".
+**Insignia:** Constructor/a de workflows · **Siguiente parada:** tramo 3, Transformar.
+
+1. *(AE2)* El resumen de ventas de Mercado Austral debe generarse solo, todos los viernes a las 18:00. ¿Qué trigger usas en producción?
+   - a) Manual
+   - b) Formulario de n8n (n8n Form Trigger)
+   - c) Webhook
+   - **d) Programado (Schedule Trigger)**
+   *Retroalimentación:* "El trigger programado corre en un momento fijo o cada cierto tiempo. El manual sirve para probar, el formulario corre con cada envío y el webhook, cuando otra aplicación avisa."
+2. *(AE2)* Verdadero o falso: "Un workflow sin trigger se ejecuta solo cada vez que llega un pedido nuevo."
    - a) Verdadero
    - **b) Falso**
    *Retroalimentación:* "Para ejecutarse solo ante un evento, el workflow necesita un trigger, como un Form Trigger o un Webhook. Sin trigger, solo se ejecuta cuando lo corres a mano."
+3. *(AE2)* En el formulario escribiste la etiqueta "Email", pero el nodo siguiente busca el campo `email`. ¿Qué pasa?
+   - a) n8n corrige la mayúscula por su cuenta
+   - **b) El nodo no encuentra el campo y recibe un valor vacío**
+   - c) El formulario deja de publicarse
+   - d) El workflow se desactiva
+   *Retroalimentación:* "Las etiquetas del formulario se convierten en los nombres de los campos, y n8n distingue mayúsculas de minúsculas. Decide una convención, como todo en minúsculas, y úsala en todo el workflow."
+4. *(AE2)* El sitio de Mercado Austral enlaza la URL de prueba del formulario, no la de producción. ¿Qué pasa con los pedidos?
+   - a) Se registran igual que con la URL de producción
+   - **b) Solo se registran mientras alguien tiene el editor abierto y escuchando**
+   - c) Se registran dos veces
+   - d) Quedan en el historial, pero no en la tabla
+   *Retroalimentación:* "La URL de prueba solo funciona mientras el editor escucha. En el sitio va la URL de producción, con el workflow activo: así cada envío genera una ejecución."
 5. *(AE2)* Tu workflow "Pedido a registro" falla en el nodo de Supabase. ¿Qué revisas primero?
    - a) El nombre del workflow
    - b) La lista de workflows de la cuenta
@@ -49,7 +88,7 @@ insignia y su siguiente parada en la ruta.
 
 ---
 
-## Quiz 2 · Transformar datos (AE3)
+## Quiz 3 · Transformar datos (AE3)
 
 **Cuándo:** al cerrar el tramo 3, después del tutorial y de la parte C de la actividad 1.
 **Insignia:** Transformador/a de datos · **Siguiente parada:** tramo 4, Decidir y depurar.
@@ -87,7 +126,7 @@ insignia y su siguiente parada en la ruta.
 
 ---
 
-## Quiz 3 · Decidir y depurar (AE4)
+## Quiz 4 · Decidir y depurar (AE4)
 
 **Cuándo:** al cerrar el tramo 4, antes del rescate del workflow roto.
 **Insignia:** Estratega de rutas · **Siguiente parada:** el rescate del workflow roto.

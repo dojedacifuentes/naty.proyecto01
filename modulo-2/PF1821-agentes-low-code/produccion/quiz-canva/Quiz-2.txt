@@ -1,43 +1,41 @@
-PF1821 · Módulo 2 · Quiz 2 · Transformar datos (AE3)
-Cuándo: al cerrar el tramo 3, después del tutorial y de la parte C de la actividad 1.
+PF1821 · Módulo 2 · Quiz 2 · Construir tu primer workflow (AE2)
+Cuándo: al cerrar el tramo 2, después del workflow "Pedido a registro".
 Formativo: sin nota. Muestra la retroalimentación al responder.
 
-PREGUNTA 1 (AE3)
-En n8n, cada ítem que viaja de un nodo a otro es:
-  A) Una fila de Excel
-  B) Un objeto JSON con campos y valores   <- CORRECTA
-  C) Un archivo XML
-  D) Un texto plano sin estructura
-  Retroalimentación: n8n trabaja con ítems en JSON: cada uno tiene campos con su valor, como nombre, comuna o total. Los nodos procesan los ítems uno por uno.
+PREGUNTA 1 (AE2)
+El resumen de ventas de Mercado Austral debe generarse solo, todos los viernes a las 18:00. ¿Qué trigger usas en producción?
+  A) Manual
+  B) Formulario de n8n (n8n Form Trigger)
+  C) Webhook
+  D) Programado (Schedule Trigger)   <- CORRECTA
+  Retroalimentación: El trigger programado corre en un momento fijo o cada cierto tiempo. El manual sirve para probar, el formulario corre con cada envío y el webhook, cuando otra aplicación avisa.
 
-PREGUNTA 2 (AE3)
-Necesitas quedarte solo con los pedidos de la comuna de Temuco. ¿Qué nodo usas?
-  A) Summarize
-  B) Merge
-  C) Split Out
-  D) Filter   <- CORRECTA
-  Retroalimentación: Filter deja pasar solo los ítems que cumplen una condición. Summarize agrupa y calcula, Merge une dos flujos y Split Out separa una lista en ítems.
+PREGUNTA 2 (AE2)
+Verdadero o falso: "Un workflow sin trigger se ejecuta solo cada vez que llega un pedido nuevo."
+  A) Verdadero
+  B) Falso   <- CORRECTA
+  Retroalimentación: Para ejecutarse solo ante un evento, el workflow necesita un trigger, como un Form Trigger o un Webhook. Sin trigger, solo se ejecuta cuando lo corres a mano.
 
-PREGUNTA 3 (AE3)
-Un pedido trae una lista productos con tres elementos y necesitas un ítem por producto. ¿Qué nodo usas?
-  A) Split Out   <- CORRECTA
-  B) Merge
-  C) Summarize
-  D) If
-  Retroalimentación: Split Out convierte los elementos de una lista en ítems separados, para procesar cada producto por su cuenta.
+PREGUNTA 3 (AE2)
+En el formulario escribiste la etiqueta "Email", pero el nodo siguiente busca el campo email. ¿Qué pasa?
+  A) n8n corrige la mayúscula por su cuenta
+  B) El nodo no encuentra el campo y recibe un valor vacío   <- CORRECTA
+  C) El formulario deja de publicarse
+  D) El workflow se desactiva
+  Retroalimentación: Las etiquetas del formulario se convierten en los nombres de los campos, y n8n distingue mayúsculas de minúsculas. Decide una convención, como todo en minúsculas, y úsala en todo el workflow.
 
-PREGUNTA 4 (AE3)
-¿Qué nodo transforma los ítems en un archivo CSV para descargarlo o enviarlo?
-  A) Extract from File
-  B) Edit Fields (Set)
-  C) Convert to File   <- CORRECTA
-  D) Summarize
-  Retroalimentación: Convert to File genera el archivo, en CSV u otros formatos. Extract from File hace lo contrario: lee un archivo y lo convierte en ítems.
+PREGUNTA 4 (AE2)
+El sitio de Mercado Austral enlaza la URL de prueba del formulario, no la de producción. ¿Qué pasa con los pedidos?
+  A) Se registran igual que con la URL de producción
+  B) Solo se registran mientras alguien tiene el editor abierto y escuchando   <- CORRECTA
+  C) Se registran dos veces
+  D) Quedan en el historial, pero no en la tabla
+  Retroalimentación: La URL de prueba solo funciona mientras el editor escucha. En el sitio va la URL de producción, con el workflow activo: así cada envío genera una ejecución.
 
-PREGUNTA 5 (AE3)
-¿Qué operación del nodo de Supabase usas para agregar un pedido nuevo a la tabla pedidos?
-  A) Get many rows
-  B) Create a row   <- CORRECTA
-  C) Update a row
-  D) Delete a row
-  Retroalimentación: Crear, leer, actualizar y borrar son las cuatro operaciones CRUD. Un pedido nuevo es una fila nueva: Create a row.
+PREGUNTA 5 (AE2)
+Tu workflow "Pedido a registro" falla en el nodo de Supabase. ¿Qué revisas primero?
+  A) El nombre del workflow
+  B) La lista de workflows de la cuenta
+  C) El panel de entrada (Input) del nodo de Supabase, para ver qué datos le llegaron   <- CORRECTA
+  D) El idioma de la interfaz de n8n
+  Retroalimentación: Cada nodo muestra lo que recibe y lo que entrega. Si el nodo que guarda falla, casi siempre la pista está en los datos que le llegaron.

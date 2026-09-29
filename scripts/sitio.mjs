@@ -392,7 +392,7 @@ function paqueteDrive(c) {
 }
 
 // Lo nuevo del estándar de la contraparte (27-sep): bienvenida al curso y resumen del módulo para
-// HeyGen, 3 quiz para Canva y el glosario, por curso.
+// HeyGen, los quiz formativos (uno por aprendizaje esperado) y el glosario, por curso.
 function paqueteEstandar() {
   const entradas = [];
   const leeme = ['RECURSOS NUEVOS DEL MÓDULO 2 — PF1821 y PF1822 (estándar de la contraparte)', '',
@@ -400,10 +400,10 @@ function paqueteEstandar() {
     '  videos/   2 PPT para HeyGen, con la narración en las notas, y su guion:',
     '            1-bienvenida-curso: presenta el CURSO completo (no el módulo 2). Placa final por institución.',
     '            2-resumen-modulo:   resume el módulo 2, sus 4 aprendizajes esperados y lo que se entrega.',
-    '  quiz-canva/   3 quiz formativos de 5 preguntas: Quiz 1 = AE1 y AE2, Quiz 2 = AE3, Quiz 3 = AE4.',
+    '  quiz-canva/   4 quiz formativos de 5 preguntas, uno por aprendizaje esperado: Quiz 1 = AE1 ... Quiz 4 = AE4.',
     '            La respuesta correcta está marcada "<- CORRECTA" y cada pregunta trae su retroalimentación.',
     '            No repiten preguntas de la prueba objetiva ni del video interactivo.',
-    '  quiz-moodle/  los mismos 3 quiz en GIFT: Moodle > Banco de preguntas > Importar > GIFT; luego un Cuestionario',
+    '  quiz-moodle/  los mismos 4 quiz en GIFT: Moodle > Banco de preguntas > Importar > GIFT; luego un Cuestionario',
     '            con esas 5 preguntas. La retroalimentación aparece al responder y el intento queda en el LMS.',
     '  glosario/  PDF, CSV y XML para Moodle.', '',
     'Para Rise (en lugar de flipbook): usa los PDF de lectura del zip lecturas-modulo2.zip, una lección por lectura.', ''];
@@ -414,8 +414,8 @@ function paqueteEstandar() {
       entradas.push({ nombre: `${c.carpeta}/videos/${d}.pptx`, contenido: f(`produccion/videos/${o}.pptx`) });
       entradas.push({ nombre: `${c.carpeta}/videos/${d}-guion.md`, contenido: f(`produccion/videos/${o}-guion.md`) });
     });
-    for (const n of [1, 2, 3]) entradas.push({ nombre: `${c.carpeta}/quiz-canva/Quiz-${n}.txt`, contenido: f(`produccion/quiz-canva/Quiz-${n}.txt`) });
-    for (const n of [1, 2, 3]) entradas.push({ nombre: `${c.carpeta}/quiz-moodle/M2-Quiz-${n}-Moodle.gift`, contenido: f(`entrega/quiz/M2-Quiz-${n}-Moodle.gift`) });
+    for (const n of [1, 2, 3, 4]) entradas.push({ nombre: `${c.carpeta}/quiz-canva/Quiz-${n}.txt`, contenido: f(`produccion/quiz-canva/Quiz-${n}.txt`) });
+    for (const n of [1, 2, 3, 4]) entradas.push({ nombre: `${c.carpeta}/quiz-moodle/M2-Quiz-${n}-Moodle.gift`, contenido: f(`entrega/quiz/M2-Quiz-${n}-Moodle.gift`) });
     for (const a of ['M2-Glosario.pdf', 'M2-Glosario.csv', 'M2-Glosario-Moodle.xml']) entradas.push({ nombre: `${c.carpeta}/glosario/${a}`, contenido: f(`entrega/glosario/${a}`) });
   }
   return crearZip([{ nombre: 'LEEME.txt', contenido: leeme.join('\r\n') }, ...entradas]);
@@ -437,14 +437,14 @@ paginas++;
 {
   const md = leer('modulo-2/README.md');
   const descargas = `<h3>Quiz del módulo 2</h3><ul class="lista">
-<li><a href="quiz-modulo2.html">Quiz GIFT del módulo 2</a>: por curso, los 3 quiz formativos y el quiz de cada aprendizaje esperado, como quedan al importarlos en Moodle, con la respuesta correcta y la retroalimentación, o para contestarlos.</li>
-${CURSOS.map((c) => `<li>Quiz gamificados de ${c.pf} (misión de 5 niveles con puntos, estrellas e insignia; las mismas preguntas de Canva y Moodle): ${[1, 2, 3].map((n) => `<a href="modulo-2/${c.carpeta}/entrega/quiz/M2-Quiz-${n}-Juego.html">Quiz ${n}</a>`).join(' · ')}. Para Moodle, como paquete SCORM que registra el puntaje: ${[1, 2, 3].map((n) => `<a href="modulo-2/${c.carpeta}/entrega/quiz/M2-Quiz-${n}-Juego-SCORM.zip">Quiz ${n}</a>`).join(' · ')}.</li>`).join('\n')}
+<li><a href="quiz-modulo2.html">Quiz GIFT del módulo 2</a>: por curso, los 4 quiz formativos (uno por aprendizaje esperado) y el quiz de cada aprendizaje de la prueba objetiva, como quedan al importarlos en Moodle, con la respuesta correcta y la retroalimentación, o para contestarlos.</li>
+${CURSOS.map((c) => `<li>Quiz gamificados de ${c.pf} (misión de 5 niveles con puntos, estrellas e insignia; las mismas preguntas de Canva y Moodle): ${[1, 2, 3, 4].map((n) => `<a href="modulo-2/${c.carpeta}/entrega/quiz/M2-Quiz-${n}-Juego.html">Quiz AE${n}</a>`).join(' · ')}. Para Moodle, como paquete SCORM que registra el puntaje: ${[1, 2, 3].map((n) => `<a href="modulo-2/${c.carpeta}/entrega/quiz/M2-Quiz-${n}-Juego-SCORM.zip">Quiz ${n}</a>`).join(' · ')}.</li>`).join('\n')}
 </ul>
 <h3>Descargas para producción</h3><ul class="lista">
 <li><a href="descargas/videos-heygen-modulo2.zip">videos-heygen-modulo2.zip</a>: los 12 PPT para HeyGen (bienvenida, 4 videocápsulas y video de la herramienta 2, por curso), con guiones y pasos.</li>
 <li><a href="descargas/infografias-modulo2.zip">infografias-modulo2.zip</a>: los 10 prompts de infografía, uno por archivo.</li>
 <li><a href="descargas/lecturas-modulo2.zip">lecturas-modulo2.zip</a>: las 8 lecturas en PDF (una por aprendizaje esperado), listas para subir.</li>
-<li><a href="descargas/estandar-contraparte-modulo2.zip">estandar-contraparte-modulo2.zip</a>: bienvenida al curso y resumen del módulo (PPT para HeyGen), 3 quiz para Canva y glosario, por curso.</li>
+<li><a href="descargas/estandar-contraparte-modulo2.zip">estandar-contraparte-modulo2.zip</a>: bienvenida al curso y resumen del módulo (PPT para HeyGen), 4 quiz para Canva (uno por aprendizaje esperado) y glosario, por curso.</li>
 ${CURSOS.map((c) => `<li><a href="descargas/actividades-modulo2-${c.pf}.zip">actividades-modulo2-${c.pf}.zip</a>: las 2 actividades prácticas de ${c.pf} (enunciados, PDF de respaldo, HTML para Moodle, insumos y respuesta modelada), con un LEEME ceñido a las bases.</li>
 <li><a href="descargas/modulo2-${c.pf}-evaluacion-metodologia-actividades.zip">modulo2-${c.pf}-evaluacion-metodologia-actividades.zip</a>: evaluación (9 PDF), metodología en PDF y actividades de ${c.pf}, en carpetas para subir a Drive.</li>`).join('\n')}
 ${CURSOS.map((c) => `<li>${c.pf} · <a href="modulo-2/${c.carpeta}/entrega/">recursos listos para subir</a> · <a href="modulo-2/${c.carpeta}/produccion/ESTADO.html">estado de producción</a></li>`).join('\n')}

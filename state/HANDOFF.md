@@ -1,13 +1,26 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
-`2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` — 2026-09-24/29
+`2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` y `-02` — 2026-09-24/29
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 > **Ojo (sesión -04):** las sesiones -02 y -03 del 27-sep, que armaron los quiz en Canva, reemplazaron este archivo
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
+
+## HECHO (sesión 2026-09-29-02): un quiz formativo por aprendizaje esperado
+
+- **4 quiz por curso, Quiz n = AEn**, 5 preguntas cada uno, en `contenidos/<PF>/modulo-2/R-quiz-canva.md`. De ahí salen los GIFT
+  (`npm run produccion -- PF1821 PF1822`) y los juegos con su SCORM (`npm run quiz-juego`). **Ojo:** `npm run produccion` reescribe
+  también todos los PDF y PPTX aunque no cambien (solo su fecha interna); si solo cambiaste quiz, restaura con git lo que no sea
+  `entrega/quiz/` ni `produccion/quiz-canva/`.
+- Probados los 8 juegos en Edge headless con un LMS SCORM falso (desde PowerShell): completos, puntaje 100 y "completed".
+- **Pendiente, en este orden:** (1) reemplazar en Drive los 6 archivos de "4 Quiz → Quiz gamificados (juego y SCORM)" como nueva
+  versión y subir los 2 del Quiz 4 por curso, con el procedimiento de más abajo (Claude in Chrome); agregar sus ids a
+  `privado/drive/enlaces.json` (`quizJuego`); (2) actualizar la hoja de Google del usuario: una columna más de juegos (Quiz AE4);
+  (3) rehacer los quiz de Canva (G3): 4 diseños por curso con `produccion/quiz-canva/Quiz-1.txt` a `Quiz-4.txt`; (4) push, para que
+  el sitio publique la versión nueva.
 
 ## HECHO (sesión 2026-09-29-01): planes formativos oficiales de los 15 cursos, en una planilla
 
