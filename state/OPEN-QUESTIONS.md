@@ -163,3 +163,9 @@ llegar con algo": se presenta igual. Quedó en la planilla de revisión (Resumen
 Los 30 formularios de los quiz de Canva tienen activado por defecto "Evita respuestas duplicadas" (cada persona responde una sola
 vez) y el aviso por correo de cada respuesta. Con muchos participantes, el correo satura; y con una sola respuesta no se puede
 reintentar. Se cambia en la Configuración de cada formulario, en Canva. Lo decide el usuario.
+
+**24. ¿Qué total de horas vale cuando SIPFOR no cuadra?** — ABIERTA
+En SIPFOR, el total del plan no es la suma de sus módulos en PF1462 (198 contra 201), PF1487 (207 contra 210), PF1485 (177 contra 180),
+PF1493 (201 contra 204) y PF1495 (207 contra 210); y la planilla de oferta (`data/planes-formativos.csv`) dice otra cosa en PF1482 (204
+contra 210) y PF1493 (201). Importa para las horas del Anexo 2 y para la regla de 1 actividad de extensión cada 50 horas. Se puede
+mirar el PDF oficial de cada plan o consultarlo a SENCE. Lo decide el usuario o Natalia. Detectado en la sesión `2026-09-29-claude-code-01`.

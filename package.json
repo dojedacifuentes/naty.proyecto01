@@ -24,6 +24,7 @@
     "marca": "node scripts/marca.mjs",
     "drive": "node scripts/drive.mjs",
     "planilla": "node scripts/planilla.mjs",
+    "planes": "node scripts/planes-oficiales.mjs",
     "build": "node scripts/sitio.mjs",
     "verificadores": "node scripts/auditar-verificadores.mjs",
     "hooks": "node scripts/instalar-hooks.mjs",

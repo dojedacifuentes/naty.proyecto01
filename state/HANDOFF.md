@@ -1,13 +1,29 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
-`2026-09-27-claude-code-01` a `-18` y `2026-09-28-claude-code-01` a `-04` — 2026-09-24/28
+`2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` — 2026-09-24/29
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 > **Ojo (sesión -04):** las sesiones -02 y -03 del 27-sep, que armaron los quiz en Canva, reemplazaron este archivo
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
+
+## HECHO (sesión 2026-09-29-01): planes formativos oficiales de los 15 cursos, en una planilla
+
+- **`npm run planes`** → `privado/drive/Planes-Formativos-SENCE-TD2026.xlsx` (se entregó al usuario como archivo; no está en Drive).
+  Por curso: el **módulo 2**, que es el que se desarrolla y se evalúa, con aprendizajes, criterios y contenidos **textuales**, y
+  **todos los módulos**, que se muestran en el LMS. Trae también qué evalúan las bases (igual para los 15) y las fuentes.
+- Datos: `npm run sipfor -- --todos` (los 15 en `data/planes/`). Cotejo automático con los PDF oficiales de
+  "Licitaciones TD 2026 / PF SENCE a licitar": **12 de 15 iguales**. **Faltan los PDF de PF1487, PF1485 y PF1493**; si se bajan de
+  SIPFOR a esa carpeta, `npm run planes` los coteja solo.
+- Útil para repartir el trabajo: **PF1474, PF1477, PF1478 y PF1479 comparten el mismo módulo 2** (`MB00162` Fundamentos de desarrollo
+  front-end, 72 h, 7 aprendizajes): un solo desarrollo sirve para los cuatro.
+- Anexos 2 referenciales de años anteriores: hay para 11 de los 15 (no para PF1487, PF1485, PF1493, PF1821 ni PF1822). **Falta ver qué
+  módulo desarrolló cada uno** y si coincide con el módulo 2 de 2026; es el siguiente paso natural si el usuario quiere decidir qué se
+  reutiliza, qué se adapta y qué se rehace.
+- Horas que no cuadran en SIPFOR: pregunta abierta #24.
+- Los guiones de video de PF1821 y PF1822 coinciden con el plan oficial; el usuario dio por buenas las diferencias leves de la voz.
 
 ## HECHO (sesión 2026-09-28-01): quiz de Canva interactivos y quiz gamificados en HTML y SCORM
 

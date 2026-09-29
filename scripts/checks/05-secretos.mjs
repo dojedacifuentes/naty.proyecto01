@@ -23,6 +23,9 @@ const PATRONES = [
 
 const EXTENSIONES_TEXTO = ['.md', '.csv', '.txt', '.env', '.json'];
 const esTexto = (archivo) => EXTENSIONES_TEXTO.some((e) => archivo.endsWith(e));
+// Texto oficial de los planes, extraído tal cual de SIPFOR (npm run sipfor): ahí "COMPONENTES
+// CLAVE: MÉTRICA" es español, no una credencial. Solo se eximen los patrones débiles.
+const DATOS_SIPFOR = /^data\/(planes|sipfor)\//;
 
 // Un valor que no compromete a nadie: plantilla, pendiente, tachado o pregunta.
 const ES_PLACEHOLDER = /^(<[^>]*>|`?pendiente:?.*|s[ií]\s*\/\s*no|no\b.*|\*{2,}|x{3,}|\.{3,}|-+|—|\(.*\)|\s*)$/i;
@@ -38,7 +41,7 @@ export default {
       leer(abs).split('\n').forEach((linea, i) => {
         if (linea.includes(EXENTA)) return;
         for (const p of PATRONES) {
-          if (p.soloTexto && !esTexto(archivo)) continue;
+          if (p.soloTexto && (!esTexto(archivo) || DATOS_SIPFOR.test(archivo))) continue;
           const m = p.re.exec(linea);
           if (!m) continue;
           const valor = (m[p.valor] || '').trim().replace(/[.,;)]+$/, '');

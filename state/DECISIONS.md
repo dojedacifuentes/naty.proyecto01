@@ -601,3 +601,18 @@ Quién: usuario (pedido), claude-code (diseño e implementación), sesión `2026
 - Enlaces a la vista de Drive (`/file/d/<id>/view`), no a la descarga directa: así se ven como archivo en la hoja y en Drive; como
   Drive no ejecuta el HTML (muestra el código), la planilla dice que se descarga y se abre con doble clic.
 Quién: usuario (pedido y sesión de Google), claude-code, sesión `2026-09-28-claude-code-04`.
+
+## 2026-09-29 · Planilla de planes formativos oficiales de los 15 cursos (sesión claude-code, 2026-09-29-claude-code-01)
+
+- **Qué:** `npm run planes` genera `privado/drive/Planes-Formativos-SENCE-TD2026.xlsx` con lo que pide el plan oficial de cada curso:
+  el módulo 2 (se desarrolla y se evalúa) con aprendizajes, criterios y contenidos textuales, y todos los módulos (se muestran en el
+  LMS, según el usuario). Pedido del usuario: "se muestran todos en el lms pero se desarrolla el 2. necesito un archivo que señale lo
+  que pide el plan formativo oficial del sence para cada curso".
+- **Fuente:** SIPFOR (npm run sipfor), cotejado con los PDF oficiales de la carpeta local "Licitaciones TD 2026" cuando existen.
+  Se descartó extraer todo desde los PDF: faltan 3 y su tabla de tres columnas sale intercalada al convertirla a texto.
+- **Dónde:** en `privado/` (fuera de git), porque lista los Anexos 2 referenciales, que son de otras instituciones.
+- **Escritor compartido:** el .xlsx de `planilla.mjs` pasó a `scripts/lib/xlsx.mjs`, sin cambiar su salida, en vez de copiarlo.
+- **Control 05:** se eximió `data/planes/` y `data/sipfor/` solo de los patrones débiles; los fuertes (claves privadas, AKIA, URL con
+  contraseña) se siguen buscando ahí. Alternativa descartada: marcar cada línea con `verificacion:ignorar-secretos`, que se pierde al
+  volver a extraer.
+Quién: usuario (pedido), claude-code, sesión `2026-09-29-claude-code-01`.

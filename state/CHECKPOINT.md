@@ -2,8 +2,8 @@
 
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
-**Última actualización:** 2026-09-28
-**Por:** 2026-09-28-claude-code-04 (Claude Code · opus-5.5)
+**Última actualización:** 2026-09-29
+**Por:** 2026-09-29-claude-code-01 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -297,6 +297,26 @@ del google sheet y que Natalia pueda verlo… no desde el vercel sino como archi
       filas del juego van dentro de cada curso, en la planilla al final, como antes). `npm run drive` separa ahora "Quiz Moodle (GIFT)"
       de "Quiz gamificados (juego y SCORM)". `npm run verificar`: 0 errores.
 - [ ] Drive muestra el HTML como código en su vista previa: Natalia tiene que descargarlo y abrirlo (lo dice la planilla).
+
+Sesión claude-code-01, 2026-09-29: planes formativos oficiales de los 15 cursos (pedido: "necesito un archivo que señale lo que
+pide el plan formativo oficial del sence para cada curso"; antes, revisar que los guiones de video usen los términos del plan).
+
+- [x] Guiones de video de PF1821 y PF1822 cotejados con la ficha SIPFOR y con los PDF oficiales de `PF SENCE a licitar`: los 115 textos
+      del plan que citan (aprendizajes, criterios, contenidos) son idénticos, y las notas de los .pptx y las copias de Drive coinciden
+      con los guiones. La voz traduce algunos términos ("casos borde" por "casos edge", "depuración" por "debugging", etc.) y hay
+      detalles en las preguntas de los videos interactivos: el usuario dijo que **así está bien, son detalles leves**. No se tocó nada.
+- [x] `npm run sipfor -- --todos`: los 13 planes que faltaban quedan en `data/planes/` y `data/sipfor/` (PF1821 y PF1822 sin cambios).
+- [x] Nueva `npm run planes` (`scripts/planes-oficiales.mjs`) → `privado/drive/Planes-Formativos-SENCE-TD2026.xlsx`, enviado al usuario:
+      Resumen (15 cursos, módulo 2), Módulo 2 (84 aprendizajes con criterios y contenidos textuales), Todos los módulos (151, se
+      muestran en el LMS), Qué evalúan las bases (tabla maestra de docs/01) y Fuentes. Coteja el módulo 2 contra el PDF oficial:
+      **12 de 15 iguales**; PF1487, PF1485 y PF1493 no tienen PDF en la carpeta (quedan con el dato de SIPFOR, sin cotejar).
+- [x] El escritor de .xlsx pasó de `scripts/planilla.mjs` a `scripts/lib/xlsx.mjs` (compartido); `npm run planilla` genera el
+      mismo archivo byte a byte. Se agregó alto de fila automático y saltos de línea en celdas.
+- [x] Control 05: los patrones débiles (la palabra clave seguida de dos puntos) ya no se aplican a `data/planes/` ni `data/sipfor/` (un contenido de PF1485 que lista
+      "componentes clave" daba falso positivo). `npm run verificar`: 0 errores.
+- [ ] Horas que no cuadran en SIPFOR (#24): el total del plan difiere de la suma de módulos en PF1462, PF1487, PF1485, PF1493 y PF1495,
+      y de la planilla de oferta en PF1482 y PF1493. La planilla lo marca en amarillo.
+- [ ] La planilla no está en Drive: se entregó el archivo. Subirla (convertida en Google Sheets) si el usuario lo pide.
 
 ## A medias
 
