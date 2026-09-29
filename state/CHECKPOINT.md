@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-29
-**Por:** 2026-09-29-claude-code-03 (Claude Code · opus-5.5)
+**Por:** 2026-09-29-claude-code-04 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -349,6 +349,16 @@ usaremos"; "los demás juegos antiguos sácalos de ese drive").
       Comprobado leyendo la hoja.
 - [x] Canva: el usuario pidió no seguir. Alcanzó a quedar en la papelera de Canva 1 diseño ("PF1821 · M2 · Quiz 2 · Transformar datos");
       los otros 5 siguen. Las columnas "Quiz 1/2/3" (Canva) de la planilla no se tocaron: la de PF1821 Quiz 2 apunta a ese diseño.
+
+Sesión claude-code-04, 2026-09-29: planilla sin las casillas que ya no se usan (pedido: "hay que eliminar las casillas y links que no
+usaremos, como los quizzes antiguos"; el usuario eligió eliminar también los GIFT formativos).
+
+- [x] Hoja de Google "01 Planilla de seguimiento": en Resumen se borraron las columnas "Quiz 1/2/3" (Canva), "Quiz (PDF y Moodle)" y
+      "Quiz GIFT (vista web)"; los juegos quedaron en M–P (Quiz AE1 a AE4) y su carpeta en Q. En Entregables se borraron las 6 filas
+      "Quiz formativos (Moodle)" (GIFT). En Pendientes se borró la fila de Canva y la #22 dice "Revisar los 4 quiz gamificados…".
+      Comprobado leyendo la hoja. Se mantiene el GIFT de la prueba objetiva por aprendizaje (hoja Aprendizajes y filas "M2-AEn-Quiz.gift").
+- [x] `scripts/planilla.mjs` genera lo mismo (sin Canva ni GIFT formativos): 22 columnas en Resumen, 89 entregables, 6 pendientes.
+- Los archivos GIFT siguen en Drive ("4 Quiz → Quiz Moodle (GIFT)") y en el repo; solo salieron de la planilla.
 
 ## A medias
 

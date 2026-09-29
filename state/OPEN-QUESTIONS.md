@@ -173,3 +173,4 @@ mirar el PDF oficial de cada plan o consultarlo a SENCE. Lo decide el usuario o 
 gamificación y SCORM. Ya no son "3 quiz en Canva": falta confirmar con la contraparte si acepta los 4 y rehacer los de Canva.
 **Nota a #22 y #23 (2026-09-29, sesión `2026-09-29-claude-code-03`):** el usuario descartó los quiz de Canva; #23 (configuración de sus formularios)
 deja de aplicar. Queda de #22 solo si la contraparte acepta los 4 juegos en lugar de "3 quiz en Canva".
+**Nota a #22 (2026-09-29, sesión `2026-09-29-claude-code-04`):** la planilla ya no ofrece los quiz formativos en GIFT; solo los juegos.

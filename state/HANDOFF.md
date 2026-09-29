@@ -1,13 +1,18 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
-`2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-03` — 2026-09-24/29
+`2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-04` — 2026-09-24/29
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 > **Ojo (sesión -04):** las sesiones -02 y -03 del 27-sep, que armaron los quiz en Canva, reemplazaron este archivo
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
+
+## HECHO (sesión 2026-09-29-04): planilla sin Canva ni GIFT formativos
+
+- La hoja de Google y `npm run planilla` ya no tienen columnas de Canva ni de GIFT formativo: Resumen M–P = Quiz AE1–AE4 gamificado,
+  Q = carpeta. Entregables sin las filas "Quiz formativos (Moodle)". Pendientes sin la fila de Canva.
 
 ## HECHO (sesión 2026-09-29-03): Drive y planilla con un quiz por aprendizaje; Canva descartado
 

@@ -639,3 +639,12 @@ Quién: usuario (pedido), claude-code, sesión `2026-09-29-claude-code-02`.
   que quedaba (Canva PDF y los GIFT del reparto anterior en las carpetas de cliente) se mandó a la papelera, no se borró definitivamente.
 - **Descartado:** borrar los 6 diseños de Canva: el usuario lo detuvo después del primero.
 Quién: usuario (pedido), claude-code, sesión `2026-09-29-claude-code-03`.
+
+## 2026-09-29 · La planilla solo lista los juegos como quiz formativos (sesión claude-code, 2026-09-29-claude-code-04)
+
+- **Qué:** se quitaron de la planilla las casillas de Canva y de los quiz formativos en GIFT (Resumen, Entregables y Pendientes).
+- **Por qué:** el usuario pidió eliminar "las casillas y links que no usaremos, como los quizzes antiguos" y, ante la pregunta, eligió
+  eliminar también los GIFT formativos: se usarán los juegos (HTML y SCORM).
+- **Se mantiene:** el GIFT de la prueba objetiva de cada aprendizaje (instrumento 3), que es otra cosa. Los archivos GIFT formativos
+  no se borraron de Drive ni del repo.
+Quién: usuario, claude-code, sesión `2026-09-29-claude-code-04`.
