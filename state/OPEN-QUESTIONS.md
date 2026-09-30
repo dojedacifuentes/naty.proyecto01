@@ -24,7 +24,7 @@ herramientas y extensión al plan completo?** — ABIERTA
 Las bases dicen que el ítem D se desarrolla *"a lo largo de todo el plan formativo"*,
 pero B y C hablan del módulo. Conviene confirmarlo junto con la pregunta 1.
 
-**16. ¿Cómo se cuenta el "segundo módulo" cuando el plan empieza con un módulo transversal?** — ABIERTA · respuesta parcial
+**16. ¿Cómo se cuenta el "segundo módulo" cuando el plan empieza con un módulo transversal?** — RESUELTA (2026-09-30)
 En SIPFOR, PF1821 y PF1822 (y probablemente los 15) empiezan con `MB00171` "Orientación al
 perfil de especialidades y metodología del curso" (12 h, transversal). Contado sobre todos
 los módulos, el segundo es el primer técnico: `MA04560` en PF1821 y `MA04576` en PF1822.
@@ -35,6 +35,9 @@ plan. Conviene confirmarlo contra el PDF oficial de cada plan y sumarlo a la con
 carpeta local "PF SENCE a licitar") numeran el transversal como "Módulo N°1" y a `MA04560` y
 `MA04576` como "Módulo N°2". Apoya el supuesto; falta que Natalia lo dé por cerrado o que entre
 en la consulta #1.
+**Respondió el usuario (2026-09-30, sesión `2026-09-30-claude-code-08`):** "si" a la pregunta "¿el módulo 2 es el que el PDF
+oficial de cada plan numera como Módulo N°2?". Se cuenta sobre todos los módulos, incluido el transversal: el módulo 2 es el
+"Módulo N°2" del PDF oficial (`MA04560` en PF1821, `MA04576` en PF1822; en los demás, el que su PDF numere así).
 
 **17. ¿Quién elige el "aprendizaje esperado seleccionado" de la metodología?** — ABIERTA
 La pauta de metodología pide 2 actividades prácticas y 2 herramientas didácticas "para el
@@ -71,11 +74,13 @@ Puede ser el cuello de botella real del proyecto, por encima de la redacción.
 **Respondió el usuario (2026-09-30, sesión `2026-09-30-claude-code-07`):** "yo armo los lms". Los arma el usuario.
 Cuántos: uno por cliente y curso, según la matriz de #3 (pendiente del adjunto).
 
-**6. ¿Se usa LMS propio de cada cliente o la plataforma LMS de SENCE?** — ABIERTA
+**6. ¿Se usa LMS propio de cada cliente o la plataforma LMS de SENCE?** — RESUELTA (2026-09-30): LMS propio
 Si es la de SENCE, hay que escribir a `adminelearning@sence.cl` apenas se publique el
 llamado, con nombre del concurso, nombre y RUT del OTEC y RUT del usuario de prueba.
 **Nota (2026-09-30, sesión `2026-09-30-claude-code-07`):** al responder #1 el usuario escribió "en el lms de cada
-cliente", lo que apunta al LMS propio. Se le pidió confirmarlo; hasta entonces sigue abierta.
+cliente", lo que apunta al LMS propio. Se le pidió confirmarlo.
+**Respondió el usuario (2026-09-30, sesión `2026-09-30-claude-code-08`):** "lms cada institucion". Se usa el LMS propio de
+cada institución, no la plataforma de SENCE; no hace falta escribir a `adminelearning@sence.cl`. Los arma el usuario (#5).
 
 **7. ¿Quién levanta las fichas de cliente?** — ABIERTA
 Infraestructura, equipos, LMS, docentes, trayectoria, alianzas. Sin esos datos las
@@ -145,17 +150,21 @@ primario. Si entregan la versión en blanco (negativo) de su logo, va sin placa:
 campo `logo_negativo` de su `marca.json`. Pedirla también es parte de esta pregunta.
 
 
-**20. ¿La carpeta NATY 2.0 debe seguir abierta a cualquiera con el enlace, como editor?** — ABIERTA
-**Nota (2026-09-30, sesión `2026-09-30-claude-code-07`):** comprobado de nuevo con `get_file_permissions`: sigue `anyone`
-con rol `writer`. Además, el id de la carpeta está en archivos ya publicados de este repo, que es público (#14), así que
-cualquiera que lea GitHub puede llegar a ella y editar o borrar. El usuario respondió "no sé a qué te refieres"; se le
-explicó con las tres opciones (lector, restringido o dejarla así). Espera su decisión.
+**20. ¿La carpeta NATY 2.0 debe seguir abierta a cualquiera con el enlace, como editor?** — RESUELTA (2026-09-30): se mantiene
+Respondió el usuario en la sesión `2026-09-30-claude-code-08`: se queda como editor (detalle al final de esta entrada).
 Detectado el 2026-09-27 (sesión `2026-09-27-claude-code-12`) con `get_file_permissions`: la carpeta
 (id 1fGgwXUyr2wUyyxEn8J36vdmy62Ul2lsv) tiene `anyone` con rol `writer`. Cualquiera que reciba el enlace
 puede editar, mover o borrar, y la carpeta trae recursos con la marca de UNAB, Skillnest y la Autónoma, que
 compiten entre sí (#11, #18); por eso las marcas viven fuera de git. Opciones: restringir a personas invitadas;
 dejar el enlace como lector; o mantenerlo. Se cambia en Drive → Compartir → Acceso general (el conector no quita
 permisos). Lo decide el usuario.
+**Nota (2026-09-30, sesión `2026-09-30-claude-code-07`):** comprobado de nuevo con `get_file_permissions`: sigue `anyone`
+con rol `writer`. Además, el id de la carpeta está en archivos ya publicados de este repo, que es público (#14), así que
+cualquiera que lea GitHub puede llegar a ella y editar o borrar. El usuario respondió "no sé a qué te refieres"; se le
+explicó con las tres opciones (lector, restringido o dejarla así).
+**Respondió el usuario (2026-09-30, sesión `2026-09-30-claude-code-08`), con el riesgo explicado:** "dejala como editora,
+trabajamos juntos, no hay problema". NATY 2.0 sigue abierta a cualquiera con el enlace como editor. No se toca el permiso ni
+hay que volver a plantearlo; si cambia la situación (por ejemplo, se comparte fuera del equipo), lo decide el usuario.
 
 **21. ¿Con qué cuenta debe trabajar el conector de Drive, y qué planilla queda vigente?** — ABIERTA
 Detectado el 2026-09-27 (sesión `2026-09-27-claude-code-14`): el conector de Drive está conectado como otra cuenta de Google (no la del usuario)

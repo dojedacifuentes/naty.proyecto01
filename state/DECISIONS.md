@@ -737,3 +737,12 @@ Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-06`.
   pero no se dijo; se pidió confirmar.
 - **Consecuencia:** con el cierre el 5-oct quedan 3 días hábiles, y el módulo 2 está desarrollado solo en PF1821 y PF1822.
 Quién: usuario (respuestas), claude-code, sesión `2026-09-30-claude-code-07`.
+
+## 2026-09-30 · LMS propio, conteo del módulo 2 y NATY 2.0 abierta como editor (sesión claude-code, 2026-09-30-claude-code-08)
+
+- **Qué:** se cierran #6 (LMS propio de cada institución, no el de SENCE), #16 (el módulo 2 es el "Módulo N°2" del PDF oficial de
+  cada plan, contando el transversal) y #20 (NATY 2.0 sigue abierta a cualquiera con el enlace como editor).
+- **Por qué:** respuestas del usuario en el chat: "6 lms cada institucion", "16 si" y "20 dejala como editora, trabajamos juntos, no
+  hay problema". En #20 el usuario decidió después de que se le explicara que el id de la carpeta está en el repo público.
+- **Descartado:** cambiar el acceso a lector o restringido (#20), que proponía la sesión -07 como opción recomendada.
+Quién: usuario (respuestas), claude-code, sesión `2026-09-30-claude-code-08`.

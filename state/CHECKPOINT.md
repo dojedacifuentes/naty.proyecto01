@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-30
-**Por:** 2026-09-30-claude-code-07 (Claude Code · opus-5.5)
+**Por:** 2026-09-30-claude-code-08 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -438,9 +438,15 @@ Sesión claude-code-07, 2026-09-30: respuestas del usuario a las preguntas abier
 - [x] **#13 resuelta (cierre):** la licitación cierra el **lunes 5 de octubre de 2026**; desde el 30-sep quedan 3 días hábiles. Hora sin
       confirmar.
 - [ ] #3: el usuario dijo adjuntar la matriz cliente × curso (Excel y captura), pero no llegó. Pedida de nuevo.
-- [ ] #20: comprobado que NATY 2.0 sigue "cualquiera con el enlace, editor" y que su id está en el repo público; explicado al usuario,
-      que decide (lector, restringido o dejarla).
-- [ ] #6 y #16: se le pidió al usuario confirmar (LMS propio de cada cliente; "módulo 2" = "Módulo N°2" del PDF oficial).
+- [x] #20, #6 y #16: explicados o preguntados aquí y respondidos en la sesión -08 (abajo).
+
+Sesión claude-code-08, 2026-09-30: más respuestas del usuario.
+
+- [x] **#6 resuelta:** LMS propio de cada institución (no el de SENCE).
+- [x] **#16 resuelta:** el módulo 2 es el "Módulo N°2" del PDF oficial de cada plan (se cuenta el transversal).
+- [x] **#20 resuelta:** NATY 2.0 se queda "cualquiera con el enlace, editor" ("trabajamos juntos, no hay problema"), con el riesgo
+      explicado. No se tocó el permiso.
+- [ ] #3: el usuario preguntó "¿tablas de qué?"; se le aclaró que es la lista de qué cliente postula a qué curso.
 
 ## A medias
 
@@ -479,7 +485,8 @@ visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de co
 - **Cierre de ofertas: lunes 5 de octubre de 2026** (usuario, 30-sep, #13). Según las bases, a las 18:00 del décimo día hábil tras la
   publicación del llamado; la hora está por confirmar
 - Alcance (#1): solo el módulo 2 de cada curso; los demás módulos, solo nombrados en el LMS de cada cliente
-- LMS (#5): los arma el usuario
+- LMS (#5, #6): los arma el usuario, en el LMS propio de cada institución
+- Módulo 2 (#16): el "Módulo N°2" del PDF oficial de cada plan
 - Periodo de consultas: 5 días hábiles tras la publicación
 
 ## Estado de la verificación
