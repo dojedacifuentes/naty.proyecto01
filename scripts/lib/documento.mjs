@@ -37,7 +37,7 @@ const DOC = `<style>
 </style>`;
 
 /**
- * d = { pf, curso, modulo, codigo, horas, kicker, titulo, ficha: [[rótulo, valor o [valores], ancha?]], md, pie }
+ * d = { pf, curso, modulo, codigo, horas (opcional), kicker, titulo, ficha: [[rótulo, valor o [valores], ancha?]], md, pie }
  * Varios documentos en uno: d.partes = [{ kicker, titulo, ficha, md }] (cada parte empieza en página nueva).
  */
 export function documentoPdfHtml(d) {
@@ -45,7 +45,7 @@ export function documentoPdfHtml(d) {
   const pie = String(d.pie).replace(/"/g, '\\"');
   const cuerpo = partes.map((p, i) => `<section class="${i ? 'parte-doc' : ''}">
   <header class="cabecera"><p class="kicker">${esc(p.kicker)}</p><h1>${inline(p.titulo)}</h1>
-    <p class="curso">${esc(d.pf)} · ${esc(d.curso)}<br>Módulo 2 · ${esc(d.codigo)} · ${esc(d.modulo)} · ${esc(d.horas)} h</p><div class="regla"></div></header>
+    <p class="curso">${esc(d.pf)} · ${esc(d.curso)}<br>Módulo 2 · ${esc(d.codigo)} · ${esc(d.modulo)}${d.horas ? ` · ${esc(d.horas)} h` : ''}</p><div class="regla"></div></header>
   ${p.ficha?.length ? `<dl class="ficha-doc">${p.ficha.map(([r, v, ancha]) => `<div${ancha ? ' class="ancha"' : ''}><dt>${esc(r)}</dt><dd>${Array.isArray(v) ? v.map((x) => `<span>${inline(x)}</span>`).join('') : inline(v)}</dd></div>`).join('')}</dl>` : ''}
   <div class="doc">${markdown(p.md).replace(/&lt;br&gt;/g, '<br>')}</div>
 </section>`).join('\n');

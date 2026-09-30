@@ -76,6 +76,7 @@ export function markdown(md) {
         const m = /^(\s*)([-*]|\d+\.)\s+(.*)$/.exec(L[i]);
         if (m && m[1].length < 2) items.push({ texto: m[3], sub: [] });
         else if (m) items[items.length - 1].sub.push(m[3]);
+        else if (items.at(-1).sub.length) items.at(-1).sub.push(items.at(-1).sub.pop() + ' ' + L[i].trim()); // sigue la sub-viñeta
         else items[items.length - 1].texto += ' ' + L[i].trim();
         i++;
       }
@@ -84,7 +85,9 @@ export function markdown(md) {
         return tarea ? `<span class="box${tarea[1] === ' ' ? '' : ' on'}"></span>${inline(tarea[2])}` : inline(t).replace(/&lt;br&gt;/g, '<br>');
       };
       const tag = ordenada ? 'ol' : 'ul';
-      html.push(`<${tag}>${items.map((it) => `<li>${li(it.texto)}${it.sub.length ? `<ul>${it.sub.map((s) => `<li>${li(s)}</li>`).join('')}</ul>` : ''}</li>`).join('')}</${tag}>`);
+      // Una lista numerada cortada por una tabla o un párrafo sigue su numeración ("4." después de una tabla).
+      const inicio = ordenada ? +/^\s*(\d+)\./.exec(l)[1] : 1;
+      html.push(`<${tag}${inicio > 1 ? ` start="${inicio}"` : ''}>${items.map((it) => `<li>${li(it.texto)}${it.sub.length ? `<ul>${it.sub.map((s) => `<li>${li(s)}</li>`).join('')}</ul>` : ''}</li>`).join('')}</${tag}>`);
       continue;
     }
     const buf = [];

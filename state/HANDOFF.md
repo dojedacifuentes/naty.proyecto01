@@ -9,6 +9,17 @@
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
 
+## HECHO (sesión 2026-09-30-01): ABP y ABPRO por aprendizaje esperado
+
+- 16 actividades en `contenidos/<PF>/modulo-2/R-abp-abpro.md`; `npm run abp` genera HTML y PDF en `entrega/abp-abpro/`.
+- Drive: carpeta "5 ABP y ABPRO" de cada curso (8 Google Docs y 8 PDF). Hoja de Google: pestaña "ABP y ABPRO", Resumen R y Pendientes 6.
+- **Si cambia un enunciado:** `npm run abp`, reemplazar el PDF en Drive como nueva versión y, en el Google Doc, borrar todo y pegar el
+  HTML (en esta sesión se hizo con un selector de archivo temporal en la página de Docs y un evento "paste"; el teclado de Chrome falla
+  a ratos, así que el nombre del Doc se cambió también desde la página).
+- **Reglas del usuario para estos recursos:** sin duración de la actividad y sin rótulos internos ("textual", "oficial").
+- `npm run planilla -- --hoja "ABP y ABPRO"` exporta solo esa pestaña para importarla en Google Sheets (Archivo → Importar → Insertar
+  hojas nuevas).
+
 ## HECHO (sesión 2026-09-29-04): planilla sin Canva ni GIFT formativos
 
 - La hoja de Google y `npm run planilla` ya no tienen columnas de Canva ni de GIFT formativo: Resumen M–P = Quiz AE1–AE4 gamificado,

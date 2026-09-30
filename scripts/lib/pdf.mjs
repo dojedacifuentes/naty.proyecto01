@@ -28,5 +28,15 @@ export function imprimirPdf(htmlRel, pdfRel) {
   execFileSync(nav, ['--headless=new', '--disable-gpu', '--no-pdf-header-footer', '--run-all-compositor-stages-before-draw',
     '--generate-pdf-document-outline',
     `--print-to-pdf=${pdfAbs}`, pathToFileURL(ruta(htmlRel)).href], { stdio: 'ignore', timeout: 120000 });
+  // Si ya hay un Edge abierto, el proceso puede volver antes de terminar de escribir: se espera el archivo.
+  const limite = Date.now() + 60000;
+  let previo = -1;
+  while (Date.now() < limite) {
+    const tam = fs.existsSync(pdfAbs) ? fs.statSync(pdfAbs).size : -1;
+    if (tam > 0 && tam === previo) break;
+    previo = tam;
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 500);
+  }
+  if (!fs.existsSync(pdfAbs)) throw new Error(`El navegador no generó ${pdfRel}`);
   return Math.round(fs.statSync(pdfAbs).size / 1024);
 }

@@ -32,6 +32,7 @@ import { imprimirPdf, navegador } from './lib/pdf.mjs';
 import { leerLectura, verificarLectura, lecturaHtml, palabras, terminos } from './lib/lectura.mjs';
 import { leerNotebook, notebookJson, verificarNotebook } from './lib/notebook.mjs';
 import { documentoPdfHtml, moodleHtml } from './lib/documento.mjs';
+import { oracion } from './lib/oracion.mjs';
 import { workflowActividad2, pedidosPruebaJson, comunasCsv, sqlActividad2 } from './lib/workflow-roto.mjs';
 import fs from 'node:fs';
 
@@ -142,27 +143,6 @@ function verificarTextual(pf, cap, fichaMd) {
   const faltan = u.filter((x) => !usadas.includes(x));
   if (ajenas.length) throw new Error(`${pf} cápsula ${cap.n}: rótulos que no son textuales del plan: ${ajenas.join(' | ')}`);
   if (faltan.length) throw new Error(`${pf} cápsula ${cap.n}: contenidos del plan sin lámina: ${faltan.join(' | ')}`);
-}
-
-// Texto del plan (en mayúsculas en SIPFOR) → oración para la voz, con las mismas palabras.
-// Algunas voces deletrean las palabras en mayúsculas; las siglas y nombres propios se restauran.
-const PROPIOS = [
-  ['apis', 'APIs'], ['api', 'API'], ['http', 'HTTP'], ['json', 'JSON'], ['csv', 'CSV'], ['xml', 'XML'],
-  ['roi', 'ROI'], ['crud', 'CRUD'], ['ia', 'IA'], ['nlp', 'NLP'], ['bleu', 'BLEU'], ['rouge', 'ROUGE'],
-  ['tf-idf', 'TF-IDF'], ['qa', 'QA'], ['rest', 'REST'], ['get', 'GET'], ['post', 'POST'], ['nltk', 'NLTK'],
-  ['spacy', 'spaCy'], ['openai', 'OpenAI'], ['hugging face', 'Hugging Face'], ['supabase', 'Supabase'],
-  ['python', 'Python'], ['if/switch', 'If/Switch'], ['merge', 'Merge'], ['filter', 'Filter'],
-  ['summarize', 'Summarize'], ['split', 'Split'], ['set', 'Set'], ['tensorflow', 'TensorFlow'],
-  ['pytorch', 'PyTorch'], ['langchain', 'LangChain'], ['diffusers', 'Diffusers'], ['transformers', 'Transformers'],
-  ['countvectorizer', 'CountVectorizer'],
-];
-function oracion(t) {
-  let s = t.toLowerCase();
-  for (const [a, b] of PROPIOS) {
-    const patron = a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // en modo u, "-" y "/" no se escapan
-    s = s.replace(new RegExp(`(?<![\\p{L}\\d])${patron}(?![\\p{L}\\d])`, 'gu'), b);
-  }
-  return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
 // Código dentro de la narración: lo corto se dice ("json punto campo"); lo largo o con

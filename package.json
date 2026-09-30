@@ -20,6 +20,7 @@
     "zip": "node scripts/zip-recursos.mjs",
     "produccion": "node scripts/produccion.mjs",
     "quiz-juego": "node scripts/quiz-juego.mjs",
+    "abp": "node scripts/abp-abpro.mjs",
     "sitio": "node scripts/sitio.mjs",
     "marca": "node scripts/marca.mjs",
     "drive": "node scripts/drive.mjs",

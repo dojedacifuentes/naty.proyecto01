@@ -648,3 +648,17 @@ Quién: usuario (pedido), claude-code, sesión `2026-09-29-claude-code-03`.
 - **Se mantiene:** el GIFT de la prueba objetiva de cada aprendizaje (instrumento 3), que es otra cosa. Los archivos GIFT formativos
   no se borraron de Drive ni del repo.
 Quién: usuario, claude-code, sesión `2026-09-29-claude-code-04`.
+
+## 2026-09-30 · Un ABP individual y un ABPRO grupal por aprendizaje esperado (sesión claude-code, 2026-09-30-claude-code-01)
+
+- **Qué:** 16 actividades (PF1821 y PF1822, AE1 a AE4, ABP y ABPRO), iguales para todos los clientes, como Google Doc y PDF.
+- **Por qué:** pedido del usuario, para cargarlas en el LMS de cada cliente. El V0 de PF1474 ya anuncia "dos actividades didácticas
+  (ABP y ABPRO)" por aprendizaje en el LMS; la decisión del 2026-09-25 lo había descartado por plazo.
+- **Cómo:** molde del V0: ABP individual basado en problemas (contexto y preguntas o ejercicio) sobre empresas ficticias distintas del
+  caso del curso; ABPRO grupal basado en proyectos (contexto, problema, solución, desarrollo, roles rotativos, entrega por equipo) sobre
+  el caso del curso (Mercado Austral / Nube Sur), que crece de un AE al siguiente. No repiten el caso "Devoluciones" ni el proyecto
+  "Asistente de preguntas frecuentes" (instrumento 2) ni las actividades 1 y 2 de C2.
+- **Por pedido del usuario:** solo el enunciado (sin respuesta modelada ni pauta); sin duración de la actividad; sin rótulos internos
+  ("textual", "oficial") en los recursos. Los aprendizajes van con las mismas palabras del plan, en minúsculas para leerlos mejor.
+- **Descartado:** convertir con Word (.docx) para Google Docs: dejaba mal el formato. Los Docs se crearon pegando el HTML generado.
+Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-01`.

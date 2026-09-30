@@ -32,14 +32,17 @@ function celda(ref, v, fila) {
 }
 // Con saltos de línea, el texto necesita xml:space="preserve" para que no se pierdan.
 const t = (v) => (/\n/.test(v) ? `<t xml:space="preserve">${x(v)}</t>` : `<t>${x(v)}</t>`);
-// Alto estimado de una fila: líneas que ocupa la celda más larga (≈1,15 caracteres por unidad de ancho a 10 pt).
+// Alto estimado de una fila: líneas que ocupa la celda más larga (≈1,15 caracteres por unidad de ancho a 10 pt;
+// ≈0,75 si el texto va casi todo en mayúsculas, como los aprendizajes de SIPFOR).
 function altoAuto(f, cols) {
   const lineas = Math.max(1, ...f.map((v, i) => {
     const texto = String(v?.texto ?? v ?? '');
-    const porLinea = Math.max(1, Math.floor((cols[i] ?? 10) * 1.15));
+    const letras = texto.replace(/[^\p{L}]/gu, '');
+    const mayus = letras.length && letras.replace(/[^\p{Lu}]/gu, '').length / letras.length > 0.6;
+    const porLinea = Math.max(1, Math.floor((cols[i] ?? 10) * (mayus ? 0.75 : 1.15)));
     return texto.split('\n').reduce((n, l) => n + Math.max(1, Math.ceil(l.length / porLinea)), 0);
   }));
-  return Math.min(409, Math.max(30, 13 * lineas + 8));
+  return Math.min(409, Math.max(30, 15 * lineas + 8));
 }
 function hoja({ titulo, subtitulo, encabezados, filas, anchos, alto = 36 }) {
   const n = encabezados.length;

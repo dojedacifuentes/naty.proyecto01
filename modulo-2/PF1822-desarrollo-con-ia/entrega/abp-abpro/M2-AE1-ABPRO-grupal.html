@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>PF1822 · M2 · AE1 · ABPRO grupal · La arquitectura de la plataforma de soporte</title></head>
+<body style="font-family:Arial,Helvetica,sans-serif;color:#1F2937;line-height:1.5;max-width:880px;margin:24px auto;padding:0 16px">
+<!-- Para Moodle: abre este archivo en el navegador, selecciona todo desde "Qué vas a lograr" hasta el final,
+     cópialo y pégalo en la descripción de la Tarea. O bien, en el editor de Moodle, usa el botón de código
+     HTML y pega el contenido de <div id="moodle">. El nombre de la Tarea va en el campo "Nombre". -->
+<div id="moodle">
+<div style="background:#EFF6FF;border-left:4px solid #0F3D5E;padding:10px 14px;margin:0 0 1em"><p style="margin:0 0 .2em;font-size:.85em;color:#0E7490;letter-spacing:.06em;text-transform:uppercase"><strong>PF1822 · Módulo 2 · AE1 · ABPRO grupal</strong></p>
+<p style="margin:0 0 .5em;font-size:1.45em;color:#0F3D5E"><strong>La arquitectura de la plataforma de soporte</strong></p>
+<p style="margin:0 0 .5em">Especialización en Desarrollo con IA<br>Módulo 2: Introducción a modelos generativos y consumo por API</p>
+<p style="margin:0 0 .3em"><strong>Aprendizaje esperado 1:</strong> Analizar el rol de los modelos generativos en el desarrollo de aplicaciones, describiendo sus tipos, casos de uso, tecnologías asociadas y representando arquitecturas funcionales que integren estos modelos mediante APIs.</p>
+<p style="margin:0 0 .2em"><strong>Criterios de evaluación:</strong></p>
+<ul style="margin:0 0 .5em"><li>1.1 Clasifica los tipos de modelos generativos identificando sus características y aplicaciones más frecuentes en la organización.</li><li>1.2 Representa un diagrama funcional de una aplicación con IA generativa, explicando la función de cada componente dentro de la arquitectura.</li><li>1.3 Analiza la elección de la arquitectura en función de criterios como escalabilidad, seguridad o mantenimiento.</li></ul>
+<p style="margin:0"><strong>Modalidad:</strong> Grupal, de 4 a 5 personas, en micro salas durante la sesión sincrónica.</p></div>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Contexto</h5>
+<p>Nube Sur (empresa ficticia) vende software de gestión a pymes y tiene una mesa de ayuda que atiende a sus clientes por correo, formulario web y chat.</p>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Problema</h5>
+<p>La mesa de ayuda recibe unos 5.000 tickets al día. Los agentes pierden tiempo leyendo tickets largos, la prioridad se asigna a ojo y, cuando hay una caída del servicio, llegan cientos de tickets sobre el mismo problema que se atienden uno por uno.</p>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Solución</h5>
+<p>Una plataforma que use modelos generativos para tres funciones: <strong>resumir</strong> cada ticket, <strong>clasificarlo</strong> por categoría y prioridad, y <strong>agrupar los tickets duplicados</strong> comparando sus embeddings en un <em>vector store</em>. En este aprendizaje esperado el equipo diseña su arquitectura; en los siguientes la irá construyendo por partes.</p>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Desarrollo</h5>
+<ol><li><strong>Modelos y casos de uso (criterio 1.1).</strong> Para cada una de las tres funciones, indiquen el tipo de modelo generativo que usarían, el caso de uso al que corresponde (por ejemplo, <em>summarization</em>) y por qué.</li><li><strong>Diagrama funcional (criterio 1.2).</strong> Dibujen la arquitectura completa con cliente, servidor API, modelo de IA, módulo de preprocesamiento y base de datos o <em>vector store</em>. Numeren el flujo de datos de un ticket, desde que llega hasta que el agente ve su resumen, su prioridad y sus duplicados. Marquen dónde se guardan las claves de las APIs.</li><li><strong>Dos alternativas (criterio 1.3).</strong> Comparen en una tabla dos arquitecturas:<ul><li><strong>A:</strong> el servidor llama al modelo en el momento en que llega cada ticket (<em>request–response</em>);</li><li><strong>B:</strong> los tickets entran a una cola y un <em>pipeline</em> los procesa por lotes cada pocos minutos.</li></ul></li></ol>
+<p>   Evalúen cada una en escalabilidad, seguridad (los tickets traen datos personales de    clientes), mantenimiento y costo.</p>
+<ol start="4"><li><strong>Registro de decisión.</strong> Escriban en media página la decisión del equipo: qué arquitectura eligen, por qué, qué riesgo aceptan y cómo lo mitigarían.</li><li><strong>Tecnologías.</strong> Asignen a cada componente una tecnología o librería concreta (por ejemplo, OpenAI API, Hugging Face Transformers o LangChain) y justifiquen dos de ellas.</li><li><strong>Comité de seguridad.</strong> Al volver a la sala principal, otro equipo actúa como comité de seguridad y les hace dos preguntas sobre el manejo de datos personales y claves. El portavoz responde.</li></ol>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Roles del equipo</h5>
+<p>Cada integrante asume un rol, que rota en el ABPRO de cada aprendizaje esperado:</p>
+<ul><li><strong>Coordinador/a:</strong> cuida el tiempo y que todos participen.</li><li><strong>Arquitecto/a:</strong> conduce el diagrama funcional.</li><li><strong>Responsable de seguridad y datos:</strong> revisa el manejo de claves y datos personales.</li><li><strong>Analista de tecnologías:</strong> conduce la elección de modelos y librerías.</li><li><strong>Documentador/a y portavoz:</strong> redacta la entrega y responde al comité.</li></ul>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Entrega</h5>
+<p>Una entrega por equipo en esta Tarea: un PDF con la tabla de modelos y casos de uso, el diagrama numerado, la tabla comparativa, el registro de decisión, las tecnologías elegidas y los nombres de los integrantes con su rol.</p>
+</div>
+</body></html>

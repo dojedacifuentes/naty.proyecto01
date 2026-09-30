@@ -4,9 +4,11 @@
  * contraparte), en .xlsx con formato, para subirla a Google Drive convertida en Google Sheets:
  *
  *   npm run planilla
+ *   npm run planilla -- --hoja "ABP y ABPRO"   # solo esa hoja, para importarla como pestaña nueva en Google Sheets
  *
- * Hojas: Resumen (una fila por cliente y curso), Aprendizajes, Entregables (recursos neutros con
- * enlace público al sitio) y Pendientes. Los enlaces de Drive salen de privado/drive/enlaces.json
+ * Hojas: Resumen (una fila por cliente y curso), Aprendizajes, ABP y ABPRO (una fila por aprendizaje, con
+ * sus dos actividades en Google Docs y PDF), Entregables (recursos neutros con enlace público al sitio) y
+ * Pendientes. Los enlaces de Drive salen de privado/drive/enlaces.json
  * ({ "ruta/relativa/en/la/carpeta": "https://drive…" }); si falta uno, la celda dice "Por subir".
  * Salida: privado/drive/Planilla-Modulo2-TD2026.xlsx (fuera de git: nombra a los clientes).
  */
@@ -40,8 +42,9 @@ const meta = (pf) => JSON.parse(leer(`.scratch/produccion/${pf}/manifiesto.json`
 const E = { ok: 'ok', pend: 'pend', subir: 'subir' };
 const L = (texto, url) => ({ texto, url });
 const S = (texto, estado) => ({ texto, estado });
-// "F:id" es una carpeta de Drive y "A:id", un archivo.
-const u = (v) => (!v ? null : v.startsWith('F:') ? `https://drive.google.com/drive/folders/${v.slice(2)}` : `https://drive.google.com/file/d/${v.slice(2)}/view`);
+// "F:id" es una carpeta de Drive, "D:id" un documento de Google y "A:id", un archivo.
+const u = (v) => (!v ? null : v.startsWith('F:') ? `https://drive.google.com/drive/folders/${v.slice(2)}`
+  : v.startsWith('D:') ? `https://docs.google.com/document/d/${v.slice(2)}/edit` : `https://drive.google.com/file/d/${v.slice(2)}/view`);
 const en = (v, texto) => (u(v) ? L(texto, u(v)) : S('Por subir a Drive', E.subir));
 
 const resumen = [];
@@ -58,7 +61,8 @@ for (const c of CURSOS) {
       en(cl.cuadernillos, 'Cuadernillos con marca'), en(cl.documentos, 'Documentos con marca'), S('Pendiente: armar en Rise', E.pend),
       en(d.bienvenidaCurso, 'Ver video'), en(d.resumen, 'Ver video'), en(d.bienvenidaModulo, 'Ver video'),
       en(d.videos, 'Carpeta de videos'), en(d.herramienta2, 'Ver video'),
-      ...juegos, en(d.quizJuego?.carpeta, 'Juegos y SCORM (carpeta)'), en(d.infografias, 'Infografías (PNG)'),
+      ...juegos, en(d.quizJuego?.carpeta, 'Juegos y SCORM (carpeta)'), en(d.abpAbpro?.carpeta, 'ABP y ABPRO (carpeta)'),
+      en(d.infografias, 'Infografías (PNG)'),
       en(cl.carpeta, `Carpeta ${cliente}`), en(d.carpeta, 'Carpeta del curso'),
       S('Listo para revisión', E.ok), OBS[cliente],
     ]);
@@ -74,6 +78,21 @@ for (const c of CURSOS) {
     aprendizajes.push([S(c.pf, 'curso'), `${m2.codigo} · ${m2.nombre} · ${m2.horas} h`, k, ae.texto,
       L(`Lectura ${k} · ${lecturas[k]}`, `${SITIO}/modulo-2/${c.carpeta}/entrega/${k}/M2-${k}-Lectura.pdf`),
       L(`Ver quiz ${k} (GIFT)`, `${QUIZ_WEB}#${c.pf}-ae${ae.n}`)]);
+  }
+}
+
+// ABP individual y ABPRO grupal por aprendizaje (npm run abp): cada uno como Google Doc (para editar y pegar
+// en la Tarea del LMS) y PDF (para adjuntar). Títulos desde contenidos/<PF>/modulo-2/R-abp-abpro.md.
+const abp = [];
+for (const c of CURSOS) {
+  const m2 = plan(c.pf).modulos.find((m) => m.n === 2);
+  const d = enlaces[c.pf]?.abpAbpro ?? {};
+  const titulos = Object.fromEntries([...leer(`contenidos/${c.pf}/modulo-2/R-abp-abpro.md`).matchAll(/^## (AE\d) · (ABPRO|ABP) · (.+)$/gm)]
+    .map((m) => [`${m[1]}-${m[2]}`, m[3]]));
+  for (const ae of m2.aprendizajes_esperados) {
+    const k = `AE${ae.n}`;
+    const act = (tipo) => [titulos[`${k}-${tipo}`] ?? '—', en(d[`${k}-${tipo}`]?.doc, 'Google Doc'), en(d[`${k}-${tipo}`]?.pdf, 'PDF')];
+    abp.push([S(c.pf, 'curso'), k, ae.texto, ...act('ABP'), ...act('ABPRO'), S('Listo para revisión', E.ok)]);
   }
 }
 
@@ -113,6 +132,7 @@ for (const c of CURSOS) {
 const pendientes = [
   ['Usuario', 'Armar las lecturas en Rise, un curso por cliente (guía: modulo-2/GUIA-RISE.md)', 'Drive (NATY 2.0)', S('Pendiente', E.pend)],
   ['Contraparte / Natalia', 'Revisar los 4 quiz gamificados de cada curso, uno por aprendizaje esperado (juego en HTML y paquete SCORM para Moodle) (#22)', 'Hoja Entregables · Quiz formativos gamificados', S('Por confirmar', E.pend)],
+  ['Usuario', 'Crear en el LMS de cada cliente una Tarea por ABP y por ABPRO (16 por cliente y curso): el texto del Google Doc va en la descripción y el PDF, adjunto', 'Hoja ABP y ABPRO · Drive: 5 ABP y ABPRO', S('Pendiente', E.pend)],
   ['Contraparte / Natalia', '¿El aprendizaje seleccionado es el AE3? (pregunta abierta #17)', '—', S('Por confirmar', E.pend)],
   ['Contraparte / Natalia', '¿Mismos recursos con distinta marca para clientes que compiten en el mismo plan? (#18)', '—', S('Por confirmar', E.pend)],
   ['Clientes', 'Colores oficiales de Skillnest y tipografía de la U. Autónoma (#19)', '—', S('Por confirmar', E.pend)],
@@ -129,20 +149,27 @@ const HOJAS = [
       'Documentos sueltos', 'Lecturas (Rise)', 'Video de bienvenida (curso)', 'Video resumen (módulo)', 'Video de bienvenida (módulo)', 'Videocápsulas AE1 a AE4',
       'Video herramienta 2 (AE3)',
       'Quiz AE1 gamificado (archivo)', 'Quiz AE2 gamificado (archivo)', 'Quiz AE3 gamificado (archivo)', 'Quiz AE4 gamificado (archivo)',
-      'Quiz gamificados: juegos y SCORM (carpeta)',
+      'Quiz gamificados: juegos y SCORM (carpeta)', 'ABP y ABPRO (carpeta)',
       'Infografías', 'Carpeta del cliente', 'Carpeta del curso', 'Estado', 'Observaciones'],
-    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 13, 22, 26, 18, 20, 16, 16, 16, 18, 16, 20, 20, 20, 20, 22, 18, 18, 18, 18, 40] } },
+    filas: resumen, anchos: { fijas: 3, cols: [34, 12, 13, 22, 26, 18, 20, 16, 16, 16, 18, 16, 20, 20, 20, 20, 22, 20, 18, 18, 18, 18, 40] } },
   { nombre: 'Aprendizajes', titulo: 'Aprendizajes esperados del módulo 2', subtitulo: 'Textuales de la ficha SIPFOR · con su lectura y su quiz',
     encabezados: ['Curso', 'Módulo', 'AE', 'Aprendizaje esperado (textual del plan)', 'Lectura', 'Quiz'],
     filas: aprendizajes, anchos: { fijas: 1, cols: [10, 34, 6, 70, 34, 20] } },
+  { nombre: 'ABP y ABPRO', titulo: 'ABP individual y ABPRO grupal por aprendizaje esperado del módulo 2',
+    subtitulo: 'Una fila por aprendizaje · el Google Doc se copia en la descripción de la Tarea del LMS y el PDF se adjunta · los mismos para todos los clientes',
+    encabezados: ['Curso', 'AE', 'Aprendizaje esperado', 'ABP individual', 'ABP (Google Doc)', 'ABP (PDF)', 'ABPRO grupal', 'ABPRO (Google Doc)', 'ABPRO (PDF)', 'Estado'],
+    filas: abp, alto: 'auto', anchos: { fijas: 2, cols: [10, 7, 62, 30, 14, 11, 30, 14, 11, 20] } },
   { nombre: 'Entregables', titulo: 'Entregables del módulo 2 (versión neutra, sin marca)', subtitulo: `Enlaces públicos al sitio ${SITIO}, salvo los quiz gamificados, que abren su archivo en Drive · las versiones con marca están en la carpeta de cada cliente en Drive`,
     encabezados: ['Curso', 'Grupo', 'Archivo', 'Formato', 'Para', 'Enlace', 'Estado'],
     filas: entregables, anchos: { fijas: 1, cols: [10, 28, 46, 9, 13, 10, 20] } },
   { nombre: 'Pendientes', titulo: 'Pendientes del módulo 2', subtitulo: 'Quién, qué y dónde se sube',
     encabezados: ['Quién', 'Qué', 'Dónde', 'Estado'], filas: pendientes, anchos: { fijas: 0, cols: [22, 80, 34, 16] } },
 ];
-const salida = 'privado/drive/Planilla-Modulo2-TD2026.xlsx';
+const iHoja = process.argv.indexOf('--hoja');
+const soloHoja = iHoja > 0 ? process.argv[iHoja + 1] : null;
+if (soloHoja && !HOJAS.some((h) => h.nombre === soloHoja)) throw new Error(`No hay una hoja "${soloHoja}". Hojas: ${HOJAS.map((h) => h.nombre).join(', ')}`);
+const salida = soloHoja ? `privado/drive/Planilla-${soloHoja.replace(/\W+/g, '-')}.xlsx` : 'privado/drive/Planilla-Modulo2-TD2026.xlsx';
 fs.mkdirSync(ruta('privado/drive'), { recursive: true });
-fs.writeFileSync(ruta(salida), crearXlsx(HOJAS));
+fs.writeFileSync(ruta(salida), crearXlsx(soloHoja ? HOJAS.filter((h) => h.nombre === soloHoja) : HOJAS));
 const conDrive = Object.keys(enlaces).length;
-console.log(`${salida} → ${resumen.length} filas en Resumen, ${aprendizajes.length} aprendizajes, ${entregables.length} entregables, ${pendientes.length} pendientes · enlaces de Drive: ${conDrive}`);
+console.log(`${salida} → ${resumen.length} filas en Resumen, ${aprendizajes.length} aprendizajes, ${abp.length} filas de ABP y ABPRO, ${entregables.length} entregables, ${pendientes.length} pendientes · enlaces de Drive: ${conDrive}`);

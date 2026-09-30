@@ -2,8 +2,8 @@
 
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
-**Última actualización:** 2026-09-29
-**Por:** 2026-09-29-claude-code-04 (Claude Code · opus-5.5)
+**Última actualización:** 2026-09-30
+**Por:** 2026-09-30-claude-code-01 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -359,6 +359,20 @@ usaremos, como los quizzes antiguos"; el usuario eligió eliminar también los G
       Comprobado leyendo la hoja. Se mantiene el GIFT de la prueba objetiva por aprendizaje (hoja Aprendizajes y filas "M2-AEn-Quiz.gift").
 - [x] `scripts/planilla.mjs` genera lo mismo (sin Canva ni GIFT formativos): 22 columnas en Resumen, 89 entregables, 6 pendientes.
 - Los archivos GIFT siguen en Drive ("4 Quiz → Quiz Moodle (GIFT)") y en el repo; solo salieron de la planilla.
+
+Sesión claude-code-01, 2026-09-30: ABP individual y ABPRO grupal por aprendizaje esperado (pedido: "crear una abp individual y abpro
+grupal de cada aprendizaje esperado del modulo 2… deben poder formularse en texto para subirlas fácil… luego subirlos al google sheets
+lo más ordenado posible"). El usuario eligió: ABP y ABPRO (16 en total), un Google Doc por actividad, solo el enunciado; y luego pidió
+también PDF, quitar la duración de las actividades y no mostrar rótulos internos ("textual", "oficial").
+
+- [x] `contenidos/<PF>/modulo-2/R-abp-abpro.md` (fuente) y `npm run abp` → `modulo-2/<curso>/entrega/abp-abpro/`: 8 HTML (para pegar en
+      una Tarea de Moodle o en un Doc) y 8 PDF por curso. Valida un ABP y un ABPRO por AE, que cubran todos los criterios del AE y las
+      secciones de cada tipo. Aprendizajes y criterios: mismas palabras de la ficha (66 de 66), en minúsculas.
+- [x] Drive (Chrome del usuario): carpeta "5 ABP y ABPRO" en cada curso con 8 Google Docs (M2-AEn-ABP-individual / -ABPRO-grupal) y
+      8 PDF. Ids en `privado/drive/enlaces.json` (`abpAbpro`). Texto de cada Doc comprobado con su exportación a .txt.
+- [x] Hoja de Google: pestaña nueva "ABP y ABPRO" (una fila por AE, con título, Google Doc y PDF de cada actividad); Resumen R = "ABP y
+      ABPRO (carpeta)" (las columnas siguientes se corrieron: Infografías pasó a S); Pendientes, fila 6 (crear las Tareas en el LMS).
+- [ ] Sin push. Las actividades nuevas no están en el Anexo 2 (VI b sigue con las actividades 1 y 2 de C2) ni en la ruta de horas.
 
 ## A medias
 

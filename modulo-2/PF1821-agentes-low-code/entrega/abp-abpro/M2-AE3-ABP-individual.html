@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>PF1821 · M2 · AE3 · ABP individual · El inventario del proveedor</title></head>
+<body style="font-family:Arial,Helvetica,sans-serif;color:#1F2937;line-height:1.5;max-width:880px;margin:24px auto;padding:0 16px">
+<!-- Para Moodle: abre este archivo en el navegador, selecciona todo desde "Qué vas a lograr" hasta el final,
+     cópialo y pégalo en la descripción de la Tarea. O bien, en el editor de Moodle, usa el botón de código
+     HTML y pega el contenido de <div id="moodle">. El nombre de la Tarea va en el campo "Nombre". -->
+<div id="moodle">
+<div style="background:#EFF6FF;border-left:4px solid #0F3D5E;padding:10px 14px;margin:0 0 1em"><p style="margin:0 0 .2em;font-size:.85em;color:#0E7490;letter-spacing:.06em;text-transform:uppercase"><strong>PF1821 · Módulo 2 · AE3 · ABP individual</strong></p>
+<p style="margin:0 0 .5em;font-size:1.45em;color:#0F3D5E"><strong>El inventario del proveedor</strong></p>
+<p style="margin:0 0 .5em">Construcción de Agentes y Automatización con Herramientas Low Code<br>Módulo 2: Fundamentos de n8n y manipulación de datos</p>
+<p style="margin:0 0 .3em"><strong>Aprendizaje esperado 3:</strong> Manipular datos utilizando nodos fundamentales de n8n, para transformar información según requerimientos específicos del workflow.</p>
+<p style="margin:0 0 .2em"><strong>Criterios de evaluación:</strong></p>
+<ul style="margin:0 0 .5em"><li>3.1 Manipula datos utilizando nodos fundamentales de n8n, para transformar información según requerimientos específicos del workflow.</li><li>3.2 Implementa transformaciones de datos entre formatos JSON, CSV y XML.</li><li>3.3 Aplica expresiones n8n para procesar y filtrar información.</li><li>3.4 Conecta bases de datos básicas usando Supabase, de acuerdo con los requerimientos del workflow.</li></ul>
+<p style="margin:0"><strong>Modalidad:</strong> Individual, asincrónica.</p></div>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Contexto</h5>
+<p>La tienda de bicicletas Ruta Sur (empresa ficticia) recibe cada lunes el inventario de su proveedor en formato XML. Una persona lo revisa a mano para ver qué productos quedan con poco stock y los anota en una planilla para comprar. Ruta Sur quiere automatizarlo con n8n y Supabase.</p>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Insumos</h5>
+<p>El archivo <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">inventario_proveedor.xml</code> está publicado en el LMS. Este es su contenido:</p>
+<pre style="background:#F1F5F9;border-left:4px solid #0F3D5E;padding:10px 12px;white-space:pre-wrap;font-size:.9em"><code>&lt;inventario proveedor="Distribuidora Andes" fecha="2026-09-28"&gt;
+  &lt;producto&gt;&lt;sku&gt; rs-cam-29 &lt;/sku&gt;&lt;nombre&gt;Cámara 29 pulgadas&lt;/nombre&gt;&lt;stock&gt;3&lt;/stock&gt;&lt;precio&gt;6990&lt;/precio&gt;&lt;/producto&gt;
+  &lt;producto&gt;&lt;sku&gt;RS-CAD-11V&lt;/sku&gt;&lt;nombre&gt;Cadena 11 velocidades&lt;/nombre&gt;&lt;stock&gt;12&lt;/stock&gt;&lt;precio&gt;24990&lt;/precio&gt;&lt;/producto&gt;
+  &lt;producto&gt;&lt;sku&gt;rs-fre-hid&lt;/sku&gt;&lt;nombre&gt;Freno hidráulico&lt;/nombre&gt;&lt;stock&gt;2&lt;/stock&gt;&lt;precio&gt;59990&lt;/precio&gt;&lt;/producto&gt;
+  &lt;producto&gt;&lt;sku&gt;RS-CAS-M&lt;/sku&gt;&lt;nombre&gt;Casco talla M&lt;/nombre&gt;&lt;stock&gt;0&lt;/stock&gt;&lt;precio&gt;34990&lt;/precio&gt;&lt;/producto&gt;
+  &lt;producto&gt;&lt;sku&gt;RS-LUZ-USB&lt;/sku&gt;&lt;nombre&gt;Luz trasera USB&lt;/nombre&gt;&lt;stock&gt;25&lt;/stock&gt;&lt;precio&gt;9990&lt;/precio&gt;&lt;/producto&gt;
+  &lt;producto&gt;&lt;sku&gt;rs-bom-pie&lt;/sku&gt;&lt;nombre&gt;Bombín de pie&lt;/nombre&gt;&lt;stock&gt;4&lt;/stock&gt;&lt;precio&gt;19990&lt;/precio&gt;&lt;/producto&gt;
+&lt;/inventario&gt;</code></pre>
+<p>En Supabase, crea esta tabla:</p>
+<pre style="background:#F1F5F9;border-left:4px solid #0F3D5E;padding:10px 12px;white-space:pre-wrap;font-size:.9em"><code>create table stock_bajo (
+  id           bigint generated always as identity primary key,
+  revisado_en  timestamptz not null default now(),
+  sku          text not null,
+  nombre       text not null,
+  stock        integer not null,
+  precio       integer not null,
+  prioridad    text not null
+);</code></pre>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Qué tienes que hacer</h5>
+<ol><li><strong>Transforma el XML (criterios 3.1 y 3.2).</strong> Construye un workflow que lea el archivo con <em>HTTP Request</em> (formato de respuesta: texto), lo convierta de XML a JSON con el nodo <em>XML</em> y separe cada producto en un ítem con <em>Split Out</em>.</li><li><strong>Limpia y calcula con expresiones (criterio 3.3).</strong> Con <em>Edit Fields (Set)</em>: deja el <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">sku</code> sin espacios y en mayúsculas, convierte <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">stock</code> y <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">precio</code> a número y agrega <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">prioridad</code>: "urgente" si el stock es 0 y "normal" en otro caso.</li><li><strong>Filtra.</strong> Con <em>Filter</em>, deja solo los productos con stock <strong>menor que 5</strong>.</li><li><strong>Guarda en Supabase (criterio 3.4).</strong> Inserta cada producto filtrado como una fila de <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">stock_bajo</code>.</li><li><strong>Resume para compras.</strong> En una rama paralela, después del <em>Filter</em>, usa <em>Summarize</em> para contar los productos por <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">prioridad</code>, y <em>Convert to File</em> para entregar la lista filtrada en CSV.</li><li><strong>Explica.</strong> En 5 a 8 líneas: ¿qué habría pasado en el filtro si <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">stock</code> quedaba como texto? ¿Qué expresión usaste para la prioridad y por qué?</li></ol>
+<h4 style="color:#0F3D5E;font-size:1.1em;margin:1em 0 .3em">Entrega</h5>
+<p>Sube a esta Tarea el workflow exportado en JSON, una captura de la tabla <code style="background:#F1F5F9;color:#0F3D5E;padding:0 3px;border-radius:3px">stock_bajo</code> con las filas creadas, el archivo CSV generado y tu respuesta al punto 6.</p>
+</div>
+</body></html>
