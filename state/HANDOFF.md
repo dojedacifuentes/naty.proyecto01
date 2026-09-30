@@ -1,13 +1,25 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
-`2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-04` — 2026-09-24/29
+`2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-04` y `2026-09-30-claude-code-01` a `-07` — 2026-09-24/30
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 > **Ojo (sesión -04):** las sesiones -02 y -03 del 27-sep, que armaron los quiz en Canva, reemplazaron este archivo
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
+
+## HECHO (sesión 2026-09-30-07): respuestas del usuario a las preguntas abiertas
+
+- **Alcance (#1):** solo se desarrolla el **módulo 2**, en los 15 cursos. Los demás módulos van **solo nombrados** en el LMS de cada
+  cliente (lista en la pestaña "Todos los módulos" de `privado/drive/Planes-Formativos-SENCE-TD2026.xlsx`).
+- **LMS (#5):** los arma el usuario. **Cierre (#13):** lunes **5 de octubre de 2026**; hora sin confirmar. Quedan 3 días hábiles y
+  el módulo 2 solo está desarrollado en PF1821 y PF1822: priorizar con el usuario qué cursos se cubren.
+- **Esperando al usuario:** la matriz cliente × curso (#3, dijo adjuntarla y no llegó; guardarla en `privado/`, el repo es público);
+  la decisión sobre NATY 2.0 (#20: sigue "cualquiera con el enlace, editor" y su id está en GitHub; opciones: lector, restringido o
+  dejarla); y confirmar #6 (LMS propio de cada cliente) y #16 ("módulo 2" = "Módulo N°2" del PDF oficial).
+- Si el usuario decide #20 y pide hacerlo por él: Drive → NATY 2.0 → Compartir → Acceso general, desde su Chrome (el conector no quita
+  permisos). Borrar el id del repo no basta: queda en el historial.
 
 ## HECHO (sesión 2026-09-30-06): texto canónico del módulo 2 de PF1821 y PF1822, para cotejar Rise
 

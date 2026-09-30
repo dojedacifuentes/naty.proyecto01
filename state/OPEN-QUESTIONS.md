@@ -7,12 +7,17 @@
 
 ## Para SENCE (vía consulta formal, 5 días hábiles tras la publicación)
 
-**1. ¿Se desarrolla solo el segundo módulo o todos los módulos?** — ABIERTA · CRÍTICA
+**1. ¿Se desarrolla solo el segundo módulo o todos los módulos?** — RESUELTA (2026-09-30)
 El punto 7.4 dice *"se solicitará desarrollar el segundo módulo del plan formativo"*.
 El numeral 4.3.1.1 letras a) y c) dicen *"desarrollar todos los módulos en el Anexo N°2"*
 y *"se revisarán y evaluarán todos los módulos"*.
 Impacto: multiplica el trabajo por el número de módulos, sobre 45 o 90 propuestas.
 Responsable de preguntar: Natalia (o el OTEC que postula).
+**Respondió el usuario (2026-09-30, sesión `2026-09-30-claude-code-07`):** "se desarrolla solo el modulo 2 para todos los
+cursos. los demas modulos de cada curso deben aparecer nombrados en el lms de cada cliente pero no se desarrollan."
+Es decir: en los 15 cursos se desarrolla solo el módulo 2; los demás módulos se muestran con su nombre en el LMS de cada
+cliente, sin contenido. La lista de todos los módulos por curso está en la pestaña "Todos los módulos" de
+`privado/drive/Planes-Formativos-SENCE-TD2026.xlsx` (`npm run planes`). No resuelve #2 ni #16.
 
 **2. ¿La estrategia evaluativa y la metodología aplican al segundo módulo, y las
 herramientas y extensión al plan completo?** — ABIERTA
@@ -47,6 +52,9 @@ postula a qué plan. La diferencia entre 45 y 90 documentos define todo el proye
 **Respuesta parcial del usuario, 2026-09-27** (sesión `2026-09-27-claude-code-01`, al pedir la marca de
 los PDF): PF1821 → `unab` y `skillnest`; PF1822 → `unab`, `skillnest` y `u-autonoma`. Falta el resto
 de los planes y confirmar si esa lista es la definitiva para estos dos.
+**Nota (2026-09-30, sesión `2026-09-30-claude-code-07`):** el usuario dijo que adjuntaba una tabla de Excel y una captura
+con la matriz para confirmarla, pero no llegaron al chat ni aparecen en Descargas ni en el Escritorio. Se le pidió
+reenviarlas. Recomendación dada: guardar la matriz en `privado/` (fuera de git), porque el repo es público (#11, #14).
 
 **4. ¿Acceso a la carpeta Drive "Metodologías" con los Anexos 2 de referencia?** — ABIERTA · respuesta parcial
 Propietaria: natalia@hackea.pro. Sin esto no hay ingeniería inversa ni auditoría de
@@ -57,13 +65,17 @@ planes y las planillas de recursos. No se versiona porque trae propuestas de otr
 instituciones (`DECISIONS.md`, 2026-09-25). Falta confirmar si es la carpeta "Metodologías"
 completa y revisar los verificadores de los Anexos 2 de 2024.
 
-**5. ¿Quién arma los LMS y cuántos hay que armar?** — ABIERTA · CRÍTICA
+**5. ¿Quién arma los LMS y cuántos hay que armar?** — RESUELTA (2026-09-30) en cuanto a quién
 El 35% de la propuesta técnica se evalúa navegando el LMS, no leyendo el documento.
 Puede ser el cuello de botella real del proyecto, por encima de la redacción.
+**Respondió el usuario (2026-09-30, sesión `2026-09-30-claude-code-07`):** "yo armo los lms". Los arma el usuario.
+Cuántos: uno por cliente y curso, según la matriz de #3 (pendiente del adjunto).
 
 **6. ¿Se usa LMS propio de cada cliente o la plataforma LMS de SENCE?** — ABIERTA
 Si es la de SENCE, hay que escribir a `adminelearning@sence.cl` apenas se publique el
 llamado, con nombre del concurso, nombre y RUT del OTEC y RUT del usuario de prueba.
+**Nota (2026-09-30, sesión `2026-09-30-claude-code-07`):** al responder #1 el usuario escribió "en el lms de cada
+cliente", lo que apunta al LMS propio. Se le pidió confirmarlo; hasta entonces sigue abierta.
 
 **7. ¿Quién levanta las fichas de cliente?** — ABIERTA
 Infraestructura, equipos, LMS, docentes, trayectoria, alianzas. Sin esos datos las
@@ -85,8 +97,12 @@ Seis instituciones que compiten entre sí. Conviene dejarlo escrito.
 **12. ¿Hay restricción sobre el uso de IA en la redacción de las propuestas?** — ABIERTA
 Mejor saberlo hoy que en una impugnación.
 
-**13. ¿Cuáles son las fechas formales de inicio y cierre de la licitación?** — ABIERTA
+**13. ¿Cuáles son las fechas formales de inicio y cierre de la licitación?** — RESUELTA (2026-09-30) en cuanto al cierre
 Todo el plan cuelga de esas dos fechas.
+**Respondió el usuario (2026-09-30, sesión `2026-09-30-claude-code-07`):** "la fecha termina el 5 de octubre, ya es 30".
+Cierre: **lunes 5 de octubre de 2026**. Desde el miércoles 30 de septiembre quedan 3 días hábiles (1, 2 y 5 de octubre).
+Hora: el usuario no la indicó; el calendario de las bases fija el cierre a las 18:00 del décimo día hábil
+(`docs/01-guia-propuesta-tecnica.md`), a confirmar en el llamado. Fecha de publicación del llamado: no informada.
 
 ## Para Diego
 
@@ -130,6 +146,10 @@ campo `logo_negativo` de su `marca.json`. Pedirla también es parte de esta preg
 
 
 **20. ¿La carpeta NATY 2.0 debe seguir abierta a cualquiera con el enlace, como editor?** — ABIERTA
+**Nota (2026-09-30, sesión `2026-09-30-claude-code-07`):** comprobado de nuevo con `get_file_permissions`: sigue `anyone`
+con rol `writer`. Además, el id de la carpeta está en archivos ya publicados de este repo, que es público (#14), así que
+cualquiera que lea GitHub puede llegar a ella y editar o borrar. El usuario respondió "no sé a qué te refieres"; se le
+explicó con las tres opciones (lector, restringido o dejarla así). Espera su decisión.
 Detectado el 2026-09-27 (sesión `2026-09-27-claude-code-12`) con `get_file_permissions`: la carpeta
 (id 1fGgwXUyr2wUyyxEn8J36vdmy62Ul2lsv) tiene `anyone` con rol `writer`. Cualquiera que reciba el enlace
 puede editar, mover o borrar, y la carpeta trae recursos con la marca de UNAB, Skillnest y la Autónoma, que

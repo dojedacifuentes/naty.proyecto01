@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-30
-**Por:** 2026-09-30-claude-code-06 (Claude Code · opus-5.5)
+**Por:** 2026-09-30-claude-code-07 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -14,7 +14,7 @@
 | --- | --- | --- |
 | 0. Reconocimiento | **en curso** | Bases leídas y sintetizadas. El repo ya se verifica solo. Faltan accesos. |
 | 1. Motor | no iniciada | Bloqueada por extracción SIPFOR |
-| 2. Producción | no iniciada | Bloqueada por fase 1 y por fechas de licitación |
+| 2. Producción | no iniciada | Bloqueada por fase 1. Cierre de la licitación: 5-oct-2026 (#13) |
 | 3. Sistematización | no iniciada | — |
 
 ## Hecho
@@ -430,6 +430,18 @@ que me diga… la info canonica sin interpretarla, sino como aparece en las base
 - [x] `scripts/lib/xlsx.mjs`: fórmulas, celda de entrada y formato condicional (compatible con lo anterior).
 - [ ] No se abrió Rise: el cotejo lo hace el usuario con la planilla. No se subió a Drive ni a la planilla de seguimiento.
 
+Sesión claude-code-07, 2026-09-30: respuestas del usuario a las preguntas abiertas (tras una revisión del repo que pidió el usuario).
+
+- [x] **#1 resuelta:** solo se desarrolla el módulo 2, en los 15 cursos; los demás módulos se muestran nombrados en el LMS de cada
+      cliente, sin desarrollo.
+- [x] **#5 resuelta (quién):** los LMS los arma el usuario.
+- [x] **#13 resuelta (cierre):** la licitación cierra el **lunes 5 de octubre de 2026**; desde el 30-sep quedan 3 días hábiles. Hora sin
+      confirmar.
+- [ ] #3: el usuario dijo adjuntar la matriz cliente × curso (Excel y captura), pero no llegó. Pedida de nuevo.
+- [ ] #20: comprobado que NATY 2.0 sigue "cualquiera con el enlace, editor" y que su id está en el repo público; explicado al usuario,
+      que decide (lector, restringido o dejarla).
+- [ ] #6 y #16: se le pidió al usuario confirmar (LMS propio de cada cliente; "módulo 2" = "Módulo N°2" del PDF oficial).
+
 ## A medias
 
 - **Los entregables del módulo 2 de PF1821 y PF1822 están en borrador, sin revisión humana.**
@@ -454,7 +466,7 @@ visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de co
 | Revisión de los Anexos 2 de referencia | Hay una descarga local desde el 25-sep (#4); falta confirmar que es la carpeta completa | Natalia |
 | Auditoría de verificadores | Depende de lo anterior | Natalia |
 | Matriz real cliente × plan | No definida | Natalia |
-| Fechas formales de la licitación | Llamado aún no publicado | SENCE / Natalia |
+| Hora exacta del cierre (5-oct) | El usuario dio solo la fecha (#13) | Usuario |
 | Fichas de cliente (LMS, infraestructura, docentes) | No levantadas | Natalia + cada cliente |
 | Acceso de escritura al repo | Solo el dueño de la cuenta; falta decidir quién más (#14) | Usuario / Diego |
 
@@ -464,7 +476,10 @@ visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de co
 - 45 Anexos 2 con 3 clientes confirmados; 90 con los 6
 - 89 actividades de extensión distintas por cliente para sacar 7.0 en D3
 - El plan más exigente es PF1477 (483 h): 10 actividades de extensión solo para él
-- Cierre de ofertas: 18:00 del décimo día hábil tras la publicación del llamado
+- **Cierre de ofertas: lunes 5 de octubre de 2026** (usuario, 30-sep, #13). Según las bases, a las 18:00 del décimo día hábil tras la
+  publicación del llamado; la hora está por confirmar
+- Alcance (#1): solo el módulo 2 de cada curso; los demás módulos, solo nombrados en el LMS de cada cliente
+- LMS (#5): los arma el usuario
 - Periodo de consultas: 5 días hábiles tras la publicación
 
 ## Estado de la verificación

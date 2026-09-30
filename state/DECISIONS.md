@@ -724,3 +724,16 @@ Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-05`.
 - **Nombre del aprendizaje:** el plan no le da nombre; la planilla no inventa uno. Muestra el rótulo de su unidad de contenidos y un
   título para Rise armado solo con piezas del plan (código, módulo, nombre del módulo, número del aprendizaje).
 Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-06`.
+
+## 2026-09-30 · Alcance, LMS y fecha de cierre, respondidos por el usuario (sesión claude-code, 2026-09-30-claude-code-07)
+
+- **Qué:** se cierran tres preguntas abiertas con respuestas del usuario en el chat: #1 (solo se desarrolla el módulo 2 en los 15
+  cursos; los demás módulos se muestran nombrados en el LMS de cada cliente, sin desarrollo), #5 (los LMS los arma el usuario) y
+  #13 (la licitación cierra el lunes 5 de octubre de 2026; la hora no se informó).
+- **Por qué:** el usuario pidió "cierra las preguntas abiertas" y dio esas respuestas. Las demás siguen abiertas: no hubo respuesta y
+  `AGENTS.md` §2.3 prohíbe cerrarlas por cuenta propia. #6 y #16 quedaron con la confirmación pedida; #3 espera el adjunto que no
+  llegó; #20 espera la decisión del usuario, a quien se le explicó el riesgo.
+- **Descartado:** dar por resuelta #6 ("LMS de cada cliente") y #16 (conteo del módulo 2) a partir de la misma respuesta: se infiere,
+  pero no se dijo; se pidió confirmar.
+- **Consecuencia:** con el cierre el 5-oct quedan 3 días hábiles, y el módulo 2 está desarrollado solo en PF1821 y PF1822.
+Quién: usuario (respuestas), claude-code, sesión `2026-09-30-claude-code-07`.
