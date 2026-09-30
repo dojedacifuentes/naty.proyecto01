@@ -17,6 +17,12 @@
  *   fila.tipo = 'ae' | 'curso'              fila de sección (fondo claro o fondo azul)
  *   fila.combinar = true | [desde, hasta]   une todas sus celdas, o las columnas desde-hasta (índices desde 0)
  *   hoja.color = 'RRGGBB'                   color de la pestaña
+ *
+ * Además (texto canónico para cotejar Rise):
+ *   { formula, texto }                      fórmula; '{fila}' se reemplaza por el número de fila. Se calcula al abrir
+ *   { texto, entrada: true }                celda para que la persona escriba o pegue (fondo amarillo claro)
+ *   hoja.condicional = [{ rango, reglas: [{ contiene, color: 'ok' | 'aviso' | 'mal' }] }]
+ *                                           colorea las celdas del rango que contienen ese texto
  */
 import { crearZip } from './zip.mjs';
 
@@ -24,12 +30,18 @@ const x = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 const col = (n) => { let s = ''; for (n++; n; n = Math.floor((n - 1) / 26)) s = String.fromCharCode(65 + ((n - 1) % 26)) + s; return s; };
 // Estilos (índices de cellXfs): 1 encabezado · 2 título · 3 subtítulo · 4/5 texto (normal/cebra) · 6/7 enlace ·
 // 8 listo · 9 pendiente · 10 por subir · 11/12 negrita (normal/cebra) · 13-18 niveles 1-6 · 19/20 fila de AE (texto/negrita) ·
-// 21 fila de curso · 22/23 nota (normal/fila de AE) · 24 enlace en fila de AE · 25 nota en fila cebra
+// 21 fila de curso · 22/23 nota (normal/fila de AE) · 24 enlace en fila de AE · 25 nota en fila cebra ·
+// 26 celda de entrada · 27 resultado de fórmula (negrita, centrado)
 const ESTILO = { ok: 8, pend: 9, subir: 10 };
-function celda(ref, v, fila, tipo) {
+const DXF = { ok: 0, aviso: 1, mal: 2 };
+function celda(ref, v, fila, tipo, n) {
   const z = fila % 2 === 1;
   const base = tipo === 'ae' ? 19 : tipo === 'curso' ? 21 : z ? 5 : 4;
   if (v == null || v === '') return `<c r="${ref}" s="${base}"/>`;
+  if (typeof v === 'object' && v.formula) {
+    return `<c r="${ref}" s="27" t="str"><f>${x(v.formula.replaceAll('{fila}', n))}</f><v>${x(v.texto ?? '')}</v></c>`;
+  }
+  if (typeof v === 'object' && v.entrada) return v.texto ? `<c r="${ref}" s="26" t="inlineStr"><is>${t(v.texto)}</is></c>` : `<c r="${ref}" s="26"/>`;
   if (typeof v === 'object' && v.url) {
     const f = `HYPERLINK("${v.url.replace(/"/g, '""')}","${v.texto.replace(/"/g, '""')}")`;
     return `<c r="${ref}" s="${tipo === 'ae' ? 24 : z ? 7 : 6}" t="str"><f>${x(f)}</f><v>${x(v.texto)}</v></c>`;
@@ -58,7 +70,7 @@ function altoAuto(f, cols) {
   }));
   return Math.min(409, Math.max(30, 15 * lineas + 8));
 }
-function hoja({ titulo, subtitulo, encabezados, filas, anchos, alto = 36, color }) {
+function hoja({ titulo, subtitulo, encabezados, filas, anchos, alto = 36, color, condicional = [] }) {
   const n = encabezados.length;
   const r = [];
   const unir = [`A1:${col(n - 1)}1`, `A2:${col(n - 1)}2`];
@@ -73,15 +85,21 @@ function hoja({ titulo, subtitulo, encabezados, filas, anchos, alto = 36, color 
     const ht = f.alto ?? (alto === 'auto' ? altoAuto(f, cols) : alto);
     const celdas = f.combinar ? [...f, ...Array(Math.max(0, n - f.length)).fill('')] : f;
     if (f.combinar) unir.push(`${col(a)}${fila}:${col(b)}${fila}`);
-    r.push(`<row r="${fila}" ht="${ht}" customHeight="1">${celdas.map((v, i) => celda(`${col(i)}${fila}`, v, k, f.tipo)).join('')}</row>`);
+    r.push(`<row r="${fila}" ht="${ht}" customHeight="1">${celdas.map((v, i) => celda(`${col(i)}${fila}`, v, k, f.tipo, fila)).join('')}</row>`);
   });
+  // Formato condicional: la regla va escrita para la primera celda del rango y Excel la desplaza al resto.
+  let prioridad = 0;
+  const cf = condicional.map(({ rango, reglas }) => `<conditionalFormatting sqref="${rango}">${reglas.map((g) => {
+    const texto = g.contiene.replace(/"/g, '""');
+    return `<cfRule type="containsText" dxfId="${DXF[g.color]}" priority="${++prioridad}" operator="containsText" text="${x(g.contiene)}"><formula>${x(`NOT(ISERROR(SEARCH("${texto}",${rango.split(':')[0]})))`)}</formula></cfRule>`;
+  }).join('')}</conditionalFormatting>`).join('');
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
 ${color ? `<sheetPr><tabColor rgb="FF${color}"/></sheetPr>\n` : ''}<sheetViews><sheetView workbookViewId="0" showGridLines="0"><pane xSplit="${anchos.fijas ?? 0}" ySplit="4" topLeftCell="${col(anchos.fijas ?? 0)}5" activePane="bottomRight" state="frozen"/></sheetView></sheetViews>
 <cols>${anchos.cols.map((w, i) => `<col min="${i + 1}" max="${i + 1}" width="${w}" customWidth="1"/>`).join('')}</cols>
 <sheetData>${r.join('')}</sheetData>
 <autoFilter ref="A4:${col(n - 1)}${4 + filas.length}"/>
-<mergeCells count="${unir.length}">${unir.map((u) => `<mergeCell ref="${u}"/>`).join('')}</mergeCells>
+<mergeCells count="${unir.length}">${unir.map((u) => `<mergeCell ref="${u}"/>`).join('')}</mergeCells>${cf}
 </worksheet>`;
 }
 const STYLES = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -103,7 +121,7 @@ const STYLES = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <font><b/><sz val="10"/><color rgb="FFBE123C"/><name val="Arial"/></font>
 <font><b/><sz val="10"/><color rgb="FF6B21A8"/><name val="Arial"/></font>
 </fonts>
-<fills count="15">
+<fills count="16">
 <fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill>
 <fill><patternFill patternType="solid"><fgColor rgb="FF0F3D5E"/></patternFill></fill>
 <fill><patternFill patternType="solid"><fgColor rgb="FFF1F5F9"/></patternFill></fill>
@@ -118,10 +136,11 @@ const STYLES = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <fill><patternFill patternType="solid"><fgColor rgb="FFF3E8FF"/></patternFill></fill>
 <fill><patternFill patternType="solid"><fgColor rgb="FFE8EFF6"/></patternFill></fill>
 <fill><patternFill patternType="solid"><fgColor rgb="FF0F3D5E"/></patternFill></fill>
+<fill><patternFill patternType="solid"><fgColor rgb="FFFFFBEB"/></patternFill></fill>
 </fills>
 <borders count="2"><border/><border><bottom style="thin"><color rgb="FFCBD5E1"/></bottom></border></borders>
 <cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>
-<cellXfs count="26">
+<cellXfs count="28">
 <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>
 <xf numFmtId="0" fontId="1" fillId="2" borderId="1" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>
 <xf numFmtId="0" fontId="2" fillId="0" borderId="0" xfId="0" applyFont="1" applyAlignment="1"><alignment vertical="center"/></xf>
@@ -148,7 +167,14 @@ const STYLES = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xf numFmtId="0" fontId="3" fillId="13" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>
 <xf numFmtId="0" fontId="4" fillId="13" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>
 <xf numFmtId="0" fontId="3" fillId="3" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>
+<xf numFmtId="0" fontId="0" fillId="15" borderId="1" xfId="0" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>
+<xf numFmtId="0" fontId="5" fillId="0" borderId="1" xfId="0" applyFont="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1"/></xf>
 </cellXfs>
+<dxfs count="3">
+<dxf><font><b/><color rgb="FF166534"/></font><fill><patternFill patternType="solid"><bgColor rgb="FFDCFCE7"/></patternFill></fill></dxf>
+<dxf><font><b/><color rgb="FF92400E"/></font><fill><patternFill patternType="solid"><bgColor rgb="FFFEF3C7"/></patternFill></fill></dxf>
+<dxf><font><b/><color rgb="FFB91C1C"/></font><fill><patternFill patternType="solid"><bgColor rgb="FFFEE2E2"/></patternFill></fill></dxf>
+</dxfs>
 </styleSheet>`;
 
 export function crearXlsx(hojas) {
@@ -156,7 +182,7 @@ export function crearXlsx(hojas) {
     { nombre: '[Content_Types].xml', contenido: `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>${hojas.map((_, i) => `<Override PartName="/xl/worksheets/sheet${i + 1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join('')}</Types>` },
     { nombre: '_rels/.rels', contenido: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>' },
-    { nombre: 'xl/workbook.xml', contenido: `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>${hojas.map((h, i) => `<sheet name="${x(h.nombre)}" sheetId="${i + 1}" r:id="rId${i + 1}"/>`).join('')}</sheets><definedNames>${hojas.map((h, i) => `<definedName name="_xlnm._FilterDatabase" localSheetId="${i}" hidden="1">'${h.nombre}'!$A$4:$${col(h.encabezados.length - 1)}$${4 + h.filas.length}</definedName>`).join('')}</definedNames></workbook>` },
+    { nombre: 'xl/workbook.xml', contenido: `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>${hojas.map((h, i) => `<sheet name="${x(h.nombre)}" sheetId="${i + 1}" r:id="rId${i + 1}"/>`).join('')}</sheets><definedNames>${hojas.map((h, i) => `<definedName name="_xlnm._FilterDatabase" localSheetId="${i}" hidden="1">'${h.nombre}'!$A$4:$${col(h.encabezados.length - 1)}$${4 + h.filas.length}</definedName>`).join('')}</definedNames><calcPr calcId="191029" fullCalcOnLoad="1"/></workbook>` },
     { nombre: 'xl/_rels/workbook.xml.rels', contenido: `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${hojas.map((_, i) => `<Relationship Id="rId${i + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i + 1}.xml"/>`).join('')}<Relationship Id="rId${hojas.length + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>` },
     { nombre: 'xl/styles.xml', contenido: STYLES },
     ...hojas.map((h, i) => ({ nombre: `xl/worksheets/sheet${i + 1}.xml`, contenido: hoja(h) })),

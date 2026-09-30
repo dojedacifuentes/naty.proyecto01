@@ -707,3 +707,20 @@ Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-04`.
 - **Descartado:** reimportar la hoja para corregir dos anchos de columna (habría duplicado la pestaña y la copia en Mi unidad); se
   ajustaron a mano y el generador quedó corregido.
 Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-05`.
+
+## 2026-09-30 · Texto canónico del módulo 2 de PF1821 y PF1822 para cotejar Rise (sesión claude-code, 2026-09-30-claude-code-06)
+
+- **Qué:** `npm run canonico` genera una planilla con el texto oficial de cada aprendizaje esperado (curso, competencia del plan, módulo,
+  competencia del módulo, aprendizaje, criterios y cada línea de contenidos), una columna para pegar lo que dice Rise y una fórmula que
+  dice si coincide; y una página HTML con botones de copiar. Pedido del usuario: "la info canonica sin interpretarla… para copiar y pegar".
+- **Fuente:** los campos crudos de SIPFOR (`data/sipfor/`), normalizados solo como los muestra el PDF (saltos de línea, sin espacios al
+  borde ni dobles). Se descartó `data/planes/`, que parte los contenidos por asterisco y pierde lo que el evaluador ve en el PDF.
+- **Verificación:** cada texto se busca en el PDF oficial de SIPFOR, sin contar espacios; un texto puede estar en trozos solo si los
+  separa un salto de página, y no pasa si en el PDF le sigue un signo o le precede un asterisco. Se probó que rechaza un guion, una
+  tilde, una palabra, el punto final y el asterisco faltantes.
+- **Mayúsculas:** la planilla distingue "SOLO CAMBIAN MAYÚSCULAS" de "DISTINTO" y no decide por el usuario; mantiene lo decidido en
+  `modulo-2/GUIA-RISE.md` (copiar tal cual, en mayúsculas). Las bases no hablan de mayúsculas; sí sancionan modificar los aprendizajes,
+  criterios o contenidos (13.3.2 h), pág. 51).
+- **Nombre del aprendizaje:** el plan no le da nombre; la planilla no inventa uno. Muestra el rótulo de su unidad de contenidos y un
+  título para Rise armado solo con piezas del plan (código, módulo, nombre del módulo, número del aprendizaje).
+Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-06`.

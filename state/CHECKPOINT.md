@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-30
-**Por:** 2026-09-30-claude-code-05 (Claude Code · opus-5.5)
+**Por:** 2026-09-30-claude-code-06 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -418,6 +418,17 @@ estamos trabajando… destaca los verbos… prioriza sistematizar lo que se exig
 - [x] Planilla de seguimiento: pestaña nueva **"Exigencias 2026 M2"** (gid 1792720012), importada desde Chrome; revisada con su CSV:
       12 cursos, 12 competencias, 63 AE, 203 criterios, enlaces a Drive 2024.
 - [x] Push a GitHub (incluye los commits sin subir de sesiones anteriores).
+
+Sesión claude-code-06, 2026-09-30: texto canónico del módulo 2 de PF1821 y PF1822 para cotejar Rise (pedido: "necesito un documento
+que me diga… la info canonica sin interpretarla, sino como aparece en las bases y en el plan formativo… para copiar y pegar").
+
+- [x] `npm run canonico` (`scripts/texto-canonico.mjs`) → `entregables/2026-09-30-texto-canonico-modulo2/`: Excel de 13 pestañas (una por
+      aprendizaje esperado, con columna para pegar lo de Rise y fórmula que dice IDÉNTICO / SOLO CAMBIAN MAYÚSCULAS / DISTINTO) y HTML
+      con botones de copiar.
+- [x] El texto sale de los campos crudos de SIPFOR (`data/sipfor/`), no de `data/planes/`. Los 126 textos se verificaron contra el PDF
+      oficial de SIPFOR (`data/sipfor/<plan>/plan-oficial.txt`; los PDF en `privado/sipfor/`). La fórmula se probó en Excel.
+- [x] `scripts/lib/xlsx.mjs`: fórmulas, celda de entrada y formato condicional (compatible con lo anterior).
+- [ ] No se abrió Rise: el cotejo lo hace el usuario con la planilla. No se subió a Drive ni a la planilla de seguimiento.
 
 ## A medias
 

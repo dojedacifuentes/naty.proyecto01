@@ -36,7 +36,9 @@ la ficha.
 6. **Revisa cada lección contra el PDF.** El asistente resume y reescribe. Hay que devolver a su forma
    textual el aprendizaje esperado, los criterios y los rótulos del plan, y comprobar que no falte
    ningún contenido. El asistente solo lee el texto de los PDF: los diagramas y los recuadros llegan
-   como texto plano.
+   como texto plano. Para cotejar, usa
+   [`entregables/2026-09-30-texto-canonico-modulo2/`](../entregables/2026-09-30-texto-canonico-modulo2/):
+   una pestaña por aprendizaje donde pegas lo que dice Rise y te marca si coincide con el plan.
 
 ## Camino B · A mano (siempre funciona)
 

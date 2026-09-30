@@ -28,6 +28,7 @@
     "planilla": "node scripts/planilla.mjs",
     "planes": "node scripts/planes-oficiales.mjs",
     "exigencias": "node scripts/exigencias-modulo2.mjs",
+    "canonico": "node scripts/texto-canonico.mjs",
     "build": "node scripts/sitio.mjs",
     "verificadores": "node scripts/auditar-verificadores.mjs",
     "hooks": "node scripts/instalar-hooks.mjs",

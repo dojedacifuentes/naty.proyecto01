@@ -176,6 +176,10 @@ de esos dos cursos, ni en "Contenidos Finales" ni en "Contenidos Antiguos". El p
 "Contenido M2 Arquitectura Cloud", así que puede que se haya trabajado ahí. Si no existen, esos dos módulos se desarrollan desde cero.
 Lo sabe Natalia (o quien armó el Drive 2024).
 
+**Nota a #24 (2026-09-30, sesión `2026-09-30-claude-code-06`):** el PDF oficial de cada plan se descarga sin sesión desde
+`https://sipfor.sence.cl/Planes/PDFPlan.aspx?id=<PK_RUP_PLA_ID>` (el id está en `data/sipfor/<plan>/plan.json`) y trae la tabla de módulos con
+sus horas y el total. Sirve para mirar qué dice el PDF; la pregunta sigue abierta.
+
 **Nota a #22 (2026-09-29, sesión `2026-09-29-claude-code-02`):** el usuario pidió un quiz por aprendizaje esperado (4 por curso) con la misma
 gamificación y SCORM. Ya no son "3 quiz en Canva": falta confirmar con la contraparte si acepta los 4 y rehacer los de Canva.
 **Nota a #22 y #23 (2026-09-29, sesión `2026-09-29-claude-code-03`):** el usuario descartó los quiz de Canva; #23 (configuración de sus formularios)

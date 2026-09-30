@@ -9,6 +9,22 @@
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
 
+## HECHO (sesión 2026-09-30-06): texto canónico del módulo 2 de PF1821 y PF1822, para cotejar Rise
+
+- **`npm run canonico`** → `entregables/2026-09-30-texto-canonico-modulo2/` (Excel y HTML). El usuario generó en Rise 360 un curso por
+  aprendizaje esperado y Rise cambió palabras y títulos; la planilla tiene una pestaña por aprendizaje: pega el texto de Rise en D y la
+  columna E dice si coincide. **Si SIPFOR cambia**, regenerar: el script se detiene si algún texto no está en el PDF oficial.
+- **Fuente del texto:** los campos crudos de SIPFOR (`data/sipfor/<plan>/modulo-<código>.json`), no `data/planes/`, que parte los
+  contenidos por viñeta y pierde detalles visibles en el PDF (dos viñetas en una línea en PF1822 AE1, "EXPRESIONES N8N: SINTAXIS Y
+  FUNCIONES." sin asterisco en PF1821 AE3, los dos puntos del título de cada unidad).
+- **El PDF oficial se descarga sin sesión:** `curl -L "https://sipfor.sence.cl/Planes/PDFPlan.aspx?id=<plan id>"` (3934 = PF1821,
+  3935 = PF1822; el id está en `data/sipfor/<plan>/plan.json`, `PK_RUP_PLA_ID`). El texto se saca con `pdftotext -enc UTF-8 -raw`
+  (viene con Git for Windows); sin `-raw`, pdftotext borra el guion de "ZERO-" al final de una línea. Sirve también para la #24.
+- **Rarezas que están así en el plan** (no "corregirlas" en Rise): "REQUEST–RESPONSE" con guion largo y la competencia del módulo de
+  PF1822 sin punto final; el criterio 3.1 de PF1821 repite el AE3. La planilla las marca en "Ojo con esto".
+- **Siguiente paso natural:** que el usuario coteje los 8 cursos de Rise. Si comparte el contenido de Rise (exportado o en Review 360),
+  se puede cotejar automáticamente contra `data/sipfor/`.
+
 ## HECHO (sesión 2026-09-30-05): exigencias 2026 del módulo 2 en Excel, PDF y la planilla de seguimiento
 
 - **`npm run exigencias`** reemplaza a `npm run requisitos` (sesión -04; el script se renombró). Salidas: `entregables/2026-09-30-exigencias-modulo2/`
