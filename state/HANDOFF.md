@@ -9,6 +9,26 @@
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
 
+## HECHO (sesión 2026-09-30-04): qué exige 2026 del módulo 2, contrastado con 2024
+
+- **`npm run requisitos`** → `privado/drive/Requisitos-Modulo2-TD2026.xlsx` (se entregó como archivo; **no está en Drive**). Pestañas:
+  Resumen, Qué exigen las bases (con numeral y página), Verbos, Cambios 2024-2026, una por módulo 2 (12) y Fuentes. En cada pestaña de
+  curso, una fila por criterio: verbo y nivel (Bloom revisada, `data/verbos-bloom.csv`), qué tiene que demostrar el participante, qué
+  necesita un recurso para servir, herramientas que nombra el plan, cambio respecto de 2024 y **3 columnas vacías** (recurso 2024 que
+  lo cubre, ¿sirve?, observaciones) para el paso siguiente.
+- **Hallazgo:** los 13 planes que existían en 2024 tienen el mismo módulo 2 que el plan usado en la licitación 2024. Lo que cambió está
+  en `data/modulo2-cambios-2024-2026.csv` (verbos y redacción; nada de contenido). Plan 2026 = Res. 3615 del 05-12-2024: se aprobó
+  después de la licitación 2024, por eso los .docx de 2024 traen borradores con dos verbos (PF1483).
+- **Dónde están los recursos 2024:** Drive "Talento Digital 2024 Licitación" (de ruben@hackea.pro) → "Contenidos Finales" → una carpeta
+  "Contenido M2 …" por curso (ids en `privado/drive/recursos-2024.json`), y el inventario "Copia de Recursos educativos" (flipbook,
+  video de bienvenida, video resumen, quiz, infografía). Algunas carpetas tienen además ABP y ABPRO. **No hay carpeta de DevOps
+  (PF1485) ni de Seguridad Cloud (PF1493)** (#25). Hay más en "Contenidos Antiguos" (2023).
+- **Siguiente paso natural:** abrir cada "Contenido M2", listar sus recursos por AE y llenar las 3 columnas de la pestaña del curso.
+  Criterio de la planilla: los recursos expositivos alcanzan los criterios de nivel 1-2; desde el 3 hace falta práctica, caso o
+  proyecto; y todo recurso tiene que funcionar solo en el LMS (2026 es solo e-learning) y con enlaces vigentes (13.3.3 h, pág. 53).
+- **Cómo se leyó el Drive 2024:** conector de Drive (`search_files` por `parentId`, que pagina de a 5; `read_file_content` de los .docx,
+  que se guarda en `tool-results` y se procesa con Node). No hace falta el navegador para leer.
+
 ## HECHO (sesión 2026-09-30-03): evaluación y cierre del módulo 2
 
 - Fuentes: `contenidos/<PF>/modulo-2/R-evaluacion-modulo.md` (un "## NN · Título" por documento y los ítems de la diagnóstica) y

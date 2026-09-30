@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-30
-**Por:** 2026-09-30-claude-code-03 (Claude Code · opus-5.5)
+**Por:** 2026-09-30-claude-code-04 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -388,6 +388,21 @@ final de portafolio… Y finalmente, un glosario del modulo 2"; en PDF, sin dura
 - [x] Hoja de Google: pestaña "Evaluación y cierre" (14 filas), Resumen S = "Evaluación y cierre (carpeta)" (Infografías pasó a T),
       Pendientes filas 7 y 8.
 - [ ] Sin push. La sección V del Anexo 2 (B2 instrumento 2, B3, B4) no está alineada con estos insumos (fila 8 de Pendientes).
+
+Sesión claude-code-04, 2026-09-30: qué exige 2026 del módulo 2 de cada curso, contrastado con 2024 (pedido: "hagas una planilla
+de cada curso del modulo 2 lo que exigen las bases respecto a esos cursos. verbos importantes etc… contrasta etc para luego ir a ver que
+recursos aun nos sirven").
+
+- [x] `npm run requisitos` (`scripts/requisitos-modulo2.mjs`) → `privado/drive/Requisitos-Modulo2-TD2026.xlsx`: Resumen (15 cursos),
+      Qué exigen las bases (16 exigencias con numeral y página), Verbos (42, por nivel de Bloom), Cambios 2024-2026 (14) y una pestaña
+      por módulo 2 (12: los 4 Entry level comparten una), con una fila por criterio y 3 columnas vacías para anotar la revisión.
+- [x] Datos nuevos: `data/verbos-bloom.csv` (verbo → nivel) y `data/modulo2-cambios-2024-2026.csv`; `privado/drive/recursos-2024.json`
+      (carpetas "Contenido M2" del Drive 2024, fuera de git).
+- [x] Contraste hecho: los 13 planes que existían en 2024 tienen **el mismo módulo 2** (nombre, horas, aprendizajes, criterios y
+      contenidos) que el plan usado en la licitación 2024 (Drive "Talento Digital 2024 Licitación → PF Sofofa 2024"). Solo cambian
+      verbos y redacción (competencia de MB00162, 8 textos de PF1483, 3 criterios de PF1487, 2 erratas) y la modalidad (2026: solo
+      e-learning). PF1821 y PF1822 son nuevos. Los Anexos 2 de referencia de otras instituciones confirman lo mismo.
+- [ ] La planilla no está en Drive: se entregó como archivo. El paso siguiente (revisar recurso por recurso) no empezó.
 
 ## A medias
 

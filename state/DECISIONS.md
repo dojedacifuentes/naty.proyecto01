@@ -678,3 +678,18 @@ Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-01`.
   corrección; el cruce final lo hizo la sesión (se agregó "Aggregate" al glosario de PF1821).
 - **Pendiente:** alinear la sección V del Anexo 2 (instrumento 2, B3 y B4) con estos insumos.
 Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-03`.
+
+## 2026-09-30 · Planilla de lo que exige 2026 del módulo 2, contrastada con 2024 (sesión claude-code, 2026-09-30-claude-code-04)
+
+- **Qué:** `npm run requisitos` genera `privado/drive/Requisitos-Modulo2-TD2026.xlsx`, una pestaña por módulo 2 con una fila por
+  criterio (verbo, nivel, evidencia, qué necesita un recurso, herramientas, cambio desde 2024) y columnas vacías para revisar los
+  recursos 2024. Pedido del usuario: "una planilla de cada curso del modulo 2 lo que exigen las bases… verbos importantes… contrasta…
+  para luego ir a ver que recursos aun nos sirven".
+- **Base del contraste:** los .docx de "PF Sofofa 2024" (lo que usó Hackea en 2024), comparados texto por texto con SIPFOR. Se
+  descartó usar solo los Anexos 2 de referencia: son de otras instituciones y reformulan algunos textos.
+- **Nivel de cada verbo:** taxonomía de Bloom revisada, en `data/verbos-bloom.csv`, marcada en la planilla como lectura nuestra (las
+  bases solo piden verbo + objeto + condición y ascenso taxonómico, Anexo 7, pág. 99). ELABORAR y ESTRUCTURAR van en "Aplicar" y no
+  en "Crear" o "Analizar", porque en estos planes se usan para producir con reglas conocidas (expresiones, funciones, una página HTML).
+- **Una pestaña para los 4 Entry level:** comparten el módulo 2 (MB00162); una sola evita revisar cuatro veces lo mismo.
+- **Dónde:** en `privado/` (fuera de git), porque enlaza carpetas de Drive privadas y lista Anexos 2 de otras instituciones.
+Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-04`.

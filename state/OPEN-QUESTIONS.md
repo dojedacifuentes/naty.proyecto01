@@ -169,6 +169,13 @@ En SIPFOR, el total del plan no es la suma de sus módulos en PF1462 (198 contra
 PF1493 (201 contra 204) y PF1495 (207 contra 210); y la planilla de oferta (`data/planes-formativos.csv`) dice otra cosa en PF1482 (204
 contra 210) y PF1493 (201). Importa para las horas del Anexo 2 y para la regla de 1 actividad de extensión cada 50 horas. Se puede
 mirar el PDF oficial de cada plan o consultarlo a SENCE. Lo decide el usuario o Natalia. Detectado en la sesión `2026-09-29-claude-code-01`.
+
+**25. ¿Hay recursos 2024 del módulo 2 de DevOps (PF1485) y de Seguridad Cloud (PF1493)?** — ABIERTA
+Detectado el 2026-09-30 (sesión `2026-09-30-claude-code-04`): en el Drive "Talento Digital 2024 Licitación" no hay carpeta "Contenido M2"
+de esos dos cursos, ni en "Contenidos Finales" ni en "Contenidos Antiguos". El plan 2024 de Seguridad Cloud está dentro de
+"Contenido M2 Arquitectura Cloud", así que puede que se haya trabajado ahí. Si no existen, esos dos módulos se desarrollan desde cero.
+Lo sabe Natalia (o quien armó el Drive 2024).
+
 **Nota a #22 (2026-09-29, sesión `2026-09-29-claude-code-02`):** el usuario pidió un quiz por aprendizaje esperado (4 por curso) con la misma
 gamificación y SCORM. Ya no son "3 quiz en Canva": falta confirmar con la contraparte si acepta los 4 y rehacer los de Canva.
 **Nota a #22 y #23 (2026-09-29, sesión `2026-09-29-claude-code-03`):** el usuario descartó los quiz de Canva; #23 (configuración de sus formularios)
