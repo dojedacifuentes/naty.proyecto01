@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-30
-**Por:** 2026-09-30-claude-code-01 (Claude Code · opus-5.5)
+**Por:** 2026-09-30-claude-code-03 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -373,6 +373,21 @@ también PDF, quitar la duración de las actividades y no mostrar rótulos inter
 - [x] Hoja de Google: pestaña nueva "ABP y ABPRO" (una fila por AE, con título, Google Doc y PDF de cada actividad); Resumen R = "ABP y
       ABPRO (carpeta)" (las columnas siguientes se corrieron: Infografías pasó a S); Pendientes, fila 6 (crear las Tareas en el LMS).
 - [ ] Sin push. Las actividades nuevas no están en el Anexo 2 (VI b sigue con las actividades 1 y 2 de C2) ni en la ruta de horas.
+
+Sesión claude-code-03, 2026-09-30: evaluación y cierre del módulo 2 (pedido: "actividad final del modulo 2, integradora (sin
+referenciar los aprendizajes esperados…), una evaluacion diagnostica, autoevaluacion, una co-evaluacion por pares, y una evaluacion
+final de portafolio… Y finalmente, un glosario del modulo 2"; en PDF, sin duración, con el texto del plan sin decir "textual" ni
+"oficial"). El usuario pidió hacerlos desde cero porque los de B3/B4 solo se referían a las actividades 1 y 2.
+
+- [x] `contenidos/<PF>/modulo-2/R-evaluacion-modulo.md` y `R-glosario-integrador.md` (fuentes) y `npm run evaluacion`
+      (`scripts/evaluacion-modulo.mjs`, `scripts/lib/plan.mjs`) → `modulo-2/<curso>/entrega/evaluacion-modulo/`: 7 PDF por curso y el
+      glosario en CSV y XML de Moodle. El generador pone el texto del plan desde la ficha y no genera si falta un contenido del plan
+      en la actividad final o en el glosario, si la actividad final nombra un aprendizaje o un criterio, o si aparece una duración o
+      "textual"/"oficial".
+- [x] Drive: carpeta "6 Evaluación y cierre" en cada curso (7 PDF y el XML). Ids en `privado/drive/enlaces.json` (`evaluacionModulo`).
+- [x] Hoja de Google: pestaña "Evaluación y cierre" (14 filas), Resumen S = "Evaluación y cierre (carpeta)" (Infografías pasó a T),
+      Pendientes filas 7 y 8.
+- [ ] Sin push. La sección V del Anexo 2 (B2 instrumento 2, B3, B4) no está alineada con estos insumos (fila 8 de Pendientes).
 
 ## A medias
 

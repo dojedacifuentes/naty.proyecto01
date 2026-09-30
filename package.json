@@ -21,6 +21,7 @@
     "produccion": "node scripts/produccion.mjs",
     "quiz-juego": "node scripts/quiz-juego.mjs",
     "abp": "node scripts/abp-abpro.mjs",
+    "evaluacion": "node scripts/evaluacion-modulo.mjs",
     "sitio": "node scripts/sitio.mjs",
     "marca": "node scripts/marca.mjs",
     "drive": "node scripts/drive.mjs",

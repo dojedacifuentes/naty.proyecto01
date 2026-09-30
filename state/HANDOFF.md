@@ -9,6 +9,17 @@
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
 
+## HECHO (sesión 2026-09-30-03): evaluación y cierre del módulo 2
+
+- Fuentes: `contenidos/<PF>/modulo-2/R-evaluacion-modulo.md` (un "## NN · Título" por documento y los ítems de la diagnóstica) y
+  `R-glosario-integrador.md`. `npm run evaluacion` genera `entrega/evaluacion-modulo/` (`--sin-pdf` solo revisa; `--solo=glosario`
+  o `--solo=evaluacion` revisa una fuente). El plan se cita con marcas ({{AE1}}, {{2.3}}, {{c:INICIO DEL CONTENIDO}},
+  {{competencia: trozo}}…) que el generador reemplaza desde la ficha: no copiar el plan a mano.
+- Drive: carpeta "6 Evaluación y cierre" de cada curso. Hoja: pestaña "Evaluación y cierre", Resumen S, Pendientes 7 y 8.
+- **Si cambia una fuente:** `npm run evaluacion` y reemplazar el PDF en Drive (nueva versión, para no cambiar el enlace).
+- **Navegador:** esta vez el panel de la app no tenía sesión de Google; se usó Chrome (la ventana del grupo "Claude" estaba minimizada
+  y el usuario la restauró). El conector de Drive (create_file) sirve para carpetas, no conviene para subir PDF (base64).
+
 ## HECHO (sesión 2026-09-30-01): ABP y ABPRO por aprendizaje esperado
 
 - 16 actividades en `contenidos/<PF>/modulo-2/R-abp-abpro.md`; `npm run abp` genera HTML y PDF en `entrega/abp-abpro/`.

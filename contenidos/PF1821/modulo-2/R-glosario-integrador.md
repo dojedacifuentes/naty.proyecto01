@@ -1,0 +1,402 @@
+# PF1821 · Módulo 2 · Glosario integrador
+
+**Estado:** borrador · **Va en:** LMS (PDF y actividad Glosario de Moodle) · **Pedido:** usuario, 2026-09-30
+Fuente del glosario integrador del módulo 2: 60 términos repartidos por los cuatro contenidos del plan, que incluyen y amplían los de los glosarios de las cuatro lecturas. `npm run evaluacion` genera el PDF `M2-02-Glosario-integrador` y, para importarlo en Moodle, el CSV y el XML. Esta cabecera no sale en el PDF.
+
+---
+
+## Presentación
+
+Este glosario reúne los términos que necesitas para trabajar en el módulo «{{modulo}}». Cada término trae una definición precisa, un ejemplo del caso Mercado Austral, la empresa ficticia que acompaña todo el módulo, y los términos con que se relaciona. En cada contenido, la última columna de la tabla indica qué tema del plan formativo trabaja cada término.
+
+Está organizado por los cuatro contenidos del plan, en el orden en que avanzas en el módulo, y cierra con un índice alfabético:
+
+- **Contenido 1 · {{unidad 1}}.** Qué es un workflow, cuándo conviene automatizar y cómo se justifica con el ROI; la arquitectura de n8n, su ecosistema de nodos y en qué se diferencia de otras plataformas.
+- **Contenido 2 · {{unidad 2}}.** El editor visual, el panel de configuración y el workspace; los triggers, la estructura trigger, procesar y ejecutar, y cómo probar y activar un workflow.
+- **Contenido 3 · {{unidad 3}}.** Los nodos core que transforman los datos, las expresiones, los tipos y los formatos JSON, CSV y XML, las variables de entorno y la integración con Supabase.
+- **Contenido 4 · {{unidad 4}}.** Operadores, rutas y casos borde; las herramientas para depurar, la trazabilidad y las buenas prácticas de prueba.
+
+Cómo usarlo:
+
+- **En las lecturas.** Cada lectura cierra con un glosario breve de ocho términos. Aquí están todos, con definiciones más completas, junto con otros que las lecturas usan y no alcanzan a definir. Cuando un término te genere dudas, búscalo aquí y revisa también sus relacionados.
+- **En los ABP y los ABPRO.** Antes de entregar, revisa que usas cada término con el sentido de este glosario: no es lo mismo un workflow que una ejecución, ni un If que un Switch, ni una credencial que una variable de entorno. En los ABPRO, que van de «{{abpro AE1}}» a «{{abpro AE4}}», sirve para que el equipo acuerde un mismo vocabulario.
+- **En la actividad final integradora.** El caso de las devoluciones de Mercado Austral usa términos de los cuatro contenidos. Los relacionados de cada término te ayudan a conectar la propuesta, los workflows, los datos y las pruebas.
+- **En tu portafolio.** Úsalo para explicar tus evidencias con precisión técnica.
+
+Los términos que aparecen en inglés en la interfaz de n8n (Trigger, Merge, Summarize, Split Out, entre otros) se dejan en inglés, tal como los verás en la herramienta. Algunos botones cambian de nombre entre versiones de n8n; cuando es así, la definición da las dos formas. Todos los datos de los ejemplos son ficticios, incluidos los correos con dominio `.test`.
+
+En el aula virtual, las mismas definiciones y ejemplos están disponibles como actividad **Glosario** de Moodle: puedes buscar un término o recorrerlo por letra, y cada término está clasificado según el contenido del plan (1 a 4) al que pertenece. Los relacionados de cada término aparecen solo en este documento.
+
+## Contenido 1
+
+### Workflow
+- **Plan:** {{c:CONCEPTOS FUNDAMENTALES DE WORKFLOW AUTOMATION}}
+- **Definición:** Secuencia de pasos que transforma una entrada en un resultado. Cuando está automatizado (*workflow automation*), corre solo cada vez que ocurre su trigger y mueve los datos entre aplicaciones a través de sus APIs, sin que una persona los copie de una a otra.
+- **Ejemplo:** El workflow «Pedido a registro» recibe el formulario de un pedido, normaliza los datos y guarda la fila en la tabla `pedidos` de Supabase, sin que nadie en Mercado Austral copie nada a una planilla.
+- **Relacionados:** Trigger, Nodo, Ejecución, Caso de uso empresarial
+
+### Trigger
+- **Plan:** {{c:CONCEPTOS FUNDAMENTALES DE WORKFLOW AUTOMATION}} · {{c:ARQUITECTURA DE N8N}}
+- **Definición:** Nodo disparador que inicia un workflow cuando ocurre un evento (un formulario enviado, una solicitud a un webhook, un cambio en otra aplicación) o cuando llega una hora programada. Es el punto de partida de cada ejecución; mientras construyes, el trigger manual inicia el workflow desde el editor.
+- **Ejemplo:** En Mercado Austral, el envío del formulario «Nuevo pedido» dispara el registro del pedido, y cada viernes a las 18:00 un trigger programado dispara el resumen semanal para facturación.
+- **Relacionados:** Workflow, n8n Form Trigger, Webhook, Schedule Trigger, Error Trigger
+
+### Caso de uso empresarial
+- **Plan:** {{c:CASOS DE USO EMPRESARIALES}}
+- **Definición:** Proceso concreto de una empresa en que un workflow aporta valor medible. Los buenos candidatos son repetitivos, frecuentes, siguen reglas claras y trabajan con datos digitales: registrar pedidos, avisar a otra área, sincronizar sistemas, generar reportes periódicos o clasificar solicitudes; las decisiones de criterio y los procesos que nadie ha definido no lo son.
+- **Ejemplo:** Registrar cada pedido del formulario es un buen caso de uso para Mercado Austral (unos 40 al día, siempre igual y con datos digitales); negociar un descuento con un almacén mayorista no lo es, porque depende del criterio de una persona.
+- **Relacionados:** Workflow, ROI, Plazo de recuperación
+
+### ROI
+- **Plan:** {{c:BENEFICIOS Y ROI}}
+- **Definición:** Retorno de la inversión: compara lo que gana la empresa al automatizar con lo que le cuesta, con la fórmula ROI = (beneficio − costo) ÷ costo, expresada en porcentaje. El beneficio suele ser el valor de las horas-persona liberadas y de los errores evitados; el costo incluye la herramienta, la construcción del workflow y su mantención.
+- **Ejemplo:** Si copiar cada pedido toma 3 minutos, 40 pedidos al día en 20 días hábiles suman 40 horas-persona al mes, $240.000 a $6.000 la hora; con $90.000 mensuales de herramienta y mantención, el ROI mensual es (240.000 − 90.000) ÷ 90.000, cerca de 167 %, y el del primer año, sumando $300.000 de construcción, es (2.880.000 − 1.380.000) ÷ 1.380.000, cerca de 109 % (cifras supuestas del caso).
+- **Relacionados:** Plazo de recuperación, Caso de uso empresarial, Cobro por ejecución
+
+### Plazo de recuperación
+- **Plan:** {{c:BENEFICIOS Y ROI}}
+- **Definición:** Tiempo que tarda el beneficio neto de una automatización en pagar la inversión inicial (construcción y puesta en marcha); se calcula como inversión inicial ÷ beneficio neto mensual. Complementa al ROI: el ROI dice cuánto se gana y el plazo, desde cuándo se empieza a ganar.
+- **Ejemplo:** Si construir el registro de pedidos cuesta $300.000 (supuesto) y deja $150.000 netos al mes ($240.000 en horas liberadas menos $90.000 de herramienta y mantención), Mercado Austral recupera la inversión en 2 meses.
+- **Relacionados:** ROI, Caso de uso empresarial
+
+### Nodo
+- **Plan:** {{c:ARQUITECTURA DE N8N}} · {{c:COMPONENTES PRINCIPALES}}
+- **Definición:** Cada paso de un workflow en n8n: recibe ítems por su entrada, hace una tarea con ellos y entrega el resultado por su salida. Según lo que hace es disparador, acción, lógica o transformación; según su origen, core o de integración con una aplicación.
+- **Ejemplo:** En «Pedido a registro», el n8n Form Trigger es el disparador, Edit Fields transforma los datos y el nodo Supabase es la acción que guarda la fila.
+- **Relacionados:** Conexión, Trigger, Nodo core, Nodo de integración, Ítem
+
+### Conexión
+- **Plan:** {{c:ARQUITECTURA DE N8N}} · {{c:COMPONENTES PRINCIPALES}}
+- **Definición:** Línea que une la salida de un nodo con la entrada de otro y define por dónde pasan los ítems y en qué orden. Un nodo puede tener varias salidas, cada una con su propia conexión (como el If o el Switch), y el Merge recibe conexiones en más de una entrada.
+- **Ejemplo:** En el enrutamiento de pedidos de Mercado Austral, cada salida del Switch (mayorista, regiones, bodega RM y respaldo) tiene su propia conexión hacia la rama que atiende ese pedido.
+- **Relacionados:** Nodo, Canvas, Routing de datos
+
+### Credencial
+- **Plan:** {{c:COMPONENTES PRINCIPALES}} · {{c:ARQUITECTURA DE N8N}}
+- **Definición:** Dato de acceso a otro servicio (una clave, un token o un usuario con su contraseña) que n8n guarda cifrado en la base de datos de la instancia, fuera del workflow. El nodo solo indica qué credencial usa: la clave no aparece en sus parámetros ni en el workflow exportado.
+- **Ejemplo:** La credencial «Supabase Mercado Austral» guarda la URL del proyecto y la clave de servicio; los nodos Supabase la eligen por su nombre, y el archivo JSON del workflow que entregas no contiene la clave.
+- **Relacionados:** Clave de servicio, Variable de entorno, Instancia de n8n, Supabase
+
+### Ejecución
+- **Plan:** {{c:ARQUITECTURA DE N8N}} · {{c:COMPONENTES PRINCIPALES}}
+- **Definición:** Cada corrida de un workflow, desde que su trigger se activa hasta que termina o se detiene por un error. Queda registrada con su estado (exitosa o con error), su hora, su modo (manual desde el editor o de producción) y los datos que pasaron por cada nodo.
+- **Ejemplo:** Cada pedido que llega por la URL de producción del formulario genera una ejecución, en verde si se guardó o en rojo si un nodo falló, y en ambos casos puedes abrirla para ver qué recibió y qué entregó cada nodo.
+- **Relacionados:** Historial de ejecuciones, Workflow activo, Trigger, Trazabilidad
+
+### Instancia de n8n
+- **Plan:** {{c:ARQUITECTURA DE N8N}}
+- **Definición:** Cada instalación de n8n en funcionamiento: una aplicación Node.js que se usa desde el navegador y guarda los workflows, las credenciales cifradas y el historial de ejecuciones en una base de datos (SQLite por defecto, PostgreSQL recomendada para producción). Puede ser un espacio en n8n Cloud, administrado por el proveedor, o una instalación autoalojada.
+- **Ejemplo:** Si Mercado Austral autoaloja su instancia, sus workflows de pedidos, la credencial de Supabase y el historial de cada pedido procesado quedan en su propio servidor y en su propia base de datos.
+- **Relacionados:** Autoalojamiento, Credencial, Historial de ejecuciones, Variable de entorno
+
+### Autoalojamiento
+- **Plan:** {{c:DIFERENCIAS CON OTRAS PLATAFORMAS}}
+- **Definición:** Instalar una aplicación en infraestructura propia (un servidor de la empresa o una nube que ella contrata) en vez de usarla como servicio del proveedor. n8n lo permite, con una licencia *fair-code* que admite el uso interno sin costo de licencia; Make y Zapier funcionan solo en la nube de su proveedor.
+- **Ejemplo:** Autoalojando n8n, los datos de los pedidos que procesan los workflows de Mercado Austral no pasan por los servidores de la plataforma de automatización, como sí ocurre con Make o Zapier (la base de datos sigue en el proyecto de Supabase que la empresa contrata); a cambio, la empresa se hace cargo de las actualizaciones, los respaldos y la seguridad del servidor.
+- **Relacionados:** Instancia de n8n, Cobro por ejecución, Credencial
+
+### Cobro por ejecución
+- **Plan:** {{c:DIFERENCIAS CON OTRAS PLATAFORMAS}}
+- **Definición:** Forma en que n8n Cloud mide el uso de sus planes: cuenta cada ejecución completa del workflow, sin importar cuántos nodos tenga. Zapier cuenta tareas (cada acción que se completa) y Make el consumo de cada módulo (operaciones o créditos, según el plan), así que en ellos el costo crece con la cantidad de pasos; los precios y límites cambian, y se verifican en el sitio de cada proveedor antes de decidir.
+- **Ejemplo:** Un pedido de Mercado Austral que pasa por siete nodos del workflow de enrutamiento cuenta como una sola ejecución en n8n Cloud; en una plataforma que cobra por paso, el mismo pedido consume varias unidades.
+- **Relacionados:** Autoalojamiento, ROI, Ejecución
+
+### Nodo core
+- **Plan:** {{c:ECOSISTEMA DE NODOS}}
+- **Definición:** Nodo incluido en n8n que no depende de una aplicación externa: triggers genéricos (manual, formulario, webhook, programado), lógica (If, Switch, Merge, Filter), transformación (Edit Fields, Summarize, Split Out, conversión de archivos) y utilidades como HTTP Request y Code, que permite escribir JavaScript o Python cuando los demás nodos no alcanzan.
+- **Ejemplo:** El workflow «Resumen semanal» de Mercado Austral se arma solo con nodos core: Schedule Trigger, HTTP Request, Extract from File, Filter, Edit Fields, Summarize y XML.
+- **Relacionados:** Nodo de integración, HTTP Request, Edit Fields (Set), Nodo
+
+### Nodo de integración
+- **Plan:** {{c:ECOSISTEMA DE NODOS}}
+- **Definición:** Nodo hecho para un servicio específico (Supabase, Google Sheets, Gmail o Slack, entre cientos) que ya conoce sus operaciones y su forma de autenticarse: eliges la operación y la credencial, sin armar las solicitudes a mano. Muchos traen su propio trigger; los nodos de la comunidad amplían el catálogo, pero se revisa su origen antes de instalarlos.
+- **Ejemplo:** En el ABPRO «{{abpro AE2}}», el nodo Google Sheets agregó cada pedido a la hoja del equipo; en «{{abpro AE3}}», el nodo Supabase guardó el cálculo de reposición en una tabla.
+- **Relacionados:** Nodo core, Credencial, Supabase, HTTP Request
+
+### HTTP Request
+- **Plan:** {{c:ECOSISTEMA DE NODOS}}
+- **Definición:** Nodo core que envía una solicitud HTTP (GET, POST, PUT, PATCH o DELETE) a cualquier URL o API y entrega la respuesta como JSON, texto o archivo. Conecta n8n con servicios que no tienen nodo propio.
+- **Ejemplo:** El «Resumen semanal» descarga `pedidos_historicos.csv` desde el enlace del curso con un GET y el formato de respuesta *File*, para leerlo después con Extract from File.
+- **Relacionados:** Nodo core, Nodo de integración, CSV, JSON
+
+## Contenido 2
+
+### Canvas
+- **Plan:** {{c:EDITOR VISUAL}}
+- **Definición:** Lienzo del editor visual de n8n donde el workflow se ve como nodos (bloques) unidos por conexiones (líneas). Ahí agregas nodos con el botón +, los conectas arrastrando de una salida a una entrada, te mueves con el zoom y el ajuste a la pantalla, y documentas con notas adhesivas (*sticky notes*).
+- **Ejemplo:** En el canvas del enrutamiento de Mercado Austral, una nota adhesiva junto al Switch explica por qué la regla de mayoristas va antes que la de regiones.
+- **Relacionados:** Nodo, Conexión, Panel de configuración, Workspace
+
+### Panel de configuración
+- **Plan:** {{c:PANEL DE CONFIGURACIÓN}}
+- **Definición:** Vista que se abre con doble clic en un nodo. Al centro están sus parámetros, su credencial y la pestaña *Settings* con su comportamiento (por ejemplo, qué hacer si falla); a los lados, los paneles de entrada y de salida en vista *Table*, *JSON* o *Schema*, y un botón ejecuta solo ese paso (*Execute step* o *Test step*, según la versión).
+- **Ejemplo:** En el Edit Fields de «Pedido a registro», el panel de entrada muestra el correo con mayúsculas y el de salida lo muestra en minúsculas, con `total` en 25000 sin comillas, es decir, como número.
+- **Relacionados:** Parámetro, Datos fijados, Tipo de dato, Salida de error
+
+### Parámetro
+- **Plan:** {{c:PANEL DE CONFIGURACIÓN}} · {{c:CONFIGURACIÓN DE NODOS BÁSICOS}}
+- **Definición:** Dato que un nodo necesita para hacer su trabajo, como la operación, la tabla, los campos o una condición. Puede tener un valor fijo (*Fixed*) o una expresión (*Expression*), y el nodo muestra un aviso mientras falte uno obligatorio.
+- **Ejemplo:** Los parámetros del nodo Supabase de «Pedido a registro» son la operación *Create a row*, la tabla `pedidos` y el mapeo automático de columnas (*Auto-map input data to columns*); la credencial se elige aparte, en el selector que está sobre ellos.
+- **Relacionados:** Panel de configuración, Expresión, Variable de entorno
+
+### Workspace
+- **Plan:** {{c:WORKSPACE Y NAVEGACIÓN}}
+- **Definición:** Espacio de trabajo de n8n: la vista general desde la que navegas entre workflows, credenciales y ejecuciones (y proyectos, según la versión y el plan), con búsqueda y etiquetas para ordenar. Cada workflow se abre en su propio canvas, con su nombre, el botón para guardar y el control para activarlo.
+- **Ejemplo:** Con nombres que dicen qué hace cada workflow («Pedido a registro», «Resumen semanal») y una etiqueta común como `mercado-austral`, encuentras el correcto aunque tengas diez en tu workspace.
+- **Relacionados:** Canvas, Workflow activo, Historial de ejecuciones
+
+### Estructura trigger, procesar y ejecutar
+- **Plan:** {{c:ESTRUCTURA TRIGGER}} · {{c:PRIMEROS WORKFLOWS}}
+- **Definición:** Patrón base de todo workflow: un trigger que lo inicia, nodos que procesan los datos (limpian, calculan, deciden) y una acción de salida que produce el resultado (guardar, enviar, generar un archivo). Con tres nodos conectados, uno por parte, ya hay un workflow funcional; al crecer, cada parte suma nodos, pero la estructura se mantiene.
+- **Ejemplo:** En «Pedido a registro», el n8n Form Trigger es el trigger, el Edit Fields que normaliza y calcula el total es el procesamiento y el nodo Supabase con *Create a row* es la ejecución.
+- **Relacionados:** Trigger, Edit Fields (Set), CRUD, Workflow
+
+### n8n Form Trigger
+- **Plan:** {{c:CONFIGURACIÓN DE NODOS BÁSICOS}} · {{c:PRIMEROS WORKFLOWS}}
+- **Definición:** Trigger que publica un formulario web alojado por n8n, con los campos que definas (texto, email, número o lista desplegable, entre otros), e inicia el workflow con cada envío. Por defecto, la etiqueta de cada campo pasa a ser el nombre del campo en los datos; la página final que ve la persona puede configurarse con un nodo n8n Form en modo *Form Ending*.
+- **Ejemplo:** El formulario «Nuevo pedido» del workflow «Pedido a registro» tiene siete campos con etiquetas en minúsculas (`nombre`, `email`, `comuna`, `tipo_cliente`, `producto`, `cantidad` y `precio_unitario`), para que los nodos siguientes los encuentren por ese nombre exacto.
+- **Relacionados:** Trigger, URL de prueba, URL de producción, Webhook
+
+### Webhook
+- **Plan:** {{c:CONFIGURACIÓN DE NODOS BÁSICOS}}
+- **Definición:** Trigger que entrega una URL para que otra aplicación inicie el workflow enviando una solicitud HTTP, por ejemplo un POST con los datos en JSON. Lo enviado llega dentro del campo `body` del ítem, junto con `headers` y `query`; como el formulario de n8n, tiene una URL de prueba y una de producción, y puede responder a quien lo llamó.
+- **Ejemplo:** En el workflow de enrutamiento de Mercado Austral, el sitio web envía cada pedido al Webhook, y el correo del cliente se lee con `$json.body.email` hasta que un Edit Fields lo normaliza.
+- **Relacionados:** Trigger, HTTP Request, URL de producción, JSON
+
+### Schedule Trigger
+- **Plan:** {{c:CONFIGURACIÓN DE NODOS BÁSICOS}}
+- **Definición:** Trigger que ejecuta el workflow cada cierto intervalo (minutos, horas, días, semanas o meses) o según una expresión cron. Solo funciona con el workflow activo y usa la zona horaria configurada en el workflow o, si no la tiene, la de la instancia.
+- **Ejemplo:** El «Resumen semanal» de Mercado Austral corre los viernes a las 18:00 con un Schedule Trigger; mientras se construye, se prueba con el trigger manual.
+- **Relacionados:** Trigger, Workflow activo, Ejecución
+
+### Workflow activo
+- **Plan:** {{c:PRIMEROS WORKFLOWS}}
+- **Definición:** Estado en que un workflow queda escuchando sus triggers y corre solo, sin el editor abierto: recibe por la URL de producción y responde a sus horarios programados. Se enciende con el interruptor de activación o, en las versiones más recientes, publicando el workflow; mientras está inactivo, solo corre cuando lo pruebas.
+- **Ejemplo:** Si «Pedido a registro» quedó inactivo, los pedidos enviados desde el sitio de Mercado Austral no se registran, aunque todas las pruebas en el editor hayan salido bien.
+- **Relacionados:** URL de producción, Schedule Trigger, Ejecución, Workspace
+
+### Datos fijados
+- **Plan:** {{c:TESTING Y DEBUGGING INICIAL}}
+- **Definición:** Salida de un nodo que se deja fija (*pin data*) para probar los nodos siguientes sin volver a disparar el trigger. Se pueden editar para probar otros casos y solo se usan en las ejecuciones desde el editor; en producción, el workflow trabaja con los datos que llegan.
+- **Ejemplo:** Fijas en el Form Trigger un pedido con la comuna escrita con espacios de más y pruebas el Edit Fields y el nodo Supabase paso a paso, sin volver a llenar el formulario.
+- **Relacionados:** URL de prueba, Plan de pruebas, Depuración, Panel de configuración
+
+### URL de prueba
+- **Plan:** {{c:TESTING Y DEBUGGING INICIAL}}
+- **Definición:** Dirección de un formulario o webhook que recibe un envío solo mientras el editor está escuchando, después de pulsar el botón de prueba del workflow (*Execute workflow* o *Test workflow*, según la versión). Muestra los datos recibidos en el editor: sirve para construir y depurar, nunca para publicar.
+- **Ejemplo:** Mientras construyes «Pedido a registro», envías el formulario por la URL de prueba y ves llegar los siete campos al panel de salida del Form Trigger.
+- **Relacionados:** URL de producción, Datos fijados, n8n Form Trigger, Webhook
+
+### URL de producción
+- **Plan:** {{c:TESTING Y DEBUGGING INICIAL}} · {{c:PRIMEROS WORKFLOWS}}
+- **Definición:** Dirección de un formulario o webhook que recibe datos cuando el workflow está activo; cada envío genera una ejecución que queda en el historial. Es la única que se publica a clientes o a otros sistemas.
+- **Ejemplo:** El sitio de Mercado Austral enlaza la URL de producción del formulario «Nuevo pedido»; si enlazara la de prueba, los pedidos se perderían cada vez que nadie tuviera el editor abierto.
+- **Relacionados:** URL de prueba, Workflow activo, Historial de ejecuciones
+
+## Contenido 3
+
+### Ítem
+- **Plan:** {{c:MANIPULACIÓN DE DATOS}}
+- **Definición:** Unidad de datos que pasa de un nodo a otro en n8n: un objeto JSON con campos y valores. Los nodos reciben una lista de ítems y la mayoría procesa cada uno por separado y entrega la misma cantidad; Filter, Summarize y Split Out están hechos para cambiarla.
+- **Ejemplo:** Al leer `pedidos_historicos.csv` salen 8 ítems, uno por pedido; después del Filter que descarta el pedido sin correo quedan 7, el Edit Fields que quita el espacio sobrante de «Ñuñoa » sigue entregando 7 y el Summarize por comuna entrega 4.
+- **Relacionados:** JSON, Tipo de dato, Conteo de ítems, Nodo
+
+### Tipo de dato
+- **Plan:** {{c:MANIPULACIÓN DE DATOS}}
+- **Definición:** Clase de un valor: texto (String), número (Number), booleano (Boolean), fecha, objeto o array. En la vista JSON, un texto va entre comillas y un número sin ellas; formularios y archivos CSV entregan casi todo como texto, por lo que el tipo se declara apenas entran los datos.
+- **Ejemplo:** Si `cantidad` queda como texto, `"3" + "2"` da `"32"` en vez de 5; y si llega «3 unidades», la columna `cantidad` (de tipo `integer`) de la tabla `pedidos` rechaza la fila con `invalid input syntax for type integer`.
+- **Relacionados:** Edit Fields (Set), JSON, Operador de comparación, Array
+
+### Edit Fields (Set)
+- **Plan:** {{c:SET: MODIFICACIÓN DE DATOS}}
+- **Definición:** Nodo core que crea campos, cambia el valor de los existentes o deja solo los necesarios. En modo *Manual Mapping* cada campo tiene nombre, tipo (String, Number, Boolean, Array u Object) y un valor fijo o una expresión; la opción *Include Other Input Fields* decide si los campos que no tocaste siguen de largo.
+- **Ejemplo:** En «Pedido a registro», deja `email` en minúsculas y sin espacios, quita los espacios al inicio y al final de `comuna` (`trim()`), declara `cantidad` y `precio_unitario` como Number y crea `total`: 25000 para 2 cafés de $12.500.
+- **Relacionados:** Expresión, Tipo de dato, Ítem, Variable de entorno
+
+### If
+- **Plan:** {{c:IF/SWITCH}}
+- **Definición:** Nodo de lógica condicional que evalúa una o más condiciones, combinadas con AND u OR, y envía cada ítem por la salida *true* (verdadero) o por la salida *false* (falso). Se usa cuando la pregunta tiene respuesta de sí o no.
+- **Ejemplo:** Al comienzo del enrutamiento, un If deja seguir los pedidos cuyo correo contiene «@» y cuya cantidad es mayor que 0, y envía los demás a la tabla `pedidos_rechazados`.
+- **Relacionados:** Switch, Filter, Operador de comparación, Operador lógico
+
+### Switch
+- **Plan:** {{c:IF/SWITCH}}
+- **Definición:** Nodo de lógica condicional con varias salidas: en modo *Rules* cada salida tiene su regla y cada ítem va a la primera que se cumple, salvo que actives *Send data to all matching outputs*, y en modo *Expression* una expresión devuelve el número de la salida. Lo que no cumple ninguna regla se descarta sin error, salvo que exista una salida de respaldo.
+- **Ejemplo:** El Switch de Mercado Austral envía cada pedido a mayorista, regiones o bodega RM, y su salida de respaldo lleva a revisión manual lo que no calza con ninguna regla.
+- **Relacionados:** If, Routing de datos, Salida de respaldo, Operador lógico
+
+### Merge
+- **Plan:** {{c:MERGE}}
+- **Definición:** Nodo que une los ítems que llegan por sus entradas: *Append* los pone uno tras otro y *Combine* los junta por un campo en común (*Matching Fields*), por posición o en todas sus combinaciones posibles. Para enriquecer datos, el modo correcto es combinar por un campo en común.
+- **Ejemplo:** Combinando por el campo `comuna` los pedidos (entrada 1) con la tabla `comunas` (entrada 2), cada pedido sale con su `zona`; con todas las combinaciones, 6 pedidos y 40 comunas darían 240 ítems.
+- **Relacionados:** Clave foránea, Conteo de ítems, Summarize, Split Out
+
+### Filter
+- **Plan:** {{c:FILTER}}
+- **Definición:** Nodo que deja pasar solo los ítems que cumplen una o más condiciones y descarta el resto, sin modificarlos, por lo que su salida puede tener menos ítems que la entrada. Sirve para limpiar la entrada: registros sin datos obligatorios, cantidades en cero o registros de prueba.
+- **Ejemplo:** Con la condición «`email` *is not empty*», el Filter del «Resumen semanal» descarta el pedido 4 de `pedidos_historicos.csv`, que no tiene correo, y deja pasar 7.
+- **Relacionados:** If, Operador de comparación, Ítem, Summarize
+
+### Summarize
+- **Plan:** {{c:SUMMARIZE}}
+- **Definición:** Nodo que agrupa los ítems por uno o más campos (*Fields to Split By*) y calcula por grupo sumas, conteos, promedios, mínimos o máximos (*Fields to Summarize*). Recibe muchos ítems y entrega uno por grupo, por lo que el campo de agrupación debe llegar normalizado.
+- **Ejemplo:** Agrupando por `comuna` los 7 pedidos válidos, con *Count* de `id` y *Sum* de `total`, entrega 4 ítems: Ñuñoa (2 pedidos, $38.800), Maipú (2, $208.600), Temuco (2, $314.940) y Valparaíso (1, $4.200).
+- **Relacionados:** Filter, Edit Fields (Set), Ítem, Split Out
+
+### Split Out
+- **Plan:** {{c:SPLIT}} · {{c:MANEJO DE ARRAYS}}
+- **Definición:** Nodo que convierte un campo que contiene un array en ítems separados, uno por elemento (*Fields To Split Out*); con la opción *Include* decides si cada ítem nuevo conserva los demás campos del original. Hace lo contrario de agrupar.
+- **Ejemplo:** En la actividad final, la confirmación del transportista trae un array `retiros`; Split Out lo convierte en un ítem por retiro para actualizar cada devolución por separado.
+- **Relacionados:** Array, Summarize, Merge, JSON
+
+### Aggregate
+- **Plan:** {{c:MANEJO DE ARRAYS}} · {{c:MANIPULACIÓN DE DATOS}}
+- **Definición:** Nodo que junta varios ítems en uno solo, con un array que contiene los valores de un campo (*Individual Fields*) o los ítems completos (*All Item Data*). Hace lo contrario de Split Out: sirve cuando el paso siguiente necesita recibir todo junto.
+- **Ejemplo:** En la actividad final, Aggregate reúne las devoluciones que requieren retiro en un solo ítem con el array `retiro`, para que el nodo XML arme un único archivo para Transportes Cordillera.
+- **Relacionados:** Split Out, Array, XML, Ítem
+
+### Expresión
+- **Plan:** {{c:EXPRESIONES N8N}}
+- **Definición:** Código JavaScript entre dobles llaves que n8n evalúa para cada ítem en un parámetro en modo *Expression* (no *Fixed*). Usa referencias como `$json` (el ítem actual), `$('Nombre del nodo').item.json` (un nodo anterior), `$now` (fecha y hora) o `$execution.id`, con funciones de texto, número y fecha, y el editor muestra una vista previa del resultado.
+- **Ejemplo:** `{{ $json.email.trim().toLowerCase() }}` convierte « Ana.Rojas@Correo.TEST » en «ana.rojas@correo.test»; si en la salida ves el texto de la expresión en vez del correo, el campo quedó en modo *Fixed*.
+- **Relacionados:** Parámetro, Edit Fields (Set), Operador lógico, Variable de entorno
+
+### JSON
+- **Plan:** {{c:TRANSFORMACIÓN DE FORMATOS}} · {{c:MANEJO DE ARRAYS}}
+- **Definición:** Formato de texto para datos estructurados: objetos (pares campo y valor entre llaves) que pueden contener otros objetos y arrays. Es el formato en que n8n mueve los ítems entre nodos y el que usan la mayoría de las APIs; los demás formatos se convierten a JSON para procesarlos.
+- **Ejemplo:** En el pedido del Almacén El Sol, `$json.cliente.email` entra al objeto anidado `cliente` y devuelve «compras@elsol.test».
+- **Relacionados:** Ítem, Array, CSV, XML
+
+### CSV
+- **Plan:** {{c:TRANSFORMACIÓN DE FORMATOS}}
+- **Definición:** Formato de texto tabular: una fila por registro, valores separados por comas y la primera fila con los nombres de las columnas. Un CSV descargado llega como archivo (dato binario) y no como ítems: se lee con *Extract from File*, que convierte cada fila en un ítem, y se genera con *Convert to File*.
+- **Ejemplo:** Extract from File convierte las 8 filas de `pedidos_historicos.csv` en 8 ítems con `id`, `fecha`, `nombre`, `email`, `comuna`, `tipo_cliente`, `producto`, `cantidad` y `precio_unitario`, todos como texto.
+- **Relacionados:** JSON, XML, HTTP Request, Tipo de dato
+
+### XML
+- **Plan:** {{c:TRANSFORMACIÓN DE FORMATOS}}
+- **Definición:** Formato de texto con etiquetas anidadas, como `<comuna>Temuco</comuna>`, que todavía exigen muchos sistemas administrativos. El nodo XML convierte en los dos sentidos: *XML to JSON* para leerlo y *JSON to XML* para generarlo, y deja el texto XML en un campo del ítem, listo para enviarlo o guardarlo como archivo.
+- **Ejemplo:** El resumen por comuna sale del nodo XML en modo *JSON to XML*, porque el sistema de facturación de Mercado Austral solo acepta archivos XML.
+- **Relacionados:** JSON, CSV, Summarize
+
+### Array
+- **Plan:** {{c:MANEJO DE ARRAYS}}
+- **Definición:** Lista ordenada de valores entre corchetes, que pueden ser textos, números u objetos. Sus elementos se cuentan desde 0: `$json.productos[0]` es el primero y `$json.productos.length` dice cuántos hay.
+- **Ejemplo:** En el pedido del Almacén El Sol, `$json.productos[0].nombre` devuelve «Azúcar 25 kg» y `$json.productos.length` devuelve 2; para guardar cada producto como una fila, Split Out separa el array en 2 ítems.
+- **Relacionados:** JSON, Split Out, Ítem
+
+### Variable de entorno
+- **Plan:** {{c:VARIABLES DE ENTORNO}}
+- **Definición:** Valor definido en el servidor donde corre n8n, fuera de los workflows, que una expresión lee con `$env.NOMBRE` si la instancia permite ese acceso; algunos planes ofrecen además *Variables* compartidas, que se leen con `$vars.NOMBRE`. Sirve para lo que cambia entre ambientes (una tabla, una URL, un umbral), no para claves, que van en credenciales; si la instancia no permite `$env` ni `$vars`, un Edit Fields «Configuración» al inicio del workflow reúne esos valores en un solo lugar, listo para pasarlos a variables después.
+- **Ejemplo:** La instancia de pruebas de Mercado Austral define `TABLA_PEDIDOS` como `pedidos_prueba` y la de producción como `pedidos`, así que con `{{ $env.TABLA_PEDIDOS }}` en el nodo Supabase el mismo workflow, importado en cada instancia, escribe en la tabla que le corresponde sin editarlo.
+- **Relacionados:** Credencial, Parámetro, Expresión, Instancia de n8n, Edit Fields (Set)
+
+### Supabase
+- **Plan:** {{c:SUPABASE: CONFIGURACIÓN BÁSICA}} · {{c:INTEGRACIÓN CON BASES DE DATOS}}
+- **Definición:** Plataforma que entrega una base de datos PostgreSQL en la nube, con editor de tablas y de SQL en el navegador y una API REST que se genera sola a partir de las tablas. Su configuración básica es crear el proyecto, crear las tablas con el tipo de cada columna y registrar en n8n una credencial con la URL del proyecto y su clave de servicio.
+- **Ejemplo:** El proyecto de Supabase de Mercado Austral tiene las tablas `pedidos`, `comunas` y `devoluciones`, que sus workflows leen y escriben con el nodo Supabase.
+- **Relacionados:** CRUD, Clave de servicio, Clave primaria, Credencial
+
+### Clave de servicio
+- **Plan:** {{c:SUPABASE: CONFIGURACIÓN BÁSICA}}
+- **Definición:** Clave secreta de un proyecto de Supabase (*service_role*; en los proyectos nuevos, *secret key*) que permite operar sobre todas las tablas saltándose las reglas de seguridad por fila (RLS). Quien la tiene puede leer y borrar todo, así que vive solo en la credencial de n8n: nunca en un parámetro, un mensaje, un archivo entregado o una captura.
+- **Ejemplo:** Si la clave de servicio del proyecto de Mercado Austral aparece en una captura del portafolio, se revoca, se genera una nueva en Supabase y se actualiza la credencial.
+- **Relacionados:** Credencial, Supabase, Variable de entorno
+
+### CRUD
+- **Plan:** {{c:OPERACIONES CRUD}} · {{c:INTEGRACIÓN CON BASES DE DATOS}}
+- **Definición:** Las cuatro operaciones básicas sobre datos: crear (*Create*), leer (*Read*), actualizar (*Update*) y borrar (*Delete*). El nodo Supabase las ofrece como *Create a row*, *Get a row* o *Get many rows* (con filtros), *Update a row* y *Delete a row*.
+- **Ejemplo:** En las devoluciones de Mercado Austral, *Get a row* lee el pedido por su `id`, *Create a row* registra la devolución, *Update a row* cambia su `estado` a `retiro_programado` y *Delete a row* queda solo para limpiar las filas de prueba.
+- **Relacionados:** Supabase, Clave primaria, Clave foránea
+
+### Clave primaria
+- **Plan:** {{c:MANEJO DE DATOS RELACIONALES}}
+- **Definición:** Columna que identifica cada fila de una tabla sin repetirse ni quedar vacía. En las tablas del curso es `id`, que la base de datos numera sola (`generated always as identity`), por lo que el workflow no la envía al crear una fila.
+- **Ejemplo:** El pedido con `id` 7 es único en la tabla `pedidos`: *Get a row* lo encuentra por esa columna, y una devolución lo referencia guardando 7 en `pedido_id`.
+- **Relacionados:** Clave foránea, CRUD, Supabase
+
+### Clave foránea
+- **Plan:** {{c:MANEJO DE DATOS RELACIONALES}}
+- **Definición:** Columna que guarda la clave primaria de una fila de otra tabla y así las relaciona. La base de datos rechaza un valor que no exista en la tabla referenciada, de modo que los datos relacionados no quedan huérfanos.
+- **Ejemplo:** En `devoluciones`, la columna `pedido_id` apunta a `pedidos.id`: un pedido puede tener varias devoluciones y ninguna puede apuntar a un pedido que no existe.
+- **Relacionados:** Clave primaria, CRUD, Merge
+
+## Contenido 4
+
+### Operador de comparación
+- **Plan:** {{c:OPERADORES Y EXPRESIONES}}
+- **Definición:** Operador que compara dos valores y da verdadero o falso. En If, Switch y Filter primero se elige el tipo de dato y después el operador (es igual a, contiene, es mayor o igual que, está vacío, existe, entre otros); en una expresión se escriben `===`, `!==`, `>`, `>=`, `<` y `<=`.
+- **Ejemplo:** La regla «`total` (Number) es mayor o igual que 150000» envía a ventas el pedido de $219.000; si comparara el texto «219.000» con *Convert types where required* activado, n8n lo leería como el número 219 y el pedido caería en bodega sin ningún error, y sin esa opción el nodo se detendría con un error de tipo.
+- **Relacionados:** Operador lógico, Tipo de dato, Switch, If
+
+### Operador lógico
+- **Plan:** {{c:OPERADORES Y EXPRESIONES}}
+- **Definición:** Operador que combina condiciones: AND exige que se cumplan todas, OR que se cumpla al menos una y la negación invierte el resultado. En If, Filter y cada regla del Switch se elige AND u OR entre las condiciones; en una expresión se escriben `&&`, `||` y `!`, lo que permite reglas complejas en un solo campo.
+- **Ejemplo:** Una devolución requiere aprobación si el total del pedido es mayor que $50.000 o el cliente es mayorista: `{{ $json.total > 50000 || $json.tipo_cliente === 'mayorista' }}`.
+- **Relacionados:** Operador de comparación, Expresión, Switch, If
+
+### Routing de datos
+- **Plan:** {{c:ROUTING DE DATOS}}
+- **Definición:** Enviar cada ítem por un camino distinto según sus valores, con If (dos caminos) o Switch (varios). El orden de las reglas es parte de la lógica del negocio, porque cada ítem va a la primera regla que se cumple; conviene dejarlo escrito en una nota del canvas.
+- **Ejemplo:** El pedido mayorista del Almacén El Sol, de Temuco, cumple las reglas de mayorista y de regiones, y va a ventas porque esa regla está primero en el Switch.
+- **Relacionados:** Switch, If, Salida de respaldo, Conexión
+
+### Caso borde
+- **Plan:** {{c:MANEJO DE CASOS EDGE}}
+- **Definición:** Entrada poco común o no prevista (*edge case*) que rompe una lógica que funciona con los casos normales: campos vacíos, tipos equivocados, valores inesperados, duplicados o valores extremos. Se maneja validando temprano, normalizando y dando un destino a todo lo que no calza.
+- **Ejemplo:** Un pedido con `tipo_cliente` «distribuidor» o una devolución de un pedido que no existe son casos borde: deben terminar en revisión manual, no perderse ni detener el workflow.
+- **Relacionados:** Salida de respaldo, Plan de pruebas, Salida de error, Tipo de dato
+
+### Salida de respaldo
+- **Plan:** {{c:MANEJO DE CASOS EDGE}} · {{c:ROUTING DE DATOS}}
+- **Definición:** Salida extra del Switch que recibe los ítems que no cumplen ninguna regla; se activa en sus opciones con *Fallback Output* → *Extra Output*. Sin ella, esos ítems se descartan sin error y la ejecución termina en verde.
+- **Ejemplo:** En el Switch por motivo de las devoluciones, un motivo vacío o distinto de producto dañado, error de despacho y arrepentimiento sale por la salida de respaldo hacia revisión manual.
+- **Relacionados:** Switch, Caso borde, Routing de datos, Conteo de ítems
+
+### Depuración
+- **Plan:** {{c:HERRAMIENTAS DE DEBUG}}
+- **Definición:** Encontrar la causa de un error y corregirla (*debugging*). En n8n se apoya en el historial de ejecuciones, en ejecutar un solo nodo, en los datos fijados para reproducir el caso y en el mensaje de error completo; se cambia una cosa a la vez y después se vuelven a correr todos los casos.
+- **Ejemplo:** Todos los pedidos salían por «datos inválidos»: la vista previa del If mostraba `undefined` porque la expresión decía `$json.Email`, y al corregirla a `$json.email` el pedido fijado salió por la rama verdadera.
+- **Relacionados:** Historial de ejecuciones, Datos fijados, Conteo de ítems, Bitácora de depuración
+
+### Historial de ejecuciones
+- **Plan:** {{c:HERRAMIENTAS DE DEBUG}} · {{c:LOGS Y TRAZABILIDAD}}
+- **Definición:** Registro de cada vez que corrió un workflow, con su estado, su hora, su modo y los datos que entraron y salieron de cada nodo; al abrir una ejecución ves el workflow tal como corrió. En los ajustes del workflow se decide qué ejecuciones se guardan (exitosas, fallidas o manuales).
+- **Ejemplo:** Para saber por qué una devolución no quedó registrada, abres su ejecución en el historial y ves en qué nodo se detuvo y con qué datos llegó a él.
+- **Relacionados:** Ejecución, Depuración, Trazabilidad, Error Trigger
+
+### Conteo de ítems
+- **Plan:** {{c:HERRAMIENTAS DE DEBUG}}
+- **Definición:** Revisar cuántos ítems entran y salen de cada nodo, cifra que el canvas muestra sobre cada conexión después de una ejecución. Cada nodo tiene una cuenta esperada (Edit Fields entrega los mismos que recibe; las salidas de un If, o de un Switch con respaldo que envía cada ítem solo a la primera regla que se cumple, suman lo que entró), y si no cuadra, la falla está en ese nodo.
+- **Ejemplo:** Si al Switch entran 6 pedidos y sus salidas suman 5, se perdió uno por falta de salida de respaldo; si del Merge salen cientos de ítems con 6 pedidos, está combinando todo con todo.
+- **Relacionados:** Ítem, Salida de respaldo, Merge, Depuración
+
+### Trazabilidad
+- **Plan:** {{c:LOGS Y TRAZABILIDAD}}
+- **Definición:** Capacidad de reconstruir qué pasó con cada dato: por qué ruta pasó, qué decisión se tomó y en qué ejecución. Se logra con logs: el historial de ejecuciones y los campos que el propio workflow guarda en cada registro, como `ruta` e `id_ejecucion` = `{{ $execution.id }}`.
+- **Ejemplo:** Cada devolución deja una fila en `log_devoluciones` con su `ruta` y su `id_ejecucion`, que lleva directo a la ejecución correspondiente en el historial.
+- **Relacionados:** Historial de ejecuciones, Error Trigger, Salida de error, Bitácora de depuración
+
+### Salida de error
+- **Plan:** {{c:LOGS Y TRAZABILIDAD}} · {{c:MANEJO DE CASOS EDGE}}
+- **Definición:** Salida adicional que aparece al elegir, en *Settings* del nodo, *On Error* → *Continue (using error output)*: el ítem que falla sale por ella con el mensaje del error, y los demás siguen su curso sin detener el workflow.
+- **Ejemplo:** Si Supabase rechaza el pedido con `cantidad` «3 unidades», ese pedido va a `pedidos_rechazados` con el mensaje de error y los otros cinco se guardan.
+- **Relacionados:** Error Trigger, Caso borde, Trazabilidad, Panel de configuración
+
+### Error Trigger
+- **Plan:** {{c:LOGS Y TRAZABILIDAD}}
+- **Definición:** Trigger que inicia un workflow de errores. Ese workflow se asigna en los ajustes del workflow principal y corre cada vez que falla una de sus ejecuciones automáticas, con datos como el nombre del workflow, el último nodo ejecutado y el mensaje de error; no se dispara en las ejecuciones manuales.
+- **Ejemplo:** En el ABPRO «{{abpro AE4}}», el workflow de errores guarda en la tabla `errores` el nombre del workflow, el nodo que falló y el mensaje de cada falla nocturna.
+- **Relacionados:** Trigger, Salida de error, Trazabilidad, Historial de ejecuciones
+
+### Plan de pruebas
+- **Plan:** {{c:MEJORES PRÁCTICAS DE TESTING}}
+- **Definición:** Conjunto fijo de casos de prueba, escrito antes de ejecutar, con los datos de entrada, el resultado o la ruta esperada y el resultado obtenido. Incluye al menos un caso por ruta, incluida la de respaldo, y los casos borde conocidos, y se vuelve a correr completo después de cada corrección.
+- **Ejemplo:** El plan de las devoluciones prueba cada motivo, una devolución que requiere aprobación, un pedido inexistente, un correo que no coincide con el del pedido y un motivo vacío.
+- **Relacionados:** Caso borde, Datos fijados, Bitácora de depuración, URL de prueba
+
+### Bitácora de depuración
+- **Plan:** {{c:MEJORES PRÁCTICAS DE TESTING}}
+- **Definición:** Registro de cada falla encontrada con su síntoma, cómo se detectó, su causa, la corrección, la prueba que la confirma y lo aprendido. Permite que otra persona revise qué cambió y por qué, y evita repetir el mismo error.
+- **Ejemplo:** Una entrada completa dice: síntoma, el pedido «distribuidor» desapareció con la ejecución en verde; detección, en el historial el Switch recibió 6 ítems y sus salidas sumaron 5; causa, el Switch no tenía salida de respaldo; corrección, *Fallback Output* hacia revisión manual; prueba, entran 6 ítems y salen 6; aprendizaje, una ejecución en verde no garantiza que no se perdieron datos.
+- **Relacionados:** Depuración, Plan de pruebas, Trazabilidad

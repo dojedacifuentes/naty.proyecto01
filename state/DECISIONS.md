@@ -662,3 +662,19 @@ Quién: usuario, claude-code, sesión `2026-09-29-claude-code-04`.
   ("textual", "oficial") en los recursos. Los aprendizajes van con las mismas palabras del plan, en minúsculas para leerlos mejor.
 - **Descartado:** convertir con Word (.docx) para Google Docs: dejaba mal el formato. Los Docs se crearon pegando el HTML generado.
 Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-01`.
+
+## 2026-09-30 · Evaluación y cierre de todo el módulo, desde cero (sesión claude-code, 2026-09-30-claude-code-03)
+
+- **Qué:** seis insumos por curso (PF1821 y PF1822): diagnóstica (con su pauta del tutor/a aparte), glosario integrador, actividad
+  final integradora, autoevaluación, coevaluación por pares y evaluación final del portafolio. PDF, iguales para todos los clientes.
+- **Por qué:** pedido del usuario; los documentos de B3/B4 (autoevaluación, coevaluación, portafolio) se referían solo a las
+  actividades 1 y 2 y el usuario pidió hacerlos de cero.
+- **Cómo:** la actividad final usa el caso del instrumento 2 (Devoluciones de Mercado Austral / asistente de preguntas frecuentes de
+  Nube Sur), escrito de nuevo y ampliado para integrar los 35 / 39 temas del plan, sin aprendizajes esperados ni criterios; su pauta
+  (40 puntos) se ordena por trozos de la competencia con sus mismas palabras, y los mismos componentes estructuran la autoevaluación
+  (parte 2) y la coevaluación (parte A). La diagnóstica usa la misma escala 1–4 que la autoevaluación, que compara "al inicio" y
+  "hoy" criterio por criterio. El portafolio pide como evidencia de cada aprendizaje su ABP y su ABPRO.
+- **Proceso:** una redacción por fuente, tres revisiones adversariales independientes (técnica, plan y reglas, pedagogía) y una
+  corrección; el cruce final lo hizo la sesión (se agregó "Aggregate" al glosario de PF1821).
+- **Pendiente:** alinear la sección V del Anexo 2 (instrumento 2, B3 y B4) con estos insumos.
+Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-03`.
