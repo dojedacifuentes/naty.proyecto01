@@ -9,6 +9,24 @@
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
 
+## HECHO (sesión 2026-09-30-05): exigencias 2026 del módulo 2 en Excel, PDF y la planilla de seguimiento
+
+- **`npm run exigencias`** reemplaza a `npm run requisitos` (sesión -04; el script se renombró). Salidas: `entregables/2026-09-30-exigencias-modulo2/`
+  (Excel y PDF públicos, sin enlaces privados) y `privado/drive/` (con enlaces a Drive 2024, y la hoja única para importar).
+- **Planilla de seguimiento:** pestaña "Exigencias 2026 M2" (gid 1792720012, en `privado/drive/enlaces.json` → `planillaSeguimiento`).
+  **Si cambia el generador:** borrar esa pestaña e importar de nuevo `privado/drive/Hoja-Exigencias-2026-M2.xlsx` (Archivo → Importar →
+  Subir → "Insertar nuevas hojas", sin "Importar tema"). Después de importar se ensancharon a mano las columnas B (95 px) y D (120 px);
+  el generador ya trae esos anchos. Google deja una copia del xlsx en Mi unidad en cada importación.
+- **Cómo se subió el archivo al selector de Google** (Claude in Chrome): el selector está en un iframe del mismo origen
+  (`docs.google.com/picker`) y su `input[type=file]` no aparece en `find`. Se creó un `input[type=file]` visible en la página
+  principal, se llenó con `file_upload` y, con `javascript_tool`, se copió su archivo al input del iframe (`DataTransfer` del iframe)
+  y se despachó `change`.
+- **Verbo, objeto y condición:** `scripts/lib/verbos.mjs`. El corte es automático (primera marca de "cómo o para qué"); se revisó a mano
+  sobre los 278 textos (`.scratch/probar-verbos.mjs` lo lista).
+- **Para ver un PDF como imagen** sin poppler: la API de Windows `Windows.Data.Pdf` desde PowerShell 5.1 (AsTask por reflexión); así
+  se revisaron las 49 páginas.
+- **Siguiente paso natural:** abrir cada "Contenido M2" de 2024 y llenar las 3 columnas de revisión (en la pestaña de Google o en el Excel).
+
 ## HECHO (sesión 2026-09-30-04): qué exige 2026 del módulo 2, contrastado con 2024
 
 - **`npm run requisitos`** → `privado/drive/Requisitos-Modulo2-TD2026.xlsx` (se entregó como archivo; **no está en Drive**). Pestañas:

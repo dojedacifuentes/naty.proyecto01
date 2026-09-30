@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-09-30
-**Por:** 2026-09-30-claude-code-04 (Claude Code · opus-5.5)
+**Por:** 2026-09-30-claude-code-05 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -403,6 +403,21 @@ recursos aun nos sirven").
       verbos y redacción (competencia de MB00162, 8 textos de PF1483, 3 criterios de PF1487, 2 erratas) y la modalidad (2026: solo
       e-learning). PF1821 y PF1822 son nuevos. Los Anexos 2 de referencia de otras instituciones confirman lo mismo.
 - [ ] La planilla no está en Drive: se entregó como archivo. El paso siguiente (revisar recurso por recurso) no empezó.
+
+Sesión claude-code-05, 2026-09-30: exigencias 2026 del módulo 2, sistematizadas (pedido: "revisa nuevamente, haz una planilla de
+excel clara que sea util tambien un pdf y sube los cambios al repo de github y tambien a una hoja distinta dentro de la planilla que
+estamos trabajando… destaca los verbos… prioriza sistematizar lo que se exige este 2026").
+
+- [x] `npm run exigencias` (`scripts/exigencias-modulo2.mjs`, antes `requisitos-modulo2.mjs`) → `entregables/2026-09-30-exigencias-modulo2/`:
+      Excel de 20 pestañas y PDF de 49 páginas (versión pública), más `privado/drive/Exigencias-Modulo2-2026-con-enlaces.xlsx` y
+      `privado/drive/Hoja-Exigencias-2026-M2.xlsx` (una hoja, para la planilla de seguimiento).
+- [x] Cada aprendizaje y criterio leído como verbo + objeto + condición (`scripts/lib/verbos.mjs`), con el verbo en negrita y en el
+      color de su nivel; los que no traen condición quedan marcados. Pestaña "Qué exige cada curso": cantidades para el 7,0 por plan.
+- [x] `scripts/lib/xlsx.mjs`: texto enriquecido, etiquetas por nivel, filas de sección, celdas combinadas por rango y color de pestaña;
+      y `autoFilter` antes de `mergeCells`, como pide el esquema (Excel es estricto; Google Sheets no).
+- [x] Planilla de seguimiento: pestaña nueva **"Exigencias 2026 M2"** (gid 1792720012), importada desde Chrome; revisada con su CSV:
+      12 cursos, 12 competencias, 63 AE, 203 criterios, enlaces a Drive 2024.
+- [x] Push a GitHub (incluye los commits sin subir de sesiones anteriores).
 
 ## A medias
 

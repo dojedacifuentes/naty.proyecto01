@@ -693,3 +693,17 @@ Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-03`.
 - **Una pestaña para los 4 Entry level:** comparten el módulo 2 (MB00162); una sola evita revisar cuatro veces lo mismo.
 - **Dónde:** en `privado/` (fuera de git), porque enlaza carpetas de Drive privadas y lista Anexos 2 de otras instituciones.
 Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-04`.
+
+## 2026-09-30 · Exigencias 2026 del módulo 2: verbo + objeto + condición, Excel y PDF públicos, una hoja en la planilla (sesión claude-code, 2026-09-30-claude-code-05)
+
+- **Qué:** `npm run exigencias` sistematiza lo que exige 2026 del módulo 2 de los 15 cursos: cada aprendizaje y criterio separado en
+  verbo, objeto y condición (Anexo 7, pág. 99), con el nivel del verbo en color, las cantidades de las bases para el 7,0 por plan, el
+  software y el material que exige cada plan para e-learning y los cambios desde 2024.
+- **Dos versiones:** la del repo (`entregables/`) no lleva los enlaces a Drive 2024 ni los Anexos 2 de otras instituciones, porque el repo
+  es público; la de `privado/` sí, y es la que se importó a la planilla de seguimiento.
+- **Una sola hoja en la planilla de seguimiento** ("Exigencias 2026 M2", la tabla de todos los criterios), porque el usuario pidió "una
+  hoja distinta"; la planilla completa (20 pestañas) va como Excel.
+- **Condición faltante:** cuando el plan no la trae, se marca en vez de inventarla; el indicador la necesita (Anexo 7, 2.1).
+- **Descartado:** reimportar la hoja para corregir dos anchos de columna (habría duplicado la pestaña y la copia en Mi unidad); se
+  ajustaron a mano y el generador quedó corregido.
+Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-05`.

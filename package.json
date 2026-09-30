@@ -27,7 +27,7 @@
     "drive": "node scripts/drive.mjs",
     "planilla": "node scripts/planilla.mjs",
     "planes": "node scripts/planes-oficiales.mjs",
-    "requisitos": "node scripts/requisitos-modulo2.mjs",
+    "exigencias": "node scripts/exigencias-modulo2.mjs",
     "build": "node scripts/sitio.mjs",
     "verificadores": "node scripts/auditar-verificadores.mjs",
     "hooks": "node scripts/instalar-hooks.mjs",
