@@ -2,8 +2,8 @@
 
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
-**Última actualización:** 2026-10-01 (UTC, como el registro; 30-sep en Chile)
-**Por:** 2026-10-01-claude-code-01 y -02 (Claude Code · opus-5.5)
+**Última actualización:** 2026-10-01 (UTC, como el registro; 1-oct de madrugada en Chile)
+**Por:** 2026-10-01-claude-code-01, -02 y -03 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -530,7 +530,23 @@ criterios del nuevo plan formativo 2026 para cada curso de cada ae").
       1.2 simulada, registran inicio, incompleto, puntaje 0-100 y completado.
 - [x] Planilla, pestaña «Quiz M2 por AE» reemplazada: cada AE de esos cuatro cursos muestra su quiz gamificado 2026 (funciona).
 - [ ] Revisión humana del contenido de las 110 preguntas (las escribieron cuatro subagentes; las revisé una por una contra el plan).
-- [ ] Subirlos al LMS o a Drive: no se pidió todavía.
+- [x] Subidos a Drive en la sesión -03 (ver abajo). Al LMS, no.
+
+Sesión claude-code-03, 2026-10-01: planilla nueva de recursos del módulo 2 para los 15 cursos de la postulación 2026 (pedido: "hagamos
+un excel nuevo… Todos deben tener: video presentacion, video resumen, quizz por cada aprendizaje esperado (usar los nuevos…),
+infografía por cada aprendizaje esperado, flipbook por cada aprendizaje esperado, salvo los 2 cursos… donde usamos Rise" y "señala
+cuando haya recurso inexistente, o cuando haya discrepancia grave").
+
+- [x] Google Sheet nueva «02 Recursos M2 · Licitación 2026 (15 cursos)» en NATY 2.0 (id en `privado/drive/enlaces.json` →
+      `recursosM2_2026`). Pestañas: Resumen por curso, Recursos por AE (un renglón por AE con el texto 2026 y el enlace a lectura,
+      infografía y quiz), Alertas (por gravedad), Descartados y otros, y Leyenda. La genera
+      `privado/drive/recursos-2026/planilla-recursos-2026.mjs` → `privado/drive/Recursos-M2-Licitacion-2026.xlsx`.
+- [x] Resultado: 282 recursos exigidos; 162 listos, 26 por ajustar, 21 por revisar (videos sin ver), 72 no existen y 1 no cuadra con su
+      AE (flipbook 2024 del AE6 de PF1483: portada de otro plan). PF1821 y PF1822 están completos; PF1487, PF1485 y PF1493 no tienen nada.
+- [x] Los 22 quiz gamificados de PF1481, PF1483, PF1486 y PF1495 en Drive: NATY 2.0 → carpeta nueva del curso → «4 Quiz gamificados»
+      (70 archivos: HTML, SCORM y GIFT por quiz, y el zip del curso). Comprobados byte a byte contra el repo; se descargan sin sesión.
+- [x] Enlaces comprobados: 173 de 182 responden sin sesión; 9 solo con acceso (4 infografías 2024 de PF1482 de otra cuenta y 5 videos
+      2023 de Entry level del usuario). La planilla los marca.
 
 ## A medias
 
@@ -589,5 +605,9 @@ accionables están en el handoff como trabajo corto: la columna `fuente` en
 `data/clientes.csv` y las tres citas de las bases sin numeral.
 
 ## Siguiente paso concreto
+
+Desde la sesión 2026-10-01-claude-code-03 el usuario se ordena con la planilla «02 Recursos M2 · Licitación 2026»: lo siguiente es
+hacer los recursos que no existen (PF1487, PF1485 y PF1493 enteros, y las infografías de PF1483 y Entry level), ver los 21 videos y
+corregir los 26 «Ajustar».
 
 Ver `state/HANDOFF.md`.

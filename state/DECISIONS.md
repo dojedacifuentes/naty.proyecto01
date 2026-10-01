@@ -827,3 +827,21 @@ Quién: claude-code (lo detectó un subagente al escribir PF1483).
   en UTC, y la sesión -01 escribió la fecha local: el hook frenó el commit. Se escribe la fecha UTC y, si sirve, la local entre
   paréntesis. Se descartó cambiar el control a hora local, porque todo el registro está en UTC.
 Quién: claude-code.
+
+## 2026-10-01 · Planilla de recursos del módulo 2 para los 15 cursos de 2026: qué se exige y cómo se elige (sesión claude-code, 2026-10-01-claude-code-03)
+
+- **Qué se exige por curso** (pedido del usuario): video de presentación y video resumen; por cada AE del módulo 2, lectura (flipbook;
+  en PF1821 y PF1822, el curso Rise), infografía y quiz. "Video de presentación" se tomó como el video de bienvenida de cada año.
+- **Cómo se elige:** entre 2023, 2024 y lo hecho en 2026, el más alineado con el plan 2026. Los quiz gamificados 2026 van por sobre
+  los Genially. En PF1462 AE2 se eligió el Genially 2023, porque el de 2024 marca mal una pregunta. Lo no elegido queda en la pestaña
+  «Descartados y otros», con el motivo.
+- **Estados:** Listo, Ajustar, Revisar, No existe y No cuadra con el AE. "No cuadra" es la discrepancia grave que pidió el usuario
+  señalar: trae otro aprendizaje o es de otro curso. Un enunciado con una palabra distinta, o la portada con otro número de AE, es
+  Ajustar.
+- **Videos de 2023 y 2024:** quedan en Revisar, porque nadie los ha visto y no hay cómo transcribirlos aquí (no hay Python ni ffmpeg).
+- **Entry level:** los 4 cursos se listan por separado, aunque comparten el módulo 2. En «Alertas», lo común va una sola vez.
+- **Sin clientes:** el usuario los distingue después. La lectura Rise de PF1821 y PF1822 enlaza la copia de UNAB.
+- **Dónde:** Google Sheet nueva en NATY 2.0, no una pestaña más de «01 Planilla de seguimiento» ("hagamos un excel nuevo"). Los quiz
+  gamificados se subieron a una carpeta nueva por curso (NATY 2.0 → «PFxxxx - nombre» → «4 Quiz gamificados»), siguiendo la
+  numeración de las carpetas de PF1821 y PF1822. Todo se hizo con la cuenta del usuario en Chrome, no con el conector (#21).
+Quién: usuario (pedido y lista de cursos), claude-code.

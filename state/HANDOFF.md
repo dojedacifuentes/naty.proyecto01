@@ -2,13 +2,54 @@
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
 `2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-04` y `2026-09-30-claude-code-01` a `-13` y
-`2026-10-01-claude-code-01` y `-02` — 2026-09-24/30 (el 1-oct en UTC)
+`2026-10-01-claude-code-01` a `-03` — 2026-09-24 al 1-oct (UTC)
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 > **Ojo (sesión -04):** las sesiones -02 y -03 del 27-sep, que armaron los quiz en Canva, reemplazaron este archivo
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
+
+## HECHO (sesión 2026-10-01-03): planilla «02 Recursos M2 · Licitación 2026 (15 cursos)» y quiz gamificados en Drive
+
+- **Qué pidió el usuario:** un Excel/Google Sheet nuevo "de donde nos vamos a ordenar ya con lo que tenemos listo para el 2026", solo
+  con los **15 cursos** de la postulación (PF1481, PF1483, PF1462, PF1487, PF1486, PF1485, PF1493, PF1495, PF1482, PF1822, PF1821,
+  PF1477, PF1479, PF1478 y PF1474) y solo el **módulo 2**. Por curso: video de presentación y video resumen. Por AE: quiz (los
+  gamificados nuevos por sobre los antiguos), infografía y flipbook (salvo PF1821 y PF1822, que usan Rise). Marcar lo inexistente
+  y las discrepancias graves (cuando no cuadra el AE). Los clientes se distinguen después. Fuentes: las planillas 2023
+  («Reinventate23», UNAB) y 2024 («Copia de Recursos educativos») y lo nuevo de 2026.
+- **Dónde quedó:** Google Sheet en NATY 2.0, id en `privado/drive/enlaces.json` → `recursosM2_2026`. La genera
+  `node privado/drive/recursos-2026/planilla-recursos-2026.mjs` → `privado/drive/Recursos-M2-Licitacion-2026.xlsx`; el script
+  comprueba cada enlace (unos 30 s; `--sin-enlaces` lo salta, pero entonces no marca los enlaces privados). Reúne el cotejo del 30-sep
+  (`privado/drive/recursos-2024-cotejo/`: cotejo.json, enunciados.json y las notas de planilla-estado.mjs y quiz-funciona.mjs).
+- **Para actualizarla:** regenerar el xlsx y en la hoja, Archivo → Importar → Subir → **Reemplazar hoja de cálculo**. Se creó con
+  `docs.google.com/spreadsheets/create?usp=drive_web&folder=<id de NATY 2.0>`, que la deja directo en la carpeta.
+- **Resultado:** 282 recursos exigidos; 162 listos, 26 por ajustar, 21 por revisar, 72 no existen y 1 no cuadra con su AE. Por curso:
+  - PF1821 y PF1822 completos (14 de 14).
+  - PF1487, PF1485 y PF1493 sin nada. PF1487 tiene textos base de 2024 en Word.
+  - PF1483 sin infografías: las de la carpeta 2024 son de Análisis y las de Python 2023 no tienen acceso. Su flipbook del AE6 trae la
+    portada de otro plan.
+  - Entry level sin las infografías del AE3 (CSS) y del AE4 (Bootstrap): fueron borradas.
+  - Todos los videos de 2023 y 2024 están en «Revisar» porque nadie los ha visto.
+- **Quiz gamificados en Drive:** NATY 2.0 → carpetas nuevas «PF1481 - Fundamentos de Análisis de Datos», «PF1483 - Fundamentos de
+  Ciencia de Datos», «PF1486 - Fundamentos Product Owner» y «PF1495 - Hacking Ético en Aplicativos Web». Cada una tiene «4 Quiz
+  gamificados» con HTML, SCORM y GIFT por quiz, más el zip del curso (70 archivos). Los ids están en
+  `privado/drive/recursos-2026/quiz-juego-drive.json`. Coinciden byte a byte con el repo y se descargan sin sesión. **Si regeneras
+  los juegos, súbelos como versión nueva del mismo archivo** para no romper los enlaces de la planilla.
+- **Enlaces que solo abren con acceso** (Drive responde 401 sin sesión), marcados en la planilla:
+  - 4 infografías 2024 de PF1482, de ruben@hackea.pro.
+  - Los 4 videos de bienvenida 2023 de Entry level y el resumen común, que son del usuario.
+- **Cómo se hizo en Drive** (Claude in Chrome, cuenta del usuario verificada en el botón de la cuenta):
+  - **Nueva carpeta:** Nuevo → find «Nueva carpeta» → clic por ref. Luego, con `javascript_tool`, enfocar el `input` del diálogo y
+    lanzar error si el foco no quedó ahí. Recién entonces `type`, comprobar el valor y Return.
+  - **Trampa:** si el lote termina con el menú abierto, el ref del ítem ya no sirve en el lote siguiente. Hay que abrir el menú y
+    hacer clic en el mismo lote, o volver a hacer `find`. Shift+F no crea carpetas.
+  - **Subida:** parchar `HTMLInputElement.prototype.click` → Nuevo → «Subir archivo» → `find` del input → `file_upload` con
+    hasta 22 archivos (menos de 10 MB). Drive muestra «N subidas completadas».
+  - **Ids:** con el conector, `search_files` con `parentId = '<carpeta>'`. Para lectura sirve aunque el conector sea otra cuenta (#21).
+- **Pendiente para el usuario:** ver los videos; dar acceso por enlace a los 5 videos de Entry level, que son suyos, y pedir a Rubén las
+  infografías de PF1482. Lo siguiente es hacer lo que no existe (el usuario dijo "luego haremos los que no tengan ninguno") y
+  corregir los «Ajustar».
 
 ## HECHO (sesión 2026-10-01-01, 30-sep en Chile): quiz gamificados para PF1481, PF1483, PF1486 y PF1495
 
