@@ -1,0 +1,43 @@
+// PF1487 · Módulo 2 · Quiz 5 · Orientación a objetos (AE5). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1487-M2/Quiz-5
+
+::Q5-P1 (AE5):: En la clase Entrega, el atributo _litros solo cambia a través de un método que valida que no sea negativo. ¿Qué principio de la orientación a objetos se aplica? {
+~Herencia
+~Polimorfismo
+=Encapsulamiento
+~Herencia múltiple
+####El encapsulamiento protege el estado interno de un objeto\: los datos se cambian por métodos que los validan, como un setter o una propiedad con el decorador @property. El guion bajo indica que el atributo es de uso interno.
+}
+
+::Q5-P2 (AE5):: Al crear p \= Productor("P-017", "Los Ñirres"), ¿qué método de la clase se ejecuta solo y asigna los atributos del nuevo objeto? {
+~__str__
+=__init__
+~main()
+~self()
+####__init__ es el inicializador\: recibe los datos al instanciar el objeto y los guarda en atributos con self. Es un dunder method, como __str__, que define cómo se muestra el objeto como texto.
+}
+
+::Q5-P3 (AE5):: Las clases EntregaConvencional y EntregaOrganica heredan de Entrega y cada una redefine calcular_pago(). Un ciclo llama e.calcular_pago() sobre una lista que tiene objetos de ambas. ¿Qué ocurre? {
+=Cada objeto ejecuta su propia versión del método\: es polimorfismo
+~Se produce un error, porque el método tiene el mismo nombre
+~Siempre se ejecuta la versión de la clase Entrega
+~Solo se ejecuta la versión de la última clase definida
+####Polimorfismo\: un mismo mensaje, calcular_pago(), produce el comportamiento que corresponde a cada clase. Así el ciclo no necesita preguntar de qué tipo es cada entrega.
+}
+
+::Q5-P4 (AE5):: Tres clases repiten el mismo código para validar la temperatura de la leche. ¿Qué principio de diseño sugiere dejarlo en un solo lugar, por ejemplo en un método de la clase base? {
+~MRO
+~Sobrecarga
+~Getter
+=DRY
+####DRY (Don't Repeat Yourself, no te repitas) pide que cada lógica exista una sola vez\: si cambia la regla, se corrige en un solo lugar. Los principios SOLID complementan el diseño; por ejemplo, que cada clase tenga una sola responsabilidad.
+}
+
+::Q5-P5 (AE5):: Para leer el archivo de entregas usas import pandas as pd y df \= pd.read_csv("entregas.csv"). ¿Qué es df? {
+~Una lista de Python con las filas del archivo
+=Un objeto de la clase DataFrame, con atributos y métodos propios
+~Un diccionario estándar de Python
+~Una función que imprime el archivo
+####pandas es una librería de terceros\: read_csv() crea un objeto de la clase DataFrame, que trae métodos como df.head() o df.describe() y atributos como df.shape. Usar clases de librerías es parte del día a día de la ingeniería de datos.
+}

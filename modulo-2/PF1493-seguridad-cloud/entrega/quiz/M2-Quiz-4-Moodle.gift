@@ -1,0 +1,43 @@
+// PF1493 · Módulo 2 · Quiz 4 · Análisis de fallos en la nube (AE4). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1493-M2/Quiz-4
+
+::Q4-P1 (AE4):: Un contenedor de almacenamiento con exámenes de pacientes quedó con acceso público por error y un buscador indexó los archivos. ¿Qué principio se comprometió y cuál fue la causa? {
+~Disponibilidad, por un ataque de denegación de servicio
+=Confidencialidad, por una configuración incorrecta de permisos
+~Integridad, por un error de transmisión de datos
+~Disponibilidad, por depender de una sola zona
+####Personas no autorizadas pudieron ver datos de salud\: falló la confidencialidad. La causa no fue un ataque sofisticado, sino un permiso mal configurado, una de las causas más comunes de brechas en la nube.
+}
+
+::Q4-P2 (AE4):: Un desarrollador subió a un repositorio público un archivo con las credenciales de acceso a la nube de la clínica. Horas después, alguien las usó para crear servidores. ¿Qué causa de fallo es? {
+~Falta de redundancia
+~Un error de transmisión de datos
+~Una falla del proveedor de nube
+=Credenciales expuestas por un error humano
+####Las credenciales expuestas permiten accesos no autorizados con permisos legítimos. Es un fallo humano que los atacantes buscan de forma automática en los repositorios públicos.
+}
+
+::Q4-P3 (AE4):: Un cambio sin revisar en una regla de sincronización sobrescribió las dosis de medicamentos en cientos de fichas, y nadie lo notó durante días. ¿Qué principio falló y por qué no se detectó? {
+=Integridad; faltaba auditoría y monitoreo de los cambios
+~Confidencialidad; los datos no estaban cifrados
+~Disponibilidad; el sistema estaba en una sola zona
+~Confidencialidad; las credenciales estaban expuestas
+####Los datos se alteraron\: falló la integridad. Sin registros de auditoría ni alertas sobre cambios masivos, el error se propagó en silencio. Con control de cambios y monitoreo se habría detectado en minutos.
+}
+
+::Q4-P4 (AE4):: La agenda en línea cayó durante un ataque DDoS, y toda la aplicación estaba en una sola zona de disponibilidad. ¿Qué solución apunta a esas causas? {
+~Cambiar las contraseñas de todo el personal
+~Cifrar la base de datos de la agenda
+=Desplegar en varias zonas con balanceo de carga y un servicio de protección contra DDoS
+~Revisar los permisos del almacenamiento
+####Para la disponibilidad se necesita redundancia (varias zonas o regiones, réplicas y balanceo) y protección contra la denegación de servicio. Cifrar y revisar permisos protege la confidencialidad, no la disponibilidad.
+}
+
+::Q4-P5 (AE4):: ¿Qué medida evita que se repita el caso de las credenciales expuestas? {
+~Cambiar el nombre del repositorio
+~Hacer un respaldo diario de los servidores
+~Aumentar la capacidad de los servidores
+=Usar un gestor de secretos, rotar las credenciales, exigir MFA y revisar el código antes de publicarlo
+####Los secretos no van en el código\: se guardan en un gestor de secretos, se rotan y se limitan al mínimo privilegio. MFA y el escaneo automático de repositorios reducen el daño si algo se filtra.
+}

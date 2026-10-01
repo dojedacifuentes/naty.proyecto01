@@ -1,0 +1,43 @@
+// PF1487 · Módulo 2 · Quiz 4 · Estructuras de datos y ciclos (AE4). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1487-M2/Quiz-4
+
+::Q4-P1 (AE4):: Necesitas encontrar rápido los datos de cada productor a partir de su código, como "P-017". ¿Qué estructura de datos conviene? {
+~Una lista
+~Una tupla
+=Un diccionario
+~Un set
+####Un diccionario guarda pares clave-valor\: con productores["P-017"] obtienes sus datos sin recorrer todo. Las listas y tuplas se consultan por posición, y un set no guarda valores asociados.
+}
+
+::Q4-P2 (AE4):: Quieres saber cuántos productores distintos entregaron leche esta semana, aunque varios entregaron más de una vez. ¿Qué estructura te ayuda? {
+=Un set, porque no guarda elementos repetidos
+~Una lista anidada, porque ordena los códigos
+~Una tupla, porque no se puede modificar
+~Un diccionario anidado, porque cuenta solo
+####Un set guarda cada elemento una sola vez\: len(set(codigos)) da los productores distintos. Además permite operaciones de conjunto, como la unión | o la intersección &amp; entre dos semanas.
+}
+
+::Q4-P3 (AE4):: Las coordenadas de cada planta, como (-41.3, -72.9), no deben cambiar nunca. ¿Por qué conviene guardarlas en una tupla? {
+~Porque es la única estructura que acepta decimales
+~Porque ordena sola sus elementos
+~Porque elimina los valores repetidos
+=Porque es inmutable\: no se puede modificar después de creada
+####Una tupla no se puede modificar, lo que protege datos fijos. Además se desempaqueta fácil\: lat, lon \= coordenadas.
+}
+
+::Q4-P4 (AE4):: Con litros \= [820, 1250, 640, 990, 1100], ¿qué entrega litros[1\:3]? {
+~[820, 1250, 640]
+=[1250, 640]
+~[1250, 640, 990]
+~[820, 1250]
+####Las posiciones parten en 0 y el rango [1\:3] incluye la posición 1 y no la 3\: entrega los elementos de las posiciones 1 y 2. Con litros.append(700) agregas un elemento al final.
+}
+
+::Q4-P5 (AE4):: Tienes entregas \= \{"P-017"\: 820, "P-021"\: 1250\}. ¿Qué ciclo imprime cada código con sus litros? {
+=for codigo, litros in entregas.items()\: print(codigo, litros)
+~for codigo in entregas\: print(codigo, litros)
+~while entregas\: print(entregas)
+~for i in range(entregas)\: print(i)
+####.items() entrega cada par clave-valor, que el for desempaqueta en dos variables. La opción b falla porque litros no existe, la c nunca termina (el diccionario no se vacía) y range() necesita un número, no un diccionario.
+}

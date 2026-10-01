@@ -1,0 +1,43 @@
+// PF1487 · Módulo 2 · Quiz 3 · Funciones y módulos (AE3). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1487-M2/Quiz-3
+
+::Q3-P1 (AE3):: Tienes entregas \= [820, 1250, 640]. ¿Qué funciones preconstruidas de Python te dan el total de litros y la cantidad de entregas? {
+~total(entregas) y count(entregas)
+~max(entregas) y range(entregas)
+~print(entregas) y input(entregas)
+=sum(entregas) y len(entregas)
+####sum() suma los elementos y len() cuenta cuántos hay. Vienen con Python, sin importar nada, igual que max(), min(), round() o sorted().
+}
+
+::Q3-P2 (AE3):: Defines def pago(litros, precio\=420)\: return litros * precio. ¿Qué devuelve pago(1000)? {
+=420000
+~Un error, porque falta el argumento precio
+~None, porque la función no imprime nada
+~1420
+####precio tiene un valor predeterminado (420), que se usa cuando no se entrega ese argumento. La función devuelve 1000 × 420 \= 420000 con return, y ese valor se puede guardar en una variable.
+}
+
+::Q3-P3 (AE3):: Una compañera escribe def promedio(lista)\: print(sum(lista) / len(lista)) y luego p \= promedio([800, 1200]). ¿Qué queda guardado en p? {
+~1000.0
+=None
+~1000
+~El texto «1000.0»
+####La función muestra 1000.0 en la consola, pero no lo devuelve\: sin return, una función entrega None. Para usar el resultado después, cambia print(...) por return sum(lista) / len(lista).
+}
+
+::Q3-P4 (AE3):: Guardaste tus funciones de control de calidad en calidad.py, en la misma carpeta que recepcion.py. ¿Cómo usas su función validar() desde recepcion.py? {
+~Copiando calidad.py dentro de la función validar()
+~Escribiendo include calidad.py en la primera línea
+=Con from calidad import validar y luego validar(...)
+~No se puede\: las funciones solo sirven en el archivo donde se crean
+####Cada archivo .py es un módulo que otros archivos pueden importar. También sirve import calidad y luego calidad.validar(...). Documenta cada función con un docstring y usa nombres en minúscula con guion bajo, como pide PEP 8.
+}
+
+::Q3-P5 (AE3):: Los litros del día equivalen a 2,3 camiones y debes redondear hacia arriba\: se necesitan 3 camiones. ¿Qué código usas? {
+~round(2.3)
+~math.ceil(2.3), sin importar nada antes
+~import math.ceil(2.3)
+=import math y luego math.ceil(2.3)
+####math es un módulo de la librería estándar de Python\: viene instalado, pero hay que importarlo. math.ceil() redondea hacia arriba (3); round(2.3) daría 2.
+}

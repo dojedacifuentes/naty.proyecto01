@@ -57,6 +57,18 @@ Pedido del usuario del 2026-10-01, tras revisar la planilla de recursos: hacer l
 
 Las genera `npm run infografias -- PF1481 PF1483 PF1474` desde `contenidos/<PF>/modulo-2/R-infografias.json`. El texto del AE y de los criterios sale del plan, y el script se detiene si un contenido no está en el plan o si alguno queda fuera. Salen en PNG de 1080 px con el estilo de las de PF1821 y PF1822, con su versión en texto.
 
+## Quiz e infografías de los cursos que no tenían recursos
+
+Pedido del usuario del 2026-10-01: PF1487, PF1485 y PF1493 no tenían ningún recurso del módulo 2. Se hizo, por cada aprendizaje esperado, un quiz gamificado (HTML, SCORM 1.2 y GIFT) y una infografía, con los contenidos y criterios de evaluación 2026. Cada curso tiene su caso ficticio para los ejemplos.
+
+| Curso | Caso | Quiz | Infografías | Carpeta |
+| --- | --- | --- | --- | --- |
+| **PF1487** · Fundamentos de Ingeniería de Datos | Lácteos Calafate | 6 | 6 | [PF1487-ingenieria-de-datos](PF1487-ingenieria-de-datos/) |
+| **PF1485** · Fundamentos DevOps | Buses Quillay | 5 | 5 | [PF1485-devops](PF1485-devops/) |
+| **PF1493** · Seguridad Cloud | Clínica Quintral | 6 | 6 | [PF1493-seguridad-cloud](PF1493-seguridad-cloud/) |
+
+Se generan con `npm run quiz-juego -- PF1487 PF1485 PF1493` y `npm run infografias -- PF1487 PF1485 PF1493`. Las fuentes son `R-quiz-canva.md` y `R-infografias.json` de `contenidos/<PF>/modulo-2/`. A estos cursos aún les faltan los 2 videos y la lectura (flipbook) de cada aprendizaje.
+
 ## Qué se evalúa en el módulo 2
 
 La propuesta técnica se evalúa sobre el segundo módulo del plan (bases 2026, 7.4, pág. 27).

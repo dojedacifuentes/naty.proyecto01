@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos DevOps · Módulo 2 · Aprendizaje esperado 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS Y ADOPCIÓN DEVOPS · <span class="nw">Aprendizaje esperado 3</span></div>
+  <h1>PRÁCTICAS ESENCIALES DE DEVOPS</h1>
+  <p class="bajada">El ciclo, las prácticas, las herramientas y quién hace qué</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 3</div><p>EXPLICAR LOS PRINCIPIOS DEVOPS, ROLES, RESPONSABILIDADES Y HABILIDADES, Y LAS CARACTERÍSTICAS PRINCIPALES DE SU CICLO DE VIDA PARA EL DESARROLLO DE PRODUCTOS DIGITALES.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 16c5 0 7-8 12-8a4 4 0 0 1 0 8c-5 0-7-8-12-8a4 4 0 1 0 0 8" />
+</svg></div>
+    <div>
+      <h2>Ciclo de vida DevOps</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CICLO DE VIDA DEVOPS: DESARROLLO · PRUEBA · INTEGRACIÓN · DESPLIEGUE · MONITOREO</p>
+      <p class="texto">Desarrollo → prueba → integración → despliegue → monitoreo. Es un ciclo sin fin: lo que se aprende al monitorear vuelve al desarrollo.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z" />
+</svg></div>
+    <div>
+      <h2>Automatización</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">PRÁCTICAS ESENCIALES DE DEVOPS: AUTOMATIZACIÓN</p>
+      <p class="texto">Se automatiza lo repetitivo: compilar, probar, desplegar y crear servidores. Menos errores manuales y más tiempo para mejorar.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="18" cy="18" r="3" />
+  <circle cx="6" cy="6" r="3" />
+  <path d="M6 21V9a9 9 0 0 0 9 9" />
+</svg></div>
+    <div>
+      <h2>Integración continua</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">INTEGRACIÓN CONTINUA</p>
+      <p class="texto">Cada cambio se integra al repositorio principal varias veces al día y se compila y prueba solo. Si algo falla, el equipo se entera en minutos.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" />
+  <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" />
+  <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" />
+</svg></div>
+    <div>
+      <h2>Entrega continua</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ENTREGA CONTINUA</p>
+      <p class="texto">Cada versión que pasa las pruebas queda lista para producción y se publica con un clic. Si también ese paso es automático, se llama despliegue continuo.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+  <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+  <path d="M10 12.5 8 15l2 2.5" />
+  <path d="m14 12.5 2 2.5-2 2.5" />
+</svg></div>
+    <div>
+      <h2>Infraestructura como código</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">INFRAESTRUCTURA COMO CÓDIGO</p>
+      <p class="texto">Servidores, redes y permisos se describen en archivos versionados, con herramientas como Terraform o Ansible: se revisan, se repiten y se recrean igual cada vez.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 6a9 9 0 0 0-9 9V3" />
+  <circle cx="18" cy="6" r="3" />
+  <circle cx="6" cy="18" r="3" />
+</svg></div>
+    <div>
+      <h2>Control de versiones y pruebas automáticas</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">HERRAMIENTAS DEVOPS: CONTROL DE VERSIONES · AUTOMATIZACIÓN DE PRUEBAS</p>
+      <p class="texto">Git guarda la historia del código y permite ramas y revisiones. Las pruebas unitarias, de integración y de punta a punta corren solas en el pipeline.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+</svg></div>
+    <div>
+      <h2>Monitorización y registro</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">MONITORIZACIÓN Y REGISTRO</p>
+      <p class="texto">Métricas, registros (logs) y alertas muestran cómo está el servicio en todo momento, con herramientas como Prometheus y Grafana.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">8</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 7.7c0-.6-.4-1.2-.8-1.5l-6.3-3.9a1.72 1.72 0 0 0-1.7 0l-10.3 6c-.5.2-.9.8-.9 1.4v6.6c0 .5.4 1.2.8 1.5l6.3 3.9a1.72 1.72 0 0 0 1.7 0l10.3-6c.5-.3.9-1 .9-1.5Z" />
+  <path d="M10 21.9V14L2.1 9.1" />
+  <path d="m10 14 11.9-6.9" />
+  <path d="M14 19.8v-8.1" />
+  <path d="M18 17.5V9.4" />
+</svg></div>
+    <div>
+      <h2>Contenedores y orquestación</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CONTENEDORES Y ORQUESTACIÓN</p>
+      <p class="texto">Docker empaqueta la aplicación con todo lo que necesita, para que funcione igual en cualquier lugar. Kubernetes despliega, escala y reinicia esos contenedores.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">9</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <circle cx="9" cy="7" r="4" />
+</svg></div>
+    <div>
+      <h2>Roles y responsabilidades</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ROLES, RESPONSABILIDADES Y HABILIDADES: ROLES QUE PARTICIPAN DENTRO DE DEVOPS · RESPONSABILIDAD DE CADA PERFIL</p>
+      <p class="texto">Developers: código y pruebas · Operaciones o SRE: confiabilidad · QA: calidad automatizada · Seguridad · Product Owner: valor del producto · Ingeniería DevOps: pipelines y automatización.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">10</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+  <path d="M22 10v6" />
+  <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+</svg></div>
+    <div>
+      <h2>Habilidades de un especialista DevOps</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">HABILIDADES DE UN ESPECIALISTA DEVOPS</p>
+      <p class="texto">Técnicas: Linux, scripting, Git, integración y entrega continuas, nube y contenedores. Blandas: comunicación, colaboración y aprendizaje continuo.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>3.1</b><span>EXPLICA LOS PRINCIPIOS FUNDAMENTALES DE LAS PRÁCTICAS DEVOPS PARA EL DESARROLLO DE UN PRODUCTO DIGITAL A LO LARGO DE SU CICLO DE VIDA.</span></li><li><b>3.2</b><span>RECONOCE LOS ROLES, RESPONSABILIDADES Y HABILIDADES DE LOS PARTICIPANTES EN EL DESARROLLO DE UN PRODUCTO TECNOLÓGICO DE ACUERDO A LAS PRÁCTICAS DEVOPS.</span></li><li><b>3.3</b><span>IDENTIFICA LAS ETAPAS DEL CICLO DE VIDA DE UN PRODUCTO TECNOLÓGICO DE ACUERDO A LAS PRÁCTICAS DEVOPS.</span></li></ol></div>
+  <div class="pie">Fundamentos DevOps · Módulo 2 · Ejemplos con Buses Quillay, empresa ficticia</div>
+</main></body></html>

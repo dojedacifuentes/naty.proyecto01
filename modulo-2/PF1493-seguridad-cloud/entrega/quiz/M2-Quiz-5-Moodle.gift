@@ -1,0 +1,43 @@
+// PF1493 · Módulo 2 · Quiz 5 · CIA y modelos de despliegue (AE5). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1493-M2/Quiz-5
+
+::Q5-P1 (AE5):: En una nube pública, la infraestructura se comparte con otros clientes. ¿Cómo protege la clínica la confidencialidad de sus fichas? {
+=Con cifrado, gestión de identidades y accesos (IAM) y redes privadas virtuales
+~Pidiéndole al proveedor que no reciba otros clientes
+~Guardando las fichas sin contraseña para que carguen más rápido
+~No se puede\: en la nube pública no hay confidencialidad
+####En la nube pública, el proveedor aísla a los clientes, pero la clínica debe configurar el cifrado, los permisos (IAM) y redes privadas virtuales (VPC). La confidencialidad depende mucho de esa configuración.
+}
+
+::Q5-P2 (AE5):: ¿Qué riesgo es más propio de una nube privada instalada en el centro de datos de la clínica? {
+~Compartir hardware con empresas desconocidas
+~Que el proveedor público cambie sus precios
+=Que la disponibilidad dependa del propio equipo e instalaciones de la clínica
+~Que los datos deban cruzar entre dos entornos distintos
+####La nube privada da más control y confidencialidad, pero si falla la energía o el único centro de datos, cae el servicio, y escalar exige comprar equipos. Compartir hardware es propio de la pública; cruzar entornos, de la híbrida.
+}
+
+::Q5-P3 (AE5):: En la nube híbrida de la clínica, las fichas viajan entre el centro de datos propio y la nube pública. ¿Qué riesgo aparece? {
+~Ninguno, porque ambos entornos son de la clínica
+=Que los datos en tránsito se expongan o alteren, y que cada entorno aplique políticas distintas
+~Que la nube pública deje de existir
+~Que las fichas ya no puedan cifrarse
+####La conexión entre entornos es un punto delicado\: sin cifrado, los datos pueden leerse o alterarse en el camino, y con políticas distintas aparecen brechas de control. La híbrida suma ventajas, pero también la complejidad de dos mundos.
+}
+
+::Q5-P4 (AE5):: ¿Qué estrategia protege esos datos en tránsito en la nube híbrida? {
+~Enviarlos por correo electrónico
+~Dejar abierta la conexión para que sea más rápida
+~Copiarlos a un pendrive una vez al día
+=Una conexión cifrada (VPN o enlace dedicado con TLS) y las mismas políticas de identidad en ambos lados
+####Cifrar el canal protege la confidencialidad y la integridad en tránsito; unificar la gestión de identidades y los registros evita que un entorno quede más expuesto que el otro.
+}
+
+::Q5-P5 (AE5):: Frente a un único centro de datos propio, ¿qué ventaja ofrece la nube pública para la disponibilidad? {
+=Puede replicar el servicio en varias zonas y regiones del proveedor
+~Garantiza que nunca habrá interrupciones
+~No requiere ninguna configuración de respaldo
+~Elimina la necesidad de proteger la confidencialidad
+####La nube pública facilita la redundancia geográfica, pero hay que diseñarla y pagarla\: replicar en varias zonas, respaldar y probar la recuperación. Ningún modelo garantiza cero interrupciones.
+}

@@ -1,0 +1,43 @@
+// PF1485 · Módulo 2 · Quiz 1 · Qué es DevOps (AE1). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1485-M2/Quiz-1
+
+::Q1-P1 (AE1):: En Buses Quillay, desarrollo quiere publicar cambios seguido y operaciones frena cada cambio para que el sitio de venta no se caiga. Cuando algo falla, cada área culpa a la otra. ¿Qué problema de la industria dio origen a DevOps? {
+~La falta de lenguajes de programación modernos
+~El alto precio de los servidores en los años noventa
+=La separación entre desarrollo y operaciones, con metas opuestas
+~La ausencia de metodologías para documentar el software
+####Desarrollo (Dev) busca cambiar rápido y operaciones (Ops) busca estabilidad. Separados, se culpan y el negocio espera meses por cada mejora. DevOps nace para unirlos con metas compartidas, en plena transformación digital.
+}
+
+::Q1-P2 (AE1):: DevOps se resume en los valores CALMS. ¿Qué significan sus letras? {
+=Cultura, Automatización, Lean, Medición y Compartir
+~Código, Agilidad, Licencias, Monitoreo y Seguridad
+~Calidad, Arquitectura, Lanzamiento, Mantenimiento y Soporte
+~Cultura, Agilidad, Liderazgo, Métricas y Scrum
+####CALMS\: Culture (cultura de colaboración), Automation (automatizar lo repetitivo), Lean (flujo sin desperdicio), Measurement (medir para decidir) y Sharing (compartir conocimiento y responsabilidad).
+}
+
+::Q1-P3 (AE1):: Para la gerencia de Buses Quillay, ¿qué beneficio para la organización trae adoptar DevOps? {
+~Garantiza que el sitio no volverá a tener fallas
+=Lanzar mejoras más rápido y con menos fallas, respondiendo antes al mercado
+~Reduce a cero el gasto en tecnología
+~Evita tener que medir los resultados de cada cambio
+####Con entregas pequeñas y frecuentes, la empresa responde antes a sus clientes y se recupera más rápido de los errores. DevOps no elimina las fallas ni los costos\: los reduce y los hace visibles con métricas.
+}
+
+::Q1-P4 (AE1):: ¿Cuál es un beneficio de DevOps para el equipo de trabajo? {
+~Cada área trabaja aislada con sus propias metas
+~Ya no es necesario probar el software
+~Desaparecen los roles de operaciones
+=Menos trabajo manual repetitivo y menos conflictos, con metas compartidas
+####Al automatizar lo repetitivo y compartir la responsabilidad del servicio, el equipo tiene menos urgencias nocturnas, más tiempo para mejorar y una colaboración más sana. La cultura DevOps pone a las personas en el centro.
+}
+
+::Q1-P5 (AE1):: Buses Quillay guarda datos de pago y quiere revisar la seguridad desde el inicio de cada cambio, no al final. ¿Qué variación de DevOps aplica? {
+~DASA
+~Scrum
+=DevSecOps
+~Cascada
+####DevSecOps integra la seguridad en todo el ciclo, con revisiones automáticas en cada cambio. DASA (DevOps Agile Skills Association) es una asociación que define competencias y certificaciones DevOps, una de las vías de certificación de la industria.
+}

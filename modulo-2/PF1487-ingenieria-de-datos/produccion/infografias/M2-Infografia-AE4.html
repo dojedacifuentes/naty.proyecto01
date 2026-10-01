@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos de Ingeniería de Datos · Módulo 2 · Aprendizaje esperado 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS DE PROGRAMACIÓN PYTHON PARA INGENIEROS DE DATOS · <span class="nw">Aprendizaje esperado 4</span></div>
+  <h1>ESTRUCTURAS DE DATO Y SENTENCIAS ITERATIVAS</h1>
+  <p class="bajada">Guardar muchos datos y recorrerlos</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 4</div><p>CODIFICAR UNA RUTINA UTILIZANDO ESTRUCTURAS DE DATO Y SENTENCIAS ITERATIVAS ACORDE AL LENGUAJE PYTHON PARA RESOLVER UN PROBLEMA DE MEDIANA COMPLEJIDAD.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 5h.01" />
+  <path d="M3 12h.01" />
+  <path d="M3 19h.01" />
+  <path d="M8 5h13" />
+  <path d="M8 12h13" />
+  <path d="M8 19h13" />
+</svg></div>
+    <div>
+      <h2>Listas</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">LISTAS · CARACTERÍSTICAS DE UNA LISTA</p>
+      <p class="texto">Ordenadas, modificables y con repetidos permitidos: <code>litros = [820, 1250, 640]</code>. Las posiciones parten en 0.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11 5h10" />
+  <path d="M11 12h10" />
+  <path d="M11 19h10" />
+  <path d="M4 4h1v5" />
+  <path d="M4 9h2" />
+  <path d="M6.5 20H3.4c0-1 2.6-1.925 2.6-3.5a1.5 1.5 0 0 0-2.6-1.02" />
+</svg></div>
+    <div>
+      <h2>Crear, agregar y rescatar</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CREAR UNA LISTA, AGREGAR, RESCATAR UN ELEMENTO · RESCATAR UN RANGO DE ELEMENTOS</p>
+      <p class="texto"><code>litros.append(990)</code> agrega al final · <code>litros[0]</code> → 820 · <code>litros[-1]</code> → el último · <code>litros[1:3]</code> → posiciones 1 y 2.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 4v16" />
+  <path d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2" />
+  <path d="M9 20h6" />
+</svg></div>
+    <div>
+      <h2>Listas y cadenas</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">LISTAS Y CADENAS DE CARACTERES</p>
+      <p class="texto">Una cadena se recorre como una secuencia: <code>&quot;P-017&quot;[0]</code> → &quot;P&quot;. <code>&quot;820;1250&quot;.split(&quot;;&quot;)</code> crea una lista y <code>&quot;;&quot;.join(lista)</code> la vuelve texto.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="18" x="3" y="3" rx="2" />
+  <path d="M3 9h18" />
+  <path d="M3 15h18" />
+  <path d="M9 3v18" />
+  <path d="M15 3v18" />
+</svg></div>
+    <div>
+      <h2>Listas anidadas y matrices</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">LISTAS ANIDADAS Y MATRICES</p>
+      <p class="texto">Una lista de listas forma una tabla: <code>semana = [[820, 900], [1250, 1100]]</code>. <code>semana[1][0]</code> → 1250: fila 1, columna 0.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1" />
+  <path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1" />
+</svg></div>
+    <div>
+      <h2>Diccionarios</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">DICCIONARIOS · CARACTERÍSTICAS DE UN DICCIONARIO · CREAR UN DICCIONARIO, AGREGAR, RESCATAR ELEMENTOS · DICCIONARIOS ANIDADOS</p>
+      <p class="texto">Pares clave-valor: <code>p = {&quot;codigo&quot;: &quot;P-017&quot;, &quot;litros&quot;: 820}</code>. <code>p[&quot;litros&quot;]</code> lee y <code>p[&quot;comuna&quot;] = &quot;Purranque&quot;</code> agrega. Anidados: <code>productores[&quot;P-017&quot;][&quot;litros&quot;]</code>.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+</svg></div>
+    <div>
+      <h2>Tuplas</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">TUPLAS · CARACTERÍSTICAS DE UNA TUPLA · CREACIÓN DE UNA TUPLA, RESCATAR ELEMENTOS · EMPAQUETADO Y DESEMPAQUETADO DE TUPLAS</p>
+      <p class="texto">Ordenadas e inmutables: <code>planta = (-41.3, -72.9)</code>; <code>planta[0]</code> → -41.3. Empaquetar: <code>t = 1, 2</code>. Desempaquetar: <code>lat, lon = planta</code>.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 3a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1" />
+  <path d="M19 3a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1" />
+  <path d="m7 15 3 3" />
+  <path d="m7 21 3-3H5a2 2 0 0 1-2-2v-2" />
+  <rect x="14" y="14" width="7" height="7" rx="1" />
+  <rect x="3" y="3" width="7" height="7" rx="1" />
+</svg></div>
+    <div>
+      <h2>Sets</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">SETS · CARACTERÍSTICAS DE UN SET · CREACIÓN DE UN SET · OPERACIONES DE CONJUNTO CON SETS</p>
+      <p class="texto">Sin orden y sin repetidos: <code>set([&quot;P-017&quot;, &quot;P-021&quot;, &quot;P-017&quot;])</code> guarda 2. Unión <code>a | b</code>, intersección <code>a &amp; b</code> y diferencia <code>a - b</code>.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">8</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m17 2 4 4-4 4" />
+  <path d="M3 11v-1a4 4 0 0 1 4-4h14" />
+  <path d="m7 22-4-4 4-4" />
+  <path d="M21 13v1a4 4 0 0 1-4 4H3" />
+</svg></div>
+    <div>
+      <h2>Iterar y el ciclo while</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">QUÉ ES UNA SENTENCIA ITERATIVA Y POR QUÉ SE NECESITAN · LA SENTENCIA WHILE</p>
+      <p class="texto">Un ciclo repite instrucciones sin copiar código. <code>while pendientes &gt; 0:</code> repite mientras la condición sea verdadera; si nunca cambia, el ciclo no termina.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">9</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+  <path d="M21 3v5h-5" />
+  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+  <path d="M8 16H3v5" />
+</svg></div>
+    <div>
+      <h2>El ciclo for</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">LA SENTENCIA FOR · ITERANDO LISTAS DE ELEMENTOS · ITERANDO DICCIONARIOS DE ELEMENTOS</p>
+      <p class="texto"><code>for l in litros: total += l</code> recorre una lista. <code>for codigo, datos in productores.items():</code> recorre un diccionario par por par.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">10</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <line x1="4" x2="20" y1="9" y2="9" />
+  <line x1="4" x2="20" y1="15" y2="15" />
+  <line x1="10" x2="8" y1="3" y2="21" />
+  <line x1="16" x2="14" y1="3" y2="21" />
+</svg></div>
+    <div>
+      <h2>La función range</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">LA FUNCIÓN RANGE · ITERANDO CON LA FUNCIÓN RANGE</p>
+      <p class="texto"><code>range(5)</code> → 0 a 4 · <code>range(1, 8)</code> → 1 a 7, los días de la semana · <code>for i in range(len(litros)):</code> recorre las posiciones.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>4.1</b><span>APLICA LAS CARACTERÍSTICAS Y CASOS DE USO DE LAS DIFERENTES ESTRUCTURAS DE DATO FUNDAMENTALES PROVISTAS POR PYTHON PARA LA RESOLUCIÓN DE UN PROBLEMA.</span></li><li><b>4.2</b><span>CODIFICA UTILIZANDO ESTRUCTURAS DE DATO ADECUADAS EN PYTHON PARA RESOLVER UN PROBLEMA DE MEDIANA COMPLEJIDAD.</span></li></ol></div>
+  <div class="pie">Fundamentos de Ingeniería de Datos · Módulo 2 · Ejemplos con Lácteos Calafate, empresa ficticia</div>
+</main></body></html>

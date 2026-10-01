@@ -1,0 +1,43 @@
+// PF1485 · Módulo 2 · Quiz 4 · Release management y metodologías (AE4). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1485-M2/Quiz-4
+
+::Q4-P1 (AE4):: Antes, Buses Quillay hacía dos grandes lanzamientos al año, a mano y un fin de semana completo. ¿Qué cambia en el release management con DevOps? {
+~Se elimina\: ya no hace falta planificar las versiones
+~Se hacen aún menos lanzamientos, pero más grandes
+=Se pasa a entregas pequeñas, frecuentes y automatizadas
+~Cada desarrollador publica en producción sin pruebas
+####El release management planifica, controla y coordina la salida de versiones. Con DevOps no desaparece\: se apoya en la automatización para publicar cambios pequeños y frecuentes, con menos riesgo en cada uno.
+}
+
+::Q4-P2 (AE4):: Buses Quillay hizo su primer sistema en cascada\: meses de requisitos, luego diseño, programación y pruebas, y recién al final lo vieron los clientes. ¿Qué característica de cascada explica que hubo que rehacer partes? {
+=Las etapas son secuenciales y el cliente ve el producto al final, cuando cambiar cuesta caro
+~Las etapas se repiten cada dos semanas con el cliente
+~No tiene documentación ni planificación
+~Permite cambiar los requisitos en cualquier momento sin costo
+####En cascada, cada etapa empieza cuando termina la anterior. Sirve cuando los requisitos son estables, pero los errores de entendimiento se descubren tarde. Las metodologías ágiles, en cambio, entregan y validan en ciclos cortos.
+}
+
+::Q4-P3 (AE4):: Ahora, cada dos semanas el equipo entrega una parte que funciona —primero la búsqueda de pasajes, luego el pago— y la mejora según lo que dicen los clientes. ¿Qué concepto aplica? {
+~Desarrollo en cascada
+~Release management tradicional
+~Infraestructura como código
+=Desarrollo iterativo e incremental
+####Iterativo\: se trabaja en ciclos que se repiten y mejoran. Incremental\: cada ciclo suma una parte que funciona. Es la base de las metodologías ágiles y encaja con la entrega continua de DevOps.
+}
+
+::Q4-P4 (AE4):: ¿Cuál de estos es un valor del Manifiesto Ágil (2001)? {
+~Documentación extensiva por sobre software funcionando
+=Individuos e interacciones por sobre procesos y herramientas
+~Seguir un plan por sobre responder al cambio
+~Negociación contractual por sobre colaboración con el cliente
+####Los cuatro valores son\: individuos e interacciones sobre procesos y herramientas, software funcionando sobre documentación extensiva, colaboración con el cliente sobre negociación contractual y respuesta ante el cambio sobre seguir un plan. Los distractores invierten ese orden.
+}
+
+::Q4-P5 (AE4):: En Scrum, ¿quién ordena el Product Backlog según el valor para el negocio? {
+~El Scrum Master
+~Los Developers
+=El Product Owner
+~El jefe de operaciones
+####El Product Owner maximiza el valor del producto y ordena el Product Backlog. El Scrum Master facilita y remueve impedimentos, y los Developers construyen el incremento en cada Sprint. Los artefactos son el Product Backlog, el Sprint Backlog y el Incremento.
+}

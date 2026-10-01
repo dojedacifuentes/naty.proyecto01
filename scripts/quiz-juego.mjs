@@ -22,8 +22,9 @@
  * Si falta la misión, la insignia o la siguiente parada, o si un quiz no trae 5 preguntas de
  * alternativas con una correcta, se detiene y dice dónde. Sin dependencias (AGENTS.md §8).
  *
- * Cursos con solo el quiz (kit: false): PF1481, PF1483, PF1486 y PF1495 no tienen el kit de `npm run produccion`;
- * sus quiz reemplazan los de Genially de 2024 (pedido del usuario del 2026-09-30) y salen de su R-quiz-canva.md,
+ * Cursos con solo el quiz (kit: false): PF1481, PF1483, PF1486, PF1495, PF1487, PF1485 y PF1493 no tienen el kit de `npm run produccion`;
+ * sus quiz reemplazan los de Genially de 2024 (pedido del usuario del 2026-09-30; PF1487, PF1485 y PF1493 no tenían quiz, 2026-10-01)
+ * y salen de su R-quiz-canva.md,
  * con los criterios de evaluación del plan 2026. Para ellos este script también escribe el GIFT
  * (scripts/lib/quiz-canva.mjs) y un zip con todo: modulo-2/<curso>/quiz-juego-M2-<PF>.zip.
  *
@@ -43,7 +44,12 @@ const CURSOS = [
   { pf: 'PF1483', carpeta: 'PF1483-ciencia-de-datos', nombre: 'Fundamentos de Ciencia de Datos', kit: false },
   { pf: 'PF1486', carpeta: 'PF1486-product-owner', nombre: 'Fundamentos Product Owner', kit: false },
   { pf: 'PF1495', carpeta: 'PF1495-hacking-etico', nombre: 'Hacking Ético en Aplicativos Web', kit: false },
+  { pf: 'PF1487', carpeta: 'PF1487-ingenieria-de-datos', nombre: 'Fundamentos de Ingeniería de Datos', kit: false },
+  { pf: 'PF1485', carpeta: 'PF1485-devops', nombre: 'Fundamentos DevOps', kit: false },
+  { pf: 'PF1493', carpeta: 'PF1493-seguridad-cloud', nombre: 'Seguridad Cloud', kit: false },
 ];
+// Cursos que no tenían ningún recurso del módulo 2 (2026-10-01): su README no dice que reemplazan un Genially.
+const SIN_RECURSOS = ['PF1487', 'PF1485', 'PF1493'];
 // Fecha fija dentro del zip: regenerar sin cambios no debe cambiar el archivo.
 const FECHA_ZIP = new Date(2026, 8, 28, 12, 0, 0);
 // IBM Plex (OFL, scripts/fuentes/): Sans para el texto y Mono para la interfaz del juego. Mono no trae 700: se usa la 600.
@@ -151,6 +157,57 @@ const ESTILOS = {
         heroe: { tipo: 'flujo', nodos: [['Objetivo', 'diana'], ['Método', 'engranaje'], ['Hallazgos', 'bandera']] } },
     },
   },
+  // Cursos que no tenían ningún recurso (pedido del usuario del 2026-10-01). Etiquetas revisadas contra las respuestas: p. ej., el
+  // Quiz 4 de PF1485 no dice «entregas pequeñas» y el Quiz 5 no nombra el piloto ni las tres maneras, que son respuestas.
+  PF1487: {
+    fondo: 'circuito',
+    quiz: {
+      1: { acento: '#22d3ee', acento2: '#a3e635', lema: 'Python y su caja de herramientas',
+        heroe: { tipo: 'flujo', nodos: [['Archivos CSV', 'doc'], ['Python', 'chip'], ['Base de datos', 'bd']] } },
+      2: { acento: '#fbbf24', acento2: '#38bdf8', lema: 'Variables, operadores y decisiones',
+        heroe: { tipo: 'flujo', nodos: [['Litros', 'entrada'], ['Cálculo', 'numeral'], ['Decisión', 'rombo']] } },
+      3: { acento: '#f472b6', acento2: '#a78bfa', lema: 'Funciones propias y módulos listos',
+        heroe: { tipo: 'flujo', nodos: [['Datos', 'entrada'], ['Función', 'engranaje'], ['Resultado', 'salida']] } },
+      4: { acento: '#34d399', acento2: '#fbbf24', lema: 'Ordenar los datos y recorrerlos',
+        heroe: { tipo: 'flujo', nodos: [['Registros', 'doc'], ['Colección', 'paquete'], ['Ciclo', 'transformar']] } },
+      5: { acento: '#fb923c', acento2: '#22d3ee', lema: 'Modelar las entregas con clases',
+        heroe: { tipo: 'flujo', nodos: [['Clase', 'paquete'], ['Objeto', 'chip'], ['Método', 'engranaje']] } },
+      6: { acento: '#ff7a59', acento2: '#38bdf8', lema: 'Errores que se capturan a tiempo',
+        heroe: { tipo: 'flujo', nodos: [['Archivo', 'doc'], ['Validación', 'escudo'], ['Carga', 'bd']] } },
+    },
+  },
+  PF1485: {
+    fondo: 'neuronas',
+    quiz: {
+      1: { acento: '#22d3ee', acento2: '#ff7a59', lema: 'Dev y Ops, un mismo equipo',
+        heroe: { tipo: 'flujo', nodos: [['Desarrollo', 'doc'], ['Colaboración', 'chat'], ['Operaciones', 'engranaje']] } },
+      2: { acento: '#a78bfa', acento2: '#fbbf24', lema: 'La cultura que hace posible el cambio',
+        heroe: { tipo: 'flujo', nodos: [['Valores', 'chispa'], ['Personas', 'chat'], ['Organización', 'niveles']] } },
+      3: { acento: '#34d399', acento2: '#f472b6', lema: 'Del código a producción, sin pausas',
+        heroe: { tipo: 'flujo', nodos: [['Código', 'doc'], ['Pipeline', 'transformar'], ['Producción', 'enviar']] } },
+      4: { acento: '#fbbf24', acento2: '#38bdf8', lema: 'Cómo se planifica y se entrega software',
+        heroe: { tipo: 'flujo', nodos: [['Backlog', 'niveles'], ['Sprint', 'transformar'], ['Versión', 'paquete']] } },
+      5: { acento: '#e879f9', acento2: '#34d399', lema: 'Cambiar la forma de trabajar, paso a paso',
+        heroe: { tipo: 'flujo', nodos: [['Hoy', 'doc'], ['Cambio', 'transformar'], ['Mañana', 'bandera']] } },
+    },
+  },
+  PF1493: {
+    fondo: 'circuito',
+    quiz: {
+      1: { acento: '#38bdf8', acento2: '#a3e635', lema: 'De los servidores propios a la nube',
+        heroe: { tipo: 'flujo', nodos: [['Clínica', 'paquete'], ['Internet', 'enviar'], ['Proveedor', 'bd']] } },
+      2: { acento: '#22d3ee', acento2: '#f472b6', lema: 'Tres principios para proteger la información',
+        heroe: { tipo: 'flujo', nodos: [['Ficha', 'doc'], ['Protección', 'escudo'], ['Paciente', 'chat']] } },
+      3: { acento: '#fbbf24', acento2: '#a78bfa', lema: 'Las reglas que protegen los datos',
+        heroe: { tipo: 'flujo', nodos: [['Datos de salud', 'doc'], ['Normativa', 'niveles'], ['Cumplimiento', 'diana']] } },
+      4: { acento: '#ff7a59', acento2: '#22d3ee', lema: 'Qué falló, por qué y cómo evitarlo',
+        heroe: { tipo: 'flujo', nodos: [['Incidente', 'bicho'], ['Causa', 'diana'], ['Solución', 'escudo']] } },
+      5: { acento: '#a3e635', acento2: '#38bdf8', lema: 'Pública, privada o híbrida',
+        heroe: { tipo: 'flujo', nodos: [['Centro propio', 'bd'], ['Nube híbrida', 'transformar'], ['Nube pública', 'salida']] } },
+      6: { acento: '#e879f9', acento2: '#fbbf24', lema: 'Quién protege qué en la nube',
+        heroe: { tipo: 'flujo', nodos: [['Proveedor', 'bd'], ['Acuerdo', 'doc'], ['Clínica', 'escudo']] } },
+    },
+  },
 };
 
 const plano = (t) => t.replace(/\*\*|\*|`/g, '').trim();
@@ -251,7 +308,7 @@ function readme(c, meta) {
 
 Generado por \`npm run quiz-juego -- ${c.pf}\` desde [\`contenidos/${c.pf}/modulo-2/R-quiz-canva.md\`](../../contenidos/${c.pf}/modulo-2/R-quiz-canva.md). No se edita a mano: se cambia ese archivo y se vuelve a generar.
 
-Reemplazan los quiz de Genially de 2024. Hay uno por cada aprendizaje esperado del módulo 2 (\`${m.codigo}\` ${m.nombre}, ${m.horas} h). Sus preguntas se escribieron sobre los criterios de evaluación del plan formativo 2026, y la cobertura de cada criterio está al final del archivo fuente.
+${SIN_RECURSOS.includes(c.pf) ? 'El curso no tenía quiz ni otros recursos del módulo 2: se hicieron desde cero el 2026-10-01, junto con sus infografías (`npm run infografias`).' : 'Reemplazan los quiz de Genially de 2024.'} Hay uno por cada aprendizaje esperado del módulo 2 (\`${m.codigo}\` ${m.nombre}, ${m.horas} h). Sus preguntas se escribieron sobre los criterios de evaluación del plan formativo 2026, y la cobertura de cada criterio está al final del archivo fuente.
 
 **Misión:** ${meta.mision}.
 

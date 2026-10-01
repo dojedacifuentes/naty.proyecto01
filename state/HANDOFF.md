@@ -2,13 +2,33 @@
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
 `2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-04` y `2026-09-30-claude-code-01` a `-13` y
-`2026-10-01-claude-code-01` a `-04` — 2026-09-24 al 1-oct (UTC)
+`2026-10-01-claude-code-01` a `-05` — 2026-09-24 al 1-oct (UTC)
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 > **Ojo (sesión -04):** las sesiones -02 y -03 del 27-sep, que armaron los quiz en Canva, reemplazaron este archivo
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
+
+## HECHO (sesión 2026-10-01-05): quiz e infografías de PF1487, PF1485 y PF1493 (los cursos sin recursos)
+
+- **Pedido:** "desarrolla los elementos del modulo 2 por aprendizaje esperado de cada curso … quizz en formato html y scorm por
+  aprendizaje esperado, infografia por aprendizaje esperado … y luego subelo a la planilla".
+- **Qué hay:** 17 quiz gamificados (HTML, SCORM y GIFT) y 17 infografías. Las fuentes están en `contenidos/<PF>/modulo-2/`
+  (`R-quiz-canva.md` y `R-infografias.json`) y la salida en `modulo-2/PF1487-ingenieria-de-datos/`, `PF1485-devops/` y
+  `PF1493-seguridad-cloud/`.
+- **Regenerar:** `npm run quiz-juego -- PF1487 PF1485 PF1493` y `npm run infografias -- PF1487 PF1485 PF1493`. Ambos son deterministas:
+  sin cambios de texto, los archivos salen idénticos a los de Drive.
+- **Drive:** NATY 2.0 → «PF1487 - …», «PF1485 - …» y «PF1493 - …» → «3 Infografías» y «4 Quiz gamificados». Los ids están en
+  `privado/drive/recursos-2026/`. La planilla se reimportó y sus pestañas cambiaron de gid; los nuevos están en `enlaces.json`.
+- **Trampas de Drive en Chrome:**
+  - El menú «Nuevo» a veces no abre si la pestaña no se pinta: toma una captura antes del clic.
+  - Haz `find` del menuitem y luego el clic por ref, en lotes separados.
+  - El diálogo «Nueva carpeta» puede tardar unos 4 segundos en aparecer.
+  - Para leer ids desde la página, invierte cada id y sepáralo en grupos de 5 caracteres: si no, la salida lo corta.
+- **Pendiente:**
+  - a estos 3 cursos les faltan los 2 videos y el flipbook de cada AE (no se pidieron);
+  - una persona debe revisar el contenido, sobre todo los datos de normativas de PF1493.
 
 ## HECHO (sesión 2026-10-01-04): aprobaciones del usuario e infografías 2026 de PF1481, PF1483 y Entry level
 

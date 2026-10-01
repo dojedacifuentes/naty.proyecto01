@@ -1,0 +1,43 @@
+// PF1493 · Módulo 2 · Quiz 2 · Los principios CIA (AE2). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1493-M2/Quiz-2
+
+::Q2-P1 (AE2):: En la tríada CIA, ¿qué protege la confidencialidad? {
+=Que solo las personas autorizadas accedan a la información
+~Que la información no se altere sin autorización
+~Que los servicios estén disponibles cuando se necesitan
+~Que la información se respalde una vez al año
+####Confidencialidad\: solo accede quien está autorizado. Integridad\: la información es exacta y no se altera sin permiso. Disponibilidad\: los datos y servicios funcionan cuando se necesitan.
+}
+
+::Q2-P2 (AE2):: El resultado de un examen se modificó sin autorización mientras viajaba del laboratorio a la ficha del paciente. ¿Qué principio se comprometió? {
+~Confidencialidad
+=Integridad
+~Disponibilidad
+~Escalabilidad
+####Si un dato cambia sin autorización, falla la integridad, aunque nadie más lo haya leído. En salud es grave\: una decisión médica podría tomarse con información falsa.
+}
+
+::Q2-P3 (AE2):: Un lunes a las 8\:00, la agenda en línea de la clínica no respondió durante tres horas porque falló el único servidor que la sostenía. ¿Qué principio falló? {
+~Confidencialidad
+~Integridad
+~Autenticación
+=Disponibilidad
+####La disponibilidad exige que el servicio funcione cuando se necesita. Un solo servidor es un punto único de falla\: la redundancia y la replicación en la nube ayudan a evitarlo.
+}
+
+::Q2-P4 (AE2):: ¿Qué desafío propio de la nube pone en riesgo la confidencialidad? {
+~La nube no permite cifrar los datos
+~Los proveedores leen los datos de todos sus clientes
+=Un almacenamiento configurado como público por error deja los archivos expuestos en internet
+~En la nube no existen copias de respaldo
+####En la nube, un permiso mal puesto se aplica de inmediato y desde cualquier lugar\: muchas brechas reales partieron de buckets o bases de datos abiertas por error. El cifrado, los respaldos y el control de accesos sí existen, pero hay que configurarlos.
+}
+
+::Q2-P5 (AE2):: Para proteger la integridad de las fichas clínicas, ¿qué medida corresponde? {
+~Agregar más servidores en otra zona
+=Registrar y auditar cada cambio, y verificar los archivos con sumas de control (hash)
+~Mostrar menos datos en la pantalla de recepción
+~Publicar las fichas en un sitio abierto para que se revisen
+####Los registros de auditoría, el control de versiones y los hash permiten detectar alteraciones y saber quién cambió qué. Más servidores ayudan a la disponibilidad y mostrar menos datos, a la confidencialidad.
+}

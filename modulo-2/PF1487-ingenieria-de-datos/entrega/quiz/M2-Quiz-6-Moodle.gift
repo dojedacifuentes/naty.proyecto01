@@ -1,0 +1,43 @@
+// PF1487 · Módulo 2 · Quiz 6 · Manejo de excepciones (AE6). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1487-M2/Quiz-6
+
+::Q6-P1 (AE6):: Un archivo trae «mil» en vez de un número, y float("mil") detiene la rutina. ¿Qué excepción lanza Python? {
+~TypeError
+=ValueError
+~ZeroDivisionError
+~KeyError
+####ValueError aparece cuando el tipo es el correcto (un texto) pero su valor no sirve para la operación. En la jerarquía de excepciones, ValueError, KeyError y ZeroDivisionError descienden de la clase Exception.
+}
+
+::Q6-P2 (AE6):: Un script envuelve toda la carga en try\: … except\: pass. ¿Qué problema tiene? {
+~Ninguno\: es la forma recomendada de evitar errores
+~Hace que el script se ejecute más lento
+=Esconde cualquier error, incluso los inesperados, y nadie sabe qué falló
+~Obliga a escribir un bloque finally
+####Un except vacío con pass silencia todo. Una buena práctica es capturar excepciones específicas, como except ValueError, e informar o registrar qué falló y en qué fila.
+}
+
+::Q6-P3 (AE6):: En try\: … except ValueError\: … finally\: archivo.close(), ¿cuándo se ejecuta el bloque finally? {
+=Siempre, haya o no un error
+~Solo cuando no hay errores
+~Solo cuando ocurre un ValueError
+~Nunca, si antes se ejecutó el except
+####finally se ejecuta en todos los casos\: por eso es el lugar para cerrar archivos o conexiones. try agrupa el código que puede fallar y except define qué hacer ante cada tipo de error.
+}
+
+::Q6-P4 (AE6):: La rutina debe rechazar una entrega que llega sobre 6 °C con un error propio, fácil de reconocer. ¿Qué código corresponde? {
+~print("Error") y seguir procesando la entrega
+~return Error dentro de la función
+~Un except TemperaturaAltaError\: sin lanzar nada antes
+=class TemperaturaAltaError(Exception)\: pass y raise TemperaturaAltaError("...")
+####Una excepción personalizada es una clase que hereda de Exception; raise la lanza con un mensaje claro. Quien llame a la función decide cómo manejarla con su propio except TemperaturaAltaError.
+}
+
+::Q6-P5 (AE6):: leer_entrega() lanza un ValueError y no lo captura. La función que la llamó, procesar_archivo(), sí tiene try/except ValueError. ¿Qué pasa? {
+~El script se detiene de inmediato, aunque haya un except más arriba
+=El error se propaga hasta procesar_archivo(), que lo captura
+~El error se pierde sin que nadie lo vea
+~leer_entrega() se vuelve a ejecutar sola hasta que funcione
+####Cuando una función no captura una excepción, esta sube (se propaga) a quien la llamó, hasta encontrar un except que la maneje. Si nadie la captura, el programa se detiene y muestra el error.
+}

@@ -1,0 +1,43 @@
+// PF1485 · Módulo 2 · Quiz 3 · Prácticas esenciales y roles (AE3). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1485-M2/Quiz-3
+
+::Q3-P1 (AE3):: Según el ciclo de vida DevOps del curso, ¿qué orden siguen las etapas? {
+~Despliegue, desarrollo, monitoreo, prueba e integración
+=Desarrollo, prueba, integración, despliegue y monitoreo
+~Monitoreo, despliegue, integración, prueba y desarrollo
+~Prueba, desarrollo, despliegue, integración y monitoreo
+####El ciclo parte con el desarrollo y termina con el monitoreo, que entrega información para el siguiente ciclo\: por eso se dibuja como un ciclo sin fin y no como una línea.
+}
+
+::Q3-P2 (AE3):: Cada vez que alguien sube código al repositorio de Buses Quillay, un servidor lo compila, ejecuta las pruebas automáticas y avisa si algo falla. ¿Qué práctica es? {
+=Integración continua
+~Entrega continua
+~Infraestructura como código
+~Monitorización y registro
+####En la integración continua, cada cambio se integra y se prueba de forma automática y seguida, para detectar errores pronto. La entrega continua da el paso siguiente\: deja cada versión lista para pasar a producción.
+}
+
+::Q3-P3 (AE3):: Los servidores del sitio de venta se crean desde archivos de configuración guardados en Git, en vez de configurarlos a mano. ¿Qué práctica es? {
+~Automatización de pruebas
+~Integración continua
+=Infraestructura como código
+~Control de versiones del contenido web
+####Con infraestructura como código, los servidores, redes y permisos se describen en archivos versionados\: se pueden revisar, repetir y recrear igual cada vez, sin pasos manuales olvidados.
+}
+
+::Q3-P4 (AE3):: Para que la aplicación funcione igual en el computador del desarrollador y en producción, el equipo la empaqueta con todo lo que necesita y usa una herramienta que administra muchos de esos paquetes a la vez. ¿Qué herramientas son? {
+~Control de versiones y ramas
+~Pruebas unitarias y de integración
+~Alertas y paneles de monitoreo
+=Contenedores y orquestación
+####Un contenedor, por ejemplo con Docker, empaqueta la aplicación con sus dependencias; un orquestador, como Kubernetes, los despliega, escala y reinicia. Junto al control de versiones (Git) y la monitorización, son herramientas clave de DevOps.
+}
+
+::Q3-P5 (AE3):: En el equipo de Buses Quillay, ¿qué responsabilidad corresponde a un especialista DevOps? {
+~Fijar el precio de los pasajes según la temporada
+=Construir y mantener los pipelines y la automatización, y acercar desarrollo y operaciones
+~Escribir las historias de usuario y priorizar el backlog
+~Aprobar a mano cada cambio antes de publicarlo
+####El especialista DevOps automatiza la integración, el despliegue y la infraestructura, y promueve la colaboración. Necesita habilidades técnicas (scripting, nube, contenedores) y blandas (comunicación, trabajo en equipo). Priorizar el backlog le toca al Product Owner.
+}

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos de Ingeniería de Datos · Módulo 2 · Aprendizaje esperado 6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS DE PROGRAMACIÓN PYTHON PARA INGENIEROS DE DATOS · <span class="nw">Aprendizaje esperado 6</span></div>
+  <h1>EXCEPCIONES EN PYTHON</h1>
+  <p class="bajada">Que un dato malo no detenga toda la carga</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 6</div><p>CODIFICAR UN ALGORITMO MANEJANDO LAS EXCEPCIONES PARA TOMAR ACCIONES SOBRE LOS ERRORES ACORDE AL LENGUAJE PYTHON Y A LAS BUENAS PRÁCTICAS DE LA DISCIPLINA.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" />
+</svg></div>
+    <div>
+      <h2>Qué es una excepción</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">QUÉ ES UNA EXCEPCIÓN Y POR QUÉ SON IMPORTANTES</p>
+      <p class="texto">Un error durante la ejecución, como convertir «mil» en número. Si nadie la maneja, el programa se detiene; manejarla permite registrar la fila mala y seguir con las demás.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 5h13" />
+  <path d="M13 12h8" />
+  <path d="M13 19h8" />
+  <path d="M3 10a2 2 0 0 0 2 2h3" />
+  <path d="M3 5v12a2 2 0 0 0 2 2h3" />
+</svg></div>
+    <div>
+      <h2>Jerarquía</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">JERARQUÍA DE EXCEPCIONES EN PYTHON</p>
+      <p class="texto">Son clases: <code>ValueError</code>, <code>TypeError</code>, <code>KeyError</code>, <code>ZeroDivisionError</code> y <code>FileNotFoundError</code> descienden de <code>Exception</code>. Capturar una clase captura también a sus subclases.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+</svg></div>
+    <div>
+      <h2>try, except y finally</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">MANEJO Y CAPTURA DE LAS EXCEPCIONES (TRY-EXCEPT-FINALLY) · LAS SENTENCIAS TRY, EXCEPT Y FINALLY</p>
+      <p class="texto"><code>try:</code> el código que puede fallar · <code>except ValueError:</code> qué hacer ante ese error · <code>finally:</code> lo que se ejecuta siempre, como cerrar el archivo.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 12-9.373 9.373a1 1 0 0 1-3.001-3L12 9" />
+  <path d="m18 15 4-4" />
+  <path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172v-.344a2 2 0 0 0-.586-1.414l-1.657-1.657A6 6 0 0 0 12.516 3H9l1.243 1.243A6 6 0 0 1 12 8.485V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5" />
+</svg></div>
+    <div>
+      <h2>Excepciones personalizadas</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CONSTRUCCIÓN DE EXCEPCIONES PERSONALIZADAS</p>
+      <p class="texto"><code>class TemperaturaAltaError(Exception): pass</code> crea una propia. Se lanza con <code>raise TemperaturaAltaError(&quot;Llegó a 8 °C&quot;)</code>.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="6" cy="19" r="3" />
+  <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+  <circle cx="18" cy="5" r="3" />
+</svg></div>
+    <div>
+      <h2>Propagación</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">PROPAGACIÓN DE EXCEPCIONES</p>
+      <p class="texto">Si una función no captura la excepción, esta sube a quien la llamó, hasta encontrar un <code>except</code>. Dentro de un <code>except</code>, <code>raise</code> sin argumentos la vuelve a lanzar.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m16 18 6-6-6-6" />
+  <path d="m8 6-6 6 6 6" />
+</svg></div>
+    <div>
+      <h2>Usarlas en el código</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">UTILIZACIÓN DE EXCEPCIONES EN EL CÓDIGO</p>
+      <p class="texto"><code>try: litros = float(fila[2])</code> · <code>except ValueError: rechazadas.append(fila)</code>. La carga sigue con la fila siguiente y al final informa cuántas rechazó.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M18 6 7 17l-5-5" />
+  <path d="m22 10-7.5 7.5L13 16" />
+</svg></div>
+    <div>
+      <h2>Buenas prácticas</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">BUENAS PRÁCTICAS PARA EL MANEJO DE EXCEPCIONES</p>
+      <p class="texto">Captura excepciones específicas, nunca <code>except: pass</code>. Usa mensajes claros, registra el error con <code>logging</code> y libera recursos con <code>finally</code> o <code>with</code>.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>6.1</b><span>RECONOCE LAS CARACTERÍSTICAS DEL MODELO DE EXCEPCIONES DEL LENGUAJE PYTHON.</span></li><li><b>6.2</b><span>UTILIZA LA SINTAXIS DE EXCEPCIONES ACORDE AL LENGUAJE PYTHON PARA LA CAPTURA Y PROPAGACIÓN DE ÉSTAS.</span></li><li><b>6.3</b><span>CODIFICA ALGORITMOS QUE LANZAN, PROPAGAN Y CONTROLAN EXCEPCIONES DE ACUERDO A LAS BUENAS PRÁCTICAS DE LA DISCIPLINA.</span></li></ol></div>
+  <div class="pie">Fundamentos de Ingeniería de Datos · Módulo 2 · Ejemplos con Lácteos Calafate, empresa ficticia</div>
+</main></body></html>

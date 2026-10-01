@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos DevOps · Módulo 2 · Aprendizaje esperado 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS Y ADOPCIÓN DEVOPS · <span class="nw">Aprendizaje esperado 1</span></div>
+  <h1>DESCRIPCIÓN GENERAL DE DEVOPS</h1>
+  <p class="bajada">Por qué nace y qué cambia en una empresa</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 1</div><p>EXPLICAR LOS ASPECTOS FUNDAMENTALES DEL PENSAMIENTO DEVOPS, DESAFÍOS Y BENEFICIOS ACORDE A LAS CONVENCIONES Y PRÁCTICAS DE LA INDUSTRIA.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 3 4 7l4 4" />
+  <path d="M4 7h16" />
+  <path d="m16 21 4-4-4-4" />
+  <path d="M20 17H4" />
+</svg></div>
+    <div>
+      <h2>Mundo Dev versus mundo Ops</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ORÍGENES Y MOTIVACIONES: MUNDO DEV VERSUS MUNDO OPS</p>
+      <p class="texto">Desarrollo (Dev) quiere cambiar rápido; operaciones (Ops), que nada se caiga. Separados, se pasan el trabajo por encima de un muro y se culpan cuando algo falla.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 12h.01" />
+  <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+  <path d="M22 13a18.15 18.15 0 0 1-20 0" />
+  <rect width="20" height="14" x="2" y="6" rx="2" />
+</svg></div>
+    <div>
+      <h2>Negocio versus TI y transformación digital</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">NEGOCIO VERSUS TI · TRANSFORMACIÓN DIGITAL</p>
+      <p class="texto">El negocio pide mejoras en días y TI tardaba meses. Con la transformación digital, el software pasa a ser el centro del negocio: en Buses Quillay, el sitio de venta es la boletería.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 16c5 0 7-8 12-8a4 4 0 0 1 0 8c-5 0-7-8-12-8a4 4 0 1 0 0 8" />
+</svg></div>
+    <div>
+      <h2>Qué es DevOps y su cultura</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">EN QUÉ CONSISTE DEVOPS · CULTURA DEVOPS</p>
+      <p class="texto">Una cultura y un conjunto de prácticas que unen desarrollo y operaciones para entregar valor de forma rápida, segura y continua. El servicio es responsabilidad de todo el equipo.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
+  <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
+  <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
+</svg></div>
+    <div>
+      <h2>Principios y valores CALMS</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">PRINCIPIOS Y VALORES CALMS</p>
+      <p class="texto">Cultura de colaboración · Automatización de lo repetitivo · Lean, flujo sin desperdicio · Medición para decidir · Compartir conocimiento y responsabilidad (Sharing).</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 7h6v6" />
+  <path d="m22 7-8.5 8.5-5-5L2 17" />
+</svg></div>
+    <div>
+      <h2>Beneficios para la organización</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">BENEFICIOS PARA LA ORGANIZACIÓN</p>
+      <p class="texto">Entregas más frecuentes, menos fallas en producción, recuperación más rápida y clientes más satisfechos. Se miden, por ejemplo, con la frecuencia de despliegue y el tiempo de recuperación.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <circle cx="9" cy="7" r="4" />
+</svg></div>
+    <div>
+      <h2>Beneficio para el equipo</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">BENEFICIO PARA EL EQUIPO</p>
+      <p class="texto">Menos trabajo manual y menos urgencias nocturnas, metas compartidas en vez de culpas, y más tiempo para aprender y mejorar.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526" />
+  <circle cx="12" cy="8" r="6" />
+</svg></div>
+    <div>
+      <h2>Marcos, estándares y certificaciones</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">MARCOS Y ESTÁNDARES: DEVOPS AGILE SKILL ASSOCIATION (DASA) · CERTIFICACIONES DE LA INDUSTRIA</p>
+      <p class="texto">DASA (DevOps Agile Skills Association) define las competencias de un equipo DevOps y certifica, por ejemplo, con DASA DevOps Fundamentals. Otras: DevOps Foundation, AWS Certified DevOps Engineer y Microsoft DevOps Engineer Expert.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">8</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" />
+  <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" />
+  <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" />
+</svg></div>
+    <div>
+      <h2>Adopción y casos de éxito</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ADOPCIÓN DE DEVOPS EN TI Y CASOS DE ÉXITO</p>
+      <p class="texto">Empresas como Amazon, Netflix y Etsy pasaron de lanzamientos esporádicos y riesgosos a desplegar muchas veces al día, con cambios pequeños y automatizados.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">9</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+</svg></div>
+    <div>
+      <h2>DevSecOps</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">VARIACIONES DE DEVOPS: DEVSECOPS</p>
+      <p class="texto">Integra la seguridad desde el inicio de cada cambio y no al final: revisiones automáticas del código y de sus dependencias dentro del mismo pipeline.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>1.1</b><span>DESCRIBE EL CONTEXTO DE LA INDUSTRIA EN EL CUAL SE ORIGINA LA CORRIENTE DEVOPS IDENTIFICANDO LAS PRINCIPALES PROBLEMÁTICAS DEL DESARROLLO DE PRODUCTOS TECNOLÓGICOS QUE MOTIVARON SU EVOLUCIÓN.</span></li><li><b>1.2</b><span>RECONOCE LOS PRINCIPIOS Y VALORES QUE FUNDAMENTA LA CORRIENTE DEVOPS PARA LA MEJORA DE LOS PROCESOS DE DESARROLLO DE PRODUCTOS DIGITALES.</span></li><li><b>1.3</b><span>IDENTIFICA BENEFICIOS TANTO PARA LA ORGANIZACIÓN COMO PARA LOS EQUIPOS DE TRABAJO QUE SE ADHIEREN A LA CORRIENTE DEVOPS.</span></li></ol></div>
+  <div class="pie">Fundamentos DevOps · Módulo 2 · Ejemplos con Buses Quillay, empresa ficticia</div>
+</main></body></html>

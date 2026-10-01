@@ -862,3 +862,20 @@ Quién: usuario (pedido y lista de cursos), claude-code.
 - **Entry level:** las infografías del AE3 y AE4 viven en `modulo-2/PF1474-entry-level-front-end/` y valen para PF1474, PF1477, PF1478 y
   PF1479. En Drive va una carpeta común para los cuatro.
 Quién: usuario (aprobaciones y pedido), claude-code.
+
+## 2026-10-01 · Quiz e infografías de los cursos sin recursos, con el mismo estándar (sesión claude-code, 2026-10-01-claude-code-05)
+
+- **Alcance:** el usuario pidió para PF1487, PF1485 y PF1493 "quizz en formato html y scorm por aprendizaje esperado, infografia por
+  aprendizaje esperado". No se hicieron videos ni flipbooks porque no se pidieron. Esos recursos siguen como «No existe» en la planilla.
+- **Mismo estándar que los cursos anteriores:**
+  - los quiz son gamificados como los de PF1481, PF1483, PF1486 y PF1495, con 5 preguntas por AE, retroalimentación y la cobertura de
+    criterios al final de la fuente, más el GIFT para Moodle;
+  - las infografías salen de `npm run infografias`, con el texto del AE y de los criterios tomado del plan.
+- **Un caso ficticio por curso:** Lácteos Calafate (PF1487), Buses Quillay (PF1485) y Clínica Quintral (PF1493). Siguen la línea de
+  Distribuidora Pehuén, Observatorio Cordillera y Librería Fiordo, con nombres de naturaleza chilena que no son instituciones reales. Los
+  casos reales (Capital One, Code Spaces, Etsy, Google) solo se nombran como hechos públicos.
+- **Validador más flexible, igual de estricto:** cada tema del plan se separa por su cuenta. Una lista entre paréntesis («HERRAMIENTAS
+  (ANACONDA, SPYDER, …)») puede repartirse en varias secciones, pero cada parte sigue teniendo que aparecer. Los 3 cursos ya validados
+  siguen pasando.
+- **Drive:** carpeta nueva por curso en NATY 2.0 con «3 Infografías» y «4 Quiz gamificados», como en los demás cursos.
+Quién: usuario (pedido), claude-code.

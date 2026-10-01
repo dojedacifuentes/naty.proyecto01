@@ -1,0 +1,43 @@
+// PF1493 · Módulo 2 · Quiz 6 · Responsabilidad compartida (AE6). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1493-M2/Quiz-6
+
+::Q6-P1 (AE6):: En el modelo de responsabilidad compartida, ¿qué le corresponde siempre al proveedor de nube? {
+~Decidir quién de la clínica accede a cada ficha
+~Clasificar los datos de los pacientes
+=La seguridad de la nube\: centros de datos, hardware y la red de su infraestructura
+~Configurar las contraseñas de los usuarios de la clínica
+####El proveedor responde por la seguridad DE la nube (instalaciones, hardware, red y virtualización); el cliente, por la seguridad EN la nube\: sus datos, sus identidades y accesos, y lo que configure.
+}
+
+::Q6-P2 (AE6):: En IaaS, la clínica arrienda máquinas virtuales para el sistema de fichas. ¿Quién instala los parches de seguridad del sistema operativo? {
+=La clínica, como cliente
+~El proveedor de nube, siempre
+~Nadie\: en la nube no hacen falta parches
+~El fabricante del computador de cada médico
+####En IaaS el cliente administra desde el sistema operativo hacia arriba\: parches, firewall de la máquina, aplicaciones y datos. En PaaS el proveedor se ocupa también del sistema operativo y de la plataforma.
+}
+
+::Q6-P3 (AE6):: La clínica usa un SaaS de agenda médica. ¿Qué sigue siendo su responsabilidad? {
+~Mantener los servidores del SaaS
+~Actualizar el código de la aplicación
+~Proteger el centro de datos del proveedor
+=Quién tiene cuenta, con qué permisos, y los datos que se cargan
+####Aun en SaaS, donde el proveedor administra casi todo, el cliente responde por sus datos y por la gestión de identidades y accesos\: quitar cuentas de quienes se van, activar MFA y dar solo los permisos necesarios.
+}
+
+::Q6-P4 (AE6):: La clínica supuso que el proveedor respaldaba solo su base de datos instalada en una máquina virtual (IaaS). Tras un borrado accidental, no había copia. ¿Qué falló? {
+~El proveedor incumplió su parte del modelo
+=La clínica no aplicó bien el modelo\: en IaaS, respaldar sus datos le corresponde a ella
+~Nadie\: los datos borrados en la nube se recuperan solos
+~El modelo de responsabilidad compartida no aplica a los respaldos
+####Muchos incidentes nacen de suponer que el proveedor hace algo que le toca al cliente. No entender el modelo deja huecos\: datos sin respaldo, sistemas sin parches o accesos que nadie revisa.
+}
+
+::Q6-P5 (AE6):: ¿Qué medida mejora la aplicación del modelo en la clínica? {
+~Esperar a que el proveedor avise qué falta
+~Asumir que el proveedor se ocupa de todo lo técnico
+=Una matriz de responsabilidades por servicio, revisada con el proveedor, y capacitación al equipo
+~Contratar más servicios para repartir la responsabilidad
+####Una matriz (quién hace qué en cada servicio IaaS, PaaS o SaaS), revisada en los contratos y con auditorías periódicas, deja claras las tareas. La capacitación ayuda a que el equipo sepa cuáles le tocan.
+}

@@ -1,0 +1,43 @@
+// PF1485 · Módulo 2 · Quiz 2 · Organización, personas y cultura (AE2). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1485-M2/Quiz-2
+
+::Q2-P1 (AE2):: ¿Qué es la cultura organizacional? {
+~El organigrama con los cargos de la empresa
+~El reglamento interno firmado por cada trabajador
+=Los valores, creencias y formas de actuar compartidas que guían el trabajo
+~Las actividades recreativas que organiza la empresa
+####La cultura es lo que la gente de la organización comparte y hace sin que esté escrito\: valores, creencias, ritos, lenguaje y normas no escritas. Da identidad, orienta las decisiones y se nota en cómo se trabaja cada día.
+}
+
+::Q2-P2 (AE2):: En Buses Quillay, cada error termina con la búsqueda de un culpable. ¿Qué efecto tiene esa cultura en sus procesos? {
+=Las personas ocultan errores y evitan proponer cambios, y los problemas se repiten
+~Los errores desaparecen porque todos trabajan con más cuidado
+~Los equipos colaboran más para defenderse juntos
+~No tiene efecto\: la cultura no influye en los procesos
+####Cuando equivocarse se castiga, la información se esconde y nadie aprende. Por eso DevOps propone revisiones sin culpables\: se busca qué falló en el proceso, no a quién culpar.
+}
+
+::Q2-P3 (AE2):: Según el modelo de Ron Westrum, muy usado en DevOps, ¿cómo es una cultura generativa? {
+~El poder se concentra y la información se usa para protegerse
+=La información fluye, las áreas cooperan y las fallas llevan a aprender
+~Todo se rige por reglas y cada departamento defiende lo suyo
+~Se premia a quien resuelve solo, sin compartir lo que sabe
+####Westrum distingue tres tipos\: patológica (orientada al poder), burocrática (orientada a las reglas) y generativa (orientada al desempeño). La generativa es la que mejor acompaña a DevOps.
+}
+
+::Q2-P4 (AE2):: En otra empresa, todo se rige por normas, jerarquías y procedimientos formales, y lo que más se valora es la estabilidad y el control. Según el modelo de Cameron y Quinn, ¿qué tipo de cultura es? {
+~De clan
+~Adhocrática
+~De mercado
+=Jerárquica
+####Cameron y Quinn describen cuatro tipos\: clan (colaboración, como una familia), adhocrática (innovación y riesgo), de mercado (resultados y competencia) y jerárquica (control y estabilidad). Una cultura jerárquica muy rígida puede frenar la adopción de DevOps.
+}
+
+::Q2-P5 (AE2):: El jefe de operaciones de Buses Quillay dice\: «Mi trabajo es que nada cambie; si desarrollo quiere publicar, que espere al comité mensual». ¿Qué amenaza cultural para DevOps muestra? {
+~Exceso de automatización
+~Falta de herramientas de monitoreo
+=Silos y resistencia al cambio
+~Demasiada colaboración entre áreas
+####Los silos aparecen cuando cada área defiende sus metas sin compartirlas; la resistencia al cambio, cuando lo nuevo se ve como amenaza. Se mitigan con metas comunes, liderazgo que patrocine el cambio, comunicación y pequeños éxitos visibles.
+}

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Seguridad Cloud · Módulo 2 · Aprendizaje esperado 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS DE SEGURIDAD EN LA NUBE · <span class="nw">Aprendizaje esperado 4</span></div>
+  <h1>ANÁLISIS DE CASOS DE FALLOS DE SEGURIDAD EN LA NUBE</h1>
+  <p class="bajada">Qué principio falló, por qué y cómo evitar que se repita</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 4</div><p>ANALIZAR CASOS DE FALLOS DE SEGURIDAD EN LA NUBE ACORDE CON LOS PRINCIPIOS DE CONFIDENCIALIDAD, INTEGRIDAD Y DISPONIBILIDAD (CIA)</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 7V5a2 2 0 0 1 2-2h2" />
+  <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+  <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
+  <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+  <circle cx="12" cy="12" r="3" />
+  <path d="m16 16-1.9-1.9" />
+</svg></div>
+    <div>
+      <h2>Cómo analizar un caso</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ANÁLISIS DE CASOS DE FALLOS DE SEGURIDAD EN LA NUBE</p>
+      <p class="texto">1. Qué principio se comprometió. 2. Qué lo causó: una mala configuración, un error humano o una vulnerabilidad explotada. 3. Qué solución mitiga el daño y evita que vuelva a pasar.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" />
+  <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" />
+  <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" />
+  <path d="m2 2 20 20" />
+</svg></div>
+    <div>
+      <h2>Confidencialidad: datos expuestos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CASOS DE EXPOSICIÓN DE DATOS CONFIDENCIALES EN LA NUBE DEBIDO A CONFIGURACIONES INCORRECTAS DE PERMISOS (CONFIDENCIALIDAD) · CAUSAS COMUNES DE FALLOS: ACCESOS NO AUTORIZADOS, CREDENCIALES EXPUESTAS O COMPROMETIDAS, CONFIGURACIONES INCORRECTAS DE CIFRADO (CONFIDENCIALIDAD)</p>
+      <p class="texto">Un almacenamiento de exámenes queda público por error, o unas credenciales publicadas en un repositorio abren la cuenta a un extraño. Datos sin cifrar agravan el daño.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" />
+</svg></div>
+    <div>
+      <h2>Integridad: datos alterados</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CASOS EN LOS QUE LA FALTA DE MEDIDAS DE INTEGRIDAD RESULTÓ EN LA CORRUPCIÓN O ALTERACIÓN DE DATOS CRÍTICOS (INTEGRIDAD) · FALTA DE AUDITORÍA O MONITOREO DE CAMBIOS, ACCESO NO AUTORIZADO, ERRORES DE TRANSMISIÓN DE DATOS (INTEGRIDAD)</p>
+      <p class="texto">Un cambio sin revisar sobrescribe dosis en cientos de fichas y nadie lo nota por días, o un archivo llega dañado tras una transmisión. Sin auditoría, el error se propaga en silencio.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 10H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2" />
+  <path d="M6 14H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2" />
+  <path d="M6 6h.01" />
+  <path d="M6 18h.01" />
+  <path d="m13 6-4 6h6l-4 6" />
+</svg></div>
+    <div>
+      <h2>Disponibilidad: servicios caídos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CAÍDAS DE SERVICIOS EN LA NUBE DEBIDO A ATAQUES DE DENEGACIÓN DE SERVICIO (DDOS) O FALLOS EN LA INFRAESTRUCTURA DE REPLICACIÓN (DISPONIBILIDAD) · FALTA DE REDUNDANCIA, ATAQUES DDOS, DEPENDENCIA DE UN SOLO PROVEEDOR O ZONA DE DISPONIBILIDAD (DISPONIBILIDAD)</p>
+      <p class="texto">Un ataque DDoS satura la agenda en línea, o la única zona donde corre la aplicación falla y no hay réplica: la clínica no puede dar horas.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+</svg></div>
+    <div>
+      <h2>Soluciones y medidas de mitigación</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">SOLUCIONES: EJEMPLOS DE SOLUCIONES Y MEDIDAS DE MITIGACIÓN PARA CASOS DE FALLO DE CONFIDENCIALIDAD, INTEGRIDAD Y DISPONIBILIDAD</p>
+      <p class="texto">Confidencialidad: bloquear el acceso público, mínimo privilegio, MFA, gestor de secretos y cifrado. Integridad: control de cambios, auditoría, hash y respaldos con versiones. Disponibilidad: varias zonas, balanceo de carga, protección DDoS y recuperación ensayada.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>4.1</b><span>IDENTIFICA EL PRINCIPIO DE SEGURIDAD (CONFIDENCIALIDAD, INTEGRIDAD O DISPONIBILIDAD) QUE HA SIDO COMPROMETIDO EN EL CASO ANALIZADO.</span></li><li><b>4.2</b><span>EXPONE LAS CAUSAS ESPECÍFICAS DEL FALLO EN EL CONTEXTO DE LA NUBE, RELACIONANDO ESTAS CON ERRORES DE CONFIGURACIÓN, FALLOS HUMANOS O VULNERABILIDADES EXPLOTADAS.</span></li><li><b>4.3</b><span>PROPONE SOLUCIONES ALINEADAS CON LAS MEJORES PRÁCTICAS DE SEGURIDAD EN LA NUBE PARA MITIGAR EL FALLO Y EVITAR SU RECURRENCIA</span></li></ol></div>
+  <div class="pie">Seguridad Cloud · Módulo 2 · Ejemplos con Clínica Quintral, institución ficticia</div>
+</main></body></html>

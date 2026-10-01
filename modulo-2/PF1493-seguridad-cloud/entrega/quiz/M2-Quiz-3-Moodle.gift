@@ -1,0 +1,43 @@
+// PF1493 · Módulo 2 · Quiz 3 · Normativas y estándares (AE3). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1493-M2/Quiz-3
+
+::Q3-P1 (AE3):: Clínica Quintral atiende por telemedicina a pacientes que viven en España. ¿Qué normativa regula el tratamiento de sus datos personales? {
+=GDPR
+~HIPAA
+~PCI-DSS
+~ISO/IEC 27001
+####El GDPR (Reglamento General de Protección de Datos) aplica a quien trata datos de personas que están en la Unión Europea, aunque la empresa esté fuera de Europa. Exige, entre otros, una base legal para tratar los datos y proteger los datos de salud con especial cuidado.
+}
+
+::Q3-P2 (AE3):: El formulario de telemedicina pide estado civil, religión y sueldo, datos que no se necesitan para la consulta. ¿Qué principio del GDPR incumple? {
+~Exactitud
+=Minimización de datos
+~Limitación del plazo de conservación
+~Disponibilidad
+####La minimización pide recoger solo los datos necesarios para el fin declarado. Las multas del GDPR pueden llegar a 20 millones de euros o al 4 % de la facturación anual mundial, lo que sea mayor, y también aplican si los datos están en la nube.
+}
+
+::Q3-P3 (AE3):: ¿Qué protege HIPAA? {
+~Los datos de tarjetas de pago en todo el mundo
+~Los datos personales de quienes están en la Unión Europea
+~La certificación de un sistema de gestión de seguridad
+=La información de salud de pacientes en Estados Unidos
+####HIPAA es una ley de Estados Unidos que protege la información de salud identificable (PHI), con reglas de privacidad, de seguridad y de aviso de brechas. Si un proveedor de nube guarda esos datos, debe firmar un acuerdo de asociado comercial (BAA).
+}
+
+::Q3-P4 (AE3):: La clínica cobra las consultas con tarjeta en su portal. ¿Qué exige PCI-DSS sobre esos datos? {
+~Nada, si el portal está alojado en la nube
+=Protegerlos con cifrado y acceso restringido, sin guardar el código de seguridad de la tarjeta
+~Publicar cada pago en un registro abierto
+~Guardar todos los datos de la tarjeta para cobros futuros
+####PCI-DSS es el estándar de la industria de tarjetas\: aplica a quien guarda, procesa o transmite datos de tarjetas, también en la nube. Sus requisitos incluyen redes seguras, cifrado, control de accesos, monitoreo y pruebas; el código de seguridad (CVV) no se guarda después de autorizar el pago.
+}
+
+::Q3-P5 (AE3):: La clínica obtiene la certificación ISO/IEC 27001. ¿Qué acredita? {
+~Que sus sistemas nunca tendrán incidentes
+~Que cumple automáticamente el GDPR, HIPAA y PCI-DSS
+=Que tiene un sistema de gestión de seguridad de la información auditado por una entidad externa
+~Que su proveedor de nube asumió toda la seguridad
+####ISO/IEC 27001 certifica un SGSI\: la organización evalúa sus riesgos, aplica controles y mejora de forma continua. Cumplir normativas genera confianza y evita multas, pero ninguna certificación garantiza cero incidentes ni reemplaza a las demás leyes.
+}

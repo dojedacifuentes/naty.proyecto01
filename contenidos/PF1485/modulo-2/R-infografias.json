@@ -1,0 +1,125 @@
+{
+  "_nota": "Infografías del módulo 2, una por AE (pedido del usuario, 2026-10-01: el curso no tenía ningún recurso). El texto del AE y de los criterios lo pone el generador desde data/planes; «contenido» va exacto del plan 2026 y el generador lo comprueba. Generar: npm run infografias -- PF1485",
+  "curso": "Fundamentos DevOps",
+  "carpeta": "PF1485-devops",
+  "pie": "Fundamentos DevOps · Módulo 2 · Ejemplos con Buses Quillay, empresa ficticia",
+  "aes": [
+    {
+      "n": 1,
+      "titulo": "DESCRIPCIÓN GENERAL DE DEVOPS",
+      "bajada": "Por qué nace y qué cambia en una empresa",
+      "secciones": [
+        { "icono": "arrow-left-right", "encabezado": "Mundo Dev versus mundo Ops", "contenido": ["ORÍGENES Y MOTIVACIONES: MUNDO DEV VERSUS MUNDO OPS"],
+          "texto": "Desarrollo (Dev) quiere cambiar rápido; operaciones (Ops), que nada se caiga. Separados, se pasan el trabajo por encima de un muro y se culpan cuando algo falla." },
+        { "icono": "briefcase-business", "encabezado": "Negocio versus TI y transformación digital", "contenido": ["NEGOCIO VERSUS TI", "TRANSFORMACIÓN DIGITAL"],
+          "texto": "El negocio pide mejoras en días y TI tardaba meses. Con la transformación digital, el software pasa a ser el centro del negocio: en Buses Quillay, el sitio de venta es la boletería." },
+        { "icono": "infinity", "encabezado": "Qué es DevOps y su cultura", "contenido": ["EN QUÉ CONSISTE DEVOPS", "CULTURA DEVOPS"],
+          "texto": "Una cultura y un conjunto de prácticas que unen desarrollo y operaciones para entregar valor de forma rápida, segura y continua. El servicio es responsabilidad de todo el equipo." },
+        { "icono": "layers", "encabezado": "Principios y valores CALMS", "contenido": ["PRINCIPIOS Y VALORES CALMS"],
+          "texto": "Cultura de colaboración · Automatización de lo repetitivo · Lean, flujo sin desperdicio · Medición para decidir · Compartir conocimiento y responsabilidad (Sharing)." },
+        { "icono": "trending-up", "encabezado": "Beneficios para la organización", "contenido": ["BENEFICIOS PARA LA ORGANIZACIÓN"],
+          "texto": "Entregas más frecuentes, menos fallas en producción, recuperación más rápida y clientes más satisfechos. Se miden, por ejemplo, con la frecuencia de despliegue y el tiempo de recuperación." },
+        { "icono": "users", "encabezado": "Beneficio para el equipo", "contenido": ["BENEFICIO PARA EL EQUIPO"],
+          "texto": "Menos trabajo manual y menos urgencias nocturnas, metas compartidas en vez de culpas, y más tiempo para aprender y mejorar." },
+        { "icono": "award", "encabezado": "Marcos, estándares y certificaciones", "contenido": ["MARCOS Y ESTÁNDARES: DEVOPS AGILE SKILL ASSOCIATION (DASA)", "CERTIFICACIONES DE LA INDUSTRIA"],
+          "texto": "DASA (DevOps Agile Skills Association) define las competencias de un equipo DevOps y certifica, por ejemplo, con DASA DevOps Fundamentals. Otras: DevOps Foundation, AWS Certified DevOps Engineer y Microsoft DevOps Engineer Expert." },
+        { "icono": "rocket", "encabezado": "Adopción y casos de éxito", "contenido": ["ADOPCIÓN DE DEVOPS EN TI Y CASOS DE ÉXITO"],
+          "texto": "Empresas como Amazon, Netflix y Etsy pasaron de lanzamientos esporádicos y riesgosos a desplegar muchas veces al día, con cambios pequeños y automatizados." },
+        { "icono": "shield-check", "encabezado": "DevSecOps", "contenido": ["VARIACIONES DE DEVOPS: DEVSECOPS"],
+          "texto": "Integra la seguridad desde el inicio de cada cambio y no al final: revisiones automáticas del código y de sus dependencias dentro del mismo pipeline." }
+      ]
+    },
+    {
+      "n": 2,
+      "titulo": "ORGANIZACIÓN, PERSONAS Y CULTURA",
+      "bajada": "Lo que una empresa comparte sin que esté escrito",
+      "secciones": [
+        { "icono": "building-2", "encabezado": "La organización y su orientación", "contenido": ["¿QUÉ ES UNA ORGANIZACIÓN?", "ORIENTACIÓN DE LA ORGANIZACIÓN"],
+          "texto": "Personas que coordinan recursos para lograr objetivos comunes. Su orientación es hacia dónde dirige sus esfuerzos: el control de las tareas, las personas o el cliente y los resultados." },
+        { "icono": "users", "encabezado": "Qué es la cultura organizacional", "contenido": ["QUÉ ES LA CULTURA ORGANIZACIONAL", "IMPORTANCIA DE LA CULTURA ORGANIZACIONAL"],
+          "texto": "Los valores, creencias y formas de actuar compartidas: «cómo se hacen las cosas aquí». Importa porque orienta cada decisión y puede impulsar o frenar cualquier cambio." },
+        { "icono": "list-checks", "encabezado": "Características y funciones", "contenido": ["CARACTERÍSTICAS Y FUNCIONES DE LA CULTURA ORGANIZACIONAL"],
+          "texto": "Es compartida, se aprende y cambia despacio. Da identidad, une a las personas, guía el comportamiento y ayuda a adaptarse al entorno." },
+        { "icono": "layers", "encabezado": "Elementos", "contenido": ["ELEMENTOS DE LA CULTURA ORGANIZACIONAL"],
+          "texto": "Según Edgar Schein, en tres niveles: lo visible (espacios, ritos, lenguaje), los valores declarados y los supuestos básicos, lo que todos dan por hecho sin decirlo." },
+        { "icono": "shapes", "encabezado": "Tipos de cultura", "contenido": ["TIPOS DE CULTURA ORGANIZACIONAL"],
+          "texto": "Cameron y Quinn: clan, adhocrática, de mercado y jerárquica. Westrum: patológica (poder), burocrática (reglas) y generativa (desempeño), la que mejor acompaña a DevOps." },
+        { "icono": "handshake", "encabezado": "DevOps, organización y cultura", "contenido": ["RELACIÓN DE DEVOPS CON LA ORGANIZACIÓN Y CULTURA"],
+          "texto": "DevOps es primero un cambio cultural: sin confianza, colaboración y aprendizaje, las herramientas solas no cambian los resultados." },
+        { "icono": "triangle-alert", "encabezado": "Amenazas para la adopción", "contenido": ["AMENAZAS DE LA CULTURA ORGANIZACIONAL EN LA ADOPCIÓN DE DEVOPS"],
+          "texto": "Silos, cultura de la culpa, resistencia al cambio, jerarquías rígidas, metas opuestas entre áreas y miedo a equivocarse." },
+        { "icono": "lightbulb", "encabezado": "Ejemplos y casos", "contenido": ["EJEMPLOS Y CASOS DE CULTURA Y ADOPCIÓN"],
+          "texto": "Google analiza sus incidentes en revisiones sin culpables. En Buses Quillay, Dev y Ops comparten una misma meta, vender sin caídas, y un equipo piloto muestra los primeros logros." }
+      ]
+    },
+    {
+      "n": 3,
+      "titulo": "PRÁCTICAS ESENCIALES DE DEVOPS",
+      "bajada": "El ciclo, las prácticas, las herramientas y quién hace qué",
+      "secciones": [
+        { "icono": "infinity", "encabezado": "Ciclo de vida DevOps", "contenido": ["CICLO DE VIDA DEVOPS: DESARROLLO", "PRUEBA", "INTEGRACIÓN", "DESPLIEGUE", "MONITOREO"],
+          "texto": "Desarrollo → prueba → integración → despliegue → monitoreo. Es un ciclo sin fin: lo que se aprende al monitorear vuelve al desarrollo." },
+        { "icono": "zap", "encabezado": "Automatización", "contenido": ["PRÁCTICAS ESENCIALES DE DEVOPS: AUTOMATIZACIÓN"],
+          "texto": "Se automatiza lo repetitivo: compilar, probar, desplegar y crear servidores. Menos errores manuales y más tiempo para mejorar." },
+        { "icono": "git-merge", "encabezado": "Integración continua", "contenido": ["INTEGRACIÓN CONTINUA"],
+          "texto": "Cada cambio se integra al repositorio principal varias veces al día y se compila y prueba solo. Si algo falla, el equipo se entera en minutos." },
+        { "icono": "rocket", "encabezado": "Entrega continua", "contenido": ["ENTREGA CONTINUA"],
+          "texto": "Cada versión que pasa las pruebas queda lista para producción y se publica con un clic. Si también ese paso es automático, se llama despliegue continuo." },
+        { "icono": "file-code", "encabezado": "Infraestructura como código", "contenido": ["INFRAESTRUCTURA COMO CÓDIGO"],
+          "texto": "Servidores, redes y permisos se describen en archivos versionados, con herramientas como Terraform o Ansible: se revisan, se repiten y se recrean igual cada vez." },
+        { "icono": "git-branch", "encabezado": "Control de versiones y pruebas automáticas", "contenido": ["HERRAMIENTAS DEVOPS: CONTROL DE VERSIONES", "AUTOMATIZACIÓN DE PRUEBAS"],
+          "texto": "Git guarda la historia del código y permite ramas y revisiones. Las pruebas unitarias, de integración y de punta a punta corren solas en el pipeline." },
+        { "icono": "activity", "encabezado": "Monitorización y registro", "contenido": ["MONITORIZACIÓN Y REGISTRO"],
+          "texto": "Métricas, registros (logs) y alertas muestran cómo está el servicio en todo momento, con herramientas como Prometheus y Grafana." },
+        { "icono": "container", "encabezado": "Contenedores y orquestación", "contenido": ["CONTENEDORES Y ORQUESTACIÓN"],
+          "texto": "Docker empaqueta la aplicación con todo lo que necesita, para que funcione igual en cualquier lugar. Kubernetes despliega, escala y reinicia esos contenedores." },
+        { "icono": "users", "encabezado": "Roles y responsabilidades", "contenido": ["ROLES, RESPONSABILIDADES Y HABILIDADES: ROLES QUE PARTICIPAN DENTRO DE DEVOPS", "RESPONSABILIDAD DE CADA PERFIL"],
+          "texto": "Developers: código y pruebas · Operaciones o SRE: confiabilidad · QA: calidad automatizada · Seguridad · Product Owner: valor del producto · Ingeniería DevOps: pipelines y automatización." },
+        { "icono": "graduation-cap", "encabezado": "Habilidades de un especialista DevOps", "contenido": ["HABILIDADES DE UN ESPECIALISTA DEVOPS"],
+          "texto": "Técnicas: Linux, scripting, Git, integración y entrega continuas, nube y contenedores. Blandas: comunicación, colaboración y aprendizaje continuo." }
+      ]
+    },
+    {
+      "n": 4,
+      "titulo": "RELEASE MANAGEMENT Y METODOLOGÍAS",
+      "bajada": "Cómo se planifica, se construye y se entrega software",
+      "secciones": [
+        { "icono": "package", "encabezado": "Release management", "contenido": ["QUÉ ES RELEASE MANAGEMENT", "RELEASE MANAGEMENT ANTES Y DESPUÉS DE DEVOPS"],
+          "texto": "Planificar, programar y controlar la salida de cada versión. Antes de DevOps: pocos lanzamientos grandes, manuales y nocturnos. Después: entregas pequeñas, frecuentes, automatizadas y fáciles de revertir." },
+        { "icono": "refresh-cw", "encabezado": "Ciclo de vida del desarrollo", "contenido": ["CICLO DE VIDA Y METODOLOGÍA: QUÉ ES EL CICLO DE VIDA DEL DESARROLLO"],
+          "texto": "Las etapas por las que pasa el software: requisitos, diseño, construcción, pruebas, despliegue y mantenimiento. Cada metodología las ordena de otra forma." },
+        { "icono": "arrow-left-right", "encabezado": "Tradicionales versus ágiles", "contenido": ["METODOLOGÍAS TRADICIONALES VS AGILES"],
+          "texto": "Las tradicionales planifican todo al inicio y documentan mucho. Las ágiles trabajan en ciclos cortos, con el cliente cerca y abiertas al cambio." },
+        { "icono": "list-ordered", "encabezado": "Cascada", "contenido": ["CARACTERÍSTICAS DE LA METODOLOGÍA DE CASCADA"],
+          "texto": "Etapas en secuencia: cada una empieza cuando termina la anterior y el cliente ve el producto al final. Sirve cuando los requisitos son estables; si cambian, corregir sale caro." },
+        { "icono": "repeat", "encabezado": "Ágiles: iterativo e incremental", "contenido": ["CARACTERÍSTICAS DE LAS METODOLOGÍAS ÁGILES", "EL CONCEPTO DE ITERATIVO E INCREMENTAL"],
+          "texto": "Iterativo: ciclos que se repiten y mejoran. Incremental: cada ciclo suma una parte que funciona, como la búsqueda de pasajes y después el pago." },
+        { "icono": "history", "encabezado": "Origen y Manifiesto Ágil", "contenido": ["METODOLOGÍAS ÁGILES: ORIGEN DE LAS METODOLOGÍAS ÁGILES", "MANIFIESTO ÁGIL", "VALORES Y PRINCIPIOS"],
+          "texto": "En 2001, 17 profesionales firmaron el Manifiesto Ágil: 4 valores y 12 principios. Por ejemplo, individuos e interacciones por sobre procesos y herramientas, y software funcionando por sobre documentación extensiva." },
+        { "icono": "layout-grid", "encabezado": "Metodologías ágiles y DevOps", "contenido": ["METODOLOGÍAS ÁGILES"],
+          "texto": "Scrum, Kanban, Extreme Programming (XP) y Lean. Lo ágil acelera el desarrollo; DevOps lleva esa agilidad hasta la operación y la entrega al cliente." },
+        { "icono": "users", "encabezado": "Scrum: fundamentos y roles", "contenido": ["METODOLOGÍA SCRUM: FUNDAMENTOS Y PRINCIPIOS", "ROLES"],
+          "texto": "Se basa en el empirismo: transparencia, inspección y adaptación. Tres responsabilidades: Product Owner (valor y backlog), Scrum Master (facilita) y Developers (construyen)." },
+        { "icono": "calendar-range", "encabezado": "Prácticas y artefactos de Scrum", "contenido": ["PRÁCTICAS", "ARTEFACTOS"],
+          "texto": "Eventos: Sprint de hasta un mes, Sprint Planning, Daily Scrum, Sprint Review y Sprint Retrospective. Artefactos: Product Backlog, Sprint Backlog e Incremento." }
+      ]
+    },
+    {
+      "n": 5,
+      "titulo": "ADOPCIÓN DE DEVOPS EN LA ORGANIZACIÓN",
+      "bajada": "Un cambio que se planifica, se mide y se amplía",
+      "secciones": [
+        { "icono": "route", "encabezado": "Proceso de adopción", "contenido": ["PROCESO DE ADOPCIÓN"],
+          "texto": "Diagnóstico de cómo se trabaja hoy → objetivos medibles → un piloto acotado → medir resultados → ampliar a otros equipos." },
+        { "icono": "workflow", "encabezado": "Los principios de las 3 maneras", "contenido": ["LOS PRINCIPIOS DE LAS 3 MANERAS"],
+          "texto": "1. Flujo: que el trabajo avance rápido de desarrollo a operaciones y al cliente. 2. Retroalimentación: detectar problemas pronto. 3. Aprendizaje y experimentación continuos." },
+        { "icono": "triangle-alert", "encabezado": "Desafíos de la adopción", "contenido": ["DESAFÍOS DE LA ADOPCIÓN"],
+          "texto": "Resistencia al cambio, silos, sistemas antiguos difíciles de automatizar, falta de habilidades y la idea de que basta con comprar una herramienta." },
+        { "icono": "target", "encabezado": "Estrategias para una implementación exitosa", "contenido": ["ESTRATEGIAS PARA UNA IMPLEMENTACIÓN EXITOSA"],
+          "texto": "Patrocinio de la gerencia, metas compartidas entre áreas, capacitación, automatizar de a poco, medir con indicadores claros y mostrar cada logro." },
+        { "icono": "trending-up", "encabezado": "Casos de éxito", "contenido": ["CASOS DE ÉXITO EN EL PROCESO DE ADOPCIÓN DEVOPS"],
+          "texto": "Etsy pasó de lanzamientos lentos y riesgosos a desplegar decenas de veces al día. En Buses Quillay, el piloto en el equipo de pagos es la prueba para sumar al resto." }
+      ]
+    }
+  ]
+}

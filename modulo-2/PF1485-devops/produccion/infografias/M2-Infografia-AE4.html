@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos DevOps · Módulo 2 · Aprendizaje esperado 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS Y ADOPCIÓN DEVOPS · <span class="nw">Aprendizaje esperado 4</span></div>
+  <h1>RELEASE MANAGEMENT Y METODOLOGÍAS</h1>
+  <p class="bajada">Cómo se planifica, se construye y se entrega software</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 4</div><p>ANALIZAR LAS CARACTERÍSTICAS DE LOS DISTINTOS ENFOQUES METODOLÓGICOS DENTRO DEL CICLO DE VIDA DE DESARROLLO DE SOFTWARE Y SU RELACIÓN CON LAS PRÁCTICAS DEVOPS.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
+  <path d="M12 22V12" />
+  <polyline points="3.29 7 12 12 20.71 7" />
+  <path d="m7.5 4.27 9 5.15" />
+</svg></div>
+    <div>
+      <h2>Release management</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">QUÉ ES RELEASE MANAGEMENT · RELEASE MANAGEMENT ANTES Y DESPUÉS DE DEVOPS</p>
+      <p class="texto">Planificar, programar y controlar la salida de cada versión. Antes de DevOps: pocos lanzamientos grandes, manuales y nocturnos. Después: entregas pequeñas, frecuentes, automatizadas y fáciles de revertir.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+  <path d="M21 3v5h-5" />
+  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+  <path d="M8 16H3v5" />
+</svg></div>
+    <div>
+      <h2>Ciclo de vida del desarrollo</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CICLO DE VIDA Y METODOLOGÍA: QUÉ ES EL CICLO DE VIDA DEL DESARROLLO</p>
+      <p class="texto">Las etapas por las que pasa el software: requisitos, diseño, construcción, pruebas, despliegue y mantenimiento. Cada metodología las ordena de otra forma.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 3 4 7l4 4" />
+  <path d="M4 7h16" />
+  <path d="m16 21 4-4-4-4" />
+  <path d="M20 17H4" />
+</svg></div>
+    <div>
+      <h2>Tradicionales versus ágiles</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">METODOLOGÍAS TRADICIONALES VS AGILES</p>
+      <p class="texto">Las tradicionales planifican todo al inicio y documentan mucho. Las ágiles trabajan en ciclos cortos, con el cliente cerca y abiertas al cambio.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11 5h10" />
+  <path d="M11 12h10" />
+  <path d="M11 19h10" />
+  <path d="M4 4h1v5" />
+  <path d="M4 9h2" />
+  <path d="M6.5 20H3.4c0-1 2.6-1.925 2.6-3.5a1.5 1.5 0 0 0-2.6-1.02" />
+</svg></div>
+    <div>
+      <h2>Cascada</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CARACTERÍSTICAS DE LA METODOLOGÍA DE CASCADA</p>
+      <p class="texto">Etapas en secuencia: cada una empieza cuando termina la anterior y el cliente ve el producto al final. Sirve cuando los requisitos son estables; si cambian, corregir sale caro.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m17 2 4 4-4 4" />
+  <path d="M3 11v-1a4 4 0 0 1 4-4h14" />
+  <path d="m7 22-4-4 4-4" />
+  <path d="M21 13v1a4 4 0 0 1-4 4H3" />
+</svg></div>
+    <div>
+      <h2>Ágiles: iterativo e incremental</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CARACTERÍSTICAS DE LAS METODOLOGÍAS ÁGILES · EL CONCEPTO DE ITERATIVO E INCREMENTAL</p>
+      <p class="texto">Iterativo: ciclos que se repiten y mejoran. Incremental: cada ciclo suma una parte que funciona, como la búsqueda de pasajes y después el pago.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+  <path d="M3 3v5h5" />
+  <path d="M12 7v5l4 2" />
+</svg></div>
+    <div>
+      <h2>Origen y Manifiesto Ágil</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">METODOLOGÍAS ÁGILES: ORIGEN DE LAS METODOLOGÍAS ÁGILES · MANIFIESTO ÁGIL · VALORES Y PRINCIPIOS</p>
+      <p class="texto">En 2001, 17 profesionales firmaron el Manifiesto Ágil: 4 valores y 12 principios. Por ejemplo, individuos e interacciones por sobre procesos y herramientas, y software funcionando por sobre documentación extensiva.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="7" height="7" x="3" y="3" rx="1" />
+  <rect width="7" height="7" x="14" y="3" rx="1" />
+  <rect width="7" height="7" x="14" y="14" rx="1" />
+  <rect width="7" height="7" x="3" y="14" rx="1" />
+</svg></div>
+    <div>
+      <h2>Metodologías ágiles y DevOps</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">METODOLOGÍAS ÁGILES</p>
+      <p class="texto">Scrum, Kanban, Extreme Programming (XP) y Lean. Lo ágil acelera el desarrollo; DevOps lleva esa agilidad hasta la operación y la entrega al cliente.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">8</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <circle cx="9" cy="7" r="4" />
+</svg></div>
+    <div>
+      <h2>Scrum: fundamentos y roles</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">METODOLOGÍA SCRUM: FUNDAMENTOS Y PRINCIPIOS · ROLES</p>
+      <p class="texto">Se basa en el empirismo: transparencia, inspección y adaptación. Tres responsabilidades: Product Owner (valor y backlog), Scrum Master (facilita) y Developers (construyen).</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">9</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect x="3" y="3" width="18" height="18" rx="2" />
+  <path d="M16 2v3" />
+  <path d="M3 9h18" />
+  <path d="M8 2v3" />
+  <path d="M17 13h-6" />
+  <path d="M13 17H7" />
+  <path d="M7 13h.01" />
+  <path d="M17 17h.01" />
+</svg></div>
+    <div>
+      <h2>Prácticas y artefactos de Scrum</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">PRÁCTICAS · ARTEFACTOS</p>
+      <p class="texto">Eventos: Sprint de hasta un mes, Sprint Planning, Daily Scrum, Sprint Review y Sprint Retrospective. Artefactos: Product Backlog, Sprint Backlog e Incremento.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>4.1</b><span>CONTRASTA LAS DIFERENCIAS ENTRE LAS METODOLOGÍAS TRADICIONALES Y ÁGILES PARA EL DESARROLLO DE SOFTWARE ACORDE A LAS CONVENCIONES DE LA INDUSTRIA.</span></li><li><b>4.2</b><span>DESCRIBE LAS CARACTERÍSTICAS PRINCIPALES DE LAS METODOLOGÍAS ÁGILES PARA EL DESARROLLO DE SOFTWARE Y SU RELACIÓN CON LAS PRÁCTICAS DEVOPS.</span></li><li><b>4.3</b><span>DESCRIBE LAS CARACTERÍSTICAS PRINCIPALES DE LA METODOLOGÍA SCRUM PARA EL DESARROLLO DE SOFTWARE ACORDE A LAS CONVENCIONES Y ESTÁNDARES DE LA INDUSTRIA.</span></li></ol></div>
+  <div class="pie">Fundamentos DevOps · Módulo 2 · Ejemplos con Buses Quillay, empresa ficticia</div>
+</main></body></html>

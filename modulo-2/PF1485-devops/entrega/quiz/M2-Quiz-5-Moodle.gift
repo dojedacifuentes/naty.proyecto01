@@ -1,0 +1,43 @@
+// PF1485 · Módulo 2 · Quiz 5 · Adopción de DevOps en la organización (AE5). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1485-M2/Quiz-5
+
+::Q5-P1 (AE5):: La primera de las tres maneras (o tres vías) de DevOps busca… {
+=que el trabajo fluya rápido de desarrollo a operaciones y al cliente
+~que cada falla tenga un responsable identificado
+~que los equipos trabajen separados para no interferir
+~que las versiones se publiquen solo una vez al año
+####La primera manera es el flujo\: ver el sistema completo y acelerar el paso del trabajo de izquierda a derecha, con lotes pequeños y sin cuellos de botella.
+}
+
+::Q5-P2 (AE5):: Buses Quillay agrega monitoreo y alertas para saber en minutos si una versión nueva aumenta los errores de pago. ¿Qué manera aplica? {
+~La primera\: el flujo
+~Ninguna\: el monitoreo es solo tarea de operaciones
+=La segunda\: la retroalimentación
+~La tercera\: la experimentación
+####La segunda manera amplifica la retroalimentación de derecha a izquierda\: detectar problemas pronto, donde se originan, para corregirlos antes de que lleguen a más clientes.
+}
+
+::Q5-P3 (AE5):: Tras cada incidente, el equipo hace una revisión sin culpables y reserva tiempo cada mes para probar mejoras. ¿Qué manera es? {
+~La primera\: el flujo
+~La segunda\: la retroalimentación
+~Ninguna\: es una práctica de cascada
+=La tercera\: el aprendizaje y la experimentación continuos
+####La tercera manera crea una cultura que aprende de los errores, experimenta y comparte lo aprendido. Las tres maneras se describen en libros como The Phoenix Project y The DevOps Handbook.
+}
+
+::Q5-P4 (AE5):: Buses Quillay quiere empezar su adopción de DevOps. ¿Qué primer paso es más sensato? {
+~Comprar una herramienta y exigir que todos la usen desde mañana
+=Evaluar cómo trabaja hoy, fijar metas medibles y partir con un piloto
+~Cambiar a todos los equipos a la vez, sin medir la situación actual
+~Crear un área DevOps aparte que reciba los encargos de las demás
+####La adopción es un proceso\: diagnóstico, objetivos medibles (por ejemplo, frecuencia de despliegue o tiempo de recuperación), un piloto acotado, medición y luego ampliación. Un área DevOps aislada solo crea un silo nuevo.
+}
+
+::Q5-P5 (AE5):: En el piloto, los líderes de área temen perder control y algunos equipos no quieren cambiar su forma de trabajar. ¿Qué recomendación ayuda a superar ese desafío? {
+~Imponer el cambio y sancionar a quien se resista
+~Postergar la adopción hasta que todos estén de acuerdo
+~Dejar que cada equipo decida sin metas comunes
+=Patrocinio de la gerencia, metas compartidas, capacitación y mostrar los logros del piloto
+####Las estrategias que funcionan combinan liderazgo visible, metas compartidas entre áreas, formación y comunicación de resultados. Los casos de éxito muestran que la cultura cambia con pequeños logros que se ven.
+}

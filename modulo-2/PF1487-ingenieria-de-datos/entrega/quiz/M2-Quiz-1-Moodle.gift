@@ -1,0 +1,41 @@
+// PF1487 · Módulo 2 · Quiz 1 · Python y su entorno de trabajo (AE1). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1487-M2/Quiz-1
+
+::Q1-P1 (AE1):: Cada noche, Lácteos Calafate debe leer los archivos CSV que envían sus plantas, limpiar los datos y cargarlos en una base de datos. ¿Por qué Python se usa tanto para este tipo de trabajo? {
+~Porque se compila a código de máquina y no necesita intérprete
+=Porque tiene librerías para leer, transformar y cargar datos, como pandas
+~Porque es el único lenguaje que puede conectarse a una base de datos
+~Porque solo sirve para datos y por eso no tiene otras aplicaciones
+####Python es de propósito general y tiene un gran ecosistema para datos\: pandas, NumPy y conectores a bases de datos. Por eso se usa en ingeniería y ciencia de datos, pero también en automatización, desarrollo web e inteligencia artificial.
+}
+
+::Q1-P2 (AE1):: Al revisar un script de la cooperativa, notas que los bloques del if se marcan solo con sangría y que la variable litros se creó sin declarar su tipo. ¿Qué características de Python muestra? {
+~Es compilado y de tipado estático
+~Usa llaves para los bloques y exige declarar tipos
+=Usa la sangría para los bloques y es de tipado dinámico
+~Es de bajo nivel y obliga a manejar la memoria a mano
+####En Python la sangría es parte de la sintaxis\: define qué líneas pertenecen a cada bloque. Además es interpretado y de tipado dinámico\: el tipo de una variable lo da el valor que le asignas.
+}
+
+::Q1-P3 (AE1):: Verdadero o falso\: «Un script escrito para Python 2, como print "Hola", funciona sin cambios en Python 3». {
+~Verdadero
+=Falso
+####Python 3 no es compatible con Python 2\: por ejemplo, print pasó a ser una función y se escribe print("Hola"). Python 2 dejó de recibir soporte en 2020; hoy se trabaja con Python 3, y tu versión se revisa con python --version.
+}
+
+::Q1-P4 (AE1):: Quieres probar paso a paso la limpieza del archivo de entregas y ver el resultado de cada paso junto a notas que lo explican. ¿Qué herramienta se ajusta mejor? {
+~Visual Studio Code, abriendo el script como texto plano
+~Anaconda Navigator, sin abrir ningún programa
+~La terminal del sistema, ejecutando el script completo
+=Jupyter Notebook, con celdas de código, resultados y texto
+####Un notebook de Jupyter reúne celdas de código, su resultado y texto explicativo en un mismo documento, ideal para explorar datos paso a paso. Anaconda es la distribución que lo instala, junto con el editor Spyder.
+}
+
+::Q1-P5 (AE1):: En el computador de la planta no se puede instalar nada, pero hay navegador y una cuenta de Google. ¿Qué opción te deja ejecutar notebooks de Python? {
+=Google Colab
+~Spyder
+~Anaconda
+~Visual Studio Code
+####Google Colab ejecuta notebooks en la nube, desde el navegador y sin instalar nada. Spyder, Anaconda y Visual Studio Code se instalan en el equipo\: Anaconda es la distribución, Spyder un editor científico y VS Code un editor con extensiones para Python.
+}

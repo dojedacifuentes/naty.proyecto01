@@ -37,7 +37,12 @@ const sinTildes = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '');
 const norm = (s) => sinTildes(String(s)).toUpperCase().replace(/[¿?¡!]/g, '').replace(/\s+/g, ' ').replace(/[.\s]+$/, '').trim();
 // Erratas del plan que se muestran corregidas (decisión del usuario del 30-09: en los materiales da igual corregida o tal cual).
 const ERRATAS = [[/ENTONRNO/g, 'ENTORNO'], [/VISUAL ESTUDIO CODE/g, 'VISUAL STUDIO CODE'], [/GOOGLE COLLAB/g, 'GOOGLE COLAB'],
-  [/DEL ANALISIS DE DATOS/g, 'DEL ANÁLISIS DE DATOS'], [/HISTOGRAMA, LINEA,/g, 'HISTOGRAMA, LÍNEA,'], [/\.\./g, '.']];
+  [/DEL ANALISIS DE DATOS/g, 'DEL ANÁLISIS DE DATOS'], [/HISTOGRAMA, LINEA,/g, 'HISTOGRAMA, LÍNEA,'], [/\.\./g, '.'],
+  // PF1487, PF1485 y PF1493 (2026-10-01): palabras cortadas por un punto, espacios y paréntesis que faltan, y COLLAB solo.
+  [/UN DI\. CIONARIO/g, 'UN DICCIONARIO'], [/QUÉ ES PO\. IMORFISMO/g, 'QUÉ ES POLIMORFISMO'], [/Y CA\. TURA/g, 'Y CAPTURA'],
+  [/PYTHON\.CONCEPTO/g, 'PYTHON. CONCEPTO'], [/(?<!GOOGLE )\bCOLLAB\b/g, 'GOOGLE COLAB'], [/DESIPLIEGUE/g, 'DESPLIEGUE'], [/(?<!D)IFERENCIAS/g, 'DIFERENCIAS'],
+  [/EN LA NUBE\. PÚBLICA, PRIVADA, HÍBRIDA\)/g, 'EN LA NUBE (PÚBLICA, PRIVADA, HÍBRIDA)'], [/PROTECCIÓN DE DATOS: INTRODUCCIÓN/g, 'PROTECCIÓN DE DATOS): INTRODUCCIÓN'],
+  [/PORTABILITY ACCOUNTABILITY/g, 'PORTABILITY AND ACCOUNTABILITY'], [/CIA\(/g, 'CIA (']];
 const corregir = (s) => ERRATAS.reduce((t, [a, b]) => t.replace(a, b), s);
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 // `código` → <code>: se escapa primero y luego se marcan los tramos entre acentos graves.
@@ -45,7 +50,8 @@ const conCodigo = (s) => esc(s).replace(/`([^`]+)`/g, '<code>$1</code>');
 const sinCodigo = (s) => String(s).replace(/`([^`]+)`/g, '$1');
 
 function piezasDelPlan(tema) {
-  // «2. TÍTULO: A. B. C?» → [A, B, C]: cada oración es un contenido; se quita lo que va antes del último «:».
+  // «2. TÍTULO: A. B. C?» → [A, B, C]: cada oración es un contenido; se quita lo que va antes del último «:». Va tema por tema
+  // (ver validar()): si se juntaran, un título suelto como «1. EL LENGUAJE PYTHON» se pegaría con la oración siguiente.
   return tema.replace(/^\s*\d+\.\s*/, '').split(/(?<=[.?])\s+/).map((p) => p.replace(/[.\s]+$/, '').trim()).filter(Boolean)
     .map((p) => (p.includes(':') ? p.slice(p.lastIndexOf(':') + 1).trim() : p)).filter((p) => norm(p));
 }
@@ -66,9 +72,11 @@ function validar(pf, fuente, m2) {
       }
       if (/plan formativo|oficial|textual|literal/i.test(`${s.encabezado} ${s.texto}`)) errores.push(`AE${ae.n} sección ${i + 1}: nombra el plan, lo oficial o lo textual`);
     }
-    for (const p of piezasDelPlan(plan.contenidos.map((c) => c.tema).join(' '))) {
+    for (const p of plan.contenidos.flatMap((c) => piezasDelPlan(c.tema))) {
       const np = norm(p);
-      const cubierta = usados.some((u) => u.includes(np)) || np.split(/,\s*|\s+Y\s+/).every((x) => usados.some((u) => u.includes(norm(x))));
+      // Una pieza larga se puede repartir entre secciones: cada parte (separada por comas, «Y» o paréntesis) tiene que estar en alguna.
+      const partes = np.split(/,\s*|\s+Y\s+|\s*[()]\s*/).filter((x) => norm(x));
+      const cubierta = usados.some((u) => u.includes(np)) || partes.every((x) => usados.some((u) => u.includes(norm(x))));
       if (!cubierta) errores.push(`AE${ae.n}: el contenido «${p}» no quedó en ninguna sección`);
     }
   }

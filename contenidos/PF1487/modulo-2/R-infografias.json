@@ -1,0 +1,150 @@
+{
+  "_nota": "Infografías del módulo 2, una por AE (pedido del usuario, 2026-10-01: el curso no tenía ningún recurso). El texto del AE y de los criterios lo pone el generador desde data/planes; «contenido» va exacto del plan 2026 y el generador lo comprueba. Generar: npm run infografias -- PF1487",
+  "curso": "Fundamentos de Ingeniería de Datos",
+  "carpeta": "PF1487-ingenieria-de-datos",
+  "pie": "Fundamentos de Ingeniería de Datos · Módulo 2 · Ejemplos con Lácteos Calafate, empresa ficticia",
+  "aes": [
+    {
+      "n": 1,
+      "titulo": "EL LENGUAJE PYTHON",
+      "bajada": "La herramienta de cada día en ingeniería de datos",
+      "secciones": [
+        { "icono": "history", "encabezado": "Reseña", "contenido": ["RESEÑA DEL LENGUAJE PYTHON"],
+          "texto": "Lo creó Guido van Rossum y se publicó en 1991; el nombre viene del grupo humorístico Monty Python. Es de código abierto y lo mantiene la Python Software Foundation." },
+        { "icono": "target", "encabezado": "Propósito y aplicaciones", "contenido": ["PROPÓSITO DEL LENGUAJE PYTHON"],
+          "texto": "Es de propósito general. En ingeniería de datos se usa para leer archivos, limpiar y transformar datos, cargarlos en bases de datos y automatizar procesos; también en desarrollo web, inteligencia artificial y scripts." },
+        { "icono": "list-checks", "encabezado": "Características", "contenido": ["PRINCIPALES CARACTERÍSTICAS DEL LENGUAJE"],
+          "texto": "Sintaxis legible, con la sangría como parte del código; interpretado, de tipado dinámico, multiplataforma y multiparadigma, con miles de librerías como pandas." },
+        { "icono": "git-branch", "encabezado": "Versiones", "contenido": ["VERSIONES DE PYTHON"],
+          "texto": "Python 2 dejó de recibir soporte en 2020 y no es compatible con Python 3 (por ejemplo, `print` pasó a ser `print()`). Se trabaja con Python 3; revisa tu versión con `python --version`." },
+        { "icono": "package", "encabezado": "Anaconda", "contenido": ["ENTORNO DE TRABAJO Y HERRAMIENTAS", "ANACONDA"],
+          "texto": "Una distribución que instala Python con las librerías de datos, Spyder y Jupyter, y administra entornos separados por proyecto con `conda`." },
+        { "icono": "app-window", "encabezado": "Spyder", "contenido": ["SPYDER"],
+          "texto": "Un editor pensado para el trabajo científico: editor de código, consola interactiva y explorador de variables en una misma ventana." },
+        { "icono": "notebook-pen", "encabezado": "Jupyter Notebooks y Google Colab", "contenido": ["JUPYTER NOTEBOOKS", "COLLAB"],
+          "texto": "Cuadernos que reúnen celdas de código, resultados y texto, ideales para probar una limpieza paso a paso. Google Colab los ejecuta en la nube, desde el navegador y sin instalar nada." },
+        { "icono": "code", "encabezado": "Visual Studio Code", "contenido": ["VISUAL STUDIO CODE"],
+          "texto": "Editor gratuito de Microsoft. Con la extensión de Python suma autocompletado, depurador, terminal integrada y Git: el lugar para escribir los scripts que correrán cada noche." }
+      ]
+    },
+    {
+      "n": 2,
+      "titulo": "SENTENCIAS BÁSICAS DEL LENGUAJE PYTHON",
+      "bajada": "Datos, cálculos y decisiones en un script",
+      "secciones": [
+        { "icono": "variable", "encabezado": "Variables", "contenido": ["VARIABLES"],
+          "texto": "Un nombre que guarda un valor: `litros = 1250.5`. Se crea al asignarle algo y su nombre va en minúsculas con guion bajo, como `litros_dia`." },
+        { "icono": "shapes", "encabezado": "Tipos de dato fundamentales", "contenido": ["TIPOS DE DATO FUNDAMENTALES (ENTERO, DECIMAL, CADENA DE CARACTERES, BOOLEANO, COMPLEX)"],
+          "texto": "Entero `int` (`1250`) · decimal `float` (`1250.5`) · cadena `str` (`\"Los Ñirres\"`) · booleano `bool` (`True` o `False`) · complejo `complex` (`3+2j`). `type(x)` te dice cuál es." },
+        { "icono": "replace", "encabezado": "Conversiones de tipo", "contenido": ["CONVERSIONES DE TIPO"],
+          "texto": "`int(\"12\")` → 12 · `float(\"1250.5\")` → 1250.5 · `str(820)` → \"820\". Si el texto no es un número, como \"mil\", Python lanza un error." },
+        { "icono": "calculator", "encabezado": "Operadores aritméticos", "contenido": ["OPERADORES Y EXPRESIONES", "OPERADORES Y EXPRESIONES ARITMÉTICAS"],
+          "texto": "`+` `-` `*` `/` · `//` división entera (`1250 // 300` → 4) · `%` resto (`1250 % 300` → 50) · `**` potencia. Los paréntesis definen qué se calcula primero." },
+        { "icono": "toggle-left", "encabezado": "Comparación y lógica", "contenido": ["OPERADORES Y EXPRESIONES LÓGICAS"],
+          "texto": "`==` `!=` `<` `>` `<=` `>=` devuelven `True` o `False`. Se combinan con `and`, `or` y `not`: `temperatura <= 6 and not antibioticos`." },
+        { "icono": "split", "encabezado": "Decisiones", "contenido": ["SENTENCIAS CONDICIONALES (IF, ELIF, ELSE)"],
+          "texto": "`if` · `elif` · `else`: Python revisa las condiciones en orden y ejecuta solo el primer bloque verdadero. La sangría marca qué líneas pertenecen a cada bloque." },
+        { "icono": "terminal", "encabezado": "Consola: salida y entrada", "contenido": ["IMPRESIÓN EN CONSOLA", "ENTRADA DE DATOS EN CONSOLA"],
+          "texto": "`print(f\"Total: {litros} L\")` muestra datos. `input()` siempre devuelve texto: `litros = float(input(\"Litros: \"))`." },
+        { "icono": "play", "encabezado": "Scripts", "contenido": ["EJECUCIÓN DE SCRIPTS", "CREACIÓN Y EJECUCIÓN DE SCRIPTS DE PYTHON"],
+          "texto": "Guarda el código como `recepcion.py` y ejecútalo con `python recepcion.py` en la terminal o con el botón Run de VS Code. Se ejecuta de arriba hacia abajo." }
+      ]
+    },
+    {
+      "n": 3,
+      "titulo": "FUNCIONES Y MÓDULOS",
+      "bajada": "Código que se escribe una vez y se usa muchas",
+      "secciones": [
+        { "icono": "square-function", "encabezado": "Qué es una función", "contenido": ["INTRODUCCIÓN A LAS FUNCIONES EN PYTHON", "QUÉ ES UNA FUNCIÓN"],
+          "texto": "Un bloque de código con nombre que hace una tarea. Se define una vez y se llama cuantas veces haga falta: menos repetición y menos errores." },
+        { "icono": "parentheses", "encabezado": "Sintaxis, parámetros y retorno", "contenido": ["SINTAXIS BÁSICA", "PARÁMETROS Y ARGUMENTOS", "RETORNO DE VALORES"],
+          "texto": "`def pago(litros, precio): return litros * precio`. Los parámetros van en la definición; los argumentos, al llamarla: `pago(1000, 420)`. Sin `return`, la función devuelve `None`." },
+        { "icono": "wrench", "encabezado": "Funciones preconstruidas", "contenido": ["FUNCIONES PRECONSTRUIDAS"],
+          "texto": "Vienen con Python, sin importar nada: `print()`, `len()`, `sum()`, `max()`, `min()`, `round()`, `sorted()` y `type()`." },
+        { "icono": "braces", "encabezado": "Argumentos predeterminados y variables", "contenido": ["FUNCIONES CON ARGUMENTOS PREDETERMINADOS", "FUNCIONES CON ARGUMENTOS VARIABLES (*ARGS Y **KWARGS)"],
+          "texto": "`def pago(litros, precio=420)` usa 420 si no se entrega el precio. `*args` recibe varios valores en una tupla (`def total(*litros)`); `**kwargs`, argumentos con nombre en un diccionario." },
+        { "icono": "zap", "encabezado": "Lambda y recursión", "contenido": ["FUNCIONES ANÓNIMAS (LAMBDA FUNCTIONS)", "FUNCIONES RECURSIVAS"],
+          "texto": "Una lambda es una función breve sin nombre: `sorted(entregas, key=lambda e: e[\"litros\"])`. Una función recursiva se llama a sí misma y necesita un caso base que la detenga." },
+        { "icono": "package", "encabezado": "Módulos e importación", "contenido": ["MÓDULOS EN PYTHON", "QUÉ ES UN MÓDULO Y PARA QUÉ SIRVEN", "IMPORTACIÓN"],
+          "texto": "Un módulo es un archivo .py con funciones y variables listas para reutilizar. Se importan con `import math`, `from calidad import validar` o `import pandas as pd`." },
+        { "icono": "folder-tree", "encabezado": "Módulos propios y paquetes", "contenido": ["CREACIÓN Y USO DE MÓDULOS PROPIOS", "PAQUETES: ORGANIZACIÓN DE MÓDULOS EN DIRECTORIOS"],
+          "texto": "Guarda tus funciones en `calidad.py` e impórtalas desde otro script. Un paquete es una carpeta de módulos: `from lacteos.calidad import validar`." },
+        { "icono": "library", "encabezado": "Librería estándar y math", "contenido": ["LA LIBRERÍA STANDARD DE PYTHON", "MÓDULO MATH"],
+          "texto": "Python trae módulos listos: `math`, `datetime`, `csv`, `os` y `random`, entre otros. `math.ceil(2.3)` → 3 y `math.sqrt(16)` → 4.0." },
+        { "icono": "file-text", "encabezado": "Documentación y buenas prácticas", "contenido": ["DOCUMENTACIÓN Y BUENAS PRÁCTICAS", "DOCSTRING: DOCUMENTACIÓN DE FUNCIONES Y MÓDULOS", "CONVENCIONES DE NOMBRADO (PEP8)", "USO DE COMENTARIOS"],
+          "texto": "Un docstring (`\"\"\"Calcula el pago de una entrega.\"\"\"`) explica la función y lo muestra `help()`. PEP 8: `snake_case` para funciones y variables, `PascalCase` para clases. Los comentarios `#` explican el porqué." }
+      ]
+    },
+    {
+      "n": 4,
+      "titulo": "ESTRUCTURAS DE DATO Y SENTENCIAS ITERATIVAS",
+      "bajada": "Guardar muchos datos y recorrerlos",
+      "secciones": [
+        { "icono": "list", "encabezado": "Listas", "contenido": ["LISTAS", "CARACTERÍSTICAS DE UNA LISTA"],
+          "texto": "Ordenadas, modificables y con repetidos permitidos: `litros = [820, 1250, 640]`. Las posiciones parten en 0." },
+        { "icono": "list-ordered", "encabezado": "Crear, agregar y rescatar", "contenido": ["CREAR UNA LISTA, AGREGAR, RESCATAR UN ELEMENTO", "RESCATAR UN RANGO DE ELEMENTOS"],
+          "texto": "`litros.append(990)` agrega al final · `litros[0]` → 820 · `litros[-1]` → el último · `litros[1:3]` → posiciones 1 y 2." },
+        { "icono": "type", "encabezado": "Listas y cadenas", "contenido": ["LISTAS Y CADENAS DE CARACTERES"],
+          "texto": "Una cadena se recorre como una secuencia: `\"P-017\"[0]` → \"P\". `\"820;1250\".split(\";\")` crea una lista y `\";\".join(lista)` la vuelve texto." },
+        { "icono": "grid-3x3", "encabezado": "Listas anidadas y matrices", "contenido": ["LISTAS ANIDADAS Y MATRICES"],
+          "texto": "Una lista de listas forma una tabla: `semana = [[820, 900], [1250, 1100]]`. `semana[1][0]` → 1250: fila 1, columna 0." },
+        { "icono": "braces", "encabezado": "Diccionarios", "contenido": ["DICCIONARIOS", "CARACTERÍSTICAS DE UN DICCIONARIO", "CREAR UN DI. CIONARIO, AGREGAR, RESCATAR ELEMENTOS", "DICCIONARIOS ANIDADOS"],
+          "texto": "Pares clave-valor: `p = {\"codigo\": \"P-017\", \"litros\": 820}`. `p[\"litros\"]` lee y `p[\"comuna\"] = \"Purranque\"` agrega. Anidados: `productores[\"P-017\"][\"litros\"]`." },
+        { "icono": "lock", "encabezado": "Tuplas", "contenido": ["TUPLAS", "CARACTERÍSTICAS DE UNA TUPLA", "CREACIÓN DE UNA TUPLA, RESCATAR ELEMENTOS", "EMPAQUETADO Y DESEMPAQUETADO DE TUPLAS"],
+          "texto": "Ordenadas e inmutables: `planta = (-41.3, -72.9)`; `planta[0]` → -41.3. Empaquetar: `t = 1, 2`. Desempaquetar: `lat, lon = planta`." },
+        { "icono": "combine", "encabezado": "Sets", "contenido": ["SETS", "CARACTERÍSTICAS DE UN SET", "CREACIÓN DE UN SET", "OPERACIONES DE CONJUNTO CON SETS"],
+          "texto": "Sin orden y sin repetidos: `set([\"P-017\", \"P-021\", \"P-017\"])` guarda 2. Unión `a | b`, intersección `a & b` y diferencia `a - b`." },
+        { "icono": "repeat", "encabezado": "Iterar y el ciclo while", "contenido": ["QUÉ ES UNA SENTENCIA ITERATIVA Y POR QUÉ SE NECESITAN", "LA SENTENCIA WHILE"],
+          "texto": "Un ciclo repite instrucciones sin copiar código. `while pendientes > 0:` repite mientras la condición sea verdadera; si nunca cambia, el ciclo no termina." },
+        { "icono": "refresh-cw", "encabezado": "El ciclo for", "contenido": ["LA SENTENCIA FOR", "ITERANDO LISTAS DE ELEMENTOS", "ITERANDO DICCIONARIOS DE ELEMENTOS"],
+          "texto": "`for l in litros: total += l` recorre una lista. `for codigo, datos in productores.items():` recorre un diccionario par por par." },
+        { "icono": "hash", "encabezado": "La función range", "contenido": ["LA FUNCIÓN RANGE", "ITERANDO CON LA FUNCIÓN RANGE"],
+          "texto": "`range(5)` → 0 a 4 · `range(1, 8)` → 1 a 7, los días de la semana · `for i in range(len(litros)):` recorre las posiciones." }
+      ]
+    },
+    {
+      "n": 5,
+      "titulo": "ORIENTACIÓN A OBJETOS EN PYTHON",
+      "bajada": "Modelar el problema con clases y objetos",
+      "secciones": [
+        { "icono": "boxes", "encabezado": "Qué es la POO", "contenido": ["INTRODUCCIÓN A LA POO", "QUÉ ES LA POO", "VENTAJAS DE LA POO"],
+          "texto": "Organiza el programa en objetos que juntan datos y comportamiento, como una entrega o un productor. Ventajas: código reutilizable, ordenado y más fácil de mantener." },
+        { "icono": "layers", "encabezado": "Cuatro principios", "contenido": ["PRINCIPIOS BÁSICOS DE LA POO (ABSTRACCIÓN, ENCAPSULAMIENTO, HERENCIA, POLIMORFISMO)"],
+          "texto": "Abstracción: modelar lo esencial · Encapsulamiento: proteger el estado · Herencia: reutilizar y especializar · Polimorfismo: un mismo mensaje, distintas respuestas." },
+        { "icono": "shapes", "encabezado": "Clases y objetos", "contenido": ["CLASES Y OBJETOS", "DEFINICIÓN DE UNA CLASE", "ATRIBUTOS Y MÉTODOS"],
+          "texto": "La clase es el molde y el objeto, una instancia: `class Entrega:` con atributos (`litros`) y métodos (`calcular_pago()`). Las librerías también traen clases: `pd.read_csv()` crea un DataFrame." },
+        { "icono": "play", "encabezado": "Constructor e instanciación", "contenido": ["CONSTRUCTORES E INICIALIZADORES", "INSTANCIACIÓN DE OBJETOS"],
+          "texto": "`def __init__(self, codigo, litros):` guarda los datos con `self.codigo = codigo`. Se instancia así: `e = Entrega(\"P-017\", 820)`." },
+        { "icono": "lock", "encabezado": "Encapsulamiento", "contenido": ["ENCAPSULAMIENTO Y VISIBILIDAD", "ATRIBUTOS Y MÉTODOS PRIVADOS", "GETTERS Y SETTERS", "DECORADORES"],
+          "texto": "`_litros` indica uso interno y `__litros` lo oculta más. Getters y setters con los decoradores `@property` y `@litros.setter` validan antes de cambiar el valor." },
+        { "icono": "git-fork", "encabezado": "Herencia", "contenido": ["HERENCIA EN PYTHON.CONCEPTO DE HERENCIA Y JERARQUÍA DE CLASES", "INSTANCIACIÓN DE SUBCLASES", "HERENCIA MÚLTIPLE Y MRO (MÉTODO DE RESOLUCIÓN DE MÉTODOS)"],
+          "texto": "`class EntregaOrganica(Entrega):` hereda atributos y métodos, y llama al padre con `super().__init__(...)`. Con herencia múltiple, Python busca los métodos según el MRO: `EntregaOrganica.mro()`." },
+        { "icono": "split", "encabezado": "Polimorfismo", "contenido": ["POLIMORFISMO", "QUÉ ES PO. IMORFISMO", "SOBRECARGA", "DUNDER METHODS"],
+          "texto": "Cada subclase redefine `calcular_pago()` y el ciclo llama a todas igual. Python no sobrecarga métodos por tipo: usa argumentos predeterminados y sobrecarga operadores con dunder methods como `__add__` o `__str__`." },
+        { "icono": "check-check", "encabezado": "Principios de diseño", "contenido": ["PRINCIPIOS DE DISEÑO ORIENTADO A OBJETOS", "PRINCIPIO DRY", "PRINCIPIO SOLID"],
+          "texto": "DRY: no repitas la misma lógica. SOLID: responsabilidad única, abierto/cerrado, sustitución de Liskov, segregación de interfaces e inversión de dependencias." }
+      ]
+    },
+    {
+      "n": 6,
+      "titulo": "EXCEPCIONES EN PYTHON",
+      "bajada": "Que un dato malo no detenga toda la carga",
+      "secciones": [
+        { "icono": "triangle-alert", "encabezado": "Qué es una excepción", "contenido": ["QUÉ ES UNA EXCEPCIÓN Y POR QUÉ SON IMPORTANTES"],
+          "texto": "Un error durante la ejecución, como convertir «mil» en número. Si nadie la maneja, el programa se detiene; manejarla permite registrar la fila mala y seguir con las demás." },
+        { "icono": "list-tree", "encabezado": "Jerarquía", "contenido": ["JERARQUÍA DE EXCEPCIONES EN PYTHON"],
+          "texto": "Son clases: `ValueError`, `TypeError`, `KeyError`, `ZeroDivisionError` y `FileNotFoundError` descienden de `Exception`. Capturar una clase captura también a sus subclases." },
+        { "icono": "shield-check", "encabezado": "try, except y finally", "contenido": ["MANEJO Y CA. TURA DE LAS EXCEPCIONES (TRY-EXCEPT-FINALLY)", "LAS SENTENCIAS TRY, EXCEPT Y FINALLY"],
+          "texto": "`try:` el código que puede fallar · `except ValueError:` qué hacer ante ese error · `finally:` lo que se ejecuta siempre, como cerrar el archivo." },
+        { "icono": "hammer", "encabezado": "Excepciones personalizadas", "contenido": ["CONSTRUCCIÓN DE EXCEPCIONES PERSONALIZADAS"],
+          "texto": "`class TemperaturaAltaError(Exception): pass` crea una propia. Se lanza con `raise TemperaturaAltaError(\"Llegó a 8 °C\")`." },
+        { "icono": "route", "encabezado": "Propagación", "contenido": ["PROPAGACIÓN DE EXCEPCIONES"],
+          "texto": "Si una función no captura la excepción, esta sube a quien la llamó, hasta encontrar un `except`. Dentro de un `except`, `raise` sin argumentos la vuelve a lanzar." },
+        { "icono": "code", "encabezado": "Usarlas en el código", "contenido": ["UTILIZACIÓN DE EXCEPCIONES EN EL CÓDIGO"],
+          "texto": "`try: litros = float(fila[2])` · `except ValueError: rechazadas.append(fila)`. La carga sigue con la fila siguiente y al final informa cuántas rechazó." },
+        { "icono": "check-check", "encabezado": "Buenas prácticas", "contenido": ["BUENAS PRÁCTICAS PARA EL MANEJO DE EXCEPCIONES"],
+          "texto": "Captura excepciones específicas, nunca `except: pass`. Usa mensajes claros, registra el error con `logging` y libera recursos con `finally` o `with`." }
+      ]
+    }
+  ]
+}

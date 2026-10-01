@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Seguridad Cloud · Módulo 2 · Aprendizaje esperado 6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS DE SEGURIDAD EN LA NUBE · <span class="nw">Aprendizaje esperado 6</span></div>
+  <h1>EL MODELO DE RESPONSABILIDAD COMPARTIDA</h1>
+  <p class="bajada">Quién protege qué en la nube</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 6</div><p>EVALUAR EL MODELO DE RESPONSABILIDAD COMPARTIDA EN SEGURIDAD CLOUD, CONSIDERANDO LAS RESPONSABILIDADES DEL CLIENTE Y DEL PROVEEDOR EN LA PROTECCIÓN DE DATOS Y SERVICIOS</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+  <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+  <path d="m21 3 1 11h-2" />
+  <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+  <path d="M3 4h8" />
+</svg></div>
+    <div>
+      <h2>Qué es</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">QUÉ ES UN MODELO DE RESPONSABILIDAD COMPARTIDA</p>
+      <p class="texto">Un reparto de tareas de seguridad entre el proveedor y el cliente. El proveedor responde por la seguridad de la nube; el cliente, por la seguridad en la nube.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+  <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+  <line x1="6" x2="6.01" y1="6" y2="6" />
+  <line x1="6" x2="6.01" y1="18" y2="18" />
+</svg></div>
+    <div>
+      <h2>Responsabilidades del proveedor</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">RESPONSABILIDADES DEL PROVEEDOR</p>
+      <p class="texto">Centros de datos y su seguridad física, hardware, red de la infraestructura y virtualización. En PaaS y SaaS suma el sistema operativo y la aplicación.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m16 11 2 2 4-4" />
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+</svg></div>
+    <div>
+      <h2>Responsabilidades del cliente</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">RESPONSABILIDADES DEL CLIENTE</p>
+      <p class="texto">Siempre: sus datos, quién tiene cuenta y con qué permisos, y cómo configura cada servicio. Nunca se traspasa por completo al proveedor.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
+  <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
+  <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
+</svg></div>
+    <div>
+      <h2>IaaS, PaaS y SaaS</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ESCENARIOS SEGÚN MODELO DE SERVICIO: DIFERENCIAS EN EL MODELO DE RESPONSABILIDAD COMPARTIDA EN IAAS, PAAS Y SAAS</p>
+      <p class="texto">IaaS: el cliente administra el sistema operativo, sus parches, las aplicaciones y los datos. PaaS: sus aplicaciones y datos. SaaS: sus datos, usuarios y configuración.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" />
+</svg></div>
+    <div>
+      <h2>Incidentes por falta de claridad</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">EJEMPLOS DE INCIDENTES POR FALTA DE CLARIDAD EN LA APLICACIÓN DEL MODELO</p>
+      <p class="texto">Almacenamientos abiertos porque se creía que el proveedor los protegía, bases de datos sin respaldo en IaaS y máquinas virtuales sin parches durante meses.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m12 14 4-4" />
+  <path d="M3.34 19a10 10 0 1 1 17.32 0" />
+</svg></div>
+    <div>
+      <h2>Evaluación de riesgos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">EVALUACIÓN DE RIESGOS: IMPACTO DE NO COMPRENDER O APLICAR CORRECTAMENTE EL MODELO DE RESPONSABILIDAD</p>
+      <p class="texto">Lo que nadie asume queda sin hacer: filtraciones, pérdida de datos, servicios caídos, multas y daño a la confianza de los pacientes.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+</svg></div>
+    <div>
+      <h2>Medidas de mitigación</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">MEDIDAS DE MITIGACIÓN</p>
+      <p class="texto">Una matriz de responsabilidades por servicio, revisada en el contrato con el proveedor, auditorías periódicas de la configuración y capacitación al equipo.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>6.1</b><span>EVALÚA LA DISTRIBUCIÓN DE RESPONSABILIDADES ENTRE EL PROVEEDOR Y EL CLIENTE EN EL CONTEXTO DE LA SEGURIDAD EN LA NUBE.</span></li><li><b>6.2</b><span>ANALIZA ESCENARIOS ESPECÍFICOS DE SEGURIDAD CLOUD PARA IDENTIFICAR RIESGOS ASOCIADOS A UNA INCORRECTA APLICACIÓN DEL MODELO DE RESPONSABILIDAD COMPARTIDA.</span></li><li><b>6.3</b><span>PROPONE MEDIDAS PARA MEJORAR LA IMPLEMENTACIÓN DEL MODELO DE RESPONSABILIDAD COMPARTIDA EN ORGANIZACIONES.</span></li></ol></div>
+  <div class="pie">Seguridad Cloud · Módulo 2 · Ejemplos con Clínica Quintral, institución ficticia</div>
+</main></body></html>

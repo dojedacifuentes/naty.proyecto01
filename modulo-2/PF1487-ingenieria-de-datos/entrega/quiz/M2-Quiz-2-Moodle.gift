@@ -1,0 +1,43 @@
+// PF1487 · Módulo 2 · Quiz 2 · Sentencias básicas (AE2). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1487-M2/Quiz-2
+
+::Q2-P1 (AE2):: En la rutina de recepción tienes litros \= 1250.5, productor \= "Los Ñirres" y aceptada \= True. ¿Qué tipos de dato son, en ese orden? {
+~int, str y bool
+=float, str y bool
+~float, list e int
+~str, str y str
+####1250.5 es un decimal (float), el texto entre comillas es una cadena (str) y True es un booleano (bool). Un número sin decimales, como 1250, sería un entero (int).
+}
+
+::Q2-P2 (AE2):: Escribes litros \= input("Litros entregados\: ") y luego litros + 100, y Python muestra un error. ¿Por qué? {
+~Porque input() solo acepta números enteros
+~Porque falta print() antes de sumar
+=Porque input() devuelve texto y hay que convertirlo con float()
+~Porque las variables no se pueden sumar con números
+####input() siempre entrega una cadena (str), aunque se escriba un número. Para calcular hay que convertirla\: litros \= float(input("Litros entregados\: ")). Luego print() muestra el resultado en la consola.
+}
+
+::Q2-P3 (AE2):: Lácteos Calafate acepta una entrega si la leche llega a 6 °C o menos y no tiene antibióticos. Con temperatura y antibioticos (un booleano), ¿qué expresión lo dice? {
+~temperatura &lt; 6 or not antibioticos
+~temperatura &gt;\= 6 and antibioticos
+~temperatura &lt;\= 6 or antibioticos
+=temperatura &lt;\= 6 and not antibioticos
+####Se deben cumplir las dos condiciones, por eso va and. «6 °C o menos» es &lt;\= 6, y «sin antibióticos» es not antibioticos. Con or bastaría que se cumpliera una sola.
+}
+
+::Q2-P4 (AE2):: Con litros \= 800, la rutina dice\: if litros &gt;\= 1000\: imprime «Ruta grande»; elif litros &gt;\= 500\: imprime «Ruta media»; else\: imprime «Ruta chica». ¿Qué se imprime? {
+=Ruta media
+~Ruta grande
+~Ruta media y Ruta chica
+~Ruta chica
+####Python revisa las condiciones en orden y ejecuta solo el primer bloque cuya condición es verdadera. 800 no es mayor o igual a 1000, pero sí a 500\: se imprime «Ruta media» y el else ya no se revisa.
+}
+
+::Q2-P5 (AE2):: Tu script recepcion.py calcula estanques \= 1250 // 300 y sobra \= 1250 % 300. Lo ejecutas con python recepcion.py. ¿Qué valores quedan? {
+~estanques vale 4.16 y sobra vale 50
+~estanques vale 5 y sobra vale 50
+=estanques vale 4 y sobra vale 50
+~estanques vale 4 y sobra vale 0.16
+####// es la división entera\: 1250 // 300 da 4, porque caben 4 estanques completos (1200 litros). % es el resto\: sobran 50 litros. Un script se guarda con extensión .py y se ejecuta desde la terminal con python nombre.py.
+}

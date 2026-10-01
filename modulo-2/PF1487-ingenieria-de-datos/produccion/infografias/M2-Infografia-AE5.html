@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos de Ingeniería de Datos · Módulo 2 · Aprendizaje esperado 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS DE PROGRAMACIÓN PYTHON PARA INGENIEROS DE DATOS · <span class="nw">Aprendizaje esperado 5</span></div>
+  <h1>ORIENTACIÓN A OBJETOS EN PYTHON</h1>
+  <p class="bajada">Modelar el problema con clases y objetos</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 5</div><p>DESARROLLAR UNA APLICACIÓN ORIENTADA A OBJETOS EN LENGUAJE PYTHON PARA RESOLVER UN PROBLEMA.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z" />
+  <path d="m7 16.5-4.74-2.85" />
+  <path d="m7 16.5 5-3" />
+  <path d="M7 16.5v5.17" />
+  <path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z" />
+  <path d="m17 16.5-5-3" />
+  <path d="m17 16.5 4.74-2.85" />
+  <path d="M17 16.5v5.17" />
+  <path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z" />
+  <path d="M12 8 7.26 5.15" />
+  <path d="m12 8 4.74-2.85" />
+  <path d="M12 13.5V8" />
+</svg></div>
+    <div>
+      <h2>Qué es la POO</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">INTRODUCCIÓN A LA POO · QUÉ ES LA POO · VENTAJAS DE LA POO</p>
+      <p class="texto">Organiza el programa en objetos que juntan datos y comportamiento, como una entrega o un productor. Ventajas: código reutilizable, ordenado y más fácil de mantener.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
+  <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
+  <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
+</svg></div>
+    <div>
+      <h2>Cuatro principios</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">PRINCIPIOS BÁSICOS DE LA POO (ABSTRACCIÓN, ENCAPSULAMIENTO, HERENCIA, POLIMORFISMO)</p>
+      <p class="texto">Abstracción: modelar lo esencial · Encapsulamiento: proteger el estado · Herencia: reutilizar y especializar · Polimorfismo: un mismo mensaje, distintas respuestas.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z" />
+  <rect x="3" y="14" width="7" height="7" rx="1" />
+  <circle cx="17.5" cy="17.5" r="3.5" />
+</svg></div>
+    <div>
+      <h2>Clases y objetos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CLASES Y OBJETOS · DEFINICIÓN DE UNA CLASE · ATRIBUTOS Y MÉTODOS</p>
+      <p class="texto">La clase es el molde y el objeto, una instancia: <code>class Entrega:</code> con atributos (<code>litros</code>) y métodos (<code>calcular_pago()</code>). Las librerías también traen clases: <code>pd.read_csv()</code> crea un DataFrame.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" />
+</svg></div>
+    <div>
+      <h2>Constructor e instanciación</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CONSTRUCTORES E INICIALIZADORES · INSTANCIACIÓN DE OBJETOS</p>
+      <p class="texto"><code>def __init__(self, codigo, litros):</code> guarda los datos con <code>self.codigo = codigo</code>. Se instancia así: <code>e = Entrega(&quot;P-017&quot;, 820)</code>.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+</svg></div>
+    <div>
+      <h2>Encapsulamiento</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ENCAPSULAMIENTO Y VISIBILIDAD · ATRIBUTOS Y MÉTODOS PRIVADOS · GETTERS Y SETTERS · DECORADORES</p>
+      <p class="texto"><code>_litros</code> indica uso interno y <code>__litros</code> lo oculta más. Getters y setters con los decoradores <code>@property</code> y <code>@litros.setter</code> validan antes de cambiar el valor.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="18" r="3" />
+  <circle cx="6" cy="6" r="3" />
+  <circle cx="18" cy="6" r="3" />
+  <path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9" />
+  <path d="M12 12v3" />
+</svg></div>
+    <div>
+      <h2>Herencia</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">HERENCIA EN PYTHON. CONCEPTO DE HERENCIA Y JERARQUÍA DE CLASES · INSTANCIACIÓN DE SUBCLASES · HERENCIA MÚLTIPLE Y MRO (MÉTODO DE RESOLUCIÓN DE MÉTODOS)</p>
+      <p class="texto"><code>class EntregaOrganica(Entrega):</code> hereda atributos y métodos, y llama al padre con <code>super().__init__(...)</code>. Con herencia múltiple, Python busca los métodos según el MRO: <code>EntregaOrganica.mro()</code>.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 3h5v5" />
+  <path d="M8 3H3v5" />
+  <path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3" />
+  <path d="m15 9 6-6" />
+</svg></div>
+    <div>
+      <h2>Polimorfismo</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">POLIMORFISMO · QUÉ ES POLIMORFISMO · SOBRECARGA · DUNDER METHODS</p>
+      <p class="texto">Cada subclase redefine <code>calcular_pago()</code> y el ciclo llama a todas igual. Python no sobrecarga métodos por tipo: usa argumentos predeterminados y sobrecarga operadores con dunder methods como <code>__add__</code> o <code>__str__</code>.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">8</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M18 6 7 17l-5-5" />
+  <path d="m22 10-7.5 7.5L13 16" />
+</svg></div>
+    <div>
+      <h2>Principios de diseño</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">PRINCIPIOS DE DISEÑO ORIENTADO A OBJETOS · PRINCIPIO DRY · PRINCIPIO SOLID</p>
+      <p class="texto">DRY: no repitas la misma lógica. SOLID: responsabilidad única, abierto/cerrado, sustitución de Liskov, segregación de interfaces e inversión de dependencias.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>5.1</b><span>EXPLICA LOS CONCEPTOS FUNDAMENTALES DEL PARADIGMA DE ORIENTACIÓN A OBJETOS Y SUS VENTAJAS EN LA PROGRAMACIÓN.</span></li><li><b>5.2</b><span>DESCRIBE LOS PRINCIPIOS FUNDAMENTALES DEL DISEÑO CON ORIENTACIÓN A OBJETOS DISTINGUIENDO SUS BENEFICIOS.</span></li><li><b>5.3</b><span>CODIFICA RUTINAS QUE UTILIZAN CLASES PROVISTAS EN LIBRERÍAS DE TERCEROS PARA LA RESOLUCIÓN DE UN PROBLEMA DADO ACORDE AL LENGUAJE PYTHON.</span></li><li><b>5.4</b><span>IMPLEMENTA CLASES PARA LA RESOLUCIÓN DE UN PROBLEMA DE BAJA COMPLEJIDAD ACORDE A LA SINTAXIS DEL LENGUAJE PYTHON.</span></li><li><b>5.5</b><span>DESARROLLA UNA APLICACIÓN QUE RESUELVE UN PROBLEMA DE BAJA COMPLEJIDAD UTILIZANDO TÉCNICAS DE POLIMORFISMO ACORDE A LA SINTAXIS DEL LENGUAJE PYTHON.</span></li></ol></div>
+  <div class="pie">Fundamentos de Ingeniería de Datos · Módulo 2 · Ejemplos con Lácteos Calafate, empresa ficticia</div>
+</main></body></html>

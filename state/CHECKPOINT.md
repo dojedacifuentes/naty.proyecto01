@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-10-01 (UTC, como el registro; 1-oct de madrugada en Chile)
-**Por:** 2026-10-01-claude-code-01 a -04 (Claude Code · opus-5.5)
+**Por:** 2026-10-01-claude-code-01 a -05 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -561,6 +561,24 @@ Sesión claude-code-04, 2026-10-01: revisión del usuario sobre la planilla de r
 - [x] Planilla «02 Recursos M2» reimportada (mismo archivo; cambian los gid de las pestañas): 197 listos, 7 por ajustar, 20 por revisar
       (videos), 57 no existen (PF1487, PF1485 y PF1493) y 1 no cuadra (flipbook AE6 de PF1483).
 
+Sesión claude-code-05, 2026-10-01: quiz e infografías de los 3 cursos que no tenían recursos (pedido: "desarrolla los elementos del
+modulo 2 por aprendizaje esperado de cada curso … quizz en formato html y scorm por aprendizaje esperado, infografia por aprendizaje
+esperado … y luego subelo a la planilla").
+
+- [x] 17 quiz gamificados (HTML, SCORM 1.2 y GIFT), uno por AE y con 5 preguntas sobre los criterios 2026:
+      - PF1487: 6 quiz, caso Lácteos Calafate;
+      - PF1485: 5 quiz, caso Buses Quillay;
+      - PF1493: 6 quiz, caso Clínica Quintral.
+      Fuente: `contenidos/<PF>/modulo-2/R-quiz-canva.md`; se generan con `npm run quiz-juego -- PF1487 PF1485 PF1493`.
+- [x] 17 infografías 2026, una por AE: `contenidos/<PF>/modulo-2/R-infografias.json` y `npm run infografias -- PF1487 PF1485 PF1493`.
+      El validador ahora revisa tema por tema y acepta repartir una lista entre paréntesis en varias secciones. Las erratas de este plan
+      se muestran corregidas.
+- [x] En NATY 2.0, carpetas nuevas «PF1487 - Fundamentos de Ingeniería de Datos», «PF1485 - Fundamentos DevOps» y «PF1493 - Seguridad
+      Cloud», cada una con «3 Infografías» y «4 Quiz gamificados». Tienen 74 archivos, 74 de 74 idénticos al repo y descargables sin
+      sesión. Los ids están en `privado/drive/recursos-2026/`.
+- [x] Planilla «02 Recursos M2» reimportada: 231 listos, 7 por ajustar, 20 por revisar (videos), 23 no existen y 1 no cuadra. Los 23 son
+      los 2 videos y los flipbooks por AE de PF1487, PF1485 y PF1493.
+
 ## A medias
 
 - **Los entregables del módulo 2 de PF1821 y PF1822 están en borrador, sin revisión humana.**
@@ -619,8 +637,11 @@ accionables están en el handoff como trabajo corto: la columna `fuente` en
 
 ## Siguiente paso concreto
 
-Desde la sesión 2026-10-01-claude-code-03 el usuario se ordena con la planilla «02 Recursos M2 · Licitación 2026»: lo siguiente es
-hacer los recursos de PF1487, PF1485 y PF1493 (no tienen ninguno), ver los 20 videos y resolver lo que el usuario no aprobó: lecturas
-AE1, AE2, AE5 y AE7 de PF1483 (y su AE6, que no cuadra), lectura e infografía AE2 de PF1462 y lectura AE4 de PF1495.
+Desde la sesión 2026-10-01-claude-code-03 el usuario se ordena con la planilla «02 Recursos M2 · Licitación 2026». PF1487, PF1485 y
+PF1493 ya tienen quiz e infografías (sesión -05); les faltan los 2 videos y el flipbook de cada AE. Además falta:
+- ver los 20 videos;
+- resolver lo que el usuario no aprobó: lecturas AE1, AE2, AE5 y AE7 de PF1483 (y su AE6, que no cuadra), lectura e infografía AE2 de
+  PF1462 y lectura AE4 de PF1495;
+- que una persona revise el contenido de las 31 infografías y los 17 quiz nuevos.
 
 Ver `state/HANDOFF.md`.
