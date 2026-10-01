@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos de Ciencia de Datos · Módulo 2 · Aprendizaje esperado 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS DE PROGRAMACIÓN PYTHON PARA EL ANÁLISIS DE DATOS · <span class="nw">Aprendizaje esperado 4</span></div>
+  <h1>FUNCIONES Y MÓDULOS</h1>
+  <p class="bajada">Escribe una vez, úsalo muchas veces</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 4</div><p>CODIFICAR UNA RUTINA UTILIZANDO FUNCIONES PRECONSTRUIDAS, FUNCIONES PERSONALIZADAS O DE UN MÓDULO PARA RESOLVER UN PROBLEMA DE BAJA COMPLEJIDAD DE ACUERDO AL LENGUAJE PYTHON.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 22V7a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1H2" />
+  <rect x="14" y="2" width="8" height="8" rx="1" />
+</svg></div>
+    <div>
+      <h2>Qué es una función</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">¿QUÉ ES UNA FUNCIÓN Y PARA QUÉ SIRVEN?</p>
+      <p class="texto">Un bloque de código con nombre que hace una tarea y se puede reutilizar. Evita repetir código y lo hace más fácil de leer y de probar.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 22v-9" />
+  <path d="M15.17 2.21a1.67 1.67 0 0 1 1.63 0L21 4.57a1.93 1.93 0 0 1 0 3.36L8.82 14.79a1.655 1.655 0 0 1-1.64 0L3 12.43a1.93 1.93 0 0 1 0-3.36z" />
+  <path d="M20 13v3.87a2.06 2.06 0 0 1-1.11 1.83l-6 3.08a1.93 1.93 0 0 1-1.78 0l-6-3.08A2.06 2.06 0 0 1 4 16.87V13" />
+  <path d="M21 12.43a1.93 1.93 0 0 0 0-3.36L8.83 2.2a1.64 1.64 0 0 0-1.63 0L3 4.57a1.93 1.93 0 0 0 0 3.36l12.18 6.86a1.636 1.636 0 0 0 1.63 0z" />
+</svg></div>
+    <div>
+      <h2>Funciones preconstruidas</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">FUNCIONES PRECONSTRUIDAS DE PYTHON</p>
+      <p class="texto">Vienen listas para usar: <code>print()</code>, <code>input()</code>, <code>len()</code>, <code>round()</code>, <code>sum()</code>, <code>max()</code>, <code>min()</code>, <code>type()</code> y <code>sorted()</code>.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" />
+</svg></div>
+    <div>
+      <h2>Definir una función propia</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">FUNCIONES PERSONALIZADAS · DEFINICIÓN DE UNA FUNCIÓN PERSONALIZADA</p>
+      <p class="texto"><code>def a_fahrenheit(celsius):</code> y, indentado, el cuerpo. El nombre describe lo que hace la función.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 3 4 7l4 4" />
+  <path d="M4 7h16" />
+  <path d="m16 21 4-4-4-4" />
+  <path d="M20 17H4" />
+</svg></div>
+    <div>
+      <h2>Parámetros y retorno</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">PARÁMETROS DE UNA FUNCIÓN Y RETORNO</p>
+      <p class="texto">Los parámetros reciben los datos y <code>return</code> devuelve el resultado: <code>return celsius * 9 / 5 + 32</code>. Sin <code>return</code>, la función devuelve <code>None</code>.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" />
+</svg></div>
+    <div>
+      <h2>Usar la función</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">UTILIZACIÓN DE UNA FUNCIÓN PERSONALIZADA</p>
+      <p class="texto"><code>a_fahrenheit(20)</code> devuelve <code>68.0</code>. Se llama tantas veces como haga falta, con distintos valores.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m16 6 4 14" />
+  <path d="M12 6v14" />
+  <path d="M8 8v12" />
+  <path d="M4 4v16" />
+</svg></div>
+    <div>
+      <h2>Módulos y librería estándar</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">¿QUÉ ES UN MÓDULO Y PARA QUÉ SIRVEN? · LA LIBRERÍA STANDARD DE PYTHON</p>
+      <p class="texto">Un módulo es un archivo <code>.py</code> con funciones listas para usar. Python trae una librería estándar con muchos de ellos: <code>math</code>, <code>statistics</code>, <code>random</code>, <code>datetime</code> y <code>csv</code>.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 15V3" />
+  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+  <path d="m7 10 5 5 5-5" />
+</svg></div>
+    <div>
+      <h2>Importar módulos: math y estadística</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">IMPORTACIÓN DE MÓDULOS · EL MÓDULO MATH · EL MÓDULO STAT</p>
+      <p class="texto"><code>import math</code> → <code>math.sqrt(16)</code>, <code>math.pi</code>. <code>from statistics import mean, median</code> → <code>mean([12, 15, 9])</code> da <code>12</code>.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">8</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
+  <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
+  <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
+</svg></div>
+    <div>
+      <h2>Funciones de orden superior</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">FUNCIONES DE ORDEN SUPERIOR (CONTENIDO OPCIONAL)</p>
+      <p class="texto">Reciben o devuelven otras funciones: <code>map(a_fahrenheit, temps)</code>, <code>filter()</code> o <code>sorted(datos, key=len)</code>.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>4.1</b><span>RECONOCE LAS PRINCIPALES FUNCIONES PRECONSTRUIDAS DISPONIBLES EN EL LENGUAJE PYTHON.</span></li><li><b>4.2</b><span>ELABORA FUNCIONES PERSONALIZADAS CON PARÁMETROS Y RETORNO DE ACUERDO A LA SINTAXIS DEL LENGUAJE PYTHON PARA RESOLVER EL PROBLEMA PLANTEADO.</span></li><li><b>4.3</b><span>UTILIZA FUNCIONES PERTENECIENTES A UN MÓDULO PARA RESOLVER UN PROBLEMA DE BAJA COMPLEJIDAD.</span></li></ol></div>
+  <div class="pie">Fundamentos de Ciencia de Datos · Módulo 2 · Ejemplos con Observatorio Cordillera, institución ficticia</div>
+</main></body></html>

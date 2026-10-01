@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos de Análisis de Datos · Módulo 2 · Aprendizaje esperado 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · INTRODUCCIÓN AL ANÁLISIS DE DATOS · <span class="nw">Aprendizaje esperado 1</span></div>
+  <h1>CARACTERÍSTICAS PRINCIPALES DEL ANÁLISIS DE DATOS</h1>
+  <p class="bajada">De los datos a las decisiones</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 1</div><p>APLICAR LAS CARACTERÍSTICAS PRINCIPALES DEL ANÁLISIS DE DATOS Y SUS ETAPAS PARA LA OBTENCIÓN DE INSIGHTS A TRAVÉS DE DATOS EN PLANILLAS DE CÁLCULO.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" />
+</svg></div>
+    <div>
+      <h2>Qué es el análisis de datos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">QUÉ ES EL ANÁLISIS DE DATOS</p>
+      <p class="texto">Examinar, limpiar, transformar y modelar datos para descubrir información útil, sacar conclusiones y apoyar decisiones.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 12h.01" />
+  <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+  <path d="M22 13a18.15 18.15 0 0 1-20 0" />
+  <rect width="20" height="14" x="2" y="6" rx="2" />
+</svg></div>
+    <div>
+      <h2>Para qué sirve en el trabajo</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">QUÉ ES EL ANÁLISIS DE DATOS</p>
+      <p class="texto">Casi toda área registra datos: ventas, inventario, clientes, atención. Saber leerlos permite decidir con evidencia y no por intuición; es una competencia clave en el trabajo del siglo XXI.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="6" cy="19" r="3" />
+  <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+  <circle cx="18" cy="5" r="3" />
+</svg></div>
+    <div>
+      <h2>Las etapas del análisis</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ETAPAS DEL ANÁLISIS DE DATOS</p>
+      <p class="texto">1 Definir la pregunta · 2 Recolectar los datos · 3 Preparar y limpiar · 4 Explorar y analizar · 5 Visualizar y comunicar los hallazgos.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+  <path d="M9 18h6" />
+  <path d="M10 22h4" />
+</svg></div>
+    <div>
+      <h2>Del dato al insight</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ETAPAS DEL ANÁLISIS DE DATOS</p>
+      <p class="texto">Un insight es un hallazgo que explica lo que pasa y lleva a actuar. Ejemplo: en Distribuidora Pehuén, las ventas de la zona sur bajan en invierno, así que conviene reforzar el stock en otoño.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2" />
+  <path d="M6.453 15h11.094" />
+  <path d="M8.5 2h7" />
+</svg></div>
+    <div>
+      <h2>Técnicas para analizar</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">TÉCNICAS Y HERRAMIENTAS PARA ANALIZAR DATOS</p>
+      <p class="texto">Descriptiva (qué pasó), diagnóstica (por qué pasó), predictiva (qué podría pasar) y prescriptiva (qué conviene hacer). Se apoyan en estadística básica, filtros, agrupaciones y gráficos.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" />
+</svg></div>
+    <div>
+      <h2>Herramientas</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">TÉCNICAS Y HERRAMIENTAS PARA ANALIZAR DATOS</p>
+      <p class="texto">Planillas de cálculo (Excel, Google Sheets), herramientas de visualización (Power BI, Tableau, Looker Studio) y lenguajes como Python o R. En este módulo trabajas con Excel.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 3v18" />
+  <path d="m19 8 3 8a5 5 0 0 1-6 0zV7" />
+  <path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" />
+  <path d="m5 8 3 8a5 5 0 0 1-6 0zV7" />
+  <path d="M7 21h10" />
+</svg></div>
+    <div>
+      <h2>Cómo elegir la herramienta</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">TÉCNICAS Y HERRAMIENTAS PARA ANALIZAR DATOS</p>
+      <p class="texto">Considera el volumen de datos, la pregunta que respondes, quién verá el resultado y cuántas veces se repetirá el análisis. Para volúmenes moderados y respuestas rápidas, una planilla basta.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>1.1</b><span>RECONOCE LA DEFINICIÓN DEL ANÁLISIS DE DATOS Y SU UTILIDAD EN LA VIDA LABORAL DEL SIGLO XXI.</span></li><li><b>1.2</b><span>APLICA LAS ETAPAS DEL PROCESO DE ANÁLISIS DE DATOS PARA LA OBTENCIÓN DE INSIGHTS.</span></li><li><b>1.3</b><span>EVALÚA LAS TÉCNICAS Y HERRAMIENTAS UTILIZADAS PARA EL ANÁLISIS DE DATOS.</span></li></ol></div>
+  <div class="pie">Fundamentos de Análisis de Datos · Módulo 2 · Ejemplos con Distribuidora Pehuén, empresa ficticia</div>
+</main></body></html>

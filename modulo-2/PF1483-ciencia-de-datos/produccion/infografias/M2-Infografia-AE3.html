@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos de Ciencia de Datos · Módulo 2 · Aprendizaje esperado 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS DE PROGRAMACIÓN PYTHON PARA EL ANÁLISIS DE DATOS · <span class="nw">Aprendizaje esperado 3</span></div>
+  <h1>SENTENCIAS CONDICIONALES</h1>
+  <p class="bajada">Programas que toman decisiones</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 3</div><p>CODIFICAR UNA RUTINA UTILIZANDO ESTRUCTURAS CONDICIONALES Y EXPRESIONES BOOLEANAS PARA RESOLVER UN PROBLEMA DE BAJA COMPLEJIDAD DE ACUERDO AL LENGUAJE PYTHON.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="18" r="3" />
+  <circle cx="6" cy="6" r="3" />
+  <circle cx="18" cy="6" r="3" />
+  <path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9" />
+  <path d="M12 12v3" />
+</svg></div>
+    <div>
+      <h2>Qué es una sentencia condicional</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">¿QUÉ ES UNA SENTENCIA CONDICIONAL Y POR QUÉ SE NECESITAN?</p>
+      <p class="texto">Permite que el programa decida: ejecuta un bloque solo si se cumple una condición. Sin ellas, el código haría siempre lo mismo.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="9" cy="12" r="3" />
+  <rect width="20" height="14" x="2" y="5" rx="7" />
+</svg></div>
+    <div>
+      <h2>Operadores booleanos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">OPERADORES BOOLEANOS: AND · OR · NEGACIÓN</p>
+      <p class="texto"><code>and</code>: verdadero si ambas condiciones lo son · <code>or</code>: si al menos una lo es · <code>not</code>: invierte el valor.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <line x1="5" x2="19" y1="9" y2="9" />
+  <line x1="5" x2="19" y1="15" y2="15" />
+</svg></div>
+    <div>
+      <h2>Operadores de comparación</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">OPERADORES DE COMPARACIÓN: MAYOR QUE, MAYOR O IGUAL QUE · MENOR QUE, MENOR O IGUAL QUE · IGUAL QUE · DISTINTO QUE</p>
+      <p class="texto"><code>&gt;</code> <code>&gt;=</code> <code>&lt;</code> <code>&lt;=</code> <code>==</code> <code>!=</code>. Ojo: <code>=</code> asigna un valor y <code>==</code> compara dos valores.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 21s-4-3-4-9 4-9 4-9" />
+  <path d="M16 3s4 3 4 9-4 9-4 9" />
+</svg></div>
+    <div>
+      <h2>Paréntesis y expresiones</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">PARÉNTESIS Y EXPRESIONES BOOLEANAS</p>
+      <p class="texto">Los paréntesis fijan qué se evalúa primero: <code>(temp &lt; 0) and (humedad &gt; 80)</code> detecta riesgo de escarcha en una estación.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 3h5v5" />
+  <path d="M8 3H3v5" />
+  <path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3" />
+  <path d="m15 9 6-6" />
+</svg></div>
+    <div>
+      <h2>if e if-else</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">LA SENTENCIA IF · LA SENTENCIA IF-ELSE</p>
+      <p class="texto"><code>if lluvia &gt; 50:</code> emite la alerta; <code>else:</code> informa normalidad. La indentación de 4 espacios marca qué instrucciones están dentro de cada bloque.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 13v8" />
+  <path d="M12 3v3" />
+  <path d="M2.354 10.354a1.207 1.207 0 0 1 0-1.708l2.06-2.06A2 2 0 0 1 5.828 6h12.344a2 2 0 0 1 1.414.586l2.06 2.06a1.207 1.207 0 0 1 0 1.708l-2.06 2.06a2 2 0 0 1-1.414.586H5.828a2 2 0 0 1-1.414-.586z" />
+</svg></div>
+    <div>
+      <h2>if-elif-else</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">LA SENTENCIA IF-ELIF-ELSE</p>
+      <p class="texto">Para más de dos caminos: <code>if t &gt;= 30:</code> calor · <code>elif t &gt;= 10:</code> templado · <code>else:</code> frío. Se evalúa en orden y entra solo en el primero que se cumple.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z" />
+</svg></div>
+    <div>
+      <h2>Expresión ternaria</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">EXPRESIONES TERNARIAS (CONTENIDO OPCIONAL)</p>
+      <p class="texto">Un if-else en una sola línea: <code>estado = &quot;alerta&quot; if lluvia &gt; 50 else &quot;normal&quot;</code>.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>3.1</b><span>IDENTIFICA LOS TIPOS DE ESTRUCTURA CONDICIONAL, ASÍ COMO SU UTILIDAD EN LA CONFECCIÓN DE UNA RUTINA DE CÓDIGO.</span></li><li><b>3.2</b><span>ELABORA EXPRESIONES BOOLEANAS UTILIZANDO OPERADORES BOOLEANOS Y DE COMPARACIÓN PARA RESOLVER UN PROBLEMA DE BAJA COMPLEJIDAD.</span></li><li><b>3.3</b><span>UTILIZA ESTRUCTURAS DE CONTROL DE FLUJO DE ACUERDO A LA SINTAXIS DEL LENGUAJE PYTHON PARA RESOLVER EL PROBLEMA PLANTEADO.</span></li></ol></div>
+  <div class="pie">Fundamentos de Ciencia de Datos · Módulo 2 · Ejemplos con Observatorio Cordillera, institución ficticia</div>
+</main></body></html>

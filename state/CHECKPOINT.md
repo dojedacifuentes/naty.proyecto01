@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-10-01 (UTC, como el registro; 1-oct de madrugada en Chile)
-**Por:** 2026-10-01-claude-code-01, -02 y -03 (Claude Code · opus-5.5)
+**Por:** 2026-10-01-claude-code-01 a -04 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -548,6 +548,19 @@ cuando haya recurso inexistente, o cuando haya discrepancia grave").
 - [x] Enlaces comprobados: 173 de 182 responden sin sesión; 9 solo con acceso (4 infografías 2024 de PF1482 de otra cuenta y 5 videos
       2023 de Entry level del usuario). La planilla los marca.
 
+Sesión claude-code-04, 2026-10-01: revisión del usuario sobre la planilla de recursos, más 14 infografías 2026.
+
+- [x] Estados que el usuario aprobó como Listo ("aprueba, no requiere ajuste"): PF1481 lectura AE2; PF1483 lectura AE4; PF1462 lectura
+      AE3 y quiz AE4 y AE5; todos los recursos por AE de PF1486; Entry level (los 4 cursos) lectura AE2 y todo el AE7.
+- [x] 14 infografías 2026, una por AE, con los contenidos y criterios 2026: PF1481 (5, reemplazan a las de 2024), PF1483 (7, no tenía) y
+      Entry level AE3 y AE4 (las de 2023 estaban borradas). `npm run infografias` (nuevo, `scripts/infografias.mjs`): fuente
+      `contenidos/<PF>/modulo-2/R-infografias.json`, valida cada contenido contra el plan y que no quede ninguno fuera, y saca el PNG
+      con Edge headless por DevTools. Salida en `modulo-2/<carpeta>/entrega/infografias/` (PNG, README y textos alternativos).
+- [x] Subidas a NATY 2.0 → carpeta del curso → «3 Infografías» (Entry level: carpeta nueva «PF1474 PF1477 PF1478 PF1479 - Entry level,
+      Fundamentos de Desarrollo Front-End»). Ids en `privado/drive/recursos-2026/infografias-drive.json`; 17 de 17 idénticas al repo.
+- [x] Planilla «02 Recursos M2» reimportada (mismo archivo; cambian los gid de las pestañas): 197 listos, 7 por ajustar, 20 por revisar
+      (videos), 57 no existen (PF1487, PF1485 y PF1493) y 1 no cuadra (flipbook AE6 de PF1483).
+
 ## A medias
 
 - **Los entregables del módulo 2 de PF1821 y PF1822 están en borrador, sin revisión humana.**
@@ -607,7 +620,7 @@ accionables están en el handoff como trabajo corto: la columna `fuente` en
 ## Siguiente paso concreto
 
 Desde la sesión 2026-10-01-claude-code-03 el usuario se ordena con la planilla «02 Recursos M2 · Licitación 2026»: lo siguiente es
-hacer los recursos que no existen (PF1487, PF1485 y PF1493 enteros, y las infografías de PF1483 y Entry level), ver los 21 videos y
-corregir los 26 «Ajustar».
+hacer los recursos de PF1487, PF1485 y PF1493 (no tienen ninguno), ver los 20 videos y resolver lo que el usuario no aprobó: lecturas
+AE1, AE2, AE5 y AE7 de PF1483 (y su AE6, que no cuadra), lectura e infografía AE2 de PF1462 y lectura AE4 de PF1495.
 
 Ver `state/HANDOFF.md`.

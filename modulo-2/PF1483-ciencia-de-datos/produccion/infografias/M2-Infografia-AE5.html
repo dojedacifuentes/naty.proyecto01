@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos de Ciencia de Datos · Módulo 2 · Aprendizaje esperado 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS DE PROGRAMACIÓN PYTHON PARA EL ANÁLISIS DE DATOS · <span class="nw">Aprendizaje esperado 5</span></div>
+  <h1>ESTRUCTURAS DE DATO EN PYTHON</h1>
+  <p class="bajada">Guardar y organizar muchos datos a la vez</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 5</div><p>APLICAR LAS ESTRUCTURAS DE DATO DE TIPO COLECCIÓN DEL LENGUAJE PYTHON JUNTO A SUS CARACTERÍSTICAS Y UTILIDAD PARA RESOLVER UN PROBLEMA.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z" />
+  <path d="m7 16.5-4.74-2.85" />
+  <path d="m7 16.5 5-3" />
+  <path d="M7 16.5v5.17" />
+  <path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z" />
+  <path d="m17 16.5-5-3" />
+  <path d="m17 16.5 4.74-2.85" />
+  <path d="M17 16.5v5.17" />
+  <path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z" />
+  <path d="M12 8 7.26 5.15" />
+  <path d="m12 8 4.74-2.85" />
+  <path d="M12 13.5V8" />
+</svg></div>
+    <div>
+      <h2>Qué es una estructura de datos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">¿QUÉ ES UNA ESTRUCTURA DE DATOS Y POR QUÉ SE NECESITAN?</p>
+      <p class="texto">Una forma de guardar y organizar varios datos juntos. Python trae cuatro colecciones: listas, diccionarios, tuplas y sets.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 5h.01" />
+  <path d="M3 12h.01" />
+  <path d="M3 19h.01" />
+  <path d="M8 5h13" />
+  <path d="M8 12h13" />
+  <path d="M8 19h13" />
+</svg></div>
+    <div>
+      <h2>Listas</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">LISTAS: CARACTERÍSTICAS DE UNA LISTA · CREAR UNA LISTA · AGREGAR ELEMENTOS</p>
+      <p class="texto">Ordenadas, modificables y con repetidos permitidos: <code>temps = [12, 15, 9]</code>. <code>temps.append(11)</code> agrega un elemento al final.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11 5h10" />
+  <path d="M11 12h10" />
+  <path d="M11 19h10" />
+  <path d="M4 4h1v5" />
+  <path d="M4 9h2" />
+  <path d="M6.5 20H3.4c0-1 2.6-1.925 2.6-3.5a1.5 1.5 0 0 0-2.6-1.02" />
+</svg></div>
+    <div>
+      <h2>Rescatar elementos de una lista</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">RESCATAR UN ELEMENTO · RESCATAR UN RANGO DE ELEMENTOS · LISTAS Y CADENAS DE CARACTERES</p>
+      <p class="texto"><code>temps[0]</code> → el primero · <code>temps[-1]</code> → el último · <code>temps[1:3]</code> → los de índice 1 y 2. Los textos se recorren igual (<code>&quot;Norte&quot;[0]</code> → <code>&quot;N&quot;</code>) y <code>&quot;a,b&quot;.split(&quot;,&quot;)</code> los convierte en lista.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="18" x="3" y="3" rx="2" />
+  <path d="M3 9h18" />
+  <path d="M3 15h18" />
+  <path d="M9 3v18" />
+  <path d="M15 3v18" />
+</svg></div>
+    <div>
+      <h2>Listas anidadas y matrices</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">LISTAS ANIDADAS Y MATRICES</p>
+      <p class="texto">Listas dentro de listas: <code>m = [[1, 2], [3, 4]]</code>; <code>m[1][0]</code> → <code>3</code> (fila 1, columna 0).</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" />
+  <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+</svg></div>
+    <div>
+      <h2>Diccionarios</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">DICCIONARIOS: CARACTERÍSTICAS DE UN DICCIONARIO · CREAR UN DICCIONARIO · AGREGAR ELEMENTOS · RESCATAR ELEMENTOS · DICCIONARIOS ANIDADOS</p>
+      <p class="texto">Pares clave-valor, con claves únicas: <code>est = {&quot;nombre&quot;: &quot;Norte&quot;, &quot;alt&quot;: 520}</code>. <code>est[&quot;lluvia&quot;] = 3.2</code> agrega; <code>est[&quot;nombre&quot;]</code> o <code>est.get(&quot;alt&quot;)</code> rescata. Un valor puede ser otro diccionario.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+</svg></div>
+    <div>
+      <h2>Tuplas</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">TUPLAS: CARACTERÍSTICAS DE UNA TUPLA · CREACIÓN DE UNA TUPLA · RESCATAR ELEMENTOS · EMPAQUETADO Y DESEMPAQUETADO DE TUPLAS</p>
+      <p class="texto">Ordenadas e inmutables: <code>coord = (-33.4, -70.6)</code> empaqueta; <code>coord[0]</code> rescata; <code>lat, lon = coord</code> desempaqueta.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 3a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1" />
+  <path d="M19 3a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1" />
+  <path d="m7 15 3 3" />
+  <path d="m7 21 3-3H5a2 2 0 0 1-2-2v-2" />
+  <rect x="14" y="14" width="7" height="7" rx="1" />
+  <rect x="3" y="3" width="7" height="7" rx="1" />
+</svg></div>
+    <div>
+      <h2>Sets</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">SETS: CARACTERÍSTICAS DE UN SET · CREACIÓN DE UN SET · OPERACIONES DE CONJUNTO CON SETS</p>
+      <p class="texto">Sin orden y sin repetidos: <code>s = {&quot;Norte&quot;, &quot;Sur&quot;}</code>. Operaciones: <code>a | b</code> unión · <code>a &amp; b</code> intersección · <code>a - b</code> diferencia.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">8</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1" />
+  <path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1" />
+</svg></div>
+    <div>
+      <h2>Comprensiones</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">COMPRESIÓN DE LISTAS, DICCIONARIOS Y SETS (CONTENIDO OPCIONAL)</p>
+      <p class="texto">Crean colecciones en una línea: <code>[t * 2 for t in temps]</code> · <code>{k: v for k, v in pares}</code> · <code>{t for t in temps if t &gt; 10}</code>.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">9</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 3v18" />
+  <path d="m19 8 3 8a5 5 0 0 1-6 0zV7" />
+  <path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" />
+  <path d="m5 8 3 8a5 5 0 0 1-6 0zV7" />
+  <path d="M7 21h10" />
+</svg></div>
+    <div>
+      <h2>Cuál elegir</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">¿QUÉ ES UNA ESTRUCTURA DE DATOS Y POR QUÉ SE NECESITAN?</p>
+      <p class="texto">Lista: una secuencia que cambia · Diccionario: buscar por clave · Tupla: datos fijos · Set: valores únicos y comparar grupos.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>5.1</b><span>DISTINGUE LAS CARACTERÍSTICAS DE LAS ESTRUCTURAS DE DATO DE TIPO COLECCIÓN QUE PROVEE EL LENGUAJE PYTHON PARA RESOLVER UN PROBLEMA.</span></li><li><b>5.2</b><span>SELECCIONA LAS ESTRUCTURAS DE DATO ADECUADAS EN PYTHON PARA RESOLVER UN PROBLEMA DE BAJA COMPLEJIDAD.</span></li><li><b>5.3</b><span>UTILIZA OPERACIONES BÁSICAS DE LISTAS Y DICCIONARIOS EN UNA RUTINA DE CÓDIGO PARA RESOLVER UN PROBLEMA DE BAJA COMPLEJIDAD.</span></li></ol></div>
+  <div class="pie">Fundamentos de Ciencia de Datos · Módulo 2 · Ejemplos con Observatorio Cordillera, institución ficticia</div>
+</main></body></html>

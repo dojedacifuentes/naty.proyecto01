@@ -845,3 +845,20 @@ Quién: claude-code.
   gamificados se subieron a una carpeta nueva por curso (NATY 2.0 → «PFxxxx - nombre» → «4 Quiz gamificados»), siguiendo la
   numeración de las carpetas de PF1821 y PF1822. Todo se hizo con la cuenta del usuario en Chrome, no con el conector (#21).
 Quién: usuario (pedido y lista de cursos), claude-code.
+
+## 2026-10-01 · Infografías 2026 generadas por script, y aprobaciones del usuario en la planilla (sesión claude-code, 2026-10-01-claude-code-04)
+
+- **Aprobaciones:** lo que el usuario revisó y aprobó en la planilla de recursos pasa a Listo con la nota «Aprobado por el usuario el
+  01-10». La nota anterior queda entre paréntesis, para saber qué se había observado. Se aplica en el generador (`APROBADOS`), no a mano
+  en la hoja, para que una regeneración no lo pierda.
+- **Infografías por script, no en Canva:** las de PF1821 y PF1822 las armó el usuario con prompts. Estas 14 salen de
+  `npm run infografias`: HTML con el mismo estilo (1080 px, colores y tipografía de `especificaciones-visuales.txt`) renderizado a PNG con
+  Edge headless. El texto del AE y de los criterios lo pone el script desde el plan. Cada «contenido» debe estar en el plan, y el script
+  se detiene si algún contenido del plan queda fuera. Se descartó Canva por tiempo y porque no garantiza el texto exacto.
+- **Sin «plan formativo» ni «textual»** en las infografías (regla del 30-09). El rótulo es solo «CONTENIDO» y los criterios van como
+  «Lo que demostrarás». Las erratas obvias del plan (ENTONRNO, VISUAL ESTUDIO CODE, COLLAB, ANALISIS, LINEA) se muestran corregidas.
+  Vale igual corregida o tal cual (decisión del 30-09). La frase sin palabra de Entry level 3.4 queda tal cual, para no inventar texto.
+- **Íconos de Lucide** (licencia ISC), copiados en `scripts/lib/iconos-lucide/` con su LICENSE: el repo no instala dependencias.
+- **Entry level:** las infografías del AE3 y AE4 viven en `modulo-2/PF1474-entry-level-front-end/` y valen para PF1474, PF1477, PF1478 y
+  PF1479. En Drive va una carpeta común para los cuatro.
+Quién: usuario (aprobaciones y pedido), claude-code.

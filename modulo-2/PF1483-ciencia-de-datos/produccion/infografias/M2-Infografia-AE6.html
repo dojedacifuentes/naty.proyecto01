@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos de Ciencia de Datos · Módulo 2 · Aprendizaje esperado 6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS DE PROGRAMACIÓN PYTHON PARA EL ANÁLISIS DE DATOS · <span class="nw">Aprendizaje esperado 6</span></div>
+  <h1>SENTENCIAS ITERATIVAS</h1>
+  <p class="bajada">Repetir sin copiar y pegar</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 6</div><p>CODIFICAR UNA RUTINA UTILIZANDO SENTENCIAS ITERATIVAS PARA RESOLVER UN PROBLEMA DE BAJA COMPLEJIDAD EN PYTHON.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m17 2 4 4-4 4" />
+  <path d="M3 11v-1a4 4 0 0 1 4-4h14" />
+  <path d="m7 22-4-4 4-4" />
+  <path d="M21 13v1a4 4 0 0 1-4 4H3" />
+</svg></div>
+    <div>
+      <h2>Qué es una sentencia iterativa</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">¿QUÉ ES UNA SENTENCIA ITERATIVA Y POR QUÉ SE NECESITAN?</p>
+      <p class="texto">Repite un bloque de código varias veces. Evita copiar y pegar instrucciones y permite procesar todos los datos de una colección.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+  <path d="M21 3v5h-5" />
+  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+  <path d="M8 16H3v5" />
+</svg></div>
+    <div>
+      <h2>while</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">LA SENTENCIA WHILE</p>
+      <p class="texto">Repite mientras la condición sea verdadera: <code>while intentos &lt; 3:</code>. Algo dentro del ciclo debe cambiar la condición; si no, nunca termina.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M13 5h8" />
+  <path d="M13 12h8" />
+  <path d="M13 19h8" />
+  <path d="m3 17 2 2 4-4" />
+  <path d="m3 7 2 2 4-4" />
+</svg></div>
+    <div>
+      <h2>for</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">LA SENTENCIA FOR</p>
+      <p class="texto">Recorre los elementos de una secuencia uno por uno: <code>for t in temps:</code>. Usa <code>for</code> cuando sabes qué recorrer y <code>while</code> cuando depende de una condición.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 5h.01" />
+  <path d="M3 12h.01" />
+  <path d="M3 19h.01" />
+  <path d="M8 5h13" />
+  <path d="M8 12h13" />
+  <path d="M8 19h13" />
+</svg></div>
+    <div>
+      <h2>Iterar listas</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ITERANDO LISTAS DE ELEMENTOS</p>
+      <p class="texto"><code>for t in temps: total += t</code> suma todas las temperaturas; <code>enumerate(temps)</code> entrega además la posición de cada una.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" />
+  <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+</svg></div>
+    <div>
+      <h2>Iterar diccionarios</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ITERANDO DICCIONARIOS DE ELEMENTOS</p>
+      <p class="texto"><code>for clave in est:</code> recorre las claves · <code>est.values()</code> los valores · <code>for k, v in est.items():</code> ambos a la vez.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z" />
+  <path d="m14.5 12.5 2-2" />
+  <path d="m11.5 9.5 2-2" />
+  <path d="m8.5 6.5 2-2" />
+  <path d="m17.5 15.5 2-2" />
+</svg></div>
+    <div>
+      <h2>La función range</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">LA FUNCIÓN RANGE</p>
+      <p class="texto">Genera una secuencia de enteros: <code>range(5)</code> → 0 a 4 · <code>range(1, 6)</code> → 1 a 5 · <code>range(0, 10, 2)</code> → 0, 2, 4, 6, 8.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <line x1="4" x2="20" y1="9" y2="9" />
+  <line x1="4" x2="20" y1="15" y2="15" />
+  <line x1="10" x2="8" y1="3" y2="21" />
+  <line x1="16" x2="14" y1="3" y2="21" />
+</svg></div>
+    <div>
+      <h2>Iterar con range</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ITERANDO CON LA FUNCIÓN RANGE</p>
+      <p class="texto"><code>for dia in range(1, 8): print(f&quot;Día {dia}&quot;)</code> repite un número fijo de veces; <code>range(len(temps))</code> recorre una lista por índice.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>6.1</b><span>DISTINGUE LAS CARACTERÍSTICAS DE LAS SENTENCIAS ITERATIVAS WHILE Y FOR EN LA RESOLUCIÓN DE UN PROBLEMA.</span></li><li><b>6.2</b><span>UTILIZA LA SENTENCIA FOR PARA ITERAR ESTRUCTURAS DE DATOS DE TIPO COLECCIÓN DE ACUERDO AL LENGUAJE PYTHON.</span></li><li><b>6.3</b><span>CODIFICA UNA RUTINA QUE RESUELVE UN PROBLEMA DE BAJA COMPLEJIDAD UTILIZANDO SENTENCIAS ITERATIVAS DE ACUERDO AL LENGUAJE PYTHON.</span></li></ol></div>
+  <div class="pie">Fundamentos de Ciencia de Datos · Módulo 2 · Ejemplos con Observatorio Cordillera, institución ficticia</div>
+</main></body></html>

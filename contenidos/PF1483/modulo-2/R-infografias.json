@@ -1,0 +1,165 @@
+{
+  "_nota": "Infografías del módulo 2, una por AE (pedido del usuario, 2026-10-01). El texto del AE y de los criterios lo pone el generador desde data/planes; «contenido» va exacto del plan 2026 y el generador lo comprueba. Generar: npm run infografias -- PF1483",
+  "curso": "Fundamentos de Ciencia de Datos",
+  "carpeta": "PF1483-ciencia-de-datos",
+  "pie": "Fundamentos de Ciencia de Datos · Módulo 2 · Ejemplos con Observatorio Cordillera, institución ficticia",
+  "aes": [
+    {
+      "n": 1,
+      "titulo": "EL LENGUAJE PYTHON",
+      "bajada": "Tu primera caja de herramientas",
+      "secciones": [
+        { "icono": "history", "encabezado": "Reseña", "contenido": ["RESEÑA DEL LENGUAJE PYTHON"],
+          "texto": "Lo creó Guido van Rossum y se publicó en 1991; el nombre viene del grupo humorístico Monty Python. Es de código abierto y lo mantiene la Python Software Foundation." },
+        { "icono": "target", "encabezado": "Propósito y aplicaciones", "contenido": ["PROPÓSITO DEL LENGUAJE PYTHON"],
+          "texto": "Es un lenguaje de propósito general: análisis y ciencia de datos, inteligencia artificial, automatización de tareas, desarrollo web y scripts para el trabajo diario." },
+        { "icono": "list-checks", "encabezado": "Características", "contenido": ["PRINCIPALES CARACTERÍSTICAS DEL LENGUAJE"],
+          "texto": "Sintaxis simple y legible, interpretado, de tipado dinámico, multiplataforma y multiparadigma, con miles de librerías como pandas y NumPy." },
+        { "icono": "git-branch", "encabezado": "Versiones", "contenido": ["VERSIONES DE PYTHON"],
+          "texto": "Python 2 dejó de recibir soporte en 2020. Se trabaja con Python 3, en su versión estable más reciente; revisa la tuya con `python --version`." },
+        { "icono": "package", "encabezado": "Anaconda", "contenido": ["ENTORNO DE TRABAJO Y HERRAMIENTAS: EL ENTORNO ANACONDA"],
+          "texto": "Una distribución que instala Python con las librerías de datos y las herramientas Spyder y Jupyter, y administra entornos con `conda`." },
+        { "icono": "app-window", "encabezado": "Spyder", "contenido": ["EL EDITOR SPYDER"],
+          "texto": "Un editor pensado para el trabajo científico: editor de código, consola interactiva y explorador de variables en una misma ventana." },
+        { "icono": "notebook-pen", "encabezado": "Jupyter Notebooks y Google Colab", "contenido": ["JUPYTER NOTEBOOKS", "GOOGLE COLLAB"],
+          "texto": "Cuadernos que reúnen celdas de código, resultados y texto en un mismo documento. Google Colab los ejecuta en la nube, sin instalar nada, con una cuenta de Google." },
+        { "icono": "code", "encabezado": "Visual Studio Code", "contenido": ["VISUAL STUDIO CODE"],
+          "texto": "Editor gratuito de Microsoft. Con la extensión de Python suma resaltado de sintaxis, autocompletado, depurador, terminal integrada y soporte para notebooks." }
+      ]
+    },
+    {
+      "n": 2,
+      "titulo": "SENTENCIAS BÁSICAS DEL LENGUAJE PYTHON",
+      "bajada": "Datos, cálculos y una conversación con la consola",
+      "secciones": [
+        { "icono": "box", "encabezado": "Variables", "contenido": ["VARIABLES"],
+          "texto": "Un nombre que guarda un valor: `temperatura = 12.5`. Se crea al asignarle algo; el nombre va en minúsculas y con guion bajo, como `temp_maxima`." },
+        { "icono": "shapes", "encabezado": "Tipos de dato fundamentales", "contenido": ["TIPOS DE DATO FUNDAMENTALES: ENTERO", "DECIMAL", "CADENA DE CARACTERES", "BOOLEANO"],
+          "texto": "`int` entero (`3`) · `float` decimal (`12.5`) · `str` texto (`\"Estación Norte\"`) · `bool` verdadero o falso (`True`, `False`). `type(x)` dice de qué tipo es un valor." },
+        { "icono": "calculator", "encabezado": "Expresiones aritméticas", "contenido": ["EXPRESIONES ARITMÉTICAS"],
+          "texto": "`+` `-` `*` `/` · `//` división entera · `%` resto · `**` potencia. Se respetan los paréntesis y la precedencia: `(12 + 8) / 2` da `10.0`." },
+        { "icono": "arrow-left-right", "encabezado": "Conversiones de tipo", "contenido": ["CONVERSIONES DE TIPO"],
+          "texto": "`int(\"7\")` → `7` · `float(\"12.5\")` → `12.5` · `str(30)` → `\"30\"`. `input()` siempre entrega texto: conviértelo antes de calcular." },
+        { "icono": "monitor", "encabezado": "Imprimir en consola", "contenido": ["IMPRESIÓN EN CONSOLA"],
+          "texto": "`print(\"Máxima:\", temp_max)` o, con un f-string, `print(f\"Máxima: {temp_max} °C\")`." },
+        { "icono": "keyboard", "encabezado": "Leer datos del usuario", "contenido": ["ENTRADA DE DATOS EN CONSOLA"],
+          "texto": "`lluvia = float(input(\"Milímetros de lluvia: \"))` muestra el mensaje, espera lo que se escribe y lo guarda como número." },
+        { "icono": "file-code", "encabezado": "Crear y ejecutar un script", "contenido": ["CREACIÓN Y EJECUCIÓN DE UN SCRIPT PYTHON"],
+          "texto": "Guarda el código en un archivo `.py`, por ejemplo `clima.py`, y ejecútalo desde la consola con `python clima.py`." }
+      ]
+    },
+    {
+      "n": 3,
+      "titulo": "SENTENCIAS CONDICIONALES",
+      "bajada": "Programas que toman decisiones",
+      "secciones": [
+        { "icono": "git-fork", "encabezado": "Qué es una sentencia condicional", "contenido": ["¿QUÉ ES UNA SENTENCIA CONDICIONAL Y POR QUÉ SE NECESITAN?"],
+          "texto": "Permite que el programa decida: ejecuta un bloque solo si se cumple una condición. Sin ellas, el código haría siempre lo mismo." },
+        { "icono": "toggle-left", "encabezado": "Operadores booleanos", "contenido": ["OPERADORES BOOLEANOS: AND", "OR", "NEGACIÓN"],
+          "texto": "`and`: verdadero si ambas condiciones lo son · `or`: si al menos una lo es · `not`: invierte el valor." },
+        { "icono": "equal", "encabezado": "Operadores de comparación", "contenido": ["OPERADORES DE COMPARACIÓN: MAYOR QUE, MAYOR O IGUAL QUE", "MENOR QUE, MENOR O IGUAL QUE", "IGUAL QUE", "DISTINTO QUE"],
+          "texto": "`>` `>=` `<` `<=` `==` `!=`. Ojo: `=` asigna un valor y `==` compara dos valores." },
+        { "icono": "parentheses", "encabezado": "Paréntesis y expresiones", "contenido": ["PARÉNTESIS Y EXPRESIONES BOOLEANAS"],
+          "texto": "Los paréntesis fijan qué se evalúa primero: `(temp < 0) and (humedad > 80)` detecta riesgo de escarcha en una estación." },
+        { "icono": "split", "encabezado": "if e if-else", "contenido": ["LA SENTENCIA IF", "LA SENTENCIA IF-ELSE"],
+          "texto": "`if lluvia > 50:` emite la alerta; `else:` informa normalidad. La indentación de 4 espacios marca qué instrucciones están dentro de cada bloque." },
+        { "icono": "signpost", "encabezado": "if-elif-else", "contenido": ["LA SENTENCIA IF-ELIF-ELSE"],
+          "texto": "Para más de dos caminos: `if t >= 30:` calor · `elif t >= 10:` templado · `else:` frío. Se evalúa en orden y entra solo en el primero que se cumple." },
+        { "icono": "zap", "encabezado": "Expresión ternaria", "contenido": ["EXPRESIONES TERNARIAS (CONTENIDO OPCIONAL)"],
+          "texto": "Un if-else en una sola línea: `estado = \"alerta\" if lluvia > 50 else \"normal\"`." }
+      ]
+    },
+    {
+      "n": 4,
+      "titulo": "FUNCIONES Y MÓDULOS",
+      "bajada": "Escribe una vez, úsalo muchas veces",
+      "secciones": [
+        { "icono": "blocks", "encabezado": "Qué es una función", "contenido": ["¿QUÉ ES UNA FUNCIÓN Y PARA QUÉ SIRVEN?"],
+          "texto": "Un bloque de código con nombre que hace una tarea y se puede reutilizar. Evita repetir código y lo hace más fácil de leer y de probar." },
+        { "icono": "package-open", "encabezado": "Funciones preconstruidas", "contenido": ["FUNCIONES PRECONSTRUIDAS DE PYTHON"],
+          "texto": "Vienen listas para usar: `print()`, `input()`, `len()`, `round()`, `sum()`, `max()`, `min()`, `type()` y `sorted()`." },
+        { "icono": "wrench", "encabezado": "Definir una función propia", "contenido": ["FUNCIONES PERSONALIZADAS", "DEFINICIÓN DE UNA FUNCIÓN PERSONALIZADA"],
+          "texto": "`def a_fahrenheit(celsius):` y, indentado, el cuerpo. El nombre describe lo que hace la función." },
+        { "icono": "arrow-left-right", "encabezado": "Parámetros y retorno", "contenido": ["PARÁMETROS DE UNA FUNCIÓN Y RETORNO"],
+          "texto": "Los parámetros reciben los datos y `return` devuelve el resultado: `return celsius * 9 / 5 + 32`. Sin `return`, la función devuelve `None`." },
+        { "icono": "play", "encabezado": "Usar la función", "contenido": ["UTILIZACIÓN DE UNA FUNCIÓN PERSONALIZADA"],
+          "texto": "`a_fahrenheit(20)` devuelve `68.0`. Se llama tantas veces como haga falta, con distintos valores." },
+        { "icono": "library", "encabezado": "Módulos y librería estándar", "contenido": ["¿QUÉ ES UN MÓDULO Y PARA QUÉ SIRVEN?", "LA LIBRERÍA STANDARD DE PYTHON"],
+          "texto": "Un módulo es un archivo `.py` con funciones listas para usar. Python trae una librería estándar con muchos de ellos: `math`, `statistics`, `random`, `datetime` y `csv`." },
+        { "icono": "download", "encabezado": "Importar módulos: math y estadística", "contenido": ["IMPORTACIÓN DE MÓDULOS", "EL MÓDULO MATH", "EL MÓDULO STAT"],
+          "texto": "`import math` → `math.sqrt(16)`, `math.pi`. `from statistics import mean, median` → `mean([12, 15, 9])` da `12`." },
+        { "icono": "layers", "encabezado": "Funciones de orden superior", "contenido": ["FUNCIONES DE ORDEN SUPERIOR (CONTENIDO OPCIONAL)"],
+          "texto": "Reciben o devuelven otras funciones: `map(a_fahrenheit, temps)`, `filter()` o `sorted(datos, key=len)`." }
+      ]
+    },
+    {
+      "n": 5,
+      "titulo": "ESTRUCTURAS DE DATO EN PYTHON",
+      "bajada": "Guardar y organizar muchos datos a la vez",
+      "secciones": [
+        { "icono": "boxes", "encabezado": "Qué es una estructura de datos", "contenido": ["¿QUÉ ES UNA ESTRUCTURA DE DATOS Y POR QUÉ SE NECESITAN?"],
+          "texto": "Una forma de guardar y organizar varios datos juntos. Python trae cuatro colecciones: listas, diccionarios, tuplas y sets." },
+        { "icono": "list", "encabezado": "Listas", "contenido": ["LISTAS: CARACTERÍSTICAS DE UNA LISTA", "CREAR UNA LISTA", "AGREGAR ELEMENTOS"],
+          "texto": "Ordenadas, modificables y con repetidos permitidos: `temps = [12, 15, 9]`. `temps.append(11)` agrega un elemento al final." },
+        { "icono": "list-ordered", "encabezado": "Rescatar elementos de una lista", "contenido": ["RESCATAR UN ELEMENTO", "RESCATAR UN RANGO DE ELEMENTOS", "LISTAS Y CADENAS DE CARACTERES"],
+          "texto": "`temps[0]` → el primero · `temps[-1]` → el último · `temps[1:3]` → los de índice 1 y 2. Los textos se recorren igual (`\"Norte\"[0]` → `\"N\"`) y `\"a,b\".split(\",\")` los convierte en lista." },
+        { "icono": "grid-3x3", "encabezado": "Listas anidadas y matrices", "contenido": ["LISTAS ANIDADAS Y MATRICES"],
+          "texto": "Listas dentro de listas: `m = [[1, 2], [3, 4]]`; `m[1][0]` → `3` (fila 1, columna 0)." },
+        { "icono": "key-round", "encabezado": "Diccionarios", "contenido": ["DICCIONARIOS: CARACTERÍSTICAS DE UN DICCIONARIO", "CREAR UN DICCIONARIO", "AGREGAR ELEMENTOS", "RESCATAR ELEMENTOS", "DICCIONARIOS ANIDADOS"],
+          "texto": "Pares clave-valor, con claves únicas: `est = {\"nombre\": \"Norte\", \"alt\": 520}`. `est[\"lluvia\"] = 3.2` agrega; `est[\"nombre\"]` o `est.get(\"alt\")` rescata. Un valor puede ser otro diccionario." },
+        { "icono": "lock", "encabezado": "Tuplas", "contenido": ["TUPLAS: CARACTERÍSTICAS DE UNA TUPLA", "CREACIÓN DE UNA TUPLA", "RESCATAR ELEMENTOS", "EMPAQUETADO Y DESEMPAQUETADO DE TUPLAS"],
+          "texto": "Ordenadas e inmutables: `coord = (-33.4, -70.6)` empaqueta; `coord[0]` rescata; `lat, lon = coord` desempaqueta." },
+        { "icono": "combine", "encabezado": "Sets", "contenido": ["SETS: CARACTERÍSTICAS DE UN SET", "CREACIÓN DE UN SET", "OPERACIONES DE CONJUNTO CON SETS"],
+          "texto": "Sin orden y sin repetidos: `s = {\"Norte\", \"Sur\"}`. Operaciones: `a | b` unión · `a & b` intersección · `a - b` diferencia." },
+        { "icono": "braces", "encabezado": "Comprensiones", "contenido": ["COMPRESIÓN DE LISTAS, DICCIONARIOS Y SETS (CONTENIDO OPCIONAL)"],
+          "texto": "Crean colecciones en una línea: `[t * 2 for t in temps]` · `{k: v for k, v in pares}` · `{t for t in temps if t > 10}`." },
+        { "icono": "scale", "encabezado": "Cuál elegir", "contenido": ["¿QUÉ ES UNA ESTRUCTURA DE DATOS Y POR QUÉ SE NECESITAN?"],
+          "texto": "Lista: una secuencia que cambia · Diccionario: buscar por clave · Tupla: datos fijos · Set: valores únicos y comparar grupos." }
+      ]
+    },
+    {
+      "n": 6,
+      "titulo": "SENTENCIAS ITERATIVAS",
+      "bajada": "Repetir sin copiar y pegar",
+      "secciones": [
+        { "icono": "repeat", "encabezado": "Qué es una sentencia iterativa", "contenido": ["¿QUÉ ES UNA SENTENCIA ITERATIVA Y POR QUÉ SE NECESITAN?"],
+          "texto": "Repite un bloque de código varias veces. Evita copiar y pegar instrucciones y permite procesar todos los datos de una colección." },
+        { "icono": "refresh-cw", "encabezado": "while", "contenido": ["LA SENTENCIA WHILE"],
+          "texto": "Repite mientras la condición sea verdadera: `while intentos < 3:`. Algo dentro del ciclo debe cambiar la condición; si no, nunca termina." },
+        { "icono": "list-checks", "encabezado": "for", "contenido": ["LA SENTENCIA FOR"],
+          "texto": "Recorre los elementos de una secuencia uno por uno: `for t in temps:`. Usa `for` cuando sabes qué recorrer y `while` cuando depende de una condición." },
+        { "icono": "list", "encabezado": "Iterar listas", "contenido": ["ITERANDO LISTAS DE ELEMENTOS"],
+          "texto": "`for t in temps: total += t` suma todas las temperaturas; `enumerate(temps)` entrega además la posición de cada una." },
+        { "icono": "key-round", "encabezado": "Iterar diccionarios", "contenido": ["ITERANDO DICCIONARIOS DE ELEMENTOS"],
+          "texto": "`for clave in est:` recorre las claves · `est.values()` los valores · `for k, v in est.items():` ambos a la vez." },
+        { "icono": "ruler", "encabezado": "La función range", "contenido": ["LA FUNCIÓN RANGE"],
+          "texto": "Genera una secuencia de enteros: `range(5)` → 0 a 4 · `range(1, 6)` → 1 a 5 · `range(0, 10, 2)` → 0, 2, 4, 6, 8." },
+        { "icono": "hash", "encabezado": "Iterar con range", "contenido": ["ITERANDO CON LA FUNCIÓN RANGE"],
+          "texto": "`for dia in range(1, 8): print(f\"Día {dia}\")` repite un número fijo de veces; `range(len(temps))` recorre una lista por índice." }
+      ]
+    },
+    {
+      "n": 7,
+      "titulo": "PROGRAMACIÓN ORIENTADA A OBJETOS EN PYTHON",
+      "bajada": "Datos y acciones en un mismo molde",
+      "secciones": [
+        { "icono": "shapes", "encabezado": "El paradigma de objetos", "contenido": ["¿EN QUÉ CONSISTE EL PARADIGMA DE ORIENTACIÓN A OBJETOS EN LA PROGRAMACIÓN?"],
+          "texto": "Organiza el programa en objetos que juntan datos y acciones, como las cosas del mundo real: una estación tiene datos (nombre, altitud) y hace cosas (registrar una medición)." },
+        { "icono": "layers", "encabezado": "Principios básicos", "contenido": ["PRINCIPIOS BÁSICOS DE LA PROGRAMACIÓN A OBJETOS"],
+          "texto": "Abstracción, encapsulamiento, herencia y polimorfismo." },
+        { "icono": "eye-off", "encabezado": "Abstracción y ocultamiento", "contenido": ["ABSTRACCIÓN Y OCULTAMIENTO"],
+          "texto": "Abstraer es quedarse solo con lo importante para el problema. Ocultar es proteger los datos internos y ofrecer métodos para usarlos; en Python, un `_` al inicio del nombre indica uso interno." },
+        { "icono": "stamp", "encabezado": "Clases y objetos", "contenido": ["CLASES Y OBJETOS"],
+          "texto": "La clase es el molde (`class Estacion:`); el objeto, cada ejemplar creado con ese molde (`norte = Estacion(\"Norte\", 520)`)." },
+        { "icono": "database", "encabezado": "Estado y atributos", "contenido": ["ESTADO Y ATRIBUTOS"],
+          "texto": "Los atributos guardan los datos de cada objeto (`self.nombre`, `self.altitud`); sus valores en un momento dado forman su estado." },
+        { "icono": "zap", "encabezado": "Comportamiento y métodos", "contenido": ["COMPORTAMIENTO Y MÉTODOS"],
+          "texto": "Los métodos son las funciones de la clase: `def registrar(self, temp):`. Se llaman con un punto: `norte.registrar(12.5)`." },
+        { "icono": "hammer", "encabezado": "Constructor e instanciación", "contenido": ["CONSTRUCTORES E INSTANCIACIÓN"],
+          "texto": "`__init__(self, nombre, altitud)` da valor a los atributos al crear el objeto. Instanciar es crear el objeto: `sur = Estacion(\"Sur\", 80)`." },
+        { "icono": "type", "encabezado": "El objeto string", "contenido": ["EL OBJETO STRING Y SUS MÉTODOS PRINCIPALES"],
+          "texto": "Los textos también son objetos: `.upper()`, `.lower()`, `.strip()`, `.replace()`, `.split()`, `.startswith()` y `.find()`. Las librerías traen más clases listas, como `date` de `datetime`." }
+      ]
+    }
+  ]
+}

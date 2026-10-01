@@ -1,0 +1,117 @@
+{
+  "_nota": "Infografías del módulo 2, una por AE (pedido del usuario, 2026-10-01). El texto del AE y de los criterios lo pone el generador desde data/planes; «contenido» va exacto del plan 2026 y el generador lo comprueba. Generar: npm run infografias -- PF1481",
+  "curso": "Fundamentos de Análisis de Datos",
+  "carpeta": "PF1481-analisis-de-datos",
+  "pie": "Fundamentos de Análisis de Datos · Módulo 2 · Ejemplos con Distribuidora Pehuén, empresa ficticia",
+  "aes": [
+    {
+      "n": 1,
+      "titulo": "CARACTERÍSTICAS PRINCIPALES DEL ANÁLISIS DE DATOS",
+      "bajada": "De los datos a las decisiones",
+      "secciones": [
+        { "icono": "search", "encabezado": "Qué es el análisis de datos", "contenido": ["QUÉ ES EL ANÁLISIS DE DATOS"],
+          "texto": "Examinar, limpiar, transformar y modelar datos para descubrir información útil, sacar conclusiones y apoyar decisiones." },
+        { "icono": "briefcase-business", "encabezado": "Para qué sirve en el trabajo", "contenido": ["QUÉ ES EL ANÁLISIS DE DATOS"],
+          "texto": "Casi toda área registra datos: ventas, inventario, clientes, atención. Saber leerlos permite decidir con evidencia y no por intuición; es una competencia clave en el trabajo del siglo XXI." },
+        { "icono": "route", "encabezado": "Las etapas del análisis", "contenido": ["ETAPAS DEL ANÁLISIS DE DATOS"],
+          "texto": "1 Definir la pregunta · 2 Recolectar los datos · 3 Preparar y limpiar · 4 Explorar y analizar · 5 Visualizar y comunicar los hallazgos." },
+        { "icono": "lightbulb", "encabezado": "Del dato al insight", "contenido": ["ETAPAS DEL ANÁLISIS DE DATOS"],
+          "texto": "Un insight es un hallazgo que explica lo que pasa y lleva a actuar. Ejemplo: en Distribuidora Pehuén, las ventas de la zona sur bajan en invierno, así que conviene reforzar el stock en otoño." },
+        { "icono": "flask-conical", "encabezado": "Técnicas para analizar", "contenido": ["TÉCNICAS Y HERRAMIENTAS PARA ANALIZAR DATOS"],
+          "texto": "Descriptiva (qué pasó), diagnóstica (por qué pasó), predictiva (qué podría pasar) y prescriptiva (qué conviene hacer). Se apoyan en estadística básica, filtros, agrupaciones y gráficos." },
+        { "icono": "wrench", "encabezado": "Herramientas", "contenido": ["TÉCNICAS Y HERRAMIENTAS PARA ANALIZAR DATOS"],
+          "texto": "Planillas de cálculo (Excel, Google Sheets), herramientas de visualización (Power BI, Tableau, Looker Studio) y lenguajes como Python o R. En este módulo trabajas con Excel." },
+        { "icono": "scale", "encabezado": "Cómo elegir la herramienta", "contenido": ["TÉCNICAS Y HERRAMIENTAS PARA ANALIZAR DATOS"],
+          "texto": "Considera el volumen de datos, la pregunta que respondes, quién verá el resultado y cuántas veces se repetirá el análisis. Para volúmenes moderados y respuestas rápidas, una planilla basta." }
+      ]
+    },
+    {
+      "n": 2,
+      "titulo": "PREPARACIÓN DE LOS DATOS",
+      "bajada": "Un set de datos limpio, listo para analizar",
+      "secciones": [
+        { "icono": "sparkles", "encabezado": "Qué es preparar los datos", "contenido": ["QUÉ ES LA PREPARACIÓN DE DATOS", "IMPORTANCIA DE LA PREPARACIÓN DE DATOS DURANTE EL ANÁLISIS"],
+          "texto": "Dejar los datos completos, coherentes y en el formato correcto antes de analizarlos. Si los datos de entrada tienen errores, las conclusiones también los tendrán." },
+        { "icono": "list-checks", "encabezado": "Técnicas de limpieza", "contenido": ["TÉCNICAS DE PREPARACIÓN Y LIMPIEZA DE DATOS"],
+          "texto": "Revisar la estructura, quitar duplicados y vacíos, unificar formatos, tratar los datos faltantes y validar lo que se ingresa. Trabaja siempre sobre una copia de los datos originales." },
+        { "icono": "table", "encabezado": "Estructura y tipos de dato", "contenido": ["ESTRUCTURA Y TIPOS DE DATO EN EXCEL"],
+          "texto": "Una tabla ordenada: una fila por registro, una columna por variable y los encabezados en la primera fila. Cada columna con su tipo: número, texto, fecha o moneda." },
+        { "icono": "copy-x", "encabezado": "Duplicados y vacíos", "contenido": ["ELIMINACIÓN DE DUPLICADOS EN EXCEL", "ELIMINACIÓN DE FILAS O COLUMNAS VACÍAS EN EXCEL"],
+          "texto": "Datos → Quitar duplicados, marcando las columnas que identifican un registro. Para los vacíos: Inicio → Buscar y seleccionar → Ir a Especial → Celdas en blanco, y eliminar la fila o la columna." },
+        { "icono": "replace", "encabezado": "Estandarizar", "contenido": ["ESTANDARIZACIÓN DE DATOS EN EXCEL CON BUSCAR Y REEMPLAZAR"],
+          "texto": "Buscar y reemplazar (Ctrl + L) unifica escrituras: «Stgo.», «Santiago» y «SANTIAGO» quedan como un solo valor. Ayudan las funciones `ESPACIOS`, `MAYUSC` y `NOMPROPIO`." },
+        { "icono": "funnel", "encabezado": "Filtrar y ordenar", "contenido": ["FILTRADO DE DATOS EN EXCEL", "ORDENAMIENTO DE DATOS EN EXCEL"],
+          "texto": "Datos → Filtro muestra solo las filas que cumplen una condición, por ejemplo una región. Datos → Ordenar organiza por una o varias columnas, de menor a mayor o de la A a la Z." },
+        { "icono": "split", "encabezado": "Dividir y combinar", "contenido": ["DIVISIÓN DE DATOS EN EXCEL", "COMBINACIÓN DE DATOS EN EXCEL"],
+          "texto": "Datos → Texto en columnas separa «Nombre Apellido» en dos columnas. Para unir columnas: `CONCAT` o el operador `&`; para traer datos de otra tabla: `BUSCARX` o `BUSCARV`." },
+        { "icono": "circle-dashed", "encabezado": "Datos faltantes", "contenido": ["RELLENO DE DATOS FALTANTES EN EXCEL"],
+          "texto": "Decide caso a caso: completar con un valor conocido, rellenar hacia abajo cuando el dato se repite, usar el promedio o la mediana, o marcarlo como «sin dato». Nunca inventes datos." },
+        { "icono": "shield-check", "encabezado": "Validación de datos", "contenido": ["VALIDACIÓN DE DATOS EN EXCEL"],
+          "texto": "Datos → Validación de datos limita lo que se puede escribir en una celda: una lista de opciones, números dentro de un rango o fechas válidas. Evita errores desde el ingreso." }
+      ]
+    },
+    {
+      "n": 3,
+      "titulo": "EXPLORACIÓN DE DATOS",
+      "bajada": "Mirar los datos antes de concluir",
+      "secciones": [
+        { "icono": "telescope", "encabezado": "Análisis exploratorio", "contenido": ["QUÉ ES EL ANÁLISIS EXPLORATORIO DE DATOS"],
+          "texto": "Un primer recorrido para conocer los datos: cómo se distribuyen, qué valores son extremos y qué variables se relacionan. Responde preguntas y abre otras nuevas." },
+        { "icono": "trending-up", "encabezado": "Análisis regresivo", "contenido": ["QUÉ ES UN ANÁLISIS REGRESIVO"],
+          "texto": "Estudia cómo cambia una variable según otra. Ejemplo: cuánto suben las ventas cuando aumenta la inversión en publicidad. Se ve con un gráfico de dispersión y su línea de tendencia." },
+        { "icono": "calendar-range", "encabezado": "Series de tiempo", "contenido": ["QUÉ ES EL ANÁLISIS DE SERIES DE TIEMPO"],
+          "texto": "Datos ordenados en el tiempo (días, meses, años) para ver la tendencia, la estacionalidad y los cambios. A diferencia de la regresión, el eje que explica es el tiempo." },
+        { "icono": "sigma", "encabezado": "Estadísticas de resumen", "contenido": ["CÁLCULO DE ESTADÍSTICAS DE SUMARIZACIÓN EN EXCEL: PROMEDIO, MEDIANA, COUNT, MIN, MAX, DESVEST"],
+          "texto": "`=PROMEDIO(B2:B100)` · `=MEDIANA()` · `=CONTAR()` (COUNT) · `=MIN()` · `=MAX()` · `=DESVEST()`: el centro, la cantidad, el rango y la dispersión de los datos." },
+        { "icono": "eye", "encabezado": "Análisis visual", "contenido": ["QUÉ ES EL ANÁLISIS VISUAL"],
+          "texto": "Usar gráficos para ver patrones que en una tabla pasan inadvertidos. Un buen gráfico tiene título, ejes rotulados y una sola idea principal." },
+        { "icono": "chart-column", "encabezado": "Qué gráfico usar", "contenido": ["GRÁFICOS EN EXCEL PARA EL ANÁLISIS VISUAL: HISTOGRAMA, LINEA, BARRAS, CAJA Y BIGOTE, TORTA, DISPERSIÓN"],
+          "texto": "Histograma: distribución · Línea: evolución · Barras: comparar categorías · Caja y bigote: dispersión y valores atípicos · Torta: partes de un total · Dispersión: relación entre dos variables." },
+        { "icono": "chart-line", "encabezado": "Calcular tendencias", "contenido": ["CÁLCULO DE TENDENCIAS EN EXCEL"],
+          "texto": "`=TENDENCIA()` y `=PRONOSTICO.LINEAL()` proyectan valores a partir de los datos; un promedio móvil suaviza las variaciones de un mes a otro." },
+        { "icono": "chart-spline", "encabezado": "Gráficos de tendencia", "contenido": ["GRÁFICOS EN EXCEL PARA EL ANÁLISIS DE TENDENCIAS"],
+          "texto": "En un gráfico de línea o de dispersión: clic derecho en la serie → Agregar línea de tendencia (lineal o media móvil), con la opción de mostrar la ecuación y el R²." }
+      ]
+    },
+    {
+      "n": 4,
+      "titulo": "TABLAS DINÁMICAS",
+      "bajada": "Resumir miles de filas con un par de clics",
+      "secciones": [
+        { "icono": "table-2", "encabezado": "Qué es una tabla dinámica", "contenido": ["QUÉ ES UNA TABLA DINÁMICA"],
+          "texto": "Una tabla que resume miles de filas en segundos: agrupa, suma, cuenta o promedia según los campos que arrastras. No modifica los datos de origen." },
+        { "icono": "thumbs-up", "encabezado": "Ventajas", "contenido": ["VENTAJAS DE SU UTILIZACIÓN"],
+          "texto": "Es rápida, interactiva y no requiere fórmulas: cambias la vista arrastrando campos, filtras al instante y la actualizas cuando llegan datos nuevos." },
+        { "icono": "store", "encabezado": "Dónde se usan", "contenido": ["ESCENARIOS COMUNES DONDE SE UTILIZAN"],
+          "texto": "Ventas por producto, región o mes; inventario por bodega; atenciones por canal; gastos por centro de costo." },
+        { "icono": "layout-panel-left", "encabezado": "Las cuatro áreas", "contenido": ["FUNCIONALIDADES BÁSICAS DE UNA TABLA DINÁMICA EN EXCEL"],
+          "texto": "Insertar → Tabla dinámica. Arrastra los campos a Filas, Columnas, Valores y Filtros. En Valores eliges suma, cuenta, promedio, máximo o mínimo." },
+        { "icono": "search", "encabezado": "Analizar con la tabla", "contenido": ["ANÁLISIS DE DATOS CON TABLAS DINÁMICAS EN EXCEL"],
+          "texto": "Ordena para ver los mayores, agrupa las fechas por mes o trimestre, muestra los valores como % del total y usa segmentaciones para filtrar con un clic." },
+        { "icono": "chart-pie", "encabezado": "Gráficos dinámicos", "contenido": ["GRÁFICOS DINÁMICOS EN EXCEL"],
+          "texto": "Insertar → Gráfico dinámico: el gráfico sigue a la tabla. Si filtras o cambias un campo, el gráfico se actualiza solo." },
+        { "icono": "calculator", "encabezado": "Campos calculados", "contenido": ["FUNCIONALIDADES AVANZADAS: CAMPOS CALCULADOS"],
+          "texto": "Analizar de tabla dinámica → Campos, elementos y conjuntos → Campo calculado. Crea un campo nuevo con una fórmula sobre otros, por ejemplo Margen = Ventas − Costo." }
+      ]
+    },
+    {
+      "n": 5,
+      "titulo": "COMPLEMENTOS Y HERRAMIENTAS AVANZADAS EN EXCEL",
+      "bajada": "Modelos de datos y tableros interactivos",
+      "secciones": [
+        { "icono": "database", "encabezado": "Qué es Power Pivot", "contenido": ["QUÉ ES POWER PIVOT Y POR QUÉ ES ÚTIL EN EL ANÁLISIS DE DATOS"],
+          "texto": "Un complemento de Excel para trabajar con millones de filas y varias tablas relacionadas en un modelo de datos. Se activa en Archivo → Opciones → Complementos → Complementos COM." },
+        { "icono": "arrow-left-right", "encabezado": "Frente a la tabla dinámica tradicional", "contenido": ["DIFERENCIA CON LAS TABLAS DINÁMICAS TRADICIONALES"],
+          "texto": "La tradicional resume una sola tabla de la hoja. Con Power Pivot, la tabla dinámica combina varias tablas relacionadas y admite medidas escritas en DAX." },
+        { "icono": "upload", "encabezado": "Cargar los datos", "contenido": ["IMPORTACIÓN Y CARGA DE DATOS EN POWER PIVOT"],
+          "texto": "Power Pivot → Administrar → Obtener datos externos: desde Excel, CSV, Access o bases de datos. También con «Agregar al modelo de datos» desde una tabla de la hoja." },
+        { "icono": "network", "encabezado": "Modelar", "contenido": ["MODELADO DE DATOS EN POWER PIVOT (CASOS SIMPLES)"],
+          "texto": "En la Vista de diagrama, relaciona las tablas por una columna común: Ventas[IdProducto] con Productos[IdProducto]. Una tabla de hechos al centro y sus tablas de dimensión alrededor." },
+        { "icono": "square-function", "encabezado": "Medidas calculadas", "contenido": ["DEFINICIÓN Y CREACIÓN DE MEDIDAS CALCULADAS"],
+          "texto": "Una medida es un cálculo que se adapta a los filtros de la tabla dinámica. Se escribe en DAX: `Total ventas := SUM(Ventas[Monto])`." },
+        { "icono": "layout-dashboard", "encabezado": "Dashboards con Power View", "contenido": ["CREACIÓN DE DASHBOARDS INTERACTIVOS MEDIANTE POWER VIEW"],
+          "texto": "Power View arma un tablero interactivo sobre el modelo: tarjetas, gráficos y mapas que se filtran entre sí con un clic. Viene en Excel 2013 y 2016; en Microsoft 365 el mismo tablero se arma con gráficos dinámicos y segmentaciones." }
+      ]
+    }
+  ]
+}

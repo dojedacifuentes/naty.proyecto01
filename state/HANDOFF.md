@@ -2,13 +2,32 @@
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
 `2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-04` y `2026-09-30-claude-code-01` a `-13` y
-`2026-10-01-claude-code-01` a `-03` — 2026-09-24 al 1-oct (UTC)
+`2026-10-01-claude-code-01` a `-04` — 2026-09-24 al 1-oct (UTC)
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 > **Ojo (sesión -04):** las sesiones -02 y -03 del 27-sep, que armaron los quiz en Canva, reemplazaron este archivo
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
+
+## HECHO (sesión 2026-10-01-04): aprobaciones del usuario e infografías 2026 de PF1481, PF1483 y Entry level
+
+- **Pedido:** tras revisar la planilla «02 Recursos M2», el usuario aprobó como Listo varios recursos (lista en CHECKPOINT y DECISIONS).
+  Pidió crear "todas las infografías de acuerdo a los criterios y contenidos 2026" de PF1481 y PF1483, y las faltantes del AE3 y AE4 de
+  Entry level, y subirlas.
+- **Cómo se generan:** `npm run infografias -- PF1481 PF1483 PF1474`.
+  - `--solo-validar` revisa el texto contra el plan.
+  - `--sin-png` escribe HTML, README y textos alternativos sin volver a sacar los PNG.
+  - El render es determinista: si no cambia el texto, los PNG salen idénticos byte a byte. Por eso se pueden regenerar sin romper la
+    igualdad con Drive.
+  - Si cambias un texto, sube el PNG como **versión nueva del mismo archivo** (Drive → Subir → «Reemplazar elementos actuales»), para no
+    cambiar el enlace de la planilla.
+- **Trampas:**
+  - El control 05 toma la palabra «clave» seguida de dos puntos como credencial. En textos de Python, escribe «clave-valor».
+  - En Drive, el ref de «Subir archivo» cambia según la página: haz siempre `find` antes del clic.
+  - Al reimportar con «Reemplazar hoja de cálculo», el selector viene por defecto en «Crear una hoja de cálculo»: cámbialo.
+- **Pendiente:** lo que el usuario no aprobó (ver CHECKPOINT, Siguiente paso), los 20 videos y los 3 cursos sin recursos. El usuario
+  dijo "luego haremos los que no tengan ninguno".
 
 ## HECHO (sesión 2026-10-01-03): planilla «02 Recursos M2 · Licitación 2026 (15 cursos)» y quiz gamificados en Drive
 

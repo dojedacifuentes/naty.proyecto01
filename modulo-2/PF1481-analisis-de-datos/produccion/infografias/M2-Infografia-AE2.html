@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos de Análisis de Datos · Módulo 2 · Aprendizaje esperado 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · INTRODUCCIÓN AL ANÁLISIS DE DATOS · <span class="nw">Aprendizaje esperado 2</span></div>
+  <h1>PREPARACIÓN DE LOS DATOS</h1>
+  <p class="bajada">Un set de datos limpio, listo para analizar</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 2</div><p>APLICAR TÉCNICAS Y HERRAMIENTAS DE PREPARACIÓN DE DATOS PARA LA OBTENCIÓN DE UN SET DE DATOS LIMPIO UTILIZANDO PLANILLAS DE CÁLCULO.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+  <path d="M20 2v4" />
+  <path d="M22 4h-4" />
+  <circle cx="4" cy="20" r="2" />
+</svg></div>
+    <div>
+      <h2>Qué es preparar los datos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">QUÉ ES LA PREPARACIÓN DE DATOS · IMPORTANCIA DE LA PREPARACIÓN DE DATOS DURANTE EL ANÁLISIS</p>
+      <p class="texto">Dejar los datos completos, coherentes y en el formato correcto antes de analizarlos. Si los datos de entrada tienen errores, las conclusiones también los tendrán.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M13 5h8" />
+  <path d="M13 12h8" />
+  <path d="M13 19h8" />
+  <path d="m3 17 2 2 4-4" />
+  <path d="m3 7 2 2 4-4" />
+</svg></div>
+    <div>
+      <h2>Técnicas de limpieza</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">TÉCNICAS DE PREPARACIÓN Y LIMPIEZA DE DATOS</p>
+      <p class="texto">Revisar la estructura, quitar duplicados y vacíos, unificar formatos, tratar los datos faltantes y validar lo que se ingresa. Trabaja siempre sobre una copia de los datos originales.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 3v18" />
+  <rect width="18" height="18" x="3" y="3" rx="2" />
+  <path d="M3 9h18" />
+  <path d="M3 15h18" />
+</svg></div>
+    <div>
+      <h2>Estructura y tipos de dato</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ESTRUCTURA Y TIPOS DE DATO EN EXCEL</p>
+      <p class="texto">Una tabla ordenada: una fila por registro, una columna por variable y los encabezados en la primera fila. Cada columna con su tipo: número, texto, fecha o moneda.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2" />
+  <rect x="8" y="8" width="14" height="14" rx="2" />
+  <path d="m12.5 12.5 5 5" />
+  <path d="m12.5 17.5 5-5" />
+</svg></div>
+    <div>
+      <h2>Duplicados y vacíos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ELIMINACIÓN DE DUPLICADOS EN EXCEL · ELIMINACIÓN DE FILAS O COLUMNAS VACÍAS EN EXCEL</p>
+      <p class="texto">Datos → Quitar duplicados, marcando las columnas que identifican un registro. Para los vacíos: Inicio → Buscar y seleccionar → Ir a Especial → Celdas en blanco, y eliminar la fila o la columna.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 4a1 1 0 0 1 1-1" />
+  <path d="M15 10a1 1 0 0 1-1-1" />
+  <path d="M21 4a1 1 0 0 0-1-1" />
+  <path d="M21 9a1 1 0 0 1-1 1" />
+  <path d="m3 7 3 3 3-3" />
+  <path d="M6 10V5a2 2 0 0 1 2-2h2" />
+  <rect x="3" y="14" width="7" height="7" rx="1" />
+</svg></div>
+    <div>
+      <h2>Estandarizar</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ESTANDARIZACIÓN DE DATOS EN EXCEL CON BUSCAR Y REEMPLAZAR</p>
+      <p class="texto">Buscar y reemplazar (Ctrl + L) unifica escrituras: «Stgo.», «Santiago» y «SANTIAGO» quedan como un solo valor. Ayudan las funciones <code>ESPACIOS</code>, <code>MAYUSC</code> y <code>NOMPROPIO</code>.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
+</svg></div>
+    <div>
+      <h2>Filtrar y ordenar</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">FILTRADO DE DATOS EN EXCEL · ORDENAMIENTO DE DATOS EN EXCEL</p>
+      <p class="texto">Datos → Filtro muestra solo las filas que cumplen una condición, por ejemplo una región. Datos → Ordenar organiza por una o varias columnas, de menor a mayor o de la A a la Z.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 3h5v5" />
+  <path d="M8 3H3v5" />
+  <path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3" />
+  <path d="m15 9 6-6" />
+</svg></div>
+    <div>
+      <h2>Dividir y combinar</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">DIVISIÓN DE DATOS EN EXCEL · COMBINACIÓN DE DATOS EN EXCEL</p>
+      <p class="texto">Datos → Texto en columnas separa «Nombre Apellido» en dos columnas. Para unir columnas: <code>CONCAT</code> o el operador <code>&amp;</code>; para traer datos de otra tabla: <code>BUSCARX</code> o <code>BUSCARV</code>.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">8</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10.1 2.182a10 10 0 0 1 3.8 0" />
+  <path d="M13.9 21.818a10 10 0 0 1-3.8 0" />
+  <path d="M17.609 3.721a10 10 0 0 1 2.69 2.7" />
+  <path d="M2.182 13.9a10 10 0 0 1 0-3.8" />
+  <path d="M20.279 17.609a10 10 0 0 1-2.7 2.69" />
+  <path d="M21.818 10.1a10 10 0 0 1 0 3.8" />
+  <path d="M3.721 6.391a10 10 0 0 1 2.7-2.69" />
+  <path d="M6.391 20.279a10 10 0 0 1-2.69-2.7" />
+</svg></div>
+    <div>
+      <h2>Datos faltantes</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">RELLENO DE DATOS FALTANTES EN EXCEL</p>
+      <p class="texto">Decide caso a caso: completar con un valor conocido, rellenar hacia abajo cuando el dato se repite, usar el promedio o la mediana, o marcarlo como «sin dato». Nunca inventes datos.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">9</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+</svg></div>
+    <div>
+      <h2>Validación de datos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">VALIDACIÓN DE DATOS EN EXCEL</p>
+      <p class="texto">Datos → Validación de datos limita lo que se puede escribir en una celda: una lista de opciones, números dentro de un rango o fechas válidas. Evita errores desde el ingreso.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>2.1</b><span>RECONOCE LA IMPORTANCIA, TÉCNICAS Y HERRAMIENTAS PARA LA PREPARACIÓN DE LOS DATOS.</span></li><li><b>2.2</b><span>COMPRENDE LAS TÉCNICAS DE PREPARACIÓN Y LIMPIEZA DE DATOS DE ACUERDO CON LAS BUENAS PRÁCTICAS DE LA DISCIPLINA.</span></li><li><b>2.3</b><span>APLICA TÉCNICAS DE PREPARACIÓN Y LIMPIEZA DE DATOS UTILIZANDO PLANILLAS DE CÁLCULO EXCEL PARA RESOLVER UN PROBLEMA.</span></li></ol></div>
+  <div class="pie">Fundamentos de Análisis de Datos · Módulo 2 · Ejemplos con Distribuidora Pehuén, empresa ficticia</div>
+</main></body></html>

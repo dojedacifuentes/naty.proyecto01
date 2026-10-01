@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos de Ciencia de Datos · Módulo 2 · Aprendizaje esperado 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS DE PROGRAMACIÓN PYTHON PARA EL ANÁLISIS DE DATOS · <span class="nw">Aprendizaje esperado 2</span></div>
+  <h1>SENTENCIAS BÁSICAS DEL LENGUAJE PYTHON</h1>
+  <p class="bajada">Datos, cálculos y una conversación con la consola</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 2</div><p>APLICAR EL CONCEPTO DE VARIABLE, TIPOS DE DATO FUNDAMENTALES Y EXPRESIONES ARITMÉTICAS UTILIZANDO EL LENGUAJE PYTHON PARA LA CREACIÓN DE UNA RUTINA DE BAJA COMPLEJIDAD.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+  <path d="m3.3 7 8.7 5 8.7-5" />
+  <path d="M12 22V12" />
+</svg></div>
+    <div>
+      <h2>Variables</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">VARIABLES</p>
+      <p class="texto">Un nombre que guarda un valor: <code>temperatura = 12.5</code>. Se crea al asignarle algo; el nombre va en minúsculas y con guion bajo, como <code>temp_maxima</code>.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z" />
+  <rect x="3" y="14" width="7" height="7" rx="1" />
+  <circle cx="17.5" cy="17.5" r="3.5" />
+</svg></div>
+    <div>
+      <h2>Tipos de dato fundamentales</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">TIPOS DE DATO FUNDAMENTALES: ENTERO · DECIMAL · CADENA DE CARACTERES · BOOLEANO</p>
+      <p class="texto"><code>int</code> entero (<code>3</code>) · <code>float</code> decimal (<code>12.5</code>) · <code>str</code> texto (<code>&quot;Estación Norte&quot;</code>) · <code>bool</code> verdadero o falso (<code>True</code>, <code>False</code>). <code>type(x)</code> dice de qué tipo es un valor.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="16" height="20" x="4" y="2" rx="2" />
+  <line x1="8" x2="16" y1="6" y2="6" />
+  <line x1="16" x2="16" y1="14" y2="18" />
+  <path d="M16 10h.01" />
+  <path d="M12 10h.01" />
+  <path d="M8 10h.01" />
+  <path d="M12 14h.01" />
+  <path d="M8 14h.01" />
+  <path d="M12 18h.01" />
+  <path d="M8 18h.01" />
+</svg></div>
+    <div>
+      <h2>Expresiones aritméticas</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">EXPRESIONES ARITMÉTICAS</p>
+      <p class="texto"><code>+</code> <code>-</code> <code>*</code> <code>/</code> · <code>//</code> división entera · <code>%</code> resto · <code>**</code> potencia. Se respetan los paréntesis y la precedencia: <code>(12 + 8) / 2</code> da <code>10.0</code>.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 3 4 7l4 4" />
+  <path d="M4 7h16" />
+  <path d="m16 21 4-4-4-4" />
+  <path d="M20 17H4" />
+</svg></div>
+    <div>
+      <h2>Conversiones de tipo</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CONVERSIONES DE TIPO</p>
+      <p class="texto"><code>int(&quot;7&quot;)</code> → <code>7</code> · <code>float(&quot;12.5&quot;)</code> → <code>12.5</code> · <code>str(30)</code> → <code>&quot;30&quot;</code>. <code>input()</code> siempre entrega texto: conviértelo antes de calcular.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="14" x="2" y="3" rx="2" />
+  <line x1="8" x2="16" y1="21" y2="21" />
+  <line x1="12" x2="12" y1="17" y2="21" />
+</svg></div>
+    <div>
+      <h2>Imprimir en consola</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">IMPRESIÓN EN CONSOLA</p>
+      <p class="texto"><code>print(&quot;Máxima:&quot;, temp_max)</code> o, con un f-string, <code>print(f&quot;Máxima: {temp_max} °C&quot;)</code>.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 8h.01" />
+  <path d="M12 12h.01" />
+  <path d="M14 8h.01" />
+  <path d="M16 12h.01" />
+  <path d="M18 8h.01" />
+  <path d="M6 8h.01" />
+  <path d="M7 16h10" />
+  <path d="M8 12h.01" />
+  <rect width="20" height="16" x="2" y="4" rx="2" />
+</svg></div>
+    <div>
+      <h2>Leer datos del usuario</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ENTRADA DE DATOS EN CONSOLA</p>
+      <p class="texto"><code>lluvia = float(input(&quot;Milímetros de lluvia: &quot;))</code> muestra el mensaje, espera lo que se escribe y lo guarda como número.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+  <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+  <path d="M10 12.5 8 15l2 2.5" />
+  <path d="m14 12.5 2 2.5-2 2.5" />
+</svg></div>
+    <div>
+      <h2>Crear y ejecutar un script</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CREACIÓN Y EJECUCIÓN DE UN SCRIPT PYTHON</p>
+      <p class="texto">Guarda el código en un archivo <code>.py</code>, por ejemplo <code>clima.py</code>, y ejecútalo desde la consola con <code>python clima.py</code>.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>2.1</b><span>RECONOCE EL CONCEPTO DE VARIABLE IDENTIFICANDO LOS TIPOS DE DATO FUNDAMENTALES DE ACUERDO AL LENGUAJE PYTHON.</span></li><li><b>2.2</b><span>ELABORA EXPRESIONES ARITMÉTICAS PARA REALIZAR CÁLCULOS DE ACUERDO AL LENGUAJE PYTHON.</span></li><li><b>2.3</b><span>UTILIZA LA ENTRADA Y SALIDA ESTÁNDAR DE PYTHON PARA EL INTERCAMBIO DE DATOS CON LA RUTINA.</span></li><li><b>2.4</b><span>EJECUTA UN SCRIPT CON INSTRUCCIONES PYTHON DESDE LA CONSOLA.</span></li></ol></div>
+  <div class="pie">Fundamentos de Ciencia de Datos · Módulo 2 · Ejemplos con Observatorio Cordillera, institución ficticia</div>
+</main></body></html>

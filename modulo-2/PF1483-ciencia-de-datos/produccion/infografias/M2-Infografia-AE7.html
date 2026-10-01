@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Fundamentos de Ciencia de Datos · Módulo 2 · Aprendizaje esperado 7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=block" rel="stylesheet">
+<style>
+:root { --fondo:#F8FAFC; --titulo:#0F3D5E; --petroleo:#0E7490; --texto:#1F2937; --gris:#475569; --naranjo:#F59E0B; --claro:#E6F3F7; --alterno:#F1F5F9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); }
+body { width: 1080px; font-family: Inter, 'Segoe UI', Arial, sans-serif; color: var(--texto); -webkit-font-smoothing: antialiased; }
+.pagina { padding: 96px 72px; }
+.etiqueta { font-size: 22px; letter-spacing: .05em; text-transform: uppercase; color: var(--gris); line-height: 1.35; }
+h1 { font-size: 60px; line-height: 1.12; color: var(--titulo); margin: 22px 0 14px; font-weight: 700; letter-spacing: -.01em; }
+.bajada { font-size: 30px; color: #334155; margin: 0 0 40px; line-height: 1.3; }
+.ae { background: var(--claro); border-left: 8px solid var(--petroleo); border-radius: 14px; padding: 30px 34px; margin-bottom: 44px; }
+.rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--petroleo); }
+.ae p { font-size: 24px; line-height: 1.4; margin: 12px 0 0; color: var(--texto); }
+.seccion { display: grid; grid-template-columns: 132px 1fr; gap: 26px; padding: 34px 36px 34px 30px; border-radius: 18px; margin-bottom: 22px; background: #fff; }
+.seccion.alt { background: var(--alterno); }
+.lado { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.num { width: 54px; height: 54px; border-radius: 50%; background: var(--naranjo); color: var(--titulo); font-weight: 700; font-size: 26px; display: flex; align-items: center; justify-content: center; }
+.lado svg { color: var(--petroleo); }
+h2 { font-size: 32px; line-height: 1.2; color: var(--titulo); margin: 4px 0 14px; font-weight: 700; }
+.contenido-rotulo { font-size: 20px; font-weight: 700; letter-spacing: .06em; color: var(--gris); margin: 0 0 4px; }
+.contenido { font-size: 21px; line-height: 1.38; color: #334155; margin: 0 0 14px; text-transform: none; }
+.texto { font-size: 24px; line-height: 1.4; margin: 0; }
+code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: .9em; background: #E2E8F0; color: #0F172A; border-radius: 6px; padding: 1px 7px; overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nw { white-space: nowrap; }
+.criterios { background: var(--titulo); color: #fff; border-radius: 18px; padding: 36px 40px; margin: 34px 0 0; }
+.criterios .rotulo { color: #FDE68A; }
+.criterios h2 { color: #fff; margin: 8px 0 18px; }
+.criterios ol { margin: 0; padding: 0; list-style: none; }
+.criterios li { display: grid; grid-template-columns: 66px 1fr; font-size: 21px; line-height: 1.4; margin-bottom: 14px; }
+.criterios li b { color: #FDE68A; }
+.pie { font-size: 20px; color: var(--gris); border-top: 2px solid #CBD5E1; margin-top: 40px; padding-top: 20px; line-height: 1.4; }
+</style></head>
+<body><main class="pagina">
+  <div class="etiqueta">Módulo 2 · FUNDAMENTOS DE PROGRAMACIÓN PYTHON PARA EL ANÁLISIS DE DATOS · <span class="nw">Aprendizaje esperado 7</span></div>
+  <h1>PROGRAMACIÓN ORIENTADA A OBJETOS EN PYTHON</h1>
+  <p class="bajada">Datos y acciones en un mismo molde</p>
+  <div class="ae"><div class="rotulo">Aprendizaje esperado 7</div><p>CODIFICAR UNA RUTINA UTILIZANDO CLASES PROVISTAS PARA LA RESOLUCIÓN DE UN PROBLEMA SIMPLE DE ACUERDO AL PARADIGMA DE ORIENTACIÓN A OBJETOS EN EL ENTORNO PYTHON.</p></div>
+  
+  <section class="seccion">
+    <div class="lado"><div class="num">1</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z" />
+  <rect x="3" y="14" width="7" height="7" rx="1" />
+  <circle cx="17.5" cy="17.5" r="3.5" />
+</svg></div>
+    <div>
+      <h2>El paradigma de objetos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">¿EN QUÉ CONSISTE EL PARADIGMA DE ORIENTACIÓN A OBJETOS EN LA PROGRAMACIÓN?</p>
+      <p class="texto">Organiza el programa en objetos que juntan datos y acciones, como las cosas del mundo real: una estación tiene datos (nombre, altitud) y hace cosas (registrar una medición).</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">2</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
+  <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
+  <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
+</svg></div>
+    <div>
+      <h2>Principios básicos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">PRINCIPIOS BÁSICOS DE LA PROGRAMACIÓN A OBJETOS</p>
+      <p class="texto">Abstracción, encapsulamiento, herencia y polimorfismo.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">3</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" />
+  <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" />
+  <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" />
+  <path d="m2 2 20 20" />
+</svg></div>
+    <div>
+      <h2>Abstracción y ocultamiento</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ABSTRACCIÓN Y OCULTAMIENTO</p>
+      <p class="texto">Abstraer es quedarse solo con lo importante para el problema. Ocultar es proteger los datos internos y ofrecer métodos para usarlos; en Python, un <code>_</code> al inicio del nombre indica uso interno.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">4</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 13V8.5C14 7 15 7 15 5a3 3 0 0 0-6 0c0 2 1 2 1 3.5V13" />
+  <path d="M20 15.5a2.5 2.5 0 0 0-2.5-2.5h-11A2.5 2.5 0 0 0 4 15.5V17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1z" />
+  <path d="M5 22h14" />
+</svg></div>
+    <div>
+      <h2>Clases y objetos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CLASES Y OBJETOS</p>
+      <p class="texto">La clase es el molde (<code>class Estacion:</code>); el objeto, cada ejemplar creado con ese molde (<code>norte = Estacion(&quot;Norte&quot;, 520)</code>).</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">5</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" />
+</svg></div>
+    <div>
+      <h2>Estado y atributos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">ESTADO Y ATRIBUTOS</p>
+      <p class="texto">Los atributos guardan los datos de cada objeto (<code>self.nombre</code>, <code>self.altitud</code>); sus valores en un momento dado forman su estado.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">6</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z" />
+</svg></div>
+    <div>
+      <h2>Comportamiento y métodos</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">COMPORTAMIENTO Y MÉTODOS</p>
+      <p class="texto">Los métodos son las funciones de la clase: <code>def registrar(self, temp):</code>. Se llaman con un punto: <code>norte.registrar(12.5)</code>.</p>
+    </div>
+  </section>
+  <section class="seccion">
+    <div class="lado"><div class="num">7</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 12-9.373 9.373a1 1 0 0 1-3.001-3L12 9" />
+  <path d="m18 15 4-4" />
+  <path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172v-.344a2 2 0 0 0-.586-1.414l-1.657-1.657A6 6 0 0 0 12.516 3H9l1.243 1.243A6 6 0 0 1 12 8.485V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5" />
+</svg></div>
+    <div>
+      <h2>Constructor e instanciación</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">CONSTRUCTORES E INSTANCIACIÓN</p>
+      <p class="texto"><code>__init__(self, nombre, altitud)</code> da valor a los atributos al crear el objeto. Instanciar es crear el objeto: <code>sur = Estacion(&quot;Sur&quot;, 80)</code>.</p>
+    </div>
+  </section>
+  <section class="seccion alt">
+    <div class="lado"><div class="num">8</div><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="80"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.15"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 4v16" />
+  <path d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2" />
+  <path d="M9 20h6" />
+</svg></div>
+    <div>
+      <h2>El objeto string</h2>
+      <p class="contenido-rotulo">CONTENIDO</p>
+      <p class="contenido">EL OBJETO STRING Y SUS MÉTODOS PRINCIPALES</p>
+      <p class="texto">Los textos también son objetos: <code>.upper()</code>, <code>.lower()</code>, <code>.strip()</code>, <code>.replace()</code>, <code>.split()</code>, <code>.startswith()</code> y <code>.find()</code>. Las librerías traen más clases listas, como <code>date</code> de <code>datetime</code>.</p>
+    </div>
+  </section>
+  <div class="criterios"><div class="rotulo">Al terminar</div><h2>Lo que demostrarás</h2><ol><li><b>7.1</b><span>EXPLICA LOS ELEMENTOS FUNDAMENTALES DEL PARADIGMA DE ORIENTACIÓN A OBJETOS EN LA PROGRAMACIÓN.</span></li><li><b>7.2</b><span>DISTINGUE LA DIFERENCIA ENTRE UNA CLASE Y UN OBJETO, EN EL CONTEXTO DE LA PROGRAMACIÓN ORIENTADA A OBJETOS.</span></li><li><b>7.3</b><span>IMPLEMENTA UNA CLASE UTILIZANDO UN MÉTODO INICIALIZADOR CON PARÁMETROS Y MÉTODOS PERSONALIZADOS PARA RESOLVER UN PROBLEMA DE BAJÍSIMA COMPLEJIDAD.</span></li><li><b>7.4</b><span>UTILIZA CLASES Y MÉTODOS EXISTENTES EN LIBRERÍAS PARA LA RESOLUCIÓN DE UN PROBLEMA DE BAJA COMPLEJIDAD.</span></li></ol></div>
+  <div class="pie">Fundamentos de Ciencia de Datos · Módulo 2 · Ejemplos con Observatorio Cordillera, institución ficticia</div>
+</main></body></html>

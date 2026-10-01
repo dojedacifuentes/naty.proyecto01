@@ -45,6 +45,18 @@ Cuatro cursos tenían quiz de Genially de 2024 que no funcionan: les quedaron bo
 
 Cada quiz sale en HTML (un archivo, funciona sin internet), como paquete SCORM 1.2 para el LMS y en GIFT para Moodle. La fuente es `contenidos/<PF>/modulo-2/R-quiz-canva.md`, y se regenera con `npm run quiz-juego -- PF1481 PF1483 PF1486 PF1495`.
 
+## Infografías 2026 de PF1481, PF1483 y Entry level
+
+Pedido del usuario del 2026-10-01, tras revisar la planilla de recursos: hacer las infografías del módulo 2 con los contenidos y criterios de evaluación 2026, una por aprendizaje esperado. Las de 2024 de PF1481 no estaban mal, pero se rehicieron todas. PF1483 no tenía ninguna usable. En Entry level faltaban las del AE3 y AE4, que fueron borradas.
+
+| Curso | Infografías | Carpeta |
+| --- | --- | --- |
+| **PF1481** · Fundamentos de Análisis de Datos | 5, una por AE | [PF1481-analisis-de-datos/entrega/infografias](PF1481-analisis-de-datos/entrega/infografias/) |
+| **PF1483** · Fundamentos de Ciencia de Datos | 7, una por AE | [PF1483-ciencia-de-datos/entrega/infografias](PF1483-ciencia-de-datos/entrega/infografias/) |
+| **PF1474, PF1477, PF1478 y PF1479** · Entry level (mismo módulo 2) | AE3 y AE4 | [PF1474-entry-level-front-end/entrega/infografias](PF1474-entry-level-front-end/entrega/infografias/) |
+
+Las genera `npm run infografias -- PF1481 PF1483 PF1474` desde `contenidos/<PF>/modulo-2/R-infografias.json`. El texto del AE y de los criterios sale del plan, y el script se detiene si un contenido no está en el plan o si alguno queda fuera. Salen en PNG de 1080 px con el estilo de las de PF1821 y PF1822, con su versión en texto.
+
 ## Qué se evalúa en el módulo 2
 
 La propuesta técnica se evalúa sobre el segundo módulo del plan (bases 2026, 7.4, pág. 27).
