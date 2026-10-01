@@ -2,13 +2,20 @@
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
 `2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-04` y `2026-09-30-claude-code-01` a `-13` y
-`2026-10-01-claude-code-01` a `-06` — 2026-09-24 al 1-oct (UTC)
+`2026-10-01-claude-code-01` a `-07` — 2026-09-24 al 1-oct (UTC)
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 > **Ojo (sesión -04):** las sesiones -02 y -03 del 27-sep, que armaron los quiz en Canva, reemplazaron este archivo
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
+
+## DECISIÓN (sesión 2026-10-01-07): PF1487, PF1485 y PF1493 NO se postulan
+
+- El usuario: "no postularemos, así que hay que borrarlos y ya no hay que buscar más sobre esos cursos cuando pida organizar algo".
+- Se sacaron de la planilla «02 Recursos M2 · Licitación 2026 (12 cursos)», de `data/planes-formativos.csv`, de
+  `data/umbrales-por-plan.csv` y del generador. Lo que se hizo para ellos (quiz, infografías, carpetas en Drive) quedó como archivo,
+  sin borrar. **No los incluyas en nada nuevo**; todo lo de abajo que hable de ellos es historia.
 
 ## HECHO (sesión 2026-10-01-06): videos de bienvenida y resumen en la planilla de recursos M2
 
