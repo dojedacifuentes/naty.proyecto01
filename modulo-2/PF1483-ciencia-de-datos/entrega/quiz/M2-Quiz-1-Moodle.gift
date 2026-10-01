@@ -1,0 +1,41 @@
+// PF1483 · Módulo 2 · Quiz 1 · Python y su entorno de trabajo (AE1). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1483-M2/Quiz-1
+
+::Q1-P1 (AE1):: El Observatorio Cordillera debe elegir un lenguaje para limpiar, resumir y graficar los registros de sus estaciones. ¿Por qué Python es una buena opción? {
+=Es legible y tiene librerías para datos, como pandas
+~Es el único lenguaje capaz de leer archivos CSV
+~Se ejecuta sin necesidad de un intérprete
+~Exige declarar el tipo de cada variable antes de usarla
+####Python tiene una sintaxis clara y un gran ecosistema de librerías para datos, como pandas, NumPy y matplotlib. Además, lo ejecuta un intérprete y no exige declarar el tipo de las variables.
+}
+
+::Q1-P2 (AE1):: Verdadero o falso\: «Python sirve solo para analizar datos; para automatizar tareas o crear sitios web se necesita otro lenguaje». {
+~Verdadero
+=Falso
+####Python es un lenguaje de propósito general\: se usa en análisis de datos, automatización de tareas, desarrollo web, inteligencia artificial y mucho más.
+}
+
+::Q1-P3 (AE1):: En el curso instalas Anaconda. ¿Qué es? {
+~Un editor de código de Microsoft al que le agregas extensiones
+~Un servicio en la nube para ejecutar notebooks
+=Una distribución de Python que incluye Jupyter y Spyder
+~Un lenguaje distinto de Python, pensado para estadística
+####Anaconda es una distribución\: instala Python junto con librerías para datos y herramientas como Jupyter Notebook y Spyder. Visual Studio Code es un editor y Google Colab, un servicio en la nube.
+}
+
+::Q1-P4 (AE1):: El equipo del observatorio quiere probar un notebook en un computador prestado, sin instalar nada. ¿Qué herramienta le sirve? {
+~Spyder
+~Anaconda Navigator
+~La extensión de Python para Visual Studio Code
+=Google Colab
+####Google Colab ejecuta notebooks en la nube, desde el navegador. Spyder, Anaconda y Visual Studio Code se instalan en el computador antes de usarlos.
+}
+
+::Q1-P5 (AE1):: En Visual Studio Code tienes el Python de Anaconda y otro Python instalado aparte. ¿Cómo eliges con cuál se ejecuta tu script? {
+~Escribiendo python --version en la terminal
+=Con «Python\: Select Interpreter», en la paleta de comandos
+~Cambiando la extensión del archivo de .py a .ipynb
+~Abriendo el script en Spyder y volviendo a Visual Studio Code
+####La extensión de Python agrega a Visual Studio Code el comando «Python\: Select Interpreter» (en la paleta, Ctrl+Shift+P). python --version solo muestra qué versión responde en la terminal; no la cambia.
+}

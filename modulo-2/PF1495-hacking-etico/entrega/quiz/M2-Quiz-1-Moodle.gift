@@ -1,0 +1,43 @@
+// PF1495 · Módulo 2 · Quiz 1 · Amenazas, atacantes e impacto (AE1). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1495-M2/Quiz-1
+
+::Q1-P1 (AE1):: El buscador de la tienda de Librería Fiordo usa lo que escribe cada persona sin validarlo. En ciberseguridad, ¿cómo se clasifica esa situación? {
+~Una amenaza
+~Un riesgo
+~Un incidente
+=Una vulnerabilidad
+####Una vulnerabilidad es una debilidad que alguien podría aprovechar. La amenaza es quien o lo que podría aprovecharla; el riesgo combina la probabilidad de que ocurra y su impacto, y el incidente es cuando de verdad ocurre.
+}
+
+::Q1-P2 (AE1):: Una vendedora de Librería Fiordo recibe un correo que imita al proveedor de pagos de la tienda y le pide «confirmar» su clave en un enlace. ¿Qué tipo de amenaza es? {
+~Malware, porque el correo instala un programa dañino
+~Amenaza interna, porque llega a una trabajadora
+=Phishing, porque busca engañarla para robar su clave
+~Ataque de red, porque satura la conexión de la tienda
+####El phishing es un engaño que suplanta a alguien de confianza para robar datos, como una clave. Es una amenaza externa\: viene de fuera, aunque apunte a una persona de la librería.
+}
+
+::Q1-P3 (AE1):: En la tienda de Librería Fiordo, una reseña de un libro guarda un script que se ejecuta en el navegador de cada persona que la abre. ¿Qué vulnerabilidad web es? {
+~Inyección SQL
+=Cross-Site Scripting (XSS)
+~Denegación de servicio (DoS)
+~Pérdida de control de acceso
+####En un XSS, el sitio muestra sin tratar lo que escribió un usuario y el navegador de otras personas lo ejecuta como código, lo que puede servir para robar sesiones o engañar a clientes. La inyección SQL, en cambio, altera las consultas a la base de datos.
+}
+
+::Q1-P4 (AE1):: Sin autorización de nadie, una persona prueba la tienda de Librería Fiordo, encuentra una falla y se la informa a la librería sin pedir nada a cambio. ¿Cómo se le suele clasificar? {
+~Hacker de sombrero blanco
+=Hacker de sombrero gris
+~Hacker de sombrero negro
+~Hacktivista
+####No buscó dañar, pero actuó sin permiso\: por eso se le llama sombrero gris. El sombrero blanco trabaja siempre con autorización, el negro busca dañar o lucrar y el hacktivista ataca para promover una causa política o social.
+}
+
+::Q1-P5 (AE1):: Un cliente nota que, si cambia el número de pedido en la dirección web de la tienda, ve los pedidos de otras personas, con nombre y domicilio. ¿Qué impacto principal tiene esta falla para Librería Fiordo? {
+=Se exponen datos de clientes\: riesgo legal y de reputación
+~La tienda queda fuera de línea y deja de vender
+~Cambian los precios de los libros sin que nadie lo note
+~Se instala malware en los equipos de los clientes
+####La falla rompe la confidencialidad\: personas sin permiso ven datos personales. Para el negocio, eso puede traer sanciones, reclamos y pérdida de confianza; la integridad y la disponibilidad son los otros dos objetivos de la ciberseguridad.
+}

@@ -2,8 +2,8 @@
 
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
-**Última actualización:** 2026-09-30
-**Por:** 2026-09-30-claude-code-08 (Claude Code · opus-5.5)
+**Última actualización:** 2026-10-01 (UTC, como el registro; 30-sep en Chile)
+**Por:** 2026-10-01-claude-code-01 y -02 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -448,6 +448,90 @@ Sesión claude-code-08, 2026-09-30: más respuestas del usuario.
       explicado. No se tocó el permiso.
 - [ ] #3: el usuario preguntó "¿tablas de qué?"; se le aclaró que es la lista de qué cliente postula a qué curso.
 
+Sesión claude-code-09, 2026-09-30: corregir los 8 cursos base de Rise del módulo 2 contra el plan (encargo del usuario transmitido
+por la sesión "Branding de Skillnest para Rise" y confirmado aquí).
+
+- [x] Revisión de los 8 cursos de Rise, lección por lección, contra el texto de SIPFOR → `modulo-2/REVISION-RISE.md` (qué estaba mal).
+- [x] Corregidos y verificados recargando: título (`<NOMBRE DEL PLAN> · MÓDULO 2 · AE<n>`), descripción de portada, lección
+      "Ficha del módulo" primera y textual, y el aprendizaje y los criterios de las lecciones de introducción de PF1821 AE1 y AE2 y
+      PF1822 AE3 y AE4.
+- [x] Fichas por curso en `modulo-2/<curso>/rise/ficha-AE<n>.md` (las genera `npm run canonico`).
+- [x] `modulo-2/GUIA-RISE.md`: estructura con título y ficha, y "Marca del cliente" pasa a "Apply a brand" con las marcas de Articulate.
+- [x] Paso 2 y paso 3: hechos en la sesión -10 (abajo).
+
+Sesión claude-code-10, 2026-09-30: el usuario revisó los 8 base, pidió quitar un encabezado y dio el OK para duplicar y marcar.
+
+- [x] La "Ficha del módulo" de los 8 base ya no empieza con "Texto oficial del plan formativo" (pedido del usuario): el bloque pasó
+      de "Paragraph with heading" a "Paragraph". El resto de la ficha, comparado con la ficha del repo después de recargar: igual en los 8.
+- [x] 20 copias en Rise, con el mismo título que el base (sin "Copy of"), en tres carpetas privadas nuevas: UNAB (8), Skillnest (8) y
+      U Autónoma (4). Ids en `modulo-2/REVISION-RISE.md`.
+- [x] Cada copia con la marca de su cliente (Theme → Apply a brand). Revisado recargando: marca, color del tema (UNAB #A6192E,
+      Skillnest #0C8DC9, U Autónoma #DA291C) y AE del título, 20 de 20 correctos. Los 8 base siguen sin marca.
+- [ ] No se publicó, compartió, exportó ni envió a Review 360.
+
+Sesión claude-code-11, 2026-09-30: etiquetas de Rise en español en las 20 copias (pedido del usuario, con captura de Settings → Labels).
+
+- [x] Las 20 copias con el juego de etiquetas "Spanish". Antes había 4 en English (PF1821 AE1 UNAB y PF1822 AE1 × 3) y 2 en "Copy of
+      Spanish", que tiene los mismos textos. Revisado recargando: 20 de 20 en "Spanish", con los 224 textos iguales.
+- [ ] Los 8 cursos base no se revisaron: el pedido fue solo para las copias.
+
+Sesión claude-code-12, 2026-09-30: las 20 copias de Rise, sin alusiones al plan formativo ni a lo "oficial" (pedido del usuario, con 8
+capturas).
+
+- [x] Se leyó el contenido completo de las 20 copias y se corrigió:
+      - Ficha: sin línea de fuente, con los rótulos "Curso" y "Competencia del curso";
+      - "criterios/textos/contenidos/lectura oficiales" y frases "alineado con el plan formativo", "de manera literal",
+        "tal como exige el plan";
+      - encabezados "Alineación con el plan formativo" y títulos "criterios oficiales";
+      - 2 bloques borrados ("Este recurso se basa/se centra exclusivamente…").
+- [x] Verificado releyendo cada curso: 0 cambios pendientes y solo quedan usos legítimos ("documentación oficial" de OpenAI y
+      Hugging Face). La ficha es idéntica a la del repo en 20 de 20 y sigue siendo la primera lección. Sin bloqueos de edición.
+- [x] `npm run canonico` genera las fichas nuevas: sus huellas coinciden con Rise.
+- [ ] Los 8 cursos base siguen con esos textos: corregirlos antes de volver a duplicar.
+
+Sesión claude-code-13, 2026-09-30: SCORM de las 20 copias (pedido del usuario, con captura de la planilla).
+
+- [x] Las 20 copias exportadas a SCORM 1.2 desde Rise, en `privado/rise-scorm/`. En cada zip se comprobaron el id de la copia, el
+      color de la marca, las etiquetas en español y que no haya alusiones al plan formativo.
+- [x] En Drive, dentro de cada cliente, la carpeta "3 Lecturas Rise (SCORM)" con sus 4 zip. Los 20 enlaces descargan el zip exacto
+      sin iniciar sesión.
+- [x] En la planilla, Resumen G a J ("Lectura AE1 a AE4 Rise (SCORM)") con un enlace por cliente y curso. En Pendientes, la fila 5
+      pasó a "Hecho" y la fila 23 nueva es "subir al LMS".
+- [ ] Subirlos al LMS de cada cliente: lo hace el usuario.
+
+Trabajo del 30-09 en `privado/` (chat de cotejo de recursos 2023 y 2024, antes de abrir la sesión -01 del 1-oct UTC; fuera de git
+porque trae enlaces a Drive):
+
+- [x] Planilla de seguimiento, pestañas nuevas o reemplazadas (gid en `privado/drive/enlaces.json`): «Recursos M2 - qué sirve»,
+      «Plan chequeo M2», «Enunciados AE vs 2026» (cotejo palabra por palabra del enunciado de cada AE en los materiales
+      anteriores), «Plan 2026 M2 textual» (competencia, AE, criterios y contenidos por curso, con columnas para cotejar) y
+      «Quiz M2 por AE» (un quiz por AE y si funciona; ver la sesión de abajo).
+- [x] PDF `privado/drive/Cambios-Recursos-M2-vs-2026.pdf` (qué cambia en flipbooks, quiz e infografías frente al plan 2026) y
+      `privado/drive/Plan2026-Modulo2-Textual.pdf` (49 págs.: el módulo 2 de los 12 planes de «PF SENCE a licitar», textual).
+- [x] Los 12 PDF oficiales de la carpeta de Drive «PF SENCE a licitar» (14, 17 y 24-sep) en `privado/drive/planes-2026-pdf/`.
+      `verificar-m2.mjs` comprueba que el módulo 2 de `data/planes/*.json` dice lo mismo, palabra por palabra (única diferencia:
+      «NAVBARS Y FORMS» con mayúscula en Entry level). PF1487, PF1485 y PF1493 no están en esa carpeta.
+
+Sesión claude-code-01, 2026-10-01 UTC (30-sep en Chile): quiz gamificados para los cursos con quiz de Genially que no funcionan
+(pedido: "haz en lugar de quizz gamificacion de cada uno de esos recursos donde haya que corregir uno o mas aprendizajes esperados
+… para cada curso con todos los elementos de gamificacion. exportables mismo formato scorm para lms y html" y "recuerda aplicar los
+criterios del nuevo plan formativo 2026 para cada curso de cada ae").
+
+- [x] 22 quiz gamificados, uno por AE de los cuatro cursos con algún quiz roto: PF1481 (5), PF1483 (7), PF1486 (6) y PF1495 (4).
+      Fuente: `contenidos/<PF>/modulo-2/R-quiz-canva.md` (5 preguntas por quiz, escritas sobre los criterios de evaluación 2026, con
+      la cobertura de cada criterio al final). Salida: `modulo-2/<PF>-<curso>/` con juego HTML, SCORM 1.2 y GIFT por quiz, README y
+      un zip del curso. Casos ficticios: Distribuidora Pehuén, Observatorio Cordillera, Textiles del Maule y Librería Fiordo.
+- [x] `scripts/lib/quiz-canva.mjs` (nuevo): valida R-quiz-canva.md y arma el GIFT para cursos sin kit. `scripts/quiz-juego.mjs`:
+      cursos con `kit: false`, filtro por curso (`npm run quiz-juego -- PF1481`), zip y README por curso, y arreglo de `<`, `>` y `&`
+      (el juego mostraba "&lt;": afectaba el Quiz 4 de PF1822, regenerado). PF1821 y PF1822 salen idénticos salvo ese quiz.
+- [x] Control 05: no revisa `privado/` si el archivo no está en git (falsos positivos en textos extraídos de flipbooks; las sesiones
+      -09 a -13 del 30-sep cerraron forzadas por eso). `npm run verificar`: 0 errores.
+- [x] Probado en Chrome con un servidor local: los 22 abren sin errores de JavaScript; 4 se jugaron completos y, con una API SCORM
+      1.2 simulada, registran inicio, incompleto, puntaje 0-100 y completado.
+- [x] Planilla, pestaña «Quiz M2 por AE» reemplazada: cada AE de esos cuatro cursos muestra su quiz gamificado 2026 (funciona).
+- [ ] Revisión humana del contenido de las 110 preguntas (las escribieron cuatro subagentes; las revisé una por una contra el plan).
+- [ ] Subirlos al LMS o a Drive: no se pidió todavía.
+
 ## A medias
 
 - **Los entregables del módulo 2 de PF1821 y PF1822 están en borrador, sin revisión humana.**
@@ -491,7 +575,8 @@ visto una propuesta real, solo dos de prueba que se borraron. Los umbrales de co
 
 ## Estado de la verificación
 
-`npm run verificar` → 8 controles, 0 errores, 4 avisos (los mismos del 22-sep):
+`npm run verificar` → 8 controles, 0 errores, 4 avisos (los mismos del 22-sep). Desde la sesión 2026-10-01-claude-code-01 el
+control 05 ya no falla: las sesiones -09 a -13 del 30-sep cerraron forzadas por falsos positivos en `privado/`, que no se versiona.
 
 - 3 avisos del control 06: afirmaciones sobre las bases sin numeral ni página en
   `docs/03-anexo2-estructura.md:41`, `:43` y `docs/04-verificadores-protocolo.md:17`.

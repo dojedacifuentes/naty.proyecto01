@@ -36,8 +36,13 @@ export default {
   descripcion: 'Credenciales con valor real en el texto y archivos sensibles versionados.',
 
   run(ctx, r) {
+    const versionados = (git(['ls-files'], { opcional: true }) || '').split('\n').filter(Boolean);
+    const enGit = new Set(versionados);
     for (const abs of listar(undefined, { ext: ['.md', '.csv', '.mjs', '.json', '.yml', '.txt', '.env'] })) {
       const archivo = rel(abs);
+      // privado/ está en .gitignore: es donde va lo privado y nunca se versiona (textos extraídos de documentos de
+      // terceros, enlaces a Drive). Se revisa solo lo que de ahí haya entrado a git (DECISIONS.md, 2026-09-30).
+      if (archivo.startsWith('privado/') && !enGit.has(archivo)) continue;
       leer(abs).split('\n').forEach((linea, i) => {
         if (linea.includes(EXENTA)) return;
         for (const p of PATRONES) {
@@ -52,7 +57,6 @@ export default {
       });
     }
 
-    const versionados = (git(['ls-files'], { opcional: true }) || '').split('\n').filter(Boolean);
     const EXTENSION_SENSIBLE = /\.(pdf|env|key|pem|pfx|p12)$/i;
     // Los PDF de las bases (públicos), los entregables del proyecto y los recursos finales del
     // módulo 2 se versionan a propósito (DECISIONS.md, 2026-09-24 y 2026-09-25). Un PDF en

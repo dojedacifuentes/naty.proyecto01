@@ -1,0 +1,43 @@
+// PF1495 · Módulo 2 · Quiz 4 · Fases y metodologías (AE4). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1495-M2/Quiz-4
+
+::Q4-P1 (AE4):: Según el proceso de hacking ético del curso, ¿en qué orden van las fases? {
+~Enumeración, reconocimiento, explotación, informe, post-explotación
+=Reconocimiento, enumeración, explotación, post-explotación, informe
+~Reconocimiento, explotación, enumeración, informe, post-explotación
+~Explotación, reconocimiento, enumeración, post-explotación, informe
+####El proceso parte por reunir información y termina con el informe para el cliente. Cada fase usa lo que dejó la anterior.
+}
+
+::Q4-P2 (AE4):: Ya reuniste la información pública de Librería Fiordo. Ahora, con autorización, usas un escáner como Nmap sobre el servidor de la tienda para listar qué servicios responden y qué versiones usan. ¿En qué fase estás? {
+~Reconocimiento
+~Explotación
+=Enumeración
+~Post-explotación
+####En la enumeración interactúas con el objetivo para listar servicios, versiones y otros detalles. El reconocimiento reúne información pública, y la explotación recién intenta aprovechar una falla.
+}
+
+::Q4-P3 (AE4):: Con autorización, ya demostraste que una falla del panel de la tienda permite entrar como administrador. Ahora evalúas qué datos y qué otros sistemas quedarían expuestos desde ese acceso, sin salir de lo acordado. ¿Qué fase es? {
+~Explotación
+~Enumeración
+~Informe
+=Post-explotación
+####La explotación demuestra que la falla se puede aprovechar; la post-explotación mide su impacto real\: qué información y qué sistemas alcanza ese acceso. Todo, dentro de lo autorizado.
+}
+
+::Q4-P4 (AE4):: Tu equipo usa dos metodologías\: la guía de pruebas de OWASP y PTES (Penetration Testing Execution Standard). ¿Qué aporta cada una? {
+=OWASP guía las pruebas web; PTES, la prueba completa, del acuerdo al informe
+~OWASP fija las leyes que aplican; PTES, las certificaciones que exige el equipo
+~OWASP sirve solo para redes internas; PTES, solo para aplicaciones móviles
+~OWASP certifica a la empresa; PTES certifica a cada pentester del equipo
+####La guía de pruebas de OWASP se especializa en aplicaciones web y ordena las pruebas por áreas, como autenticación o validación de entradas. PTES describe el proceso completo, desde el acuerdo previo con el cliente, donde se fija el alcance, hasta el informe.
+}
+
+::Q4-P5 (AE4):: La prueba de la tienda de Librería Fiordo tiene 10 días hábiles. ¿Qué plan de trabajo es más sensato? {
+~Usar los 10 días en explotar fallas y entregar el informe después del plazo
+=Repartir los días por fase, priorizar lo crítico y dejar tiempo al informe
+~Probar funciones al azar, sin un orden definido, hasta que se acabe el tiempo
+~Dedicar 9 días al reconocimiento y solo 1 día a todas las demás fases
+####Planificar es parte de la metodología\: repartes el tiempo entre las fases, partes por lo más crítico, como el pago o el inicio de sesión, y reservas tiempo para el informe, que es lo que recibe el cliente.
+}

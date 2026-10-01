@@ -1,0 +1,43 @@
+// PF1486 · Módulo 2 · Quiz 2 · Taylor y la administración industrial (AE2). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1486-M2/Quiz-2
+
+::Q2-P1 (AE2):: La primera revolución industrial partió en buena parte en la industria textil. ¿Qué cambió cuando el tejido se mecanizó con máquinas movidas por agua y por vapor? {
+~Cada familia volvió a tejer su propia ropa en casa
+~El tejido a mano ganó terreno por su mejor calidad
+=La producción se trasladó de los hogares a grandes fábricas
+~Las fábricas se achicaron y contrataron cada vez menos obreros
+####Las máquinas de hilar y tejer, movidas primero por agua y luego por vapor, concentraron el trabajo en fábricas. Con ellas llegaron los horarios fijos, la supervisión y el crecimiento de las ciudades.
+}
+
+::Q2-P2 (AE2):: Frederick Taylor propuso estudiar cada tarea, medir tiempos y movimientos, y fijar la mejor forma de hacerla. ¿Qué buscaba con su modelo? {
+=Aumentar la productividad con métodos estandarizados
+~Que cada operario eligiera su propio método de trabajo
+~Mejorar el clima social y el trato dentro del grupo
+~Definir las funciones generales de toda la dirección
+####Taylor fundó la administración científica\: dividir el trabajo, medirlo y estandarizarlo para producir más con menos. Las funciones generales de la dirección son el aporte de Fayol, y el factor humano, el de Mayo.
+}
+
+::Q2-P3 (AE2):: ¿Cuál de estas prácticas de Textiles del Maule es un legado del modelo de Taylor que todavía aporta valor? {
+~Preguntar a los clientes qué prendas quieren comprar
+~Hacer reuniones periódicas para saber cómo se siente el equipo
+~Dejar que cada equipo elija sus metas del trimestre
+=Documentar el método estándar de corte y medir su rendimiento
+####Estandarizar, medir y buscar la eficiencia son el legado de Taylor, y siguen siendo útiles en tareas repetitivas. Escuchar al equipo se acerca más a Mayo, y la autonomía de los equipos, a los enfoques ágiles.
+}
+
+::Q2-P4 (AE2):: Textiles del Maule quiere lanzar su tienda en línea, pero cada decisión sube por cinco niveles de jefatura y el equipo solo ejecuta lo que le indican. ¿Qué desafío de la administración tradicional muestra este caso? {
+~Un exceso de autonomía en los equipos de trabajo
+=Lentitud para responder a un mercado que cambia rápido
+~Una falta de jefaturas que supervisen cada tarea
+~Demasiada experimentación con clientes reales en la tienda en línea
+####Separar a quienes deciden de quienes ejecutan y subir cada decisión por la jerarquía funcionaba en mercados estables. En el siglo XXI, el mercado cambia más rápido que esa cadena de aprobaciones.
+}
+
+::Q2-P5 (AE2):: ¿Por qué el modelo tayloriano calza mal con el trabajo de conocimiento, como diseñar una tienda en línea? {
+~Porque el trabajo digital no se puede medir ni controlar de ninguna forma
+~Porque la estandarización ya no sirve en ninguna industria
+=Porque ese trabajo exige criterio, creatividad y colaboración
+~Porque los computadores reemplazaron a todas las personas
+####El taylorismo se pensó para tareas físicas y repetitivas, donde existe una sola mejor forma de hacerlas. El trabajo de conocimiento cambia en cada caso y necesita personas que piensen, propongan y colaboren.
+}

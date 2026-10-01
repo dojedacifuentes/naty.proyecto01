@@ -332,5 +332,59 @@ document.addEventListener('click', async (e) => {
 `;
 escribir(`${DIR}/${NOMBRE}.html`, html);
 
+// ── Fichas para Rise 360: título, descripción de portada y lección "Ficha del módulo" de cada curso base ─────────────
+// Formato del título confirmado por el usuario (2026-09-30): nombre del plan · MÓDULO n · AEn. Rise admite 100 caracteres
+// en el título, así que el nombre del módulo va en la descripción, con la competencia del módulo y el aprendizaje esperado.
+// Todo textual de SIPFOR.
+const CARPETA = { PF1821: 'modulo-2/PF1821-agentes-low-code', PF1822: 'modulo-2/PF1822-desarrollo-con-ia' };
+const paraRise = [];
+for (const f of fichas) {
+  const c = f.curso;
+  const titulo = `${c.nombre} · MÓDULO ${c.n} · AE${f.num}`;
+  if ([...titulo].length > 100) throw new Error(`El título de Rise pasa de 100 caracteres: ${titulo}`);
+  const descripcion = [`Módulo ${c.n}: ${c.nombreModulo}`, `Competencia del módulo: ${c.competenciaModulo}`, `Aprendizaje esperado ${f.num}: ${f.aeSin}`];
+  const leccion = [
+    ['Curso', [`${c.codigo} · ${c.nombre}`]],
+    ['Competencia del curso', [c.competenciaPlan]],
+    ['Módulo', [`MÓDULO FORMATIVO N° ${c.n} · ${c.modulo} · ${c.nombreModulo}`, `N° de horas asociadas al módulo: ${horas(c.horasModulo)}`]],
+    ['Competencia del módulo', [c.competenciaModulo]],
+    [`Aprendizaje esperado ${f.num}`, [f.ae]],
+    ['Criterios de evaluación', f.criterios],
+    ['Contenidos', f.contenidos],
+  ];
+  const fuente = `Texto del plan formativo ${c.codigo} en SIPFOR (Res. ${c.plan.FL_RUP_PLA_RESOLUCION}, versión ${c.plan.FL_RUP_PLA_VERSION}).`;
+  paraRise.push({ hoja: f.hoja, titulo, descripcion, leccion, fuente,
+    html: leccion.map(([h, ps]) => `<p><strong>${esc(h)}</strong></p>${ps.map((p) => `<p>${esc(p)}</p>`).join('')}`).join('') });
+  escribir(`${CARPETA[c.codigo]}/rise/ficha-AE${f.num}.md`, `# ${c.codigo} · Módulo ${c.n} · AE${f.num} · Ficha para Rise 360
+
+> Generado por \`npm run canonico\` desde SIPFOR (\`data/sipfor/${c.codigo}/\`). **No editar a mano.** Todo lo que va entre
+> comillas o en bloque es textual del plan formativo, verificado contra el PDF oficial (${c.pdf}). La exactitud importa:
+> el oferente debe "dar cumplimiento e implementar los aprendizajes esperados, criterios de evaluación, contenidos"
+> (bases 2026, 4, pág. 18), y modificarlos sin autorización es infracción (bases 2026, 13.3.2 h), pág. 51).
+
+## Título del curso en Rise
+
+Formato confirmado por el usuario el 2026-09-30: curso · módulo · aprendizaje esperado. Rise admite hasta 100 caracteres en el título; el nombre del módulo va en la descripción.
+
+\`\`\`text
+${titulo}
+\`\`\`
+
+## Descripción de la portada
+
+\`\`\`text
+${descripcion.join('\n')}
+\`\`\`
+
+## Lección "Ficha del módulo" (la primera del curso)
+
+${leccion.map(([h, ps]) => `**${h}**\n\n\`\`\`text\n${ps.join('\n')}\n\`\`\``).join('\n\n')}
+
+> Fuente (no va en Rise): ${fuente} En Rise la ficha no alude al plan formativo ni a lo "oficial" (pedido del usuario,
+> 2026-09-30): los rótulos son "Curso" y "Competencia del curso"; el PDF llama al segundo "COMPETENCIA DEL PLAN FORMATIVO".
+`);
+}
+fs.writeFileSync(ruta('.scratch/rise-fichas.json'), JSON.stringify(paraRise, null, 1));
+
 console.log(`${DIR}/${NOMBRE}.xlsx · ${fichas.length} fichas · ${cursos.map((c) => `${c.codigo}: ${c.verificados} textos verificados contra el PDF`).join(' · ')}`);
 console.log(`${DIR}/${NOMBRE}.html`);

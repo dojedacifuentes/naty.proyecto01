@@ -1,0 +1,43 @@
+// PF1486 · Módulo 2 · Quiz 4 · Tercera revolución industrial (AE4). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1486-M2/Quiz-4
+
+::Q4-P1 (AE4):: ¿Qué rasgo distingue el contexto de la tercera revolución industrial? {
+~La máquina a vapor y los telares mecánicos cambian la fábrica
+=La electrónica y los computadores llevan la información a lo digital
+~La electricidad y la cadena de montaje masifican la producción
+~La inteligencia artificial y los sensores conectados guían la fábrica
+####La tercera revolución industrial, o revolución digital, nace en la segunda mitad del siglo XX con la electrónica, los computadores y las telecomunicaciones. El vapor marcó la primera, la electricidad la segunda, y la unión de lo físico con lo digital marca la cuarta.
+}
+
+::Q4-P2 (AE4):: Desde fines del siglo XX, una empresa puede compartir datos y documentos entre oficinas de distintos países casi al instante. ¿Qué lo hizo posible? {
+~El correo postal y el transporte aéreo de documentos
+~La expansión de las redes de ferrocarril
+=La unión de la informática y las telecomunicaciones
+~La producción en serie con cadena de montaje
+####Computadores conectados por redes de telecomunicaciones permitieron enviar y consultar información al instante, sin importar la distancia. Es uno de los rasgos que definen la tercera revolución industrial.
+}
+
+::Q4-P3 (AE4):: En los años noventa, Textiles del Maule compra computadores personales y pasa sus pedidos y su inventario desde cuadernos a un sistema. ¿Qué cambio está haciendo? {
+=Digitalizar procesos que antes se llevaban en papel
+~Crear un modelo de negocio basado en inteligencia artificial
+~Mecanizar su producción con máquinas de coser más rápidas
+~Externalizar su contabilidad a una empresa especializada
+####Pasar del papel a un sistema es digitalizar procesos\: la empresa trabaja más rápido y con menos errores, aunque su forma de vender siga igual. El computador personal llevó ese cambio a empresas de todos los tamaños.
+}
+
+::Q4-P4 (AE4):: Una tienda de ropa de los años ochenta vendía solo a quien entraba a su local, en su horario. ¿Qué cambió en su modelo de negocio cuando llegó internet? {
+~Pudo producir en serie con una cadena de montaje
+~Reemplazó a todos sus vendedores por robots
+~Siguió vendiendo solo en su ciudad, pero más barato
+=Pudo vender en línea, a toda hora y a clientes de cualquier lugar
+####Internet cambió cómo las empresas llegan a sus clientes y les venden. De ahí nacieron industrias nuevas, como el comercio electrónico, y modelos de negocio que no necesitan un local físico.
+}
+
+::Q4-P5 (AE4):: A fines del siglo XX, una planta textil automatiza el corte de tela con máquinas controladas por computador. ¿Qué impacto tiene en su organización? {
+~Ya no necesita ninguna persona en toda la planta
+=Las personas pasan de cortar a programar y supervisar las máquinas
+~Aumentan los errores, porque las máquinas no se pueden ajustar
+~Nada cambia en las tareas ni en las habilidades que necesita el equipo
+####La automatización toma las tareas repetitivas y de precisión, y mueve el trabajo de las personas hacia programar, controlar y mejorar el proceso. Por eso exige nuevas habilidades, no solo nuevas máquinas.
+}

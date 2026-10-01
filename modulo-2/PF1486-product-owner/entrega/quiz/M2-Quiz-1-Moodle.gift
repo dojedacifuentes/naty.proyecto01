@@ -1,0 +1,43 @@
+// PF1486 · Módulo 2 · Quiz 1 · Grupos, culturas e industria (AE1). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1486-M2/Quiz-1
+
+::Q1-P1 (AE1):: Hace décadas, Textiles del Maule era un taller donde el fundador daba cada orden y nadie decidía sin él. ¿Qué rasgo de organización describe esta situación? {
+~Roles formales y estables en una pirámide de varios niveles
+=Poder concentrado en una persona y poca estructura formal
+~Equipos con autonomía que deciden por consenso
+~Gestión por objetivos medidos con indicadores
+####Cuando una sola persona concentra el poder y no hay roles ni procesos formales, todo el grupo depende de su líder. Es una forma frecuente en grupos pequeños y en los inicios de muchas empresas familiares.
+}
+
+::Q1-P2 (AE1):: Con los años, el taller se convirtió en una fábrica con cientos de trabajadores. ¿Qué estructura apareció para coordinarlos? {
+~Un dueño que supervisa en persona a cada uno de los trabajadores
+~Equipos autogestionados sin jefaturas formales
+~Una red de trabajadores remotos conectados en línea
+=Una pirámide con jefaturas intermedias y áreas especializadas
+####Al crecer, una sola persona ya no puede coordinar a todos\: aparecen niveles de jefatura y áreas con funciones distintas. Es la pirámide jerárquica típica de la organización industrial.
+}
+
+::Q1-P3 (AE1):: Un modelo de evolución de las organizaciones relaciona el nivel de consciencia de un grupo con su forma de organizarse. En el nivel que se compara con «un organismo vivo», ¿quién toma las decisiones? {
+=Los equipos, con autonomía y guiados por un propósito común
+~El líder, que impone su autoridad sobre todo el grupo
+~La jefatura, según manuales y reglas que no cambian
+~La gerencia general, según metas e indicadores de logro anuales
+####En el modelo de Frederic Laloux, cada nivel de consciencia trae otra forma de organizarse\: el mando del líder, la pirámide de reglas, la empresa que se maneja por metas y, más tarde, los equipos que se autogestionan. El organismo vivo es la metáfora de este último nivel.
+}
+
+::Q1-P4 (AE1):: En Textiles del Maule, quien propone una idea y se equivoca recibe un reto delante de todos, así que ya nadie propone nada. ¿Qué impacto tiene este patrón cultural en la transformación digital? {
+~La acelera, porque reduce los errores del equipo
+~No influye, porque el cambio depende de la tecnología
+=La frena, porque inhibe la experimentación y el aprendizaje
+~La mejora, porque filtra las ideas de menor calidad
+####Los patrones culturales, como castigar el error, moldean lo que las personas se atreven a hacer. Transformarse exige probar, equivocarse rápido y aprender, y eso necesita un ambiente seguro.
+}
+
+::Q1-P5 (AE1):: ¿Por qué a un futuro Product Owner le sirve conocer la evolución de la industria antes de transformar Textiles del Maule? {
+~Porque la transformación digital repite paso a paso la primera revolución
+=Porque explica el origen de las formas de trabajar que hay que cambiar
+~Porque permite saltarse el análisis de la cultura actual de la empresa
+~Porque las fábricas a vapor usaban la misma tecnología que hoy
+####Cada revolución industrial dejó hábitos y supuestos que siguen vivos, como el control jerárquico o medir solo cuánto se produce. Conocer su origen ayuda a entender la cultura actual y a decidir qué cambiar.
+}

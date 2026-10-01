@@ -746,3 +746,84 @@ Quién: usuario (respuestas), claude-code, sesión `2026-09-30-claude-code-07`.
   hay problema". En #20 el usuario decidió después de que se le explicara que el id de la carpeta está en el repo público.
 - **Descartado:** cambiar el acceso a lector o restringido (#20), que proponía la sesión -07 como opción recomendada.
 Quién: usuario (respuestas), claude-code, sesión `2026-09-30-claude-code-08`.
+
+## 2026-09-30 · Cursos base de Rise corregidos contra el plan, y cómo se duplican y marcan (sesión claude-code, 2026-09-30-claude-code-09)
+
+Encargo del usuario transmitido por la sesión "Branding de Skillnest para Rise" y confirmado por el usuario en esta sesión.
+- **Título de cada curso de Rise:** `<NOMBRE DEL PLAN> · MÓDULO 2 · AE<n>`. El usuario eligió primero "curso · módulo: nombre del
+  módulo · aprendizaje esperado"; Rise admite 100 caracteres y medía 146, así que eligió esta forma. El nombre del módulo, la
+  competencia del módulo y el aprendizaje esperado van textuales en la descripción de la portada.
+- **Lección "Ficha del módulo", la primera de cada curso,** con curso, competencias, módulo, aprendizaje, criterios y contenidos
+  textuales de SIPFOR. Es lo primero que ve el revisor. Se descartó reescribir los rótulos de contenidos dentro de cada lección:
+  quedan todos textuales en la ficha.
+- **Se corrige una vez, en los 8 cursos base, y después se duplica.** Los cursos base no llevan marca.
+- **Mismo contenido para clientes que compiten; solo cambia la marca** (resuelve la #18).
+- **Marca:** solo la ya creada en Articulate (Theme → Apply a brand), sin logo y sin cambiar sus fuentes (UNAB: Montserrat +
+  Merriweather; U Autónoma: Be Vietnam + Lora; Skillnest: Lato + Merriweather).
+- **PF1821 AE2 y AE4** aparecen publicados en Rise pero no están en ningún Moodle: se editan sin restricción.
+- **Colores de Skillnest** para Rise: los del CSS de skillnest.com (#0C8DC9 principal), no de un manual (la #19 sigue abierta).
+Quién: usuario (decisiones y pedido), claude-code, sesión `2026-09-30-claude-code-09`.
+
+## 2026-09-30 · Ficha sin "Texto oficial del plan formativo", y copias por cliente en Rise (sesión claude-code, 2026-09-30-claude-code-10)
+
+- **La lección "Ficha del módulo" no lleva el encabezado "Texto oficial del plan formativo"** ("eso no debe decirlo"): empieza en
+  "Curso (plan formativo)". En Rise el bloque es "Paragraph", sin encabezado.
+- **Nombre de las copias:** el mismo título del curso base, sin el "Copy of" que agrega Rise. Van en una carpeta privada por
+  cliente (UNAB, Skillnest, U Autónoma). Era la propuesta de la sesión "Branding de Skillnest para Rise"; el usuario la aceptó.
+Quién: usuario, claude-code, sesión `2026-09-30-claude-code-10`.
+
+## 2026-09-30 · Rise: sin alusiones al plan formativo ni a lo "oficial" (sesión claude-code, 2026-09-30-claude-code-12)
+
+- El curso debe verse como si lo leyera un estudiante, aunque sea para el revisor de SENCE. No puede aludir al plan formativo ni
+  decir "oficial" (criterios, textos, lectura, contenidos), "literal", "textual" o "tal como aparece en el plan". Se mantienen
+  exactos el aprendizaje esperado, los criterios y los contenidos, tal como los formula el plan.
+- En la "Ficha del módulo", los rótulos quedan "Curso" y "Competencia del curso", y no lleva línea de fuente. El segundo rótulo es
+  decisión de esta sesión para cumplir el pedido; el PDF lo llama "COMPETENCIA DEL PLAN FORMATIVO". Está informado al usuario y se
+  puede cambiar.
+- "Documentación oficial" de OpenAI y Hugging Face se mantiene: es texto del aprendizaje esperado 2 de PF1822.
+Quién: usuario (pedido), claude-code, sesión `2026-09-30-claude-code-12`.
+
+## 2026-09-30 · Erratas del plan 2026: en los materiales vale igual corregida o tal cual (chat de cotejo, antes de la sesión 2026-10-01-claude-code-01)
+
+- El plan oficial escribe «ANALIZA» en el AE5 de PF1486 y «METOLÓGICOS» (sin punto final) en el AE4 de PF1495. Se confirmó en los
+  PDF oficiales de la carpeta «PF SENCE a licitar». El usuario decidió: "en los materiales van corregidas o tal cual, da igual".
+- Consecuencia: el cotejo de enunciados (`privado/drive/recursos-2024-cotejo/enunciados.mjs`) acepta las dos formas, y los PDF y la
+  planilla dejaron de marcar la decisión como pendiente.
+Quién: usuario; aplicado por claude-code.
+
+## 2026-09-30 · Quiz gamificados para los cursos con quiz de Genially rotos (sesión claude-code, 2026-10-01-claude-code-01)
+
+- Pedido del usuario: en vez de los quiz de Genially, un quiz gamificado "como los de desarrollo low code", "para cada curso de cada
+  AE", con los criterios del plan 2026, en carpetas distintas y exportable a SCORM y HTML.
+- Alcance que se tomó: los cuatro cursos con al menos un quiz que no funciona (PF1481, PF1483, PF1486 y PF1495) y **todos** sus AE
+  (22 quiz). Se descartó hacer solo los 5 quiz rotos, porque el usuario pidió "cada AE" y antes había dicho que rehará los quiz con
+  los criterios 2026. También se descartó incluir los cursos sin ningún quiz (PF1487, PF1485 y PF1493), porque no hay nada que
+  "corregir". Si los quiere, es el mismo flujo.
+- Cada curso va en su carpeta de `modulo-2/` con solo los quiz (no el kit). La fuente sigue el formato de `R-quiz-canva.md`, para
+  usar el mismo motor (`npm run quiz-juego`). `scripts/lib/quiz-canva.mjs` repite el parser de `quizCanva()` de `produccion.mjs`
+  para no tocar el pipeline del kit. Si uno cambia, hay que cambiar el otro.
+- Casos ficticios por curso, como Mercado Austral y Nube Sur: Distribuidora Pehuén, Observatorio Cordillera, Textiles del Maule y
+  Librería Fiordo.
+Quién: usuario (pedido), claude-code.
+
+## 2026-09-30 · Control 05 no revisa privado/ salvo lo que esté en git (sesión claude-code, 2026-10-01-claude-code-01)
+
+- `privado/` está en `.gitignore` y es el lugar de lo privado. Los textos extraídos de flipbooks de 2024 daban 3 errores falsos: la palabra
+  «password» seguida de dos puntos, en una lección de formularios HTML, y «clave» seguida de dos puntos, en una de historia. Por eso las sesiones -09 a -13 del 30-sep cerraron forzadas.
+- El control sigue revisando cualquier archivo de `privado/` que llegue a estar versionado, y la lista de archivos sensibles
+  versionados no cambió. Se descartó mover los textos extraídos fuera del repo, porque los scripts del cotejo los leen ahí.
+Quién: claude-code.
+
+## 2026-09-30 · El juego decodifica las entidades del GIFT (sesión claude-code, 2026-10-01-claude-code-01)
+
+- El GIFT guarda `<`, `>` y `&` como entidades HTML, que es lo que Moodle espera. La plantilla del juego escapa al pintar, así que
+  mostraba "&lt;" (Quiz 4 de PF1822). `quiz-juego.mjs` las decodifica al leer el GIFT; el GIFT no cambia.
+- Se descartó cambiar `limpio()` del GIFT, porque Moodle necesita las entidades.
+Quién: claude-code (lo detectó un subagente al escribir PF1483).
+
+## 2026-10-01 · La fecha de CHECKPOINT.md va en UTC (sesión claude-code, 2026-10-01-claude-code-02)
+
+- El control 07 compara «Última actualización» con la fecha UTC del cierre en LEDGER.csv. De noche en Chile ya es el día siguiente
+  en UTC, y la sesión -01 escribió la fecha local: el hook frenó el commit. Se escribe la fecha UTC y, si sirve, la local entre
+  paréntesis. Se descartó cambiar el control a hora local, porque todo el registro está en UTC.
+Quién: claude-code.

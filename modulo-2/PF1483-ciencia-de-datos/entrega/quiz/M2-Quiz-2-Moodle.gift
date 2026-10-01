@@ -1,0 +1,43 @@
+// PF1483 · Módulo 2 · Quiz 2 · Variables, tipos y cálculos (AE2). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1483-M2/Quiz-2
+
+::Q2-P1 (AE2):: Una estación guarda su lectura así\: lectura \= '12.5'. ¿De qué tipo es la variable lectura? {
+~float (número decimal)
+~int (número entero)
+=str (cadena de caracteres)
+~bool (valor verdadero o falso)
+####Las comillas hacen que el valor sea texto\: es una cadena (str), aunque parezca un número. Para calcular con ella, conviértela con float(lectura).
+}
+
+::Q2-P2 (AE2):: La estación Cumbre registró 18 mm de lluvia el lunes y 7 mm el martes. ¿Qué imprime print((18 + 7) / 2)? {
+~12
+~21.5
+~12.0
+=12.5
+####Los paréntesis hacen la suma primero (25), y / siempre entrega un decimal\: 12.5. Sin paréntesis, 18 + 7 / 2 daría 21.5, y la división entera 25 // 2 daría 12.
+}
+
+::Q2-P3 (AE2):: Una rutina convierte 135 minutos de lluvia continua en horas y minutos. ¿Qué imprime print(135 // 60, 135 % 60)? {
+~2.25 15
+=2 15
+~2 0.25
+~2.25 0
+####// entrega la división entera (2 horas) y % entrega el resto (15 minutos). print muestra los dos valores separados por un espacio.
+}
+
+::Q2-P4 (AE2):: Pides la temperatura con t \= input('Temperatura\: '), el usuario escribe 15 y print(t + 5) da un error. ¿Qué línea de lectura lo corrige? {
+~t \= input(float('Temperatura\: '))
+=t \= float(input('Temperatura\: '))
+~t \= str(input('Temperatura\: '))
+~t \= input('Temperatura\: ', float)
+####input siempre entrega texto (str), y sumar texto con un número da un error. float(...) convierte lo escrito en un número decimal, y así t + 5 da 20.0.
+}
+
+::Q2-P5 (AE2):: Guardaste la rutina como resumen.py y abriste la terminal en esa carpeta. ¿Qué escribes para ejecutarla? {
+=python resumen.py
+~run resumen.py
+~pip install resumen.py
+~python resumen
+####En la terminal, python seguido del nombre del archivo, con su extensión .py, ejecuta el script. pip instala librerías; no ejecuta tus programas.
+}

@@ -1,0 +1,43 @@
+// PF1481 · Módulo 2 · Quiz 3 · Explorar los datos (AE3). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1481-M2/Quiz-3
+
+::Q3-P1 (AE3):: Recibes la planilla de ventas del año de Pehuén y aún no sabes bien qué contiene. ¿Cuál es el propósito del análisis exploratorio en ese momento? {
+~Presentar a la dueña las conclusiones finales del año
+=Conocer los datos\: rangos, patrones y valores fuera de lo común
+~Confirmar la conclusión que ya tenías antes de mirar los datos de ventas
+~Borrar las ventas que parezcan demasiado altas o bajas
+####El análisis exploratorio sirve para conocer los datos antes de concluir. Con estadísticas como MIN, MAX y PROMEDIO, y con gráficos, detectas patrones, errores y valores atípicos\: de ahí salen las primeras preguntas e insights.
+}
+
+::Q3-P2 (AE3):: Pehuén quiere saber cuánto suben las ventas de un almacén por cada visita extra del vendedor en el mes. ¿Qué análisis corresponde? {
+~Series de tiempo, porque las visitas se hacen cada mes
+~Series de tiempo, porque las ventas se registran con fecha
+~Regresión, porque ordena las ventas desde la más antigua
+=Regresión, porque relaciona las visitas con las ventas
+####El análisis de regresión estudia cómo cambia una variable, las ventas, cuando cambia otra, las visitas. El de series de tiempo sigue una variable a lo largo del tiempo para ver su tendencia y sus ciclos.
+}
+
+::Q3-P3 (AE3):: Las ventas semanales de cinco almacenes, en miles de pesos, son 20, 22, 23, 25 y 300, en las celdas B2\:B6. ¿Qué dan \=PROMEDIO(B2\:B6) y \=MEDIANA(B2\:B6)? {
+=PROMEDIO 78 y MEDIANA 23
+~PROMEDIO 23 y MEDIANA 78
+~PROMEDIO 78 y MEDIANA 78
+~PROMEDIO 78 y MEDIANA 25
+####La suma es 390 y 390 / 5 \= 78. Ordenados, el valor del medio es 23. El almacén de 300 tira el promedio hacia arriba; la mediana representa mejor la venta típica.
+}
+
+::Q3-P4 (AE3):: Quieres mostrar cómo se reparten los montos de las ventas\: cuántas caen entre $0 y $50.000, cuántas entre $50.000 y $100.000, y así. ¿Qué gráfico creas en Excel? {
+~Circular (torta)
+~Línea
+=Histograma
+~Dispersión
+####El histograma agrupa una variable numérica en rangos y muestra cuántos datos caen en cada uno. La línea muestra la evolución en el tiempo, la torta las partes de un total y la dispersión la relación entre dos variables.
+}
+
+::Q3-P5 (AE3):: Graficaste las ventas mensuales de Pehuén con un gráfico de líneas. Suben y bajan de un mes a otro, y quieres ver la tendencia de fondo y proyectarla dos meses. ¿Qué haces? {
+~Ordenar los meses de mayor a menor venta antes de graficar
+~Cambiar el gráfico de líneas por uno circular, con un mes en cada porción
+=Agregar una línea de tendencia y extenderla dos períodos hacia adelante
+~Agregar etiquetas de datos con el monto exacto de cada mes
+####La línea de tendencia muestra hacia dónde van las ventas, más allá de los altibajos, y en sus opciones la puedes prolongar hacia adelante. En una serie de tiempo los meses van siempre en orden\: si los reordenas, pierdes la tendencia.
+}

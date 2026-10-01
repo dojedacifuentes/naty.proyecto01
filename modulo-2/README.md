@@ -32,6 +32,19 @@ el Anexo 2 y el trabajo por institución vienen después. En cada curso:
 
 Todo se regenera con `npm run produccion -- PF1821 PF1822`.
 
+## Quiz gamificados de los cursos con recursos de 2024
+
+Cuatro cursos tenían quiz de Genially de 2024 que no funcionan: les quedaron botones con «Añadir respuesta», preguntas de plantilla sin escribir o una pregunta sin respuesta correcta. En esos cursos se rehízo el quiz de **todos** sus aprendizajes esperados como juego, con el mismo motor de PF1821 y PF1822 y con preguntas escritas sobre los criterios de evaluación del plan 2026. Pedido del usuario del 2026-09-30. Cada carpeta tiene solo los quiz, no el kit completo.
+
+| Curso | Quiz | Carpeta |
+| --- | --- | --- |
+| **PF1481** · Fundamentos de Análisis de Datos | 5, uno por AE | [PF1481-analisis-de-datos](PF1481-analisis-de-datos/) |
+| **PF1483** · Fundamentos de Ciencia de Datos | 7, uno por AE | [PF1483-ciencia-de-datos](PF1483-ciencia-de-datos/) |
+| **PF1486** · Fundamentos Product Owner | 6, uno por AE | [PF1486-product-owner](PF1486-product-owner/) |
+| **PF1495** · Hacking Ético en Aplicativos Web | 4, uno por AE | [PF1495-hacking-etico](PF1495-hacking-etico/) |
+
+Cada quiz sale en HTML (un archivo, funciona sin internet), como paquete SCORM 1.2 para el LMS y en GIFT para Moodle. La fuente es `contenidos/<PF>/modulo-2/R-quiz-canva.md`, y se regenera con `npm run quiz-juego -- PF1481 PF1483 PF1486 PF1495`.
+
 ## Qué se evalúa en el módulo 2
 
 La propuesta técnica se evalúa sobre el segundo módulo del plan (bases 2026, 7.4, pág. 27).

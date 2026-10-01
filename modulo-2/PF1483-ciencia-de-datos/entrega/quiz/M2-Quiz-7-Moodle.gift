@@ -1,0 +1,43 @@
+// PF1483 · Módulo 2 · Quiz 7 · Programación orientada a objetos (AE7). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1483-M2/Quiz-7
+
+::Q7-P1 (AE7):: En una clase Estacion, ¿qué son el nombre y la altitud de cada estación, y qué es registrar_lectura()? {
+~Métodos y un atributo
+=Atributos y un método
+~Objetos y una clase
+~Módulos y una variable
+####Los atributos guardan el estado de cada objeto, como su nombre y su altitud; los métodos definen su comportamiento, lo que sabe hacer. Elegir solo los datos y acciones que importan es la abstracción.
+}
+
+::Q7-P2 (AE7):: Escribes cumbre \= Estacion('Cumbre', 3200). ¿Qué relación hay entre Estacion y cumbre? {
+~Son lo mismo; solo cambia la mayúscula
+~cumbre es la clase y Estacion, su instancia
+~Estacion guarda los datos y cumbre, solo los métodos
+=Estacion es el molde y cumbre, un objeto creado con él
+####La clase define qué atributos y métodos tendrán sus objetos. Al llamarla, como en Estacion('Cumbre', 3200), creas una instancia con sus propios valores. De una clase puedes crear muchos objetos.
+}
+
+::Q7-P3 (AE7):: En class Estacion\: defines def __init__(self, nombre, altitud)\:. ¿Qué línea, dentro de __init__, guarda el nombre como atributo de cada objeto? {
+=self.nombre \= nombre
+~nombre \= self.nombre
+~Estacion \= nombre
+~self \= nombre
+####self es el objeto que se está creando\: self.nombre \= nombre guarda en él el valor que llegó como parámetro. Así, cada estación conserva su propio nombre.
+}
+
+::Q7-P4 (AE7):: ¿Qué imprime este código? class Sensor\: con def __init__(self, tipo)\: self.tipo \= tipo y def describir(self)\: return 'Sensor de ' + self.tipo; luego s \= Sensor('viento'); print(s.describir()) {
+~Sensor de tipo
+~Un error, porque describir() se llama sin argumentos
+=Sensor de viento
+~None
+####Al crear s, __init__ guarda 'viento' en self.tipo. Al llamar s.describir(), Python pasa s como self de forma automática, y el método devuelve 'Sensor de viento'.
+}
+
+::Q7-P5 (AE7):: Un registro llega como dato \= ' cumbre,-2,15 '. ¿Qué entrega dato.strip().upper().split(',')? {
+~['CUMBRE', -2, 15]
+~'CUMBRE,-2,15'
+~[' CUMBRE', '-2', '15 ']
+=['CUMBRE', '-2', '15']
+####Los métodos de str se encadenan\: strip() quita los espacios de los extremos, upper() pasa a mayúsculas y split(',') corta en cada coma y entrega una lista de textos, no de números.
+}

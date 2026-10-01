@@ -21,15 +21,28 @@
  * Si cambian los quiz: `npm run produccion -- PF1821 PF1822` y después `npm run quiz-juego`.
  * Si falta la misión, la insignia o la siguiente parada, o si un quiz no trae 5 preguntas de
  * alternativas con una correcta, se detiene y dice dónde. Sin dependencias (AGENTS.md §8).
+ *
+ * Cursos con solo el quiz (kit: false): PF1481, PF1483, PF1486 y PF1495 no tienen el kit de `npm run produccion`;
+ * sus quiz reemplazan los de Genially de 2024 (pedido del usuario del 2026-09-30) y salen de su R-quiz-canva.md,
+ * con los criterios de evaluación del plan 2026. Para ellos este script también escribe el GIFT
+ * (scripts/lib/quiz-canva.mjs) y un zip con todo: modulo-2/<curso>/quiz-juego-M2-<PF>.zip.
+ *
+ *   npm run quiz-juego                     todos los cursos
+ *   npm run quiz-juego -- PF1481 PF1483    solo esos
  */
 import fs from 'node:fs';
 import { leer, escribir, ruta } from './lib/repo.mjs';
 import { leerGift } from './lib/quiz-gift.mjs';
+import { leerQuizCanva, giftQuiz } from './lib/quiz-canva.mjs';
 import { crearZip } from './lib/zip.mjs';
 
 const CURSOS = [
-  { pf: 'PF1821', carpeta: 'PF1821-agentes-low-code', nombre: 'Construcción de Agentes y Automatización con Herramientas Low Code' },
-  { pf: 'PF1822', carpeta: 'PF1822-desarrollo-con-ia', nombre: 'Especialización en Desarrollo con IA' },
+  { pf: 'PF1821', carpeta: 'PF1821-agentes-low-code', nombre: 'Construcción de Agentes y Automatización con Herramientas Low Code', kit: true },
+  { pf: 'PF1822', carpeta: 'PF1822-desarrollo-con-ia', nombre: 'Especialización en Desarrollo con IA', kit: true },
+  { pf: 'PF1481', carpeta: 'PF1481-analisis-de-datos', nombre: 'Fundamentos de Análisis de Datos', kit: false },
+  { pf: 'PF1483', carpeta: 'PF1483-ciencia-de-datos', nombre: 'Fundamentos de Ciencia de Datos', kit: false },
+  { pf: 'PF1486', carpeta: 'PF1486-product-owner', nombre: 'Fundamentos Product Owner', kit: false },
+  { pf: 'PF1495', carpeta: 'PF1495-hacking-etico', nombre: 'Hacking Ético en Aplicativos Web', kit: false },
 ];
 // Fecha fija dentro del zip: regenerar sin cambios no debe cambiar el archivo.
 const FECHA_ZIP = new Date(2026, 8, 28, 12, 0, 0);
@@ -71,6 +84,73 @@ const ESTILOS = {
         heroe: { tipo: 'flujo', variante: 'barras', nodos: [['Limpiar', 'chispa'], ['Tokenizar', 'numeral'], ['Medir', 'barras']], barras: ['ROUGE', 'BLEU'] } },
     },
   },
+  // Cursos sin kit (2026-09-30). Etiquetas revisadas contra las alternativas correctas de cada quiz: p. ej., el Quiz 4 de PF1481
+  // no dice «Resumen» ni usa el icono de tendencia, y el Quiz 5 no nombra «Relación», «Modelo» ni «Medida», que son respuestas.
+  PF1481: {
+    fondo: 'neuronas',
+    quiz: {
+      1: { acento: '#22d3ee', acento2: '#a3e635', lema: 'Del dato al hallazgo, paso a paso',
+        heroe: { tipo: 'chat', nodos: [['Pregunta', 'chat'], ['Datos', 'bd'], ['Respuesta', 'chat']] } },
+      2: { acento: '#a78bfa', acento2: '#34d399', lema: 'Un set de datos en el que puedes confiar',
+        heroe: { tipo: 'flujo', nodos: [['Datos crudos', 'doc'], ['Preparación', 'transformar'], ['Set limpio', 'chispa']] } },
+      3: { acento: '#fbbf24', acento2: '#f472b6', lema: 'Números y gráficos que cuentan algo',
+        heroe: { tipo: 'flujo', nodos: [['Ventas', 'bd'], ['Fórmulas', 'numeral'], ['Insights', 'diana']] } },
+      4: { acento: '#38bdf8', acento2: '#ff7a59', lema: 'Arrastra, suelta y responde',
+        heroe: { tipo: 'flujo', nodos: [['Base de ventas', 'bd'], ['Tabla dinámica', 'niveles'], ['Gráfico dinámico', 'salida']] } },
+      5: { acento: '#e879f9', acento2: '#fb923c', lema: 'Power Pivot y Power View en acción',
+        heroe: { tipo: 'flujo', nodos: [['Datos de Pehuén', 'bd'], ['Power Pivot', 'chip'], ['Power View', 'barras']] } },
+    },
+  },
+  PF1483: {
+    fondo: 'circuito',
+    quiz: {
+      1: { acento: '#22d3ee', acento2: '#a3e635', lema: 'Python y las herramientas para usarlo',
+        heroe: { tipo: 'flujo', nodos: [['Idea', 'chispa'], ['Código', 'doc'], ['Resultado', 'barras']] } },
+      2: { acento: '#fbbf24', acento2: '#38bdf8', lema: 'Variables, tipos y cálculos en la consola',
+        heroe: { tipo: 'flujo', nodos: [['Entrada', 'entrada'], ['Cálculo', 'numeral'], ['Salida', 'salida']] } },
+      3: { acento: '#f472b6', acento2: '#a78bfa', lema: 'Cada lectura toma su camino',
+        // 'flujo' y no 'decision': esa ilustración trae fija la etiqueta «DEPURAR» (de PF1821), que aquí insinuaría la pregunta 4.
+        heroe: { tipo: 'flujo', nodos: [['Lectura', 'doc'], ['Condición', 'rombo'], ['Alerta', 'bandera']] } },
+      4: { acento: '#34d399', acento2: '#fbbf24', lema: 'Funciones propias y módulos listos',
+        heroe: { tipo: 'flujo', nodos: [['Lecturas', 'entrada'], ['Rutina propia', 'engranaje'], ['Resumen', 'barras']] } },
+      5: { acento: '#fb923c', acento2: '#22d3ee', lema: 'Cada dato en la estructura que le acomoda',
+        heroe: { tipo: 'flujo', nodos: [['Registros', 'doc'], ['Colección', 'paquete'], ['Consulta', 'diana']] } },
+      6: { acento: '#a3e635', acento2: '#e879f9', lema: 'Recorrer datos, vuelta a vuelta',
+        heroe: { tipo: 'flujo', nodos: [['Serie de datos', 'barras'], ['Vuelta', 'transformar'], ['Acumulado', 'escalar']] } },
+      7: { acento: '#ff7a59', acento2: '#38bdf8', lema: 'Modelar estaciones en Python',
+        heroe: { tipo: 'flujo', nodos: [['Lectura', 'entrada'], ['Estación', 'chip'], ['Reporte', 'doc']] } },
+    },
+  },
+  PF1486: {
+    fondo: 'neuronas',
+    quiz: {
+      1: { acento: '#fbbf24', acento2: '#a78bfa', lema: 'Cómo se organizan los grupos humanos',
+        heroe: { tipo: 'flujo', nodos: [['Taller familiar', 'paquete'], ['Fábrica', 'engranaje'], ['Negocio digital', 'chip']] } },
+      2: { acento: '#ff7a59', acento2: '#22d3ee', lema: 'El método industrial y su herencia',
+        heroe: { tipo: 'flujo', nodos: [['Telar a vapor', 'engranaje'], ['Taylor', 'numeral'], ['Siglo XXI', 'bandera']] } },
+      3: { acento: '#a3e635', acento2: '#38bdf8', lema: 'La segunda ola de la industria',
+        heroe: { tipo: 'flujo', nodos: [['Fábrica', 'engranaje'], ['Producto', 'paquete'], ['Comprador', 'diana']] } },
+      4: { acento: '#e879f9', acento2: '#34d399', lema: 'La tercera ola llega a la empresa',
+        heroe: { tipo: 'flujo', nodos: [['Pedido', 'doc'], ['Registro', 'bd'], ['Despacho', 'paquete']] } },
+      5: { acento: '#22d3ee', acento2: '#fb923c', lema: 'Nuevas reglas del juego para las empresas',
+        heroe: { tipo: 'flujo', nodos: [['Telar', 'engranaje'], ['Mercado', 'barras'], ['Talento', 'chispa']] } },
+      6: { acento: '#f472b6', acento2: '#a3e635', lema: 'La misión final de Textiles del Maule',
+        heroe: { tipo: 'flujo', nodos: [['Idea', 'chispa'], ['Prototipo', 'transformar'], ['Lanzamiento', 'enviar']] } },
+    },
+  },
+  PF1495: {
+    fondo: 'circuito',
+    quiz: {
+      1: { acento: '#22d3ee', acento2: '#ff7a59', lema: 'Amenazas, atacantes e impacto',
+        heroe: { tipo: 'flujo', nodos: [['Atacante', 'bicho'], ['Tienda web', 'paquete'], ['Negocio', 'barras']] } },
+      2: { acento: '#a78bfa', acento2: '#fbbf24', lema: 'El marco del hacking ético',
+        heroe: { tipo: 'flujo', nodos: [['Ética', 'escudo'], ['Leyes', 'doc'], ['Normas', 'niveles']] } },
+      3: { acento: '#34d399', acento2: '#f472b6', lema: 'Quién hace qué, y con qué conducta',
+        heroe: { tipo: 'chat', nodos: [['Encargo', 'chat'], ['Hacker ético', 'escudo'], ['Respuesta', 'chat']] } },
+      4: { acento: '#fb923c', acento2: '#38bdf8', lema: 'Cada acción tiene su momento',
+        heroe: { tipo: 'flujo', nodos: [['Objetivo', 'diana'], ['Método', 'engranaje'], ['Hallazgos', 'bandera']] } },
+    },
+  },
 };
 
 const plano = (t) => t.replace(/\*\*|\*|`/g, '').trim();
@@ -109,7 +189,10 @@ function preguntas(c, n) {
     if (p.opciones.length > 4) throw new Error(`${archivo}: ${p.id} tiene más de 4 alternativas (el juego usa A a D)`);
     const ae = /\((AE\d)\)/.exec(p.id)?.[1];
     if (!ae) throw new Error(`${archivo}: ${p.id} no dice su aprendizaje esperado`);
-    return { ae, enunciado: p.enunciado, opciones: p.opciones, correcta: p.correcta, retro: p.retro };
+    // El GIFT trae <, > y & como entidades HTML (así los muestra Moodle). La plantilla escapa al pintar: si las entidades
+    // llegaran tal cual, el juego mostraría "&lt;" (pasaba en el Quiz 4 de PF1822, con re.sub(r"<[^>]+>", ...)).
+    const texto = (s) => s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+    return { ae, enunciado: texto(p.enunciado), opciones: p.opciones.map(texto), correcta: p.correcta, retro: texto(p.retro) };
   });
 }
 
@@ -153,9 +236,52 @@ function manifiesto(id, titulo) {
 `;
 }
 
+// Cursos sin kit: el GIFT de cada quiz sale aquí de R-quiz-canva.md (validado), y no de `npm run produccion`.
+function giftSinKit(c) {
+  const nAes = JSON.parse(leer(`data/planes/${c.pf}.json`)).modulos.find((m) => m.n === 2).aprendizajes_esperados.length;
+  const { quizzes } = leerQuizCanva(c.pf, leer(`contenidos/${c.pf}/modulo-2/R-quiz-canva.md`), nAes);
+  for (const q of quizzes) escribir(`modulo-2/${c.carpeta}/entrega/quiz/M2-Quiz-${q.n}-Moodle.gift`, giftQuiz(c.pf, q));
+}
+
+// Portada de la carpeta de un curso sin kit: qué hay, de dónde sale y cómo se sube.
+function readme(c, meta) {
+  const m = JSON.parse(leer(`data/planes/${c.pf}.json`)).modulos.find((x) => x.n === 2);
+  const q = (n, ext) => `entrega/quiz/M2-Quiz-${n}-${ext}`;
+  return `# ${c.pf} · ${c.nombre} · Módulo 2 · Quiz gamificados
+
+Generado por \`npm run quiz-juego -- ${c.pf}\` desde [\`contenidos/${c.pf}/modulo-2/R-quiz-canva.md\`](../../contenidos/${c.pf}/modulo-2/R-quiz-canva.md). No se edita a mano: se cambia ese archivo y se vuelve a generar.
+
+Reemplazan los quiz de Genially de 2024. Hay uno por cada aprendizaje esperado del módulo 2 (\`${m.codigo}\` ${m.nombre}, ${m.horas} h). Sus preguntas se escribieron sobre los criterios de evaluación del plan formativo 2026, y la cobertura de cada criterio está al final del archivo fuente.
+
+**Misión:** ${meta.mision}.
+
+| Quiz | Aprendizaje esperado 2026 | Tema | Insignia | Juego (HTML) | LMS (SCORM 1.2) | Moodle (GIFT) |
+| --- | --- | --- | --- | --- | --- | --- |
+${meta.quizzes.map((x, i) => `| ${i + 1} | AE${i + 1} · ${m.aprendizajes_esperados[i].texto} | ${x.tema} | ${x.insignia} | [html](${q(i + 1, 'Juego.html')}) | [zip](${q(i + 1, 'Juego-SCORM.zip')}) | [gift](${q(i + 1, 'Moodle.gift')}) |`).join('\n')}
+
+Todo junto: [\`quiz-juego-M2-${c.pf}.zip\`](quiz-juego-M2-${c.pf}.zip).
+
+## Cómo se suben
+
+- **LMS con SCORM (Moodle u otro):** Agregar actividad → Paquete SCORM → \`M2-Quiz-n-Juego-SCORM.zip\`. Registra el mejor puntaje (0-100) y la finalización.
+- **Como página web:** \`M2-Quiz-n-Juego.html\` es un solo archivo que funciona sin internet. Se sube como Archivo o Página, o se incrusta.
+- **Moodle sin juego:** Banco de preguntas → Importar → formato GIFT → \`M2-Quiz-n-Moodle.gift\`, y luego un Cuestionario con esas 5 preguntas.
+
+## Gamificación
+
+Cada quiz es una misión de 5 niveles, uno por pregunta. Trae XP, combos, 3 de energía, un comodín 50:50 y dos intentos por nivel (uno en las de verdadero o falso). Al final da logros e insignia de oro, plata o bronce. Es formativo: no lleva nota y muestra la retroalimentación al responder.
+`;
+}
+
+const pedidos = process.argv.slice(2).map((x) => x.toUpperCase());
+const desconocidos = pedidos.filter((pf) => !CURSOS.some((c) => c.pf === pf));
+if (desconocidos.length) throw new Error(`Cursos que este script no conoce: ${desconocidos.join(', ')}. Conoce: ${CURSOS.map((c) => c.pf).join(', ')}`);
 let hechos = 0;
-for (const c of CURSOS) {
+for (const c of CURSOS.filter((x) => !pedidos.length || pedidos.includes(x.pf))) {
+  if (!ESTILOS[c.pf]) throw new Error(`${c.pf}: falta su diseño en ESTILOS`);
+  if (!c.kit) giftSinKit(c);
   const meta = metadatos(c);
+  const paraZip = [];
   for (const [i, q] of meta.quizzes.entries()) {
     const n = i + 1;
     if (!ESTILOS[c.pf].quiz[n]) throw new Error(`${c.pf}: falta el estilo del Quiz ${n} en ESTILOS`);
@@ -171,7 +297,17 @@ for (const c of CURSOS) {
     ], { fecha: FECHA_ZIP });
     fs.writeFileSync(ruta(`${base}-SCORM.zip`), zip);
     console.log(`${base}.html  (${Math.round(Buffer.byteLength(pagina) / 1024)} KB) · SCORM ${Math.round(zip.length / 1024)} KB · insignia «${q.insignia}»`);
+    const nombre = `M2-Quiz-${n}`;
+    paraZip.push({ nombre: `${nombre}-Juego.html`, contenido: pagina }, { nombre: `${nombre}-Juego-SCORM.zip`, contenido: zip },
+      { nombre: `${nombre}-Moodle.gift`, contenido: leer(`modulo-2/${c.carpeta}/entrega/quiz/${nombre}-Moodle.gift`) });
     hechos++;
+  }
+  // Un zip por curso con los juegos (HTML y SCORM) y los GIFT, para subirlos de una vez. Los del kit van en `npm run zip`.
+  if (!c.kit) {
+    const todo = crearZip(paraZip, { fecha: FECHA_ZIP });
+    fs.writeFileSync(ruta(`modulo-2/${c.carpeta}/quiz-juego-M2-${c.pf}.zip`), todo);
+    console.log(`modulo-2/${c.carpeta}/quiz-juego-M2-${c.pf}.zip  (${Math.round(todo.length / 1024)} KB, ${paraZip.length} archivos)`);
+    escribir(`modulo-2/${c.carpeta}/README.md`, readme(c, meta));
   }
 }
 console.log(`${hechos} quiz gamificados.`);

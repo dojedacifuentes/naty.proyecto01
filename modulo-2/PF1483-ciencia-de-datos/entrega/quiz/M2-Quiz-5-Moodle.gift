@@ -1,0 +1,43 @@
+// PF1483 · Módulo 2 · Quiz 5 · Estructuras de datos (AE5). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1483-M2/Quiz-5
+
+::Q5-P1 (AE5):: Guardas cada registro como ('Cumbre', -2, 15) en vez de ['Cumbre', -2, 15]. ¿Qué característica distingue a la tupla de la lista? {
+~Solo puede guardar números
+=No se puede modificar una vez creada
+~No mantiene el orden de sus elementos
+~Sus elementos se rescatan por clave
+####La tupla es inmutable\: no puedes agregarle ni cambiarle elementos. Las dos mantienen el orden y aceptan cualquier tipo; el set no tiene orden y el diccionario usa claves.
+}
+
+::Q5-P2 (AE5):: Cada estación envía muchos registros al día, y necesitas saber qué estaciones distintas enviaron datos, sin nombres repetidos. ¿Qué estructura usas? {
+~Una lista
+~Una tupla
+~Una cadena de caracteres
+=Un set
+####Un set guarda solo valores únicos\: si agregas 'Cumbre' diez veces, queda una vez. La lista y la tupla aceptan elementos repetidos.
+}
+
+::Q5-P3 (AE5):: Quieres consultar la temperatura de cada estación por su nombre, por ejemplo la de 'Cumbre'. ¿Qué estructura conviene? {
+=Un diccionario con el nombre como clave
+~Una lista con las temperaturas, en orden de llegada
+~Un set con los nombres de las estaciones
+~Una tupla con las temperaturas de cada día
+####El diccionario asocia cada clave con su valor\: temps['Cumbre'] entrega esa temperatura directo. En una lista tendrías que saber en qué posición está.
+}
+
+::Q5-P4 (AE5):: ¿Qué imprime este código? temps \= [8, 11, 5]; temps.append(9); print(temps[1], temps[-1]) {
+~8 9
+~11 5
+=11 9
+~8 5
+####append agrega el 9 al final\: [8, 11, 5, 9]. Los índices parten en 0, así que temps[1] es 11, y temps[-1] es el último elemento, 9.
+}
+
+::Q5-P5 (AE5):: ¿Qué imprime este código? lluvia \= \{'Cumbre'\: 12, 'Valle'\: 3\}; lluvia['Paso'] \= 7; lluvia['Valle'] \= 5; print(lluvia['Valle'], len(lluvia)) {
+~3 3
+=5 3
+~5 4
+~3 4
+####Asignar un valor a una clave nueva ('Paso') la agrega; asignarlo a una clave que ya existe ('Valle') reemplaza su valor. Quedan 3 claves, y Valle vale 5.
+}

@@ -1,0 +1,43 @@
+// PF1495 · Módulo 2 · Quiz 3 · Rol y responsabilidades (AE3). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1495-M2/Quiz-3
+
+::Q3-P1 (AE3):: En Librería Fiordo, una persona del área de TI revisa a diario las alertas y los registros de la tienda para detectar actividad sospechosa y proponer mejoras. ¿Qué perfil es? {
+~Pentester
+~Auditor/a de seguridad
+=Analista de seguridad
+~Desarrollador/a web
+####El analista de seguridad vigila los sistemas en el día a día, investiga lo sospechoso y propone protecciones.
+}
+
+::Q3-P2 (AE3):: ¿Qué diferencia el trabajo de un pentester del de un auditor o auditora de seguridad? {
+=El pentester simula ataques autorizados; el auditor revisa si se cumplen las normas
+~El pentester trabaja sin autorización; el auditor trabaja siempre con autorización
+~El pentester solo revisa documentos; el auditor ataca los sistemas en producción
+~Son el mismo rol, solo que con distinto nombre según la empresa
+####Los dos trabajan con autorización. El pentester busca fallas explotables con un ataque controlado; el auditor verifica que los controles y procesos cumplan la norma y las políticas acordadas.
+}
+
+::Q3-P3 (AE3):: La autorización cubre solo la tienda web de Librería Fiordo. En medio de la prueba notas que su servidor de correo parece tener una falla. ¿Qué haces? {
+~Lo pruebas rápido, porque es de la misma empresa
+~Lo pruebas y lo sumas como hallazgo extra al informe
+~Lo ignoras y no lo mencionas, porque está fuera del alcance
+=No lo pruebas, pero se lo informas a la librería para que decida
+####Sin autorización no se prueba, aunque sea de la misma empresa. Callar tampoco corresponde\: avisar lo que viste es parte de la transparencia, y la librería decide si amplía la autorización por escrito.
+}
+
+::Q3-P4 (AE3):: Terminada la prueba, una persona que trabaja en otra librería te pregunta qué fallas tenía la tienda de Librería Fiordo. ¿Qué haces? {
+~Le cuentas solo las fallas ya corregidas, porque ya no son riesgo
+=No le cuentas\: los hallazgos son confidenciales y pertenecen al cliente
+~Le cuentas las fallas graves, para que proteja su propia tienda
+~Le envías el informe, porque el trabajo ya terminó
+####Lo que conoces en una prueba es confidencial, también después de terminarla. Solo se comparte con quien Librería Fiordo autorice.
+}
+
+::Q3-P5 (AE3):: Librería Fiordo te pide evaluar la seguridad de su tienda web, que programaste tú hace un año. ¿Qué corresponde? {
+~Aceptar sin comentarlo, porque conoces mejor que nadie el código
+~Aceptar y dejar fuera del informe las fallas de tu propio código
+=Declarar el conflicto de interés antes de aceptar el trabajo
+~Aceptar y pedir que un colega firme el informe en tu lugar
+####Evaluar tu propio trabajo es un conflicto de interés\: podrías pasar por alto tus propios errores. Declararlo a tiempo es parte de la transparencia y la responsabilidad profesional; luego la librería decide.
+}

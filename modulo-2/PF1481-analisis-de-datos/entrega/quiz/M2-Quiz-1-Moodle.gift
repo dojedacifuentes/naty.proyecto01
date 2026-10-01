@@ -1,0 +1,43 @@
+// PF1481 · Módulo 2 · Quiz 1 · El análisis de datos y sus etapas (AE1). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1481-M2/Quiz-1
+
+::Q1-P1 (AE1):: La dueña de Distribuidora Pehuén te pregunta para qué le serviría el análisis de datos en su negocio. ¿Qué le respondes? {
+~Para que el computador tome por ella todas las decisiones del negocio
+=Para examinar sus ventas y obtener información que la ayude a decidir
+~Para guardar todas las ventas en una planilla ordenada por fecha
+~Para tener gráficos llamativos en sus presentaciones a clientes
+####Analizar datos es examinarlos, limpiarlos y transformarlos para obtener información útil. En el trabajo de hoy sirve para decidir con evidencia, no para reemplazar a las personas ni para decorar informes.
+}
+
+::Q1-P2 (AE1):: Pehuén ya definió su pregunta\: qué productos dejar de vender. Reunió las planillas de ventas de 12 meses, pero hay clientes repetidos y fechas escritas de distintas formas. ¿Qué etapa del proceso sigue? {
+~Comunicar los resultados a la dueña de la empresa
+~Volver a plantear la pregunta desde el principio
+=Limpiar y preparar los datos reunidos
+~Elegir el gráfico que irá en el informe final
+####El proceso avanza así\: definir la pregunta, reunir los datos, limpiarlos y prepararlos, analizarlos y comunicar los hallazgos. Si analizas datos con clientes repetidos y fechas mezcladas, las conclusiones saldrán mal.
+}
+
+::Q1-P3 (AE1):: Terminaste de analizar las ventas del año. ¿Cuál de estos resultados es un insight para Pehuén? {
+=En verano el norte compra el doble de bebidas\: conviene reforzar ese stock
+~La planilla de ventas del año tiene 8.400 filas y 12 columnas
+~Las ventas de cada día se guardan en una planilla compartida por todo el equipo
+~En marzo se registraron ventas a 140 almacenes distintos
+####Un insight es un hallazgo que explica algo del negocio y sugiere una acción. Contar filas o almacenes, o decir dónde se guardan los datos, describe la planilla, pero no ayuda a decidir.
+}
+
+::Q1-P4 (AE1):: Pehuén quiere estimar cuántas cajas de aceite venderá en diciembre a partir de las ventas de los años anteriores. ¿Qué tipo de análisis corresponde? {
+~Descriptivo
+~Diagnóstico
+~Prescriptivo
+=Predictivo
+####El análisis predictivo usa datos históricos para estimar lo que viene. El descriptivo resume qué pasó, el diagnóstico busca por qué pasó y el prescriptivo recomienda qué hacer.
+}
+
+::Q1-P5 (AE1):: Pehuén registra unas 6.000 ventas al mes. Un colega dice que Excel «no sirve para analizar datos». ¿Cómo evalúas esa opinión? {
+~Es cierto\: Excel sirve para hacer listas, pero no para analizar
+~Es cierto\: Excel no permite graficar más de mil filas a la vez
+=No es así\: Excel maneja ese volumen con fórmulas, gráficos y tablas dinámicas
+~No es así, pero solo si antes se copian todas las ventas a un documento de texto
+####Una hoja de Excel admite más de un millón de filas\: 72.000 ventas al año caben de sobra. Para volúmenes mucho mayores o varias tablas relacionadas, el módulo usa Power Pivot.
+}

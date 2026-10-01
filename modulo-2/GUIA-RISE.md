@@ -4,15 +4,18 @@ Rise reemplaza al flipbook del estándar de la contraparte (DECISIONS, 2026-09-2
 de lectura que ya existen: uno por aprendizaje esperado (AE1 a AE4), y el cuadernillo de lecturas con
 la marca de cada cliente.
 
-**Qué armar:** un curso de Rise por cliente y curso (UNAB PF1821, Skillnest PF1821, UNAB PF1822,
-Skillnest PF1822 y U. Autónoma PF1822). Se arma uno completo y los demás se duplican y se les cambia el
-tema.
+**Qué armar:** un curso base de Rise por aprendizaje esperado (8: PF1821 y PF1822, AE1 a AE4), sin marca. Se corrige
+una sola vez contra el plan y después se duplica por cliente: PF1821 para UNAB y Skillnest, PF1822 para UNAB, Skillnest y
+U. Autónoma (20 copias), cada una con la marca de Articulate de su cliente. Los 8 base y las 20 copias están hechos (2026-09-30);
+ids, carpetas y marcas en `REVISION-RISE.md`.
 
 ## Estructura del curso
 
 | Parte de Rise | Contenido | De dónde sale |
 | --- | --- | --- |
-| Título del curso | "Módulo 2 · Material de lectura" | — |
+| Título del curso | `<NOMBRE DEL PLAN> · MÓDULO 2 · AE<n>` (Rise admite 100 caracteres) | `modulo-2/<curso>/rise/ficha-AE<n>.md` |
+| Descripción de la portada | Módulo 2 con su nombre, competencia del módulo y aprendizaje esperado, textuales | Misma ficha |
+| Primera lección | "Ficha del módulo": curso, competencias, módulo, aprendizaje, criterios y contenidos, textuales, en un bloque "Paragraph" sin encabezado | Misma ficha |
 | Sección (encabezado) | Lectura AE1 · título de la lectura (una sección por aprendizaje) | Portada de cada lectura |
 | Lección 1 de la sección | Aprendizaje esperado y criterios, **textuales del plan** | Página "Qué vas a lograr" |
 | Lecciones siguientes | Una por cada tema numerado de la lectura, con el mismo rótulo del plan | Secciones 1, 2, 3… |
@@ -23,6 +26,12 @@ tema.
 
 Los rótulos con los contenidos del plan van tal cual, en mayúsculas: es lo que el evaluador compara con
 la ficha.
+
+**El curso se escribe para el estudiante** (usuario, 2026-09-30). No hay alusiones al plan formativo, a SIPFOR ni a lo "oficial":
+nada de "criterios oficiales", "textos oficiales", "lectura oficial", "alineado con el plan formativo" ni "se conserva de manera
+literal". El aprendizaje esperado, los criterios y los contenidos sí van exactos, sin decir que lo son. "Documentación oficial" de
+OpenAI, Hugging Face o n8n sí se usa: es parte del aprendizaje esperado 2 de PF1822. Lo que se corrigió en las 20 copias está en
+`REVISION-RISE.md`.
 
 ## Camino A · Con AI Assistant (si la licencia de Articulate 360 lo incluye)
 
@@ -53,21 +62,37 @@ la ficha.
    retroalimentación.
 5. Glosario: un bloque Accordion con los términos. Se copian desde `M2-Glosario.csv`.
 
-## Marca del cliente (menú Theme)
+## Marca del cliente (Theme → Apply a brand)
 
-1. **Logo:** súbelo en Theme → Logo. Usa el `logo.png` de `privado/marcas/<cliente>/`.
-2. **Color:** Theme → Colors, con el color principal de la marca:
+Decisión del usuario (2026-09-30): cada copia lleva **solo la marca ya creada en Articulate** (Settings → Brands), sin logo y
+sin cambiar sus fuentes. Los cursos base no llevan marca: son la matriz que se duplica.
 
-   | Cliente | Color principal | Color de acento |
+0. Duplica el curso base desde la biblioteca (⋯ → Duplicate). Borra el "Copy of" del nombre y muévelo (⋯ → Move) a la carpeta
+   del cliente: UNAB, Skillnest o U Autónoma.
+1. En la copia: Theme → Apply a brand → Brand, y elige la del cliente. Después pulsa Save.
+2. Revisa en Theme → Colors que el color del tema sea el principal de la marca:
+
+   | Marca en Articulate | Color principal | Fuentes (se dejan como vienen) |
    | --- | --- | --- |
-   | UNAB | `#051C2C` | `#AA182C` |
-   | Skillnest | `#1E1E2A` | `#00ADE5` |
-   | U. Autónoma | `#3D3935` | `#DA291C` |
+   | UNAB | `#A6192E` | Montserrat + Merriweather |
+   | U Autónoma | `#DA291C` | Be Vietnam + Lora |
+   | Skillnest | `#0C8DC9` | Lato + Merriweather |
 
-3. **Imagen de portada:** la portada del cuadernillo de lecturas del cliente sirve de referencia.
-4. Para el siguiente cliente, duplica el curso y cambia solo el tema.
+   Los colores de Skillnest salen del CSS de skillnest.com, no de un manual del cliente (pregunta abierta #19).
+3. En Settings (engranaje) → Labels, elige el juego integrado **Spanish**, para que los botones y mensajes de Rise salgan en
+   español ("COMENZAR CURSO", "Inicio"). Se guarda solo. Revísalo en cada copia: los cursos que genera Rise pueden venir en
+   "English".
+4. No se crean ni editan marcas y no se suben logos. Una marca cruzada entre clientes que compiten es el error más caro:
+   revisa cada copia.
+
+**Antes de duplicar**, el curso base debe calzar con el plan: título, descripción de portada y lección "Ficha del módulo"
+textuales (fichas en `modulo-2/<curso>/rise/`, revisión en `REVISION-RISE.md`).
 
 ## Publicar en Moodle
+
+Los 20 SCORM ya están exportados (2026-09-30). Están en Drive, en la carpeta "3 Lecturas Rise (SCORM)" de cada cliente, y en la
+planilla, en Resumen, columnas G a J. Detalle en `REVISION-RISE.md`. Si se corrige una copia, hay que volver a exportarla y
+reemplazar su zip en Drive como nueva versión, para que el enlace no cambie.
 
 1. En Rise: **Publish → LMS**, estándar **SCORM 1.2**. Descarga el zip.
 2. En Moodle: **Agregar actividad → Paquete SCORM**, sube el zip y fija la finalización (vista o

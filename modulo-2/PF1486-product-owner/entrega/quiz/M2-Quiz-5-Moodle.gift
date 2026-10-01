@@ -1,0 +1,43 @@
+// PF1486 · Módulo 2 · Quiz 5 · Era del conocimiento e industria 4.0 (AE5). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1486-M2/Quiz-5
+
+::Q5-P1 (AE5):: ¿Qué diferencia mejor a la era del conocimiento de la era industrial? {
+=El valor pasa de las máquinas al saber y la creatividad de las personas
+~El valor pasa de la tierra y las cosechas a las máquinas y el capital
+~El trabajo pasa de tareas creativas a tareas repetitivas y estandarizadas
+~La producción pasa de las grandes fábricas a los talleres artesanales
+####En la era agrícola el valor estaba en la tierra, y en la industrial, en las máquinas y el capital. En la era del conocimiento, lo que más vale es lo que las personas saben, aprenden y comparten.
+}
+
+::Q5-P2 (AE5):: En un mismo año, a Textiles del Maule le falla un proveedor clave, una moda en redes sociales dura solo semanas y aparece un competidor en línea inesperado. ¿Qué respuesta conviene en este entorno VUCA? {
+~Un plan rígido a cinco años que no se modifique
+~Esperar a que el mercado se estabilice antes de tomar decisiones
+~Concentrar cada decisión en la gerencia general
+=Planificar en ciclos cortos y ajustar según lo que se aprende
+####En un entorno volátil, incierto, complejo y ambiguo, los planes largos envejecen rápido. Por eso conviene avanzar en ciclos cortos, medir y ajustar, como proponen los enfoques ágiles.
+}
+
+::Q5-P3 (AE5):: El precio de la tela que compra Textiles del Maule depende del clima, del tipo de cambio, del transporte y de nuevas normas, y esos factores se afectan entre sí. ¿Qué rasgo del entorno VUCA ilustra mejor? {
+~Volatilidad
+~Incertidumbre
+=Complejidad
+~Ambigüedad
+####Hay complejidad cuando muchos factores están conectados y cuesta ver causas y efectos. La mirada BANI (frágil, ansioso, no lineal e incomprensible) agrega que un cambio pequeño puede tener un efecto enorme.
+}
+
+::Q5-P4 (AE5):: Textiles del Maule instala sensores en sus telares que envían datos a la nube y avisan antes de que una máquina falle. ¿Qué rasgo de la industria 4.0 aplica? {
+=Máquinas conectadas por internet de las cosas
+~Producción en masa con cadena de montaje
+~Registro de contratos en una cadena de bloques
+~Automatización mecánica sin conexión a datos
+####La industria 4.0 une lo físico con lo digital\: sensores, internet de las cosas, nube y analítica permiten anticipar fallas y decidir con datos. Es el paso de la máquina automática a la fábrica inteligente.
+}
+
+::Q5-P5 (AE5):: Textiles del Maule busca a alguien para su nuevo equipo digital. ¿Qué perfil corresponde a un knowmad? {
+~Un operario experto en una sola máquina que evita cambiar de tarea
+=Una diseñadora que aprende siempre y colabora con equipos remotos
+~Un supervisor que controla tiempos y movimientos en la planta
+~Un vendedor que solo atiende en la misma tienda de siempre
+####Knowmad une las palabras conocimiento y nómada\: una persona que crea valor con lo que sabe, aprende de forma continua y trabaja con distintos equipos, desde cualquier lugar. El término lo propuso John Moravec.
+}

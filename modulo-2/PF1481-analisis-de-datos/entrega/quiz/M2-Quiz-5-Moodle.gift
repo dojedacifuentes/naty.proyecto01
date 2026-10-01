@@ -1,0 +1,43 @@
+// PF1481 · Módulo 2 · Quiz 5 · Power Pivot y Power View (AE5). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1481-M2/Quiz-5
+
+::Q5-P1 (AE5):: ¿Qué te permite Power Pivot que no logras con una tabla dinámica tradicional creada desde un solo rango? {
+~Ordenar y filtrar las filas de una sola tabla por cualquiera de sus columnas
+=Relacionar varias tablas en un modelo y trabajar con millones de filas
+~Cambiar el diseño y los colores de la tabla dinámica con estilos
+~Escribir fórmulas como SUMA o PROMEDIO en las celdas de la hoja
+####Power Pivot carga datos de varias fuentes en un modelo de datos, relaciona tablas y supera el límite de filas de una hoja. Una tabla dinámica tradicional resume una sola tabla.
+}
+
+::Q5-P2 (AE5):: Las ventas de Pehuén están en una hoja con formato de tabla y quieres trabajarlas en Power Pivot. ¿Qué haces? {
+~Crear una tabla dinámica común desde el rango, sin el modelo de datos
+~Aplicar Texto en columnas a toda la tabla de ventas antes de abrir Power Pivot
+~Copiar la tabla y pegarla como valores en una hoja nueva del libro
+=Seleccionar la tabla y usar Agregar al modelo de datos (pestaña Power Pivot)
+####Agregar al modelo de datos carga la tabla en Power Pivot como una tabla vinculada. Para traer datos de otros archivos o de una base de datos, en la ventana de Power Pivot usas Obtener datos externos.
+}
+
+::Q5-P3 (AE5):: En Power Pivot tienes la tabla Ventas (una fila por venta, con la columna CodProducto) y la tabla Productos (una fila por producto, con CodProducto y Categoría). Quieres analizar las ventas por categoría. ¿Qué paso de modelado haces? {
+=Relacionar Ventas y Productos por CodProducto, en la vista de diagrama
+~Relacionar Ventas y Productos por Categoría, en la vista de diagrama
+~Quitar duplicados de CodProducto en la tabla Ventas antes de cargarla al modelo
+~Ordenar ambas tablas por CodProducto para que las filas calcen
+####Las tablas se relacionan por la columna que comparten. Productos tiene cada código una sola vez y Ventas lo repite en muchas filas\: es una relación de uno a varios. Categoría no sirve, porque no está en Ventas.
+}
+
+::Q5-P4 (AE5):: Quieres el margen porcentual de cada zona\: la ganancia total dividida por la venta total. ¿Qué creas en Power Pivot? {
+~Una columna calculada con el porcentaje de cada venta, para después sumarla
+~Una relación entre la tabla Ventas y una tabla de zonas
+=Una medida que divida la suma de la ganancia por la suma de la venta
+~Un filtro por zona en la vista de diagrama de Power Pivot
+####Una medida se calcula sobre los datos que quedan en cada celda de la tabla dinámica, según la zona o el mes que filtres. Sumar porcentajes fila por fila da un resultado sin sentido.
+}
+
+::Q5-P5 (AE5):: Estás armando en Power View un panel de ventas de Pehuén con un gráfico de barras por zona, una tabla por producto y una tarjeta con el total. Para probarlo, haces clic en la barra de la zona Sur. ¿Qué debería pasar? {
+~Se abre la hoja de origen en la primera venta de la zona Sur
+=Las demás visualizaciones se filtran o resaltan para la zona Sur
+~Solo cambia el color de esa barra y el resto del panel queda igual
+~Power View crea una hoja nueva solo con los datos de la zona Sur
+####En Power View las visualizaciones de una misma hoja están conectadas\: al hacer clic en un valor, las demás se filtran o lo destacan. Eso hace que el panel sea interactivo sin escribir fórmulas.
+}

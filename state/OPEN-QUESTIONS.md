@@ -132,7 +132,7 @@ fuera ejecutable, no medido. Al cerrar el primer lote real hay que mirar la dist
 de similitudes y recalibrar, dejando el cambio en `DECISIONS.md`.
 Responsable: quien produzca el primer lote.
 
-**18. ¿Pueden dos clientes que compiten en el mismo plan presentar los mismos recursos con distinta marca?** — ABIERTA
+**18. ¿Pueden dos clientes que compiten en el mismo plan presentar los mismos recursos con distinta marca?** — RESUELTA (2026-09-30): sí, respondió el usuario
 El 27-sep la contraparte pidió aplicar la marca de cada cliente a los PDF del módulo 2. Con eso,
 UNAB y Skillnest mostrarían en PF1821 las mismas lecturas, actividades e instrumentos, cambiando solo
 colores y logo, y en PF1822 también la Autónoma. `AGENTS.md` §6 advierte que dos propuestas gemelas
@@ -140,6 +140,9 @@ en la misma mesa de evaluación dañan a los dos clientes, y que la diferenciaci
 cambiando la superficie. El control 04 compara el texto del Anexo 2, no los recursos del LMS, así que
 no lo detectaría. Opciones: aceptar el riesgo; variar por cliente el caso de estudio, las actividades o
 el tono; o reservar los recursos neutros para un solo cliente por plan. Lo decide Natalia o la contraparte.
+**Respondió el usuario (2026-09-30):** en la sesión "Branding de Skillnest para Rise" dijo que no importa que clientes que compiten
+tengan el mismo contenido: solo cambia la marca. Lo confirmó en esta sesión (`2026-09-30-claude-code-09`, "Mismo contenido, otra marca").
+Se acepta el riesgo que describe AGENTS.md §6 para los recursos del LMS; la diferenciación del Anexo 2 sigue igual.
 
 **19. ¿Colores y tipografía de marca definitivos de Skillnest y de la Autónoma?** — ABIERTA
 Skillnest no entregó manual: sus colores (#1E1E2A, #2470B1, #00ADE5) salen del logo y de una captura del sitio.
@@ -148,6 +151,10 @@ Si el cliente lo exige, se agrega la tipografía por marca. Lo confirma el usuar
 **Nota (2026-09-27, sesión `2026-09-27-claude-code-17`):** UNAB y la Autónoma van con su logo en una placa blanca sobre el color
 primario. Si entregan la versión en blanco (negativo) de su logo, va sin placa: basta dejarla junto a `logo.png` y declararla en el
 campo `logo_negativo` de su `marca.json`. Pedirla también es parte de esta pregunta.
+**Nota (2026-09-30, sesión `2026-09-30-claude-code-09`, con lo hecho en la sesión "Branding de Skillnest para Rise"):** para Rise se creó en
+Articulate la marca "Skillnest" con los colores del CSS de skillnest.com (principal #0C8DC9; además #00ADE5, #0E1012, #1E1F29, #236BAF y
+#F9F9F9), sin logo y con Lato + Merriweather. El usuario confirmó usar esos colores. En Rise la marca "U Autónoma" trae Be Vietnam + Lora
+(no Montserrat y Barlow Condensed, que pide su manual) y el usuario decidió no cambiarlas. Sigue abierta: falta el manual de Skillnest.
 
 
 **20. ¿La carpeta NATY 2.0 debe seguir abierta a cualquiera con el enlace, como editor?** — RESUELTA (2026-09-30): se mantiene
@@ -214,5 +221,7 @@ gamificación y SCORM. Ya no son "3 quiz en Canva": falta confirmar con la contr
 **Nota a #22 y #23 (2026-09-29, sesión `2026-09-29-claude-code-03`):** el usuario descartó los quiz de Canva; #23 (configuración de sus formularios)
 deja de aplicar. Queda de #22 solo si la contraparte acepta los 4 juegos en lugar de "3 quiz en Canva".
 **Nota a #22 (2026-09-29, sesión `2026-09-29-claude-code-04`):** la planilla ya no ofrece los quiz formativos en GIFT; solo los juegos.
+**Nota a #22 (2026-09-30, sesión `2026-10-01-claude-code-01`):** el usuario pidió quiz gamificados (juego HTML y SCORM) también para
+PF1481, PF1483, PF1486 y PF1495, en reemplazo de los de Genially: 22 más, uno por aprendizaje. La pregunta a la contraparte vale para todos.
 **Nota a #17 (2026-09-30, sesión `2026-09-30-claude-code-01`):** ya hay ABP y ABPRO para los 4 aprendizajes de cada curso, así que cualquier
 aprendizaje que se elija tiene sus dos actividades. Falta decidir si el Anexo 2 (VI b) presenta estas actividades en lugar de las 1 y 2 de C2.

@@ -1,0 +1,43 @@
+// PF1481 · Módulo 2 · Quiz 4 · Resumir con tablas dinámicas (AE4). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1481-M2/Quiz-4
+
+::Q4-P1 (AE4):: La dueña de Pehuén pregunta\: «¿Cuánto vendió cada zona en cada mes?». Armas una tabla dinámica con la base de ventas. ¿Cómo ubicas los campos? {
+~Zona en Filas, Monto en Columnas y Mes en Valores
+=Zona en Filas, Mes en Columnas y Monto en Valores
+~Monto en Filas, Zona en Columnas y Mes en Filtros
+~Mes en Filtros, Zona en Valores y Monto en Columnas
+####Lo que quieres comparar va en Filas y Columnas, y el número que quieres resumir va en Valores. Así cada celda muestra el total de Monto para una zona y un mes.
+}
+
+::Q4-P2 (AE4):: La tabla dinámica muestra «Suma de Monto» por zona, pero la dueña quiere saber el monto promedio de cada venta por zona. ¿Qué haces? {
+~Mover el campo Monto desde Valores hacia el área Filtros
+~Arrastrar también el campo Zona al área Valores, junto a Monto
+=En Configuración de campo de valor, resumir Monto por Promedio
+~Agregar una segmentación de datos con el campo Zona
+####Por defecto, un campo numérico se resume con Suma. En Configuración de campo de valor eliges otra operación, como Promedio, Cuenta, Máx o Mín, y la tabla se recalcula sola.
+}
+
+::Q4-P3 (AE4):: La base tiene las columnas Venta y Costo. Quieres ver el margen (Venta menos Costo) de cada zona dentro de la tabla dinámica, sin agregar columnas a la base. ¿Qué usas? {
+=Un campo calculado con la fórmula \=Venta-Costo
+~Una segmentación de datos con los campos Venta y Costo
+~Un filtro de informe con el campo Costo
+~Un gráfico dinámico de columnas apiladas
+####Un campo calculado crea un campo nuevo con una fórmula sobre otros campos de la tabla dinámica, sin tocar la base. Se agrega desde Campos, elementos y conjuntos.
+}
+
+::Q4-P4 (AE4):: A partir de tu tabla dinámica de ventas por zona y mes, quieres mostrar a la dueña cómo evolucionan las ventas de cada zona durante el año. ¿Qué gráfico dinámico creas? {
+~Circular, con una porción para cada mes
+~Circular, con una porción para cada zona
+~De barras, con una sola barra por zona con el total del año
+=De líneas, con los meses en el eje y una línea por zona
+####Para ver la evolución en el tiempo se usa un gráfico de líneas\: los meses van en el eje horizontal y cada zona es una serie. La torta y el total anual muestran un solo momento, no el recorrido.
+}
+
+::Q4-P5 (AE4):: Tu gráfico dinámico está vinculado a la tabla dinámica de ventas. Filtras la tabla para ver solo marzo. ¿Qué pasa con el gráfico? {
+=Se actualiza solo y muestra marzo, igual que la tabla
+~Sigue igual hasta que lo borres y lo vuelvas a crear
+~Se desvincula de la tabla y queda como una imagen fija
+~Muestra marzo resaltado y los demás meses en gris
+####El gráfico dinámico y su tabla dinámica están vinculados\: lo que filtras o reorganizas en uno cambia el otro. Por eso sirven para presentar un análisis que puedes ajustar en vivo.
+}

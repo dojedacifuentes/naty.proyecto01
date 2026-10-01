@@ -1,0 +1,43 @@
+// PF1483 · Módulo 2 · Quiz 4 · Funciones y módulos (AE4). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1483-M2/Quiz-4
+
+::Q4-P1 (AE4):: La lluvia de cuatro días en la estación Valle está en lluvias \= [4, 0, 12, 7]. ¿Qué imprime print(len(lluvias), sum(lluvias), max(lluvias))? {
+=4 23 12
+~3 23 12
+~4 12 23
+~4 23 7
+####len cuenta los elementos (4), sum los suma (4 + 0 + 12 + 7 \= 23) y max entrega el mayor (12). Son funciones preconstruidas\: las usas sin importar nada.
+}
+
+::Q4-P2 (AE4):: ¿Qué imprime este código? def promedio(a, b)\: return (a + b) / 2; luego print(promedio(10, 4)) {
+~7
+=7.0
+~12.0
+~None
+####La función recibe 10 y 4 en sus parámetros, suma 14 y lo divide por 2. Como / siempre entrega un decimal, return devuelve 7.0 y print lo muestra.
+}
+
+::Q4-P3 (AE4):: Esta función debería convertir grados Celsius a Fahrenheit\: def a_fahrenheit(c)\: y, dentro, f \= c * 9 / 5 + 32. Pero print(a_fahrenheit(10)) imprime None. ¿Qué le falta? {
+~Llamarla con corchetes\: a_fahrenheit[10]
+~Escribir function en lugar de def
+~Declarar el parámetro como int c
+=Agregar return f al final de la función
+####Sin return, la función calcula f pero no lo devuelve, y Python entrega None. Con return f, a_fahrenheit(10) devuelve 50.0.
+}
+
+::Q4-P4 (AE4):: Necesitas la raíz cuadrada de 16 con el módulo math. ¿Qué código funciona? {
+=import math; print(math.sqrt(16))
+~import math; print(sqrt(16))
+~print(math.sqrt(16))
+~from math import sqrt; print(math.sqrt(16))
+####Con import math, las funciones del módulo se llaman con el prefijo math. Si importas solo sqrt con from, se usa sqrt(16) sin prefijo. Sin importar, Python no reconoce math.
+}
+
+::Q4-P5 (AE4):: Con import statistics y temps \= [8, 12, 10, 2], ¿qué imprime print(statistics.median(temps))? {
+~8
+~10
+=9.0
+~12
+####median ordena los datos (2, 8, 10, 12) y, como son cuatro, promedia los dos del centro\: (8 + 10) / 2 \= 9.0. El promedio, statistics.mean(temps), daría 8.
+}

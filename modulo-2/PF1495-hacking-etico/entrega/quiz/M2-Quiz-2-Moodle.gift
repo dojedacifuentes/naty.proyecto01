@@ -1,0 +1,41 @@
+// PF1495 · Módulo 2 · Quiz 2 · Ética, leyes y normas (AE2). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1495-M2/Quiz-2
+
+::Q2-P1 (AE2):: Verdadero o falso\: «Si tienes una certificación de hacking ético, como CEH, puedes probar la seguridad de cualquier sitio web sin pedir permiso.» {
+~Verdadero
+=Falso
+####Una certificación acredita conocimientos, pero no da permiso. Sin la autorización del dueño del sistema, la prueba es un acceso no autorizado, que las leyes pueden sancionar.
+}
+
+::Q2-P2 (AE2):: Librería Fiordo también te pide revisar su red interna, pero tu experiencia es solo en aplicaciones web. Según los códigos de ética de EC-Council y del Instituto SANS, ¿qué corresponde? {
+~Aceptar y aprender sobre la marcha, para no perder el trabajo
+~Aceptar y subcontratar a otra persona sin avisarle a la librería
+=Decir con honestidad hasta dónde llega tu experiencia
+~Aceptar y cobrar menos, para compensar tu falta de experiencia
+####Ambos códigos piden actuar con honestidad sobre tus capacidades y trabajar en tus áreas de competencia. Así la librería decide con información real; por ejemplo, sumar a alguien con experiencia en redes.
+}
+
+::Q2-P3 (AE2):: En la prueba autorizada, una falla te deja ver nombres, correos y direcciones de clientes de Librería Fiordo. Según los principios de las leyes de protección de datos, ¿qué haces? {
+~Copias la base completa al informe, como evidencia de la falla
+~Guardas los datos para compararlos en pruebas de otras empresas
+~Avisas directamente a cada cliente que sus datos quedaron expuestos
+=Ves solo lo justo para probar la falla, sin copiar ni difundir datos
+####Las leyes de protección de datos piden tratar los datos personales solo para un fin legítimo, en la medida necesaria y con resguardo. En el informe basta una evidencia mínima con los datos ocultos; avisar a los clientes le corresponde a la librería, responsable de esos datos.
+}
+
+::Q2-P4 (AE2):: Librería Fiordo quiere que una entidad externa certifique que gestiona la seguridad de su información de forma ordenada en toda la empresa. ¿Qué norma corresponde? {
+=ISO/IEC 27001
+~NIST SP 800-53
+~Guía de pruebas de OWASP
+~Código de ética de EC-Council
+####ISO/IEC 27001 fija los requisitos de un sistema de gestión de seguridad de la información, y una entidad externa puede certificar que la empresa los cumple. La guía de OWASP orienta pruebas web y el código de EC-Council, la conducta de las personas.
+}
+
+::Q2-P5 (AE2):: ¿Qué ofrece NIST SP 800-53? {
+~Una certificación personal para quienes hacen hacking ético
+~Una guía para probar la seguridad de aplicaciones web
+=Un catálogo de controles de seguridad y privacidad
+~Un código de ética para profesionales de la seguridad
+####NIST SP 800-53 reúne controles de seguridad y privacidad para elegir cuáles aplicar a cada sistema. No certifica personas, no es una guía de pruebas web ni un código de ética.
+}

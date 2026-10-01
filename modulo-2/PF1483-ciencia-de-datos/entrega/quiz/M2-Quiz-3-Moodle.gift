@@ -1,0 +1,43 @@
+// PF1483 · Módulo 2 · Quiz 3 · Condiciones y decisiones (AE3). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1483-M2/Quiz-3
+
+::Q3-P1 (AE3):: El observatorio clasifica el viento en tres niveles\: calma, moderado y fuerte. ¿Qué estructura usas para elegir uno de los tres? {
+~Un if solo
+~Un if-else
+~Un ciclo while
+=Un if-elif-else
+####if-elif-else elige un camino entre tres o más. Un if solo decide si ejecutar un bloque, if-else elige entre dos caminos y while repite, no elige.
+}
+
+::Q3-P2 (AE3):: Con lluvia \= True y helada \= False, ¿qué entrega la expresión lluvia and not helada? {
+=True
+~False
+~None
+~Un error de sintaxis
+####not invierte helada (False pasa a True), y and entrega True solo si los dos lados son verdaderos\: True and True es True.
+}
+
+::Q3-P3 (AE3):: La alerta debe activarse si la estación es 'Cumbre' o 'Paso Alto', siempre que el sensor esté activo. ¿Qué expresión es correcta? {
+~estacion \=\= 'Cumbre' or estacion \=\= 'Paso Alto' and activo
+~estacion \=\= 'Cumbre' or 'Paso Alto' and activo
+=(estacion \=\= 'Cumbre' or estacion \=\= 'Paso Alto') and activo
+~(estacion \= 'Cumbre' or estacion \= 'Paso Alto') and activo
+####and se evalúa antes que or\: sin paréntesis, Cumbre activaría la alerta aunque el sensor esté apagado. Los paréntesis agrupan primero el or, y \= asigna, no compara.
+}
+
+::Q3-P4 (AE3):: Esta línea da SyntaxError\: if estacion \= 'Cumbre'\:. ¿Cómo la corriges? {
+~if (estacion \= 'Cumbre')\:
+=if estacion \=\= 'Cumbre'\:
+~if estacion \= 'Cumbre'
+~if estacion\: 'Cumbre'
+####Para comparar se usa \=\=; el \= solo asigna un valor. La línea del if termina con dos puntos y el bloque que sigue va con sangría.
+}
+
+::Q3-P5 (AE3):: ¿Qué imprime este código? viento \= 50; if viento !\= 0\: print('Hay viento'); elif viento \=\= 50\: print('Viento fuerte'); else\: print('Calma') {
+~Viento fuerte
+~Hay viento y Viento fuerte
+~Calma
+=Hay viento
+####Python revisa las condiciones en orden y ejecuta solo el primer bloque verdadero. Como viento !\= 0 ya se cumple, el elif no se revisa\: pon primero la condición más específica.
+}

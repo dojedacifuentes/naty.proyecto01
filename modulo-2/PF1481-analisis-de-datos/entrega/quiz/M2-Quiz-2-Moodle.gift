@@ -1,0 +1,43 @@
+// PF1481 · Módulo 2 · Quiz 2 · Preparar y limpiar los datos (AE2). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1481-M2/Quiz-2
+
+::Q2-P1 (AE2):: Pehuén calcula el monto promedio por venta con una planilla que tiene ventas repetidas y algunos montos guardados como texto. ¿Qué es lo más probable? {
+~Que Excel detecte los errores y los corrija antes de calcular
+~Que el promedio salga bien, porque los errores se compensan
+=Que el promedio salga distorsionado sin que Excel dé aviso
+~Que la fórmula muestre un mensaje de error en la celda
+####PROMEDIO ignora los montos guardados como texto y cuenta dos veces las ventas repetidas, sin avisar. Por eso los datos se preparan antes de analizarlos\: con datos sucios, las conclusiones salen mal.
+}
+
+::Q2-P2 (AE2):: La lista de clientes de Pehuén tiene almacenes repetidos en filas idénticas. ¿Qué herramienta de Excel usas para dejar uno de cada uno? {
+~Datos &gt; Texto en columnas
+=Datos &gt; Quitar duplicados
+~Datos &gt; Validación de datos
+~Datos &gt; Ordenar de A a Z
+####Quitar duplicados elimina las filas repetidas según las columnas que elijas y te dice cuántas quitó. Conviene aplicarlo sobre una copia, para conservar los datos originales.
+}
+
+::Q2-P3 (AE2):: En la columna Comuna, Temuco aparece escrita como «Temuco», «TCO» y «Tmuco». ¿Qué técnica aplicas para dejar un solo nombre? {
+~Quitar duplicados en la columna Comuna de la planilla
+~Ordenar la columna Comuna de la A a la Z
+~Ocultar las filas que no dicen «Temuco»
+=Buscar y reemplazar cada variante por «Temuco»
+####Estandarizar es dejar un mismo valor escrito de una sola forma. Con Buscar y reemplazar cambias cada variante; si no lo haces, un resumen por comuna mostraría tres Temucos distintos.
+}
+
+::Q2-P4 (AE2):: A 12 ventas les falta el monto. Una compañera propone escribir 0 en esas celdas para que no queden vacías. ¿Qué le respondes? {
+=Que no\: un 0 baja el promedio; mejor buscar el dato o marcarlo como faltante
+~Que sí\: así ninguna celda queda vacía y todas las fórmulas cuadran
+~Que conviene borrar la columna Monto completa y analizar sin ella
+~Que da igual, porque la función PROMEDIO no toma en cuenta las celdas con cero
+####Un 0 es un valor real\: PROMEDIO lo cuenta y el resultado baja. La buena práctica es recuperar el dato desde la fuente o dejarlo marcado como faltante, y anotar qué decidiste.
+}
+
+::Q2-P5 (AE2):: Desde ahora, en la columna Zona solo se debe poder elegir Norte, Sur, Oriente o Poniente. ¿Qué aplicas en Excel? {
+~Un filtro en la columna Zona
+~Texto en columnas sobre la columna Zona
+=Validación de datos con una lista
+~Ordenar la columna Zona de la A a la Z
+####La validación de datos con una lista muestra un menú desplegable y, por defecto, no acepta valores que no estén en ella. Así previenes los errores en vez de limpiarlos después.
+}

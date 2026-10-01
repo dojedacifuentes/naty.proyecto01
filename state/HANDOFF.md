@@ -1,13 +1,37 @@
 # HANDOFF
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
-`2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-04` y `2026-09-30-claude-code-01` a `-08` — 2026-09-24/30
+`2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-04` y `2026-09-30-claude-code-01` a `-13` y
+`2026-10-01-claude-code-01` y `-02` — 2026-09-24/30 (el 1-oct en UTC)
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 > **Ojo (sesión -04):** las sesiones -02 y -03 del 27-sep, que armaron los quiz en Canva, reemplazaron este archivo
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
+
+## HECHO (sesión 2026-10-01-01, 30-sep en Chile): quiz gamificados para PF1481, PF1483, PF1486 y PF1495
+
+- **Qué y por qué:** en la planilla «Quiz M2 por AE» (cotejo del 30-sep, `privado/drive/recursos-2024-cotejo/quiz-funciona.mjs`)
+  5 quiz de Genially de 2024 no funcionaban: botones con «Añadir respuesta» (PF1481 AE2, PF1486 AE5), una pregunta de plantilla sin
+  escribir (PF1481 AE4, PF1483 AE1) y una pregunta sin respuesta correcta (PF1495 AE2). El usuario pidió reemplazarlos por quiz
+  gamificados como los de PF1821 y PF1822, "para cada curso de cada AE", con los criterios 2026. Se hizo uno por **cada** AE de esos
+  cuatro cursos: 22 quiz, 110 preguntas.
+- **Dónde:** fuente en `contenidos/<PF>/modulo-2/R-quiz-canva.md`, con la cobertura de criterios al final. Salida en
+  `modulo-2/PF1481-analisis-de-datos/`, `PF1483-ciencia-de-datos/`, `PF1486-product-owner/` y `PF1495-hacking-etico/`: por quiz
+  `M2-Quiz-n-Juego.html`, `-Juego-SCORM.zip` y `-Moodle.gift`, más un README y `quiz-juego-M2-<PF>.zip`. Regenerar con
+  `npm run quiz-juego -- PF1481 PF1483 PF1486 PF1495`. Validar sin escribir: `node scripts/lib/quiz-canva.mjs PF1481`.
+- **Cómo se escribieron:** cuatro subagentes, uno por curso, con `data/planes/<PF>.json` como fuente. Revisé las 110 preguntas
+  (cálculos, salidas de código, hechos). Las etiquetas de la ilustración no adelantan respuestas. Nada de cara al estudiante nombra
+  el plan formativo ni lo "oficial" (regla del 30-sep, sesión -12).
+- **Trampas:**
+  - La ilustración `tipo: 'decision'` de `scripts/lib/quiz-juego.html` trae fija la etiqueta «DEPURAR» (pensada para PF1821): úsala
+    solo si calza.
+  - El GIFT guarda `<`, `>` y `&` como entidades. `quiz-juego.mjs` ahora las decodifica antes de pasarlas al juego; antes, el Quiz 4
+    de PF1822 mostraba "&lt;".
+  - Si pruebas el juego en un iframe con `#` en la URL, cambiar solo el `#` no recarga la página.
+- **Pendiente:** revisión humana del contenido. Si la contraparte acepta juegos en vez de los quiz de Canva (#22), vale también para
+  estos. No se subieron a Drive ni al LMS.
 
 ## HECHO (sesiones 2026-09-30-07 y -08): respuestas del usuario a las preguntas abiertas
 
@@ -18,6 +42,90 @@
 - **Resueltas en la sesión -08:** #6 (LMS propio de cada institución), #16 (módulo 2 = "Módulo N°2" del PDF oficial) y #20 (NATY 2.0
   se queda con el enlace como editor, por decisión del usuario: **no volver a plantearlo**).
 - **Esperando al usuario:** la matriz cliente × curso (#3: dijo adjuntarla y no llegó; guardarla en `privado/`, el repo es público).
+
+## HECHO (sesión 2026-09-30-13): SCORM de las 20 copias de Rise, en Drive y en la planilla
+
+- **Exportación:** Rise → Publish → LMS → Download, con los ajustes por defecto: SCORM 1.2, completado al ver el 100 % y
+  reporte "Passed/Incomplete". Rise baja el zip en Descargas y además manda un correo con el enlace. Los 20 zip están en
+  `privado/rise-scorm/<cliente>/<PF>-M2-AE<n>-<cliente>-SCORM12.zip` (de 5,6 a 7,6 MB).
+- **Cómo se comprobó cada zip:** el `identifier` del `imsmanifest.xml` es el id de la copia de Rise más un sufijo. Si el id empieza
+  con cifra, Rise cambia esa primera cifra por "A". El JSON del curso va en base64 en `scormcontent/runtime-data.js` y trae
+  `colorAccent`, las etiquetas y el texto. Resultado en los 20: color de su marca, "COMENZAR CURSO" y 0 alusiones al plan formativo.
+- **Drive:** en la carpeta de cada cliente de NATY 2.0 (curso → cliente) hay una carpeta nueva, "3 Lecturas Rise (SCORM)", con sus
+  4 zip, subidos con la cuenta del usuario. Los ids están en `privado/drive/rise-scorm.json`. Se descargan sin sesión y el tamaño
+  coincide con el local en 20 de 20.
+- **Planilla** (`1yjgTnjm…`), hoja Resumen: la columna G "Lecturas (Rise) · Pendiente" pasó a 4 columnas, G a J, "Lectura AE<n> Rise
+  (SCORM)", con `=HIPERVINCULO` a cada zip. Las columnas que venían desde H se corrieron 3 lugares: los videos ahora parten en K.
+  En Pendientes, la fila 5 (Rise) quedó "Hecho" y la fila 23 nueva dice "subir los SCORM al LMS de cada cliente". **`npm run
+  planilla` no conoce estas columnas:** si se regenera la planilla desde el repo, se pierden.
+- **Trampas:**
+  - A mitad del lote, Rise pidió iniciar sesión otra vez; la contraseña la escribe el usuario.
+  - Recién iniciada la sesión, recargar la página la volvió a perder. La navegación interna (`pushState`) no cambia de curso: la
+    página de exportación sigue con el anterior. Antes de pulsar Download, comprueba que el título bajo "PUBLISH COURSE" sea el del
+    curso. Minutos después, recargar volvió a funcionar.
+  - En Drive, "Nuevo → Subir archivo" solo entregó el input de archivo una vez por carga de página: recarga antes de cada subida.
+  - La salida de `javascript_tool` se bloquea si trae ids de Drive: sácalos invertidos.
+
+## HECHO (sesión 2026-09-30-12): las 20 copias sin alusiones al plan formativo ni a lo "oficial"
+
+- **Regla del usuario:** el curso se lee como estudiante. Nada de "plan formativo", "oficial", "literal/textual" ni "tal como
+  aparece en el plan". Los aprendizajes esperados, criterios y contenidos van exactos, sin decir que lo son. La excepción es
+  "documentación oficial" de OpenAI y Hugging Face, que es texto del AE2 de PF1822. Detalle y lista de cambios en
+  `modulo-2/REVISION-RISE.md`.
+- **Pendiente:** los 8 cursos base no se corrigieron. Hay que hacerlo antes de volver a duplicar.
+- **Cómo se editó en masa:** con las llamadas del propio editor, desde la biblioteca, en `fetch` con `credentials:'include'`.
+  - `POST /api/rise-runtime/ducks/rise/courses/GET_COURSE` con `{payload:{courseId}}` devuelve `lessons[].items[]` completos.
+  - `rise/lessons/UPDATE_BLOCK_DEBOUNCE` con `{id, courseId, lessonId, item}` guarda el bloque entero.
+  - `rise/lessons/DELETE_BLOCKS` con `{blockIds, courseId, lessonId}` borra bloques.
+  - `rise/lessons/UPDATE_LESSON_DEBOUNCE` con `{id, title, updatedAt, courseId}` cambia el título.
+  - El cuerpo siempre es `{type, payload}`.
+- **Ojo:**
+  - Esas llamadas dejan un bloqueo de 24 horas sin sesión en la lección ("X is editing"). Se libera con `rise/locks/DEL_LOCK`
+    `{id: lessonId, courseId}`.
+  - No hacerlo con la lección abierta en un editor, porque el editor puede sobrescribir.
+  - Salir de una lección con la URL recarga la página y puede dejar el bloqueo. Hay que salir con el enlace "Course Overview".
+
+## HECHO (sesión 2026-09-30-11): etiquetas de Rise en español en las 20 copias
+
+- Las 20 copias usan el juego de etiquetas integrado **"Spanish"** (Settings → Labels; se guarda solo). Revisado recargando: 20 de 20,
+  con los 224 textos iguales a los de ese juego. Detalle en `modulo-2/REVISION-RISE.md`.
+- **Los 8 base no se tocaron.** Si se vuelve a duplicar desde un base que esté en "English", hay que cambiar la copia a "Spanish".
+- **Cómo se hizo:** `/authoring/<id>/settings/labels`. El selector es un `button` cuyo texto es el juego actual. Al pulsarlo aparece un
+  menú de `li[role=menuitem]`; se elige el que tiene una hoja con el texto exacto "Spanish". Así se evita el "Copy of Spanish" de la
+  cuenta.
+
+## HECHO (sesión 2026-09-30-10): las 20 copias de Rise, cada una con la marca de su cliente
+
+- **Hecho:** a pedido del usuario, la "Ficha del módulo" de los 8 base ya no dice "Texto oficial del plan formativo" (el bloque es
+  "Paragraph", sin encabezado). Después: 20 copias con el mismo título que el base, en las carpetas privadas UNAB (8), Skillnest (8) y
+  U Autónoma (4), y cada una con su marca de Articulate. Revisado recargando: marca, color y AE, 20 de 20. Tabla con los ids en
+  `modulo-2/REVISION-RISE.md`.
+- **No se hizo:** publicar, compartir, exportar SCORM ni enviar a Review 360. Eso lo decide el usuario.
+- **Si se corrige un curso base, la copia NO se actualiza sola:** hay que corregir también sus 2 o 3 copias, o volver a duplicar y
+  marcar.
+- **Cómo se hizo sin la ventana a la vista:** Chrome estaba oculto y Rise estrangula los timers. Una captura de pantalla fuerza el
+  dibujo. Hay que evitar `setTimeout` dentro del JS y usar `wait` entre pasos. Menú de fila: `[aria-label="Content menu button"]`
+  y `[role=menuitem]` "Duplicate" / "Move". El diálogo de mover no es `role=dialog`: se ubica por el texto "Current File Location".
+  La marca es un `<select>` nativo en `/authoring/<id>/theme/change`: se asigna con el setter + `change`, y luego se pulsa "Save".
+  Hay que esperar a que carguen sus opciones: sin ellas queda en blanco y se guarda sin marca, como pasó una vez. La marca
+  guardada se lee en `/theme` (`.author-theme__index-current-info-brand-name`) y el color, en `/theme/colors`
+  (`input[name=accentColor]:checked`).
+
+## HECHO (sesión 2026-09-30-09): los 8 cursos base de Rise corregidos contra el plan · duplicado y marca: hechos en la -10
+
+- **Estado:** los 8 cursos base (ids en `modulo-2/REVISION-RISE.md`) tienen título, descripción y lección "Ficha del módulo" textuales,
+  y sus lecciones de introducción con el aprendizaje y los criterios exactos. Verificado recargando. Sin marca (son la matriz).
+- **Siguiente, solo con el OK del usuario:** (1) que revise los 8 base; (2) duplicar desde la biblioteca de Rise en 20 copias
+  (PF1821 AE1-AE4 × UNAB, Skillnest; PF1822 AE1-AE4 × UNAB, Skillnest, U. Autónoma), confirmando antes con el usuario el nombre de
+  las copias (propuesta: mismo título que el base, sin "Copy of", y una carpeta por cliente); (3) en cada copia Theme → Apply a
+  brand con la marca del cliente y revisar el color en Theme → Colors (UNAB #A6192E, U Autónoma #DA291C, Skillnest #0C8DC9);
+  (4) entregar la tabla copia · id · cliente · marca · color verificado. No publicar, compartir, exportar SCORM ni enviar a Review
+  sin preguntar. Detalle del encargo original: `.scratch/prompt-rise-contenido-y-marcas.md` (fuera de git).
+- **Cómo se editó Rise (Claude in Chrome):** la ventana debe estar visible (oculta, Rise no dibuja los bloques); cada lección carga
+  sus bloques al hacer scroll (`.blocks-renderer__item`, `data-virtualized=mounted`). Cada editor de texto es Tiptap y expone
+  `.editor`: `editor.commands.setContent(html, true)` escribe y guarda sin la regla que convierte `*texto*` en cursiva (pegar
+  sí la aplica y se comió los asteriscos de PF1822 AE1). Título del curso: `textarea[placeholder="Course Title"]` (máx. 100).
+  Nueva lección al inicio: botón `Add content before item 1` → `Create blank lesson`. Tarjetas: botón "Content" del bloque.
 
 ## HECHO (sesión 2026-09-30-06): texto canónico del módulo 2 de PF1821 y PF1822, para cotejar Rise
 
