@@ -2,13 +2,29 @@
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
 `2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-04` y `2026-09-30-claude-code-01` a `-13` y
-`2026-10-01-claude-code-01` a `-05` — 2026-09-24 al 1-oct (UTC)
+`2026-10-01-claude-code-01` a `-06` — 2026-09-24 al 1-oct (UTC)
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 > **Ojo (sesión -04):** las sesiones -02 y -03 del 27-sep, que armaron los quiz en Canva, reemplazaron este archivo
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
+
+## HECHO (sesión 2026-10-01-06): videos de bienvenida y resumen en la planilla de recursos M2
+
+- **Pedido:** "agreguemos los videos de bienvenida y resumen [a Recursos por AE] … todos listos, mismos links … salvo 2": bienvenida
+  de PF1462 → `1W_72dyLeI_RqG7jizxb8aD-kIV98uCAf` y resumen de PF1486 → `1tXP-Vi7U-ZzDSiXFchtKP3ZLNBhoTmdD`.
+- **Hoja viva** (se editó en el navegador de la app, sin sesión: deja editar con el enlace):
+  - «Recursos por AE»: columnas nuevas E-H (Video de bienvenida, Estado, Video resumen, Estado), repetidas en cada AE. Todo lo
+    demás se corrió 4 columnas: lectura I-J, infografía K-L, quiz M-O, notas P; las marcas del usuario «ABP OK / ABRPO OK», a Q-R.
+  - «Resumen por curso»: estados de video en ✔ Listo en los 12 cursos con video; I a M recontados con los estados vivos; A2 dice
+    258 listos · 1 por ajustar (infografía AE2 de PF1462) · 23 no existen (videos y lecturas de PF1487, PF1485 y PF1493).
+  - «Descartados y otros» filas 54-55 y «Leyenda» fila 19.
+- **No regeneres y subas el xlsx:** la hoja viva tiene estados que el usuario cambió a mano y ya no tiene «Alertas»;
+  `planilla-recursos-2026.mjs` (ya con VIDEO26 y las columnas de video) da 251 listos, no 258.
+- **Pendiente:** 6 videos piden acceso: el resumen nuevo de PF1486 (dueña maibe@hackea.pro) y los 5 de Entry level 2023 (del usuario).
+  La planilla lo dice en «Qué falta».
+- **Técnica:** ver la nota de la sesión -06 (`state/sessions/2026-10-01-claude-code-06.md` → Hallazgos).
 
 ## HECHO (sesión 2026-10-01-05): quiz e infografías de PF1487, PF1485 y PF1493 (los cursos sin recursos)
 

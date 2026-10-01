@@ -638,8 +638,9 @@ accionables están en el handoff como trabajo corto: la columna `fuente` en
 ## Siguiente paso concreto
 
 Desde la sesión 2026-10-01-claude-code-03 el usuario se ordena con la planilla «02 Recursos M2 · Licitación 2026». PF1487, PF1485 y
-PF1493 ya tienen quiz e infografías (sesión -05); les faltan los 2 videos y el flipbook de cada AE. Además falta:
-- ver los 20 videos;
+PF1493 ya tienen quiz e infografías (sesión -05); les faltan los 2 videos y el flipbook de cada AE. Los videos de los otros 12 cursos
+quedaron listos (sesión -06, en «Resumen por curso» y en columnas E-H de «Recursos por AE»). Además falta:
+- compartir con enlace los 6 videos que piden acceso (resumen 2026 de PF1486, de maibe@hackea.pro; los 5 de Entry level 2023);
 - resolver lo que el usuario no aprobó: lecturas AE1, AE2, AE5 y AE7 de PF1483 (y su AE6, que no cuadra), lectura e infografía AE2 de
   PF1462 y lectura AE4 de PF1495;
 - que una persona revise el contenido de las 31 infografías y los 17 quiz nuevos.
