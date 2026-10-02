@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-10-02 (UTC, como el registro; 1-oct de noche en Chile)
-**Por:** 2026-10-01-claude-code-01 a -07 y 2026-10-02-claude-code-01 a -05 (Claude Code · opus-5.5)
+**Por:** 2026-10-01-claude-code-01 a -07 y 2026-10-02-claude-code-01 a -06 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -578,6 +578,12 @@ esperado … y luego subelo a la planilla").
       sesión. Los ids están en `privado/drive/recursos-2026/`.
 - [x] Planilla «02 Recursos M2» reimportada: 231 listos, 7 por ajustar, 20 por revisar (videos), 23 no existen y 1 no cuadra. Los 23 son
       los 2 videos y los flipbooks por AE de PF1487, PF1485 y PF1493.
+
+Sesión 2026-10-02-06 (aulas de Chile Conductores):
+
+- [x] Moodle de Chile Capacitación, cursos ocultos 126 PF1486 · 127 PF1495 · 128 PF1462 · 129 PF1482, armados con `privado/chc-moodle/builder-chc.js`.
+- [x] ABP y ABPRO 2026 por aprendizaje esperado de PF1486 (12) y PF1495 (8), y actividad final de los 4 (`contenidos/<PF>/modulo-2/`),
+      en PDF, en Drive (NATY 2.0) y como Tareas con el PDF adjunto en cada aula.
 
 ## A medias
 

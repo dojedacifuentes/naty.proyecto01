@@ -8,7 +8,7 @@
  * Sin duración de la actividad: el usuario pidió quitarla (2026-09-29). El aprendizaje esperado y los criterios
  * van textuales de la ficha de SIPFOR.
  *
- *   npm run abp                  # los dos cursos
+ *   npm run abp                  # todos los cursos
  *   npm run abp -- PF1821        # uno
  *   npm run abp -- --sin-pdf     # solo los HTML
  */
@@ -21,6 +21,9 @@ import { oracion } from './lib/oracion.mjs';
 const CURSOS = {
   PF1821: { carpeta: 'modulo-2/PF1821-agentes-low-code', curso: 'Construcción de Agentes y Automatización con Herramientas Low Code' },
   PF1822: { carpeta: 'modulo-2/PF1822-desarrollo-con-ia', curso: 'Especialización en Desarrollo con IA' },
+  // Chile Conductores (2026-10-02): reemplazan la planilla 2024 de PF1486 y los que faltaban en PF1495.
+  PF1486: { carpeta: 'modulo-2/PF1486-product-owner', curso: 'Fundamentos Product Owner' },
+  PF1495: { carpeta: 'modulo-2/PF1495-hacking-etico', curso: 'Hacking Ético en Aplicativos Web' },
 };
 const TIPOS = {
   ABP: { nombre: 'ABP individual', archivo: 'ABP-individual', partes: ['Contexto', 'Qué tienes que hacer', 'Entrega'] },

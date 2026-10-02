@@ -36,6 +36,16 @@ import { leerPlan, contenidos, contenido, trozoCompetencia, normal } from './lib
 const CURSOS = {
   PF1821: { carpeta: 'modulo-2/PF1821-agentes-low-code', curso: 'Construcción de Agentes y Automatización con Herramientas Low Code' },
   PF1822: { carpeta: 'modulo-2/PF1822-desarrollo-con-ia', curso: 'Especialización en Desarrollo con IA' },
+  // Chile Conductores (2026-10-02): solo la actividad final integradora; el resto de la evaluación es la del cliente.
+  PF1486: { carpeta: 'modulo-2/PF1486-product-owner', curso: 'Fundamentos Product Owner', docs: ['M2-03-Actividad-final-integradora'] },
+  PF1495: { carpeta: 'modulo-2/PF1495-hacking-etico', curso: 'Hacking Ético en Aplicativos Web', docs: ['M2-03-Actividad-final-integradora'] },
+  PF1462: { carpeta: 'modulo-2/PF1462-machine-learning', curso: 'Especialización en Machine Learning', docs: ['M2-03-Actividad-final-integradora'], sinAbp: true },
+  PF1482: { carpeta: 'modulo-2/PF1482-arquitectura-cloud', curso: 'Fundamentos de Arquitectura Cloud', docs: ['M2-03-Actividad-final-integradora'], sinAbp: true },
+  // Entry level (2026-10-02): no tenía actividad final. El módulo 2 es el mismo en los cuatro planes; misma fuente, un PDF por curso.
+  PF1474: { carpeta: 'modulo-2/PF1474-entry-level-front-end/cursos/PF1474', curso: 'Desarrollo de Aplicaciones Front-End Trainee', docs: ['M2-03-Actividad-final-integradora'], sinAbp: true },
+  PF1477: { carpeta: 'modulo-2/PF1474-entry-level-front-end/cursos/PF1477', curso: 'Desarrollo de Aplicaciones Full Stack Java Trainee', docs: ['M2-03-Actividad-final-integradora'], sinAbp: true },
+  PF1478: { carpeta: 'modulo-2/PF1474-entry-level-front-end/cursos/PF1478', curso: 'Desarrollo de Aplicaciones Fullstack Python Trainee', docs: ['M2-03-Actividad-final-integradora'], sinAbp: true },
+  PF1479: { carpeta: 'modulo-2/PF1474-entry-level-front-end/cursos/PF1479', curso: 'Desarrollo de Aplicaciones Full Stack JavaScript Trainee', docs: ['M2-03-Actividad-final-integradora'], sinAbp: true },
 };
 
 const args = process.argv.slice(2);
@@ -323,23 +333,25 @@ for (const pf of codigos) {
   const c = CURSOS[pf];
   const dir = `contenidos/${pf}/modulo-2`;
   const plan = leerPlan(leer(`${dir}/00-ficha-sipfor.md`));
-  const ctx = { plan, abp: titulosAbp(leer(`${dir}/R-abp-abpro.md`)) };
-  for (const k of Object.keys(plan.aes)) if (!ctx.abp[k]?.ABP || !ctx.abp[k]?.ABPRO) throw new Error(`${pf}: R-abp-abpro.md no tiene el ABP y el ABPRO de ${k}`);
+  // PF1462 y PF1482 usan los ABP y ABPRO de 2024: no tienen R-abp-abpro.md ni pueden citarlos con {{abp AEn}}.
+  const ctx = { plan, abp: c.sinAbp ? {} : titulosAbp(leer(`${dir}/R-abp-abpro.md`)) };
+  if (!c.sinAbp) for (const k of Object.keys(plan.aes)) if (!ctx.abp[k]?.ABP || !ctx.abp[k]?.ABPRO) throw new Error(`${pf}: R-abp-abpro.md no tiene el ABP y el ABPRO de ${k}`);
   const ent = `${c.carpeta}/entrega/evaluacion-modulo`;
   const docs = [];
   // Cada fuente se revisa aunque la otra todavía no exista (se escriben por separado).
   const fEval = `${dir}/R-evaluacion-modulo.md`;
   const fGlos = `${dir}/R-glosario-integrador.md`;
   if (!existe(fEval)) console.warn(`  AVISO: falta ${fEval}`);
-  if (!existe(fGlos)) console.warn(`  AVISO: falta ${fGlos}`);
+  if (!existe(fGlos) && !c.docs) console.warn(`  AVISO: falta ${fGlos}`);
   const fuente = existe(fEval) && solo !== 'glosario' ? secciones(leer(fEval)) : [];
+  const conDiagnostica = !c.docs || c.docs.includes('M2-01-Evaluacion-diagnostica');
   const sItems = fuente.find((s) => /^Ítems de la evaluación diagnóstica/.test(s.titulo));
-  if (fuente.length && !sItems) throw new Error(`${pf}: falta la sección "Ítems de la evaluación diagnóstica"`);
+  if (fuente.length && conDiagnostica && !sItems) throw new Error(`${pf}: falta la sección "Ítems de la evaluación diagnóstica"`);
   const items = sItems ? itemsDiagnostica(sItems, ctx).sort((a, b) => a.contenido.unidad - b.contenido.unidad) : [];
   for (const a of Object.values(plan.aes)) {
     if (sItems && items.filter((it) => it.contenido.unidad === a.unidad.n).length < 2) throw new Error(`${pf}: la diagnóstica tiene menos de 2 ítems del contenido ${a.unidad.n}`);
   }
-  const esperados = ['M2-01-Evaluacion-diagnostica', 'M2-01-Evaluacion-diagnostica-Pauta-tutor', 'M2-03-Actividad-final-integradora',
+  const esperados = c.docs ?? ['M2-01-Evaluacion-diagnostica', 'M2-01-Evaluacion-diagnostica-Pauta-tutor', 'M2-03-Actividad-final-integradora',
     'M2-04-Autoevaluacion', 'M2-05-Coevaluacion-por-pares', 'M2-06-Evaluacion-final-portafolio'];
 
   for (const s of fuente.filter((x) => /^\d\d · /.test(x.titulo))) {
