@@ -2,7 +2,7 @@
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
 `2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-04` y `2026-09-30-claude-code-01` a `-13` y
-`2026-10-01-claude-code-01` a `-07` y `2026-10-02-claude-code-01` a `-03` — 2026-09-24 al 1-oct (UTC)
+`2026-10-01-claude-code-01` a `-07` y `2026-10-02-claude-code-01` a `-04` — 2026-09-24 al 1-oct (UTC)
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
@@ -16,7 +16,8 @@
   módulos enunciados y solo el 2 desarrollado. Detalle completo en `state/sessions/2026-10-02-claude-code-03.md`.
 - Artefacto «Aulas del Módulo 2»: https://claude.ai/artifact/Y1tPQydw2DNY5fXdBXTsaR (se regenera con estructura-lms.mjs; la página fuente
   está en el scratchpad de la sesión, la plantilla hay que rehacerla si se pierde).
-- PENDIENTE en Chrome: 15 Google Docs ABP/ABPRO sin corregir, 2 PDF M2-AE1-ABPRO-grupal por reemplazar en Drive y la tarea 12578 de Moodle (ver la nota de la sesión).
+- HECHO en la sesión 2026-10-02-04: los 15 Google Docs ABP/ABPRO corregidos, los 2 PDF M2-AE1-ABPRO-grupal reemplazados en Drive
+  y la tarea 12578 de Moodle corregida (cómo hacerlo sin ventana visible, en la nota de esa sesión).
 - Pendiente del usuario: borrar en Moodle (curso 125) «Clases On-Line» y 3 «PRUEBA QUIZ 103» (ocultos). Videos e infografía «Ruta del
   módulo 2» ya producidos siguen nombrando horas/sesiones: requieren rehacerse.
 
