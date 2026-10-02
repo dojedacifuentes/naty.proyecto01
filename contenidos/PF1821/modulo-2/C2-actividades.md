@@ -12,9 +12,7 @@ ambas con respuesta modelada.
 | Técnica | Resolución de problemas | Análisis de caso + gamificación |
 | AE que cubre | AE1, AE2, AE3 | AE1, AE3, AE4 |
 | Indicadores | 1.1, 2.1, 2.2, 2.3, 3.1, 3.2, 3.3, 3.4 | 1.1, 3.3, 4.1, 4.2, 4.3 |
-| Tramo del módulo | 2 y 3 (semanas 1–2) | 4 (semana 2–3) |
-| Tiempo estimado | 5 h (2 h guiadas + 3 h autónomas) | 4 h (1,5 h sincrónica + 2,5 h autónomas) |
-| Organización | Individual; la parte B se inicia en la sesión en vivo del tramo 2 (construcción guiada) | Individual; sesión en vivo de depuración en grupo y coevaluación en parejas |
+| Organización | Individual; la parte B se construye de forma guiada en el aprendizaje esperado 2 | Individual; depuración en grupo y coevaluación en parejas |
 | Apoyos | Tutorial R05, cápsulas R03 | Video interactivo R06 |
 | Producto | 2 workflows exportados + captura de Supabase + nota breve | Workflow reparado + bitácora de depuración |
 | Se evalúa con | Rúbrica de workflow (B2-1) | Rúbrica de workflow (B2-1) + bitácora (B4-d) |

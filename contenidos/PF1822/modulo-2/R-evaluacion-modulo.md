@@ -135,7 +135,7 @@ Doce ítems, tres por contenido del plan y uno por criterio de evaluación. Las 
 - **Archivo:** M2-01-Evaluacion-diagnostica
 - **Rótulo:** Evaluación del módulo · inicio
 - **Momento:** Al comenzar el módulo, antes de la primera lectura
-- **Modalidad:** Individual, en línea: cuestionario del LMS o este documento
+- **Modalidad:** Individual: cuestionario del LMS o este documento
 - **Calificación:** No lleva nota: muestra tu punto de partida
 - **Vínculo con el plan:** La competencia del módulo, sus cuatro aprendizajes esperados y sus contenidos
 
@@ -281,7 +281,7 @@ Registra los resultados en una planilla del curso que solo vea el tutor/a (por e
 | | | | | | | | | |
 | | | | | | | | | |
 
-Con la planilla completa, mira también el curso completo: si un contenido queda en "refuerza" para la mitad del grupo o más, dedícale más espacio en su sesión sincrónica.
+Con la planilla completa, mira también el curso completo: si un contenido queda en "refuerza" para la mitad del grupo o más, dedícale más espacio al inicio de su aprendizaje esperado.
 
 ### Cómo se vuelve a usar al cierre
 
@@ -293,7 +293,7 @@ Con la planilla completa, mira también el curso completo: si un contenido queda
 - **Archivo:** M2-03-Actividad-final-integradora
 - **Rótulo:** Evaluación y cierre del módulo · cierre
 - **Momento:** Al cierre del módulo
-- **Modalidad:** Individual, asincrónica, con entrega en el LMS
+- **Modalidad:** Individual, con entrega en el LMS
 - **Calificación:** Pauta de 40 puntos, exigencia 60 %
 - **Competencia del módulo:** {{competencia}}
 - **Contenidos del plan:** Los cuatro contenidos del módulo, todos integrados: {{unidad 1}} · {{unidad 2}} · {{unidad 3}} · {{unidad 4}}
@@ -802,7 +802,7 @@ Completa una tabla como esta por cada ABPRO. Escala: 1 = no se observa; 2 = se o
 - **Archivo:** M2-06-Evaluacion-final-portafolio
 - **Rótulo:** Evaluación y cierre del módulo · cierre
 - **Momento:** Al cierre, después de la actividad final, la autoevaluación y la coevaluación
-- **Modalidad:** Individual, publicado en línea con un enlace que se abre sin iniciar sesión: un repositorio de GitHub con su página en GitHub Pages
+- **Modalidad:** Individual, publicado en la web con un enlace que se abre sin iniciar sesión: un repositorio de GitHub con su página en GitHub Pages
 - **Calificación:** Rúbrica de 32 puntos, exigencia 60 %
 - **Vínculo con el plan:** Los cuatro aprendizajes esperados y la competencia del módulo
 

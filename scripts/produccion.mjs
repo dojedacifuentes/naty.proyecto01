@@ -785,13 +785,13 @@ function actividades(dir, f) {
     const dato = (r) => { const v = fila(r, n); if (!v) throw new Error(`${dir}/C2-actividades.md: la tabla resumen no trae "${r}" de la actividad ${n}`); return v; };
     const aes = dato('AE que cubre').match(/AE\d/g);
     const info = {
-      n, titulo: tit, tecnica: dato('Técnica'), aes, indicadores: dato('Indicadores'), tiempo: dato('Tiempo estimado'), organizacion: dato('Organización'),
+      n, titulo: tit, tecnica: dato('Técnica'), aes, indicadores: dato('Indicadores'), organizacion: dato('Organización'),
       apoyos: traducir(dato('Apoyos'), nombres), producto: dato('Producto'), evaluacion: traducir(dato('Se evalúa con'), nombres),
       aprendizajes: aes.map((ae) => `${ae}. ${f.aes[ae].texto}`),
       enunciado: cuerpo(enun), insumos: ins ? cuerpo(ins) : null,
     };
     const ficha = [
-      ['Técnica', info.tecnica], ['Tiempo estimado', info.tiempo], ['Organización', info.organizacion],
+      ['Técnica', info.tecnica], ['Organización', info.organizacion],
       ['Indicadores de logro', info.indicadores],
       ['Apoyos', info.apoyos], ['Producto', info.producto], ['Se evalúa con', info.evaluacion],
       ['Aprendizajes esperados', info.aprendizajes, true],
@@ -834,7 +834,7 @@ function moodleActividad(pf, a) {
     `Se evalúa con: ${a.evaluacion}. El instrumento está publicado en el curso y recibes tu nivel en cada criterio, no solo una nota.`,
   ].join('\n');
   const intro = `<p style="margin:0 0 .4em"><strong>Actividad práctica ${a.n} · ${esc(a.titulo)}</strong></p>
-<p style="margin:0"><strong>Técnica:</strong> ${esc(a.tecnica)} · <strong>Tiempo estimado:</strong> ${esc(a.tiempo)}<br>
+<p style="margin:0"><strong>Técnica:</strong> ${esc(a.tecnica)}<br>
 <strong>Organización:</strong> ${esc(a.organizacion)}<br>
 <strong>Aprendizajes esperados:</strong> ${a.aprendizajes.map(esc).join('<br>')}<br>
 <strong>Indicadores de logro:</strong> ${esc(a.indicadores)} · <strong>Apoyos:</strong> ${esc(a.apoyos)}<br>

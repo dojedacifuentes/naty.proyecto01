@@ -14,7 +14,7 @@
 | --- | :-: | :-: | :-: | :-: | --- | --: |
 | 1 · Rúbrica de solución | criterio 1 | criterios 2 y 3 | criterio 4 | criterios 5 y 6 | Actividades 1 y 2 | 35 % |
 | 2 · Proyecto FAQ | req. 1 | req. 2 | req. 3 | req. 4 | Cierre del módulo | 45 % |
-| 3 · Prueba objetiva | ítems 1–3 | ítems 4–6 | ítems 7–9 | ítems 10–12 | Cierre del tramo 4 | 20 % |
+| 3 · Prueba objetiva | ítems 1–3 | ítems 4–6 | ítems 7–9 | ítems 10–12 | Cierre del aprendizaje esperado 4 | 20 % |
 
 **Escala de notas** (exigencia 60 %, escala chilena de 1,0 a 7,0), para los tres:
 si el puntaje *p* es mayor o igual a 0,6 × *P*, nota = 4,0 + 3 × (*p* − 0,6*P*) / (0,4*P*);
@@ -42,7 +42,7 @@ los criterios 4 a 6. La devolución sigue el formato de `B4-retroalimentacion.md
 
 ## Instrumento 2 · Proyecto "Asistente de preguntas frecuentes para Nube Sur" (desempeño)
 
-**Modalidad:** individual, asincrónica, 4 horas de trabajo estimado, entrega como
+**Modalidad:** individual, con entrega como
 repositorio en GitHub (o equivalente) con `README.md`.
 
 ### Enunciado
@@ -135,7 +135,7 @@ asistente deriva sin llamar al modelo de generación: ahorra tokens y evita inve
 
 ## Instrumento 3 · Prueba de conceptos y lectura de código (objetiva)
 
-**Modalidad:** cuestionario del LMS, 25 minutos. 9 ítems de selección múltiple (1 punto) y
+**Modalidad:** cuestionario del LMS. 9 ítems de selección múltiple (1 punto) y
 3 de respuesta breve (2 puntos). **Puntaje máximo:** 15.
 
 **AE1**

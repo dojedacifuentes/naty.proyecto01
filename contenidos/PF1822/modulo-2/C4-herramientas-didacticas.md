@@ -10,18 +10,18 @@ lo permite, la nota baja a 5,0.
 **Aprendizaje esperado seleccionado: AE3** (textual): FORMULAR PROMPTS EFECTIVOS PARA MODELOS
 GENERATIVOS EN ESCENARIOS ZERO-SHOT O FEW-SHOT, CONSIDERANDO LA TAREA SOLICITADA Y LOS PARÁMETROS
 DE GENERACIÓN DISPONIBLES. Las dos herramientas son del AE3, cubren entre las dos todos sus
-contenidos (tabla al final) y se usan en el tramo 3 de la ruta.
+contenidos (tabla al final) y se usan en el aprendizaje esperado 3.
 
 <!-- verificable: ID=C4 tipo=lista min=2 -->
 1. **Notebook guiado "Laboratorio de prompts: del prompt que no sirve al que funciona"** (Colab o JupyterLab): el participante envía prompts reales a un modelo, los diagnostica, los reescribe como zero-shot, few-shot e instruccionales, pide salidas en JSON, mide el efecto de `temperature` y `max_tokens`, y registra sus iteraciones con un puntaje. Cada sección termina en una celda de autocomprobación. Es efectivo porque la habilidad del AE3 es formular y ajustar prompts según la tarea y los parámetros, y el notebook la ejercita con resultados reales del modelo en cada uno de los 9 contenidos del AE3 (criterios 3.1, 3.2 y 3.3). Termina con el prompt y el registro que el participante lleva a la actividad 1, parte C, y a la actividad 2.
-2. **Video interactivo "Del prompt a la respuesta"**: 6 minutos con 5 preguntas incrustadas que detienen el video y no dejan avanzar sin responder. Es efectivo porque cada pregunta obliga a predecir, antes de ver la respuesta, una decisión del AE3: dónde van las reglas del prompt, qué significa una respuesta cortada, cuándo usar few-shot, qué `temperature` elegir y qué restricción evita que el modelo invente (criterios 3.1, 3.2 y 3.3).
+2. **Video interactivo "Del prompt a la respuesta"**: video con 5 preguntas incrustadas que detienen el video y no dejan avanzar sin responder. Es efectivo porque cada pregunta obliga a predecir, antes de ver la respuesta, una decisión del AE3: dónde van las reglas del prompt, qué significa una respuesta cortada, cuándo usar few-shot, qué `temperature` elegir y qué restricción evita que el modelo invente (criterios 3.1, 3.2 y 3.3).
 
 ---
 
 ## Herramienta 1 · Notebook guiado "Laboratorio de prompts: del prompt que no sirve al que funciona"
 
 **AE:** AE3 (la sección 0 repasa la llamada a la API del AE2) · **Indicadores:** 3.1, 3.2, 3.3
-**Duración:** 90 minutos · **Formato:** notebook `M2-Herramienta-1-Notebook.ipynb`, publicado en el
+**Formato:** notebook `M2-Herramienta-1-Notebook.ipynb`, publicado en el
 LMS para abrirlo en Colab o descargarlo para JupyterLab. Cada sección trae una explicación
 breve, una celda para completar y una celda de autocomprobación: `assert` con un mensaje que
 dice qué revisar cuando la comprobación no depende del modelo, y un aviso ✅/❌ cuando depende de
@@ -96,7 +96,7 @@ Cada pregunta evalúa un criterio del AE3 y va en la pausa de la escena que la p
    *Retroalimentación modelo:* "Por ejemplo: 'Usa solo información que esté en el ticket; si falta, escribe «sin datos»'."
 
 **Registro:** el LMS guarda las respuestas; el tutor revisa quién falló las preguntas 2 y 4
-antes de la sesión en vivo del tramo 3.
+antes de que el curso avance al cierre del aprendizaje esperado 3.
 
 ---
 

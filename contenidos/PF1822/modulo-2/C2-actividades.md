@@ -12,9 +12,7 @@ ambas con respuesta modelada.
 | Técnica | Resolución de problemas | Análisis de caso + simulación con tablero de puntajes |
 | AE que cubre | AE1, AE2, AE3 | AE3, AE4 |
 | Indicadores | 1.2, 1.3, 2.1, 2.2, 2.3, 3.1, 3.2 | 3.1, 3.2, 3.3, 4.1, 4.2, 4.3 |
-| Tramo del módulo | 1 y 2; la parte C abre el tramo 3 | 3 y 4 |
-| Tiempo estimado | 7 h (2 h guiadas + 5 h autónomas) | 6 h (1,5 h sincrónica + 4,5 h autónomas) |
-| Organización | Individual; la parte A se discute en la sesión en vivo del tramo 1 y la parte B se revisa en la del tramo 2 | Individual; taller de prompts en vivo (tramo 3) y tablero de puntajes compartido por el curso |
+| Organización | Individual; la parte A se discute en el aprendizaje esperado 1 y la parte B se revisa en el 2 | Individual; taller de prompts (aprendizaje esperado 3) y tablero de puntajes compartido por el curso |
 | Apoyos | Notebook guiado R05, cápsulas R03 | Video interactivo R06 |
 | Producto | Diagrama + `cliente_ia.py` + `test_cliente_ia.py` + `prompts.md` | Notebook del pipeline + registro de prompts + tabla de métricas |
 | Se evalúa con | Rúbrica de solución (B2-1) | Rúbrica de solución (B2-1) + bitácora (B4-d) |

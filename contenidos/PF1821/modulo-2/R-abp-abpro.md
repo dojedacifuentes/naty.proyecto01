@@ -2,8 +2,8 @@
 
 **Estado:** borrador · **Va en:** LMS, una Tarea por actividad · **Pedido:** usuario, 2026-09-29
 Por cada aprendizaje esperado del módulo 2 hay dos actividades, según el molde del V0 de PF1474:
-un **ABP** (aprendizaje basado en problemas), individual y asincrónico, y un **ABPRO**
-(aprendizaje basado en proyectos), grupal, en micro salas de la sesión sincrónica, con roles
+un **ABP** (aprendizaje basado en problemas), individual, y un **ABPRO**
+(aprendizaje basado en proyectos), grupal, con roles
 rotativos. Los ABPRO siguen un caso único que crece de un aprendizaje al siguiente: Mercado
 Austral, el mismo del resto del módulo. Los ABP usan problemas breves de otras empresas
 ficticias para que el participante transfiera lo aprendido a un contexto nuevo.
@@ -18,7 +18,7 @@ listo para convertir en Google Docs o pegar en la descripción de una Tarea de M
 
 ## AE1 · ABP · ¿Qué conviene automatizar?
 
-- **Modalidad:** Individual, asincrónica.
+- **Modalidad:** Individual.
 - **Criterios de evaluación:** 1.1, 1.2, 1.3
 
 ### Contexto
@@ -69,7 +69,7 @@ incluida la tabla y las fuentes consultadas.
 
 ## AE1 · ABPRO · Mapa de automatización de Mercado Austral
 
-- **Modalidad:** Grupal, de 4 a 5 personas, en micro salas durante la sesión sincrónica.
+- **Modalidad:** Grupal, de 4 a 5 personas.
 - **Criterios de evaluación:** 1.1, 1.2, 1.3
 
 ### Contexto
@@ -104,7 +104,7 @@ el módulo, el equipo construirá ese workflow y lo irá mejorando en cada apren
 5. **Defensa de la herramienta.** Escriban tres razones por las que n8n es adecuado para
    Mercado Austral frente a otras plataformas de automatización, y una limitación que deberán
    tener en cuenta (criterio 1.3).
-6. **Presentación.** Al volver a la sala principal, el portavoz presenta el mapa y el primer
+6. **Presentación.** El portavoz presenta al curso el mapa y el primer
    workflow. Otro equipo hace una pregunta.
 
 ### Roles del equipo
@@ -125,7 +125,7 @@ integrantes con su rol.
 
 ## AE2 · ABP · El formulario de consultas
 
-- **Modalidad:** Individual, asincrónica.
+- **Modalidad:** Individual.
 - **Criterios de evaluación:** 2.1, 2.2, 2.3
 
 ### Contexto
@@ -165,7 +165,7 @@ Sube a esta Tarea:
 
 ## AE2 · ABPRO · Registro de pedidos, versión 1
 
-- **Modalidad:** Grupal, de 4 a 5 personas, en micro salas durante la sesión sincrónica.
+- **Modalidad:** Grupal, de 4 a 5 personas.
 - **Criterios de evaluación:** 2.1, 2.2, 2.3
 
 ### Contexto
@@ -226,7 +226,7 @@ Una entrega por equipo en esta Tarea:
 
 ## AE3 · ABP · El inventario del proveedor
 
-- **Modalidad:** Individual, asincrónica.
+- **Modalidad:** Individual.
 - **Criterios de evaluación:** 3.1, 3.2, 3.3, 3.4
 
 ### Contexto
@@ -288,7 +288,7 @@ filas creadas, el archivo CSV generado y tu respuesta al punto 6.
 
 ## AE3 · ABPRO · Mercado Austral pasa a una base de datos
 
-- **Modalidad:** Grupal, de 4 a 5 personas, en micro salas durante la sesión sincrónica.
+- **Modalidad:** Grupal, de 4 a 5 personas.
 - **Criterios de evaluación:** 3.1, 3.2, 3.3, 3.4
 
 ### Contexto
@@ -361,7 +361,7 @@ Una entrega por equipo en esta Tarea:
 
 ## AE4 · ABP · El clasificador de solicitudes
 
-- **Modalidad:** Individual, asincrónica.
+- **Modalidad:** Individual.
 - **Criterios de evaluación:** 4.1, 4.2, 4.3
 
 ### Contexto
@@ -422,7 +422,7 @@ para cada solicitud, el registro de depuración del punto 5 y tu respuesta al pu
 
 ## AE4 · ABPRO · El semáforo de despachos
 
-- **Modalidad:** Grupal, de 4 a 5 personas, en micro salas durante la sesión sincrónica.
+- **Modalidad:** Grupal, de 4 a 5 personas.
 - **Criterios de evaluación:** 4.1, 4.2, 4.3
 
 ### Contexto

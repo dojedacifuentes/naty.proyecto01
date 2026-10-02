@@ -2,13 +2,23 @@
 
 **De:** claude-code (opus-5.5) · sesiones `2026-09-24-claude-code-01` a `-06`, `2026-09-25-claude-code-01` a `-13` y
 `2026-09-27-claude-code-01` a `-18`, `2026-09-28-claude-code-01` a `-04` y `2026-09-29-claude-code-01` a `-04` y `2026-09-30-claude-code-01` a `-13` y
-`2026-10-01-claude-code-01` a `-07` y `2026-10-02-claude-code-01` a `-02` — 2026-09-24 al 1-oct (UTC)
+`2026-10-01-claude-code-01` a `-07` y `2026-10-02-claude-code-01` a `-03` — 2026-09-24 al 1-oct (UTC)
 (sobre el handoff de las sesiones `2026-09-22-claude-code-01` y `-02`, que sigue vigente abajo)
 **Para:** la siguiente sesión, sea cual sea, **incluida otra IA sin terminal**
 
 > **Ojo (sesión -04):** las sesiones -02 y -03 del 27-sep, que armaron los quiz en Canva, reemplazaron este archivo
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
+
+## HECHO (sesión 2026-10-02-03): aulas sin horas, modalidad ni «tramo»; glosario y cuadernillos; Moodle y Drive corregidos
+
+- Reglas del usuario (también en la memoria «reglas-aula-lms»): sin horas ni minutos, sin modalidad, «Aprendizaje esperado N», todos los
+  módulos enunciados y solo el 2 desarrollado. Detalle completo en `state/sessions/2026-10-02-claude-code-03.md`.
+- Artefacto «Aulas del Módulo 2»: https://claude.ai/artifact/Y1tPQydw2DNY5fXdBXTsaR (se regenera con estructura-lms.mjs; la página fuente
+  está en el scratchpad de la sesión, la plantilla hay que rehacerla si se pierde).
+- PENDIENTE en Chrome: 15 Google Docs ABP/ABPRO sin corregir, 2 PDF M2-AE1-ABPRO-grupal por reemplazar en Drive y la tarea 12578 de Moodle (ver la nota de la sesión).
+- Pendiente del usuario: borrar en Moodle (curso 125) «Clases On-Line» y 3 «PRUEBA QUIZ 103» (ocultos). Videos e infografía «Ruta del
+  módulo 2» ya producidos siguen nombrando horas/sesiones: requieren rehacerse.
 
 ## HECHO (sesión 2026-10-02-01): hojas por cliente para el LMS
 

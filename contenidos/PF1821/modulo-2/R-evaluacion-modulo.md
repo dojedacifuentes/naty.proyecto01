@@ -134,7 +134,7 @@ cabecera no sale en los PDF.
 - **Archivo:** M2-01-Evaluacion-diagnostica
 - **Rótulo:** Evaluación del módulo · inicio
 - **Momento:** Al comenzar el módulo, antes de la primera lectura
-- **Modalidad:** Individual, en línea: cuestionario del LMS o este documento
+- **Modalidad:** Individual: cuestionario del LMS o este documento
 - **Calificación:** No lleva nota: muestra tu punto de partida
 - **Vínculo con el plan:** La competencia del módulo, sus cuatro aprendizajes esperados con sus criterios de evaluación y los cuatro contenidos del plan
 
@@ -182,15 +182,15 @@ Para cada criterio de evaluación del plan, marca el número que mejor describe 
 
 ### Qué pasa después
 
-- El tutor/a revisa tus respuestas antes de la primera sesión sincrónica y te deja un comentario breve: tus aciertos en cada contenido (de 0 a 3, sin la clave), por qué contenido te conviene empezar y con qué recurso (la lectura, la cápsula o el quiz de cada tramo). Guarda tus aciertos junto con tu Parte B: los usarás en la autoevaluación y en el portafolio.
-- En la primera sesión sincrónica se comentan las preguntas de la Parte A que más le costaron al curso.
+- El tutor/a revisa tus respuestas antes de que comiences el aprendizaje esperado 1 y te deja un comentario breve: tus aciertos en cada contenido (de 0 a 3, sin la clave), por qué contenido te conviene empezar y con qué recurso (la lectura, la cápsula o el quiz de cada tramo). Guarda tus aciertos junto con tu Parte B: los usarás en la autoevaluación y en el portafolio.
+- Al iniciar el aprendizaje esperado 1, el tutor/a comenta en el foro del módulo las preguntas de la Parte A que más le costaron al curso.
 - Tus respuestas a la Parte C ayudan a armar equipos equilibrados para los ABPRO.
 - Al cierre, tu Parte B vuelve en la autoevaluación del módulo y en la introducción y el cierre de tu portafolio.
 
 ## 01 · Pauta del tutor: evaluación diagnóstica
 - **Archivo:** M2-01-Evaluacion-diagnostica-Pauta-tutor
 - **Rótulo:** Evaluación del módulo · inicio · uso del tutor/a
-- **Momento:** Al cerrar la diagnóstica, antes de la primera sesión sincrónica del módulo
+- **Momento:** Al cerrar la diagnóstica, antes de comenzar el aprendizaje esperado 1
 - **Uso:** Solo del tutor/a; no se publica a los participantes
 - **Vínculo con el plan:** La competencia del módulo, sus cuatro aprendizajes esperados con sus 13 criterios de evaluación y los cuatro contenidos del plan
 
@@ -219,8 +219,8 @@ Para cada ítem: la respuesta correcta, el contenido del plan que evalúa, el cr
 | Aciertos en el contenido | Lectura | Qué hacer |
 | :-: | --- | --- |
 | 3 | Avanza | Sigue la ruta del módulo; ofrécele un desafío extra en el ABP y un rol de mayor responsabilidad en el ABPRO |
-| 2 | Repasa | Recomiéndale la sección de la lectura del ítem que falló y el quiz del tramo |
-| 0 o 1 | Refuerza | Además de la lectura, la cápsula del tramo y una revisión temprana de su ABP |
+| 2 | Repasa | Recomiéndale la sección de la lectura del ítem que falló y el quiz de ese aprendizaje esperado |
+| 0 o 1 | Refuerza | Además de la lectura, la cápsula de ese aprendizaje esperado y una revisión temprana de su ABP |
 
 Distingue la respuesta en blanco del distractor: un blanco dice que el tema es nuevo; un distractor marcado revela una idea equivocada que conviene corregir de frente (ver el "por qué" de la clave).
 
@@ -230,7 +230,7 @@ Distingue la respuesta en blanco del distractor: un blanco dice que el tema es n
 - **Subestimación:** promedio de 2 o menos y 3 aciertos. Sabe más de lo que cree. Díselo con la evidencia e invítalo/a a un rol de mayor responsabilidad en el ABPRO (especialista n8n, responsable de reglas o de trazabilidad).
 - **Coherente:** el resto. Sigue la acción que corresponde a sus aciertos.
 
-**Por curso.** Si más de un tercio del curso queda en "refuerza" en un contenido, dedica el inicio de la sesión sincrónica de ese tramo a los ítems que más fallaron. La Parte C sirve para armar equipos de ABPRO con experiencias distintas y para anticipar quiénes nunca han trabajado con una base de datos antes del tramo 3.
+**Por curso.** Si más de un tercio del curso queda en "refuerza" en un contenido, repasa al inicio de ese aprendizaje esperado los ítems que más fallaron. La Parte C sirve para armar equipos de ABPRO con experiencias distintas y para anticipar quiénes nunca han trabajado con una base de datos antes del tramo 3.
 
 ### Acciones según el resultado
 
@@ -279,7 +279,7 @@ Una fila por participante, en una hoja de cálculo del curso guardada en el LMS 
 - **Archivo:** M2-03-Actividad-final-integradora
 - **Rótulo:** Evaluación y cierre del módulo · cierre
 - **Momento:** Al cierre del módulo, después del último ABPRO
-- **Modalidad:** Individual, asincrónica, con entrega en el LMS
+- **Modalidad:** Individual, con entrega en el LMS
 - **Calificación:** Pauta de 40 puntos por componentes de la competencia, exigencia 60 %
 - **Competencia del módulo:** {{competencia}}
 - **Contenidos del plan:** Los cuatro contenidos del módulo, todos integrados: 1 · {{unidad 1}}; 2 · {{unidad 2}}; 3 · {{unidad 3}}; 4 · {{unidad 4}}
@@ -751,7 +751,7 @@ Tus respuestas de la Parte B las ve solo el tutor/a.
 - **Archivo:** M2-06-Evaluacion-final-portafolio
 - **Rótulo:** Evaluación y cierre del módulo · cierre
 - **Momento:** Al cierre del módulo, después de la actividad final, la autoevaluación y la coevaluación
-- **Modalidad:** Individual, publicado en línea con un enlace que se abre sin iniciar sesión, en la plataforma que indique el curso (por ejemplo, Google Sites o GitHub Pages)
+- **Modalidad:** Individual, publicado en la web con un enlace que se abre sin iniciar sesión, en la plataforma que indique el curso (por ejemplo, Google Sites o GitHub Pages)
 - **Calificación:** Rúbrica de 32 puntos, exigencia 60 %
 - **Vínculo con el plan:** Los cuatro aprendizajes esperados, con sus criterios de evaluación, y la competencia del módulo
 

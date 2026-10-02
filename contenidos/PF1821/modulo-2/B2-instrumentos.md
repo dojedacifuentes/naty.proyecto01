@@ -14,7 +14,7 @@
 | --- | :-: | :-: | :-: | :-: | --- | --: |
 | 1 · Rúbrica de workflow | criterio 1 | criterio 2 | criterios 3 y 4 | criterios 5 y 6 | Actividades 1 y 2 | 35 % |
 | 2 · Caso Devoluciones | req. 1 | req. 2 | req. 3 | req. 4 | Cierre del módulo | 45 % |
-| 3 · Prueba objetiva | ítems 1–3 | ítems 4–6 | ítems 7–9 | ítems 10–12 | Cierre del tramo 4 | 20 % |
+| 3 · Prueba objetiva | ítems 1–3 | ítems 4–6 | ítems 7–9 | ítems 10–12 | Cierre del aprendizaje esperado 4 | 20 % |
 
 **Escala de notas** (exigencia 60 %, escala chilena de 1,0 a 7,0), para los tres:
 si el puntaje *p* es mayor o igual a 0,6 × *P*, nota = 4,0 + 3 × (*p* − 0,6*P*) / (0,4*P*);
@@ -45,7 +45,7 @@ y en la actividad 2 los criterios 1, 3, 5 y 6; la devolución sigue el formato d
 
 ## Instrumento 2 · Caso "Devoluciones de Mercado Austral" (desempeño)
 
-**Modalidad:** individual, asincrónica, 90 minutos de trabajo estimado, entrega en el LMS.
+**Modalidad:** individual, con entrega en el LMS.
 
 ### Enunciado
 
@@ -96,7 +96,7 @@ semanal: Schedule Trigger → Supabase *Get many rows* (filtro por fecha) → *C
 
 ## Instrumento 3 · Prueba de conceptos y lectura de workflows (objetiva)
 
-**Modalidad:** cuestionario del LMS, 25 minutos, corrección automática en los ítems de
+**Modalidad:** cuestionario del LMS, corrección automática en los ítems de
 selección y revisión del tutor en los de respuesta breve. 9 ítems de selección múltiple
 (1 punto) y 3 de respuesta breve (2 puntos). **Puntaje máximo:** 15.
 

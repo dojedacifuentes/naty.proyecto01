@@ -36,7 +36,7 @@ Cada pregunta evalúa un criterio del AE3 y va en la pausa de la escena que la p
    *Retroalimentación modelo:* "Por ejemplo: 'Usa solo información que esté en el ticket; si falta, escribe «sin datos»'."
 
 **Registro:** el LMS guarda las respuestas; el tutor revisa quién falló las preguntas 2 y 4
-antes de la sesión en vivo del tramo 3.
+antes de que el curso avance al cierre del aprendizaje esperado 3.
 
 ---
 

@@ -10,18 +10,18 @@ lo permite, la nota baja a 5,0.
 **Aprendizaje esperado seleccionado: AE3** (textual): MANIPULAR DATOS UTILIZANDO NODOS
 FUNDAMENTALES DE N8N, PARA TRANSFORMAR INFORMACIÓN SEGÚN REQUERIMIENTOS ESPECÍFICOS DEL WORKFLOW.
 Las dos herramientas son del AE3, cubren entre las dos todos sus contenidos (tabla al final) y
-se usan en el tramo 3 de la ruta.
+se usan en el aprendizaje esperado 3.
 
 <!-- verificable: ID=C4 tipo=lista min=2 -->
 1. **Tutorial guiado "Tu primer workflow con datos limpios"**: página paso a paso con capturas, que el participante sigue con n8n abierto al lado. Construye un workflow que recibe pedidos, los transforma con nodos fundamentales y expresiones, los guarda y consulta en Supabase, los filtra y resume, los convierte a CSV y XML, y divide un pedido con varios productos. Es efectivo porque la habilidad del AE3 es manipular datos con nodos fundamentales para transformarlos según un requerimiento: en cada paso el participante obtiene un dato transformado y lo compara con el valor esperado que el tutorial le muestra (criterios 3.1, 3.2, 3.3 y 3.4). Termina con la base del workflow de la actividad 1.
-2. **Video interactivo "Expresiones y depuración"**: video de 6 minutos con 5 preguntas incrustadas que detienen la reproducción. Es efectivo porque cada pregunta obliga a predecir, antes de verlo, el resultado de una transformación del AE3: una expresión, una condición del If, un Switch sin salida de respaldo, un Merge que multiplica ítems y un tipo de dato que Supabase rechaza (criterios 3.1, 3.3 y 3.4). Es además la base de la depuración del AE4 en la actividad 2.
+2. **Video interactivo "Expresiones y depuración"**: video con 5 preguntas incrustadas que detienen la reproducción. Es efectivo porque cada pregunta obliga a predecir, antes de verlo, el resultado de una transformación del AE3: una expresión, una condición del If, un Switch sin salida de respaldo, un Merge que multiplica ítems y un tipo de dato que Supabase rechaza (criterios 3.1, 3.3 y 3.4). Es además la base de la depuración del AE4 en la actividad 2.
 
 ---
 
 ## Herramienta 1 · Tutorial guiado "Tu primer workflow con datos limpios"
 
 **AE:** AE3 (la parte 1 repasa la creación del workflow del AE2) · **Indicadores:** 3.1, 3.2, 3.3, 3.4
-**Duración:** 75 a 90 minutos · **Formato:** página del LMS (o H5P *Course Presentation*), o PDF
+**Formato:** página del LMS (o H5P *Course Presentation*), o PDF
 `M2-Herramienta-1-Tutorial.pdf`, con una captura por paso y una casilla "Listo" que el
 participante marca al avanzar.
 **Resultado:** el workflow "Pedido a registro", base de la actividad 1, parte B, y el workflow
@@ -114,7 +114,7 @@ Cada pregunta evalúa un contenido del AE3 y va en la pausa de la escena que la 
    *Retroalimentación:* "`parseInt` lee el número del comienzo del texto (3) y la base de datos recibe un entero. `trim()` solo quita espacios: "3 unidades" seguiría siendo texto."
 
 **Registro:** el LMS guarda las respuestas; el tutor revisa quién falló las preguntas 3 y 4
-antes de la sesión sincrónica del tramo 3.
+antes de que el curso avance al cierre del aprendizaje esperado 3.
 
 ---
 

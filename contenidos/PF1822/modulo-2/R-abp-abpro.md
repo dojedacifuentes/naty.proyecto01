@@ -2,8 +2,8 @@
 
 **Estado:** borrador · **Va en:** LMS, una Tarea por actividad · **Pedido:** usuario, 2026-09-29
 Por cada aprendizaje esperado del módulo 2 hay dos actividades, según el molde del V0 de PF1474:
-un **ABP** (aprendizaje basado en problemas), individual y asincrónico, y un **ABPRO**
-(aprendizaje basado en proyectos), grupal, en micro salas de la sesión sincrónica, con roles
+un **ABP** (aprendizaje basado en problemas), individual, y un **ABPRO**
+(aprendizaje basado en proyectos), grupal, con roles
 rotativos. Los ABPRO siguen un caso único que crece de un aprendizaje al siguiente: la mesa de
 ayuda de Nube Sur, la misma del resto del módulo. Los ABP usan problemas breves de otras
 empresas ficticias para que el participante transfiera lo aprendido a un contexto nuevo.
@@ -18,7 +18,7 @@ listo para convertir en Google Docs o pegar en la descripción de una Tarea de M
 
 ## AE1 · ABP · ¿Qué modelo para qué necesidad?
 
-- **Modalidad:** Individual, asincrónica.
+- **Modalidad:** Individual.
 - **Criterios de evaluación:** 1.1, 1.2, 1.3
 
 ### Contexto
@@ -61,7 +61,7 @@ Mermaid) con su explicación y tu elección de arquitectura justificada.
 
 ## AE1 · ABPRO · La arquitectura de la plataforma de soporte
 
-- **Modalidad:** Grupal, de 4 a 5 personas, en micro salas durante la sesión sincrónica.
+- **Modalidad:** Grupal, de 4 a 5 personas.
 - **Criterios de evaluación:** 1.1, 1.2, 1.3
 
 ### Contexto
@@ -103,7 +103,7 @@ arquitectura; en los siguientes la irá construyendo por partes.
    eligen, por qué, qué riesgo aceptan y cómo lo mitigarían.
 5. **Tecnologías.** Asignen a cada componente una tecnología o librería concreta (por ejemplo,
    OpenAI API, Hugging Face Transformers o LangChain) y justifiquen dos de ellas.
-6. **Comité de seguridad.** Al volver a la sala principal, otro equipo actúa como comité de
+6. **Comité de seguridad.** Otro equipo actúa como comité de
    seguridad y les hace dos preguntas sobre el manejo de datos personales y claves. El
    portavoz responde.
 
@@ -125,7 +125,7 @@ los nombres de los integrantes con su rol.
 
 ## AE2 · ABP · La función que nadie quiere tocar
 
-- **Modalidad:** Individual, asincrónica.
+- **Modalidad:** Individual.
 - **Criterios de evaluación:** 2.1, 2.2, 2.3
 
 ### Contexto
@@ -183,7 +183,7 @@ la salida de `pytest`. Tu clave **no** puede aparecer en ningún archivo ni capt
 
 ## AE2 · ABPRO · Un cliente, dos proveedores
 
-- **Modalidad:** Grupal, de 4 a 5 personas, en micro salas durante la sesión sincrónica.
+- **Modalidad:** Grupal, de 4 a 5 personas.
 - **Criterios de evaluación:** 2.1, 2.2, 2.3
 
 ### Contexto
@@ -250,7 +250,7 @@ versiones y un `.env.example` sin valores.
 
 ## AE3 · ABP · Tres tareas, tres prompts
 
-- **Modalidad:** Individual, asincrónica.
+- **Modalidad:** Individual.
 - **Criterios de evaluación:** 3.1, 3.2, 3.3
 
 ### Contexto
@@ -304,7 +304,7 @@ iteraciones.
 
 ## AE3 · ABPRO · Torneo de clasificación de tickets
 
-- **Modalidad:** Grupal, de 4 a 5 personas, en micro salas durante la sesión sincrónica.
+- **Modalidad:** Grupal, de 4 a 5 personas.
 - **Criterios de evaluación:** 3.1, 3.2, 3.3
 
 ### Contexto
@@ -381,7 +381,7 @@ Una entrega por equipo en esta Tarea:
 
 ## AE4 · ABP · Limpia antes de medir
 
-- **Modalidad:** Individual, asincrónica.
+- **Modalidad:** Individual.
 - **Criterios de evaluación:** 4.1, 4.2, 4.3
 
 ### Contexto
@@ -443,7 +443,7 @@ Sube a esta Tarea `preprocesamiento.py`, el notebook o script con las métricas,
 
 ## AE4 · ABPRO · El control de calidad del resumidor
 
-- **Modalidad:** Grupal, de 4 a 5 personas, en micro salas durante la sesión sincrónica.
+- **Modalidad:** Grupal, de 4 a 5 personas.
 - **Criterios de evaluación:** 4.1, 4.2, 4.3
 
 ### Contexto

@@ -38,7 +38,7 @@ Cada pregunta evalúa un contenido del AE3 y va en la pausa de la escena que la 
    *Retroalimentación:* "`parseInt` lee el número del comienzo del texto (3) y la base de datos recibe un entero. `trim()` solo quita espacios: "3 unidades" seguiría siendo texto."
 
 **Registro:** el LMS guarda las respuestas; el tutor revisa quién falló las preguntas 3 y 4
-antes de la sesión sincrónica del tramo 3.
+antes de que el curso avance al cierre del aprendizaje esperado 3.
 
 ---
 
