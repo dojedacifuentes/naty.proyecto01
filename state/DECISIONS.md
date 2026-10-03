@@ -893,3 +893,13 @@ Quién: usuario (pedido), claude-code.
   se descartó la «Evaluación Final M2» enlazada antes. **PF1483 evaluación:** copia sin «Notas para el Coach», sin «Duración: 3 horas» y
   sin el marcador de rúbrica de UNAB. **PF1462 evaluación:** no existe en 2024; se deja la 2026.
 Quién: usuario (decisiones), claude-code.
+
+## 2026-10-03 · Manda el Anexo 2: evaluaciones del módulo reemplazadas (sesión claude-code, 2026-10-03-claude-code-02)
+
+- El usuario: «cambia de acuerdo a los anexos … solo la evaluación … con tal de que calce». En 9 cursos la evaluación del aula se reemplazó por
+  la del anexo. Los anexos solo describen la evaluación (y citan un enunciado «CHC_…_Evaluacion_desempeno_enunciado» que no existe): se redactó
+  cada enunciado desde ese párrafo (casi literal) y la rúbrica enlazada, con casos ficticios (Envases Cordillera, Transportes Austral Carga,
+  Farmacias Valle Central, Punto Limpio Las Vertientes, Centro Cultural Quebrada Verde). ABP/ABPRO no se tocaron.
+- Un documento por curso (antes los Entry compartían uno con la cabecera de PF1474).
+- Aula abierta: Skillnest coursedisplay=0. Se descartó dejar cada módulo como tarjeta que hay que abrir.
+Quién: usuario (decisión), claude-code.

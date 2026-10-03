@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-10-03 (UTC)
-**Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06 y 2026-10-03-claude-code-01 (Claude Code · opus-5.5)
+**Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06 y 2026-10-03-claude-code-01 y -02 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -18,6 +18,14 @@
 | 3. Sistematización | no iniciada | — |
 
 ## Hecho
+
+Sesión 2026-10-03-claude-code-02 (manda el anexo):
+
+- [x] Las 9 evaluaciones del módulo que no calzaban con los «Anexos 2 VF» se reemplazaron por enunciados redactados desde el párrafo del
+      anexo y su rúbrica (fuentes `privado/docs-anexos/fuentes/anexo-eval/`, 12 Google Docs «… · según anexo», un doc por curso) y se
+      enlazaron en CHC 126-129, Skillnest 102/104/105/106 y Canvas 113064-67. Autoevaluación UA Entry = la del anexo.
+- [x] Skillnest 100-107 pasaron a «todas las secciones en una página» (estaban en una sección por página): el módulo 2 se ve sin clic.
+- [x] Página publicada con la comparación: https://claude.ai/artifact/CyQB6HQK2awYDr7p6XMKXd
 
 Sesión 2026-10-03-claude-code-01 (corrección de los LMS para que coincidan con los anexos):
 
@@ -653,9 +661,9 @@ accionables están en el handoff como trabajo corto: la columna `fuente` en
 
 ## Siguiente paso concreto
 
-**Desde 2026-10-03:** la referencia de las aulas son los «Anexos 2 VF» (Drive 14243kbNjYSzIi681Q_RTUvWg_XS_kN8w, 18 anexos). La
-comparación (`privado/docs-anexos/comparacion-anexos2.md`) dice que AE, criterios, ABP y ABPRO coinciden, pero la evaluación del módulo
-no coincide en 9 anexos (OPEN-QUESTIONS #26): decidir con Natalia si se cambia el anexo o el aula.
+**Desde 2026-10-03:** la referencia de las aulas son los «Anexos 2 VF» (Drive 14243kbNjYSzIi681Q_RTUvWg_XS_kN8w, 18 anexos); el usuario
+decidió que manda el anexo y las 9 evaluaciones ya se cambiaron (#26 resuelta). Pendiente: revisión humana de esos enunciados, ejecutar el
+script de datos de PF1462 (no hay Python en esta máquina) y que los anexos V0 incorporen los enlaces a estos documentos.
 
 
 Desde la sesión 2026-10-01-claude-code-03 el usuario se ordena con la planilla «02 Recursos M2 · Licitación 2026 (12 cursos)». PF1487, PF1485 y

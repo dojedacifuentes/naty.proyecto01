@@ -109,7 +109,7 @@ Cierre: **lunes 5 de octubre de 2026**. Desde el miércoles 30 de septiembre que
 Hora: el usuario no la indicó; el calendario de las bases fija el cierre a las 18:00 del décimo día hábil
 (`docs/01-guia-propuesta-tecnica.md`), a confirmar en el llamado. Fecha de publicación del llamado: no informada.
 
-**26. Evaluación del módulo 2: ¿se ajusta el anexo o el aula?** — ABIERTA (sesión 2026-10-03-claude-code-01)
+**26. Evaluación del módulo 2: ¿se ajusta el anexo o el aula?** — RESUELTA (usuario, 2026-10-03): manda el anexo; aplicado en la sesión 2026-10-03-claude-code-02. (Abierta en la sesión -01)
 La comparación de los 18 «Anexos 2 VF» con las aulas (`privado/docs-anexos/comparacion-anexos2.md`) encontró la evaluación distinta en
 9 anexos: PF1486 (anexo: informe de diagnóstico; aula: prueba de 6 partes), PF1462 (anexo: app de flota; aula: RutaSur 2026), PF1482
 (anexo: red de farmacias; aula: portafolio), PF1495 (anexo agrega Parte 4), PF1483 (anexo: Punto Limpio; aula: Pedalea), PF1477/PF1478 CD y
