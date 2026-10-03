@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-10-03 (UTC)
-**Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06 y 2026-10-03-claude-code-01 y -02 (Claude Code · opus-5.5)
+**Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06 y 2026-10-03-claude-code-01 a -03 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -18,6 +18,16 @@
 | 3. Sistematización | no iniciada | — |
 
 ## Hecho
+
+Sesión 2026-10-03-claude-code-03 (aulas UNAB con los mismos criterios):
+
+- [x] 8 aulas UNAB 2026 en el Moodle otec-unab.cl, copiadas de «CURSO NUEVO 1» (703), ocultas: 705 PF1481 · 706 PF1483 · 707 PF1822 ·
+      708 PF1821 · 709 PF1477 · 710 PF1479 · 711 PF1478 · 712 PF1474. Diseño Skillnest con colores UNAB (#051C2C/#AA182C), vocabulario
+      UNAB, criterios nuevos, Rise UNAB (PF1821/PF1822), quiz SCORM, banner de curso y módulo 2 abierto. Armador
+      `privado/unab-moodle/builder-unab.js`, datos `privado/unab-moodle/cursos-unab.json`.
+- [x] Evaluaciones según los Anexos 2 VF UNAB (`privado/docs-anexos/comparacion-unab.md`): 7 Google Docs con marca UNAB (PF1481 caso
+      nuevo «Tornillo» con datos CSV adjuntos a la tarea, PF1483 Pedalea limpio, PF1822 Nube Sur con rúbrica UNAB, Entry ×4 Todo Ventas);
+      PF1821 sin cambio porque ya calza.
 
 Sesión 2026-10-03-claude-code-02 (manda el anexo):
 
