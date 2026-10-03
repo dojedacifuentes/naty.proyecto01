@@ -879,3 +879,17 @@ Quién: usuario (aprobaciones y pedido), claude-code.
   siguen pasando.
 - **Drive:** carpeta nueva por curso en NATY 2.0 con «3 Infografías» y «4 Quiz gamificados», como en los demás cursos.
 Quién: usuario (pedido), claude-code.
+
+## 2026-10-03 · Aulas corregidas según los textos de los anexos (sesión claude-code, 2026-10-03-claude-code-01)
+
+- **Fuente:** el Word «Textos que se usaron en los anexos…» (Drive 1YSKJUPeSTMX6oMBSuFT-9LC2wzc4u5op) y la carpeta 2024 «Contenidos Finales».
+  El usuario pidió dejar las aulas listas con esas correcciones aunque haya anexos 2026 sin terminar.
+- **Enlaces:** se enlazan los documentos 2024 originales cuando coinciden con el Word (permisos los resuelve el usuario); si no hay doc o
+  no coincide, Google Doc nuevo con marca del cliente (Chile Conductores sin logo: nombre y colores del aula).
+- **Título:** solo se quita «Especial» («Programa “Talento Digital Para Chile”, Becas Laborales 2026, <curso> (<código>)»).
+- **Product Owner:** se quitan del texto del anexo «sesión en línea de N minutos» y «Tiempo estimado: 1 hora» (regla del aula); se descartó
+  copiarlo literal. PF1486 AE4/AE5: manda el Word aunque su «individual» diga «En equipos».
+- **PF1482 evaluación:** «Evaluación Portafoliol.docx» limpia de restos de ChatGPT, «Duración: 90 minutos» y «[Fecha de entrega]»;
+  se descartó la «Evaluación Final M2» enlazada antes. **PF1483 evaluación:** copia sin «Notas para el Coach», sin «Duración: 3 horas» y
+  sin el marcador de rúbrica de UNAB. **PF1462 evaluación:** no existe en 2024; se deja la 2026.
+Quién: usuario (decisiones), claude-code.

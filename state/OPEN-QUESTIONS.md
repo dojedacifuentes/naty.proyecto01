@@ -109,6 +109,14 @@ Cierre: **lunes 5 de octubre de 2026**. Desde el miércoles 30 de septiembre que
 Hora: el usuario no la indicó; el calendario de las bases fija el cierre a las 18:00 del décimo día hábil
 (`docs/01-guia-propuesta-tecnica.md`), a confirmar en el llamado. Fecha de publicación del llamado: no informada.
 
+**26. Evaluación del módulo 2: ¿se ajusta el anexo o el aula?** — ABIERTA (sesión 2026-10-03-claude-code-01)
+La comparación de los 18 «Anexos 2 VF» con las aulas (`privado/docs-anexos/comparacion-anexos2.md`) encontró la evaluación distinta en
+9 anexos: PF1486 (anexo: informe de diagnóstico; aula: prueba de 6 partes), PF1462 (anexo: app de flota; aula: RutaSur 2026), PF1482
+(anexo: red de farmacias; aula: portafolio), PF1495 (anexo agrega Parte 4), PF1483 (anexo: Punto Limpio; aula: Pedalea), PF1477/PF1478 CD y
+los 4 Entry de UA (anexo: «Todo Ventas en Línea» e individual; aula: RECITRONIC grupal). AE, criterios, ABP y ABPRO coinciden. Además,
+los anexos nombran el quiz distinto por cliente («Chequeo de conocimientos», «Gamificación», «Test de avance»); la planilla de
+vocabulario dice «Quiz» para todos y eso se aplicó.
+
 ## Para Diego
 
 **14. ¿Dónde vive el repositorio y quién tiene acceso de escritura?** — ABIERTA · respuesta parcial

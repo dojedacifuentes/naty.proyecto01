@@ -2,8 +2,8 @@
 
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
-**Última actualización:** 2026-10-02 (UTC, como el registro; 1-oct de noche en Chile)
-**Por:** 2026-10-01-claude-code-01 a -07 y 2026-10-02-claude-code-01 a -06 (Claude Code · opus-5.5)
+**Última actualización:** 2026-10-03 (UTC)
+**Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06 y 2026-10-03-claude-code-01 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -18,6 +18,16 @@
 | 3. Sistematización | no iniciada | — |
 
 ## Hecho
+
+Sesión 2026-10-03-claude-code-01 (corrección de los LMS para que coincidan con los anexos):
+
+- [x] 18 aulas sin «Especial» en el título (Canvas UA 113062-67, Skillnest 100-107, Chile Capacitación 126-129).
+- [x] Vocabulario por cliente de la planilla 02 Recursos M2 (pestaña vocabulario) en nombres de recursos, tareas, rúbricas y etiquetas:
+      `privado/vocabulario-clientes.json`; datos con `node privado/aplicar-anexos-datos.mjs`.
+- [x] 7 criterios faltantes (PF1481 AE4, PF1483 AE1, PF1486 AE1-4, PF1495 AE3) en datos y aulas.
+- [x] Documentos nuevos con marca del cliente (34 Google Docs, Drive naty 2.0 › «Corrección LMS según anexos (2026-10-03)»):
+      generador `privado/docs-anexos/generar.mjs`, ids en `privado/docs-anexos/salida/subidos.json`; enlaces en datos con
+      `node privado/aplicar-anexos-enlaces.mjs` y en las tareas (enlazarTareasChc / enlazarTareasCd / disenoV3).
 
 Sesión inicial (cowork, 2026-09-22):
 
@@ -642,6 +652,11 @@ accionables están en el handoff como trabajo corto: la columna `fuente` en
 `data/clientes.csv` y las tres citas de las bases sin numeral.
 
 ## Siguiente paso concreto
+
+**Desde 2026-10-03:** la referencia de las aulas son los «Anexos 2 VF» (Drive 14243kbNjYSzIi681Q_RTUvWg_XS_kN8w, 18 anexos). La
+comparación (`privado/docs-anexos/comparacion-anexos2.md`) dice que AE, criterios, ABP y ABPRO coinciden, pero la evaluación del módulo
+no coincide en 9 anexos (OPEN-QUESTIONS #26): decidir con Natalia si se cambia el anexo o el aula.
+
 
 Desde la sesión 2026-10-01-claude-code-03 el usuario se ordena con la planilla «02 Recursos M2 · Licitación 2026 (12 cursos)». PF1487, PF1485 y
 PF1493 **ya no se postulan** (decisión del usuario, 01-10, sesión -07): se sacaron de la planilla y de data/planes-formativos.csv;
