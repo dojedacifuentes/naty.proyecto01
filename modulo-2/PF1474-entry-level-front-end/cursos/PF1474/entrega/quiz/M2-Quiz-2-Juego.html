@@ -240,6 +240,7 @@ button:focus-visible{outline:3px solid var(--oro);outline-offset:3px}
 .siguiente b{color:#fff}
 .registro{margin-top:6px;font-size:13px;color:var(--tenue)}
 .revision{text-align:left;margin-top:22px;display:grid;gap:12px}
+.revision[hidden]{display:none}
 .revision article{padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(148,170,255,.16)}
 .revision h3{font:600 15px/1.4 var(--sans);color:#fff;margin-bottom:6px}
 .revision .r-ok{font:600 14px/1.4 var(--sans);color:var(--ok);margin-bottom:6px}
@@ -261,6 +262,87 @@ button:focus-visible{outline:3px solid var(--oro);outline-offset:3px}
   .opcion{grid-template-columns:36px 1fr 20px;gap:10px;padding:12px}
   .tecla{width:34px;height:34px}
   .nodo{width:28px;height:28px}
+}
+/* Marcos bajos del LMS (Canvas da 450 px de alto; Moodle, unos 680): lo principal tiene que verse sin desplazarse.
+   Portada: título, misión y «Iniciar misión» arriba; reglas solo con su título; sin ilustración. Niveles: enunciado y
+   alternativas más compactos, en dos columnas cuando hay ancho. */
+.acciones.arriba{margin:0 0 18px}
+.retro{scroll-margin-top:84px}
+@media (max-height:720px){
+  .app{padding:8px 12px 12px;gap:10px}
+  .panel{padding:18px 22px;border-radius:18px}
+  .portada{grid-template-columns:1fr}
+  .heroe{display:none}
+  .titulo{margin:8px 0 6px;font-size:clamp(24px,3.6vw,34px)}
+  .mision{font-size:15px;margin-bottom:12px}
+  .acciones.arriba{margin:0 0 12px}
+  .btn{padding:12px 18px}
+  .portada .kicker{display:flex}
+  .reglas{grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+  .regla{padding:8px 10px;align-items:center;gap:9px}
+  .regla .ico{width:28px;height:28px;border-radius:8px}
+  .regla b{margin:0}
+  .regla .regla-txt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .cuando,.nota{font-size:13px}
+  .hud{top:4px;padding:7px 12px;gap:8px 14px}
+  .nodo{width:26px;height:26px;font-size:11px}
+  .xp{font-size:18px}
+  .icono-btn{width:32px;height:32px}
+  .nivel-cab{margin-bottom:10px}
+  .enunciado{font-size:clamp(17px,2.2vw,21px)}
+  .pista{margin:6px 0 12px;font-size:12px}
+  .opciones{gap:8px}
+  .opciones.dos,.opciones.cuatro{grid-template-columns:1fr 1fr}
+  .opcion{grid-template-columns:32px 1fr 20px;gap:10px;padding:9px 12px;font-size:15px;border-radius:13px}
+  .tecla{width:32px;height:32px;font-size:14px;border-radius:9px}
+  .retro{margin-top:12px;padding:14px 16px;scroll-margin-top:60px}
+  .retro-lbl{margin:10px 0 4px}
+  .retro .acciones{margin-top:12px}
+  .alerta{margin:-6px 0 12px}
+  /* Final en dos columnas: insignia y XP a la izquierda; logros, siguiente parada y botones a la derecha */
+  .final{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:6px 24px;align-items:center}
+  .final .revision{grid-column:1/-1}
+  .titulo-final{font-size:clamp(24px,3.4vw,34px);margin:6px 0 0}
+  .medalla-caja{width:140px;height:140px}
+  .medalla{width:96px}
+  .insignia{font-size:16px}
+  .fila-estrellas{margin:8px 0 2px}
+  .fila-estrellas .i{width:22px;height:22px}
+  .xp-total{font-size:clamp(32px,4.4vw,44px);margin-top:4px}
+  .desglose{margin:0 0 10px;gap:6px}
+  .desglose span{padding:7px 9px}
+  .subt{margin:0 0 8px}
+  .logros{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px;margin-bottom:10px}
+  .logro{padding:6px 9px;gap:8px}
+  .logro .ico{width:28px;height:28px}
+  .logro small{font-size:11px}
+  .resumen-ruta{margin:0 0 8px}
+  .siguiente{font-size:14px}
+  .registro{font-size:12px}
+  .final .acciones{margin-top:12px}
+  .pie{display:none}
+}
+@media (max-height:720px) and (min-width:940px){
+  .portada{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr)}
+  .heroe{display:block;max-width:330px;justify-self:center;padding:4px}
+  .reglas{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-height:720px) and (max-width:760px){
+  .final{grid-template-columns:1fr}
+}
+@media (max-height:720px) and (max-width:680px){
+  .reglas{grid-template-columns:1fr 1fr}
+  .opciones.dos,.opciones.cuatro{grid-template-columns:1fr}
+}
+@media (max-height:500px){
+  .kicker{font-size:11px}
+  .titulo{font-size:clamp(22px,3vw,28px)}
+  .mision{font-size:14px}
+  .nota{display:none}
+  .heroe{max-width:270px}
+  .lema{display:none}
+  .panel{padding:14px 18px}
+  .enunciado{font-size:clamp(16px,2vw,19px)}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -541,7 +623,8 @@ const DATOS = {"curso":"PF1474","cursoNombre":"Desarrollo de Aplicaciones Front-
   const heroe = () => (H.tipo === 'decision' ? heroeDecision() : H.tipo === 'chat' ? heroeChat() : heroeFlujo());
 
   // ------------------------------------------------------------------ pantallas
-  const regla = (icono, titulo, texto) => `<div class="regla"><span class="ico">${ico(icono)}</span><span><b>${titulo}</b>${texto}</span></div>`;
+  // En marcos bajos (LMS) la regla muestra solo el título: el texto queda en el globo (title) y para el lector de pantalla.
+  const regla = (icono, titulo, texto) => `<div class="regla" title="${texto.replace(/"/g, '&quot;')}"><span class="ico">${ico(icono)}</span><span><b>${titulo}</b><span class="regla-txt">${texto}</span></span></div>`;
   const botonSonido = () => `<button class="btn" id="btn-sonido-portada" aria-pressed="${sonido.on}">${ico(sonido.on ? 'sonido' : 'silencio')} Sonido: ${sonido.on ? 'sí' : 'no'}</button>`;
 
   function portada() {
@@ -550,6 +633,10 @@ const DATOS = {"curso":"PF1474","cursoNombre":"Desarrollo de Aplicaciones Front-
         <p class="kicker">Misión · ${esc(D.curso)} · Módulo 2 · Quiz ${D.quiz}</p>
         <h1 class="titulo" id="foco" tabindex="-1">${esc(D.tema)}</h1>
         <p class="mision">Tu misión: <b>${esc(D.mision)}</b>.</p>
+        <div class="acciones arriba">
+          <button class="btn principal pulso" id="empezar">${ico('play')} Iniciar misión</button>
+          ${botonSonido()}
+        </div>
         <div class="reglas">
           ${regla('niveles', `${N} niveles`, `Uno por pregunta (${esc(D.aes)}). El último es el nivel final.`)}
           ${regla('estrella', '+100 XP y estrella', 'Si aciertas al primer intento. Al segundo intento, +50 XP.')}
@@ -560,10 +647,6 @@ const DATOS = {"curso":"PF1474","cursoNombre":"Desarrollo de Aplicaciones Front-
         </div>
         <p class="cuando"><b>Cuándo:</b> ${esc(D.cuando)}</p>
         <p class="nota">Quiz formativo: no lleva nota. Lo que vale es la explicación de cada nivel.</p>
-        <div class="acciones">
-          <button class="btn principal pulso" id="empezar">${ico('play')} Iniciar misión</button>
-          ${botonSonido()}
-        </div>
       </div>
       <figure class="heroe">${heroe()}<figcaption class="lema">${esc(T.lema)}</figcaption></figure>
     </section>`;
@@ -584,6 +667,8 @@ const DATOS = {"curso":"PF1474","cursoNombre":"Desarrollo de Aplicaciones Front-
     est.intentos = 0; est.cerrado = false; est.comodinAhora = false;
     const ultimo = i === N - 1;
     const dos = p.opciones.length === 2 || p.opciones.every((o) => o.length <= 44);
+    // En un marco bajo también van en dos columnas las alternativas medianas (ver @media max-height): así caben sin desplazarse.
+    const cuatro = !dos && p.opciones.every((o) => o.length <= 110);
     const puedeComodin = !est.comodin && p.opciones.length > 2;
     app.innerHTML = `${hud()}
     <section class="panel nivel ${ultimo ? 'jefe' : ''}">
@@ -594,7 +679,7 @@ const DATOS = {"curso":"PF1474","cursoNombre":"Desarrollo de Aplicaciones Front-
       </div>
       <h2 class="enunciado" id="foco" tabindex="-1">${esc(p.enunciado)}</h2>
       <p class="pista" id="pista">${intentosDe(p) > 1 ? 'Tienes 2 intentos' : 'Tienes 1 intento'} · Elige con el mouse o con las teclas ${LETRAS.slice(0, p.opciones.length).split('').join(', ')}.</p>
-      <div class="opciones ${dos ? 'dos' : ''}" role="group" aria-labelledby="foco">
+      <div class="opciones ${dos ? 'dos' : cuatro ? 'cuatro' : ''}" role="group" aria-labelledby="foco">
         ${p.opciones.map((o, k) => `<button class="opcion" data-k="${k}"><span class="tecla" aria-hidden="true">${LETRAS[k]}</span><span class="texto"><span class="sr">${LETRAS[k]}) </span>${esc(o)}</span><span class="marca"></span></button>`).join('')}
       </div>
       <div class="retro" id="retro" hidden></div>
@@ -703,7 +788,8 @@ const DATOS = {"curso":"PF1474","cursoNombre":"Desarrollo de Aplicaciones Front-
     refrescarHud(xpAntes);
     document.getElementById('seguir').addEventListener('click', () => { if (ultimo) final(); else { est.nivel++; nivel(); } });
     document.getElementById('retro-titulo').focus({ preventScroll: true });
-    retro.scrollIntoView({ behavior: reducido ? 'auto' : 'smooth', block: 'nearest' });
+    // En un marco bajo, la explicación sube hasta arriba para que se lea entera y quede a la vista el botón «Siguiente nivel».
+    retro.scrollIntoView({ behavior: reducido ? 'auto' : 'smooth', block: innerHeight < 760 ? 'start' : 'nearest' });
     anunciar(`${titulo}${bono ? ` Combo: más ${bono} XP.` : ''} ${p.retro}`);
   }
 
@@ -741,6 +827,7 @@ const DATOS = {"curso":"PF1474","cursoNombre":"Desarrollo de Aplicaciones Front-
     const mrgb = { oro: '252,211,77', plata: '212,220,234', bronce: '227,160,101' }[medalla];
     document.getElementById('flash').classList.remove('ver');
     app.innerHTML = `<section class="panel final" style="--m-rgb:${mrgb}">
+      <div class="final-a">
       <p class="kicker">${esc(D.curso)} · Quiz ${D.quiz} · ${esc(D.tema)}</p>
       <h2 class="titulo-final" id="foco" tabindex="-1">Misión cumplida</h2>
       <div class="medalla-caja"><div class="rayos"></div>${medallaSvg(medalla)}</div>
@@ -748,6 +835,8 @@ const DATOS = {"curso":"PF1474","cursoNombre":"Desarrollo de Aplicaciones Front-
       <p class="nivel-medalla" id="nivel-medalla">Nivel ${medalla} · ${e} de ${N} estrellas</p>
       <div class="fila-estrellas">${D.preguntas.map((_, k) => ico('estrella', k < e ? 'gana' : '').replace('class="i gana"', `class="i gana" style="animation-delay:${0.3 + k * 0.15}s"`)).join('')}</div>
       <p class="xp-total"><span id="xp-total" data-valor="${total}">0</span><small>XP</small></p>
+      </div>
+      <div class="final-b">
       <div class="desglose"><span>Aciertos <b>+${aciertos}</b></span><span>Combos <b>+${combos}</b></span><span>Energía ${est.energia}/${ENERGIA} <b>+${energia}</b></span><span>Máximo <b>${MAXIMO}</b></span></div>
       <h3 class="subt">Logros</h3>
       <div class="logros">${logros.map(([i, t, d, si]) => `<div class="logro ${si ? 'si' : ''}"><span class="ico">${ico(si ? i : 'candado')}</span><span><b>${t}</b><small>${d}${si ? '' : ' · bloqueado'}</small></span></div>`).join('')}</div>
@@ -757,6 +846,7 @@ const DATOS = {"curso":"PF1474","cursoNombre":"Desarrollo de Aplicaciones Front-
       <div class="acciones centro">
         <button class="btn principal" id="repetir">${ico('repetir')} Repetir misión</button>
         <button class="btn" id="revisar" aria-expanded="false" aria-controls="revision">Revisar respuestas</button>
+      </div>
       </div>
       <div class="revision" id="revision" hidden>${D.preguntas.map((p, k) => `<article>
         <h3>Nivel ${k + 1} · ${esc(p.ae)} · ${esc(p.enunciado)}</h3>

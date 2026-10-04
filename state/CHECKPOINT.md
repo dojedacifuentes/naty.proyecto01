@@ -19,6 +19,13 @@
 
 ## Hecho
 
+Sesión 2026-10-04-claude-code-05 (quiz gamificado que se ve completo dentro del LMS):
+
+- [x] Plantilla del quiz con modo compacto para marcos bajos (Canvas 450 px, Moodle ~680 px); 84 quiz regenerados y medidos.
+- [x] Moodle: paquetes nuevos y visualización sin índice, sin barra de navegación y sin página «Entrar» en UNAB 705-712, CHC 125-129 y
+      Skillnest 100-107.
+- [ ] Canvas UA 113062-113067: importar los quiz nuevos en scone y cambiar las tareas (113067 importado, sin cambiar; bloqueado por permisos).
+
 Sesión 2026-10-04-claude-code-04 (ABP/ABPRO del M2 con un solo diseño por cliente y redacción grupal):
 
 - [x] Cotejo de las 92 ABP/ABPRO de los 12 cursos con los 26 Anexos 2 VF (leídos desde Drive el 04-10): informes en

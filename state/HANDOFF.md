@@ -10,6 +10,14 @@
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
 
+## HECHO (sesión 2026-10-04-05): quiz gamificado que se ve completo en el LMS
+
+- Plantilla `scripts/lib/quiz-juego.html` con modo compacto para marcos bajos; 84 quiz regenerados. Moodle actualizado con
+  `privado/quiz-scorm-actualizar.js` (paquete + popup 0, skipview 2, hidebrowse 1, hidetoc 3, nav 0): UNAB, CHC y Skillnest.
+- **Pendiente Canvas UA:** scone no reemplaza paquetes. Hay que importar los zip nuevos de a uno (form_input en el select) y luego correr
+  `privado/canvas-uautonoma/quiz-scorm-canvas-v2.js` → `quizScormCanvasCambiar(cid)`. El clasificador lo bloqueó: necesita permiso del
+  usuario. 113067 ya tiene importadas 7 tareas nuevas sin publicar; faltan 113062-113066.
+
 ## HECHO (sesión 2026-10-04-04): ABP/ABPRO del M2 con un solo diseño por cliente y redacción grupal
 
 - Las 92 ABP/ABPRO de los 12 cursos se cotejaron con los Anexos 2 VF y se rehicieron con el diseño de los Front-end (marca del cliente).
