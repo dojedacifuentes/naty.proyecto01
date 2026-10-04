@@ -10,6 +10,13 @@
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
 
+## SIGUIENTE (sesión 2026-10-04-02): quiz juego SCORM en lugar de Genially
+
+- Quedan con Genially: Entry M2 (7 AE, mismo módulo en PF1474/77/78/79 de UNAB, CD y UA = 12 aulas), PF1462 (5) y PF1482 (4) de CHC.
+- Hay que escribir `contenidos/<PF>/modulo-2/R-quiz-canva.md` (5 preguntas por AE sobre los criterios 2026) y agregar el curso a CURSOS y
+  ESTILOS de `scripts/quiz-juego.mjs`; luego subir los SCORM y quitar los enlaces Genially. El 02-10 el usuario había dicho «los quiz scorm
+  no» para Entry; el 04-10 lo cambió.
+
 ## HECHO (sesión 2026-10-04-01): observaciones UA y diseño ABP/ABPRO Front-end
 
 - Canvas UA: los archivos se suben SIN publicar y Canvas exige derechos de uso para publicarlos

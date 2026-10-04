@@ -19,6 +19,13 @@
 
 ## Hecho
 
+Sesión 2026-10-04-claude-code-02 (logo UNAB):
+
+- [x] Las 7 evaluaciones UNAB (PF1481, PF1483, PF1822 y Entry ×4) rehechas con el logo (subido a Drive) y enlazadas en 705-707 y 709-712;
+      las anteriores quedaron «REEMPLAZADO 04-10 (sin logo)». En 705 la sesión de Chrome estaba en vista de estudiante: se volvió al rol
+      normal para editar y se dejó otra vez en estudiante.
+- [ ] Quiz SCORM en lugar de Genially (pedido del usuario, pendiente de su visto bueno): 16 quiz (Entry M2 ×7, PF1462 ×5, PF1482 ×4), 93 paquetes.
+
 Sesión 2026-10-04-claude-code-01 (observaciones del usuario sobre U. Autónoma y UNAB):
 
 - [x] Canvas UA (6 cursos): todos los archivos subidos por los armadores estaban sin publicar (el estudiante veía un candado en vez de
