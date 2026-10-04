@@ -941,3 +941,11 @@ Quién: usuario (decisión), claude-code.
   26 aulas (UNAB 705-712, Skillnest 100-107, Canvas UA 113062-67, CHC 126-129) sin enlaces viejos. Fuentes, cotejo y scripts en
   `privado/docs-anexos/abp-unificado/`. Lo que hay que ajustar en los anexos: https://claude.ai/artifact/74S6Vqutkdjw6CRs9TeJME
 Quién: usuario (decisiones), claude-code.
+
+## 2026-10-04 · Sprint de cierre de Skillnest PF1474 y PF1479 a «Todo Ventas en Línea» (sesión claude-code, 2026-10-04-claude-code-06)
+
+- Consecuencia de la decisión del mismo día (ABPRO Entry AE2-AE7 a Todo Ventas): el Sprint de cierre de Skillnest 107 (PF1474) y 105 (PF1479)
+  seguía con RECITRONIC. Se rehízo con el caso de ventas, manteniendo lo que dice cada anexo CD sobre quién entrega: PF1474 individual
+  («el participante»), PF1479 en equipo («cada equipo entrega terminado el sitio»). Mismos requisitos y rúbrica que PF1477/PF1478.
+- Los anexos CD PF1474 y PF1479 todavía nombran RECITRONIC: lo ajusta Natalia (anotado en HANDOFF).
+Quién: usuario (pedido), claude-code.

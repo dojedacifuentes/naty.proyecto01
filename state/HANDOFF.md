@@ -18,6 +18,31 @@
   `privado/canvas-uautonoma/quiz-scorm-canvas-v2.js` → `quizScormCanvasCambiar(cid)`. El clasificador lo bloqueó: necesita permiso del
   usuario. 113067 ya tiene importadas 7 tareas nuevas sin publicar; faltan 113062-113066.
 
+## LEER (sesión 2026-10-04-06): estado de los Anexos 2 VF y pendientes fuera de las aulas
+
+- **Anexos 2 VF = los oficiales, los escribe Natalia; no se editan desde acá.** Estado leído el 04-10 (solo lectura):
+  `privado/docs-anexos/estado-anexos/` (unab.md, cd.md, ua.md, chc.md y marcas-chrome.md). Ninguno de los 26 está listo: el texto
+  pedagógico está terminado, pero faltan en todos los datos entre corchetes en amarillo (parrilla 2026, jornada, enlaces e imágenes del
+  LMS, video de evidencia, usuario y clave de evaluador) y la limpieza del borrador (leyenda, notas «▸ Por qué cambió», texto rojo).
+- **Tabla para Natalia ya hecha por otro chat:** `privado/docs-anexos/reemplazos-anexos/` (645 filas, 196 con el enlace exacto del aula;
+  `generar.mjs` la rehace). Los enlaces de CHC se verificaron contra las aulas el 04-10. Rehacerla si cambian quiz u otras actividades.
+- **Lo que Natalia debe ajustar por los cambios de hoy:** https://claude.ai/artifact/74S6Vqutkdjw6CRs9TeJME (privado; el usuario lo
+  comparte). Además: los anexos CD PF1474 y PF1479 siguen con RECITRONIC (el aula ya es Todo Ventas en Línea) y los 8 anexos CD
+  apuntan a `learning.skillnest.com` en vez de `learning-pro.skillnest.com`.
+- **PF1821 (UNAB 708 y Skillnest 100):** el ABPRO AE4 usa las tablas `comunas` y `pedidos`, que ninguna actividad crea, y el ABP AE3 lee
+  `inventario_proveedor.xml`, que no está publicado. Esas actividades no funcionan tal como están (`abp-unificado/cambios/PF1821.md`).
+- **Tablero de «Coordinación Claude» sin actualizar:** avisar al Compu 2 que cambiaron los enlaces ABP/ABPRO de las 26 aulas y el
+  Sprint de cierre de Skillnest 105 y 107 (afecta videos de evidencia).
+- Falta revisión humana página por página de los 178 Docs ABP/ABPRO y de los 2 Sprint nuevos.
+- Lo que más ayuda a Natalia desde acá: capturas del LMS por anexo (UA ~30, CD 31, UNAB y CHC; las 12 de PF1486 solo muestran la portada
+  y con cuenta de edición) y rehacer la tabla de reemplazos cuando las aulas estén congeladas.
+
+## HECHO (sesión 2026-10-04-06): Sprint de cierre CD PF1474 y PF1479 a «Todo Ventas en Línea»
+
+- Al pasar los ABPRO a Todo Ventas, el Sprint de Skillnest 107 (PF1474) y 105 (PF1479) seguía con RECITRONIC. Nuevos Docs desde
+  `fuentes/anexo-eval/ENTRY-cd-todoventas.md` (PF1474, individual como dice su anexo) y `ENTRY-cd-todoventas-equipo.md` (PF1479, en
+  equipo como dice su anexo), con `docs-anexos/generar.mjs`; enlazados en las tareas (ids en `salida/subidos.json`, `cursos-cd.json`).
+
 ## HECHO (sesión 2026-10-04-04): ABP/ABPRO del M2 con un solo diseño por cliente y redacción grupal
 
 - Las 92 ABP/ABPRO de los 12 cursos se cotejaron con los Anexos 2 VF y se rehicieron con el diseño de los Front-end (marca del cliente).

@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-10-04 (UTC)
-**Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06, 2026-10-03-claude-code-01 a -04 y 2026-10-04-claude-code-01 a -04 (Claude Code · opus-5.5)
+**Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06, 2026-10-03-claude-code-01 a -04 y 2026-10-04-claude-code-01 a -06 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -18,6 +18,13 @@
 | 3. Sistematización | no iniciada | — |
 
 ## Hecho
+
+Sesión 2026-10-04-claude-code-06 (Sprint CD y estado de los anexos):
+
+- [x] Sprint de cierre de Skillnest 107 (PF1474, individual) y 105 (PF1479, en equipo) rehecho con «Todo Ventas en Línea» y enlazado;
+      0 menciones de RECITRONIC en las aulas 104-107. Anteriores en Drive como «REEMPLAZADO 04-10 (RECITRONIC)».
+- [x] Estado de los 26 Anexos 2 VF (solo lectura): `privado/docs-anexos/estado-anexos/`. Ninguno listo: faltan datos entre corchetes y limpieza.
+- [ ] Natalia: anexos CD PF1474/PF1479 (RECITRONIC) y dominio learning-pro.skillnest.com en los 8 CD; ver HANDOFF.
 
 Sesión 2026-10-04-claude-code-05 (quiz gamificado que se ve completo dentro del LMS):
 
