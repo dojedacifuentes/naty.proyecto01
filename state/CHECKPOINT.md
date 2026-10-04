@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-10-04 (UTC)
-**Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06, 2026-10-03-claude-code-01 a -04 y 2026-10-04-claude-code-01 (Claude Code · opus-5.5)
+**Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06, 2026-10-03-claude-code-01 a -04 y 2026-10-04-claude-code-01 a -04 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -18,6 +18,16 @@
 | 3. Sistematización | no iniciada | — |
 
 ## Hecho
+
+Sesión 2026-10-04-claude-code-04 (ABP/ABPRO del M2 con un solo diseño por cliente y redacción grupal):
+
+- [x] Cotejo de las 92 ABP/ABPRO de los 12 cursos con los 26 Anexos 2 VF (leídos desde Drive el 04-10): informes en
+      `privado/docs-anexos/abp-unificado/cotejo/`.
+- [x] Los ABPRO dicen explícitamente que se trabajan en equipo; Entry ABPRO AE2-AE7 pasan a «Todo Ventas en Línea»; PF1486 AE4/AE5
+      intercambiados; contradicciones claras corregidas (Entry AE1 entrega, AE7 ramas/PR). Omisiones de los anexos no se agregaron.
+- [x] 157 Google Docs con la marca de cada cliente (Drive «M2 · ABP y ABPRO 2026 · diseño unificado por cliente (04-10)») enlazados en las
+      26 aulas: UNAB 705-712, Skillnest 100-107, Canvas UA 113062-67, CHC 126-129. Verificado: 0 enlaces viejos. `cursos-*.json` al día.
+- [ ] Natalia: ajustar los anexos según https://claude.ai/artifact/74S6Vqutkdjw6CRs9TeJME (privado; compartirlo).
 
 Sesión 2026-10-04-claude-code-03 (quiz juego SCORM en lugar de Genially, solo módulo 2):
 

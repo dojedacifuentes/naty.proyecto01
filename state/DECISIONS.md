@@ -925,3 +925,19 @@ Quién: usuario (decisión), claude-code.
 2026-10-04 · Todos los quiz del módulo 2 que seguían en Genially (Entry ×7, PF1462 ×5, PF1482 ×4) pasan a quiz juego SCORM como los de low code,
   con preguntas nuevas sobre los criterios 2026; los 4 Entry comparten las preguntas y cada uno lleva su nombre. Por qué: pedido del usuario
   (revierte el «los quiz scorm no» del 02-10). Descartado: copiar las preguntas de los Genially 2024. Quién: usuario, claude-code.
+
+## 2026-10-04 · ABP/ABPRO del M2 con un solo diseño por cliente y redacción grupal (sesión claude-code, 2026-10-04-claude-code-04)
+
+- **Pedido:** las 92 ABP/ABPRO del módulo 2 de los 12 cursos con la misma marca, tipografía y formato del cliente (diseño de los ABP/ABPRO
+  Front-end del 04-10), sin cambiar el contenido. Los ABPRO dicen explícitamente que se trabajan en equipo. Antes se cotejaron con los
+  **Anexos 2 VF** de Natalia (leídos desde Drive en su versión del 04-10).
+- **Entry:** los ABPRO AE2-AE7 pasan de RECITRONIC a «Todo Ventas en Línea» (caso del AE1), como dicen los anexos UNAB, UA y CD Java/Python.
+  Entrega del ABPRO AE1: ZIP o enlace al repositorio (no TXT/Word). ABPRO AE7: ramas y pull request con resolución de conflictos.
+- **PF1486 AE4/AE5:** se intercambian ABP y ABPRO (lo «En equipos…» es el ABPRO). Reemplaza «manda el Word» del 03-10.
+- **Omisiones de los anexos** (hojas Control/Incidencias/Registro, pareja revisora, roles, protocolo de ensayo, herramientas extra): no se
+  agregan; quedan para Natalia. Donde el anexo describe otra actividad (PF1822 UNAB MLflow, PF1483 CD AE1) no se toca la actividad.
+- **PF1481:** el título truncado del Word («…E-commerce 'Digital») se completa «'Digital Market'».
+- 157 Google Docs nuevos (Drive «M2 · ABP y ABPRO 2026 · diseño unificado por cliente (04-10)», subcarpeta por cliente) enlazados en las
+  26 aulas (UNAB 705-712, Skillnest 100-107, Canvas UA 113062-67, CHC 126-129) sin enlaces viejos. Fuentes, cotejo y scripts en
+  `privado/docs-anexos/abp-unificado/`. Lo que hay que ajustar en los anexos: https://claude.ai/artifact/74S6Vqutkdjw6CRs9TeJME
+Quién: usuario (decisiones), claude-code.

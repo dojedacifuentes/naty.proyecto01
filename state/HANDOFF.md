@@ -10,6 +10,16 @@
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
 
+## HECHO (sesión 2026-10-04-04): ABP/ABPRO del M2 con un solo diseño por cliente y redacción grupal
+
+- Las 92 ABP/ABPRO de los 12 cursos se cotejaron con los Anexos 2 VF y se rehicieron con el diseño de los Front-end (marca del cliente).
+  Los ABPRO dicen que se trabajan en equipo. Entry ABPRO AE2-AE7 = «Todo Ventas en Línea». PF1486 AE4/AE5 intercambiados. Ver DECISIONS.md.
+- Todo en `privado/docs-anexos/abp-unificado/`: `fuentes/` → `generar-abp.mjs` → Drive (`subidos/`) → `mapas.mjs` → `relink-abp.js`
+  (cargar `carga-<cliente>.js` en la pestaña del LMS; `relinkMoodleAbp` admite `{simular:true}`). Los `cursos-*.json` ya apuntan a los Docs nuevos.
+- Para rehacer una actividad: editar su fuente, `node generar-abp.mjs <GRUPO>`, subir el HTML como Google Doc y volver a enlazar.
+- **Pendiente:** Natalia debe ajustar los anexos según https://claude.ai/artifact/74S6Vqutkdjw6CRs9TeJME (privado: compartirlo).
+  Sigue abierto en PF1821 (tablas `comunas`/`pedidos`, `inventario_proveedor.xml`), ver `cambios/PF1821.md`.
+
 ## HECHO (sesión 2026-10-04-03): quiz juego SCORM en lugar de Genially
 
 - 16 quiz / 93 paquetes en 14 aulas (CHECKPOINT). Scripts: `privado/quiz-scorm-moodle.js` (Moodle 4 y 3.x) y
