@@ -10,6 +10,17 @@
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
 
+## HECHO (sesión 2026-10-04-01): observaciones UA y diseño ABP/ABPRO Front-end
+
+- Canvas UA: los archivos se suben SIN publicar y Canvas exige derechos de uso para publicarlos
+  (`PUT /api/v1/courses/<id>/usage_rights`, use_justification=own_copyright, publish=true). Si subes algo nuevo, publícalo así.
+- Entry UA: Prueba de desempeño = Todo Ventas en Línea (`privado/docs-anexos/fuentes/anexo-eval/ENTRY-ua-todoventas.md`, generar.mjs).
+- ABP/ABPRO Entry: `privado/docs-anexos/fuentes/entry-abp/` → `generar-entry-abp.mjs` → Drive; enlaces con `relink-entry-abp.js`
+  (mapa en `salida/mapa-entry-abp.json`). Los `cursos-*.json` ya apuntan a los Docs nuevos.
+- Logo UNAB en Docs: Google no lo descarga de otec-unab.cl → las 7 evaluaciones UNAB del 03-10 están SIN logo. Para rehacerlas usar
+  `https://lh3.googleusercontent.com/d/1HVWh_BJgoIgSyl2gnRDfeoKrAoHgQbNq=w600` (subido a Drive).
+- Ojo con el Compu 2: graba los videos de las aulas; UA y los Entry de UNAB/Skillnest cambiaron hoy.
+
 ## LEER PRIMERO (sesión 2026-10-03-04): se trabaja desde dos computadores
 
 - Antes de empezar: carpeta de Drive «Coordinación Claude · Licitación TD 2026» (https://drive.google.com/drive/folders/1HFrMZ2pLt2smYmLCxohXB0llx0xO0slv).

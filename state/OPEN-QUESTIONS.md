@@ -233,3 +233,7 @@ deja de aplicar. Queda de #22 solo si la contraparte acepta los 4 juegos en luga
 PF1481, PF1483, PF1486 y PF1495, en reemplazo de los de Genially: 22 más, uno por aprendizaje. La pregunta a la contraparte vale para todos.
 **Nota a #17 (2026-09-30, sesión `2026-09-30-claude-code-01`):** ya hay ABP y ABPRO para los 4 aprendizajes de cada curso, así que cualquier
 aprendizaje que se elija tiene sus dos actividades. Falta decidir si el Anexo 2 (VI b) presenta estas actividades en lugar de las 1 y 2 de C2.
+
+**Nota (2026-10-04, sesión `2026-10-04-claude-code-01`):** los Word 2024 de ABP/ABPRO Entry tienen rarezas de contenido que se dejaron tal cual
+(no se pidió cambiar contenido): AE5 ABPRO termina con un ejercicio aparte (lista con colores); AE7 ABP lista recursos que no son de Git;
+AE7 ABPRO pide a la vez «un archivo de texto» y un comprimido; AE4 ABP «enfoque de diseño de primero para móvil». ¿Se corrigen?

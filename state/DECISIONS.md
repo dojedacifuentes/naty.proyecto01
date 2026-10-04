@@ -912,3 +912,12 @@ Quién: usuario (decisión), claude-code.
   compus sin instalar nada. Descartado: sincronizar la carpeta completa con Drive para escritorio (750 MB, choca con .git y crea copias
   «(1)» si se edita a la vez) y poner la carpeta en «Licitaciones TD 2026» (es de Natalia: vería las notas internas).
 Quién: usuario (decisión), claude-code.
+
+2026-10-04 · La Prueba de desempeño de los Entry de U. Autónoma usa el caso de ventas («Todo Ventas en Línea»), como CD y UNAB, conservando
+  lo propio del anexo UA (requerimiento nuevo, protocolo de ensayo, 45 %). Por qué: lo pidió el usuario («la actividad que debe estar es la de
+  ventas»). Descartado: el caso nuevo «Centro Cultural Quebrada Verde». Quién: usuario, claude-code.
+2026-10-04 · Los 14 ABP/ABPRO del M2 Front-end se rehacen como un Doc por AE y cliente (no por curso: los 4 Entry comparten módulo), con el
+  texto del Word 2024 sin «Duración» y el AE/criterios 2026. Por qué: el usuario pidió mejorar el diseño «el mismo para todos los clientes».
+  Descartado: 168 Docs (uno por curso) y reescribir el contenido. Quién: usuario (pedido), claude-code.
+2026-10-04 · En Canvas UA todos los archivos del curso se publican con derechos de uso «material propio». Por qué: sin publicar, el
+  estudiante ve candados en el diseño e infografías. Quién: usuario (observación), claude-code.

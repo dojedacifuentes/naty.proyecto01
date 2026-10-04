@@ -3,7 +3,7 @@
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
 **Última actualización:** 2026-10-04 (UTC)
-**Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06 y 2026-10-03-claude-code-01 a -04 (Claude Code · opus-5.5)
+**Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06, 2026-10-03-claude-code-01 a -04 y 2026-10-04-claude-code-01 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -18,6 +18,18 @@
 | 3. Sistematización | no iniciada | — |
 
 ## Hecho
+
+Sesión 2026-10-04-claude-code-01 (observaciones del usuario sobre U. Autónoma y UNAB):
+
+- [x] Canvas UA (6 cursos): todos los archivos subidos por los armadores estaban sin publicar (el estudiante veía un candado en vez de
+      íconos, ilustraciones e infografías). Publicados con derechos de uso «material propio»: 0 bloqueados.
+- [x] Foros de consultas en todos los LMS: ya lo había hecho otra sesión el 04-10 (26 aulas); no se repitió.
+- [x] Prueba de desempeño de los 4 Entry UA: ahora es la actividad de ventas («Todo Ventas en Línea», como los otros clientes) con lo que
+      pide el anexo UA (requerimiento nuevo = página de ofertas de la semana, protocolo de ensayo, rúbrica UA, 45 %). 4 Docs nuevos enlazados
+      en las tareas 645602/645617/645632/645647; los de Quebrada Verde quedaron renombrados «REEMPLAZADO 04-10».
+- [x] ABP y ABPRO del M2 «Fundamentos de desarrollo front-end» (los 4 Entry): 42 Google Docs nuevos (14 × UNAB, Coding Dojo, UA) con diseño
+      y marca del cliente, AE y criterios 2026, sin «Duración». Enlazados en 12 aulas: Canvas 113064-67, UNAB 709-712, Skillnest 104-107
+      (0 enlaces viejos). Drive: carpeta 1INz_EcO9y7HruoBj1ZuX_CmwEeXAErJ8.
 
 Sesión 2026-10-03-claude-code-04 (evidencia LMS interrumpida; coordinación entre dos computadores):
 
