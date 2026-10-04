@@ -903,3 +903,12 @@ Quién: usuario (decisiones), claude-code.
 - Un documento por curso (antes los Entry compartían uno con la cabecera de PF1474).
 - Aula abierta: Skillnest coursedisplay=0. Se descartó dejar cada módulo como tarjeta que hay que abrir.
 Quién: usuario (decisión), claude-code.
+
+## 2026-10-04 · Trabajo desde dos computadores con la misma cuenta (sesión claude-code, 2026-10-03-claude-code-04)
+
+- El repo se sincroniza por GitHub (push al cerrar, pull al abrir;
+  una sola sesión abierta a la vez) y la coordinación vive en Drive, carpeta «Coordinación Claude · Licitación TD 2026» en Mi unidad del
+  usuario (Tablero de quién toma qué + copia de la memoria de Claude). Por qué: el conector de Drive va con la cuenta y lo ven los dos
+  compus sin instalar nada. Descartado: sincronizar la carpeta completa con Drive para escritorio (750 MB, choca con .git y crea copias
+  «(1)» si se edita a la vez) y poner la carpeta en «Licitaciones TD 2026» (es de Natalia: vería las notas internas).
+Quién: usuario (decisión), claude-code.

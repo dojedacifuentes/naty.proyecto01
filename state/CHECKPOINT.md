@@ -2,8 +2,8 @@
 
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
-**Última actualización:** 2026-10-03 (UTC)
-**Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06 y 2026-10-03-claude-code-01 a -03 (Claude Code · opus-5.5)
+**Última actualización:** 2026-10-04 (UTC)
+**Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06 y 2026-10-03-claude-code-01 a -04 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
 ---
@@ -18,6 +18,13 @@
 | 3. Sistematización | no iniciada | — |
 
 ## Hecho
+
+Sesión 2026-10-03-claude-code-04 (evidencia LMS interrumpida; coordinación entre dos computadores):
+
+- [ ] Evidencia del Anexo 2, VIII d: solo 12 capturas de PF1486 (CHC 126) en `privado/evidencia-lms/`; faltan 25 aulas y los recursos.
+- [x] Coordinación para trabajar desde dos computadores: carpeta de Drive «Coordinación Claude · Licitación TD 2026»
+      (https://drive.google.com/drive/folders/1HFrMZ2pLt2smYmLCxohXB0llx0xO0slv) con LEEME, Tablero, Memoria de Claude y «privado (copias)». El repo se
+      sincroniza por GitHub (push al cerrar, pull al abrir).
 
 Sesión 2026-10-03-claude-code-03 (aulas UNAB con los mismos criterios):
 
