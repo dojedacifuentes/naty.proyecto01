@@ -47,6 +47,14 @@ const CURSOS = [
   { pf: 'PF1487', carpeta: 'PF1487-ingenieria-de-datos', nombre: 'Fundamentos de Ingeniería de Datos', kit: false },
   { pf: 'PF1485', carpeta: 'PF1485-devops', nombre: 'Fundamentos DevOps', kit: false },
   { pf: 'PF1493', carpeta: 'PF1493-seguridad-cloud', nombre: 'Seguridad Cloud', kit: false },
+  // Reemplazan los Genially de 2024 (pedido del usuario del 2026-10-04: «todos los quizzes que están en Genially por SCORM»). Los 4 Entry
+  // comparten el módulo 2 (Fundamentos de desarrollo front-end): un solo R-quiz-canva.md (fuente PF1474) y un juego por curso con su nombre.
+  { pf: 'PF1474', carpeta: 'PF1474-entry-level-front-end/cursos/PF1474', nombre: 'Desarrollo de Aplicaciones Front-End Trainee', kit: false, fuente: 'PF1474' },
+  { pf: 'PF1477', carpeta: 'PF1474-entry-level-front-end/cursos/PF1477', nombre: 'Desarrollo de Aplicaciones Full Stack Java Trainee', kit: false, fuente: 'PF1474' },
+  { pf: 'PF1478', carpeta: 'PF1474-entry-level-front-end/cursos/PF1478', nombre: 'Desarrollo de Aplicaciones Fullstack Python Trainee', kit: false, fuente: 'PF1474' },
+  { pf: 'PF1479', carpeta: 'PF1474-entry-level-front-end/cursos/PF1479', nombre: 'Desarrollo de Aplicaciones Full Stack JavaScript Trainee', kit: false, fuente: 'PF1474' },
+  { pf: 'PF1462', carpeta: 'PF1462-machine-learning', nombre: 'Especialización en Machine Learning', kit: false },
+  { pf: 'PF1482', carpeta: 'PF1482-arquitectura-cloud', nombre: 'Fundamentos de Arquitectura Cloud', kit: false },
 ];
 // Cursos que no tenían ningún recurso del módulo 2 (2026-10-01): su README no dice que reemplazan un Genially.
 const SIN_RECURSOS = ['PF1487', 'PF1485', 'PF1493'];
@@ -208,13 +216,64 @@ const ESTILOS = {
         heroe: { tipo: 'flujo', nodos: [['Proveedor', 'bd'], ['Acuerdo', 'doc'], ['Clínica', 'escudo']] } },
     },
   },
+  // Reemplazan los Genially de 2024 (2026-10-04). Etiquetas revisadas contra las respuestas: no nombran cola, grafo, O(n²), bisect,
+  // SaaS, C4, Scrum ni ISO 25010, que son alternativas correctas.
+  // Entry level (PF1474, y por fuente compartida PF1477/78/79). Etiquetas sin respuestas: no nombran DOCTYPE, semánticas, min-width,
+  // img-fluid, onchange, addClass, restore ni pull request.
+  PF1474: {
+    fondo: 'circuito',
+    quiz: {
+      1: { acento: '#22d3ee', acento2: '#fbbf24', lema: 'Quién hace qué en un sitio web',
+        heroe: { tipo: 'flujo', nodos: [['Navegador', 'doc'], ['Servidor', 'engranaje'], ['Datos', 'bd']] } },
+      2: { acento: '#ff7a59', acento2: '#a78bfa', lema: 'Los cimientos del sitio de Todo Ventas',
+        heroe: { tipo: 'flujo', variante: 'terminal', nodos: [['Inicio', 'doc'], ['Catálogo', 'paquete'], ['Contacto', 'chat']] } },
+      3: { acento: '#f472b6', acento2: '#22d3ee', lema: 'Colores, letras y pantallas de todo tamaño',
+        heroe: { tipo: 'flujo', nodos: [['Teléfono', 'chip'], ['Tableta', 'niveles'], ['Escritorio', 'salida']] } },
+      4: { acento: '#a78bfa', acento2: '#34d399', lema: 'Una grilla que se acomoda sola',
+        heroe: { tipo: 'flujo', nodos: [['Diseño', 'chispa'], ['Grilla', 'niveles'], ['Vista final', 'diana']] } },
+      5: { acento: '#fbbf24', acento2: '#ff7a59', lema: 'Un sitio que responde a quien lo usa',
+        heroe: { tipo: 'flujo', nodos: [['Usuario', 'entrada'], ['Programa', 'engranaje'], ['Respuesta', 'salida']] } },
+      6: { acento: '#34d399', acento2: '#f472b6', lema: 'Menos código, más efectos',
+        heroe: { tipo: 'flujo', nodos: [['Página', 'doc'], ['Biblioteca', 'paquete'], ['Efecto', 'chispa']] } },
+      7: { acento: '#38bdf8', acento2: '#a3e635', lema: 'El historial del proyecto, en equipo',
+        heroe: { tipo: 'flujo', nodos: [['Cambios', 'doc'], ['Repositorio', 'bd'], ['Equipo', 'chat']] } },
+    },
+  },
+  PF1462: {
+    fondo: 'neuronas',
+    quiz: {
+      1: { acento: '#22d3ee', acento2: '#a3e635', lema: 'Cada dato en la estructura que le acomoda',
+        heroe: { tipo: 'flujo', nodos: [['Envíos', 'doc'], ['Estructura', 'paquete'], ['Ruta', 'ruta']] } },
+      2: { acento: '#ff7a59', acento2: '#fbbf24', lema: 'Errores que se capturan y quedan registrados',
+        heroe: { tipo: 'flujo', nodos: [['Archivo', 'doc'], ['Control', 'escudo'], ['Registro', 'niveles']] } },
+      3: { acento: '#a78bfa', acento2: '#34d399', lema: 'Modelar los envíos con objetos',
+        heroe: { tipo: 'flujo', nodos: [['Molde', 'paquete'], ['Envío', 'chip'], ['Tarifa', 'numeral']] } },
+      4: { acento: '#fbbf24', acento2: '#38bdf8', lema: 'Cuánto cuesta cada algoritmo',
+        heroe: { tipo: 'flujo', nodos: [['Datos', 'bd'], ['Algoritmo', 'engranaje'], ['Costo', 'barras']] } },
+      5: { acento: '#f472b6', acento2: '#22d3ee', lema: 'El mismo resultado, más rápido',
+        heroe: { tipo: 'flujo', nodos: [['Script lento', 'doc'], ['Mejora', 'chispa'], ['Resultado', 'escalar']] } },
+    },
+  },
+  PF1482: {
+    fondo: 'circuito',
+    quiz: {
+      1: { acento: '#38bdf8', acento2: '#a3e635', lema: 'Del servidor de la clínica a la nube',
+        heroe: { tipo: 'flujo', nodos: [['Clínica', 'paquete'], ['Migración', 'enviar'], ['Nube', 'bd']] } },
+      2: { acento: '#a78bfa', acento2: '#fbbf24', lema: 'Decidir y dibujar la arquitectura',
+        heroe: { tipo: 'flujo', nodos: [['Requisitos', 'doc'], ['Decisión', 'rombo'], ['Plano', 'niveles']] } },
+      3: { acento: '#34d399', acento2: '#f472b6', lema: 'Arquitectura que se adapta en cada iteración',
+        heroe: { tipo: 'flujo', nodos: [['Pendientes', 'niveles'], ['Iteración', 'transformar'], ['Incremento', 'paquete']] } },
+      4: { acento: '#fb923c', acento2: '#22d3ee', lema: 'Calidad que se puede medir',
+        heroe: { tipo: 'flujo', nodos: [['Servicio', 'bd'], ['Atributos', 'diana'], ['Confianza', 'escudo']] } },
+    },
+  },
 };
 
 const plano = (t) => t.replace(/\*\*|\*|`/g, '').trim();
 const sinPunto = (t) => plano(t).replace(/\.$/, '');
 
 function metadatos(c) {
-  const archivo = `contenidos/${c.pf}/modulo-2/R-quiz-canva.md`;
+  const archivo = `contenidos/${c.fuente || c.pf}/modulo-2/R-quiz-canva.md`;
   const md = leer(archivo);
   const mision = /^\*\*Misión:\*\*\s*(.+)$/m.exec(md)?.[1];
   if (!mision) throw new Error(`${archivo}: falta la línea "**Misión:** …" (va antes del primer quiz)`);
@@ -296,7 +355,7 @@ function manifiesto(id, titulo) {
 // Cursos sin kit: el GIFT de cada quiz sale aquí de R-quiz-canva.md (validado), y no de `npm run produccion`.
 function giftSinKit(c) {
   const nAes = JSON.parse(leer(`data/planes/${c.pf}.json`)).modulos.find((m) => m.n === 2).aprendizajes_esperados.length;
-  const { quizzes } = leerQuizCanva(c.pf, leer(`contenidos/${c.pf}/modulo-2/R-quiz-canva.md`), nAes);
+  const { quizzes } = leerQuizCanva(c.fuente || c.pf, leer(`contenidos/${c.fuente || c.pf}/modulo-2/R-quiz-canva.md`), nAes);
   for (const q of quizzes) escribir(`modulo-2/${c.carpeta}/entrega/quiz/M2-Quiz-${q.n}-Moodle.gift`, giftQuiz(c.pf, q));
 }
 
@@ -335,6 +394,7 @@ const desconocidos = pedidos.filter((pf) => !CURSOS.some((c) => c.pf === pf));
 if (desconocidos.length) throw new Error(`Cursos que este script no conoce: ${desconocidos.join(', ')}. Conoce: ${CURSOS.map((c) => c.pf).join(', ')}`);
 let hechos = 0;
 for (const c of CURSOS.filter((x) => !pedidos.length || pedidos.includes(x.pf))) {
+  if (c.fuente && !ESTILOS[c.pf]) ESTILOS[c.pf] = ESTILOS[c.fuente];
   if (!ESTILOS[c.pf]) throw new Error(`${c.pf}: falta su diseño en ESTILOS`);
   if (!c.kit) giftSinKit(c);
   const meta = metadatos(c);

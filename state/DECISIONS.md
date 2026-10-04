@@ -921,3 +921,7 @@ Quién: usuario (decisión), claude-code.
   Descartado: 168 Docs (uno por curso) y reescribir el contenido. Quién: usuario (pedido), claude-code.
 2026-10-04 · En Canvas UA todos los archivos del curso se publican con derechos de uso «material propio». Por qué: sin publicar, el
   estudiante ve candados en el diseño e infografías. Quién: usuario (observación), claude-code.
+
+2026-10-04 · Todos los quiz del módulo 2 que seguían en Genially (Entry ×7, PF1462 ×5, PF1482 ×4) pasan a quiz juego SCORM como los de low code,
+  con preguntas nuevas sobre los criterios 2026; los 4 Entry comparten las preguntas y cada uno lleva su nombre. Por qué: pedido del usuario
+  (revierte el «los quiz scorm no» del 02-10). Descartado: copiar las preguntas de los Genially 2024. Quién: usuario, claude-code.

@@ -1,0 +1,43 @@
+// PF1478 · Módulo 2 · Quiz 5 · Bases de JavaScript (AE5). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1478-M2/Quiz-5
+
+::Q5-P1 (AE5):: Quieres que el archivo js/app.js se ejecute en todas las páginas de la tienda. ¿Cuál es la forma correcta de incorporarlo? {
+~&lt;link rel\="script" href\="js/app.js"&gt; dentro de &lt;head&gt;
+~&lt;script&gt;js/app.js&lt;/script&gt; antes de cerrar &lt;body&gt;
+=&lt;script src\="js/app.js"&gt;&lt;/script&gt; antes de cerrar &lt;body&gt;
+~&lt;style src\="js/app.js"&gt;&lt;/style&gt; dentro de &lt;head&gt;
+####Un archivo JavaScript externo se enlaza con &lt;script src&gt;. Ubicarlo al final de &lt;body&gt; (o usar el atributo defer) asegura que los elementos ya existan cuando el código intente usarlos.
+}
+
+::Q5-P2 (AE5):: En el formulario hay un &lt;input id\="cantidad" type\="number"&gt;. ¿Qué línea guarda en una variable lo que escribió el cliente? {
+=let cantidad \= document.getElementById("cantidad").value;
+~let cantidad \= document.getElementById("\#cantidad").value;
+~let cantidad \= document.getElementById("cantidad").innerHTML;
+~let cantidad \= document.getElementsById("cantidad").text;
+####getElementById recibe el id sin el símbolo \#, y la propiedad value entrega el contenido de un campo de formulario. innerHTML sirve para el contenido de elementos como &lt;p&gt; o &lt;div&gt;, no para un &lt;input&gt;.
+}
+
+::Q5-P3 (AE5):: El total del pedido debe recalcularse apenas el cliente elige otra comuna en un &lt;select&gt;, sin apretar ningún botón. ¿Qué evento usas? {
+~onclick en el botón Enviar del formulario
+=onchange en el &lt;select&gt; de la comuna
+~onload en la etiqueta &lt;body&gt;
+~onclick en el título de la página
+####onchange se dispara cuando cambia el valor de un campo, como al elegir otra opción en un &lt;select&gt;. onclick responde a un clic, por ejemplo en un botón Calcular.
+}
+
+::Q5-P4 (AE5):: La tienda no cobra despacho en compras desde $30.000 y bajo ese monto cobra $3.500. Escribiste function despacho(total) \{ if (total &gt;\= 30000) \{ return 0; \} return 3500; \}. ¿Qué devuelven despacho(30000) y despacho(25000)? {
+~3500 y 0
+~0 y 0
+~3500 y 3500
+=0 y 3500
+####Con &gt;\=, el monto exacto de 30000 cumple la condición y la función devuelve 0. Con 25000 la condición es falsa, el if no se ejecuta y la función sigue hasta return 3500.
+}
+
+::Q5-P5 (AE5):: Al sumar dos campos numéricos, el botón Calcular muestra 23 en vez de 5. En la consola escribes typeof valor1 y aparece "string". ¿Qué corriges? {
+=Convertir los valores con Number() antes de sumarlos
+~Cambiar let por const en las dos variables
+~Reemplazar el signo + por &amp; en la suma
+~Mover el &lt;script&gt; al &lt;head&gt; del documento
+####La propiedad value siempre entrega texto, y + entre textos concatena\: '2' + '3' da '23'. La consola permite revisar tipos y valores mientras depuras; con Number() o parseInt() obtienes números antes de operar.
+}

@@ -1,0 +1,43 @@
+// PF1462 · Módulo 2 · Quiz 5 · Optimización del código (AE5). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1462-M2/Quiz-5
+
+::Q5-P1 (AE5):: En un DataFrame df con 50.000 envíos, hay que calcular el costo como peso por distancia por una tarifa fija de 12 pesos. ¿Qué forma es la más eficiente? {
+=df['costo'] \= df['peso_kg']  df['distancia_km']  12
+~Un for con df.iterrows() que calcula el costo fila por fila
+~df.apply() con una función de Python que recibe cada fila
+~Pasar df a una lista de diccionarios y recorrerla con for
+####La operación vectorizada trabaja con columnas completas y la ejecuta NumPy por dentro, en código compilado. iterrows(), apply() por filas o un for en Python puro procesan fila por fila y son mucho más lentos.
+}
+
+::Q5-P2 (AE5):: El equipo necesita el atraso promedio por centro de origen y tipo de servicio. ¿Qué instrucción de pandas lo entrega? {
+~df.groupby('tipo_servicio')['dias_atraso'].mean()
+~df.sort_values(['centro_origen', 'tipo_servicio']).mean()
+=df.groupby(['centro_origen', 'tipo_servicio'])['dias_atraso'].mean()
+~df.groupby(['centro_origen', 'tipo_servicio'])['dias_atraso'].sum()
+####groupby con las dos columnas forma un grupo por cada combinación de centro y servicio, y mean() calcula el promedio de cada grupo. Agrupar solo por servicio pierde el centro, ordenar no agrupa y sum() entrega el total, no el promedio.
+}
+
+::Q5-P3 (AE5):: Hay que leer envios.csv fila por fila, sin cargarlo entero en memoria, y asegurar que el archivo se cierre aunque ocurra un error. ¿Qué escribes? {
+~Una función que abre el archivo y hace return f.readlines()
+=with open('envios.csv') as f\: y dentro un yield por cada línea
+~Una comprensión de lista [l for l in open('envios.csv')]
+~f \= open('envios.csv') y f.close() al final, sin try
+####Un generador con yield entrega una línea a la vez, así que la memoria no crece con el tamaño del archivo. El context manager with cierra el archivo al salir del bloque, incluso si se lanza una excepción.
+}
+
+::Q5-P4 (AE5):: ¿Cuál es la forma más pythonic de armar un diccionario con el peso de cada envío válido? {
+~Crear un diccionario vacío y llenarlo con un for y un if en varias líneas
+~Usar dict(zip(ids, pesos)) sin filtrar los pesos negativos
+~Recorrer for i in range(len(envios)) y leer envios[i]
+=Una comprensión de diccionario que recorre envios y filtra con if e.peso_kg &gt; 0
+####La comprensión de diccionario construye y filtra en una sola expresión clara, y suele ser más rápida que un bucle con asignaciones. Recorrer con range(len(...)) es un hábito poco pythonic\: se recorren los elementos directamente.
+}
+
+::Q5-P5 (AE5):: RutaSur replicó su histórico a 5 millones de filas y tiene una función numérica con bucles anidados sobre arreglos de NumPy. ¿Qué combinación conviene? {
+=Dask para procesar el archivo por particiones y @numba.njit para la función
+~Numba para leer el CSV más rápido y Dask para compilar la función
+~Solo pandas, porque Dask y Numba funcionan únicamente con tarjeta gráfica
+~iterrows() para la función y readlines() para leer todo el archivo
+####Dask divide los datos en particiones y los procesa en paralelo, incluso si no caben en memoria. Numba compila a código máquina las funciones numéricas con bucles, y @njit las acelera sin cambiar su lógica.
+}

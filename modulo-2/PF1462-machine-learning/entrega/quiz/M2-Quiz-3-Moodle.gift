@@ -1,0 +1,43 @@
+// PF1462 · Módulo 2 · Quiz 3 · Clases y objetos (AE3). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1462-M2/Quiz-3
+
+::Q3-P1 (AE3):: En el código de RutaSur, Envio define atributos y métodos, y e1 \= Envio('A-102', 12.5) crea un envío concreto. ¿Qué afirmación es correcta? {
+~Envio es un objeto y e1 es la clase que lo describe
+~e1 y Envio son lo mismo, porque comparten sus atributos
+~Cada vez que se crea e1 se modifica la definición de Envio
+=Envio es la clase (el molde) y e1 es una instancia de ella
+####La clase define qué datos y qué comportamiento tendrá cada objeto; el objeto es un caso concreto creado a partir de ella. Con una sola clase Envio puedes crear miles de envíos, cada uno con sus propios valores.
+}
+
+::Q3-P2 (AE3):: Para sumar el servicio nocturno, un colega propone agregar otro elif tipo \=\= 'nocturno' en calcular_costo(), que ya tiene tres. ¿Qué principio de diseño recomienda crear una subclase TarifaNocturna en su lugar? {
+=Abierto/cerrado\: abierto a la extensión y cerrado a la modificación
+~Segregación de interfaces\: cada clase con un solo método público
+~DRY\: no repetir el nombre de la clase dentro de sus métodos
+~KISS\: preferir un solo método largo antes que varias clases
+####El principio abierto/cerrado pide extender el comportamiento agregando código nuevo, sin tocar el que ya funciona. Con una subclase de Tarifa, el servicio nocturno se suma sin arriesgar las tarifas existentes.
+}
+
+::Q3-P3 (AE3):: El script recorre [TarifaEstandar(), TarifaExpress(), TarifaRefrigerada()] y llama t.calcular_costo(envio) en cada una, sin preguntar de qué tipo es. ¿Qué concepto aplica? {
+~Encapsulamiento, porque cada tarifa oculta sus atributos privados
+~Herencia múltiple, porque cada tarifa hereda de las otras dos
+=Polimorfismo\: el mismo llamado ejecuta la versión de cada subclase
+~Sobrecarga\: Python elige el método según el tipo del argumento
+####Las tres subclases redefinen calcular_costo() de la clase base Tarifa, y cada objeto responde con su propia versión. Eso es polimorfismo\: el código que las usa no necesita saber qué tarifa recibe.
+}
+
+::Q3-P4 (AE3):: Para exportar las tarifas a diccionario, defines class TarifaExpress(ExportableMixin, Tarifa)\:. Si ExportableMixin y Tarifa tienen un método describir(), ¿cuál usa TarifaExpress? {
+~El de la clase que aparece más abajo en el archivo
+~Ninguno\: Python lanza un error porque los dos padres lo definen
+~Siempre el de Tarifa, porque es la clase base principal
+=El de ExportableMixin, según el orden de resolución de métodos (MRO)
+####En la herencia múltiple, Python busca los métodos según el MRO, que respeta el orden en que se nombran los padres\: primero ExportableMixin y luego Tarifa. Puedes revisarlo con TarifaExpress.__mro__.
+}
+
+::Q3-P5 (AE3):: El peso de un envío nunca puede ser negativo, y RutaSur quiere que esa regla se cumpla en un solo lugar. ¿Cómo diseñas ese atributo en la clase Envio? {
+~Como un atributo público peso_kg que cada función revisa antes de usarlo
+=Como _peso_kg con una @property y un setter que valida el valor
+~Como una variable global PESO_KG que comparten todos los envíos
+~Como un atributo de clase peso_kg \= 0 que se cambia en cada envío
+####El encapsulamiento protege los datos dentro de la clase\: el setter de la propiedad valida el peso cada vez que se asigna y lanza un error si no es válido. Así la regla vive en un solo lugar y no se repite en todo el código.
+}

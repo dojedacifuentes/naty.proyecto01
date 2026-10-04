@@ -1,0 +1,43 @@
+// PF1474 · Módulo 2 · Quiz 6 · jQuery y plugins (AE6). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1474-M2/Quiz-6
+
+::Q6-P1 (AE6):: Un compañero pregunta para qué sumar jQuery al sitio si el equipo ya sabe JavaScript. ¿Qué respuesta describe mejor el rol de esta biblioteca? {
+~Reemplaza a JavaScript por otro lenguaje que entiende el navegador
+=Simplifica con funciones listas el trabajo con el DOM y los eventos
+~Se ejecuta en el servidor para guardar los pedidos de la tienda
+~Es obligatoria para que una página HTML pueda usar CSS
+####jQuery es una biblioteca escrita en JavaScript\: no es otro lenguaje, sino un conjunto de funciones listas que acortan tareas comunes con el DOM, los eventos y los efectos. Para usarla se incluye en la página antes del código que la utiliza.
+}
+
+::Q6-P2 (AE6):: ¿Qué instrucción de jQuery cambia a 3 el número que muestra el &lt;span id\="contador"&gt; del carrito? {
+~$(".contador").text(3);
+~$("contador").value \= 3;
+~$("\#contador").html \= 3;
+=$("\#contador").text(3);
+####jQuery selecciona elementos con la misma sintaxis de CSS (\# para id, . para clase) y los modifica con métodos como .text(), .html() o .css(), que reciben el nuevo valor entre paréntesis.
+}
+
+::Q6-P3 (AE6):: Quieres destacar todas las tarjetas que tienen la clase oferta agregándoles la clase CSS destacada. ¿Qué escribes? {
+=$(".oferta").addClass("destacada");
+~$("\#oferta").addClass(".destacada");
+~$(".oferta").class("destacada");
+~$("oferta").css("destacada");
+####El selector .oferta toma todos los elementos con esa clase y addClass() les agrega otra, escrita sin el punto. Así los colores quedan en la hoja de estilos y jQuery solo cambia qué clase tiene cada elemento.
+}
+
+::Q6-P4 (AE6):: En la página de contacto, al hacer clic en el botón \#ver debe mostrarse el párrafo oculto \#info-despacho. ¿Qué código lo logra con jQuery? {
+~$("\#ver").hover(function () \{ $("\#info-despacho").hide(); \});
+~$("\#ver").on("change", function () \{ $("\#info-despacho").show(); \});
+=$("\#ver").on("click", function () \{ $("\#info-despacho").show(); \});
+~$("\#info-despacho").on("click", function () \{ $("\#ver").show(); \});
+####El evento se asocia al elemento que recibe el clic (\#ver) con .on("click", …) o .click(…), y dentro de la función se indica qué hacer con el otro elemento\: .show() lo muestra y .hide() lo oculta.
+}
+
+::Q6-P5 (AE6):: La tienda quiere que, al apretar «Ver detalle», se abra una ventana emergente con la foto ampliada del producto, sin programarla desde cero. ¿Qué opción es la adecuada? {
+~Abrir una página nueva con window.open para cada producto
+~Cargar todas las fotos en un &lt;iframe&gt; oculto al final de la página
+~Escribir una función propia que dibuje la ventana desde cero
+=Usar el componente modal de Bootstrap o un plugin como Fancybox
+####Un plugin entrega un componente ya probado que se activa con pocas líneas o atributos, como data-bs-toggle\="modal" en Bootstrap 5. Para usarlo se incluyen sus archivos CSS y JavaScript y se sigue su documentación.
+}

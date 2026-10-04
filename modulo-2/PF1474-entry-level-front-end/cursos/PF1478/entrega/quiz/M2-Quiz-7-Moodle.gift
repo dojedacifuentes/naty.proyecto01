@@ -1,0 +1,43 @@
+// PF1478 · Módulo 2 · Quiz 7 · Git y GitHub (AE7). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1478-M2/Quiz-7
+
+::Q7-P1 (AE7):: Las etapas del sitio (HTML, CSS, Bootstrap, JavaScript y jQuery) se guardaron como copias llamadas tienda-final, tienda-final2 y tienda-final-v3, y nadie sabe qué cambió ni quién lo hizo. ¿Qué resuelve un sistema de control de versiones como Git? {
+~Comprime las carpetas para que ocupen menos espacio en el disco
+~Publica el sitio en internet cada vez que se guarda un archivo
+=Registra cada cambio con su autor y su mensaje, y permite volver atrás
+~Corrige los errores de sintaxis del código antes de guardarlo
+####Git guarda una historia de commits\: qué cambió, quién lo hizo, cuándo y por qué. Con esa historia se pueden comparar versiones, recuperar una anterior y trabajar en equipo sin pisarse.
+}
+
+::Q7-P2 (AE7):: En el repositorio libro ya hiciste commit de indice.txt. Después lo editaste por error y todavía no ejecutas git add. ¿Qué comando recupera la versión del último commit? {
+=git restore indice.txt
+~git rm indice.txt
+~git commit --amend
+~git diff indice.txt
+####git restore descarta los cambios del directorio de trabajo y deja el archivo como en el último commit (en versiones antiguas de Git se usa git checkout -- archivo). git diff solo muestra las diferencias y git rm elimina el archivo del repositorio.
+}
+
+::Q7-P3 (AE7):: Trabajaste el carrito en la rama carrito y, al unirla desde main con git merge carrito, Git avisa de un conflicto en index.html. ¿Qué haces? {
+~Borras la rama carrito y rehaces el trabajo directamente en main
+~Ejecutas git push --force para que tu versión reemplace a la otra
+~Esperas a que Git elija por sí solo la versión más reciente del archivo
+=Editas las zonas que marcó Git y luego haces git add y git commit
+####Git marca el conflicto dentro del archivo con &lt;&lt;&lt;&lt;&lt;&lt;&lt;, \=\=\=\=\=\=\= y &gt;&gt;&gt;&gt;&gt;&gt;&gt;. Tú decides qué código queda, borras las marcas y confirmas la resolución con git add y git commit.
+}
+
+::Q7-P4 (AE7):: Vas a subir tus cambios a GitHub, pero git push es rechazado porque una compañera subió commits antes que tú. ¿Qué haces primero? {
+~git push --force, para reemplazar lo que hay en GitHub
+=git pull, para traer e integrar sus cambios, y luego git push
+~git clone del repositorio dentro de la carpeta del proyecto
+~git fetch y luego git push, sin integrar sus cambios
+####El rechazo indica que el remoto tiene commits que tú no tienes. git pull los trae y los integra (equivale a fetch más merge); si aparece un conflicto se resuelve, y después git push sube todo sin borrar el trabajo de nadie.
+}
+
+::Q7-P5 (AE7):: En el equipo, cada integrante trabaja en su propia rama y nadie sube cambios directo a main. ¿Cómo propones integrar tu formulario de pedidos? {
+=Abriendo un pull request en GitHub para que el equipo lo revise
+~Enviando los archivos por correo a quien administra el repositorio
+~Copiando tu carpeta del proyecto sobre la de una compañera
+~Haciendo git commit directamente en la rama main de GitHub
+####Un pull request propone unir una rama con otra\: muestra las diferencias, permite comentar y revisar, y quien administra el repositorio lo aprueba y fusiona. Es la forma habitual de trabajar en equipo sobre un repositorio remoto.
+}

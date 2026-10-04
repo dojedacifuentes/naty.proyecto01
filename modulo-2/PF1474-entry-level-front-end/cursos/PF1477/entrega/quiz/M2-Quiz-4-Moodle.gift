@@ -1,0 +1,43 @@
+// PF1477 · Módulo 2 · Quiz 4 · Sitio responsivo con Bootstrap (AE4). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1477-M2/Quiz-4
+
+::Q4-P1 (AE4):: Todo Ventas en Línea quiere su sitio pronto, que se vea bien en celulares y con un estilo coherente, y en el equipo nadie es diseñador. ¿Por qué Bootstrap es una buena opción? {
+~Porque reemplaza a HTML y evita escribir etiquetas
+~Porque programa en el servidor la lógica de los pedidos
+~Porque genera solo el contenido y las fotos de la tienda
+=Porque trae una grilla responsiva y componentes ya diseñados
+####Bootstrap es un framework de CSS y JavaScript con una grilla responsiva y componentes listos, como barras de navegación, botones, formularios y alertas. Se aplica con clases sobre tu HTML, que sigue siendo necesario.
+}
+
+::Q4-P2 (AE4):: ¿Cómo incorporas Bootstrap 5 al proyecto de la tienda de forma rápida, sin descargar archivos? {
+~Copiando sus clases a mano en tu archivo estilos.css
+=Enlazando su CSS y su JavaScript desde un CDN en el HTML
+~Instalando una extensión de Bootstrap en el navegador
+~Escribiendo &lt;bootstrap&gt; al comienzo de &lt;body&gt;
+####Un CDN sirve los archivos de Bootstrap desde internet\: basta un &lt;link&gt; a su CSS en &lt;head&gt; y un &lt;script&gt; con su JavaScript antes de cerrar &lt;body&gt;. También se puede descargar o instalar con un gestor de paquetes.
+}
+
+::Q4-P3 (AE4):: En el catálogo quieres un producto por fila en el celular, dos en tablet y cuatro en escritorio. ¿Qué clases das a cada tarjeta dentro de un .row? {
+=col-12 col-md-6 col-lg-3
+~col-1 col-md-2 col-lg-4
+~col-lg-12 col-md-6 col-3
+~row-12 row-md-6 row-lg-3
+####La grilla de Bootstrap divide cada fila en 12 columnas\: 12 ocupa todo el ancho, 6 la mitad y 3 un cuarto. Los prefijos md y lg aplican el cambio desde ese tamaño de pantalla hacia arriba.
+}
+
+::Q4-P4 (AE4):: En el celular, las fotos de los productos se salen del ancho de la pantalla. ¿Qué clase de Bootstrap aplicas a cada &lt;img&gt; para que se ajusten solas? {
+~img-thumbnail-lg
+~w-auto
+=img-fluid
+~container-img
+####img-fluid aplica max-width\: 100% y height\: auto\: la imagen nunca supera el ancho de su contenedor y mantiene su proporción. Así reemplazas las reglas responsivas que antes escribías a mano.
+}
+
+::Q4-P5 (AE4):: El menú de la tienda debe verse completo en escritorio y plegarse en un botón de tipo hamburguesa en el celular. ¿Qué usas? {
+~Una lista &lt;ul&gt; con la clase table-responsive en el menú
+=Una navbar con navbar-expand-lg, navbar-toggler y collapse
+~Un &lt;nav&gt; con la clase d-none en todas las pantallas
+~Un &lt;select&gt; con las páginas de la tienda y un botón para ir
+####La barra de navegación de Bootstrap se despliega desde el punto de quiebre indicado (navbar-expand-lg); bajo ese ancho, el botón navbar-toggler muestra u oculta el menú con el componente collapse, que usa el JavaScript de Bootstrap.
+}

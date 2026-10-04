@@ -1,0 +1,43 @@
+// PF1462 · Módulo 2 · Quiz 4 · Complejidad y eficiencia de algoritmos (AE4). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1462-M2/Quiz-4
+
+::Q4-P1 (AE4):: El script original busca duplicados con dos for anidados que comparan cada envío con todos los demás. ¿Cuál es su complejidad temporal? {
+~O(n), porque recorre la lista de envíos de principio a fin
+~O(log n), porque descarta envíos a medida que avanza
+=O(n²), porque compara cada envío con todos los demás
+~O(n log n), porque ordena los envíos antes de compararlos
+####Por cada uno de los n envíos, el bucle interno recorre otros n, así que hace del orden de n × n comparaciones. Con 50.000 envíos son unos 2.500 millones de comparaciones, y por eso el script se vuelve tan lento.
+}
+
+::Q4-P2 (AE4):: La función buscar(envios, id_envio) recorre la lista hasta encontrar el id pedido. ¿Cuál es su complejidad temporal en el peor caso y cuánta memoria extra usa? {
+=Temporal O(n) en el peor caso y espacial O(1), porque no crea estructuras
+~Temporal O(1) en el peor caso y espacial O(n), porque copia la lista
+~Temporal O(log n) en el peor caso y espacial O(1), porque divide la lista
+~Temporal O(n²) en el peor caso y espacial O(n), porque compara pares
+####En el peor caso el id está al final o no está, y la búsqueda lineal revisa los n elementos; en promedio revisa cerca de la mitad, que sigue siendo O(n). Solo usa unas pocas variables, así que su memoria extra es O(1).
+}
+
+::Q4-P3 (AE4):: Tienes que reescribir la detección de ids duplicados para que sea O(n) en promedio. ¿Qué versión lo logra? {
+~Usar ids.count(i) &gt; 1 para cada id de la lista
+=Recorrer ids una vez y guardar cada id en un set de vistos
+~Ordenar ids con el método de burbuja y comparar vecinos
+~Comparar ids.index(i) con la posición actual de cada id
+####Con un conjunto, cada consulta y cada inserción cuestan O(1) en promedio, así que una pasada completa es O(n), a cambio de O(n) de memoria extra. count() e index() recorren la lista en cada llamada y el método de burbuja es O(n²).
+}
+
+::Q4-P4 (AE4):: Los 50.000 envíos ya están ordenados por id_envio y hay que ubicar miles de ids distintos. ¿Qué estrategia conviene? {
+~Recorrer la lista desde el inicio para cada id que se busca
+~Ordenar otra vez la lista antes de cada una de las búsquedas
+~Convertir la lista en tupla para que cada búsqueda sea más rápida
+=Usar búsqueda binaria con bisect, que es O(log n) por cada id
+####Sobre una lista ordenada, la búsqueda binaria descarta la mitad de los elementos en cada paso\: con 50.000 envíos bastan unas 16 comparaciones. El módulo bisect de Python ya la implementa.
+}
+
+::Q4-P5 (AE4):: Implementaste un merge sort recursivo para ordenar los envíos por fecha. ¿Qué afirmación sobre él es correcta? {
+~Su peor caso es O(n²), igual que el del método de burbuja
+=Es O(n log n) incluso en el peor caso y usa O(n) de memoria extra
+~Ordena en el lugar, sin memoria extra, y por eso supera a sorted()
+~Por ser recursivo, no necesita un caso base para detenerse
+####El merge sort divide la lista en mitades hasta llegar a listas de un elemento, su caso base, y luego las mezcla\: O(n log n) en todos los casos, con O(n) de memoria para mezclar. sorted() también es O(n log n) y, al estar implementado en C, suele ser más rápido.
+}

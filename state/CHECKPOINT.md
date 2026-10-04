@@ -19,12 +19,20 @@
 
 ## Hecho
 
+Sesión 2026-10-04-claude-code-03 (quiz juego SCORM en lugar de Genially, solo módulo 2):
+
+- [x] 16 quiz nuevos (5 preguntas c/u, criterios 2026): Entry M2 ×7 (contenidos/PF1474/…/R-quiz-canva.md, fuente de los 4 Entry), PF1462 ×5,
+      PF1482 ×4. `npm run quiz-juego` genera 37 juegos (28 Entry, uno por curso con su nombre, 5 + 4 CHC).
+- [x] 93 paquetes SCORM en 14 aulas, en el lugar del Genially: UNAB 709-712, Skillnest 104-107, UA 113064-67 (tarea no calificada vía
+      herramienta SCORM; módulo y portada enlazan la tarea), CHC 128-129. Verificado: 0 enlaces Genially de quiz en esas aulas.
+- [x] `scripts/lib/quiz-gift.mjs`: la pregunta cierra en la llave sola en su línea (las llaves de código ya no la cortan; el AE3 de PF1821 se leía truncado).
+
 Sesión 2026-10-04-claude-code-02 (logo UNAB):
 
 - [x] Las 7 evaluaciones UNAB (PF1481, PF1483, PF1822 y Entry ×4) rehechas con el logo (subido a Drive) y enlazadas en 705-707 y 709-712;
       las anteriores quedaron «REEMPLAZADO 04-10 (sin logo)». En 705 la sesión de Chrome estaba en vista de estudiante: se volvió al rol
       normal para editar y se dejó otra vez en estudiante.
-- [ ] Quiz SCORM en lugar de Genially (pedido del usuario, pendiente de su visto bueno): 16 quiz (Entry M2 ×7, PF1462 ×5, PF1482 ×4), 93 paquetes.
+- [x] Quiz SCORM en lugar de Genially: hecho en la sesión -03 (ver arriba).
 
 Sesión 2026-10-04-claude-code-01 (observaciones del usuario sobre U. Autónoma y UNAB):
 

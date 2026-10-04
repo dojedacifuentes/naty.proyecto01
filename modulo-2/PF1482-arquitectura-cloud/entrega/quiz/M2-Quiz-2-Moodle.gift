@@ -1,0 +1,43 @@
+// PF1482 · Módulo 2 · Quiz 2 · Rol del arquitecto y diagramas (AE2). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1482-M2/Quiz-2
+
+::Q2-P1 (AE2):: Te sumas al equipo de TuTurno como arquitecto/a. ¿Cuál de estas tareas es una responsabilidad propia de tu rol? {
+~Programar por tu cuenta todas las historias de usuario del equipo
+~Fijar el orden del product backlog en lugar del Product Owner
+=Definir la estructura del sistema y velar por sus atributos de calidad
+~Aprobar el presupuesto anual de la nube en nombre de la gerencia
+####El arquitecto define los componentes del sistema, cómo se relacionan y qué decisiones técnicas los sostienen, cuidando atributos como la disponibilidad o la seguridad. Lo hace a lo largo de todo el ciclo de vida, en colaboración con el equipo y sin reemplazar a otros roles.
+}
+
+::Q2-P2 (AE2):: El equipo discute si usar una base de datos por clínica o una compartida. Decides una compartida, con los datos de cada clínica separados. ¿Qué haces con esa decisión? {
+=La registras con su contexto, alternativas, decisión y consecuencias
+~La comunicas de palabra y evitas documentarla para avanzar más rápido
+~La dejas abierta hasta el final del proyecto para no comprometerte
+~Dejas que cada desarrollador la resuelva según lo que prefiera
+####Un registro de decisión de arquitectura deja por escrito por qué se eligió una opción y qué implica. Así el equipo entiende la decisión, puede revisarla si cambia el contexto y no repite la misma discusión.
+}
+
+::Q2-P3 (AE2):: Quieres mostrar el orden de los mensajes entre la app móvil, la API, la base de datos y el servicio de recordatorios cuando un paciente reserva una cita. ¿Qué diagrama UML usas? {
+~Diagrama de clases
+~Diagrama de casos de uso
+~Diagrama de despliegue
+=Diagrama de secuencia
+####El diagrama de secuencia muestra la visión dinámica\: quién envía qué mensaje y en qué orden durante un escenario. Los diagramas de componentes y de despliegue muestran la visión estática, y los casos de uso, la funcional.
+}
+
+::Q2-P4 (AE2):: La gerencia pide un diagrama que muestre TuTurno como una sola caja, rodeada de pacientes, clínicas y los servicios externos de WhatsApp y correo. ¿Qué diagrama del modelo C4 corresponde? {
+~Diagrama de contenedores
+=Diagrama de contexto del sistema
+~Diagrama de componentes
+~Diagrama de código
+####El modelo C4 tiene cuatro niveles de zoom\: contexto, contenedores, componentes y código. El de contexto es el más general\: muestra el sistema, sus usuarios y los sistemas con que se relaciona, sin detalle técnico, y por eso sirve para conversar con la gerencia.
+}
+
+::Q2-P5 (AE2):: Luego, el equipo técnico necesita ver las piezas que se despliegan por separado\: la app web, la app móvil, la API y la base de datos, y cómo se comunican. ¿Qué nivel del modelo C4 usa? {
+~Contexto
+~Código
+=Contenedores
+~Componentes
+####En C4, un contenedor es una aplicación o un almacén de datos que se ejecuta por separado, como una app, una API o una base de datos. El diagrama de contenedores muestra esas piezas, sus tecnologías y cómo se comunican.
+}

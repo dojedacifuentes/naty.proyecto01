@@ -1,0 +1,43 @@
+// PF1462 · Módulo 2 · Quiz 2 · Excepciones y registro de errores (AE2). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1462-M2/Quiz-2
+
+::Q2-P1 (AE2):: Al convertir float('doce') se lanza ValueError, y al consultar centros['Osorno'] sin esa clave, KeyError. ¿Qué afirmación sobre la jerarquía de excepciones de Python es correcta? {
+~KeyError hereda de ValueError, así que except ValueError captura ambas
+=Ambas heredan de Exception, y KeyError es una subclase de LookupError
+~Ambas heredan directamente de BaseException, igual que KeyboardInterrupt
+~Ambas son errores de sintaxis, así que ningún try puede capturarlas
+####En la jerarquía de Python, casi todas las excepciones de ejecución heredan de Exception, que a su vez hereda de BaseException. KeyError e IndexError comparten el padre LookupError, mientras que ValueError cuelga directo de Exception.
+}
+
+::Q2-P2 (AE2):: Un practicante escribió except BaseException\: para que el script de RutaSur «nunca se caiga». ¿Qué problema trae esa decisión? {
+~Ninguno, porque es la forma recomendada de capturar errores de datos
+~Solo captura errores de sintaxis y deja pasar los de ejecución
+~Hace que Python se salte el bloque finally que viene después
+=También atrapa KeyboardInterrupt y SystemExit, y esconde fallos reales
+####BaseException está en la raíz de la jerarquía, así que atrapa incluso la orden de detener el programa. La buena práctica es capturar solo las excepciones que sabes manejar y dejar que las demás se propaguen.
+}
+
+::Q2-P3 (AE2):: Al leer cada fila, el script hace try\: peso \= float(fila['peso_kg']), except ValueError\: apartar(fila), else\: pesos.append(peso) y finally\: leidas +\= 1. ¿Qué ocurre con una fila cuyo peso viene como 'abc'? {
+~Se aparta la fila, su peso se agrega a pesos y se suma a leidas
+=Se aparta la fila, no se ejecuta else y sí se suma a leidas
+~Se aparta la fila y el programa termina sin pasar por finally
+~No se aparta, porque float() convierte ese texto en nan
+####Si el bloque try lanza una excepción que se captura, corre el except y se salta el else, que solo se ejecuta cuando no hubo error. El finally corre siempre, haya o no excepción.
+}
+
+::Q2-P4 (AE2):: Una fila trae un centro de destino que no existe. RutaSur quiere que el proceso siga y que quede un rastro para revisar después. ¿Qué haces dentro del except? {
+=Registrar la fila y el motivo con logging.warning() y pasar a la siguiente
+~Mostrar el error con print(), que deja el mismo registro que logging
+~Escribir pass para descartar la fila sin ensuciar la salida del script
+~Volver a lanzar la excepción con raise para detener todo el proceso
+####logging guarda en un archivo el nivel, el momento y el motivo de cada problema, y eso permite rastrear los errores después. Un pass los esconde y print() no deja una traza ordenada ni filtrable por nivel.
+}
+
+::Q2-P5 (AE2):: RutaSur quiere distinguir un registro inválido de un centro inexistente y, cuando le convenga, capturar los dos con un solo except. ¿Qué diseño cumple ambas cosas? {
+~Lanzar Exception('registro inválido') y revisar el texto del mensaje
+~Crear dos clases independientes que hereden de BaseException
+=Crear ErrorEnvio(Exception) y dos subclases que hereden de ella
+~Usar ValueError para los dos casos y agregar un código numérico
+####Una excepción propia como ErrorEnvio, con subclases como RegistroInvalidoError y CentroInexistenteError, permite capturar cada caso por separado o todos juntos con except ErrorEnvio. Heredar de Exception, y no de BaseException, es la buena práctica.
+}

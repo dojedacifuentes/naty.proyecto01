@@ -1,0 +1,43 @@
+// PF1482 · Módulo 2 · Quiz 1 · Modelos de distribución y nube (AE1). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1482-M2/Quiz-1
+
+::Q1-P1 (AE1):: Hoy TuTurno se instala en el servidor de cada clínica\: hay 40 clientes con versiones distintas y cada actualización tarda semanas en llegar a todos. ¿Qué característica del software como servicio resuelve este problema? {
+~Cada clínica compra una licencia perpetua y la instala en su propio servidor
+=Una sola versión en la nube, que TuTurno mantiene para todas las clínicas
+~Cada clínica descarga las actualizaciones y las aplica cuando puede
+~TuTurno entrega el código fuente para que cada clínica lo adapte
+####En el software como servicio, el proveedor opera y actualiza una sola versión en la nube y los clientes la usan por suscripción desde el navegador o una app. Por eso un cambio llega a todas las clínicas a la vez, sin instalaciones locales.
+}
+
+::Q1-P2 (AE1):: Una clínica pregunta qué pierde si deja el sistema instalado en su servidor y pasa al SaaS de TuTurno. ¿Qué desventaja del software como servicio debes explicarle? {
+~Tendrá que comprar y mantener servidores propios para la agenda
+~Recibirá cada actualización semanas después que las demás clínicas
+~Deberá hacer una gran inversión inicial en licencias de software
+=Dependerá de internet y confiará los datos de pacientes al proveedor
+####El SaaS evita comprar servidores y licencias, pero exige conectividad y entrega al proveedor el control de la infraestructura y de los datos. Con datos de salud, eso obliga a revisar bien la seguridad y los contratos del servicio.
+}
+
+::Q1-P3 (AE1):: Los lunes en la mañana las reservas de TuTurno se multiplican por cinco, y la gerencia quiere que el costo de la nube crezca con la demanda y no antes. ¿Qué capacidad de la nube conviene usar? {
+=Una arquitectura elástica que suma y quita máquinas según la demanda
+~Comprar servidores para la demanda del lunes y dejarlos encendidos siempre
+~Un solo servidor muy grande que absorba todo el tráfico de la semana
+~Limitar las reservas de los lunes para no saturar el servidor actual
+####La elasticidad agrega máquinas de cómputo cuando sube la demanda y las retira cuando baja, con un balanceador que reparte la carga. Así el sistema aguanta el lunes y se paga solo por lo que se usa.
+}
+
+::Q1-P4 (AE1):: Las clínicas adjuntan órdenes médicas en PDF a cada cita, y la agenda guarda pacientes, profesionales y citas relacionados entre sí. ¿Qué combinación de servicios cloud es la más adecuada? {
+~Guardar los PDF y las citas en el disco de cada máquina virtual
+~Una base de datos para los PDF y un almacenamiento de objetos para las citas
+=Almacenamiento de objetos para los PDF y una base de datos administrada para las citas
+~Una red de distribución de contenido que guarde los PDF y las citas
+####El almacenamiento de objetos sirve para archivos como PDF e imágenes, y una base de datos administrada, para datos estructurados que se consultan y relacionan. El disco de una máquina se pierde o no se comparte cuando la arquitectura escala.
+}
+
+::Q1-P5 (AE1):: Para comparar proveedores, el equipo de TuTurno anota tres servicios\: Amazon S3, Azure Blob Storage y Google Cloud Storage. ¿Qué tienen en común? {
+=Son el servicio de almacenamiento de objetos de cada proveedor
+~Son las bases de datos relacionales administradas de cada proveedor
+~Son las máquinas virtuales de cómputo general de cada proveedor
+~Son los servicios para balancear la carga de cada proveedor
+####AWS, Azure y Google Cloud ofrecen servicios comunes con nombres distintos\: cómputo, almacenamiento, bases de datos, redes e integración. Armar una tabla de equivalencias ayuda a comparar proveedores con el mismo criterio.
+}

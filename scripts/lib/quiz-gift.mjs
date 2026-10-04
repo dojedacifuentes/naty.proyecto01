@@ -18,7 +18,9 @@ const desescapar = (s) => s.replace(/\\([:=~#{}])/g, '$1').trim();
 export function leerGift(archivo) {
   const txt = leer(archivo);
   const categoria = (txt.match(/^\$CATEGORY: (.+)$/m) || [])[1] || '';
-  const preguntas = [...txt.matchAll(/^::(.+?)::\s*(.+?)\s*\{\n([\s\S]*?)\n?\}/gm)].map(([, id, enunciado, cuerpo]) => {
+  // La pregunta cierra con la llave sola en su línea, como la escribe el generador: así las llaves de un código dentro de una
+  // alternativa (p. ej. `@media (min-width: 992px) { … }`) no la cortan.
+  const preguntas = [...txt.matchAll(/^::(.+?)::\s*(.+?)\s*\{\n([\s\S]*?)\n\}[ \t]*$/gm)].map(([, id, enunciado, cuerpo]) => {
     const opciones = [];
     let correcta = -1;
     let retro = '';

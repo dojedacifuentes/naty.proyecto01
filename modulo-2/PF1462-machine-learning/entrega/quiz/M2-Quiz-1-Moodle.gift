@@ -1,0 +1,43 @@
+// PF1462 · Módulo 2 · Quiz 1 · Estructuras de datos (AE1). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1462-M2/Quiz-1
+
+::Q1-P1 (AE1):: RutaSur guarda la ubicación de cada centro como (-39.81, -73.24) y no quiere que ninguna parte del código la cambie por error. ¿Qué estructura conviene y por qué? {
+~Una lista, porque permite corregir las coordenadas cuando haga falta
+=Una tupla, porque es inmutable y puede servir como clave de un diccionario
+~Un conjunto, porque mantiene las coordenadas en el orden en que se cargaron
+~Un diccionario, porque impide que se repitan los valores que guarda
+####La tupla no se puede modificar después de creada, lo que protege datos fijos como una coordenada. Por ser inmutable, además puede usarse como clave de un diccionario; una lista no.
+}
+
+::Q1-P2 (AE1):: Al leer los 50.000 envíos, el script debe saber si un id_envio ya apareció antes. ¿Qué estructura conviene para guardar los ids vistos? {
+~Una lista, consultada con in cada vez que llega una fila
+~Una tupla, que se vuelve a crear cada vez que llega un id
+~Una pila, revisando primero el último id que se agregó
+=Un conjunto (set), que responde in en tiempo constante promedio
+####El conjunto guarda elementos sin repetir y usa una tabla hash, así que preguntar si un id está es O(1) en promedio. En una lista, la misma consulta recorre los elementos uno a uno y es O(n).
+}
+
+::Q1-P3 (AE1):: En el centro de Temuco, los pedidos deben despacharse en el mismo orden en que llegaron. ¿Qué estructura y qué operaciones usas? {
+=Una cola (deque)\: append() para entrar y popleft() para salir
+~Una pila (lista)\: append() para entrar y pop() para salir
+~Un diccionario\: update() para entrar y popitem() para salir
+~Un conjunto\: add() para entrar y pop() para salir
+####Despachar en orden de llegada es FIFO\: el primero que entra es el primero que sale, y eso es una cola. collections.deque saca por la izquierda en O(1); la pila es LIFO y el conjunto no guarda orden.
+}
+
+::Q1-P4 (AE1):: RutaSur representa su red vial como rutas \= \{'Santiago'\: [('Rancagua', 87), ('Talca', 255)], ...\}, con la distancia en kilómetros de cada conexión. ¿Cómo encuentras el camino de menos kilómetros entre dos centros? {
+~Con un recorrido en anchura (BFS), que minimiza la cantidad de conexiones
+=Con Dijkstra y una cola de prioridad (heapq), porque las aristas tienen peso
+~Con un recorrido en profundidad (DFS), que se queda con el primer camino hallado
+~Avanzando siempre por la conexión más corta de cada centro hasta llegar
+####Es un grafo con lista de adyacencia y aristas con peso\: Dijkstra con heapq encuentra el camino de menor distancia total. BFS solo minimiza la cantidad de conexiones, y elegir siempre la más corta en cada paso no asegura el mejor camino.
+}
+
+::Q1-P5 (AE1):: La red de RutaSur se organiza como un árbol zona → región → centro, y cada centro conoce sus envíos. ¿Cómo calculas el total de envíos de cada zona? {
+~Con un bucle que suma solo los nodos del primer nivel bajo la raíz
+~Con una cola que procesa la raíz y únicamente sus hijos directos
+=Con una función recursiva que suma el nodo y el total de cada hijo
+~Con un conjunto que agrupa los centros que tienen el mismo total
+####Un árbol es una estructura recursiva\: el total de un nodo es su propio valor más el total de cada uno de sus subárboles. Una función recursiva, con las hojas como caso base, recorre todos los niveles sin importar su profundidad.
+}

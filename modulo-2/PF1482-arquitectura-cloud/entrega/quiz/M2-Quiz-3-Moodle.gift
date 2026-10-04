@@ -1,0 +1,43 @@
+// PF1482 · Módulo 2 · Quiz 3 · El arquitecto en equipos ágiles (AE3). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1482-M2/Quiz-3
+
+::Q3-P1 (AE3):: Las clínicas todavía no saben bien qué necesitan del nuevo servicio y cambian sus pedidos en cada reunión. ¿Qué enfoque conviene para desarrollar TuTurno y por qué? {
+~Cascada, porque fija todos los requisitos al inicio y evita los cambios
+~Cascada, porque entrega todo el sistema de una sola vez al final
+~Ágil, porque elimina la necesidad de planificar y de documentar
+=Ágil, porque privilegia adaptarse al cambio por sobre predecir todo
+####Las metodologías tradicionales buscan predictibilidad con un plan fijo; las ágiles buscan adaptabilidad con ciclos cortos. Si los requisitos son inciertos, conviene adaptarse, aunque igual se planifica y se documenta lo necesario.
+}
+
+::Q3-P2 (AE3):: ¿Cuál de estos planes para TuTurno es iterativo e incremental? {
+~Diseñar todo el sistema, construirlo completo y probarlo recién al final
+=Entregar primero la reserva web básica y sumar la app y los recordatorios después
+~Construir por separado cada capa técnica y unirlas en la última etapa
+~Repetir el análisis de requisitos hasta que no quede ninguna duda
+####Incremental significa entregar el producto por partes que ya sirven; iterativo, mejorarlo en ciclos con lo que se aprende de cada entrega. Así las clínicas usan algo de valor desde el primer incremento.
+}
+
+::Q3-P3 (AE3):: El equipo de TuTurno suma a una coordinadora de una clínica que conversa con los desarrolladores todos los días del proyecto. ¿Qué valor del Manifiesto Ágil se pone en práctica y con qué principio se asocia? {
+~Software funcionando; entregar software que funcione con frecuencia
+~Respuesta ante el cambio; aceptar requisitos cambiantes, incluso tarde
+=Colaboración con el cliente; negocio y desarrolladores trabajan juntos a diario
+~Individuos e interacciones; mantener un ritmo de trabajo sostenible
+####El valor «colaboración con el cliente sobre negociación contractual» se apoya en el principio de que los responsables de negocio y los desarrolladores trabajan juntos de forma cotidiana. Cada uno de los cuatro valores se sostiene en varios de los doce principios.
+}
+
+::Q3-P4 (AE3):: TuTurno trabaja con Scrum. ¿Cómo participa el arquitecto en el equipo sin volverse un cuello de botella? {
+=Trabaja dentro del equipo, comparte las decisiones y las revisa cada sprint
+~Aprueba en solitario cada cambio de código antes de integrarlo
+~Entrega al inicio un diseño completo que el equipo no puede modificar
+~Asume el rol de Scrum Master para asignar las tareas del equipo
+####En un equipo ágil, la arquitectura evoluciona con el producto\: el arquitecto colabora en la planificación y la revisión, guía las decisiones y las ajusta con lo que se aprende. Si concentra todas las aprobaciones, frena el flujo del equipo.
+}
+
+::Q3-P5 (AE3):: Antes de la temporada de mayor demanda, hay que preparar el escalado automático de TuTurno. ¿Dónde registra el arquitecto este trabajo técnico? {
+~En un plan aparte que el equipo recién conoce al final del proyecto
+=En el product backlog, priorizado junto con el Product Owner
+~En el sprint backlog de otro equipo, para no distraer al propio
+~En ningún artefacto, porque Scrum no admite trabajo técnico
+####En Scrum, todo el trabajo del producto vive en el product backlog, incluido el técnico. El arquitecto explica su valor y su riesgo al Product Owner para que se priorice junto con las funciones.
+}

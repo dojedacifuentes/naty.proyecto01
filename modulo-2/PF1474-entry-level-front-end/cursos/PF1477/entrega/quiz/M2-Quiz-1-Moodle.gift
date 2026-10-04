@@ -1,0 +1,43 @@
+// PF1477 · Módulo 2 · Quiz 1 · Desarrollo web y front-end (AE1). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1477-M2/Quiz-1
+
+::Q1-P1 (AE1):: El equipo de Todo Ventas en Línea se reparte el trabajo\: Ana construirá el catálogo y el formulario que el cliente ve en el navegador, y Diego programará en el servidor cómo se guardan los pedidos en la base de datos. ¿Qué rol cumple cada uno? {
+~Ana es back-end y Diego es front-end
+~Ambos son fullstack, porque trabajan en el mismo sitio
+=Ana es front-end y Diego es back-end
+~Ana es diseñadora gráfica y Diego es front-end
+####El front-end construye lo que la persona ve y usa en el navegador; el back-end procesa y guarda los datos en el servidor. Quien domina ambas capas trabaja como fullstack.
+}
+
+::Q1-P2 (AE1):: Al revisar la página de inicio, un compañero dice que el HTML «programa» el carrito de compras. ¿Qué afirmación lo corrige mejor? {
+~HTML es un lenguaje de programación que calcula los totales
+=HTML es un lenguaje de marcado que estructura el contenido
+~HTML es un lenguaje de estilos que define colores y fuentes
+~HTML es un lenguaje de servidor que guarda los pedidos
+####HTML (lenguaje de marcado de hipertexto) usa etiquetas para indicar qué es cada contenido\: un título, un párrafo, una imagen o un enlace. No calcula ni toma decisiones; eso le corresponde a JavaScript.
+}
+
+::Q1-P3 (AE1):: En un ejemplo antiguo encuentras como primera línea &lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;. ¿Cómo debe empezar la página nueva de la tienda para usar HTML5? {
+~&lt;html version\="5"&gt;
+~&lt;!DOCTYPE HTML5&gt;
+~&lt;!DOCTYPE html PUBLIC "HTML5"&gt;
+=&lt;!DOCTYPE html&gt;
+####HTML5 simplificó la declaración del tipo de documento a &lt;!DOCTYPE html&gt;, que le indica al navegador que interprete la página con el estándar actual. Las declaraciones largas con DTD eran propias de HTML 4.01, una versión anterior publicada por el W3C.
+}
+
+::Q1-P4 (AE1):: La tienda pide mostrar su catálogo, que los botones tengan los colores de su marca y que al apretar «Agregar» suba el contador del carrito. ¿Qué tecnología se encarga de cada parte, en ese orden? {
+=HTML, CSS y JavaScript
+~CSS, HTML y JavaScript
+~JavaScript, CSS y HTML
+~HTML, JavaScript y CSS
+####HTML define el contenido, CSS la presentación y JavaScript el comportamiento. Mantener separadas estas tres capas hace que el sitio sea más fácil de entender y de mantener.
+}
+
+::Q1-P5 (AE1):: El título de tu página aparece en rojo y no sabes de qué regla CSS viene ese color. ¿Qué herramienta usas para averiguarlo sin modificar el archivo? {
+~El Bloc de notas, para leer el archivo línea por línea
+~El explorador de archivos, para revisar las carpetas y archivos del proyecto
+~Un editor de imágenes, para medir el color del título
+=El inspector de elementos, para ver las reglas aplicadas
+####El inspector del navegador muestra el HTML de la página y las reglas CSS que afectan a cada elemento, con el archivo de donde vienen. Junto con un editor como Visual Studio Code, es una herramienta básica del front-end.
+}

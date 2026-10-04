@@ -1,0 +1,43 @@
+// PF1474 · Módulo 2 · Quiz 2 · Estructura con HTML5 (AE2). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1474-M2/Quiz-2
+
+::Q2-P1 (AE2):: En la página de la tienda, los acentos y las eñes se ven como símbolos raros y la pestaña del navegador solo dice «index.html». ¿Qué falta y dónde va? {
+=&lt;meta charset\="utf-8"&gt; y &lt;title&gt;, dentro de &lt;head&gt;
+~&lt;meta charset\="utf-8"&gt; y &lt;title&gt;, dentro de &lt;body&gt;
+~Un &lt;h1&gt; con el nombre de la tienda, dentro de &lt;head&gt;
+~Un &lt;p&gt; con el nombre de la tienda, antes de &lt;html&gt;
+####&lt;head&gt; reúne la información sobre el documento\: la codificación de caracteres, el título de la pestaña, el viewport y los enlaces a hojas de estilo. &lt;body&gt; contiene lo que se muestra en la página.
+}
+
+::Q2-P2 (AE2):: La página de inicio lleva arriba el logo y el menú, al centro los productos destacados, a un costado las ofertas y abajo los datos de contacto. ¿Qué estructura semántica corresponde? {
+~Un &lt;div&gt; para cada parte, con un comentario que la identifique
+~&lt;head&gt; con &lt;nav&gt;, &lt;section&gt;, &lt;aside&gt; y &lt;footer&gt;
+=&lt;header&gt; con &lt;nav&gt;, &lt;section&gt;, &lt;aside&gt; y &lt;footer&gt;
+~&lt;header&gt;, &lt;table&gt;, &lt;aside&gt;, &lt;form&gt; y &lt;footer&gt;
+####Las etiquetas semánticas de HTML5 dicen qué papel cumple cada bloque\: &lt;header&gt; la cabecera, &lt;nav&gt; el menú, &lt;section&gt; el contenido, &lt;aside&gt; lo complementario y &lt;footer&gt; el pie. &lt;head&gt; no es la cabecera visible\: guarda los metadatos.
+}
+
+::Q2-P3 (AE2):: El formulario de pedido debe pedir la comuna de despacho desde una lista fija y un solo medio de pago\: transferencia o efectivo. ¿Qué combinación usas? {
+~Un &lt;input type\="text"&gt; para la comuna y dos checkbox para el pago
+~Un &lt;select&gt; para la comuna y dos checkbox con el mismo name
+~Un &lt;textarea&gt; para la comuna y un &lt;select multiple&gt; para el pago
+=Un &lt;select&gt; para la comuna y dos radio con el mismo name
+####&lt;select&gt; ofrece una lista cerrada de opciones, y los botones radio que comparten name dejan elegir una sola alternativa del grupo. Las casillas checkbox sirven cuando se puede marcar más de una.
+}
+
+::Q2-P4 (AE2):: El proyecto tiene index.html en la carpeta principal y las fotos en la subcarpeta img. Si llevas el proyecto a otro computador, ¿qué atributo sigue mostrando la foto polera.jpg? {
+~src\="C\:/tienda/img/polera.jpg"
+=src\="img/polera.jpg"
+~src\="/polera.jpg"
+~src\="../img/polera.jpg"
+####Una ruta relativa se calcula desde la ubicación del archivo HTML, así que funciona aunque el proyecto cambie de carpeta o de equipo. Con ../ subirías un nivel, fuera del proyecto, y una ruta del disco solo existe en tu computador.
+}
+
+::Q2-P5 (AE2):: El prototipo tiene index.html, productos.html y contacto.html en la misma carpeta. ¿Cómo enlazas el menú de index.html con la página de productos? {
+~&lt;link href\="productos.html"&gt;Productos&lt;/link&gt;
+~&lt;a src\="productos.html"&gt;Productos&lt;/a&gt;
+=&lt;a href\="productos.html"&gt;Productos&lt;/a&gt;
+~&lt;nav href\="productos.html"&gt;Productos&lt;/nav&gt;
+####La etiqueta &lt;a&gt; crea hipervínculos y su atributo href indica el destino; así se arma un prototipo navegable entre páginas. &lt;link&gt; va en &lt;head&gt; y sirve para vincular recursos como hojas de estilo.
+}

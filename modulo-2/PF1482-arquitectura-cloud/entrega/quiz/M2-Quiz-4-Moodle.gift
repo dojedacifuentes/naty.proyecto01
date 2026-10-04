@@ -1,0 +1,43 @@
+// PF1482 · Módulo 2 · Quiz 4 · Pilares de la buena arquitectura (AE4). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1482-M2/Quiz-4
+
+::Q4-P1 (AE4):: La gerencia pide que la agenda siga funcionando aunque falle una máquina y que solo el personal autorizado vea los datos de salud. ¿Qué atributos de calidad de la norma ISO/IEC 25010 están en juego? {
+=Fiabilidad y seguridad
+~Usabilidad y portabilidad
+~Mantenibilidad y compatibilidad
+~Eficiencia de desempeño y usabilidad
+####La fiabilidad incluye la disponibilidad y la tolerancia a fallos, y la seguridad, la confidencialidad y el control de acceso. La norma ISO/IEC 25010 define estos atributos para que el equipo hable el mismo idioma al priorizar.
+}
+
+::Q4-P2 (AE4):: ¿Cuál de estos enunciados es un escenario de calidad completo y medible para TuTurno? {
+~El sistema debe responder rápido y estar siempre disponible para todos los pacientes
+~La agenda usará una base de datos administrada en la nube, con réplicas en dos zonas
+=Si cae una máquina el lunes de mayor demanda, el 99 % de las reservas se confirma en menos de 3 segundos
+~Los pacientes quedarán satisfechos con lo fácil que es reservar desde la app móvil
+####Un escenario de calidad describe una fuente, un estímulo, el artefacto afectado, el entorno, la respuesta esperada y una medida. Esa medida lo vuelve una meta arquitectónica que se puede verificar; la opción b es una decisión de diseño, no un escenario.
+}
+
+::Q4-P3 (AE4):: La gerencia de TuTurno quiere pagar solo por la capacidad que usa y revisar cada mes en qué se gasta la nube. ¿Qué pilar de AWS Well-Architected aborda esta preocupación? {
+~Excelencia operativa
+=Optimización de costos
+~Eficiencia del rendimiento
+~Sostenibilidad
+####Los seis pilares son excelencia operativa, seguridad, fiabilidad, eficiencia del rendimiento, optimización de costos y sostenibilidad. La optimización de costos busca entregar valor al menor costo\: pagar por uso, medir el gasto y eliminar recursos ociosos.
+}
+
+::Q4-P4 (AE4):: Al revisar TuTurno con AWS Well-Architected, notas que la base de datos está en una sola zona de disponibilidad y que nadie ha probado restaurar un respaldo. ¿Qué pilar está en riesgo y qué recomiendas? {
+~Seguridad\: cifrar la base de datos con una llave propia
+~Eficiencia del rendimiento\: usar máquinas con más memoria
+~Excelencia operativa\: documentar el procedimiento de despliegue
+=Fiabilidad\: replicar en varias zonas y probar la recuperación
+####El pilar de fiabilidad pide que el sistema se recupere de fallas y siga funcionando. Replicar en varias zonas de disponibilidad y probar los respaldos evita que una sola falla deje sin agenda a todas las clínicas.
+}
+
+::Q4-P5 (AE4):: TuTurno fijó un SLO de 99,9 % de reservas exitosas al mes, y a mitad de mes ya consumió casi todo su presupuesto de error. Según los principios SRE de Google, ¿qué conviene hacer? {
+~Seguir lanzando funciones al mismo ritmo, porque el SLO es solo referencial
+~Subir el SLO a 100 % para que el equipo ponga más atención a las fallas
+=Frenar los cambios riesgosos y priorizar la confiabilidad hasta recuperar margen
+~Buscar a la persona responsable de las fallas para que no se repitan
+####El presupuesto de error es lo que el SLO permite fallar\: si se agota, se prioriza la estabilidad sobre las novedades. Un SRE además reduce el trabajo repetitivo (toil) con automatización y analiza cada caída sin buscar culpables.
+}

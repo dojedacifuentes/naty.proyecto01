@@ -1,0 +1,43 @@
+// PF1474 · Módulo 2 · Quiz 3 · Estilos CSS y responsividad (AE3). Formativo, sin nota. Generado desde R-quiz-canva.md.
+// Moodle: Banco de preguntas → Importar → formato GIFT. Luego, un Cuestionario con estas 5 preguntas.
+$CATEGORY: PF1474-M2/Quiz-3
+
+::Q3-P1 (AE3):: El sitio tiene cinco páginas y en cada una repetiste un bloque &lt;style&gt; con los colores de la marca. Luego la tienda cambió su color principal. ¿Qué buena práctica te habría ahorrado trabajo? {
+~Escribir los estilos con el atributo style en cada etiqueta
+=Usar una hoja de estilos externa enlazada desde todas las páginas
+~Poner el bloque &lt;style&gt; al final de cada &lt;body&gt;
+~Dar los colores con etiquetas antiguas como &lt;font&gt;
+####Una hoja externa (.css) enlazada con &lt;link&gt; separa la presentación del contenido y permite cambiar el diseño de todo el sitio editando un solo archivo. Los estilos repetidos en cada página o en cada etiqueta multiplican el trabajo.
+}
+
+::Q3-P2 (AE3):: Tu hoja css/estilos.css debe usar de fondo la imagen img/banner.jpg; las carpetas css e img están en la raíz del proyecto. ¿Qué escribes en la hoja de estilos? {
+=background-image\: url("../img/banner.jpg");
+~background-image\: url("img/banner.jpg");
+~background-image\: url("css/img/banner.jpg");
+~background-image\: src("../img/banner.jpg");
+####Dentro de un archivo CSS, las rutas relativas se calculan desde la ubicación de esa hoja, no desde el HTML. Por eso hay que subir un nivel con ../ para salir de css y entrar a img.
+}
+
+::Q3-P3 (AE3):: Tu hoja tiene \#oferta \{ color\: red; \} y, más abajo, .precio \{ color\: green; \}. El elemento es &lt;p id\="oferta" class\="precio"&gt;. ¿De qué color se ve el texto? {
+~Verde, porque la regla .precio está escrita más abajo
+~Verde, porque las clases pesan más que los identificadores
+~Negro, porque las dos reglas se anulan entre sí
+=Rojo, porque el selector de id pesa más que el de clase
+####Cuando dos reglas chocan, gana la de mayor especificidad, y un selector de id pesa más que uno de clase. El orden en la hoja solo decide cuando ambas reglas tienen el mismo peso.
+}
+
+::Q3-P4 (AE3):: Diseñas con enfoque mobile first\: por defecto, los productos se ven en una sola columna. ¿Qué media query usas para pasar a tres columnas en pantallas de escritorio? {
+~@media (max-width\: 992px) \{ … \}
+~@media print \{ … \}
+=@media (min-width\: 992px) \{ … \}
+~@media (orientation\: portrait) \{ … \}
+####Con mobile first, los estilos base son para el celular y las media queries con min-width agregan cambios a medida que la pantalla crece. Con max-width las tres columnas se aplicarían justo en las pantallas pequeñas.
+}
+
+::Q3-P5 (AE3):: Un botón se ve más ancho de lo esperado. Abres las herramientas para desarrolladores del navegador y seleccionas el botón. ¿Qué te muestran que te ayuda a resolverlo? {
+=Las reglas aplicadas, las que quedaron anuladas y su modelo de caja
+~El historial de cambios que hiciste en el archivo CSS
+~Solo el código HTML, sin las reglas de estilo que lo afectan
+~La lista de imágenes que descargó la página al cargar
+####El inspector muestra qué reglas afectan al elemento, en qué archivo están, cuáles quedaron tachadas por otras de más peso y cómo se reparten contenido, relleno, borde y margen. Además permite probar cambios en vivo antes de llevarlos al archivo.
+}
