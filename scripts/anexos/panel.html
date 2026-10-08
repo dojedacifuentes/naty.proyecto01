@@ -1,0 +1,163 @@
+<title>Panel de Anexos 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: tablero de control — resumen arriba, matriz anexos × chequeos al centro, evidencia al lado */
+:root{
+  --bg:#F4F6F8; --surface:#FFFFFF; --sunk:#E9EDF1; --fg:#15212B; --muted:#55636F; --line:#D3DAE1; --accent:#1F5FAD; --accent-soft:#E2ECF8;
+  --ok:#1E7A4C; --ok-soft:#DFF2E7; --warn:#9A6200; --warn-soft:#FBF0D9; --bad:#B42318; --bad-soft:#FBE4E1; --idle:#7A8792; --idle-soft:#EEF1F4;
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif; --body:"Source Sans 3","Segoe UI",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F161C; --surface:#161F27; --sunk:#1D2832; --fg:#E4EAF0; --muted:#9AA8B5; --line:#2A3743; --accent:#7FB2F0; --accent-soft:#1A2D45;
+  --ok:#6CCB97; --ok-soft:#14301F; --warn:#E9B65A; --warn-soft:#33270F; --bad:#F2877B; --bad-soft:#3A1915; --idle:#6F7C88; --idle-soft:#1D2731; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F161C; --surface:#161F27; --sunk:#1D2832; --fg:#E4EAF0; --muted:#9AA8B5; --line:#2A3743; --accent:#7FB2F0; --accent-soft:#1A2D45;
+  --ok:#6CCB97; --ok-soft:#14301F; --warn:#E9B65A; --warn-soft:#33270F; --bad:#F2877B; --bad-soft:#3A1915; --idle:#6F7C88; --idle-soft:#1D2731; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:400 1rem/1.55 var(--body);padding-inline:16px;padding-block:0 3rem}
+.wrap{max-width:80rem;margin:0 auto;display:grid;gap:1.5rem}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;line-height:1.15}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800}
+h2{font-size:1.35rem}
+header{padding-block:2.5rem .5rem;display:grid;gap:.5rem}
+.eyebrow{font:500 .72rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:.9rem 1rem;display:grid;gap:.2rem}
+.tile b{font:800 1.8rem/1 var(--display);font-variant-numeric:tabular-nums}
+.tile span{font-size:.85rem;color:var(--muted)}
+.tile small{font:500 .72rem/1.3 var(--mono);color:var(--muted)}
+.formula{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:1rem;display:grid;gap:.5rem}
+.formula code{font:500 .9rem/1.6 var(--mono);display:block;white-space:pre-wrap;color:var(--fg)}
+.bar{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.chip{font:600 .85rem/1 var(--body);padding:.45rem .7rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.chip:focus-visible,.cell:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 22rem;gap:1rem;align-items:start}
+@media (max-width:1000px){.grid{grid-template-columns:1fr}}
+.mx{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;font-size:.85rem}
+.mx table{min-width:100%}
+th,td{padding:.35rem .4rem;border-top:1px solid var(--line);text-align:left;vertical-align:middle}
+thead th{border-top:0;background:var(--sunk);font:500 .68rem/1.2 var(--mono);color:var(--muted);white-space:nowrap}
+thead th.c{text-align:center;writing-mode:vertical-rl;transform:rotate(180deg);height:5.5rem;padding:.4rem .2rem}
+td.name{white-space:nowrap;font-weight:600}
+td.name small{display:block;font-weight:400;color:var(--muted)}
+.pill{display:inline-block;font:700 .7rem/1 var(--body);padding:.28rem .45rem;border-radius:4px;white-space:nowrap}
+.LISTO{background:var(--ok-soft);color:var(--ok)} .OBSERVADO{background:var(--warn-soft);color:var(--warn)} .BLOQUEADO{background:var(--bad-soft);color:var(--bad)}
+.cell{width:1.7rem;height:1.7rem;border:0;border-radius:4px;cursor:pointer;font:700 .8rem/1 var(--body);display:grid;place-items:center;margin:auto}
+.s-CUMPLE{background:var(--ok-soft);color:var(--ok)} .s-NO{background:var(--bad-soft);color:var(--bad)} .s-JUICIO{background:var(--warn-soft);color:var(--warn)} .s-NA,.s-SIN{background:var(--idle-soft);color:var(--idle)}
+.cell[aria-pressed="true"]{outline:2px solid var(--fg);outline-offset:1px}
+td.ia{font:600 .82rem var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.detail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 1rem);background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:1rem;display:grid;gap:.6rem;min-width:0}
+.detail p{margin:0;overflow-wrap:anywhere}
+.detail a{color:var(--accent)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.25rem .75rem;font-size:.88rem}
+.kv dt{color:var(--muted)} .kv dd{margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.85rem;color:var(--muted)}
+.legend span{display:inline-flex;gap:.35rem;align-items:center}
+.legend i{width:.9rem;height:.9rem;border-radius:3px;display:inline-block}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.tbl table{width:100%;font-size:.9rem}
+.tbl td,.tbl th{padding:.5rem .7rem}
+.id{font:500 .8rem var(--mono);color:var(--accent);white-space:nowrap}
+footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:1rem}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Verificador de Anexos 2 · Talento Digital 2026</span>
+  <h1>Panel de anexos</h1>
+  <p class="muted" id="sub"></p>
+</header>
+
+<div class="tiles" id="tiles"></div>
+
+<section class="formula">
+  <h2>Cómo se calcula</h2>
+  <code id="formula"></code>
+</section>
+
+<section style="display:grid;gap:.75rem">
+  <h2>Anexos × chequeos</h2>
+  <div class="bar" id="fcli" role="group" aria-label="Filtrar por cliente"></div>
+  <div class="legend">
+    <span><i class="s-CUMPLE"></i>Cumple</span><span><i class="s-NO"></i>No cumple</span><span><i class="s-JUICIO"></i>Requiere juicio</span><span><i class="s-NA"></i>No aplica / sin leer</span>
+  </div>
+  <div class="grid">
+    <div class="mx"><table><thead id="mh"></thead><tbody id="mb"></tbody></table></div>
+    <aside class="detail" id="det" aria-live="polite"><p class="muted">Toca una casilla para ver la evidencia: qué dice el anexo, dónde, y contra qué regla se comparó.</p></aside>
+  </div>
+</section>
+
+<section style="display:grid;gap:.75rem" id="secSemb" hidden>
+  <h2>Prueba de errores sembrados</h2>
+  <p class="muted">Se meten errores conocidos en copias de anexos que pasaban el chequeo, y se comprueba que el verificador los encuentra.</p>
+  <div class="tbl"><table><thead><tr><th>Error sembrado</th><th>Anexo</th><th>Chequeo</th><th>Antes</th><th>Después</th><th>¿Detectado?</th></tr></thead><tbody id="semb"></tbody></table></div>
+</section>
+
+<section style="display:grid;gap:.75rem">
+  <h2>Chequeos y reglas</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Qué revisa</th><th>Regla</th><th>Severidad</th><th>Peso</th></tr></thead><tbody id="chq"></tbody></table></div>
+</section>
+
+<footer id="pie"></footer>
+</div>
+
+<script>
+const D = /*DATOS*/null;
+const pct = (x) => (x * 100).toFixed(1).replace('.', ',') + ' %';
+const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const cls = { 'CUMPLE': 's-CUMPLE', 'NO CUMPLE': 's-NO', 'REQUIERE JUICIO': 's-JUICIO', 'NO APLICA': 's-NA', 'SIN LEER': 's-SIN' };
+const ico = { 'CUMPLE': '✓', 'NO CUMPLE': '✕', 'REQUIERE JUICIO': '?', 'NO APLICA': '–', 'SIN LEER': '·' };
+const g = D.global;
+const fecha = new Date(D.meta.generado);
+document.getElementById('sub').textContent = `Generado el ${fecha.toLocaleDateString('es-CL')} a las ${fecha.toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' })} · reglas v${D.meta.version_reglas} · responsable: ${D.meta.responsable} · ${g.anexos} anexos × ${g.chequeos} chequeos`;
+const tiles = [
+  [pct(g.ia), 'Índice de Alineación', 'cumplimiento ponderado'],
+  [pct(g.completitud), 'Completitud', `${g.evaluadas} de ${g.esperadas} casillas`],
+  [g.estados.LISTO, 'Listos', 'IA 100 % y sin juicio'],
+  [g.estados.OBSERVADO, 'Observados', 'falla algo no crítico o hay juicio'],
+  [g.estados.BLOQUEADO, 'Bloqueados', 'falla un crítico o no se leyó'],
+];
+if (D.sembrado) tiles.push([pct(D.sembrado.sensibilidad), 'Sensibilidad', `${D.sembrado.detectados} de ${D.sembrado.sembrados} errores sembrados`]);
+document.getElementById('tiles').innerHTML = tiles.map(([b, s, m]) => `<div class="tile"><b>${b}</b><span>${s}</span><small>${m}</small></div>`).join('');
+document.getElementById('formula').textContent = [
+  'IA (Índice de Alineación) = Σ peso × [cumple]  ÷  Σ peso × [cumple o no cumple]',
+  '   peso: crítica 3 · mayor 2 · menor 1 · los chequeos de juicio no pesan',
+  'K (Completitud)           = casillas evaluadas ÷ (anexos esperados × chequeos)',
+  'Estado del anexo          = BLOQUEADO si no se leyó o falla un crítico',
+  '                            OBSERVADO si IA < 100 % o queda juicio pendiente',
+  '                            LISTO si IA = 100 % y sin juicio',
+  'S (Sensibilidad)          = errores sembrados detectados ÷ errores sembrados',
+].join('\n');
+
+const clientes = ['Todos', ...new Set(D.anexos.map((a) => a.cliente))];
+let cli = 'Todos';
+try { const s = localStorage.getItem('panel-cli'); if (s && clientes.includes(s)) cli = s; } catch (e) {}
+const fc = document.getElementById('fcli');
+clientes.forEach((c) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = c; b.onclick = () => { cli = c; try { localStorage.setItem('panel-cli', c); } catch (e) {} draw(); }; fc.appendChild(b); });
+
+document.getElementById('mh').innerHTML = `<tr><th>Anexo</th><th>Estado</th><th>IA</th>${D.chequeos.map((c) => `<th class="c" title="${esc(c.titulo)}">${c.id}</th>`).join('')}</tr>`;
+function draw() {
+  fc.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b.textContent === cli));
+  const filas = D.anexos.filter((a) => cli === 'Todos' || a.cliente === cli);
+  document.getElementById('mb').innerHTML = filas.map((a) => `<tr><td class="name">${esc(a.pf)} · ${esc(a.cliente)}<small>${esc(a.curso)}</small></td><td><span class="pill ${a.estado}">${a.estado}</span></td><td class="ia">${a.den ? pct(a.ia) : '—'}</td>${a.resultados.map((r) => `<td><button type="button" class="cell ${cls[r.estado]}" data-a="${a.k}" data-c="${r.id}" aria-label="${esc(a.k)} ${r.id}: ${r.estado}">${ico[r.estado]}</button></td>`).join('')}</tr>`).join('');
+  document.querySelectorAll('.cell').forEach((b) => b.onclick = () => show(b));
+}
+function show(b) {
+  document.querySelectorAll('.cell[aria-pressed="true"]').forEach((x) => x.setAttribute('aria-pressed', 'false'));
+  b.setAttribute('aria-pressed', 'true');
+  const a = D.anexos.find((x) => x.k === b.dataset.a); const r = a.resultados.find((x) => x.id === b.dataset.c); const c = D.chequeos.find((x) => x.id === r.id);
+  document.getElementById('det').innerHTML = `<span class="eyebrow">${esc(c.id)} · regla ${esc(c.regla)} · ${esc(c.severidad)}</span><h3>${esc(c.titulo)}</h3><span class="pill ${r.estado === 'CUMPLE' ? 'LISTO' : r.estado === 'NO CUMPLE' ? 'BLOQUEADO' : 'OBSERVADO'}">${esc(r.estado)}</span><p>${esc(r.evidencia)}</p><dl class="kv"><dt>Anexo</dt><dd>${esc(a.titulo)}</dd><dt>Regla</dt><dd>${esc(c.reglaTexto)}</dd><dt>Leído</dt><dd>${a.leido ? new Date(a.leido).toLocaleString('es-CL') : 'no se pudo leer'}</dd></dl><p><a href="${esc(a.doc)}" target="_blank" rel="noopener">Abrir el anexo</a> · <a href="${esc(a.aula)}" target="_blank" rel="noopener">Abrir el aula</a></p>`;
+}
+draw();
+if (D.sembrado) {
+  document.getElementById('secSemb').hidden = false;
+  document.getElementById('semb').innerHTML = D.sembrado.semillas.map((s) => `<tr><td>${esc(s.que)}</td><td class="id">${esc(s.anexo)}</td><td class="id">${esc(s.chequeo)}</td><td>${esc(s.antes)}</td><td>${esc(s.despues)}</td><td>${s.valida ? (s.detectado ? '<span class="pill LISTO">Sí</span>' : '<span class="pill BLOQUEADO">No</span>') : '<span class="muted">No válida: el anexo ya fallaba</span>'}</td></tr>`).join('');
+}
+document.getElementById('chq').innerHTML = D.chequeos.map((c) => `<tr><td class="id">${c.id}</td><td>${esc(c.titulo)}${c.tipo === 'juicio' ? ' <span class="pill OBSERVADO">juicio</span>' : ''}</td><td class="id">${c.regla}</td><td>${c.severidad}</td><td>${c.peso}</td></tr>`).join('');
+document.getElementById('pie').textContent = 'Fuentes: textos de los Anexos 2 VF leídos desde Drive; tabla de verdad desde SIPFOR (data/planes), planilla 02 Recursos M2 y aulas medidas el 04-10. Las claves de evaluador se tapan en toda evidencia. Generado por scripts/anexos/verificar-anexos.mjs.';
+</script>

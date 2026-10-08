@@ -33,7 +33,9 @@
     "build": "node scripts/sitio.mjs",
     "verificadores": "node scripts/auditar-verificadores.mjs",
     "hooks": "node scripts/instalar-hooks.mjs",
-    "test": "node scripts/verificar.mjs --estricto"
+    "test": "node scripts/verificar.mjs --estricto",
+    "anexos": "node scripts/anexos/verificar-anexos.mjs --sembrar",
+    "reglas": "node scripts/anexos/reglas-md.mjs"
   },
   "comentario": "Sin dependencias a propósito: el repo se abre desde Claude Code, Codex, Cursor o a mano, y ninguna herramienta debería tener que instalar nada para verificar (AGENTS.md §8)."
 }

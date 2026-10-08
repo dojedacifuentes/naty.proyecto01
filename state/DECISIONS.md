@@ -949,3 +949,17 @@ Quién: usuario (decisiones), claude-code.
   («el participante»), PF1479 en equipo («cada equipo entrega terminado el sitio»). Mismos requisitos y rúbrica que PF1477/PF1478.
 - Los anexos CD PF1474 y PF1479 todavía nombran RECITRONIC: lo ajusta Natalia (anotado en HANDOFF).
 Quién: usuario (pedido), claude-code.
+
+## 2026-10-08 · Sistema aulas y anexos en el mismo repositorio, público (sesión claude-code, 2026-10-08-claude-code-01)
+
+- **Pedido:** mostrarle a Natalia, de forma metodológica, cómo se automatizaron las aulas y cómo se verifican los anexos: reglas
+  estrictas, una tabla de verdad, un verificador con fórmula y skills.
+- **Decisión del usuario:** va en este mismo repositorio (naty.proyecto01) y el repositorio sigue público. Se ofreció pasarlo a privado
+  o crear uno aparte; el usuario eligió dejar visible lo actual.
+- **Qué se publica:** el método (`sistema/`, `data/reglas/`, `scripts/anexos/`, `.claude/skills/`) y cifras globales. **Qué no:** los
+  textos de los anexos, la tabla con ids de aulas y los resultados con citas quedan en `privado/` (fuera de git); el detalle por anexo
+  vive en un panel privado.
+- **Fórmula:** IA = Σ peso·[cumple] ÷ Σ peso·[cumple o no cumple] (crítica 3, mayor 2, menor 1; juicio no pesa); K = evaluadas ÷
+  esperadas; BLOQUEADO / OBSERVADO / LISTO; S = sembrados detectados ÷ sembrados. Un chequeo puede bajar la severidad de su regla
+  cuando revisa una parte menor (p. ej. «V0» en el nombre del archivo).
+Quién: usuario (decisiones), claude-code.

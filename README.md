@@ -10,6 +10,23 @@ Repositorio de trabajo para la producción sistematizada de propuestas técnicas
 
 ---
 
+## Sistema aulas y anexos
+
+**[`sistema/`](sistema/)** explica el método con que se armaron las 26 aulas LMS de los cuatro clientes y con que se
+verifica que cada Anexo 2 diga lo que el aula muestra: una **tabla de verdad** sacada de las fuentes oficiales,
+**41 reglas** con severidad y origen ([`data/reglas/reglas.json`](data/reglas/reglas.json)), un **verificador** con
+fórmula y prueba de errores sembrados ([`scripts/anexos/`](scripts/anexos/), `npm run anexos`) y **seis skills**
+([`.claude/skills/`](.claude/skills/)) que empaquetan el trabajo.
+
+| Índice de alineación | Completitud | Errores sembrados detectados |
+|:-:|:-:|:-:|
+| **99,8 %** | 96,2 % | **10 / 10** |
+
+Presentación: [sistema/presentacion.html](https://naty-proyecto01.vercel.app/sistema/presentacion.html) ·
+método: [sistema/README.md](sistema/README.md) · reglas: [sistema/REGLAS.md](sistema/REGLAS.md).
+
+---
+
 ## Módulo 2 de los cursos desarrollados
 
 Los recursos educativos del módulo 2 y el checklist de lo que piden las bases están en

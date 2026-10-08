@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sistema Aulas y Anexos 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: expediente técnico — columna de lectura de 72rem; numeración solo donde hay secuencia real */
+:root{
+  --bg:#F4F6F8; --surface:#FFFFFF; --sunk:#E9EDF1; --fg:#15212B; --muted:#55636F; --line:#D3DAE1;
+  --accent:#1F5FAD; --accent-soft:#E2ECF8;
+  --ok:#1E7A4C; --ok-soft:#DFF2E7; --warn:#9A6200; --warn-soft:#FBF0D9; --bad:#B42318; --bad-soft:#FBE4E1; --idle:#8A96A1; --idle-soft:#EEF1F4;
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif; --body:"Source Sans 3","Segoe UI",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F161C; --surface:#161F27; --sunk:#1D2832; --fg:#E4EAF0; --muted:#9AA8B5; --line:#2A3743;
+  --accent:#7FB2F0; --accent-soft:#1A2D45;
+  --ok:#6CCB97; --ok-soft:#14301F; --warn:#E9B65A; --warn-soft:#33270F; --bad:#F2877B; --bad-soft:#3A1915; --idle:#6F7C88; --idle-soft:#1D2731; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F161C; --surface:#161F27; --sunk:#1D2832; --fg:#E4EAF0; --muted:#9AA8B5; --line:#2A3743;
+  --accent:#7FB2F0; --accent-soft:#1A2D45;
+  --ok:#6CCB97; --ok-soft:#14301F; --warn:#E9B65A; --warn-soft:#33270F; --bad:#F2877B; --bad-soft:#3A1915; --idle:#6F7C88; --idle-soft:#1D2731; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:400 1.0625rem/1.6 var(--body);padding-inline:16px;padding-block:0 4rem}
+.wrap{max-width:72rem;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:800;letter-spacing:-.01em}
+h2{font-size:clamp(1.45rem,3vw,1.9rem);font-weight:700}
+h3{font-size:1.1rem;font-weight:700}
+p{margin:0;max-width:68ch}
+a{color:var(--accent)}
+.eyebrow{font:500 .75rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+section{padding-block:3rem 0;display:grid;gap:1.25rem}
+header.top{padding-block:3.5rem 1rem;display:grid;gap:1.1rem;border-bottom:1px solid var(--line)}
+.lede{font-size:1.2rem;max-width:62ch}
+nav.toc{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font-size:.92rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.stat{background:var(--surface);padding:.9rem 1rem;display:grid;gap:.15rem}
+.stat b{font:800 1.7rem/1 var(--display);font-variant-numeric:tabular-nums}
+.stat span{font-size:.85rem;color:var(--muted)}
+.flow{display:grid;grid-template-columns:1fr auto 1.15fr auto 1fr;gap:.75rem;align-items:stretch}
+.col{display:grid;gap:.5rem;align-content:start}
+.col h3{font:500 .72rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
+.node{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.6rem .75rem;font-size:.95rem}
+.node small{display:block;color:var(--muted);font-size:.8rem}
+.truth{background:var(--accent-soft);border:2px solid var(--accent);border-radius:8px;padding:1rem;display:grid;gap:.5rem;align-content:center}
+.truth strong{font:800 1.25rem/1.1 var(--display);color:var(--accent)}
+.truth ul{margin:0;padding-left:1.1rem;font-size:.92rem}
+.arrow{align-self:center;color:var(--accent);font:700 1.5rem/1 var(--display)}
+@media (max-width:820px){.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg);justify-self:center}}
+.ladder{display:grid;counter-reset:l;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface)}
+.ladder div{display:grid;grid-template-columns:2.2rem 1fr;gap:.75rem;padding:.7rem 1rem;border-top:1px solid var(--line)}
+.ladder div:first-child{border-top:0}
+.ladder div::before{counter-increment:l;content:counter(l);font:700 1rem/1.5 var(--mono);color:var(--accent)}
+.toolbar{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.chip{font:600 .85rem/1 var(--body);padding:.45rem .7rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.coverage{display:flex;height:.7rem;border-radius:999px;overflow:hidden;background:var(--sunk)}
+.coverage i{display:block}
+.legend{display:flex;flex-wrap:wrap;gap:1rem;font-size:.88rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:.7rem;height:.7rem;border-radius:2px;margin-right:.35rem;vertical-align:-.05rem;background:var(--c)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;padding:.6rem .8rem;border-top:1px solid var(--line);vertical-align:top}
+thead th{border-top:0;font:500 .72rem/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--sunk)}
+td.id{font:500 .82rem/1.6 var(--mono);color:var(--accent);white-space:nowrap}
+td.grp{color:var(--muted);font-size:.85rem;white-space:nowrap}
+.pill{display:inline-block;font:600 .75rem/1 var(--body);padding:.3rem .5rem;border-radius:4px;white-space:nowrap}
+.p-auto{background:var(--ok-soft);color:var(--ok)} .p-parcial{background:var(--warn-soft);color:var(--warn)} .p-manual{background:var(--bad-soft);color:var(--bad)} .p-proceso{background:var(--idle-soft);color:var(--muted)}
+.lms,.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:1rem;display:grid;gap:.6rem;align-content:start;min-width:0}
+.card .head{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.card ul{margin:0;padding-left:1.1rem;display:grid;gap:.35rem;font-size:.95rem}
+.swatches{display:flex;gap:.3rem}
+.swatches i{width:1.1rem;height:1.1rem;border-radius:3px;border:1px solid var(--line);display:block}
+dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.3rem .75rem;font-size:.9rem}
+dt{color:var(--muted)} dd{margin:0;min-width:0}
+.common{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:1rem;display:grid;gap:.75rem}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:.6rem}
+.steps div{background:var(--sunk);border-radius:5px;padding:.6rem .75rem;font-size:.9rem}
+.steps b{display:block;font-family:var(--display)}
+.build{display:grid;gap:0;counter-reset:b;border:1px solid var(--line);border-radius:6px;background:var(--surface);overflow:hidden}
+.build div{display:grid;grid-template-columns:2.4rem 1fr;gap:.25rem .9rem;padding:.9rem 1rem;border-top:1px solid var(--line)}
+.build div:first-child{border-top:0}
+.build div::before{counter-increment:b;content:counter(b);grid-row:span 2;font:800 1.4rem/1 var(--display);color:var(--accent)}
+.build b{font-family:var(--display)}
+.build p{font-size:.95rem;color:var(--muted)}
+pre.formula{margin:0;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:1rem;overflow-x:auto;font:500 .88rem/1.7 var(--mono);color:var(--fg)}
+.findings{display:grid;gap:.6rem}
+.f{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.75rem 1rem;display:grid;grid-template-columns:auto 1fr;gap:.2rem .8rem;align-items:start}
+.f .pill{grid-row:span 2;margin-top:.15rem}
+.f b{font-family:var(--display)}
+.f span{color:var(--muted);font-size:.95rem}
+.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}
+.trust div{display:grid;gap:.3rem;padding-top:.75rem;border-top:2px solid var(--fg)}
+.trust b{font-family:var(--display);font-size:1.02rem}
+.trust p{font-size:.95rem;color:var(--muted)}
+.method{display:grid;grid-template-columns:1fr 1.3fr;gap:1.5rem}
+@media (max-width:820px){.method{grid-template-columns:1fr}}
+.quote{font:700 1.35rem/1.3 var(--display);color:var(--accent);max-width:30ch}
+.pieces{display:grid;gap:1rem}
+.pieces div{display:grid;gap:.3rem;padding-left:1rem;border-left:3px solid var(--accent)}
+.pieces b{font-family:var(--display);font-size:1.05rem}
+.pieces p{font-size:.97rem}
+code{font:500 .85em var(--mono);background:var(--sunk);padding:.05rem .3rem;border-radius:3px}
+ol.next{margin:0;padding-left:1.3rem;display:grid;gap:.5rem}
+.open{display:grid;gap:.6rem}
+.open div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.75rem 1rem;display:grid;gap:.2rem}
+.open b{font-family:var(--display)}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <span class="eyebrow">Licitación Talento Digital 2026 · Módulo 2</span>
+  <h1>Una tabla de verdad para 26 aulas y 26 anexos</h1>
+  <p class="lede">Cómo se armaron las aulas de los cuatro clientes, y cómo el mismo sistema verifica que cada Anexo 2 diga lo que el aula muestra, con reglas escritas, una fórmula y evidencia en cada casilla.</p>
+  <div class="stats">
+    <div class="stat"><b>26</b><span>aulas en 4 LMS</span></div>
+    <div class="stat"><b>41</b><span>reglas escritas</span></div>
+    <div class="stat"><b>21</b><span>chequeos automáticos de anexos</span></div>
+    <div class="stat"><b>99,8 %</b><span>índice de alineación</span></div>
+    <div class="stat"><b>10/10</b><span>errores sembrados detectados</span></div>
+  </div>
+  <nav class="toc" aria-label="Secciones"><a href="#arquitectura">Arquitectura</a><a href="#reglas">Reglas</a><a href="#lms">Qué muestra cada LMS</a><a href="#verificador">Verificador</a><a href="#resultado">Resultado</a><a href="#metodo">Operación asistida</a><a href="#skills">Skills</a><a href="#conectores">Conectores y tokens</a></nav>
+</header>
+
+<section id="arquitectura">
+  <span class="eyebrow">Arquitectura</span>
+  <h2>El anexo y el aula no se comparan entre sí: los dos se comparan con la tabla</h2>
+  <p class="muted">Si el anexo cuadra con la tabla y el aula cuadra con la tabla, el anexo y el aula cuadran. Un cambio se hace en un solo lugar.</p>
+  <div class="flow">
+    <div class="col">
+      <h3>Fuentes oficiales</h3>
+      <div class="node">Bases 2026 SENCE<small>Res. Ex. N°2320, por numeral y página</small></div>
+      <div class="node">SIPFOR y PDF de planes<small>AE, criterios, módulos, horas</small></div>
+      <div class="node">Anexos 2 VF<small>lo que escribe Natalia</small></div>
+      <div class="node">Planilla 02 Recursos M2<small>vocabulario, criterios faltantes</small></div>
+    </div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="truth">
+      <strong>Tabla de verdad</strong>
+      <p style="font-size:.92rem">Una fila por anexo: lo que debe decir, de qué fuente sale y cuándo se leyó.</p>
+      <ul><li>152 aprendizajes esperados y 607 criterios</li><li>ids de cada actividad del aula</li><li>41 reglas con severidad y origen</li></ul>
+    </div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="col">
+      <h3>Lo que se verifica</h3>
+      <div class="node">Anexo 2<small>lo que debe decir y enlazar</small></div>
+      <div class="node">Aula LMS<small>lo que muestra al participante</small></div>
+      <div class="node">Panel<small>cumple, no cumple o juicio, con cita</small></div>
+    </div>
+  </div>
+  <div class="ladder" aria-label="Jerarquía de fuentes">
+    <div><span><b>Manda primero</b> la decisión del equipo, registrada con fecha.</span></div>
+    <div><span>Después los Anexos 2 VF de Natalia. En la evaluación del módulo manda el anexo.</span></div>
+    <div><span>Después el Word «Textos que se usaron en los anexos».</span></div>
+    <div><span>Al final los documentos 2024. El texto de AE y criterios sale siempre de SIPFOR (bases 13.3.2 h).</span></div>
+  </div>
+</section>
+
+<section id="reglas">
+  <span class="eyebrow">Reglas</span>
+  <h2>Las 41 reglas, con autor, origen y cómo se verifican</h2>
+  <p class="muted">Cada regla vive en <code>data/reglas/reglas.json</code> con su severidad (crítica, mayor, menor), su origen (numeral de las bases, SIPFOR o decisión de coordinación con fecha) y los chequeos que la revisan. Responsable del catálogo: coordinación LMS.</p>
+  <div class="coverage" id="cov" aria-label="Cobertura de verificación automática"></div>
+  <div class="legend" id="leg"></div>
+  <div class="toolbar" id="filters" role="group" aria-label="Filtrar por grupo"></div>
+  <div class="tbl"><table>
+    <thead><tr><th>ID</th><th>Grupo</th><th>Regla</th><th>Verificación</th></tr></thead>
+    <tbody id="rules"></tbody>
+  </table></div>
+</section>
+
+<section id="lms">
+  <span class="eyebrow">Qué muestra cada LMS</span>
+  <h2>Misma estructura, distinta marca y vocabulario</h2>
+  <div class="common">
+    <h3>Estructura común del módulo 2 (las 26 aulas)</h3>
+    <div class="steps">
+      <div><b>Bienvenida</b>video, glosario, foro de consultas del módulo</div>
+      <div><b>Cada aprendizaje esperado</b>lectura · ABP individual · ABPRO grupal · quiz gamificado · infografía</div>
+      <div><b>Cierre</b>video resumen, evaluación del módulo, instrumentos, portafolio y bitácora, auto y coevaluación</div>
+      <div><b>Curso</b>todos los módulos enunciados, solo el 2 desarrollado; foro de consultas del curso</div>
+    </div>
+  </div>
+  <div class="lms">
+    <div class="card"><div class="head"><h3>UNAB</h3><div class="swatches"><i style="background:#051C2C"></i><i style="background:#AA182C"></i></div></div>
+      <dl><dt>LMS</dt><dd>Moodle 4 · otec-unab.cl</dd><dt>Aulas</dt><dd>8</dd><dt>Marca</dt><dd>azul y rojo UNAB, con logo</dd><dt>Nombres</dt><dd>Lectura · ABP Trabajo individual · ABPRO Trabajo grupal · Evaluación del módulo</dd></dl></div>
+    <div class="card"><div class="head"><h3>Coding Dojo · Skillnest</h3><div class="swatches"><i style="background:#01BFE8"></i></div></div>
+      <dl><dt>LMS</dt><dd>Moodle 4.5 · learning-pro.skillnest.com</dd><dt>Aulas</dt><dd>8</dd><dt>Marca</dt><dd>celeste, logo blanco</dd><dt>Nombres</dt><dd>Material de estudio · Ejercicio ABP · Desarrollo de Proyecto ABPRO · Sprint de cierre</dd></dl></div>
+    <div class="card"><div class="head"><h3>U. Autónoma</h3><div class="swatches"><i style="background:#D12E2E"></i><i style="background:#3A4B57"></i></div></div>
+      <dl><dt>LMS</dt><dd>Canvas · canvas.uautonoma.cl</dd><dt>Aulas</dt><dd>6</dd><dt>Marca</dt><dd>rojo y gris, letra Lato</dd><dt>Nombres</dt><dd>Dossier de lectura · Ensayo individual (ABP) · Laboratorio guiado (ABPRO) · Prueba de desempeño</dd></dl></div>
+    <div class="card"><div class="head"><h3>Chile Conductores</h3><div class="swatches"><i style="background:#0F3D5E"></i><i style="background:#0E7490"></i></div></div>
+      <dl><dt>LMS</dt><dd>Moodle 3.8 · aulavirtual.chilecapacitacion.cl</dd><dt>Aulas</dt><dd>4</dd><dt>Marca</dt><dd>azul marino y turquesa, sin logo</dd><dt>Nombres</dt><dd>Material de lectura · Práctica supervisada individual y en equipo · Evaluación de desempeño</dd></dl></div>
+  </div>
+</section>
+
+<section id="verificador">
+  <span class="eyebrow">Verificador</span>
+  <h2>Cómo se construye un verificador</h2>
+  <p class="muted">Claude no opina anexo por anexo. Escribe funciones que comparan el texto exacto del anexo con la tabla de verdad, y esas funciones deciden. Cada chequeo se arma igual:</p>
+  <div class="build">
+    <div><b>Se ancla a una regla</b><p>Ejemplo: A09 revisa la regla R39 (los enlaces del AE seleccionado). La severidad y el origen vienen de la regla.</p></div>
+    <div><b>Toma el valor esperado de la tabla</b><p>Nunca del criterio del momento: los ids de la lectura, el quiz y la infografía del aula, el texto SIPFOR del AE.</p></div>
+    <div><b>Compara de forma determinista</b><p>Texto normalizado (sin tildes ni formato), conteos y direcciones web. El mismo anexo da siempre el mismo resultado.</p></div>
+    <div><b>Deja evidencia</b><p>La cita del anexo y la sección donde está, o el dato que falta. Las claves de evaluador se tapan.</p></div>
+    <div><b>Responde en cuatro estados</b><p>Cumple, no cumple, requiere juicio (no se decide comparando textos) o no aplica.</p></div>
+    <div><b>Se prueba con errores sembrados</b><p>Se meten errores conocidos en copias de anexos que pasaban, y el verificador debe encontrarlos todos.</p></div>
+  </div>
+  <h3>La fórmula</h3>
+<pre class="formula">IA  Índice de Alineación  = Σ peso × [cumple]  ÷  Σ peso × [cumple o no cumple]
+                            peso: crítica 3 · mayor 2 · menor 1 · los chequeos de juicio no pesan
+K   Completitud           = casillas evaluadas ÷ (anexos esperados × chequeos)
+    Estado del anexo      = BLOQUEADO  si no se leyó o falla un chequeo crítico
+                            OBSERVADO  si IA &lt; 100 % o queda juicio pendiente
+                            LISTO      si IA = 100 % y sin juicio
+S   Sensibilidad          = errores sembrados detectados ÷ errores sembrados</pre>
+  <p class="muted">Si la suma de casillas no cuadra con anexos × chequeos, el programa se detiene: nada se salta en silencio.</p>
+</section>
+
+<section id="resultado">
+  <span class="eyebrow">Resultado del 08-10</span>
+  <h2>Los 26 anexos vigentes, verificados</h2>
+  <div class="stats">
+    <div class="stat"><b>99,8 %</b><span>índice de alineación</span></div>
+    <div class="stat"><b>96,2 %</b><span>completitud (525 de 546)</span></div>
+    <div class="stat"><b>3 · 22 · 1</b><span>listos · observados · bloqueados</span></div>
+    <div class="stat"><b>100 %</b><span>sensibilidad (10 de 10)</span></div>
+  </div>
+  <p>Los 25 anexos leídos traen los aprendizajes esperados y los 607 criterios con las palabras de SIPFOR, el código del plan correcto, la plataforma real y ningún corchete pendiente. El detalle por anexo, con citas, vive en un panel privado porque contiene texto de los anexos.</p>
+</section>
+  
+
+<section>
+  <span class="eyebrow">Confianza</span>
+  <h2>Por qué se puede confiar en el análisis</h2>
+  <div class="trust">
+    <div><b>Texto exacto, no transcrito</b><p>Cada anexo se lee desde Drive y se guarda tal cual. Claude nunca lo copia a mano.</p></div>
+    <div><b>Evidencia en cada casilla</b><p>Cita y sección. Sin evidencia no hay «cumple».</p></div>
+    <div><b>Los conteos cuadran</b><p>26 × 21 = 546 casillas, todas con estado.</p></div>
+    <div><b>Errores sembrados</b><p>10 de 10 detectados: código cambiado, corchete, «Moodle» en Canvas, enlace roto, AE alterado y otros.</p></div>
+    <div><b>Calibrado contra falsos positivos</b><p>Se revisaron a mano los fallos y se corrigieron cinco: el «canvas» de n8n, «dependiente:», «un tramo de diez minutos», «Full Stack» y los nombres de archivo entre corchetes.</p></div>
+    <div><b>El juicio va aparte</b><p>Lo que no se resuelve comparando textos queda marcado y lo decide una persona.</p></div>
+  </div>
+</section>
+
+<section id="metodo">
+  <span class="eyebrow">Método de trabajo</span>
+  <h2>Operación asistida: la persona conduce, Claude opera</h2>
+  <div class="method">
+    <div style="display:grid;gap:1rem;align-content:start">
+      <p class="quote">Claude trabajó dentro de las sesiones ya abiertas del navegador, con los mismos permisos de quien lo dirigía y a la vista.</p>
+      <div class="stats" style="grid-template-columns:repeat(2,1fr)">
+        <div class="stat"><b>36</b><span>sesiones de trabajo</span></div>
+        <div class="stat"><b>~4.800</b><span>acciones en el navegador</span></div>
+        <div class="stat"><b>~750</b><span>operaciones en Drive</span></div>
+        <div class="stat"><b>~165</b><span>decisiones consultadas</span></div>
+      </div>
+      <p class="muted" style="font-size:.85rem">Cifras aproximadas, contadas en los registros de las conversaciones.</p>
+    </div>
+    <div class="pieces">
+      <div><b>Sesión real en vez de credenciales</b><p>Tres Moodle, Canvas, Drive, Rise y Canva ya estaban abiertos en el navegador. Claude trabajó dentro de esas sesiones: no se compartieron contraseñas, no se pidieron tokens a los administradores de cada institución, y cada acción quedó a la vista en la pantalla. Claude podía hacer exactamente lo que la cuenta podía hacer, ni más ni menos. Cuando un sitio pedía iniciar sesión, la contraseña la escribía la persona.</p></div>
+      <div><b>El grupo de pestañas como mesa de trabajo</b><p>Claude trabaja en un grupo de pestañas propio. Ahí se iban dejando las fuentes del día (la carpeta de anexos, el anexo que se estaba cotejando, el aula abierta en la sección exacta), y Claude las leía directo, sin descargar nada ni pedir que se copiara texto. Es como dejar los documentos sobre la mesa de un colaborador.</p></div>
+      <div><b>Entrega de insumos por enlace</b><p>Para ganar velocidad, los insumos se pasaban pegando el enlace en el chat: unos 60 mensajes con enlaces, casi todos de Docs y Drive. Un enlace dice qué documento y qué versión, sin ambigüedad, y Claude lo abre en la misma sesión. Era más rápido que explicar dónde estaba algo.</p></div>
+      <div><b>Las decisiones son humanas y quedan escritas</b><p>Cuando había que elegir (qué fuente manda, qué hacer con un anexo que describe otra actividad), Claude preguntaba con opciones. Fueron unas 165 decisiones, y cada respuesta quedó en el registro de decisiones con fecha. Así lo decidido se aplica igual en las 26 aulas y la próxima sesión no lo vuelve a preguntar.</p></div>
+      <div><b>Límites fijos</b><p>Contraseñas, publicar, borrar, matricular y cambiar permisos: siempre con un OK explícito o a mano.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <span class="eyebrow">Skills</span>
+  <h2>El método empaquetado en seis skills</h2>
+  <p class="muted">Una skill es un manual que Claude carga cuando la tarea lo pide: pasos, trampas conocidas, límites y cómo verificar. Viven en <code>.claude/skills/</code> del repositorio, así que cualquier sesión (o el otro computador) trabaja igual.</p>
+  <div class="cards">
+    <div class="card"><h3><code>reglas-aula</code></h3><p class="muted">Revisa un texto o un aula contra las 41 reglas y reporta ID, cita, ubicación y veredicto. Se usa antes de publicar cualquier cosa que verá el participante.</p></div>
+    <div class="card"><h3><code>cruce-anexo</code></h3><p class="muted">Lee los anexos desde Drive sin transcribirlos, corre el verificador con la prueba sembrada y entrega el panel. Solo revisa a mano lo que queda en juicio.</p></div>
+    <div class="card"><h3><code>armar-aula-moodle</code></h3><p class="muted">Arma o corrige aulas en los tres Moodle con los armadores, con los permisos y trampas de cada sitio.</p></div>
+    <div class="card"><h3><code>armar-aula-canvas</code></h3><p class="muted">Canvas de U. Autónoma por API: página de inicio única, diseño, archivos publicados y vista de estudiante.</p></div>
+    <div class="card"><h3><code>subir-scorm</code></h3><p class="muted">Genera y sube el quiz gamificado y las lecturas Rise, con los ajustes para que se vean completos en Moodle y en Canvas.</p></div>
+    <div class="card"><h3><code>evidencia-video</code></h3><p class="muted">Graba el recorrido como participante, lo recorta y lo deja listo para Drive. Se vuelve a usar cuando el aula cambia.</p></div>
+  </div>
+</section>
+
+<section id="conectores">
+  <span class="eyebrow">Conectores y tokens</span>
+  <h2>Qué se puede agregar y qué pide cada cosa</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Herramienta</th><th>Para qué sirve en el cruce de anexos</th><th>Qué pide</th></tr></thead>
+    <tbody>
+      <tr><td><b>Plugin Data</b> (Anthropic)</td><td><code>build-dashboard</code> arma paneles con filtros desde el CSV de resultados. <code>validate-data</code> revisa que conteos y porcentajes de un análisis estén bien antes de entregarlo. No aplica reglas fila por fila: eso lo hace el verificador.</td><td>Instalarlo desde el directorio de plugins. No pide tokens.</td></tr>
+      <tr><td><b>Conector Google Sheets</b></td><td>La tabla de verdad como planilla que Natalia edita y el verificador lee.</td><td>Conectarlo con la cuenta de Google.</td></tr>
+      <tr><td><b>Moodle por web services</b> (MCP o script)</td><td>Leer el contenido real de cada aula (<code>core_course_get_contents</code>: secciones, actividades, enlaces) sin abrir el navegador, desde cualquier computador.</td><td>Un <b>token</b>. Sin ser administrador, solo si el sitio tiene activado el servicio móvil: la persona lo obtiene con su usuario y contraseña y dura unas 12 semanas. Si no, el administrador debe crearlo. El token equivale a la sesión: va en variables de entorno, nunca en el repositorio.</td></tr>
+      <tr><td><b>Canvas por API</b> (MCP o script)</td><td>Leer módulos, ítems, páginas y tareas con sus ids exactos.</td><td>Un <b>token personal</b> que crea la persona en Cuenta › Configuración › Integraciones aprobadas, salvo que la universidad lo haya restringido. Tiene todos los permisos de la cuenta, incluso de escritura: usarlo solo para leer y con fecha de expiración.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Recomendación: mientras haya sesiones abiertas en el navegador, la lectura en vivo funciona sin tokens (así se comprobó Canvas el 08-10). Los tokens convienen para correr el cruce sin el navegador o de forma programada.</p>
+</section>
+
+<section>
+  <span class="eyebrow">Repositorios</span>
+  <h2>Dos repositorios</h2>
+  <div class="cards">
+    <div class="card"><h3>Trabajo · privado</h3><p class="muted">Datos reales, textos de los anexos, registro de decisiones y auditorías.</p></div>
+    <div class="card"><h3>Vitrina · público</h3><p class="muted">El método: reglas, esquema de la tabla de verdad, verificador, panel con datos de ejemplo, skills y guía de trabajo.</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Próximos pasos</span>
+  <h2>Del panel al sistema completo</h2>
+  <ol class="next">
+    <li>Leer en vivo las aulas de UNAB y Coding Dojo para cerrar los 9 enlaces pendientes.</li>
+    <li>Pasar la tabla de verdad a una planilla editable.</li>
+    <li>Agregar el lector de aula para verificar también el lado del LMS con la misma tabla.</li>
+    <li>Repositorio vitrina con el método y datos de ejemplo.</li>
+  </ol>
+</section>
+
+<footer><a href="./">Documentación del método</a> · <a href="REGLAS.html">Reglas</a> · <a href="https://github.com/dojedacifuentes/naty.proyecto01/tree/main/sistema">ver en GitHub</a><br>Fuentes: bases 2026 (Res. Ex. N°2320), SIPFOR, Anexos 2 VF leídos desde Drive el 08-10-2026, planilla 02 Recursos M2, aulas medidas el 04-10 y Canvas leído en vivo el 08-10. Verificador: <code>scripts/anexos/verificar-anexos.mjs</code>.</footer>
+</div>
+
+<script>
+const RULES=[
+["R01","Fuentes","Jerarquía: decisión del equipo › Anexos 2 VF › Word de textos › documentos 2024.","manual"],
+["R02","Fuentes","En la evaluación del módulo manda el Anexo 2. Solo cambia la evaluación, no el ABP ni el ABPRO.","manual"],
+["R03","Fuentes","AE, criterios y contenidos según SIPFOR, cotejados con el PDF oficial del plan.","auto"],
+["R04","Fuentes","Nombres de recursos en el LMS según el vocabulario de cada cliente en la planilla 02.","parcial"],
+["R05","Fuentes","Los Anexos 2 VF los edita solo Natalia. El sistema solo los lee.","proceso"],
+["R06","Identidad","Título «Programa “Talento Digital Para Chile”, Becas Laborales 2026, <curso> (<código>)», sin «Especial», también en el banner.","parcial"],
+["R07","Identidad","Módulo 2 es el que el PDF oficial numera N°2, contando el transversal.","manual"],
+["R08","Identidad","26 aulas válidas. PF1485, PF1487 y PF1493 no se postulan.","manual"],
+["R09","Identidad","La plataforma nombrada es la real: U. Autónoma usa Canvas.","auto"],
+["R10","Estructura","Se enuncian todos los módulos y solo se desarrolla el 2. Portada sin lista de módulos.","manual"],
+["R11","Estructura","Aprendizajes esperados abiertos uno tras otro, sin clic.","manual"],
+["R12","Estructura","Módulo 2: bienvenida, cada AE y cierre.","manual"],
+["R13","Estructura","Foro de consultas del curso, además del foro del módulo.","manual"],
+["R14","Estructura","Sin infografía «Ruta del módulo», cápsulas por AE ni «video herramienta».","parcial"],
+["R15","Estructura","Sin restos de plantillas: botón SENCE en U. Autónoma, Zoom o Clase On-Line, PDF 2024 de Skillnest.","manual"],
+["R16","Estructura","En Canvas, todos los archivos publicados (si no, el participante ve un candado).","manual"],
+["R17","Contenido AE","AE y criterios con las mismas palabras de SIPFOR.","parcial"],
+["R18","Contenido AE","Al menos 3 criterios por AE, idénticos en el anexo y el aula.","parcial"],
+["R19","Contenido AE","Por AE: lectura, ABP individual, ABPRO grupal, quiz e infografía.","manual"],
+["R20","Contenido AE","Quiz SCORM «Quiz gamificado del aprendizaje esperado n». Sin Genially.","parcial"],
+["R21","Contenido AE","«Aprendizaje esperado n», nunca «tramo».","auto"],
+["R22","Actividades","El ABPRO dice que se trabaja en equipo. Un Doc por AE y cliente, con su marca.","auto"],
+["R23","Actividades","Entry: ABPRO AE2-AE7 y evaluación con «Todo Ventas en Línea». PF1486: ABP y ABPRO intercambiados en AE4 y AE5.","manual"],
+["R24","Actividades","Evaluación del módulo: enunciado casi literal del anexo, rúbrica que enlaza el anexo y caso ficticio.","manual"],
+["R25","Actividades","El portafolio no se crea como tarea del aula.","parcial"],
+["R26","Actividades","No se enlaza la respuesta modelo al participante.","manual"],
+["R27","Lenguaje","Lo que ve el participante: sin modalidad, horas ni minutos, «Duración», «Tiempo estimado» ni notas para el coach.","parcial"],
+["R28","Lenguaje","Sin «plan formativo», «oficial», «textual» ni «literal» en los recursos.","parcial"],
+["R29","Marca","El anexo y el aula nombran los recursos igual.","parcial"],
+["R30","Marca","Colores y logo del cliente.","manual"],
+["R31","Evaluador","Acceso del evaluador con perfil de participante (bases 7.4).","parcial"],
+["R32","Evaluador","Evaluador matriculado en las 26 aulas. Credenciales nunca en el repositorio.","auto"],
+["R33","Evaluador","La evidencia coincide con el aula actual; si no, es causal de rechazo.","parcial"],
+["R34","Evaluador","Correo y al menos 12 GB de nube por participante.","auto"],
+["R35","Anexo 2","II: nombre y código del curso iguales al plan y al aula.","auto"],
+["R36","Anexo 2","IV: todos los módulos con horas y modalidad, sumando el total del plan.","parcial"],
+["R37","Anexo 2","V: enlace al portafolio y rúbrica; los instrumentos son los mismos del aula.","manual"],
+["R38","Anexo 2","V.1: AE y criterios iguales al plan y al aula, con 3 indicadores por AE.","auto"],
+["R39","Anexo 2","VI b/c: AE seleccionado con ABP, ABPRO y 2 herramientas; enlaces a actividades del aula correcta.","auto"],
+["R40","Anexo 2","VIII: enlace directo al curso, credenciales, paso a paso de la plataforma real y evidencia.","auto"],
+["R41","Anexo 2","Limpieza: sin corchetes, notas de borrador ni «V0»; sin «Genially».","auto"]
+];
+const EST={auto:["Automática","p-auto","var(--ok)"],parcial:["Parcial","p-parcial","var(--warn)"],manual:["Manual","p-manual","var(--bad)"],proceso:["Proceso","p-proceso","var(--idle)"]};
+const groups=["Todas",...new Set(RULES.map(r=>r[1]))];
+let current="Todas";
+try{const s=localStorage.getItem("grupo");if(s&&groups.includes(s))current=s}catch(e){}
+const cov=document.getElementById("cov"),leg=document.getElementById("leg");
+Object.keys(EST).forEach(k=>{const n=RULES.filter(r=>r[3]===k).length;const i=document.createElement("i");i.style.width=(n/RULES.length*100)+"%";i.style.background=EST[k][2];cov.appendChild(i);const s=document.createElement("span");s.style.setProperty("--c",EST[k][2]);s.textContent=EST[k][0]+": "+n;leg.appendChild(s)});
+const f=document.getElementById("filters");
+function draw(){
+  document.getElementById("rules").innerHTML=RULES.filter(r=>current==="Todas"||r[1]===current).map(r=>`<tr><td class="id">${r[0]}</td><td class="grp">${r[1]}</td><td>${r[2].replace(/</g,"&lt;")}</td><td><span class="pill ${EST[r[3]][1]}">${EST[r[3]][0]}</span></td></tr>`).join("");
+  f.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.g===current));
+}
+groups.forEach(g=>{const b=document.createElement("button");b.className="chip";b.type="button";b.dataset.g=g;b.textContent=g;b.onclick=()=>{current=g;try{localStorage.setItem("grupo",g)}catch(e){}draw()};f.appendChild(b)});
+draw();
+</script>
+
+</html>

@@ -27,7 +27,7 @@ const CURSOS = [
 ];
 
 // Qué se publica. Del hito del 24-sep solo lo que la sección del módulo 2 enlaza.
-const RAICES = ['modulo-2', 'contenidos/PF1821/modulo-2', 'contenidos/PF1822/modulo-2', 'entregables/2026-09-24-modulo2'];
+const RAICES = ['modulo-2', 'contenidos/PF1821/modulo-2', 'contenidos/PF1822/modulo-2', 'entregables/2026-09-24-modulo2', 'sistema'];
 const DEL_HITO = /^entregables\/2026-09-24-modulo2\/(README\.md|kit-recursos-modulo2-PF18\d\d\.pdf|manual-entregables-modulo2-PF1821-PF1822\.pdf|modulo2-PF1821-PF1822-completo\.pdf)$/;
 const publicados = new Set(
   RAICES.flatMap((r) => listar(ruta(r)).map(rel))
@@ -62,6 +62,7 @@ function pagina(titulo, cuerpo, dirSalida) {
   const a = (p) => path.posix.relative(dirSalida, p) || '.';
   const nav = [
     ['Inicio', a('index.html')],
+    ['Sistema aulas y anexos', a('sistema/presentacion.html')],
     ['PF1821 · Agentes', `${a('modulo-2/PF1821-agentes-low-code')}/`],
     ['PF1822 · IA', `${a('modulo-2/PF1822-desarrollo-con-ia')}/`],
     ['Revisión contra bases', a('modulo-2/REVISION-BASES.html')],

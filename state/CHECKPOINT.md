@@ -2,7 +2,7 @@
 
 > Se reescribe al cerrar cada sesión. Es la respuesta a "¿dónde quedó todo?".
 
-**Última actualización:** 2026-10-04 (UTC)
+**Última actualización:** 2026-10-08 (UTC), sesión 2026-10-08-claude-code-01
 **Por:** 2026-10-01-claude-code-01 a -07, 2026-10-02-claude-code-01 a -06, 2026-10-03-claude-code-01 a -04 y 2026-10-04-claude-code-01 a -06 (Claude Code · opus-5.5)
 **Fase actual:** 0 — Reconocimiento
 
@@ -18,6 +18,13 @@
 | 3. Sistematización | no iniciada | — |
 
 ## Hecho
+
+Sesión 2026-10-08-claude-code-01 (sistema aulas y anexos: reglas, verificador, skills):
+
+- [x] 41 reglas en `data/reglas/reglas.json`; verificador de Anexos 2 `scripts/anexos/` (`npm run anexos`); 6 skills en `.claude/skills/`.
+- [x] Corrida sobre los anexos vigentes (06-10): IA 99,8 %, completitud 96,2 %, sensibilidad 10/10. Detalle por anexo en `privado/verificador-anexos/salida/`.
+- [x] Sección pública `sistema/` en el repo y en el sitio (presentación, método, reglas).
+- [ ] Decidir AE seleccionado de los anexos UA (#17) y leer en vivo UNAB y Skillnest (sin sesión el 08-10).
 
 Sesión 2026-10-04-claude-code-06 (Sprint CD y estado de los anexos):
 

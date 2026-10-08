@@ -10,6 +10,17 @@
 > por uno corto y se perdió lo acumulado. Se reconstruyó desde el commit `65c51c8`. **Al cerrar, edita este archivo:
 > no lo reemplaces entero.**
 
+## HECHO (sesión 2026-10-08-01): sistema aulas y anexos (reglas, verificador, skills)
+
+- Leer `sistema/README.md`. Reglas: `data/reglas/reglas.json` (fuente única; `npm run reglas` regenera `sistema/REGLAS.md`).
+- Verificar anexos: skill `cruce-anexo`. Pasos: leer cada anexo con el conector de Drive (de a uno si es .docx) y copiar el
+  resultado a `privado/verificador-anexos/anexos/<PF>-<cli>.json` con un script; `node privado/verificador-anexos/construir-tabla.mjs`;
+  `npm run anexos`. Si la sensibilidad no da 100 %, no entregar resultados.
+- Pendiente: (1) confirmar AE seleccionado de los anexos UA (vigentes: AE4 en Entry, AE2 en PF1822) y corregir `generar.mjs`;
+  (2) leer en vivo UNAB y Skillnest para cerrar 9 enlaces en juicio (iniciar sesión en el Chrome: la clave la escribe el usuario);
+  (3) PF1477 UA: pedir el id vigente del anexo.
+- Panel privado con citas: https://claude.ai/artifact/BcTmyeaaT4Y4LBixz96SYz · presentación: https://claude.ai/artifact/QYB7GpwZx9CsjcUyuvD8KS
+
 ## HECHO (sesión 2026-10-04-05): quiz gamificado que se ve completo en el LMS
 
 - Plantilla `scripts/lib/quiz-juego.html` con modo compacto para marcos bajos; 84 quiz regenerados. Moodle actualizado con
